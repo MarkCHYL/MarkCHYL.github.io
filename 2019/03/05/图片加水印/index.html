@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>图片加水印 | Mark的私人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="我尝试了两种实现水印的方式1、一个轻量级是我文字和图片水印框架2、通过Canvas绘制水印轻量级的我就不做笔记了，因为很简单就能实现你想要的水印，留意内存溢出就好。">
+<meta name="keywords" content="Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图片加水印">
+<meta property="og:url" content="https://markchyl.github.io/2019/03/05/图片加水印/index.html">
+<meta property="og:site_name" content="Mark的私人博客">
+<meta property="og:description" content="我尝试了两种实现水印的方式1、一个轻量级是我文字和图片水印框架2、通过Canvas绘制水印轻量级的我就不做笔记了，因为很简单就能实现你想要的水印，留意内存溢出就好。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/WEBdb77376deaca765aa7a3e6edb0356506?method=download&shareKey=562be4884a22b72841f3ecd26d15c5c2">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/WEB88deb0577afd1cc96101d6982ecc978d?method=download&shareKey=3f220832549b9ac09e08d302731a8dc3">
+<meta property="og:updated_time" content="2019-03-05T03:56:55.787Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="图片加水印">
+<meta name="twitter:description" content="我尝试了两种实现水印的方式1、一个轻量级是我文字和图片水印框架2、通过Canvas绘制水印轻量级的我就不做笔记了，因为很简单就能实现你想要的水印，留意内存溢出就好。">
+<meta name="twitter:image" content="https://note.youdao.com/yws/api/personal/file/WEBdb77376deaca765aa7a3e6edb0356506?method=download&shareKey=562be4884a22b72841f3ecd26d15c5c2">
+  
+    <link rel="alternate" href="/atom.xml" title="Mark的私人博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Mark的私人博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">数风流人物，还看今朝</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://markchyl.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-图片加水印" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/05/图片加水印/" class="article-date">
+  <time datetime="2019-03-05T03:15:21.000Z" itemprop="datePublished">2019-03-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      图片加水印
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="我尝试了两种实现水印的方式"><a href="#我尝试了两种实现水印的方式" class="headerlink" title="我尝试了两种实现水印的方式"></a>我尝试了两种实现水印的方式</h1><h2 id="1、一个轻量级是我文字和图片水印框架"><a href="#1、一个轻量级是我文字和图片水印框架" class="headerlink" title="1、一个轻量级是我文字和图片水印框架"></a>1、<a href="https://github.com/MarkCHYL/MarkImage_Watermark" target="_blank" rel="noopener">一个轻量级是我文字和图片水印框架</a></h2><h2 id="2、通过Canvas绘制水印"><a href="#2、通过Canvas绘制水印" class="headerlink" title="2、通过Canvas绘制水印"></a>2、<a href="https://github.com/MarkCHYL/MarkBingCheng" target="_blank" rel="noopener">通过Canvas绘制水印</a></h2><h4 id="轻量级的我就不做笔记了，因为很简单就能实现你想要的水印，留意内存溢出就好。"><a href="#轻量级的我就不做笔记了，因为很简单就能实现你想要的水印，留意内存溢出就好。" class="headerlink" title="轻量级的我就不做笔记了，因为很简单就能实现你想要的水印，留意内存溢出就好。"></a>轻量级的我就不做笔记了，因为很简单就能实现你想要的水印，留意内存溢出就好。</h4> <a id="more"></a>
+<p>下面主要记录下第二种方式加水印。<br>效果图如下：<br><img src="https://note.youdao.com/yws/api/personal/file/WEBdb77376deaca765aa7a3e6edb0356506?method=download&shareKey=562be4884a22b72841f3ecd26d15c5c2" alt="&quot;扫码前&quot;" title="扫码前"></p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/WEB88deb0577afd1cc96101d6982ecc978d?method=download&shareKey=3f220832549b9ac09e08d302731a8dc3" alt="拍照后" title="拍照后"></p>
+<h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">//打开相机</span><br><span class="line"> openCamera(this);</span><br><span class="line">/**</span><br><span class="line">  * 打开相机</span><br><span class="line">  */</span><br><span class="line"> private void openCamera(Activity activity) &#123;</span><br><span class="line">     //獲取系統版本</span><br><span class="line">     int currentapiVersion = android.os.Build.VERSION.SDK_INT;</span><br><span class="line">     if (tvResult.getText().toString().length() &gt; 0) &#123;</span><br><span class="line">         //执行拍照前，应该先判断SD卡是否存在</span><br><span class="line">         String SDState = Environment.getExternalStorageState();</span><br><span class="line">         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);//&quot;android.media.action.IMAGE_CAPTURE&quot;</span><br><span class="line">         if (SDState.equals(Environment.MEDIA_MOUNTED)) &#123;</span><br><span class="line"></span><br><span class="line">             File file = new File(FileUtil.getInstance().getImageFile( tvResult.getText().toString()));</span><br><span class="line">             if (!file.exists()) &#123;</span><br><span class="line">                 file.mkdirs();</span><br><span class="line">             &#125;</span><br><span class="line">             // 从文件中创建uri</span><br><span class="line">             imageUri = Uri.fromFile(file);</span><br><span class="line">             if (currentapiVersion &lt; 24) &#123;</span><br><span class="line">                 intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);</span><br><span class="line">                 intent.putExtra(FILE_PATH, file.getAbsoluteFile());</span><br><span class="line">             &#125; else &#123;</span><br><span class="line">                 //兼容android7.0 使用共享文件的形式</span><br><span class="line">                 ContentValues contentValues = new ContentValues(1);</span><br><span class="line">                 contentValues.put(MediaStore.Images.Media.DATA, file.getAbsolutePath());</span><br><span class="line">                 imageUri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);</span><br><span class="line">                 intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);</span><br><span class="line">             &#125;</span><br><span class="line">             startActivityForResult(intent, TAKE_PICTURE);</span><br><span class="line">             Log.d(&quot;tag&quot;, &quot;filepath = &quot; + file.getAbsoluteFile());</span><br><span class="line"></span><br><span class="line">         &#125; else &#123;</span><br><span class="line">             Toast.makeText(this, getString(R.string.no_sd_card), Toast.LENGTH_LONG).show();</span><br><span class="line">         &#125;</span><br><span class="line"></span><br><span class="line">     &#125; else &#123;</span><br><span class="line"></span><br><span class="line">         Toast.makeText(this, &quot;请先进行扫描或输入条形码&quot;, Toast.LENGTH_SHORT).show();</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>有人会说打开相机需要这么繁琐的代码吗？其实不需要，只是我的业务需要获取图片的路径，安卓碎片重，高版本的注重用户隐私的保护，相片就是用户隐私，所以需要区别对待。</p>
+<p>获取图片路径：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">    * 选择图片后，获取图片的路径</span><br><span class="line">    *</span><br><span class="line">    * @param requestCode</span><br><span class="line">    * @param data</span><br><span class="line">    */</span><br><span class="line">   private void doPhoto(int requestCode, Intent data) &#123;</span><br><span class="line"></span><br><span class="line">       /**</span><br><span class="line">        * 获取到的图片路径</span><br><span class="line">        */</span><br><span class="line">       String picPath = null;</span><br><span class="line">       SimpleDateFormat simpleDateFormat = new SimpleDateFormat(&quot;yyyy年MM月dd日 HH:mm:ss&quot;);// HH:mm:ss</span><br><span class="line">       // 获取当前时间</span><br><span class="line">       Date date = new Date(System.currentTimeMillis());</span><br><span class="line">       String dateStr = simpleDateFormat.format(date).toString();</span><br><span class="line"></span><br><span class="line">       if (requestCode == TAKE_PICTURE) &#123;</span><br><span class="line">           String[] pojo = &#123;MediaStore.Images.Media.DATA&#125;;</span><br><span class="line">           Cursor cursor = getContentResolver().query(imageUri, pojo, null, null, null);</span><br><span class="line">           if (cursor != null) &#123;</span><br><span class="line">               int columnIndex = cursor.getColumnIndexOrThrow(pojo[0]);</span><br><span class="line">               cursor.moveToFirst();</span><br><span class="line">               picPath = cursor.getString(columnIndex);</span><br><span class="line">               cursor.close();</span><br><span class="line">           &#125; else &#123;   //小米4上取不到图片路径</span><br><span class="line">               try &#123;</span><br><span class="line">                   String[] strPaths = imageUri.toString().split(&quot;//&quot;);</span><br><span class="line">                   picPath = strPaths[1];</span><br><span class="line">               &#125; catch (Exception e) &#123;</span><br><span class="line">                   e.printStackTrace();</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">           if (picPath != null &amp;&amp; (picPath.toLowerCase().endsWith(&quot;.png&quot;) || picPath.toLowerCase().endsWith(&quot;.jpg&quot;))) &#123;</span><br><span class="line">               if (picPath == null || picPath.equals(&quot;&quot;)) &#123;</span><br><span class="line">                   Toast.makeText(this, &quot;请重新拍照&quot;, Toast.LENGTH_SHORT).show();</span><br><span class="line">                   return;</span><br><span class="line">               &#125;</span><br><span class="line">               Toast.makeText(this, &quot;pic = &quot; + picPath, Toast.LENGTH_SHORT).show();</span><br><span class="line">               Bitmap bm = null;</span><br><span class="line">               try &#123;</span><br><span class="line">                   bm = FileUtil.getInstance().getImage(picPath, btnOpenCamera.getWidth(), btnOpenCamera.getHeight()); //获取限定宽高的bitmap，不限定则容易占用内存过大及OOM</span><br><span class="line">                   if (bm == null) &#123;</span><br><span class="line">                       Toast.makeText(this, &quot;请重新拍照&quot;, Toast.LENGTH_SHORT).show();</span><br><span class="line">                   &#125; else &#123;</span><br><span class="line">                       if (addWatermarkBitmap(bm, dateStr, btnOpenCamera.getWidth(), btnOpenCamera.getHeight())) &#123;</span><br><span class="line">                           Toast.makeText(this, &quot;水印生成成功，文件已保存在 &quot; + FileUtil.getInstance().IMAGE_PATH, Toast.LENGTH_SHORT).show();</span><br><span class="line">                       &#125;</span><br><span class="line">                   &#125;</span><br><span class="line">               &#125; catch (OutOfMemoryError e) &#123;</span><br><span class="line">                   e.printStackTrace();</span><br><span class="line">                   if (bm != null) &#123;</span><br><span class="line">                       bm.recycle();</span><br><span class="line">                   &#125;</span><br><span class="line">                   System.gc();</span><br><span class="line">               &#125;</span><br><span class="line">           &#125; else &#123;</span><br><span class="line">               Toast.makeText(this, &quot;请重新拍照&quot;, Toast.LENGTH_LONG).show();</span><br><span class="line">           &#125;</span><br><span class="line"></span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后调用加水印并保存</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"> private boolean addWatermarkBitmap(Bitmap bitmap, String str, int w, int h) &#123;</span><br><span class="line">        int destWidth = w;   //此处的bitmap已经限定好宽高</span><br><span class="line">        int destHeight = h;</span><br><span class="line">        Log.v(&quot;tag&quot;, &quot;width = &quot; + destWidth + &quot; height = &quot; + destHeight);</span><br><span class="line"></span><br><span class="line">        Bitmap icon = Bitmap.createBitmap(destWidth, destHeight, Bitmap.Config.ARGB_8888); //定好宽高的全彩bitmap</span><br><span class="line">        Canvas canvas = new Canvas(icon);//初始化画布绘制的图像到icon上</span><br><span class="line"></span><br><span class="line">        Paint photoPaint = new Paint(); //建立画笔</span><br><span class="line">        photoPaint.setDither(true); //获取跟清晰的图像采样</span><br><span class="line">        photoPaint.setFilterBitmap(true);//过滤一些</span><br><span class="line"></span><br><span class="line">        Rect src = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());//创建一个指定的新矩形的坐标</span><br><span class="line">        Rect dst = new Rect(0, 0, destWidth, destHeight);//创建一个指定的新矩形的坐标</span><br><span class="line">        canvas.drawBitmap(bitmap, src, dst, photoPaint);//将photo 缩放或则扩大到 dst使用的填充区photoPaint</span><br><span class="line"></span><br><span class="line">        Paint textPaint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.DEV_KERN_TEXT_FLAG);//设置画笔</span><br><span class="line">        textPaint.setTextSize(destWidth / 20);//字体大小</span><br><span class="line">        textPaint.setTextAlign(Paint.Align.CENTER);</span><br><span class="line">        textPaint.setTypeface(Typeface.DEFAULT_BOLD);//采用默认的宽度</span><br><span class="line">        textPaint.setAntiAlias(true);  //抗锯齿</span><br><span class="line">        textPaint.setStrokeWidth(1);</span><br><span class="line">        textPaint.setAlpha(30);</span><br><span class="line">//        textPaint.setStyle(Paint.Style.STROKE); //空心</span><br><span class="line">        textPaint.setColor(Color.WHITE);//采用的颜色</span><br><span class="line">//        textPaint.setShadowLayer(1f, 0f, 3f, Color.LTGRAY);</span><br><span class="line">//        textPaint.setShadowLayer(3f, 1, 1,getResources().getColor(android.R.color.white));//影音的设置</span><br><span class="line">        canvas.drawText(str, destWidth / 2, destHeight - 45, textPaint);//绘制上去字，开始未知x,y采用那只笔绘制</span><br><span class="line">//        canvas.save(Canvas.ALL_SAVE_FLAG);</span><br><span class="line">        canvas.save();</span><br><span class="line">        canvas.restore();</span><br><span class="line">        bitmap.recycle();</span><br><span class="line">        btnOpenCamera.setImageBitmap(icon);</span><br><span class="line">        return FileUtil.getInstance().saveMyBitmap(icon, tvResult.getText().toString()); //保存至文件</span><br><span class="line">//        return true;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>我在这个重点是实现功能。over，完成。返回显示不难，难在难在加水印，然后保存，代码中也可以看出，添加的水印是自己在控件上方画中来的，然后更具控件的大小新生成一张图保存。主要是其中的一句话：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Rect src = new Rect(0, 0, bitmap.getWidth(),    bitmap.getHeight());//创建一个指定的新矩形的坐标</span><br><span class="line">Rect dst = new Rect(0, 0, destWidth, destHeight);//创建一个指定的新矩形的坐标</span><br><span class="line">canvas.drawBitmap(bitmap, src, dst, photoPaint);//将photo 缩放或则扩大到 dst使用的填充区photoPaint</span><br></pre></td></tr></table></figure>
+
+<p>那样先拍照的图片就在Canvas上面了，然后通过画笔Paint 在上面写字，保存图片：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Bitmap icon = Bitmap.createBitmap(destWidth, destHeight, Bitmap.Config.ARGB_8888); //定好宽高的全彩bitmap</span><br><span class="line">Canvas canvas = new Canvas(icon);//初始化画布绘制的图像到icon上</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://markchyl.github.io/2019/03/05/图片加水印/" data-id="cjy82y3bf0021lo9mehmv5dhq" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/04/10/Flutter中使用Banner-图/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Flutter中使用Banner 图
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/01/25/Mark的架构学习笔记—-Android-MVP-二/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Mark的架构学习笔记— Android_MVP(二)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flutter/">Flutter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flutter问题/">Flutter问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具使用/">工具使用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具搭建/">工具搭建</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/架构/">架构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/第三方集成/">第三方集成</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络框架/">网络框架</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自定义控件/">自定义控件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/视频直播/">视频直播</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Flutter/" style="font-size: 17.5px;">Flutter</a> <a href="/tags/Flutter问题/" style="font-size: 12.5px;">Flutter问题</a> <a href="/tags/Python/" style="font-size: 12.5px;">Python</a> <a href="/tags/工具使用/" style="font-size: 15px;">工具使用</a> <a href="/tags/工具搭建/" style="font-size: 12.5px;">工具搭建</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/架构/" style="font-size: 12.5px;">架构</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/第三方集成/" style="font-size: 10px;">第三方集成</a> <a href="/tags/网络框架/" style="font-size: 10px;">网络框架</a> <a href="/tags/自定义控件/" style="font-size: 12.5px;">自定义控件</a> <a href="/tags/视频直播/" style="font-size: 10px;">视频直播</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/07/11/flutter入门之常见的flutter问题汇总/">flutter入门之常见的flutter问题汇总</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/10/防止页面重绘制，实现AutomaticKeepAliveClientMixin/">防止页面重绘制，实现AutomaticKeepAliveClientMixin</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/02/flutter开发插件和包/">flutter开发插件和包</a>
+          </li>
+        
+          <li>
+            <a href="/2019/06/13/Mac上搭建apktool反编译工具/">Mac上搭建apktool反编译工具</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/30/Mac上实现SVN代码管理/">Mac上实现SVN代码管理</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Mark Chen<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

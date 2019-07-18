@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>python的爬虫学习实战笔记一 | Mark的私人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前言：Python3的爬虫基础学习，编写URL管理器、网页下载器、网页分析器、数据输出器、如何连接到MySQL。网上能搜到许多的库，在这我只是开始我的基础学起，瞎猫死猫能运行就可以。">
+<meta name="keywords" content="Python,爬虫">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python的爬虫学习实战笔记一">
+<meta property="og:url" content="https://markchyl.github.io/2018/12/17/python的爬虫学习实战笔记一/index.html">
+<meta property="og:site_name" content="Mark的私人博客">
+<meta property="og:description" content="前言：Python3的爬虫基础学习，编写URL管理器、网页下载器、网页分析器、数据输出器、如何连接到MySQL。网上能搜到许多的库，在这我只是开始我的基础学起，瞎猫死猫能运行就可以。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-12-17T02:59:51.170Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python的爬虫学习实战笔记一">
+<meta name="twitter:description" content="前言：Python3的爬虫基础学习，编写URL管理器、网页下载器、网页分析器、数据输出器、如何连接到MySQL。网上能搜到许多的库，在这我只是开始我的基础学起，瞎猫死猫能运行就可以。">
+  
+    <link rel="alternate" href="/atom.xml" title="Mark的私人博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Mark的私人博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">数风流人物，还看今朝</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://markchyl.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-python的爬虫学习实战笔记一" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/17/python的爬虫学习实战笔记一/" class="article-date">
+  <time datetime="2018-12-17T02:58:01.000Z" itemprop="datePublished">2018-12-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      python的爬虫学习实战笔记一
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><h4 id="Python3的爬虫基础学习，编写URL管理器、网页下载器、网页分析器、数据输出器、如何连接到MySQL。网上能搜到许多的库，在这我只是开始我的基础学起，瞎猫死猫能运行就可以。"><a href="#Python3的爬虫基础学习，编写URL管理器、网页下载器、网页分析器、数据输出器、如何连接到MySQL。网上能搜到许多的库，在这我只是开始我的基础学起，瞎猫死猫能运行就可以。" class="headerlink" title="Python3的爬虫基础学习，编写URL管理器、网页下载器、网页分析器、数据输出器、如何连接到MySQL。网上能搜到许多的库，在这我只是开始我的基础学起，瞎猫死猫能运行就可以。"></a>Python3的爬虫基础学习，编写URL管理器、网页下载器、网页分析器、数据输出器、如何连接到MySQL。网上能搜到许多的库，在这我只是开始我的基础学起，瞎猫死猫能运行就可以。</h4><hr>
+<a id="more"></a>
+<h4 id="编写的环境："><a href="#编写的环境：" class="headerlink" title="编写的环境："></a>编写的环境：</h4><p>Mac电脑、MySQL数据库、pymysql库、urllib库、bs4库、Python3、PyCharm编辑器</p>
+<p><a href="http://www.runoob.com/python3/python3-dictionary.html" target="_blank" rel="noopener">学习网址</a></p>
+<h3 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h3><p>网络爬虫（Web Spider），又被称为网页蜘蛛，是一种按照一定的规则，自动地抓取网站信息的程序或者脚本。</p>
+<h3 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h3><p>网络蜘蛛是一个很形象的名字。如果把互联网比喻成一个蜘蛛网，那么Spider就是在网上爬来爬去的蜘蛛。网络蜘蛛是通过网页的链接地址来寻找网页，从 网站某一个页面开始，读取网页的内容，找到在网页中的其它链接地址，然后通过这些链接地址寻找下一个网页，这样一直循环下去，直到把这个网站所有的网页都抓取完为止</p>
+<h3 id="爬虫流程："><a href="#爬虫流程：" class="headerlink" title="爬虫流程："></a>爬虫流程：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">①先由urllib的request打开Url得到网页html文档</span><br><span class="line">——②浏览器打开网页源代码分析元素节点</span><br><span class="line">——③通过BeautifulSoup或则正则表达式提取想要的数据</span><br><span class="line">——④存储数据到本地磁盘或数据库（抓取，分析，存储）</span><br></pre></td></tr></table></figure>
+
+<h2 id="上代码"><a href="#上代码" class="headerlink" title="上代码"></a>上代码</h2><p>爬虫程序入口：Spider_Main<br>爬虫目标URL：<a href="http://www.hbooker.com/book/10007188" target="_blank" rel="noopener">http://www.hbooker.com/book/10007188</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">from hbooker_spider import html_downloader</span><br><span class="line">from hbooker_spider import html_outputer</span><br><span class="line">from hbooker_spider import html_parser</span><br><span class="line">from hbooker_spider import url_manager</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class SpiderMain(object):</span><br><span class="line">    def __init__(self):</span><br><span class="line">        # 初始化 URL 管理器</span><br><span class="line">        self.urls = url_manager.UrlManager()</span><br><span class="line">        # 初始化 html 下载器</span><br><span class="line">        self.downloader = html_downloader.HtmlDownLoader()</span><br><span class="line">        # 初始化 html 解析器</span><br><span class="line">        self.parser = html_parser.HtmlParser()</span><br><span class="line">        # 初始化 数据 输出管理器</span><br><span class="line">        self.outputer = html_outputer.HtmlOutputer()</span><br><span class="line"></span><br><span class="line">    def craw(self, root_url):</span><br><span class="line">        count = 1</span><br><span class="line">        self.urls.add_new_url(root_url)</span><br><span class="line">        while self.urls.has_new_url():</span><br><span class="line">            try:</span><br><span class="line">                new_url = self.urls.get_new_url()</span><br><span class="line">                html_cont = self.downloader.downloader(new_url)</span><br><span class="line">                new_urls, new_datas = self.parser.parse(new_url, html_cont)</span><br><span class="line">                self.urls.add_new_urls(new_urls)</span><br><span class="line">                print(&apos;craw %d : %s&apos; % (count, new_datas))</span><br><span class="line">                self.outputer.collect_data(new_datas)</span><br><span class="line"></span><br><span class="line">                if count == 100:</span><br><span class="line">                    break</span><br><span class="line">                count += 1</span><br><span class="line">            except:</span><br><span class="line">                print(&apos;craw failed&apos;)</span><br><span class="line">        self.outputer.output_html()</span><br><span class="line">        self.outputer.output_mysql()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    root_url = &apos;http://www.hbooker.com/book/100071888&apos;</span><br><span class="line">    obj_spider = SpiderMain()</span><br><span class="line">    obj_spider.craw(root_url)</span><br></pre></td></tr></table></figure>
+
+<h3 id="网页下载器-html-downloader"><a href="#网页下载器-html-downloader" class="headerlink" title="网页下载器 html_downloader"></a>网页下载器 html_downloader</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># URL下载器</span><br><span class="line">from urllib import request</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class HtmlDownLoader(object):</span><br><span class="line">    def downloader(self, new_url):</span><br><span class="line">        if new_url is None:</span><br><span class="line">            return</span><br><span class="line"></span><br><span class="line">        response = request.urlopen(new_url)</span><br><span class="line">        if response.getcode() != 200:</span><br><span class="line">            return None</span><br><span class="line">        return response.read()</span><br></pre></td></tr></table></figure>
+
+<h3 id="网页解析器-html-parser"><a href="#网页解析器-html-parser" class="headerlink" title="网页解析器 html_parser"></a>网页解析器 html_parser</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"># html 解析器</span><br><span class="line">import re</span><br><span class="line">from bs4 import BeautifulSoup</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class HtmlParser(object):</span><br><span class="line">    def _get_new_datas(self, url, soup):</span><br><span class="line">        res_data = &#123;&#125;</span><br><span class="line">        res_data[&apos;url&apos;] = url</span><br><span class="line">        # &lt;div class=&quot;book-title&quot;&gt;&lt;h1&gt;假紫剑圣与B套奶妈&lt;/h1&gt;</span><br><span class="line">        title_nodes = soup.find(&apos;div&apos;, class_=&apos;book-title&apos;).find(&apos;h1&apos;)</span><br><span class="line">        res_data[&apos;title&apos;] = title_nodes.get_text()</span><br><span class="line">        return res_data</span><br><span class="line"></span><br><span class="line">    def _get_new_urls(self, url, soup):</span><br><span class="line">        new_urls = set()</span><br><span class="line">        # &lt;a class=&quot;img&quot; href=&quot;http://www.hbooker.com/book/100075809&quot; target=&quot;_blank&quot;&gt;</span><br><span class="line">        links = soup.find_all(&apos;a&apos;, class_=&apos;img&apos;)</span><br><span class="line">        for link in links:</span><br><span class="line">            new_d_url = link[&apos;href&apos;]</span><br><span class="line">            new_urls.add(new_d_url)</span><br><span class="line">        return new_urls</span><br><span class="line"></span><br><span class="line">    def parse(self, url, html_cont):</span><br><span class="line">        if url is None or html_cont is None:</span><br><span class="line">            return</span><br><span class="line"></span><br><span class="line">        soup = BeautifulSoup(html_cont, &apos;html.parser&apos;, from_encoding=&apos;utf-8&apos;)</span><br><span class="line">        new_urls = self._get_new_urls(url, soup)</span><br><span class="line">        new_html_cont = self._get_new_datas(url, soup)</span><br><span class="line">        return new_urls, new_html_cont</span><br></pre></td></tr></table></figure>
+
+<h3 id="输出起-html-outputer"><a href="#输出起-html-outputer" class="headerlink" title="输出起 html_outputer"></a>输出起 html_outputer</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"># 数据输出</span><br><span class="line">import pymysql</span><br><span class="line"></span><br><span class="line">#格式化字符串把字典</span><br><span class="line">def dic2sql(sql, data):</span><br><span class="line">    sql2 = sql % (str(data[&apos;url&apos;]), str(data[&apos;title&apos;]))</span><br><span class="line">    return sql2</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class HtmlOutputer(object):</span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.datas = []</span><br><span class="line"></span><br><span class="line">    def collect_data(self, new_datas):</span><br><span class="line">        if new_datas is None:</span><br><span class="line">            return</span><br><span class="line">        self.datas.append(new_datas)</span><br><span class="line"></span><br><span class="line">    def output_html(self):</span><br><span class="line">        fout = open(&apos;output.html&apos;, &apos;w&apos;)</span><br><span class="line">        fout.write(&apos;&lt;html&gt;&apos;)</span><br><span class="line">        fout.write(&apos;&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;&apos;)</span><br><span class="line">        fout.write(&apos;&lt;body&gt;&apos;)</span><br><span class="line">        fout.write(&apos;&lt;table&gt;&apos;)</span><br><span class="line"></span><br><span class="line">        for data in self.datas:</span><br><span class="line">            fout.write(&apos;&lt;tr&gt;&apos;)</span><br><span class="line">            fout.write(&apos;&lt;td&gt;%s&lt;/td&gt;&apos; % data[&apos;url&apos;])</span><br><span class="line">            fout.write(&apos;&lt;td&gt;%s&lt;/td&gt;&apos; % data[&apos;title&apos;])</span><br><span class="line">            fout.write(&apos;&lt;/tr&gt;&apos;)</span><br><span class="line"></span><br><span class="line">        fout.write(&apos;&lt;/table&gt;&apos;)</span><br><span class="line">        fout.write(&apos;&lt;/body&gt;&apos;)</span><br><span class="line">        fout.write(&apos;&lt;/html&gt;&apos;)</span><br><span class="line">        fout.close()</span><br><span class="line"></span><br><span class="line">    def output_mysql(self):</span><br><span class="line"></span><br><span class="line">        # 打开数据库连接</span><br><span class="line">        db = pymysql.connect(&quot;localhost&quot;, &quot;root&quot;, &quot;MarkCHYL&quot;, &quot;TESTDB&quot;)</span><br><span class="line"></span><br><span class="line">        # 使用 cursor() 方法创建一个游标对象 cursor</span><br><span class="line">        cursor = db.cursor()</span><br><span class="line"></span><br><span class="line">        # 使用 execute() 方法执行 SQL，如果表存在则删除</span><br><span class="line">        cursor.execute(&quot;DROP TABLE IF EXISTS HBOOKER&quot;)</span><br><span class="line"></span><br><span class="line">        # # 使用预处理语句创建表</span><br><span class="line">        sql = &quot;&quot;&quot;CREATE TABLE HBOOKER (</span><br><span class="line">         TITLE  VARCHAR (200) NOT NULL,</span><br><span class="line">         URL  VARCHAR (200))&quot;&quot;&quot;</span><br><span class="line">        print(sql)</span><br><span class="line"></span><br><span class="line">        cursor.execute(sql)</span><br><span class="line">        #</span><br><span class="line">        for data in self.datas:</span><br><span class="line">            # SQL 插入语句</span><br><span class="line">            # sql = &quot;INSERT INTO HBOOKER(TITLE, URL) VALUES (\&apos;&quot; + str(data[&apos;title&apos;]) + &quot;&apos;,&apos;&quot; + str(data[&apos;url&apos;]) + &quot;&apos;)&quot;</span><br><span class="line">            sql = &quot;INSERT INTO HBOOKER(URL,TITLE) VALUES (&apos;%s&apos;,&apos;%s&apos;)&quot;</span><br><span class="line">            sql1 = dic2sql(sql, data)</span><br><span class="line">            print(sql1)</span><br><span class="line">            try:</span><br><span class="line">                # 执行sql语句</span><br><span class="line">                cursor.execute(sql1)</span><br><span class="line">                # 提交到数据库执行</span><br><span class="line">                db.commit()</span><br><span class="line">            except:</span><br><span class="line">                # 如果发生错误则回滚</span><br><span class="line">                db.rollback()</span><br><span class="line"></span><br><span class="line">        # 关闭数据库连接</span><br><span class="line">        db.close()</span><br></pre></td></tr></table></figure>
+
+<p>后记：代码可能比较多  我只是为了更好的了解整个爬虫的过程</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://markchyl.github.io/2018/12/17/python的爬虫学习实战笔记一/" data-id="cjy82y3aq000ulo9mx21ku5pa" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/爬虫/">爬虫</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/12/17/MAC搭建基于RTMP的本地Nginx服务器/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          MAC搭建基于RTMP的本地Nginx服务器
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/12/17/Android7-0至Android8-0适配记录/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Android7.0至Android8.0适配记录</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flutter/">Flutter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flutter问题/">Flutter问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具使用/">工具使用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具搭建/">工具搭建</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/架构/">架构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/第三方集成/">第三方集成</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络框架/">网络框架</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自定义控件/">自定义控件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/视频直播/">视频直播</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Flutter/" style="font-size: 17.5px;">Flutter</a> <a href="/tags/Flutter问题/" style="font-size: 12.5px;">Flutter问题</a> <a href="/tags/Python/" style="font-size: 12.5px;">Python</a> <a href="/tags/工具使用/" style="font-size: 15px;">工具使用</a> <a href="/tags/工具搭建/" style="font-size: 12.5px;">工具搭建</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/架构/" style="font-size: 12.5px;">架构</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/第三方集成/" style="font-size: 10px;">第三方集成</a> <a href="/tags/网络框架/" style="font-size: 10px;">网络框架</a> <a href="/tags/自定义控件/" style="font-size: 12.5px;">自定义控件</a> <a href="/tags/视频直播/" style="font-size: 10px;">视频直播</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/07/11/flutter入门之常见的flutter问题汇总/">flutter入门之常见的flutter问题汇总</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/10/防止页面重绘制，实现AutomaticKeepAliveClientMixin/">防止页面重绘制，实现AutomaticKeepAliveClientMixin</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/02/flutter开发插件和包/">flutter开发插件和包</a>
+          </li>
+        
+          <li>
+            <a href="/2019/06/13/Mac上搭建apktool反编译工具/">Mac上搭建apktool反编译工具</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/30/Mac上实现SVN代码管理/">Mac上实现SVN代码管理</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Mark Chen<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>MAC搭建基于RTMP的本地Nginx服务器 | Mark的私人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="MAC搭建基于RTMP的本地Nginx服务器，实现电脑上视频推流。1、先安装homeView">
+<meta name="keywords" content="Android,视频直播">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MAC搭建基于RTMP的本地Nginx服务器">
+<meta property="og:url" content="https://markchyl.github.io/2018/12/17/MAC搭建基于RTMP的本地Nginx服务器/index.html">
+<meta property="og:site_name" content="Mark的私人博客">
+<meta property="og:description" content="MAC搭建基于RTMP的本地Nginx服务器，实现电脑上视频推流。1、先安装homeView">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1027569-1480f7cb0be838e2.png?imageMogr2/auto-orient/">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1027569-da39e4efd3bf35f4.jpeg?imageMogr2/auto-orient/">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1027569-8f0712d428c40368.png?imageMogr2/auto-orient">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1027569-3a79f914d42877ae.png?imageMogr2/auto-orient/">
+<meta property="og:updated_time" content="2018-12-17T03:05:50.458Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MAC搭建基于RTMP的本地Nginx服务器">
+<meta name="twitter:description" content="MAC搭建基于RTMP的本地Nginx服务器，实现电脑上视频推流。1、先安装homeView">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/1027569-1480f7cb0be838e2.png?imageMogr2/auto-orient/">
+  
+    <link rel="alternate" href="/atom.xml" title="Mark的私人博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Mark的私人博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">数风流人物，还看今朝</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://markchyl.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-MAC搭建基于RTMP的本地Nginx服务器" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/17/MAC搭建基于RTMP的本地Nginx服务器/" class="article-date">
+  <time datetime="2018-12-17T03:02:21.000Z" itemprop="datePublished">2018-12-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      MAC搭建基于RTMP的本地Nginx服务器
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="MAC搭建基于RTMP的本地Nginx服务器，实现电脑上视频推流。"><a href="#MAC搭建基于RTMP的本地Nginx服务器，实现电脑上视频推流。" class="headerlink" title="MAC搭建基于RTMP的本地Nginx服务器，实现电脑上视频推流。"></a>MAC搭建基于RTMP的本地Nginx服务器，实现电脑上视频推流。</h3><h1 id="1、先安装homeView"><a href="#1、先安装homeView" class="headerlink" title="1、先安装homeView"></a>1、先安装homeView</h1><a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//安装命令</span><br><span class="line">ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</span><br><span class="line"></span><br><span class="line">//移除命令</span><br><span class="line">ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)&quot;</span><br></pre></td></tr></table></figure>
+
+<h1 id="2、安装Nginx服务器"><a href="#2、安装Nginx服务器" class="headerlink" title="2、安装Nginx服务器"></a>2、安装Nginx服务器</h1><h3 id="增加对nginx的扩展-也就是从github上下载-home-brew对ngixnx的扩展"><a href="#增加对nginx的扩展-也就是从github上下载-home-brew对ngixnx的扩展" class="headerlink" title="增加对nginx的扩展;也就是从github上下载,home-brew对ngixnx的扩展"></a>增加对nginx的扩展;也就是从github上下载,home-brew对ngixnx的扩展</h3><h3 id="homebrew-nginx的git路径变了-貌似是2018年3月更新"><a href="#homebrew-nginx的git路径变了-貌似是2018年3月更新" class="headerlink" title="homebrew/nginx的git路径变了(貌似是2018年3月更新)"></a>homebrew/nginx的git路径变了(貌似是2018年3月更新)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew tap homebrew/nginx</span><br></pre></td></tr></table></figure>
+
+<h1 id="3、安装Nginx服务器和rtmp模块"><a href="#3、安装Nginx服务器和rtmp模块" class="headerlink" title="3、安装Nginx服务器和rtmp模块"></a>3、安装Nginx服务器和rtmp模块</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install nginx-full --with-rtmp-module</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/1027569-1480f7cb0be838e2.png?imageMogr2/auto-orient/" alt="image"></p>
+<h1 id="4、查看nginx的信息"><a href="#4、查看nginx的信息" class="headerlink" title="4、查看nginx的信息"></a>4、查看nginx的信息</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew info nginx-full</span><br></pre></td></tr></table></figure>
+
+<h3 id="结果显示"><a href="#结果显示" class="headerlink" title="结果显示"></a>结果显示</h3><p><img src="https://upload-images.jianshu.io/upload_images/1027569-da39e4efd3bf35f4.jpeg?imageMogr2/auto-orient/" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">nginx的安装位置</span><br><span class="line">/usr/local/Cellar/nginx-full/1.10.1/bin/nginx</span><br><span class="line">nginx配置文件所在位置</span><br><span class="line">/usr/local/etc/nginx/nginx.conf</span><br><span class="line">nginx服务器根目录所在位置 </span><br><span class="line"> /usr/local/var/www</span><br></pre></td></tr></table></figure>
+
+<h4 id="在浏览器中输入-http-localhost-8080-（若是安装成功就会出现如下图所示）"><a href="#在浏览器中输入-http-localhost-8080-（若是安装成功就会出现如下图所示）" class="headerlink" title="在浏览器中输入 http://localhost:8080 （若是安装成功就会出现如下图所示）"></a>在浏览器中输入 <a href="http://localhost:8080" target="_blank" rel="noopener">http://localhost:8080 </a>（若是安装成功就会出现如下图所示）</h4><p><img src="https://upload-images.jianshu.io/upload_images/1027569-8f0712d428c40368.png?imageMogr2/auto-orient" alt title="安装成功"></p>
+<h1 id="5、配置rtmp和支持http协议拉流"><a href="#5、配置rtmp和支持http协议拉流" class="headerlink" title="5、配置rtmp和支持http协议拉流"></a>5、配置rtmp和支持http协议拉流</h1><h4 id="在终端中输入"><a href="#在终端中输入" class="headerlink" title="在终端中输入"></a>在终端中输入</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">open /usr/local/etc/nginx</span><br></pre></td></tr></table></figure>
+
+<h4 id="打开niginx的文件夹，找到nginx-conf文件-用xcode打开。添加下面配置"><a href="#打开niginx的文件夹，找到nginx-conf文件-用xcode打开。添加下面配置" class="headerlink" title="打开niginx的文件夹，找到nginx.conf文件,用xcode打开。添加下面配置"></a>打开niginx的文件夹，找到nginx.conf文件,用xcode打开。添加下面配置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">#在http节点下面(也就是文件的尾部)加上rtmp配置：</span><br><span class="line">rtmp &#123;//协议名称</span><br><span class="line">   server &#123;//说明内部中是服务器相关配置</span><br><span class="line">        listen 1992;// 监听的端口号, rtmp协议的默认端口号是1935</span><br><span class="line">        application Mark &#123;//访问的应用路径是 Mark</span><br><span class="line">              live on; //开启实时</span><br><span class="line">              record off;// 不记录数据</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">location /hls &#123;</span><br><span class="line">        #Serve HLS config</span><br><span class="line">        types &#123;</span><br><span class="line">            application/vnd.apple.mpegurl    m3u8;</span><br><span class="line">            video/mp2t ts;</span><br><span class="line">        &#125;</span><br><span class="line">        root /usr/local/var/www;</span><br><span class="line">        add_header Cache-Control    no-cache;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="6、保存文件后，重新加载nginx的配置文件"><a href="#6、保存文件后，重新加载nginx的配置文件" class="headerlink" title="6、保存文件后，重新加载nginx的配置文件"></a>6、保存文件后，重新加载nginx的配置文件</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -s reload</span><br></pre></td></tr></table></figure>
+
+<h4 id="配置好的样子如下："><a href="#配置好的样子如下：" class="headerlink" title="配置好的样子如下："></a>配置好的样子如下：</h4><p><img src="https://upload-images.jianshu.io/upload_images/1027569-3a79f914d42877ae.png?imageMogr2/auto-orient/" alt></p>
+<h1 id="7、安装ffmepg工具"><a href="#7、安装ffmepg工具" class="headerlink" title="7、安装ffmepg工具"></a>7、安装ffmepg工具</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install ffmpeg</span><br></pre></td></tr></table></figure>
+
+<h1 id="8、通过ffmepg命令进行推流测试"><a href="#8、通过ffmepg命令进行推流测试" class="headerlink" title="8、通过ffmepg命令进行推流测试"></a>8、通过ffmepg命令进行推流测试</h1><ul>
+<li><h4 id="推流至RTMP到服务器"><a href="#推流至RTMP到服务器" class="headerlink" title="推流至RTMP到服务器"></a>推流至RTMP到服务器</h4><ul>
+<li><h4 id="生成地址：-rtmp-localhost-1992-Mark-room"><a href="#生成地址：-rtmp-localhost-1992-Mark-room" class="headerlink" title="生成地址： rtmp://localhost:1992/Mark/room"></a>生成地址： rtmp://localhost:1992/Mark/room</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -re -i 你的视频文件的绝对路径(如/Users/lideshan/Downloads/test.mp4) -vcodec copy -f flv rtmp://localhost:1992/Mark/room//</span><br><span class="line"> 如：我把测试视频放在桌面</span><br><span class="line">ffmpeg -re -i  /Users/Mark/Desktop/test.mp4 -vcodec copy -f flv rtmp://localhost:1992/Mark/room</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="这里Mark是上面的配置文件中-配置的应用的路径名称-后面的room可以随便写"><a href="#这里Mark是上面的配置文件中-配置的应用的路径名称-后面的room可以随便写" class="headerlink" title="这里Mark是上面的配置文件中,配置的应用的路径名称;后面的room可以随便写"></a>这里Mark是上面的配置文件中,配置的应用的路径名称;后面的room可以随便写</h4><ul>
+<li><h4 id="推流至HLS到服务器"><a href="#推流至HLS到服务器" class="headerlink" title="推流至HLS到服务器"></a>推流至HLS到服务器</h4><ul>
+<li>生成地址: <a href="http://localhost:8080/hls/test.m3u8" target="_blank" rel="noopener">http://localhost:8080/hls/test.m3u8</a></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -re -i /Users/apple/Desktop/ffmepg/story.mp4 -vcodec libx264 -vprofile baseline -acodec aac -ar 44100 -strict -2 -ac 1 -f flv -s 1280x720 -q 10 rtmp://localhost:1935/hls/demo</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://markchyl.github.io/2018/12/17/MAC搭建基于RTMP的本地Nginx服务器/" data-id="cjy82y3af0008lo9mfpomp54p" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/视频直播/">视频直播</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/12/17/Mark的Flutter的安装和环境配置/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Mark的Flutter的安装和环境配置
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/12/17/python的爬虫学习实战笔记一/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">python的爬虫学习实战笔记一</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flutter/">Flutter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flutter问题/">Flutter问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具使用/">工具使用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具搭建/">工具搭建</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/架构/">架构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/第三方集成/">第三方集成</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络框架/">网络框架</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自定义控件/">自定义控件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/视频直播/">视频直播</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Flutter/" style="font-size: 17.5px;">Flutter</a> <a href="/tags/Flutter问题/" style="font-size: 12.5px;">Flutter问题</a> <a href="/tags/Python/" style="font-size: 12.5px;">Python</a> <a href="/tags/工具使用/" style="font-size: 15px;">工具使用</a> <a href="/tags/工具搭建/" style="font-size: 12.5px;">工具搭建</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/架构/" style="font-size: 12.5px;">架构</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/第三方集成/" style="font-size: 10px;">第三方集成</a> <a href="/tags/网络框架/" style="font-size: 10px;">网络框架</a> <a href="/tags/自定义控件/" style="font-size: 12.5px;">自定义控件</a> <a href="/tags/视频直播/" style="font-size: 10px;">视频直播</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/07/11/flutter入门之常见的flutter问题汇总/">flutter入门之常见的flutter问题汇总</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/10/防止页面重绘制，实现AutomaticKeepAliveClientMixin/">防止页面重绘制，实现AutomaticKeepAliveClientMixin</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/02/flutter开发插件和包/">flutter开发插件和包</a>
+          </li>
+        
+          <li>
+            <a href="/2019/06/13/Mac上搭建apktool反编译工具/">Mac上搭建apktool反编译工具</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/30/Mac上实现SVN代码管理/">Mac上实现SVN代码管理</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Mark Chen<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

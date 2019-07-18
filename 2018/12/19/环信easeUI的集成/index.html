@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>环信easeUI的集成 | Mark的私人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="关于环信easeUI的集成环信的集成，网上有许多的demo，看的每个人有点眼花缭乱，对于官方的文档的吐槽也有许多，确实在集成第三方的那些玩意时，不管怎样我们必须先得看看她们的官方介绍。前段时我遇到的项目需要集成环信的聊天功能，一个会话列表和聊天界面，网上搜了很多，由于版本不一样后来还是选择结合官方的demo和开发文档写了个demo。我们建议先看一下环信的官方文档，地址：点击打开链接">
+<meta name="keywords" content="Android,第三方集成">
+<meta property="og:type" content="article">
+<meta property="og:title" content="环信easeUI的集成">
+<meta property="og:url" content="https://markchyl.github.io/2018/12/19/环信easeUI的集成/index.html">
+<meta property="og:site_name" content="Mark的私人博客">
+<meta property="og:description" content="关于环信easeUI的集成环信的集成，网上有许多的demo，看的每个人有点眼花缭乱，对于官方的文档的吐槽也有许多，确实在集成第三方的那些玩意时，不管怎样我们必须先得看看她们的官方介绍。前段时我遇到的项目需要集成环信的聊天功能，一个会话列表和聊天界面，网上搜了很多，由于版本不一样后来还是选择结合官方的demo和开发文档写了个demo。我们建议先看一下环信的官方文档，地址：点击打开链接">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-12-19T08:31:05.183Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="环信easeUI的集成">
+<meta name="twitter:description" content="关于环信easeUI的集成环信的集成，网上有许多的demo，看的每个人有点眼花缭乱，对于官方的文档的吐槽也有许多，确实在集成第三方的那些玩意时，不管怎样我们必须先得看看她们的官方介绍。前段时我遇到的项目需要集成环信的聊天功能，一个会话列表和聊天界面，网上搜了很多，由于版本不一样后来还是选择结合官方的demo和开发文档写了个demo。我们建议先看一下环信的官方文档，地址：点击打开链接">
+  
+    <link rel="alternate" href="/atom.xml" title="Mark的私人博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Mark的私人博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">数风流人物，还看今朝</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://markchyl.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-环信easeUI的集成" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/19/环信easeUI的集成/" class="article-date">
+  <time datetime="2018-12-19T08:27:09.000Z" itemprop="datePublished">2018-12-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      环信easeUI的集成
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>关于环信easeUI的集成<br>环信的集成，网上有许多的demo，看的每个人有点眼花缭乱，对于官方的文档的吐槽也有许多，确实在集成第三方的那些玩意时，不管怎样我们必须先得看看她们的官方介绍。前段时我遇到的项目需要集成环信的聊天功能，一个会话列表和聊天界面，网上搜了很多，由于版本不一样后来还是选择结合官方的demo和开发文档写了个demo。<br>我们建议先看一下环信的官方文档，地址：<br>点击打开链接</p>
+<a id="more"></a>
+<p>至于基础的集成和导入SDK我在这就不造次啦！环信官方上的文档介绍的很好，看不懂的可以看上面的视频介绍；<br>下面我直接说说我的步骤，后面也会贴上源码的地址，望大家不嫌弃，喜欢就给个 start</p>
+<p>一、首先是初始化环信easeui：</p>
+<p>  /**<br>     * 初始化环信SDK<br>     */<br>    private void initEasemob() {</p>
+<pre><code>    if (EaseUI.getInstance().init(mContext, initOptions())) {
+
+        // 设置开启debug模式
+        EMClient.getInstance().setDebugMode(true);
+
+        // 设置初始化已经完成
+        isInit = true;
+    }
+}</code></pre><p>关于sdk的一些配置初始化，请看demo源码</p>
+<p>二、登陆和注册的：</p>
+<p>登陆：</p>
+<p> /**<br>     * 登录方法<br>     <em>/<br>    private void signIn() {<br>        final String username = mUsernameEdit.getText().toString().trim();<br>        final String password = mPasswordEdit.getText().toString().trim();<br>        if (TextUtils.isEmpty(username) || TextUtils.isEmpty(password)) {<br>            Toast.makeText(LoginRegisterActivity.this, “用户名和密码不能为空”, Toast.LENGTH_LONG).show();<br>            return;<br>        }<br>        EMClient.getInstance().login(username, password, new EMCallBack() {<br>            /*</em><br>             * 登陆成功的回调<br>             */<br>            @Override<br>            public void onSuccess() {<br>                mDialog.dismiss();<br>                Message msg=new Message();<br>                msg.what=2;<br>                mHandler.sendMessage(msg);<br>                // 加载所有会话到内存<br>                EMClient.getInstance().chatManager().loadAllConversations();<br>                // 登录成功跳转界面<br>                Intent intent = new Intent(LoginRegisterActivity.this, MainActivity.class);<br>                intent.putExtra(“userName”,username);<br>                startActivity(intent);<br>                finish();<br>            }</p>
+<pre><code>        /**
+         * 登陆错误的回调
+         * @param i
+         * @param s
+         */
+        @Override
+        public void onError(final int i, final String s) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    mDialog.dismiss();
+                    Log.d(&quot;lzan13&quot;, &quot;登录失败 Error code:&quot; + i + &quot;, message:&quot; + s);
+                    /**
+                     * 关于错误码可以参考官方api详细说明
+                     * http://www.easemob.com/apidoc/android/chat3.0/classcom_1_1hyphenate_1_1_e_m_error.html
+                     */
+                    switch (i) {
+                    // 网络异常 2
+                    case EMError.NETWORK_ERROR:
+                        Toast.makeText(LoginRegisterActivity.this, &quot;网络错误 code: &quot; + i + &quot;, message:&quot; + s, Toast.LENGTH_LONG).show();
+                        break;
+                    // 无效的用户名 101
+                    case EMError.INVALID_USER_NAME:
+                        Toast.makeText(LoginRegisterActivity.this, &quot;无效的用户名 code: &quot; + i + &quot;, message:&quot; + s, Toast.LENGTH_LONG).show();
+                        break;
+                    // 无效的密码 102
+                    case EMError.INVALID_PASSWORD:
+                        Toast.makeText(LoginRegisterActivity.this, &quot;无效的密码 code: &quot; + i + &quot;, message:&quot; + s, Toast.LENGTH_LONG).show();
+                        break;
+                    // 用户认证失败，用户名或密码错误 202
+                    case EMError.USER_AUTHENTICATION_FAILED:
+                        Toast.makeText(LoginRegisterActivity.this, &quot;用户认证失败，用户名或密码错误 code: &quot; + i + &quot;, message:&quot; + s, Toast.LENGTH_LONG).show();
+                        break;
+                    // 用户不存在 204
+                    case EMError.USER_NOT_FOUND:
+                        Toast.makeText(LoginRegisterActivity.this, &quot;用户不存在 code: &quot; + i + &quot;, message:&quot; + s, Toast.LENGTH_LONG).show();
+                        break;
+                    // 无法访问到服务器 300
+                    case EMError.SERVER_NOT_REACHABLE:
+                        Toast.makeText(LoginRegisterActivity.this, &quot;无法访问到服务器 code: &quot; + i + &quot;, message:&quot; + s, Toast.LENGTH_LONG).show();
+                        break;
+                    // 等待服务器响应超时 301
+                    case EMError.SERVER_TIMEOUT:
+                        Toast.makeText(LoginRegisterActivity.this, &quot;等待服务器响应超时 code: &quot; + i + &quot;, message:&quot; + s, Toast.LENGTH_LONG).show();
+                        break;
+                    // 服务器繁忙 302
+                    case EMError.SERVER_BUSY:
+                        Toast.makeText(LoginRegisterActivity.this, &quot;服务器繁忙 code: &quot; + i + &quot;, message:&quot; + s, Toast.LENGTH_LONG).show();
+                        break;
+                    // 未知 Server 异常 303 一般断网会出现这个错误
+                    case EMError.SERVER_UNKNOWN_ERROR:
+                        Toast.makeText(LoginRegisterActivity.this, &quot;未知的服务器异常 code: &quot; + i + &quot;, message:&quot; + s, Toast.LENGTH_LONG).show();
+                        break;
+                    default:
+                        Toast.makeText(LoginRegisterActivity.this, &quot;ml_sign_in_failed code: &quot; + i + &quot;, message:&quot; + s, Toast.LENGTH_LONG).show();
+                        break;
+                    }
+                }
+            });
+        }
+
+        @Override
+        public void onProgress(int i, String s) {
+            mDialog.show(LoginRegisterActivity.this,&quot;登录&quot;, &quot;正在登录中&quot;);
+        }
+    });
+}</code></pre><p>注册：</p>
+<p>private void signUp() {<br>    // 注册是耗时过程，所以要显示一个dialog来提示下用户<br>    mDialog.setMessage(“注册中，请稍后…”);<br>    mDialog.show();<br>    new Thread(new Runnable() {<br>        @Override<br>        public void run() {<br>            try {<br>                String username = mUsernameEdit.getText().toString().trim();<br>                String password = mPasswordEdit.getText().toString().trim();<br>                EMClient.getInstance().createAccount(username, password);<br>                runOnUiThread(new Runnable() {<br>                    @Override<br>                    public void run() {<br>                        if (!LoginRegisterActivity.this.isFinishing()) {<br>                            mDialog.dismiss();<br>                        }<br>                        Toast.makeText(LoginRegisterActivity.this, “注册成功”, Toast.LENGTH_LONG).show();<br>                    }<br>                });<br>            } catch (final HyphenateException e) {<br>                e.printStackTrace();<br>                runOnUiThread(new Runnable() {<br>                    @Override<br>                    public void run() {<br>                        if (!LoginRegisterActivity.this.isFinishing()) {<br>                            mDialog.dismiss();<br>                        }<br>                        /**<br>                         * 关于错误码可以参考官方api详细说明<br>                         * <a href="http://www.easemob.com/apidoc/android/chat3.0/classcom_1_1hyphenate_1_1_e_m_error.html" target="_blank" rel="noopener">http://www.easemob.com/apidoc/android/chat3.0/classcom_1_1hyphenate_1_1_e_m_error.html</a><br>                         */<br>                        int errorCode = e.getErrorCode();<br>                        String message = e.getMessage();<br>                        Log.d(“lzan13”, String.format(“sign up - errorCode:%d, errorMsg:%s”, errorCode, e.getMessage()));<br>                        switch (errorCode) {<br>                        // 网络错误<br>                        case EMError.NETWORK_ERROR:<br>                            Toast.makeText(LoginRegisterActivity.this, “网络错误 code: “ + errorCode + “, message:” + message, Toast.LENGTH_LONG).show();<br>                            break;<br>                        // 用户已存在<br>                        case EMError.USER_ALREADY_EXIST:<br>                            Toast.makeText(LoginRegisterActivity.this, “用户已存在 code: “ + errorCode + “, message:” + message, Toast.LENGTH_LONG).show();<br>                            break;<br>                        // 参数不合法，一般情况是username 使用了uuid导致，不能使用uuid注册<br>                        case EMError.USER_ILLEGAL_ARGUMENT:<br>                            Toast.makeText(LoginRegisterActivity.this, “参数不合法，一般情况是username 使用了uuid导致，不能使用uuid注册 code: “ + errorCode + “, message:” + message, Toast.LENGTH_LONG).show();<br>                            break;<br>                        // 服务器未知错误<br>                        case EMError.SERVER_UNKNOWN_ERROR:<br>                            Toast.makeText(LoginRegisterActivity.this, “服务器未知错误 code: “ + errorCode + “, message:” + message, Toast.LENGTH_LONG).show();<br>                            break;<br>                        case EMError.USER_REG_FAILED:<br>                            Toast.makeText(LoginRegisterActivity.this, “账户注册失败 code: “ + errorCode + “, message:” + message, Toast.LENGTH_LONG).show();<br>                            break;<br>                        default:<br>                            Toast.makeText(LoginRegisterActivity.this, “ml_sign_up_failed code: “ + errorCode + “, message:” + message, Toast.LENGTH_LONG).show();<br>                            break;<br>                        }<br>                    }<br>                });<br>            } catch (Exception e) {<br>                e.printStackTrace();<br>            }<br>        }<br>    }).start();<br>}</p>
+<p>三、ChatActivity聊天界面。 我用的原生</p>
+<p>   // 这里直接使用EaseUI封装好的聊天界面<br>        chatFragment = new ChatFragment();<br>        // 将参数传递给聊天界面<br>        chatFragment.setArguments(getIntent().getExtras());<br>        getSupportFragmentManager().beginTransaction().add(R.id.layout_chat, chatFragment).commit();</p>
+<p>四、会话列表</p>
+<p>   //直接用环信的会话列表<br>        conversationListFragment = new EaseConversationListFragment();<br>        conversationListFragment.setArguments(getIntent().getExtras());<br>        conversationListFragment.setConversationListItemClickListener(<br>                new EaseConversationListFragment.EaseConversationListItemClickListener() {<br>                    @Override<br>                    public void onListItemClicked(EMConversation conversation) {<br>                        startActivity(new Intent(ConversationListActivity.this, ChatActivity.class)<br>                                .putExtra(EaseConstant.EXTRA_USER_ID, conversation.conversationId()));<br>                    }</p>
+<pre><code>        });
+getSupportFragmentManager().beginTransaction().add(R.id.ec_layout_list, conversationListFragment).commit();</code></pre><p>第一次写博客 ，还望兄弟们没嫌弃，我在源码中的注释很详细<br>Demo源码链接</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://markchyl.github.io/2018/12/19/环信easeUI的集成/" data-id="cjy82y3bg0023lo9mhclgznhr" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/第三方集成/">第三方集成</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/12/29/Python基础学习/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Python基础学习
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/12/19/自定义日历控件/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">自定义日历控件</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flutter/">Flutter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flutter问题/">Flutter问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具使用/">工具使用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具搭建/">工具搭建</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/架构/">架构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/第三方集成/">第三方集成</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络框架/">网络框架</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自定义控件/">自定义控件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/视频直播/">视频直播</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Flutter/" style="font-size: 17.5px;">Flutter</a> <a href="/tags/Flutter问题/" style="font-size: 12.5px;">Flutter问题</a> <a href="/tags/Python/" style="font-size: 12.5px;">Python</a> <a href="/tags/工具使用/" style="font-size: 15px;">工具使用</a> <a href="/tags/工具搭建/" style="font-size: 12.5px;">工具搭建</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/架构/" style="font-size: 12.5px;">架构</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/第三方集成/" style="font-size: 10px;">第三方集成</a> <a href="/tags/网络框架/" style="font-size: 10px;">网络框架</a> <a href="/tags/自定义控件/" style="font-size: 12.5px;">自定义控件</a> <a href="/tags/视频直播/" style="font-size: 10px;">视频直播</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/07/11/flutter入门之常见的flutter问题汇总/">flutter入门之常见的flutter问题汇总</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/10/防止页面重绘制，实现AutomaticKeepAliveClientMixin/">防止页面重绘制，实现AutomaticKeepAliveClientMixin</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/02/flutter开发插件和包/">flutter开发插件和包</a>
+          </li>
+        
+          <li>
+            <a href="/2019/06/13/Mac上搭建apktool反编译工具/">Mac上搭建apktool反编译工具</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/30/Mac上实现SVN代码管理/">Mac上实现SVN代码管理</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Mark Chen<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Dart的基础知识学习 | Mark的私人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="简介：Google和其他地方的开发人员使用Dart为iOS，Android和网络创建高质量，关键任务的应用程序。Dart具有针对客户端开发的功能，非常适合移动和Web应用程序。 Dart对于许多现有的开发人员来说都很熟悉，这要归功于它不出异的面向对象和语法。如果您已经了解C ++，C＃或Java，那么只需几天就可以使用Dart。 Dart编译为ARM和x86代码，因此Dart移动应用程序可以在iO">
+<meta name="keywords" content="Flutter">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dart的基础知识学习">
+<meta property="og:url" content="https://markchyl.github.io/2018/12/17/Dart的基础知识学习/index.html">
+<meta property="og:site_name" content="Mark的私人博客">
+<meta property="og:description" content="简介：Google和其他地方的开发人员使用Dart为iOS，Android和网络创建高质量，关键任务的应用程序。Dart具有针对客户端开发的功能，非常适合移动和Web应用程序。 Dart对于许多现有的开发人员来说都很熟悉，这要归功于它不出异的面向对象和语法。如果您已经了解C ++，C＃或Java，那么只需几天就可以使用Dart。 Dart编译为ARM和x86代码，因此Dart移动应用程序可以在iO">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/WEB2e99b7c66fa25ec939b46b986618bc0e?method=download&shareKey=6e3cd2073bc556b731b1d3a68a1c6acf">
+<meta property="og:image" content="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=1105042996,1878674339&fm=58&bpow=496&bpoh=405">
+<meta property="og:image" content="https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=330314814,3181569317&fm=58&bpow=310&bpoh=270">
+<meta property="og:image" content="http://cms-bucket.nosdn.127.net/catchpic/9/9a/9aa087361923a8896e8c0f5f6dd22b05.jpg?imageView&thumbnail=550x0">
+<meta property="og:updated_time" content="2019-06-20T07:08:07.163Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Dart的基础知识学习">
+<meta name="twitter:description" content="简介：Google和其他地方的开发人员使用Dart为iOS，Android和网络创建高质量，关键任务的应用程序。Dart具有针对客户端开发的功能，非常适合移动和Web应用程序。 Dart对于许多现有的开发人员来说都很熟悉，这要归功于它不出异的面向对象和语法。如果您已经了解C ++，C＃或Java，那么只需几天就可以使用Dart。 Dart编译为ARM和x86代码，因此Dart移动应用程序可以在iO">
+<meta name="twitter:image" content="https://note.youdao.com/yws/api/personal/file/WEB2e99b7c66fa25ec939b46b986618bc0e?method=download&shareKey=6e3cd2073bc556b731b1d3a68a1c6acf">
+  
+    <link rel="alternate" href="/atom.xml" title="Mark的私人博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Mark的私人博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">数风流人物，还看今朝</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://markchyl.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Dart的基础知识学习" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/17/Dart的基础知识学习/" class="article-date">
+  <time datetime="2018-12-17T03:13:20.000Z" itemprop="datePublished">2018-12-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Dart的基础知识学习
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h3><pre><code>Google和其他地方的开发人员使用Dart为iOS，Android和网络创建高质量，关键任务的应用程序。Dart具有针对客户端开发的功能，非常适合移动和Web应用程序。
+Dart对于许多现有的开发人员来说都很熟悉，这要归功于它不出异的面向对象和语法。如果您已经了解C ++，C＃或Java，那么只需几天就可以使用Dart。
+Dart编译为ARM和x86代码，因此Dart移动应用程序可以在iOS，Android及更高版本上本机运行。对于Web应用程序，Dart会转换为JavaScript。
+Dart提供优化的提前编译，以在移动设备和Web上实现可预测的高性能和快速启动。</code></pre><hr>
+ <a id="more"></a>
+<h3 id="工具："><a href="#工具：" class="headerlink" title="工具："></a>工具：</h3><p><img src="https://note.youdao.com/yws/api/personal/file/WEB2e99b7c66fa25ec939b46b986618bc0e?method=download&shareKey=6e3cd2073bc556b731b1d3a68a1c6acf" alt="https://note.youdao.com/yws/api/personal/file/WEB2e99b7c66fa25ec939b46b986618bc0e?method=download&amp;shareKey=6e3cd2073bc556b731b1d3a68a1c6acf"></p>
+<h5 id="无需安装就可以验证编译代码运行。"><a href="#无需安装就可以验证编译代码运行。" class="headerlink" title="无需安装就可以验证编译代码运行。"></a>无需安装就可以验证编译代码运行。</h5><p>DartPad是一种很好的，无需下载的方法来学习Dart语法和试验Dart语言功能。它支持Dart的核心库，但dart：io等VM库除外。<a href="https://dartpad.dartlang.org/" target="_blank" rel="noopener">链接</a><br>IDE和编辑器<br>这些常用的IDE存在Dart插件。<br><img src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=1105042996,1878674339&fm=58&bpow=496&bpoh=405" alt><br> Android Studio<br> <img src="https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=330314814,3181569317&fm=58&bpow=310&bpoh=270" alt="3aaf76a25ee53fd2b4c50db1cc857576.svg+xml"><br>  IntelliJ IDEA （和其他JetBrains IDE）<br>  <img src="http://cms-bucket.nosdn.127.net/catchpic/9/9a/9aa087361923a8896e8c0f5f6dd22b05.jpg?imageView&thumbnail=550x0" alt><br>   Visual Studio代码</p>
+<hr>
+<h3 id="HelloWorld："><a href="#HelloWorld：" class="headerlink" title="HelloWorld："></a>HelloWorld：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">void main() &#123;</span><br><span class="line">  print(&apos;Hello, World!&apos;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="默认值"><a href="#默认值" class="headerlink" title="默认值"></a>默认值</h3><pre><code>未初始化的变量默认值是 null。即使变量是数字 类型默认值也是 null，因为在 Dart 中一切都是对象，数字类型 也不例外</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://markchyl.github.io/2018/12/17/Dart的基础知识学习/" data-id="cjy82y3ac0005lo9mgx7qpsp7" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Flutter/">Flutter</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/12/17/GreenDao数据库框架的基础学习/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          GreenDao数据库框架的基础学习
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/12/17/Mark的Flutter的安装和环境配置/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Mark的Flutter的安装和环境配置</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flutter/">Flutter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flutter问题/">Flutter问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具使用/">工具使用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具搭建/">工具搭建</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/架构/">架构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/第三方集成/">第三方集成</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络框架/">网络框架</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自定义控件/">自定义控件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/视频直播/">视频直播</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Flutter/" style="font-size: 17.5px;">Flutter</a> <a href="/tags/Flutter问题/" style="font-size: 12.5px;">Flutter问题</a> <a href="/tags/Python/" style="font-size: 12.5px;">Python</a> <a href="/tags/工具使用/" style="font-size: 15px;">工具使用</a> <a href="/tags/工具搭建/" style="font-size: 12.5px;">工具搭建</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/架构/" style="font-size: 12.5px;">架构</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/第三方集成/" style="font-size: 10px;">第三方集成</a> <a href="/tags/网络框架/" style="font-size: 10px;">网络框架</a> <a href="/tags/自定义控件/" style="font-size: 12.5px;">自定义控件</a> <a href="/tags/视频直播/" style="font-size: 10px;">视频直播</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/07/11/flutter入门之常见的flutter问题汇总/">flutter入门之常见的flutter问题汇总</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/10/防止页面重绘制，实现AutomaticKeepAliveClientMixin/">防止页面重绘制，实现AutomaticKeepAliveClientMixin</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/02/flutter开发插件和包/">flutter开发插件和包</a>
+          </li>
+        
+          <li>
+            <a href="/2019/06/13/Mac上搭建apktool反编译工具/">Mac上搭建apktool反编译工具</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/30/Mac上实现SVN代码管理/">Mac上实现SVN代码管理</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Mark Chen<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

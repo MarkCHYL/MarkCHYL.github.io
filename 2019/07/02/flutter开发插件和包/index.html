@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>flutter开发插件和包 | Mark的私人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="@toc cmd 命令创建开发插件包 flutter create --org com.mark --template markplugin  使用该–org选项以反向域名表示法指定您的组织。此值用于生成的Android和iOS代码中的各种包和包标识符。  其中 com.mark 就是我的组织名，markplugin 就是我的插件项目名字  生成如下：">
+<meta name="keywords" content="Flutter">
+<meta property="og:type" content="article">
+<meta property="og:title" content="flutter开发插件和包">
+<meta property="og:url" content="https://markchyl.github.io/2019/07/02/flutter开发插件和包/index.html">
+<meta property="og:site_name" content="Mark的私人博客">
+<meta property="og:description" content="@toc cmd 命令创建开发插件包 flutter create --org com.mark --template markplugin  使用该–org选项以反向域名表示法指定您的组织。此值用于生成的Android和iOS代码中的各种包和包标识符。  其中 com.mark 就是我的组织名，markplugin 就是我的插件项目名字  生成如下：">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190702095035265.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01hcmtfQ0hZTA==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190702101606454.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190702102101747.png">
+<meta property="og:updated_time" content="2019-07-02T06:54:40.512Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="flutter开发插件和包">
+<meta name="twitter:description" content="@toc cmd 命令创建开发插件包 flutter create --org com.mark --template markplugin  使用该–org选项以反向域名表示法指定您的组织。此值用于生成的Android和iOS代码中的各种包和包标识符。  其中 com.mark 就是我的组织名，markplugin 就是我的插件项目名字  生成如下：">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190702095035265.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01hcmtfQ0hZTA==,size_16,color_FFFFFF,t_70">
+  
+    <link rel="alternate" href="/atom.xml" title="Mark的私人博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Mark的私人博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">数风流人物，还看今朝</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://markchyl.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-flutter开发插件和包" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/02/flutter开发插件和包/" class="article-date">
+  <time datetime="2019-07-02T01:43:22.000Z" itemprop="datePublished">2019-07-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      flutter开发插件和包
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>@<a href="简要：">toc</a></p>
+<h2 id="cmd-命令创建开发插件包"><a href="#cmd-命令创建开发插件包" class="headerlink" title="cmd 命令创建开发插件包"></a>cmd 命令创建开发插件包</h2><p> <code>flutter create --org com.mark --template markplugin</code><br>  使用该–org选项以反向域名表示法指定您的组织。此值用于生成的Android和iOS代码中的各种包和包标识符。<br>  其中 com.mark 就是我的组织名，markplugin 就是我的插件项目名字<br>  生成如下：</p>
+<a id="more"></a>
+<p><img src="https://img-blog.csdnimg.cn/20190702095035265.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01hcmtfQ0hZTA==,size_16,color_FFFFFF,t_70" alt="&quot;插件包生成内容&quot;"></p>
+<p><strong><em>默认情况下，插件项目使用Objective-C for iOS代码和Java for Android代码。如果您更喜欢Swift或Kotlin，您可以使用-i和/或使用Android语言指定iOS语言-a.</em></strong></p>
+<p>例如：<br><code>flutter create --org com.mark --template=plugin -i swift -a kotlin markkotlinpugin</code></p>
+<p><img src="https://img-blog.csdnimg.cn/20190702101606454.png" alt="在这里插入图片描述"></p>
+<h2 id="如何通过命令创建Flutter包"><a href="#如何通过命令创建Flutter包" class="headerlink" title="如何通过命令创建Flutter包"></a>如何通过命令创建Flutter包</h2><p>要创建Dart包，请使用以下–template=package标志flutter create：<br> <code>flutter create --org com.mark --template=package hello</code></p>
+<p>这将在hello/文件夹中创建一个包项目，其中包含以下专门内容：</p>
+<p>`<br>lib/hello.dart：包的Dart代码。</p>
+<p>test/hello_test.dart：该单元测试包装。`</p>
+<p><img src="https://img-blog.csdnimg.cn/20190702102101747.png" alt="在这里插入图片描述"></p>
+<h2 id="配置好pubspec-paml上的信息-添加开源协议，编写使用说明"><a href="#配置好pubspec-paml上的信息-添加开源协议，编写使用说明" class="headerlink" title="配置好pubspec.paml上的信息,添加开源协议，编写使用说明"></a>配置好pubspec.paml上的信息,添加开源协议，编写使用说明</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">name: flutter_tools</span><br><span class="line">description: A new Flutter Tools package. it works on ios and android</span><br><span class="line">version: 0.0.1</span><br><span class="line">author: MarkCHYL &lt;2285581945@qq.com&gt;</span><br><span class="line">homepage: https://github.com/MarkCHYL/flutter_tools</span><br></pre></td></tr></table></figure>
+
+<h2 id="发布包"><a href="#发布包" class="headerlink" title="发布包"></a>发布包</h2><p><a href="https://flutter.dev/docs/development/packages-and-plugins/developing-packages" target="_blank" rel="noopener">参考地址</a><br>首先我们执行：<br><code>flutter pub pub publish --dry-run</code><br>会检查发布包时是否准备好，是否有错误。<br><code>flutter packages pub publish</code>发布包，<br>但是我因网络原因，没上传成功过。首次大包上传需要登陆谷歌的网站，谷歌账号登陆便好。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://markchyl.github.io/2019/07/02/flutter开发插件和包/" data-id="cjy82y3ap000rlo9mcyboglnh" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Flutter/">Flutter</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/07/10/防止页面重绘制，实现AutomaticKeepAliveClientMixin/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          防止页面重绘制，实现AutomaticKeepAliveClientMixin
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/06/13/Mac上搭建apktool反编译工具/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Mac上搭建apktool反编译工具</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flutter/">Flutter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flutter问题/">Flutter问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具使用/">工具使用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具搭建/">工具搭建</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/架构/">架构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/第三方集成/">第三方集成</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络框架/">网络框架</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自定义控件/">自定义控件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/视频直播/">视频直播</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Flutter/" style="font-size: 17.5px;">Flutter</a> <a href="/tags/Flutter问题/" style="font-size: 12.5px;">Flutter问题</a> <a href="/tags/Python/" style="font-size: 12.5px;">Python</a> <a href="/tags/工具使用/" style="font-size: 15px;">工具使用</a> <a href="/tags/工具搭建/" style="font-size: 12.5px;">工具搭建</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/架构/" style="font-size: 12.5px;">架构</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/第三方集成/" style="font-size: 10px;">第三方集成</a> <a href="/tags/网络框架/" style="font-size: 10px;">网络框架</a> <a href="/tags/自定义控件/" style="font-size: 12.5px;">自定义控件</a> <a href="/tags/视频直播/" style="font-size: 10px;">视频直播</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/07/11/flutter入门之常见的flutter问题汇总/">flutter入门之常见的flutter问题汇总</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/10/防止页面重绘制，实现AutomaticKeepAliveClientMixin/">防止页面重绘制，实现AutomaticKeepAliveClientMixin</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/02/flutter开发插件和包/">flutter开发插件和包</a>
+          </li>
+        
+          <li>
+            <a href="/2019/06/13/Mac上搭建apktool反编译工具/">Mac上搭建apktool反编译工具</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/30/Mac上实现SVN代码管理/">Mac上实现SVN代码管理</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Mark Chen<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
