@@ -163,6 +163,130 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Hexo-yilia-主题添加-widgetpack-评论系统" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/21/Hexo-yilia-主题添加-widgetpack-评论系统/">Hexo yilia 主题添加 widgetpack 评论系统</a>
+    </h1>
+  
+
+        
+        <a href="/2019/07/21/Hexo-yilia-主题添加-widgetpack-评论系统/" class="archive-article-date">
+  	<time datetime="2019-07-21T14:24:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-21</time>
+</a>
+        
+         <!-- 添加代码 -->
+        
+    </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><hr>
+<blockquote>
+<p>记得这周都在忙着给我的博客添加评论功能，脑子都懵逼啦！开始起初是想利用GitHub的gitment和gittalk进行集成，按照的网上的套路也弄了，总是报错，对于我只是安卓原生的小码农来说，我完全抓瞎。</p>
+</blockquote>
+<p><strong>下面的分析来自</strong><a href="https://blog.csdn.net/ganzhilin520/article/details/79048010" target="_blank" rel="noopener">阿甘的博客</a></p>
+<p>目前博客站点使用的评论功能，多说，网易云跟贴都已经下线。Disqus也被挡在墙外，友言貌似也不行。</p>
+<p>可用的评论系统大概有：  </p>
+<ul>
+<li><p>HyperComments：<a href="https://www.hypercomments.com" target="_blank" rel="noopener">https://www.hypercomments.com</a> （来自俄罗斯的评论系统，使用谷歌账号注册。可以访问，不会用，好气，，）</p>
+</li>
+<li><p>来必力：<a href="https://livere.com" target="_blank" rel="noopener">https://livere.com</a> （来自韩国，使用邮箱注册。）</p>
+</li>
+<li><p>畅言： <a href="http://changyan.kuaizhan.com" target="_blank" rel="noopener">http://changyan.kuaizhan.com</a> （安装需要备案号。不太好用。）</p>
+</li>
+<li><p>Gitment： <a href="https://github.com/imsun/gitment" target="_blank" rel="noopener">https://github.com/imsun/gitment</a> （有点小bug，比如说每次需要手动初始化，登录时会跳到主页。。）</p>
+</li>
+<li><p>Valine: <a href="https://github.com/xCss/Valine" target="_blank" rel="noopener">https://github.com/xCss/Valine</a> (基于Leancloud的极简风评论系统，用了下，没效果，是我Next主题的原因还是？）</p>
+</li>
+</ul>
+<p>综上，我开始采用了来必力。<br>**可能是来必力来自韩国，我没调查资料，是看上面的文字时韩国的瞎说的，功能我到是实现了，界面渲染有点卡顿，最终放弃了。</p>
+<h1 id="widgetpack-评论系统"><a href="#widgetpack-评论系统" class="headerlink" title="widgetpack 评论系统"></a>widgetpack 评论系统</h1><p>这是我这次笔记的重点，此刻是周末晚上，明早就要上班啦！给自己定的任务计划没完成，Mark我有点睡不着，无聊的我打开了电脑发现了这个<strong>widgetpack</strong>，在此感谢博主的贡献<a href="https://blog.csdn.net/maosidiaoxian/article/details/94651023" target="_blank" rel="noopener">貌似掉线</a>,</p>
+<ul>
+<li>免费的</li>
+<li>哪儿的？国外的，放心没被强，我是科学守法的好公民</li>
+<li>还没调查，貌似是欧洲的，<a href="https://widgetpack.com/comment-system" target="_blank" rel="noopener">介绍地址</a></li>
+<li>邮箱注册便可</li>
+</ul>
+<p>下面是<a href="https://blog.csdn.net/maosidiaoxian/article/details/94651023" target="_blank" rel="noopener">貌似掉线</a>的原文：</p>
+<h2 id="集成步骤："><a href="#集成步骤：" class="headerlink" title="集成步骤："></a>集成步骤：</h2><h3 id="1-主题配置添加-widgetpack"><a href="#1-主题配置添加-widgetpack" class="headerlink" title="1. 主题配置添加 widgetpack"></a>1. 主题配置添加 widgetpack</h3><p>修改 hexo 博客目录的 theme/yilia 中的 _config.yml 文件，增加如下配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># widgetpack。将 false 改为 widgetpack 上的 id 则启用该评论系统。</span><br><span class="line">widgetpack: false</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-新增-widgetpack-代码文件"><a href="#2-新增-widgetpack-代码文件" class="headerlink" title="2. 新增 widgetpack 代码文件"></a>2. 新增 widgetpack 代码文件</h3><p>在 yilia 中的 layout/_partial/post 下新增 widgetpack.ejs文件，内容如下：<br>这段代码，在你注册 widgetpack 之后也会有</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;wpac-comment&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">wpac_init = window.wpac_init || [];</span><br><span class="line">wpac_init.push(&#123;widget: &apos;Comment&apos;, id: &lt;%=theme.widgetpack%&gt;&#125;);</span><br><span class="line">(function() &#123;</span><br><span class="line">    if (&apos;WIDGETPACK_LOADED&apos; in window) return;</span><br><span class="line">    WIDGETPACK_LOADED = true;</span><br><span class="line">    var mc = document.createElement(&apos;script&apos;);</span><br><span class="line">    mc.type = &apos;text/javascript&apos;;</span><br><span class="line">    mc.async = true;</span><br><span class="line">    mc.src = &apos;https://embed.widgetpack.com/widget.js&apos;;</span><br><span class="line">    var s = document.getElementsByTagName(&apos;script&apos;)[0]; s.parentNode.insertBefore(mc, s.nextSibling);</span><br><span class="line">&#125;)();</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;a href=&quot;https://widgetpack.com&quot; class=&quot;wpac-cr&quot;&gt;Comments System WIDGET PACK&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-修改-article-ejs"><a href="#3-修改-article-ejs" class="headerlink" title="3. 修改 article.ejs"></a>3. 修改 article.ejs</h3><p>由于我使用的 yilia 主题没有自带 widgetpack 的代码，修改 yilia 中的 layout/_partial/article.ejs 文件，在 &lt;% if (!index &amp;&amp; post.comments){ %&gt; 后的任意一个评论代码前或后插入如下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;%if (theme.widgetpack) &#123; %&gt;</span><br><span class="line">  &lt;%- partial(&apos;post/widgetpack&apos;) %&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
+
+<p>这段代码加在哪儿？打开之后好好的看编辑器上的代码。</p>
+<hr>
+<p><strong>如上三步，修改完成。如果要启用，修改主题的 _config.yml 文件，将 widgetpack 的值改为 widgetpack 上的 id 即可，注意冒号之后有空格</strong></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hexo</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">工具搭建</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/21/Hexo-yilia-主题添加-widgetpack-评论系统/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+<!-- 目录内容 -->
+     
+
+
+  
     <article id="post-flutter入门之常见的flutter问题汇总" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -915,93 +1039,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-占位符-Broccoli-的使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/18/占位符-Broccoli-的使用/">占位符 Broccoli 的使用</a>
-    </h1>
-  
-
-        
-        <a href="/2019/01/18/占位符-Broccoli-的使用/" class="archive-article-date">
-  	<time datetime="2019-01-18T07:20:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-18</time>
-</a>
-        
-         <!-- 添加代码 -->
-        
-    </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="https://github.com/samlss/Broccoli/raw/master/screenshots/Broccoli.png" alt="Broccoli"></p>
-<p>在预加载时显示view的占位符效果</p>
-<h3 id="截图"><a href="#截图" class="headerlink" title="截图"></a>截图</h3><h4 id="默认效果"><a href="#默认效果" class="headerlink" title="默认效果:"></a>默认效果:</h4><p><img src="https://github.com/samlss/Broccoli/raw/master/screenshots/screenshot1.gif" alt="Broccoli"></p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">自定义控件</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/01/18/占位符-Broccoli-的使用/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-<!-- 目录内容 -->
-     
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1120,7 +1157,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">工具使用</a>
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1128,11 +1165,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">网络框架</a>
+                <a href="javascript:void(0)" class="js-tag color5">工具使用</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">架构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">网络框架</a>
               </li>
              
               <li class="article-tag-list-item">
