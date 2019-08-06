@@ -6,35 +6,50 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://markchyl.github.io">
-  <title>Markdown 入门指南一 | Mark的私人博客</title>
+  <title>android 修改项目包名详解 | Mark的私人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、Markdown 是什么？ Markdown 是一种轻量级的「标记语言」，创始人为约翰·格鲁伯，用简洁的语法代替排版，目前被越来越多的知识工作者、写作爱好者、程序员或研究员广泛使用。其常用的标记符号不超过十个，相对于更为复杂的 HTML 标记语言来说，Markdown 十分的轻量，学习成本也不需要太多，且一旦熟悉这种语法规则，会有沉浸式编辑的效果。">
-<meta name="keywords" content="工具使用">
+  <meta name="description" content="再简单的东西也的记下来，不然容易忘记。此处原文地址来源：https://www.jianshu.com/p/1891d5a1a121  在android 平常项目开发中，修改项目包名是很常见的事，哪如何有限修改包名一步到位呢？经过几次痛苦的经历后，觉得有必要记录一番！">
+<meta name="keywords" content="Android">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Markdown 入门指南一">
-<meta property="og:url" content="https://markchyl.github.io/2019/01/04/Markdown-入门指南一/index.html">
+<meta property="og:title" content="android 修改项目包名详解">
+<meta property="og:url" content="https://markchyl.github.io/2019/08/06/android-修改项目包名详解/index.html">
 <meta property="og:site_name" content="Mark的私人博客">
-<meta property="og:description" content="一、Markdown 是什么？ Markdown 是一种轻量级的「标记语言」，创始人为约翰·格鲁伯，用简洁的语法代替排版，目前被越来越多的知识工作者、写作爱好者、程序员或研究员广泛使用。其常用的标记符号不超过十个，相对于更为复杂的 HTML 标记语言来说，Markdown 十分的轻量，学习成本也不需要太多，且一旦熟悉这种语法规则，会有沉浸式编辑的效果。">
+<meta property="og:description" content="再简单的东西也的记下来，不然容易忘记。此处原文地址来源：https://www.jianshu.com/p/1891d5a1a121  在android 平常项目开发中，修改项目包名是很常见的事，哪如何有限修改包名一步到位呢？经过几次痛苦的经历后，觉得有必要记录一番！">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://list.yinxiang.com/media/images/6f6fbdf5d5880bba878cccdb6fde7dc2.png">
-<meta property="og:image" content="https://list.yinxiang.com/media/images/4d01db13595e47a605bdcee58863bcc9.png">
-<meta property="og:image" content="https://list.yinxiang.com/media/images/c6bdf4f7243a65e9d265f8354a985133.png">
-<meta property="og:image" content="https://list.yinxiang.com/media/images/013f1b9f886759dd2881a90594505be7.png">
-<meta property="og:image" content="https://list.yinxiang.com/media/images/e9dfb2393770d6b3f9797251828fc64a.png">
-<meta property="og:image" content="https://list.yinxiang.com/media/images/801daebf96b7c608324f653b8919d20b.png">
-<meta property="og:image" content="https://list.yinxiang.com/media/images/17e2f842833974e024ddbfe8601db88a.png">
-<meta property="og:image" content="https://list.yinxiang.com/media/images/5e7bc153735b23aa620131c3b53c4bbe.png">
-<meta property="og:image" content="https://list.yinxiang.com/media/images/50ffb8685cde14d6f94ba56d048eb484.png">
-<meta property="og:image" content="https://list.yinxiang.com/media/images/aeec9223706ba3fc5ff64649a1026b4a.png">
-<meta property="og:image" content="https://list.yinxiang.com/media/images/262a54f32549f26feb2a8ca094ebd7e2.png">
-<meta property="og:image" content="https://www.yinxiang.com/blog/wp-content/uploads/2018/07/%E5%94%AE%E7%A5%A8%E5%BE%AE%E4%BF%A1%E5%B0%81%E9%9D%A22.png">
-<meta property="og:image" content="https://list.yinxiang.com/media/images/fb2dde021cec7c807b177af6956664b6.png">
-<meta property="og:image" content="https://list.yinxiang.com/media/images/42bec0bb39317b0a5d7cbf799a079c11.png">
-<meta property="og:updated_time" content="2019-07-22T07:54:34.846Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2108792-a0f6b84a3fcd681d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/507/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2108792-8e9f64f76dd666e4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/534/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2108792-ca64b8ff27c0e2f9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/350/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2108792-245a095cfef4c8c0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/293/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2108792-b188356d6a454df0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/538/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2108792-5748e03a357ac8d6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/747/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2108792-bbf9f6e3517de803.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/629/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2108792-c2b0a1b594ceb7a9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/531/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2108792-b50f2f39318e3a86.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/651/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2108792-f7573970e99b92ec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/672/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2108792-a0f6b84a3fcd681d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/507/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2108792-8e9f64f76dd666e4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/534/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2108792-ca64b8ff27c0e2f9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/350/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2108792-245a095cfef4c8c0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/293/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2108792-b188356d6a454df0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/538/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2108792-5748e03a357ac8d6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/747/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2108792-bbf9f6e3517de803.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/629/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2108792-e43fefa7fb413d3b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/692/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2108792-33d2a624c533d767.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/635/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2108792-c2b0a1b594ceb7a9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/531/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2108792-b50f2f39318e3a86.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/651/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2108792-f7573970e99b92ec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/672/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2108792-534897b4744d5df5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2108792-feb5f5023ca50e8f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2108792-9a32a6931bffa51b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/631/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2108792-849db258b30d1aeb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/650/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2108792-73e253453e85f5a5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/538/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2108792-8f5d3f454854f75c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/519/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2108792-77579a031568c1a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp">
+<meta property="og:updated_time" content="2019-08-06T15:12:19.645Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Markdown 入门指南一">
-<meta name="twitter:description" content="一、Markdown 是什么？ Markdown 是一种轻量级的「标记语言」，创始人为约翰·格鲁伯，用简洁的语法代替排版，目前被越来越多的知识工作者、写作爱好者、程序员或研究员广泛使用。其常用的标记符号不超过十个，相对于更为复杂的 HTML 标记语言来说，Markdown 十分的轻量，学习成本也不需要太多，且一旦熟悉这种语法规则，会有沉浸式编辑的效果。">
-<meta name="twitter:image" content="https://list.yinxiang.com/media/images/6f6fbdf5d5880bba878cccdb6fde7dc2.png">
+<meta name="twitter:title" content="android 修改项目包名详解">
+<meta name="twitter:description" content="再简单的东西也的记下来，不然容易忘记。此处原文地址来源：https://www.jianshu.com/p/1891d5a1a121  在android 平常项目开发中，修改项目包名是很常见的事，哪如何有限修改包名一步到位呢？经过几次痛苦的经历后，觉得有必要记录一番！">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/2108792-a0f6b84a3fcd681d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/507/format/webp">
   
     <link rel="alternative" href="/atom.xml" title="Mark的私人博客" type="application/atom+xml">
   
@@ -183,20 +198,20 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Markdown-入门指南一" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-android-修改项目包名详解" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Markdown 入门指南一
+      android 修改项目包名详解
     </h1>
   
 
         
-        <a href="/2019/01/04/Markdown-入门指南一/" class="archive-article-date">
-  	<time datetime="2019-01-04T02:20:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-04</time>
+        <a href="/2019/08/06/android-修改项目包名详解/" class="archive-article-date">
+  	<time datetime="2019-08-06T15:00:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-06</time>
 </a>
         
          <!-- 添加代码 -->
@@ -208,152 +223,71 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="一、Markdown-是什么？"><a href="#一、Markdown-是什么？" class="headerlink" title="一、Markdown 是什么？"></a><strong>一、Markdown 是什么？</strong></h3><hr>
-<p>Markdown 是一种轻量级的「标记语言」，创始人为约翰·格鲁伯，用简洁的语法代替排版，目前被越来越多的知识工作者、写作爱好者、程序员或研究员广泛使用。其常用的标记符号不超过十个，相对于更为复杂的 HTML 标记语言来说，Markdown 十分的轻量，学习成本也不需要太多，且一旦熟悉这种语法规则，会有沉浸式编辑的效果。</p>
-<a id="more"></a>
-<p>另外，印象笔记 Markdown 支持 CommonMark 和 GFM (GitHub Flavored Markdown) 标准。</p>
-<h3 id="二、印象笔记里-Markdown-有什么特点？"><a href="#二、印象笔记里-Markdown-有什么特点？" class="headerlink" title="二、印象笔记里 Markdown 有什么特点？"></a><strong>二、印象笔记里 Markdown 有什么特点？</strong></h3><hr>
-<ul>
-<li><strong>一键创建</strong>：支持 Markdown 独立的一键新建入口，为深度 Markdown 用户提供更好的效率体验；</li>
-<li><strong>支持丰富的主流 Markdown 语法</strong>：支持文字相关样式、序号列表、任务列表、表格、TOC 目录、多种图表、数学公式、流程图、时序图、甘特图等；</li>
-<li><strong>支持插入图片</strong>：可插入网络图片 或 直接拖动本地图片、复制剪贴板中的图片到 Markdown 笔记中；</li>
-<li><strong>支持多种模式切换</strong>：编辑与预览模式、纯编辑模式以及纯预览模式；</li>
-<li><strong>支持多种编辑主题</strong>：预置了白色、黑色、深空灰和印象绿主题，默认为印象绿，未来会有更多主题提供；</li>
-<li><strong>跨平台同步</strong>：创建的 Markdown 笔记可在登录了印象笔记帐户的各端查看，未来更多端会支持创建和编辑 Markdown 笔记；<br>演示模式：Markdown 笔记支持演示模式查看；</li>
-<li><strong>支持其他印象笔记特点功能</strong>：笔记标注、导出 PDF、设置提醒、工作群聊共享-查看&amp;编辑笔记等。<br><img src="https://list.yinxiang.com/media/images/6f6fbdf5d5880bba878cccdb6fde7dc2.png" alt><h3 id="三、如何创建-Markdown-笔记？"><a href="#三、如何创建-Markdown-笔记？" class="headerlink" title="三、如何创建 Markdown 笔记？"></a><strong>三、如何创建 Markdown 笔记？</strong></h3></li>
-</ul>
+        <p>再简单的东西也的记下来，不然容易忘记。<br>此处原文地址来源：<a href="https://www.jianshu.com/p/1891d5a1a121" target="_blank" rel="noopener">https://www.jianshu.com/p/1891d5a1a121</a></p>
+<blockquote>
+<p>在android 平常项目开发中，修改项目包名是很常见的事，哪如何有限修改包名一步到位呢？经过几次痛苦的经历后，觉得有必要记录一番！<br> <a id="more"></a><br>对于修改包名，一般有两种情况：<br>1）一个是包名目录结构不变，比如说，将包名“com.zlc.xuexi”，改成”com.xuexi.zlc”<br>2）另一个是包名目录结构改变了，目录级数改变了，比如说，从”com.xuexi.zlc”，改变成”com.xuexi.zlc.zlc”，这里包名的目录结构就从3级改变成为了4级<br>下面分别来讲解一下这两种情况<br>1、第一种情况：包名目录结构不变<br>针对第一种情况，其实特别好改，步骤截图如下：<br>切换的Progject结构，查看java包名结构，一般是这样的</p>
+</blockquote>
+<p><img src="https://upload-images.jianshu.io/upload_images/2108792-a0f6b84a3fcd681d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/507/format/webp" alt></p>
+<p>点击show options menu按钮</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2108792-8e9f64f76dd666e4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/534/format/webp" alt></p>
 <hr>
-<ol>
-<li>点击左上角「新建 Markdown 笔记」来创建新的 Markdown 笔记，另外，也支持配置隐藏「新建 Markdown 笔记」按钮，Windows 用户直接右单击「新建 Markdown 笔记」按钮，即可隐藏，Mac 用户可以右单击左侧边栏空白处，取消勾选「新建 Markdown 笔记」来完成隐藏此按钮</li>
-<li>点击菜单栏-文件-新建笔记-新建 Markdown 笔记（Mac 上为顶部菜单栏-文件-新建 Markdown笔记）</li>
-<li>使用快捷键 Ctrl+alt+D（Mac 上 CMD+D）来快速创建 Markdown 笔记<h3 id="四、印象笔记-Markdown-笔记支持哪些语法？"><a href="#四、印象笔记-Markdown-笔记支持哪些语法？" class="headerlink" title="四、印象笔记 Markdown 笔记支持哪些语法？"></a><strong>四、印象笔记 Markdown 笔记支持哪些语法？</strong></h3></li>
-</ol>
+<p><img src="https://upload-images.jianshu.io/upload_images/2108792-ca64b8ff27c0e2f9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/350/format/webp" alt></p>
+<p>去掉勾上的 Hide Empty Middle Packages  和 Show Members</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2108792-245a095cfef4c8c0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/293/format/webp" alt></p>
+<p>java包的展示目录结构就改变了</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2108792-b188356d6a454df0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/538/format/webp" alt></p>
+<p>对于包名目录结构不改变的。就分别改各个层次对应的包名或者直接按快捷键 Shift + F6</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2108792-5748e03a357ac8d6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/747/format/webp" alt></p>
 <hr>
-<p>—— 以下语法均支持在编辑工具栏直接操作 —— </p>
-<h4 id="1-设置分级标题语法示例："><a href="#1-设置分级标题语法示例：" class="headerlink" title="1. 设置分级标题语法示例："></a>1. 设置分级标题语法示例：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 一级标题</span><br><span class="line">## 二级标题</span><br><span class="line">### 三级标题</span><br><span class="line">#### 四级标题</span><br><span class="line">##### 五级标题</span><br><span class="line">###### 六级标题</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://list.yinxiang.com/media/images/4d01db13595e47a605bdcee58863bcc9.png" alt></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2108792-bbf9f6e3517de803.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/629/format/webp" alt></p>
+<p>同理，假如是3级目录结构包名，每一个都要改变的话，就按照上图的做法一个个更改<br>接着，去改app模块下的build.gradle文件</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2108792-c2b0a1b594ceb7a9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/531/format/webp" alt></p>
 <hr>
-<h4 id="2-加粗文本"><a href="#2-加粗文本" class="headerlink" title="2. 加粗文本"></a>2. 加粗文本</h4><p>语法示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">**印象笔记**</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://list.yinxiang.com/media/images/c6bdf4f7243a65e9d265f8354a985133.png" alt></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2108792-b50f2f39318e3a86.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/651/format/webp" alt></p>
+<p>然后去修改AndroidManifest.xml文件</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2108792-f7573970e99b92ec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/672/format/webp" alt></p>
+<p>最后，点击sync同步一下就大功告成了<br>2、第二种情况：包名目录结构要改变的<br>针对第二种情况，步骤截图如下：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2108792-a0f6b84a3fcd681d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/507/format/webp" alt><br>点击show options menu按钮</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2108792-8e9f64f76dd666e4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/534/format/webp" alt></p>
 <hr>
-<h4 id="3-斜体"><a href="#3-斜体" class="headerlink" title="3. 斜体"></a>3. 斜体</h4><p>语法示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*印象笔记*</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://list.yinxiang.com/media/images/013f1b9f886759dd2881a90594505be7.png" alt></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2108792-ca64b8ff27c0e2f9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/350/format/webp" alt></p>
+<p>去掉勾上的 Hide Empty Middle Packages  和 Show Members</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2108792-245a095cfef4c8c0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/293/format/webp" alt></p>
+<p>java包的展示目录结构就改变了</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2108792-b188356d6a454df0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/538/format/webp" alt></p>
+<p>对于包名目录结构不改变的。就分别改各个层次对应的包名或者直接按快捷键 Shift + F6</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2108792-5748e03a357ac8d6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/747/format/webp" alt></p>
 <hr>
-<h4 id="4-下划线"><a href="#4-下划线" class="headerlink" title="4. 下划线"></a>4. 下划线</h4><p>语法示例：</p>
-<p>&lt;u&gt;印象笔记&lt;/u&gt;</p>
-<p><img src="https://list.yinxiang.com/media/images/e9dfb2393770d6b3f9797251828fc64a.png" alt></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2108792-bbf9f6e3517de803.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/629/format/webp" alt></p>
+<p>假如是3级目录结构包名，改成4级包名目录机构，首先要新建包然后去移动其他的目录包</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2108792-e43fefa7fb413d3b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/692/format/webp" alt></p>
+<p>新建好多一级的目录包之后，需要移动启动文件夹到该目录包下</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2108792-33d2a624c533d767.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/635/format/webp" alt></p>
+<p>接着，去改app模块下的build.gradle文件</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2108792-c2b0a1b594ceb7a9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/531/format/webp" alt></p>
 <hr>
-<h4 id="5-删除线"><a href="#5-删除线" class="headerlink" title="5. 删除线"></a>5. 删除线</h4><p>语法示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~~印象笔记不支持Markdown~~</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://list.yinxiang.com/media/images/801daebf96b7c608324f653b8919d20b.png" alt></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2108792-b50f2f39318e3a86.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/651/format/webp" alt></p>
+<p>然后去修改AndroidManifest.xml文件</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2108792-f7573970e99b92ec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/672/format/webp" alt></p>
+<p>最后，点击sync同步一下就大功告成了<br>3、注意<br>如果项目上用了DataBinding框架，特别是第二种情况，恭喜你，你肯能有得忙了。项目上有DataBinding框架的时候，当你按照上面的步骤修改了包名，就会报一个这样的错</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2108792-534897b4744d5df5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt></p>
 <hr>
-<h4 id="6-添加分隔线"><a href="#6-添加分隔线" class="headerlink" title="6. 添加分隔线"></a>6. 添加分隔线</h4><p>语法示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* * *</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://list.yinxiang.com/media/images/17e2f842833974e024ddbfe8601db88a.png" alt></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2108792-feb5f5023ca50e8f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt></p>
+<p>遇到这个情况，肯定是修改包名或者移动了包名结构，但是布局文件或者java文件的的dataBinding的引用没有改变</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2108792-9a32a6931bffa51b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/631/format/webp" alt></p>
 <hr>
-<h4 id="7-引用文本语法示例："><a href="#7-引用文本语法示例：" class="headerlink" title="7. 引用文本语法示例："></a>7. 引用文本语法示例：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;近日，印象笔记宣布完成重组。作为Evernote已在中国独立运营近6年的品牌，印象笔记将成为由中方控股的中美合资独立运营实体，并获得红杉宽带跨境数字产业基金首轮数亿元人民币投资。</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/2108792-849db258b30d1aeb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/650/format/webp" alt></p>
+<p>这里我没找到特别快速修改的方法，放在我是一个个去检查java文件的导包和xml布局文件的应用，看对不对，不对就要手动改过来了，呜呜。。。。。。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2108792-73e253453e85f5a5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/538/format/webp" alt></p>
+<p>如果，确定全部改完无误之后，重新Rebuild Project</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2108792-8f5d3f454854f75c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/519/format/webp" alt></p>
+<p>万一，还是有刚才那个错误的话，记得再回头检查一遍java文件和布局文件，看看各自的引用对不对，如果全部都改对之后，还是有错误的话，哪就静下心来错误提示</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2108792-77579a031568c1a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt></p>
+<p>如果不是DataBinding引起的话，一般都会找到比较明显的提示</p>
+<p>==========我是有分割线的：2019.04.15更新=================================<br>如果真不好遇到第二种情况的话，面对databanding这种框架，那就只能使用全局替换的方法了<br>ctrl + Shift + R</p>
 
-<p><img src="https://list.yinxiang.com/media/images/5e7bc153735b23aa620131c3b53c4bbe.png" alt></p>
-<hr>
-<h4 id="8-添加符号列表或者数字列表"><a href="#8-添加符号列表或者数字列表" class="headerlink" title="8. 添加符号列表或者数字列表"></a>8. 添加符号列表或者数字列表</h4><p>语法示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">使用 iOS 版本印象笔记如何快速保存内容？</span><br><span class="line">1. 启用印象笔记 Widget ——印象笔记·剪贴板</span><br><span class="line">2. 复制粘贴任意内容     </span><br><span class="line">      * 微信</span><br><span class="line">3. 滑动到 Widget 插件区域即可完成保存</span><br><span class="line">印象笔记·剪贴板有什么特点？</span><br><span class="line">* 快：开启自动模式，可以自动保存剪贴板的任意内容</span><br><span class="line">* 一切：只要可以复制粘贴就可以保存</span><br><span class="line">* 有序：全部保存在「我的剪贴板」笔记本并以时间来命名</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://list.yinxiang.com/media/images/50ffb8685cde14d6f94ba56d048eb484.png" alt></p>
-<hr>
-<h4 id="9-添加待办事项"><a href="#9-添加待办事项" class="headerlink" title="9. 添加待办事项"></a>9. 添加待办事项</h4><p>语法示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">三只青蛙</span><br><span class="line">* [x] 第一只青蛙</span><br><span class="line">* [ ] 第二只青蛙</span><br><span class="line">* [ ] 第三只青蛙</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://list.yinxiang.com/media/images/aeec9223706ba3fc5ff64649a1026b4a.png" alt></p>
-<hr>
-<h4 id="10-插入链接"><a href="#10-插入链接" class="headerlink" title="10. 插入链接"></a>10. 插入链接</h4><p>语法示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[印象笔记官网](https://www.yinxiang.com/)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://list.yinxiang.com/media/images/262a54f32549f26feb2a8ca094ebd7e2.png" alt></p>
-<hr>
-<h4 id="11-插入图片"><a href="#11-插入图片" class="headerlink" title="11. 插入图片"></a>11. 插入图片</h4><p>印象笔记支持嵌入网络图片或者直接拖入本地图片，其中本地图片格式支持 jpg、png 和 gif。<br>语法示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![image](https://www.yinxiang.com/blog/wp-content/uploads/2018/07/%E5%94%AE%E7%A5%A8%E5%BE%AE%E4%BF%A1%E5%B0%81%E9%9D%A22.png)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://www.yinxiang.com/blog/wp-content/uploads/2018/07/%E5%94%AE%E7%A5%A8%E5%BE%AE%E4%BF%A1%E5%B0%81%E9%9D%A22.png" alt="image"></p>
-<p>另外，针对插入的本地图片可以控制图片大小，在拖拽、拷贝或者点击插入本地图片之后，直接在图片名称后面（无需空格）添加以下语法均可以按照以下要求控制图片大小：<br>@w=300<br>@h=150<br>@w=200h=100<br>@h=100w=200<br>示例笔记<br>782d277a1dbc7dea8480267cf5f87ebd.png@w=300<br><img src="https://list.yinxiang.com/media/images/fb2dde021cec7c807b177af6956664b6.png" alt></p>
-<hr>
-<h4 id="12-插入表格"><a href="#12-插入表格" class="headerlink" title="12. 插入表格"></a>12. 插入表格</h4><p>语法示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">| 帐户类型 | 免费帐户 | 标准帐户 | 高级帐户 |</span><br><span class="line">| --- | --- | --- | --- |</span><br><span class="line">| 帐户流量 | 60M | 1GB | 10GB |</span><br><span class="line">| 设备数目 | 2台 | 无限制 | 无限制 |</span><br><span class="line">| 当前价格 | 免费 | ￥8.17/月 | ￥12.33/月|</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://list.yinxiang.com/media/images/42bec0bb39317b0a5d7cbf799a079c11.png" alt></p>
-<hr>
-<h4 id="13-插入图表"><a href="#13-插入图表" class="headerlink" title="13. 插入图表"></a>13. 插入图表</h4><p>目前支持饼状图、折线图、柱状图和条形图，只需将 type 改为对应的pie、line、column 和 bar。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">```chart</span><br><span class="line">,预算,收入,花费,债务</span><br><span class="line">June,5000,8000,4000,6000</span><br><span class="line">July,3000,1000,4000,3000</span><br><span class="line">Aug,5000,7000,6000,3000</span><br><span class="line">Sep,7000,2000,3000,1000</span><br><span class="line">Oct,6000,5000,4000,2000</span><br><span class="line">Nov,4000,3000,5000,</span><br><span class="line"></span><br><span class="line">type: pie</span><br><span class="line">title: 每月收益</span><br><span class="line">x.title: Amount</span><br><span class="line">y.title: Month</span><br><span class="line">y.suffix: $</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">![](https://list.yinxiang.com/media/images/8e02032f85f6612a4c2bb85797251f23.png)</span><br><span class="line">***</span><br><span class="line">#### 14. 插入行内代码或代码块</span><br><span class="line">印象笔记 Markdown 语法支持几十种编程语言的高亮的显示。</span><br><span class="line">语法示例：</span><br></pre></td></tr></table></figure>
-
-<p>python</p>
-<p>#!/usr/bin/python<br>import re</p>
-<p>line = “Cats are smarter than dogs”</p>
-<p>matchObj = re.match( r’(.<em>) are (.</em>?) .*’, line, re.M|re.I)</p>
-<p>if matchObj:<br>    print “matchObj.group() : “, matchObj.group()<br>    print “matchObj.group(1) : “, matchObj.group(1)<br>    print “matchObj.group(2) : “, matchObj.group(2)<br>else:<br>    print “No match!!”</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">***</span><br><span class="line">#### 15. 插入数学公式印象笔记 Markdown 支持绝大多数的 LaTeX 数学公式</span><br><span class="line">语法示例：</span><br></pre></td></tr></table></figure>
-
-<p>mathe^{i\pi} + 1 = 0</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">更多数学公式的输入可以参考：https://khan.github.io/KaTeX/docs/supported.html</span><br><span class="line">![](https://list.yinxiang.com/media/images/c93e418911efa9fef085f5cf5fef5ccb.png)</span><br><span class="line">***</span><br><span class="line">#### 16. 插入流程图</span><br><span class="line">语法示例：</span><br></pre></td></tr></table></figure>
-
-<p>mermaid<br>graph TD<br>A[模块A] –&gt;;|A1| B(模块B)<br>B –&gt;; C{判断条件C}<br>C –&gt;;|条件C1|D[模块D]<br>C –&gt;;|条件C2|E[模块E]<br>C –&gt;;|条件C3|F[模块F]</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">![](https://list.yinxiang.com/media/images/3f18e5911a3342af4871115ba519f544.png)</span><br><span class="line">***</span><br><span class="line">#### 17.  插入时序图</span><br><span class="line">语法示例：</span><br></pre></td></tr></table></figure>
-
-<p>mermaid<br>sequenceDiagram<br>A-&gt;&gt;B: 是否已收到消息？B–&gt;&gt;A: 已收到消息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">![](https://list.yinxiang.com/media/images/c54a131fbcbc0167c0a2ffa6e1c53a9b.png)</span><br><span class="line">***</span><br><span class="line">#### 18. 插入甘特图语法示例：</span><br></pre></td></tr></table></figure>
-
-<p>mermaid<br>gantt<br>title甘特图<br>dateFormat YYYY-MM-DD<br>section 项目A<br>任务1 :a1, 2018-06-06, 30d<br>任务2 :after a1 , 20d<br>section 项目B<br>任务3 :2018-06-12 , 12d<br>任务4 : 24d</p>
-<pre><code>![](https://list.yinxiang.com/media/images/cb24dc3b1004d6f07119e60fcb86f5a8.png)
-***
-#### 19. 设置目录
-设置之后可以自动根据设置的分级标题来自动生成目录。
-语法示例[TOC]：
-
----
-[[TOC]]
-
-![](https://list.yinxiang.com/media/images/3caad079bbafbb2f7ba3dbd59fbdc057.png)
-</code></pre>
       
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你的鼓励<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/img/alipay.jpg">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/img/weixin.png">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -364,7 +298,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">工具使用</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
         		</li>
       		
 		</ul>
@@ -420,7 +354,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://markchyl.github.io/2019/01/04/Markdown-入门指南一/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://markchyl.github.io/2019/08/06/android-修改项目包名详解/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -435,18 +369,9 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2019/01/18/占位符-Broccoli-的使用/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          占位符 Broccoli 的使用
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/12/29/Python基础学习/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Python基础学习</div>
+    <a href="/2019/08/06/Android常见的三种弹框/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Android常见的三种弹框</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -465,19 +390,6 @@ var _hmt = _hmt || [];
             </div>
         </div>
         
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、Markdown-是什么？"><span class="toc-number">1.</span> <span class="toc-text">一、Markdown 是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、印象笔记里-Markdown-有什么特点？"><span class="toc-number">2.</span> <span class="toc-text">二、印象笔记里 Markdown 有什么特点？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、如何创建-Markdown-笔记？"><span class="toc-number">3.</span> <span class="toc-text">三、如何创建 Markdown 笔记？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四、印象笔记-Markdown-笔记支持哪些语法？"><span class="toc-number">4.</span> <span class="toc-text">四、印象笔记 Markdown 笔记支持哪些语法？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-设置分级标题语法示例："><span class="toc-number">4.1.</span> <span class="toc-text">1. 设置分级标题语法示例：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-加粗文本"><span class="toc-number">4.2.</span> <span class="toc-text">2. 加粗文本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-斜体"><span class="toc-number">4.3.</span> <span class="toc-text">3. 斜体</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-下划线"><span class="toc-number">4.4.</span> <span class="toc-text">4. 下划线</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-删除线"><span class="toc-number">4.5.</span> <span class="toc-text">5. 删除线</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-添加分隔线"><span class="toc-number">4.6.</span> <span class="toc-text">6. 添加分隔线</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-引用文本语法示例："><span class="toc-number">4.7.</span> <span class="toc-text">7. 引用文本语法示例：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-添加符号列表或者数字列表"><span class="toc-number">4.8.</span> <span class="toc-text">8. 添加符号列表或者数字列表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-添加待办事项"><span class="toc-number">4.9.</span> <span class="toc-text">9. 添加待办事项</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-插入链接"><span class="toc-number">4.10.</span> <span class="toc-text">10. 插入链接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-插入图片"><span class="toc-number">4.11.</span> <span class="toc-text">11. 插入图片</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#12-插入表格"><span class="toc-number">4.12.</span> <span class="toc-text">12. 插入表格</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#13-插入图表"><span class="toc-number">4.13.</span> <span class="toc-text">13. 插入图表</span></a></li></ol></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
         
     </div>
 </aside>
@@ -527,30 +439,6 @@ var _hmt = _hmt || [];
 
 
 <!-- 目录内容 -->
-
-  <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
-  <span class="btn-bg"></span>
-  <span class="btn-text">文章导航</span>
-  </p>
-  <div id="toc-article" class="toc-article">
-      <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
-      <strong class="toc-title">文章目录</strong>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、Markdown-是什么？"><span class="toc-number">1.</span> <span class="toc-text">一、Markdown 是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、印象笔记里-Markdown-有什么特点？"><span class="toc-number">2.</span> <span class="toc-text">二、印象笔记里 Markdown 有什么特点？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、如何创建-Markdown-笔记？"><span class="toc-number">3.</span> <span class="toc-text">三、如何创建 Markdown 笔记？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四、印象笔记-Markdown-笔记支持哪些语法？"><span class="toc-number">4.</span> <span class="toc-text">四、印象笔记 Markdown 笔记支持哪些语法？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-设置分级标题语法示例："><span class="toc-number">4.1.</span> <span class="toc-text">1. 设置分级标题语法示例：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-加粗文本"><span class="toc-number">4.2.</span> <span class="toc-text">2. 加粗文本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-斜体"><span class="toc-number">4.3.</span> <span class="toc-text">3. 斜体</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-下划线"><span class="toc-number">4.4.</span> <span class="toc-text">4. 下划线</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-删除线"><span class="toc-number">4.5.</span> <span class="toc-text">5. 删除线</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-添加分隔线"><span class="toc-number">4.6.</span> <span class="toc-text">6. 添加分隔线</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-引用文本语法示例："><span class="toc-number">4.7.</span> <span class="toc-text">7. 引用文本语法示例：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-添加符号列表或者数字列表"><span class="toc-number">4.8.</span> <span class="toc-text">8. 添加符号列表或者数字列表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-添加待办事项"><span class="toc-number">4.9.</span> <span class="toc-text">9. 添加待办事项</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-插入链接"><span class="toc-number">4.10.</span> <span class="toc-text">10. 插入链接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-插入图片"><span class="toc-number">4.11.</span> <span class="toc-text">11. 插入图片</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#12-插入表格"><span class="toc-number">4.12.</span> <span class="toc-text">12. 插入表格</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#13-插入图表"><span class="toc-number">4.13.</span> <span class="toc-text">13. 插入图表</span></a></li></ol></li></ol>
- </div>
- <script type="text/javascript">
-  function showToc(){
-      var toc_article = document.getElementById("toc-article");
-      var show_toc_btn = document.getElementById("show-toc-btn");
-      toc_article.setAttribute("style","display:block");
-      show_toc_btn.setAttribute("style","display:none");
-      };
-  function showBtn(){
-      var toc_article = document.getElementById("toc-article");
-      var show_toc_btn = document.getElementById("show-toc-btn");
-      toc_article.setAttribute("style","display:none");
-      show_toc_btn.setAttribute("style","display:block");
-      };
- </script>
      
 
 
