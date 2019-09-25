@@ -8,18 +8,20 @@
   <link rel="dns-prefetch" href="https://markchyl.github.io">
   <title>Android 搜索 把软键盘上的回车键改为搜索 | Mark的私人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言： 项目中需要自定义一个搜做的功能，但是我通过更具UI的显示，完全没法使用V7包下的SearchView控件，于是我使用EditView自己写的。  具体实现如下： 修改Editview属性： android:imeOptions=&amp;quot;actionSearch&amp;quot; 在该Editview获得焦点的时候将“回车”键改为“搜索” android:singleLine=”true”">
+  <meta name="description" content="前言： 项目中需要自定义一个搜做的功能，但是我通过更具UI的显示，完全没法使用V7包下的SearchView控件，于是我使用EditView自己写的。">
 <meta name="keywords" content="Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android 搜索 把软键盘上的回车键改为搜索">
 <meta property="og:url" content="https://markchyl.github.io/2019/09/25/Android-搜索-把软键盘上的回车键改为搜索/index.html">
 <meta property="og:site_name" content="Mark的私人博客">
-<meta property="og:description" content="前言： 项目中需要自定义一个搜做的功能，但是我通过更具UI的显示，完全没法使用V7包下的SearchView控件，于是我使用EditView自己写的。  具体实现如下： 修改Editview属性： android:imeOptions=&amp;quot;actionSearch&amp;quot; 在该Editview获得焦点的时候将“回车”键改为“搜索” android:singleLine=”true”">
+<meta property="og:description" content="前言： 项目中需要自定义一个搜做的功能，但是我通过更具UI的显示，完全没法使用V7包下的SearchView控件，于是我使用EditView自己写的。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-25T07:51:59.857Z">
+<meta property="og:image" content="https://thumbnail0.baidupcs.com/thumbnail/cede3f055d8aeb66477c40eb3af2066a?fid=3761439320-250528-957214977420267&time=1569398400&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-T%2FjYZusknxVB1gKzQcIJFFErJ%2FM%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=443423899171394619&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video">
+<meta property="og:updated_time" content="2019-09-25T08:05:59.360Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android 搜索 把软键盘上的回车键改为搜索">
-<meta name="twitter:description" content="前言： 项目中需要自定义一个搜做的功能，但是我通过更具UI的显示，完全没法使用V7包下的SearchView控件，于是我使用EditView自己写的。  具体实现如下： 修改Editview属性： android:imeOptions=&amp;quot;actionSearch&amp;quot; 在该Editview获得焦点的时候将“回车”键改为“搜索” android:singleLine=”true”">
+<meta name="twitter:description" content="前言： 项目中需要自定义一个搜做的功能，但是我通过更具UI的显示，完全没法使用V7包下的SearchView控件，于是我使用EditView自己写的。">
+<meta name="twitter:image" content="https://thumbnail0.baidupcs.com/thumbnail/cede3f055d8aeb66477c40eb3af2066a?fid=3761439320-250528-957214977420267&time=1569398400&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-T%2FjYZusknxVB1gKzQcIJFFErJ%2FM%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=443423899171394619&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video">
   
     <link rel="alternative" href="/atom.xml" title="Mark的私人博客" type="application/atom+xml">
   
@@ -194,15 +196,15 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><blockquote>
-<p>项目中需要自定义一个搜做的功能，但是我通过更具UI的显示，完全没法使用V7包下的SearchView控件，于是我使用EditView自己写的。</p>
+<p>项目中需要自定义一个搜做的功能，但是我通过更具UI的显示，完全没法使用V7包下的SearchView控件，于是我使用EditView自己写的。<br><img src="https://thumbnail0.baidupcs.com/thumbnail/cede3f055d8aeb66477c40eb3af2066a?fid=3761439320-250528-957214977420267&time=1569398400&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-T%2FjYZusknxVB1gKzQcIJFFErJ%2FM%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=443423899171394619&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video" alt></p>
 </blockquote>
+<a id="more"></a>
 <h3 id="具体实现如下："><a href="#具体实现如下：" class="headerlink" title="具体实现如下："></a>具体实现如下：</h3><ul>
 <li><p>修改Editview属性：</p>
 <p><code>android:imeOptions=&quot;actionSearch&quot;</code></p>
 <p>在该Editview获得焦点的时候将“回车”键改为“搜索”</p>
 <p>android:singleLine=”true”     </p>
 <p>不然回车【搜索】会换行。</p>
-<a id="more"></a>
 </li>
 <li><p>EditView编写监听按下控件监听，监听确认键的按下</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">etSearchstr.setOnKeyListener(new View.OnKeyListener() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public boolean onKey(View v, int keyCode, KeyEvent event) &#123;</span><br><span class="line">                if (keyCode == KeyEvent.KEYCODE_ENTER) &#123;</span><br><span class="line">                    // 先隐藏键盘</span><br><span class="line">                    ((InputMethodManager) getSystemService(INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(GoodsListActivity.this.getCurrentFocus()</span><br><span class="line">                            .getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);</span><br><span class="line">                    //进行搜索操作的方法，在该方法中可以加入mEditSearchUser的非空判断</span><br><span class="line">                    refresh.autoRefresh();</span><br><span class="line">                &#125;</span><br><span class="line">                return false;</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
@@ -541,14 +543,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">视频直播</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
              
@@ -557,11 +551,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">工具使用</a>
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">网络框架</a>
+                <a href="javascript:void(0)" class="js-tag color5">视频直播</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">工具使用</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -569,11 +567,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">冲突</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">冲突</a>
+                <a href="javascript:void(0)" class="js-tag color5">网络框架</a>
               </li>
              
               <li class="article-tag-list-item">
