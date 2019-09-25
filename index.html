@@ -200,14 +200,7 @@ var _hmt = _hmt || [];
 <p>在该Editview获得焦点的时候将“回车”键改为“搜索”</p>
 <p>android:singleLine=”true”     </p>
 <p>不然回车【搜索】会换行。</p>
-</li>
-</ul>
-<ul>
-<li>EditView编写监听按下控件监听，监听确认键的按下<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">etSearchstr.setOnKeyListener(new View.OnKeyListener() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public boolean onKey(View v, int keyCode, KeyEvent event) &#123;</span><br><span class="line">                if (keyCode == KeyEvent.KEYCODE_ENTER) &#123;</span><br><span class="line">                    // 先隐藏键盘</span><br><span class="line">                    ((InputMethodManager) getSystemService(INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(GoodsListActivity.this.getCurrentFocus()</span><br><span class="line">                            .getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);</span><br><span class="line">                    //进行搜索操作的方法，在该方法中可以加入mEditSearchUser的非空判断</span><br><span class="line">                    refresh.autoRefresh();</span><br><span class="line">                &#125;</span><br><span class="line">                return false;</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-
+        
       
 
       
@@ -1136,15 +1129,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Flutter实战</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">视频直播</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Flutter实战</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1168,11 +1161,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">冲突</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color3">冲突</a>
               </li>
              
               <li class="article-tag-list-item">
