@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://markchyl.github.io/"/>
-  <updated>2019-09-26T01:49:57.223Z</updated>
+  <updated>2019-10-14T05:21:28.990Z</updated>
   <id>https://markchyl.github.io/</id>
   
   <author>
@@ -21,17 +21,25 @@
     <link href="https://markchyl.github.io/2019/09/26/Android-APK%E5%8F%8D%E7%BC%96%E8%AF%91-apktool%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"/>
     <id>https://markchyl.github.io/2019/09/26/Android-APK反编译-apktool使用教程/</id>
     <published>2019-09-26T01:48:57.000Z</published>
-    <updated>2019-09-26T01:49:57.223Z</updated>
+    <updated>2019-10-14T05:21:28.990Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><p>时间久了之前在熟悉的东西也会渐疏，好记性不如乱笔头。</p><h2 id="工具介绍"><a href="#工具介绍" class="headerlink" title="工具介绍"></a>工具介绍</h2><ul><li>apktool  </li></ul><p>​     作用：主要查看res文件下xml文件、AndroidManifest.xml和图片。（注意：如果直接解压.apk文件，xml文件打开全部是乱码）</p><ul><li>dex2jar</li></ul><p>​     作用：将apk反编译成<a href="http://lib.csdn.net/base/javaee" target="_blank" rel="noopener">Java</a>源码（classes.dex转化成jar文件）</p><ul><li>jd-gui</li></ul><p>​     作用：查看APK中classes.dex转化成出的jar文件，即源码文件</p><h2 id="新版本apktool用法："><a href="#新版本apktool用法：" class="headerlink" title="新版本apktool用法："></a>新版本apktool用法：</h2><p>1、下载和安装方法：</p><p><a href="https://ibotpeaches.github.io/Apktool/install/" target="_blank" rel="noopener">https://ibotpeaches.github.io/Apktool/install/</a></p><p><img src="https://thumbnail0.baidupcs.com/thumbnail/38e813d52e3dfc10234ae12835819ff7?fid=3761439320-250528-346821393816278&time=1569459600&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-Z3HFxH7YdDPEq0mUN8y6UzOnddE%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=460436671360346953&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video" alt></p><p>2、使用方法</p><p><a href="https://ibotpeaches.github.io/Apktool/documentation/" target="_blank" rel="noopener">https://ibotpeaches.github.io/Apktool/documentation/</a></p><p><img src="https://thumbnail0.baidupcs.com/thumbnail/b2f82f60dfcffa6927c2d670daa72d38?fid=3761439320-250528-558451696215383&time=1569459600&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-CsFMBIHt1kd3a8Va1ABYkxhUg9I%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=460411839476402063&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video" alt></p><p>3、反编译开始</p><p>Mark获得结果只有res文件的是可读性的：</p><p><img src="https://thumbnail0.baidupcs.com/thumbnail/f9ced22da6e5c604c33ff6227c86ddb6?fid=3761439320-250528-1034439241785614&time=1569459600&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-nRulMxiMtqZORfZtt33jt7cyZPo%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=460498225017852308&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video" alt></p><h2 id="蚂蚁虽小也是肉，细心积累，慢慢提高自己，加油！"><a href="#蚂蚁虽小也是肉，细心积累，慢慢提高自己，加油！" class="headerlink" title="蚂蚁虽小也是肉，细心积累，慢慢提高自己，加油！"></a>蚂蚁虽小也是肉，细心积累，慢慢提高自己，加油！</h2>]]></content>
+    <content type="html"><![CDATA[<h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><p>时间久了之前在熟悉的东西也会渐疏，好记性不如乱笔头。</p><h2 id="工具介绍"><a href="#工具介绍" class="headerlink" title="工具介绍"></a>工具介绍</h2><ul><li>apktool  </li></ul><p>​     作用：主要查看res文件下xml文件、AndroidManifest.xml和图片。（注意：如果直接解压.apk文件，xml文件打开全部是乱码）</p><ul><li>dex2jar</li></ul><p>​     作用：将apk反编译成<a href="http://lib.csdn.net/base/javaee" target="_blank" rel="noopener">Java</a>源码（classes.dex转化成jar文件）</p><ul><li>jd-gui</li></ul><p>​     作用：查看APK中classes.dex转化成出的jar文件，即源码文件</p><a id="more"></a><h2 id="新版本apktool用法："><a href="#新版本apktool用法：" class="headerlink" title="新版本apktool用法："></a>新版本apktool用法：</h2><p>1、下载和安装方法：</p><p><a href="https://ibotpeaches.github.io/Apktool/install/" target="_blank" rel="noopener">https://ibotpeaches.github.io/Apktool/install/</a></p><p><img src="https://thumbnail0.baidupcs.com/thumbnail/38e813d52e3dfc10234ae12835819ff7?fid=3761439320-250528-346821393816278&time=1569459600&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-Z3HFxH7YdDPEq0mUN8y6UzOnddE%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=460436671360346953&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video" alt></p><p>2、使用方法</p><p><a href="https://ibotpeaches.github.io/Apktool/documentation/" target="_blank" rel="noopener">https://ibotpeaches.github.io/Apktool/documentation/</a></p><p><img src="https://thumbnail0.baidupcs.com/thumbnail/b2f82f60dfcffa6927c2d670daa72d38?fid=3761439320-250528-558451696215383&time=1569459600&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-CsFMBIHt1kd3a8Va1ABYkxhUg9I%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=460411839476402063&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video" alt></p><p>3、反编译开始</p><p>Mark获得结果只有res文件的是可读性的：</p><p><img src="https://thumbnail0.baidupcs.com/thumbnail/f9ced22da6e5c604c33ff6227c86ddb6?fid=3761439320-250528-1034439241785614&time=1569459600&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-nRulMxiMtqZORfZtt33jt7cyZPo%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=460498225017852308&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video" alt></p><h2 id="蚂蚁虽小也是肉，细心积累，慢慢提高自己，加油！"><a href="#蚂蚁虽小也是肉，细心积累，慢慢提高自己，加油！" class="headerlink" title="蚂蚁虽小也是肉，细心积累，慢慢提高自己，加油！"></a>蚂蚁虽小也是肉，细心积累，慢慢提高自己，加油！</h2>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;h2 id=&quot;前言：&quot;&gt;&lt;a href=&quot;#前言：&quot; class=&quot;headerlink&quot; title=&quot;前言：&quot;&gt;&lt;/a&gt;前言：&lt;/h2&gt;&lt;p&gt;时间久了之前在熟悉的东西也会渐疏，好记性不如乱笔头。&lt;/p&gt;
-&lt;h2 id=&quot;工具介绍&quot;&gt;&lt;a href=&quot;#工具介绍&quot; class
-      
+      &lt;h2 id=&quot;前言：&quot;&gt;&lt;a href=&quot;#前言：&quot; class=&quot;headerlink&quot; title=&quot;前言：&quot;&gt;&lt;/a&gt;前言：&lt;/h2&gt;&lt;p&gt;时间久了之前在熟悉的东西也会渐疏，好记性不如乱笔头。&lt;/p&gt;
+&lt;h2 id=&quot;工具介绍&quot;&gt;&lt;a href=&quot;#工具介绍&quot; class=&quot;headerlink&quot; title=&quot;工具介绍&quot;&gt;&lt;/a&gt;工具介绍&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;apktool  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;​     作用：主要查看res文件下xml文件、AndroidManifest.xml和图片。（注意：如果直接解压.apk文件，xml文件打开全部是乱码）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;dex2jar&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;​     作用：将apk反编译成&lt;a href=&quot;http://lib.csdn.net/base/javaee&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Java&lt;/a&gt;源码（classes.dex转化成jar文件）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;jd-gui&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;​     作用：查看APK中classes.dex转化成出的jar文件，即源码文件&lt;/p&gt;
     
     </summary>
     
