@@ -6,20 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://markchyl.github.io">
-  <title>ScrollView与RecyclerView解决滑动冲突 | Mark的私人博客</title>
+  <title>Archives: 2019 | Mark的私人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="原文 RecyclerView 嵌套RecyclerView是不存在冲突的 因为内部已经解决，ScrollVIew嵌套RecyclerView会存在现实不全的问题，滑动的时候会导致不流畅，所以我换用的是NestedScrollView嵌套RecyclerView不会存在显示不完全的现象，但是还会有一点的滑动冲突">
-<meta name="keywords" content="Android,冲突">
-<meta property="og:type" content="article">
-<meta property="og:title" content="ScrollView与RecyclerView解决滑动冲突">
-<meta property="og:url" content="https://markchyl.github.io/2019/09/02/ScrollView与RecyclerView解决滑动冲突/index.html">
+  <meta name="description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
+<meta name="keywords" content="MarkCHYL">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mark的私人博客">
+<meta property="og:url" content="https://markchyl.github.io/archives/2019/page/3/index.html">
 <meta property="og:site_name" content="Mark的私人博客">
-<meta property="og:description" content="原文 RecyclerView 嵌套RecyclerView是不存在冲突的 因为内部已经解决，ScrollVIew嵌套RecyclerView会存在现实不全的问题，滑动的时候会导致不流畅，所以我换用的是NestedScrollView嵌套RecyclerView不会存在显示不完全的现象，但是还会有一点的滑动冲突">
+<meta property="og:description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-02T05:41:01.885Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ScrollView与RecyclerView解决滑动冲突">
-<meta name="twitter:description" content="原文 RecyclerView 嵌套RecyclerView是不存在冲突的 因为内部已经解决，ScrollVIew嵌套RecyclerView会存在现实不全的问题，滑动的时候会导致不流畅，所以我换用的是NestedScrollView嵌套RecyclerView不会存在显示不完全的现象，但是还会有一点的滑动冲突">
+<meta name="twitter:title" content="Mark的私人博客">
+<meta name="twitter:description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
   
     <link rel="alternative" href="/atom.xml" title="Mark的私人博客" type="application/atom+xml">
   
@@ -168,205 +167,64 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-ScrollView与RecyclerView解决滑动冲突" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      ScrollView与RecyclerView解决滑动冲突
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2019/01/04/Markdown-入门指南一/" class="archive-article-date">
+  	<time datetime="2019-01-04T02:20:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-04</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2019/01/04/Markdown-入门指南一/">Markdown 入门指南一</a>
     </h1>
   
 
-        
-        <a href="/2019/09/02/ScrollView与RecyclerView解决滑动冲突/" class="archive-article-date">
-  	<time datetime="2019-09-02T05:04:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-02</time>
-</a>
-        
-         <!-- 添加代码 -->
-        
-           <span class="archive-article-date">阅读量 <span id="busuanzi_value_page_pv"></span>
-           </span>
-        
-    </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="https://www.jianshu.com/p/3e0ad704bee5" target="_blank" rel="noopener">原文</a></p>
-<p><strong>RecyclerView 嵌套RecyclerView是不存在冲突的 因为内部已经解决，ScrollVIew嵌套RecyclerView会存在现实不全的问题，滑动的时候会导致不流畅，所以我换用的是NestedScrollView嵌套RecyclerView不会存在显示不完全的现象，但是还会有一点的滑动冲突</strong></p>
- <a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;android.support.v4.widget.NestedScrollView</span><br><span class="line">    xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">    android:layout_width=&quot;match_parent&quot;</span><br><span class="line">    android:layout_height=&quot;match_parent&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;LinearLayout</span><br><span class="line">        android:layout_width=&quot;match_parent&quot;</span><br><span class="line">        android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">        android:orientation=&quot;vertical&quot;&gt;</span><br><span class="line">        </span><br><span class="line">        &lt;TextView</span><br><span class="line">            android:layout_width=&quot;match_parent&quot;</span><br><span class="line">            android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">            android:text=&quot;标题党&quot;/&gt;</span><br><span class="line"></span><br><span class="line">        &lt;android.support.v7.widget.RecyclerView</span><br><span class="line">            android:id=&quot;@+id/recyclerView&quot;</span><br><span class="line">            android:layout_width=&quot;match_parent&quot;</span><br><span class="line">            android:layout_height=&quot;wrap_content&quot;/&gt;</span><br><span class="line">      </span><br><span class="line">    &lt;/LinearLayout&gt;</span><br><span class="line"></span><br><span class="line">&lt;/android.support.v4.widget.NestedScrollView&gt;</span><br></pre></td></tr></table></figure>
-
-<p><strong>上面只是布局代码而已，滑动冲突还是没有解决，我们只要在recyclerView 设置一下这个属性就可以了</strong><br>    <code>recyclerView.setNestedScrollingEnabled(false);</code></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">冲突</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">工具使用</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://markchyl.github.io/2019/09/02/ScrollView与RecyclerView解决滑动冲突/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-
-  
-<nav id="article-nav">
-  
-    <a href="/2019/09/02/界面为ScrollView时打开界面会自动滚动到底部之解决方法/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          界面为ScrollView时打开界面会自动滚动到底部之解决方法
-        
-      </div>
-    </a>
   
   
-    <a href="/2019/08/06/android-修改项目包名详解/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">android 修改项目包名详解</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-
-  
-    <section id="comments" class="comments">
-      <style>
-        .comments{margin:30px;padding:10px;background:#fff}
-        @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
-      </style>
-      <div id="vcomment" class="comment"></div> 
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-<script>
-   var notify = 'false' == true ? true : false;
-   var verify = 'false' == true ? true : false;
-    window.onload = function() {
-        new Valine({
-            el: '.comment',
-            notify: notify,
-            verify: verify,
-            app_id: "P9T2E7LYLXaws22JLaK9XKA6-gzGzoHsz",
-            app_key: "jvQlMofB0h6Izc2NQJKio9M5",
-            placeholder: "Just go go",
-            avatar:"mm"
-        });
-    }
-</script>
-      </section>
     
-
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/archives/2019/page/2/">&laquo; Prev</a><a class="page-number" href="/archives/2019/">1</a><a class="page-number" href="/archives/2019/page/2/">2</a><span class="page-number current">3</span>
+    </nav>
   
-
-  
-  
-
-
-<!-- 目录内容 -->
-     
 
 
           </div>
@@ -400,8 +258,8 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
