@@ -5,14 +5,14 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="dns-prefetch" href="https://markchyl.github.io">
+  <link rel="dns-prefetch" href="http://markchyl.cn">
   <title>安卓的启动模式详解 | Mark的私人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="安卓开发者基本都知道Activity的四大启动模式，但是一到被问到之间区别的时候，再问深一点的时候，往往都会回答的不是很让面试官满意，鄙人就是，嘴皮子笨不懂得如何表达清楚。简介我们在创建一个Activity后，都知道要在清单文件中去注册，在程序员创建该Activity实例时，系统会按照先进先出的原则，创建一个任务栈将其实例放入其中，然后按back键时或finish时，系统就会将栈顶的Activit">
 <meta name="keywords" content="Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="安卓的启动模式详解">
-<meta property="og:url" content="https://markchyl.github.io/2018/12/16/安卓的启动模式详解/index.html">
+<meta property="og:url" content="http://markchyl.cn/2018/12/16/安卓的启动模式详解/index.html">
 <meta property="og:site_name" content="Mark的私人博客">
 <meta property="og:description" content="安卓开发者基本都知道Activity的四大启动模式，但是一到被问到之间区别的时候，再问深一点的时候，往往都会回答的不是很让面试官满意，鄙人就是，嘴皮子笨不懂得如何表达清楚。简介我们在创建一个Activity后，都知道要在清单文件中去注册，在程序员创建该Activity实例时，系统会按照先进先出的原则，创建一个任务栈将其实例放入其中，然后按back键时或finish时，系统就会将栈顶的Activit">
 <meta property="og:locale" content="zh-Hans">
@@ -84,6 +84,8 @@ var _hmt = _hmt || [];
     		
     			
     			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
+    			
+            
     			
             
     			
@@ -301,7 +303,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://markchyl.github.io/2018/12/16/安卓的启动模式详解/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://markchyl.cn/2018/12/16/安卓的启动模式详解/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -474,7 +476,7 @@ var _hmt = _hmt || [];
 		toc_hide_index: true,
 		root: "/",
 		innerArchive: true,
-		showTags: true
+		showTags: false
 	}
 </script>
 
@@ -496,6 +498,8 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
       
     
       
+    
+      
       
       
     
@@ -506,6 +510,8 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
       
       <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      
+        
       
         
       
@@ -530,6 +536,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">工具使用</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Android</a>
               </li>
              
@@ -538,19 +548,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">工具使用</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Flutter实战</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">网络框架</a>
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -563,6 +565,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">视频直播</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">网络框架</a>
               </li>
              
               <li class="article-tag-list-item">
