@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://markchyl.cn/"/>
-  <updated>2019-10-18T02:28:29.376Z</updated>
+  <updated>2019-10-31T01:56:04.725Z</updated>
   <id>http://markchyl.cn/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ping端口是否开放(macos)</title>
+    <link href="http://markchyl.cn/2019/10/30/ping%E7%AB%AF%E5%8F%A3%E6%98%AF%E5%90%A6%E5%BC%80%E6%94%BE-macos/"/>
+    <id>http://markchyl.cn/2019/10/30/ping端口是否开放-macos/</id>
+    <published>2019-10-30T09:01:33.000Z</published>
+    <updated>2019-10-31T01:56:04.725Z</updated>
+    
+    <content type="html"><![CDATA[<p><em>简单的实用积累</em></p><p><a href="https://blog.csdn.net/woodwindforward/article/details/89641636" target="_blank" rel="noopener">原文转自</a></p><h3 id="mac中："><a href="#mac中：" class="headerlink" title="mac中："></a>mac中：</h3><p>打开终端：</p><ul><li><p>输入 ping 域名：ping <a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a></p><p><img src="https://img2018.cnblogs.com/blog/1368523/201904/1368523-20190425193812807-428916356.png" alt></p></li><li><p>ping端口：nc -vz -w 2 <a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a> 8080</p><p><img src="https://img2018.cnblogs.com/blog/1368523/201904/1368523-20190425193241938-258296742.png" alt></p></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;em&gt;简单的实用积累&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/woodwindforward/article/details/89641636&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;原文转自&lt;/a&gt;&lt;
+      
+    
+    </summary>
+    
+    
+      <category term="网络编程" scheme="http://markchyl.cn/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>Python实现批量生产二维码</title>
