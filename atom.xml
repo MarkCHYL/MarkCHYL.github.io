@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://markchyl.cn/"/>
-  <updated>2019-10-31T01:56:04.725Z</updated>
+  <updated>2019-11-14T02:20:22.232Z</updated>
   <id>http://markchyl.cn/</id>
   
   <author>
@@ -15,6 +15,47 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Flutter解决启动白屏</title>
+    <link href="http://markchyl.cn/2019/11/14/Flutter%E8%A7%A3%E5%86%B3%E5%90%AF%E5%8A%A8%E7%99%BD%E5%B1%8F/"/>
+    <id>http://markchyl.cn/2019/11/14/Flutter解决启动白屏/</id>
+    <published>2019-11-14T01:36:51.000Z</published>
+    <updated>2019-11-14T02:20:22.232Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="为什么启动会出现白屏？"><a href="#为什么启动会出现白屏？" class="headerlink" title="为什么启动会出现白屏？"></a>为什么启动会出现白屏？</h3><p>由于Android启动的时候要进行一系列初始化，如检查权限，开启进程，绑定application，startActivity。<br>这些初始化会稍微需要一点点时间，比如一秒钟。白屏持续的时间长短当然也和设备有关，设备越差白屏持续时间越长。</p><a id="more"></a><h3 id="如何解决？"><a href="#如何解决？" class="headerlink" title="如何解决？"></a>如何解决？</h3><p>我这里使用第三方的插件进行解决。<a href="https://pub.flutter-io.cn/packages/flutter_splash_screen" target="_blank" rel="noopener">flutter_splash_screen</a>.</p><p>其使用方法看他的文档。</p><h3 id="记录下配置的时候遇到的问题？"><a href="#记录下配置的时候遇到的问题？" class="headerlink" title="记录下配置的时候遇到的问题？"></a>记录下配置的时候遇到的问题？</h3><p>导包总是报错，先手敲代码，再导包。支持自定义启动布局。<br>安卓的配置步骤多点。<br><strong>下面是我安卓配置：</strong><br><img src="https://thumbnail0.baidupcs.com/thumbnail/477735a56f90cd1d64169d2917a87770?fid=3761439320-250528-246305797275251&time=1573696800&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-G9FxrL0R8wPZgpghMa0UmLf4liU%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=7361838327784451279&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video" alt><br>至于额为什么字体显示红色，别紧张，运行没得问题的。<br>其他的配置看官方文档。<br><strong>下面是我 IOS 配置：</strong></p><ul><li>导入启动图片<br><img src="https://thumbnail0.baidupcs.com/thumbnail/8f43bb0ad5a59ab03ed661aa656a7046?fid=3761439320-250528-119014613827010&time=1573696800&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-MVtW4kap4%2BVX1pHhbojCnEHjvLc%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=7362027953528330279&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video" alt></li><li>配置启动图片<br><img src="https://thumbnail0.baidupcs.com/thumbnail/37e039082e477ed6eb598eb35be32040?fid=3761439320-250528-291075177673625&time=1573696800&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-Uxe3IMjyZGyTpPolQclxnVFPyAo%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=7362084701809447864&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video" alt></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;为什么启动会出现白屏？&quot;&gt;&lt;a href=&quot;#为什么启动会出现白屏？&quot; class=&quot;headerlink&quot; title=&quot;为什么启动会出现白屏？&quot;&gt;&lt;/a&gt;为什么启动会出现白屏？&lt;/h3&gt;&lt;p&gt;由于Android启动的时候要进行一系列初始化，如检查权限，开启进程，绑定application，startActivity。&lt;br&gt;这些初始化会稍微需要一点点时间，比如一秒钟。白屏持续的时间长短当然也和设备有关，设备越差白屏持续时间越长。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Flutter" scheme="http://markchyl.cn/tags/Flutter/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Flutter如何打包安卓apk包</title>
+    <link href="http://markchyl.cn/2019/11/14/Flutter%E5%A6%82%E4%BD%95%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93apk%E5%8C%85/"/>
+    <id>http://markchyl.cn/2019/11/14/Flutter如何打包安卓apk包/</id>
+    <published>2019-11-14T01:05:43.000Z</published>
+    <updated>2019-11-14T02:19:53.489Z</updated>
+    
+    <content type="html"><![CDATA[<p>作为安卓原生开发多年的我，也是第一次接触这种方式配置打包信息。原谅我的无知。</p><h3 id="一、在项目根目录下新建-key-properties-文件"><a href="#一、在项目根目录下新建-key-properties-文件" class="headerlink" title="一、在项目根目录下新建 key.properties 文件"></a>一、在项目根目录下新建 key.properties 文件</h3><p>配置签名的基本信息</p><a id="more"></a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">storePassword=chenyunlin</span><br><span class="line">keyPassword=chenyunlin</span><br><span class="line">keyAlias=Mark</span><br><span class="line">storeFile=/Users/mark/Desktop/Document/keyStore/MarkKey.jks</span><br></pre></td></tr></table></figure><h3 id="二、配置到app目录下的-build-gradle-文件"><a href="#二、配置到app目录下的-build-gradle-文件" class="headerlink" title="二、配置到app目录下的 build.gradle 文件"></a>二、配置到app目录下的 build.gradle 文件</h3><p>在安卓目录下添加如下配置：导入配置 key.properties 的路径</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def keystorePropertiesFile = rootProject.file(&quot;key.properties&quot;)</span><br><span class="line">def keystoreProperties = new Properties()</span><br><span class="line">keystoreProperties.load(new FileInputStream(keystorePropertiesFile))</span><br><span class="line">android&#123;</span><br><span class="line">    ······</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>配置签名的信息：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">android &#123;</span><br><span class="line">    ····</span><br><span class="line">      signingConfigs &#123;</span><br><span class="line">        release &#123;</span><br><span class="line">            keyAlias keystoreProperties[&apos;keyAlias&apos;]</span><br><span class="line">            keyPassword keystoreProperties[&apos;keyPassword&apos;]</span><br><span class="line">            storeFile file(keystoreProperties[&apos;storeFile&apos;])</span><br><span class="line">            storePassword keystoreProperties[&apos;storePassword&apos;]</span><br><span class="line">        &#125;</span><br><span class="line">        debug &#123;</span><br><span class="line">            keyAlias keystoreProperties[&apos;keyAlias&apos;]</span><br><span class="line">            keyPassword keystoreProperties[&apos;keyPassword&apos;]</span><br><span class="line">            storeFile file(keystoreProperties[&apos;storeFile&apos;])</span><br><span class="line">            storePassword keystoreProperties[&apos;storePassword&apos;]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    ····</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>这样下来安卓的配置信息配置完成。<br>下面修改buildType是：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">buildTypes &#123;</span><br><span class="line">       release &#123;</span><br><span class="line">           // Signing with the debug keys for now, so `flutter run --release` works.</span><br><span class="line">           signingConfig signingConfigs.release</span><br><span class="line">       &#125;</span><br><span class="line">       debug &#123;</span><br><span class="line">           // Signing with the debug keys for now, so `flutter run --release` works.</span><br><span class="line">           signingConfig signingConfigs.debug</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure><h3 id="三、切换到Terminal中"><a href="#三、切换到Terminal中" class="headerlink" title="三、切换到Terminal中"></a>三、切换到Terminal中</h3><p>输入 <code>Flutter build apk</code>,请静待程序运行完成。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;作为安卓原生开发多年的我，也是第一次接触这种方式配置打包信息。原谅我的无知。&lt;/p&gt;
+&lt;h3 id=&quot;一、在项目根目录下新建-key-properties-文件&quot;&gt;&lt;a href=&quot;#一、在项目根目录下新建-key-properties-文件&quot; class=&quot;headerlink&quot; title=&quot;一、在项目根目录下新建 key.properties 文件&quot;&gt;&lt;/a&gt;一、在项目根目录下新建 key.properties 文件&lt;/h3&gt;&lt;p&gt;配置签名的基本信息&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Flutter" scheme="http://markchyl.cn/tags/Flutter/"/>
+    
+  </entry>
   
   <entry>
     <title>ping端口是否开放(macos)</title>
