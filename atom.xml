@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://markchyl.cn/"/>
-  <updated>2019-12-25T07:50:08.873Z</updated>
+  <updated>2019-12-27T02:12:13.654Z</updated>
   <id>http://markchyl.cn/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title> Description : Could not find the specified file.  Suggestion : Check that the path you have specified is correct.</title>
+    <link href="http://markchyl.cn/2019/12/27/Description-Could-not-find-the-specified-file-Suggestion-Check-that-the-path-you-have-specified-is-correct/"/>
+    <id>http://markchyl.cn/2019/12/27/Description-Could-not-find-the-specified-file-Suggestion-Check-that-the-path-you-have-specified-is-correct/</id>
+    <published>2019-12-27T02:08:06.000Z</published>
+    <updated>2019-12-27T02:12:13.654Z</updated>
+    
+    <content type="html"><![CDATA[<p>记录下我使用 CornerStone 利用SVN 进行版本代码管理。我已经快两个月没提交代码啦，今天一提交发现好多问题，各种报错。<br>譬如这类错误：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Description : Could not find the specified file.  Suggestion : Check that the path you have specified is correct.   Technical Information =====================        Error : V4FileNotFoundError   Exception : ZSVNNoSuchEntryException  Causal Information</span><br></pre></td></tr></table></figure><p> 解决办法：<br> 我在missing选项中删除错误的就OK了，提交前全选 =&gt;删除，重新手动编辑提交，重新提交前执行一下  clean。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;记录下我使用 CornerStone 利用SVN 进行版本代码管理。我已经快两个月没提交代码啦，今天一提交发现好多问题，各种报错。&lt;br&gt;譬如这类错误：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gu
+      
+    
+    </summary>
+    
+    
+      <category term="Error" scheme="http://markchyl.cn/tags/Error/"/>
+    
+  </entry>
   
   <entry>
     <title>error: &lt;item&gt; inner element must either be a resource reference or empty.</title>
