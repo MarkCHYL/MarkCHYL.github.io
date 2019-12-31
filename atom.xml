@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://markchyl.cn/"/>
-  <updated>2019-12-27T02:12:13.654Z</updated>
+  <updated>2019-12-31T03:04:55.215Z</updated>
   <id>http://markchyl.cn/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>android:duplicateParentState属性解释</title>
+    <link href="http://markchyl.cn/2019/12/31/android-duplicateParentState%E5%B1%9E%E6%80%A7%E8%A7%A3%E9%87%8A/"/>
+    <id>http://markchyl.cn/2019/12/31/android-duplicateParentState属性解释/</id>
+    <published>2019-12-31T03:01:21.000Z</published>
+    <updated>2019-12-31T03:04:55.215Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>android:duplicateParentState指的是当前控件是否跟随父控件的(点击、焦点等)状态</strong></p><blockquote><p>例：假设一Layout有两子View，对Layout进行监听点击事件；子ViewA一个设置duplicateParentState为true，子ViewB设置为false，当点击Layout后，子ViewA的点击态背景变色成功，子ViewB背景态变色无效，因为点击事件被Layout捕获。</p></blockquote><a id="more"></a><p>————————————————<br>版权声明：本文为CSDN博主「fancylovejava」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a href="https://blog.csdn.net/fancylovejava/article/details/38039847" target="_blank" rel="noopener">https://blog.csdn.net/fancylovejava/article/details/38039847</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;android:duplicateParentState指的是当前控件是否跟随父控件的(点击、焦点等)状态&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;例：假设一Layout有两子View，对Layout进行监听点击事件；子ViewA一个设置duplicateParentState为true，子ViewB设置为false，当点击Layout后，子ViewA的点击态背景变色成功，子ViewB背景态变色无效，因为点击事件被Layout捕获。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="Android" scheme="http://markchyl.cn/tags/Android/"/>
+    
+  </entry>
   
   <entry>
     <title> Description : Could not find the specified file.  Suggestion : Check that the path you have specified is correct.</title>
