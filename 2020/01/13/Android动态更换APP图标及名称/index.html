@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://markchyl.cn">
-  <title>Tag: 冲突 | Mark的私人博客</title>
+  <title>Mark的私人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
+  <meta name="description" content="layout: posttitle: Android动态更换APP图标及名称toc: truereward: truedate: 2020-01-13 15:38:54tags: [Android]—实现之前觉得万分难，我查阅了很多博客—报错—–应用未安装Stop，停下来我先抽支烟，喝杯茶，仔细看看别人的介绍。再次感谢这个博主的博客倚栏静望">
 <meta name="keywords" content="MarkCHYL">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Mark的私人博客">
-<meta property="og:url" content="http://markchyl.cn/tags/冲突/index.html">
+<meta property="og:url" content="http://markchyl.cn/2020/01/13/Android动态更换APP图标及名称/index.html">
 <meta property="og:site_name" content="Mark的私人博客">
-<meta property="og:description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
+<meta property="og:description" content="layout: posttitle: Android动态更换APP图标及名称toc: truereward: truedate: 2020-01-13 15:38:54tags: [Android]—实现之前觉得万分难，我查阅了很多博客—报错—–应用未安装Stop，停下来我先抽支烟，喝杯茶，仔细看看别人的介绍。再次感谢这个博主的博客倚栏静望">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-01-13T08:07:52.434Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mark的私人博客">
-<meta name="twitter:description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
+<meta name="twitter:description" content="layout: posttitle: Android动态更换APP图标及名称toc: truereward: truedate: 2020-01-13 15:38:54tags: [Android]—实现之前觉得万分难，我查阅了很多博客—报错—–应用未安装Stop，停下来我先抽支烟，喝杯茶，仔细看看别人的介绍。再次感谢这个博主的博客倚栏静望">
   
     <link rel="alternative" href="/atom.xml" title="Mark的私人博客" type="application/atom+xml">
   
@@ -169,106 +170,182 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Android动态更换APP图标及名称" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<p>layout: post<br>title: Android动态更换APP图标及名称<br>toc: true<br>reward: true<br>date: 2020-01-13 15:38:54<br>tags: [Android]<br>—实现之前觉得万分难，我查阅了很多博客—<br>报错—–应用未安装<br>Stop，停下来我先抽支烟，喝杯茶，仔细看看别人的介绍。再次感谢这个博主的博客<a href="https://blog.csdn.net/ozhuimeng123/article/details/92734825" target="_blank" rel="noopener">倚栏静望</a></p>
+<a id="more"></a>
+<p><strong>实现的目的和标题一样，动态的实现app的启动图标和应用的名字</strong></p>
+<h3 id="下面我先贴出我的重要代码"><a href="#下面我先贴出我的重要代码" class="headerlink" title="下面我先贴出我的重要代码"></a>下面我先贴出我的重要代码</h3><ul>
+<li><p>在<em>AndroidManifest.xml</em>文件中添加:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">&lt;application</span><br><span class="line">     android:allowBackup=&quot;true&quot;</span><br><span class="line">     android:icon=&quot;@mipmap/ic_launcher&quot;</span><br><span class="line">     android:label=&quot;@string/app_name&quot;</span><br><span class="line">     android:roundIcon=&quot;@mipmap/ic_launcher_round&quot;</span><br><span class="line">     android:supportsRtl=&quot;true&quot;</span><br><span class="line">     android:theme=&quot;@style/AppTheme&quot;</span><br><span class="line">     tools:ignore=&quot;GoogleAppIndexingWarning&quot;&gt;</span><br><span class="line">     &lt;activity android:name=&quot;.MainActivity&quot;&gt;</span><br><span class="line">         &lt;intent-filter&gt;</span><br><span class="line">             &lt;action android:name=&quot;android.intent.action.MAIN&quot; /&gt;</span><br><span class="line"></span><br><span class="line">             &lt;category android:name=&quot;android.intent.category.LAUNCHER&quot; /&gt;</span><br><span class="line">         &lt;/intent-filter&gt;</span><br><span class="line">     &lt;/activity&gt;</span><br><span class="line"></span><br><span class="line">     &lt;activity-alias</span><br><span class="line">         android:name=&quot;.mark&quot;</span><br><span class="line">         android:enabled=&quot;false&quot;</span><br><span class="line">         android:icon=&quot;@mipmap/mark_launcher&quot;</span><br><span class="line">         android:label=&quot;@string/app_name1&quot;</span><br><span class="line">         android:roundIcon=&quot;@mipmap/mark_launcher_round&quot;</span><br><span class="line">         android:targetActivity=&quot;.MainActivity&quot;&gt;</span><br><span class="line">         &lt;intent-filter&gt;</span><br><span class="line">             &lt;action android:name=&quot;android.intent.action.MAIN&quot; /&gt;</span><br><span class="line">             &lt;category android:name=&quot;android.intent.category.LAUNCHER&quot; /&gt;</span><br><span class="line">         &lt;/intent-filter&gt;</span><br><span class="line">     &lt;/activity-alias&gt;</span><br><span class="line"></span><br><span class="line">     &lt;activity-alias</span><br><span class="line">         android:name=&quot;.chyl&quot;</span><br><span class="line">         android:enabled=&quot;false&quot;</span><br><span class="line">         android:icon=&quot;@mipmap/chyl_launcher&quot;</span><br><span class="line">         android:label=&quot;@string/app_name2&quot;</span><br><span class="line">         android:roundIcon=&quot;@mipmap/chyl_launcher_round&quot;</span><br><span class="line">         android:targetActivity=&quot;.MainActivity&quot;&gt;</span><br><span class="line">         &lt;intent-filter&gt;</span><br><span class="line">             &lt;action android:name=&quot;android.intent.action.MAIN&quot; /&gt;</span><br><span class="line">             &lt;category android:name=&quot;android.intent.category.LAUNCHER&quot; /&gt;</span><br><span class="line">         &lt;/intent-filter&gt;</span><br><span class="line">     &lt;/activity-alias&gt;</span><br><span class="line"> &lt;/application&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在 MainActivity中编写切换代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">   * =1、第一图标状态 =2 第二图标状态 =3、不换图标</span><br><span class="line">   */</span><br><span class="line">  fun changeAppName(tag: Int) &#123;</span><br><span class="line">      val mark_tag = &quot;com.cares.appicon.mark&quot;</span><br><span class="line">      val chyl_tag = &quot;com.cares.appicon.chyl&quot;</span><br><span class="line">      </span><br><span class="line">      val pm: PackageManager = packageManager</span><br><span class="line"></span><br><span class="line">      when (tag) &#123;</span><br><span class="line">          1 -&gt; &#123;</span><br><span class="line">              //取消掉默认的应用icon</span><br><span class="line">              pm.setComponentEnabledSetting(</span><br><span class="line">                  componentName, PackageManager.COMPONENT_ENABLED_STATE_DISABLED,</span><br><span class="line">                  PackageManager.DONT_KILL_APP</span><br><span class="line">              )</span><br><span class="line">              //然后执行</span><br><span class="line">              pm.setComponentEnabledSetting(</span><br><span class="line">                  ComponentName(</span><br><span class="line">                      baseContext,</span><br><span class="line">                      mark_tag</span><br><span class="line">                  ),</span><br><span class="line">                  PackageManager.COMPONENT_ENABLED_STATE_ENABLED,</span><br><span class="line">                  PackageManager.DONT_KILL_APP</span><br><span class="line">              )</span><br><span class="line"></span><br><span class="line">          &#125;</span><br><span class="line">          2 -&gt; &#123;</span><br><span class="line">              pm.setComponentEnabledSetting(</span><br><span class="line">                  ComponentName(baseContext, mark_tag),</span><br><span class="line">                  PackageManager.COMPONENT_ENABLED_STATE_DISABLED,</span><br><span class="line">                  PackageManager.DONT_KILL_APP</span><br><span class="line">              )</span><br><span class="line">              pm.setComponentEnabledSetting(</span><br><span class="line">                  ComponentName(</span><br><span class="line">                      baseContext,</span><br><span class="line">                      packageName + &quot;.MainActivity&quot;</span><br><span class="line">                  ),</span><br><span class="line">                  PackageManager.COMPONENT_ENABLED_STATE_ENABLED,</span><br><span class="line">                  PackageManager.DONT_KILL_APP</span><br><span class="line">              )</span><br><span class="line">          &#125;</span><br><span class="line">          3 -&gt; &#123;</span><br><span class="line">              pm.setComponentEnabledSetting(</span><br><span class="line">                  componentName, PackageManager.COMPONENT_ENABLED_STATE_DISABLED,</span><br><span class="line">                  PackageManager.DONT_KILL_APP</span><br><span class="line">              )</span><br><span class="line"></span><br><span class="line">              pm.setComponentEnabledSetting(</span><br><span class="line">                  ComponentName(</span><br><span class="line">                      baseContext,</span><br><span class="line">                      chyl_tag</span><br><span class="line">                  ),</span><br><span class="line">                  PackageManager.COMPONENT_ENABLED_STATE_ENABLED,</span><br><span class="line">                  PackageManager.DONT_KILL_APP</span><br><span class="line">              )</span><br><span class="line"></span><br><span class="line">          &#125;</span><br><span class="line">          4 -&gt; &#123;</span><br><span class="line">              pm.setComponentEnabledSetting(</span><br><span class="line">                  ComponentName(baseContext, chyl_tag),</span><br><span class="line">                  PackageManager.COMPONENT_ENABLED_STATE_DISABLED,</span><br><span class="line">                  PackageManager.DONT_KILL_APP</span><br><span class="line">              )</span><br><span class="line">              pm.setComponentEnabledSetting(</span><br><span class="line">                  ComponentName(</span><br><span class="line">                      baseContext,</span><br><span class="line">                      packageName + &quot;.MainActivity&quot;</span><br><span class="line">                  ),</span><br><span class="line">                  PackageManager.COMPONENT_ENABLED_STATE_ENABLED,</span><br><span class="line">                  PackageManager.DONT_KILL_APP</span><br><span class="line">              )</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="解释下里面的重要词："><a href="#解释下里面的重要词：" class="headerlink" title="解释下里面的重要词："></a>解释下里面的重要词：</h3><p>activity-alias功能</p>
+<p>activity-alias作为一个已存在Activity的别名，则应该可以通过该别名标签声明快速打开目标Activity。因此activity-alias可用来设置某个Activity的快捷入口，可以放在桌面上或者通过该别名被其他组件快速调起。该标签元素支持一些属性及intent-filter、meta-data等配置，因此可以触发一些跟目标Activity不同的功能逻辑，虽然打开的是同一个Activity。举个简单的例子，如之前需要先打开主界面，然后才能点击进入某个Activity，如果使用activity-alias为该Activity配置一个快捷入口，甚至可以为其在桌面生成一个图标，然后点击桌面图标可直接进入该Activity，该功能可满足某些需要快速到达功能界面的需求。</p>
+<p>语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;activity-alias android:enabled=[&quot;true&quot; | &quot;false&quot;]</span><br><span class="line">                android:exported=[&quot;true&quot; | &quot;false&quot;]</span><br><span class="line">                android:icon=&quot;drawable resource&quot;</span><br><span class="line">                android:label=&quot;string resource&quot;</span><br><span class="line">                android:name=&quot;string&quot;</span><br><span class="line">                android:permission=&quot;string&quot;</span><br><span class="line">                android:targetActivity=&quot;string&quot; &gt;</span><br><span class="line">    . . .</span><br><span class="line">&lt;/activity-alias&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>android:enable<br>该属性用来决定目标Activity可否通过别名被系统实例化，默认为true。需要注意的是application也有enable属性，只用当它们同时为true时，activity-alias的enable才生效。</li>
+<li>android:exported<br>该属性为true的话，则目标Activity可被其他应用调起，如为false则只能被应用自身调起。其默认值根据activity-alias是否包含intent-filter元素决定，如果有的话，则默认为true；没有的话则为false。其实也很好理解，如果有intent-filter，则目标Activity可以匹配隐式Intent，因此可被外部应用唤起；如果没有intent-filter，则目标Activity要被调起的话必须知道其精确类名，因为只有应用本身才知道精确类名，所以此时默认为false。</li>
+<li>android:icon<br>该属性就比较好玩了，允许自定义icon，可以不同于应用本身在桌面的icon。如果需要在桌面上创建快捷入口，也许产品会要求换个不同的icon。</li>
+<li>android:label<br>该属性类似于android:icon，图标都换了，换个名称也合情合理吧，此属性就是为此而生的。</li>
+<li>android:name<br>该属性可以为任意字符串，但最好符合类名命名规范。activity元素的name属性实质上都会指向一个具体的Activity类，而activity-alias的name属性仅作为一个唯一标识而已。</li>
+<li>android:permission<br>该属性指明了通过别名声明调起目标Activity所必需的权限。</li>
+<li>android:targetActivity<br>该属性指定了目标Activity，即通过activity-alias调起的Activity是哪个，此属性其实类似于activity标签中的name属性，需要规范的Activity包名类名。</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/02/界面为ScrollView时打开界面会自动滚动到底部之解决方法/" class="archive-article-date">
-  	<time datetime="2019-09-02T05:40:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/02/界面为ScrollView时打开界面会自动滚动到底部之解决方法/">界面为ScrollView时打开界面会自动滚动到底部之解决方法</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">冲突</a>
-        		</li>
-      		
-		</ul>
-	</div>
+      
 
-          
-
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://markchyl.cn/2020/01/13/Android动态更换APP图标及名称/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/02/ScrollView与RecyclerView解决滑动冲突/" class="archive-article-date">
-  	<time datetime="2019-09-02T05:04:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-02</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/12/31/android-duplicateParentState属性解释/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">android:duplicateParentState属性解释</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/02/ScrollView与RecyclerView解决滑动冲突/">ScrollView与RecyclerView解决滑动冲突</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">冲突</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
+  
+
+
+  
+    <section id="comments" class="comments">
+      <style>
+        .comments{margin:30px;padding:10px;background:#fff}
+        @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+      </style>
+      <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "P9T2E7LYLXaws22JLaK9XKA6-gzGzoHsz",
+            app_key: "jvQlMofB0h6Izc2NQJKio9M5",
+            placeholder: "Just go go",
+            avatar:"mm"
+        });
+    }
+</script>
+      </section>
     
+
+  
+
+  
+  
+
+
+<!-- 目录内容 -->
+     
 
 
           </div>
@@ -302,9 +379,9 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
