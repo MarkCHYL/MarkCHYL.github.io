@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://markchyl.cn/"/>
-  <updated>2020-01-13T08:11:20.079Z</updated>
+  <updated>2020-01-15T01:03:25.018Z</updated>
   <id>http://markchyl.cn/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>安全码SHA1如何获取</title>
+    <link href="http://markchyl.cn/2020/01/15/%E5%AE%89%E5%85%A8%E7%A0%81SHA1%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96/"/>
+    <id>http://markchyl.cn/2020/01/15/安全码SHA1如何获取/</id>
+    <published>2020-01-15T00:57:39.000Z</published>
+    <updated>2020-01-15T01:03:25.018Z</updated>
+    
+    <content type="html"><![CDATA[<p>在高德地图集成的时候遇到那玩意。<br><a href="https://blog.csdn.net/qq_33704095/article/details/80861146" target="_blank" rel="noopener">原文</a></p><h3 id="SHA1获取的几种方式"><a href="#SHA1获取的几种方式" class="headerlink" title="SHA1获取的几种方式"></a>SHA1获取的几种方式</h3><ul><li>1、通过Eclipse编译器获取SHA1</li></ul><p>使用 adt 22 以上版本，可以在 eclipse 中直接查看。</p><p>Windows：依次在 eclipse 中打开 Window -&gt; Preferances -&gt; Android -&gt; Build。</p><p>Mac：依次在 eclipse 中打开 Eclipse/ADT-&gt;Preferances -&gt; Android -&gt; Build。</p><p>在弹出的 Build 对话框中 “SHA1 fingerprint” 中的值即为 Android 签名证书的 Sha1 值</p><a id="more"></a><ul><li>2、通过Android Studio编译器获取SHA1</li></ul><p>第一步、打开Android Studio的Terminal工具</p><p>第二步、输入命令：keytool -v -list -keystore keystore文件路径</p><p>第三步、输入Keystore密码</p><ul><li>3、使用 keytool（jdk自带工具）获取SHA1</li></ul><p>第一步、运行进入控制台<br>第二步、在弹出的控制台窗口中输入 cd .android 定位到 .android 文件夹<br>第三步、继续在控制台输入命令<br>debug.keystore：命令为：keytool -list -v -keystore debug.keystore</p><p>自定义的 keystore：命令为：keytool -list -v -keystore apk的keystore</p><p>提示输入密钥库密码，编译器提供的debug keystore默认密码是 android，自定义签名文件的密码请自行填写。输入密钥后回车（如果没设置密码，可直接回车），此时可在控制台显示的信息中获取 SHA1 值</p><ul><li><p>4、代码中提取<br>publicstatic String sHA1(Context context) {<br>  try {</p><pre><code>PackageInfo info = context.getPackageManager().getPackageInfo(    context.getPackageName(), PackageManager.GET_SIGNATURES);byte[] cert = info.signatures[0].toByteArray();MessageDigest md = MessageDigest.getInstance(&quot;SHA1&quot;);byte[] publicKey = md.digest(cert);StringBuffer hexString = new StringBuffer();for (int i = 0; i &lt; publicKey.length; i++) {    String appendString = Integer.toHexString(0xFF &amp; publicKey[i])        .toUpperCase(Locale.US);    if (appendString.length() == 1)        hexString.append(&quot;0&quot;);    hexString.append(appendString);}return hexString.toString();</code></pre><p>  } catch (NameNotFoundException e) {</p><pre><code>e.printStackTrace();</code></pre><p>  } catch (NoSuchAlgorithmException e) {</p><pre><code>e.printStackTrace();</code></pre><p>  }<br>  return null;<br>}</p></li><li><p>5、apk中读取：<br>第一步、将apk改为zip后缀文件，并解压；<br>第二步、进入META-INF路径，执行keytool -printcert -file META-INF/CERT.RSA</p></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在高德地图集成的时候遇到那玩意。&lt;br&gt;&lt;a href=&quot;https://blog.csdn.net/qq_33704095/article/details/80861146&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;原文&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;SHA1获取的几种方式&quot;&gt;&lt;a href=&quot;#SHA1获取的几种方式&quot; class=&quot;headerlink&quot; title=&quot;SHA1获取的几种方式&quot;&gt;&lt;/a&gt;SHA1获取的几种方式&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;1、通过Eclipse编译器获取SHA1&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;使用 adt 22 以上版本，可以在 eclipse 中直接查看。&lt;/p&gt;
+&lt;p&gt;Windows：依次在 eclipse 中打开 Window -&amp;gt; Preferances -&amp;gt; Android -&amp;gt; Build。&lt;/p&gt;
+&lt;p&gt;Mac：依次在 eclipse 中打开 Eclipse/ADT-&amp;gt;Preferances -&amp;gt; Android -&amp;gt; Build。&lt;/p&gt;
+&lt;p&gt;在弹出的 Build 对话框中 “SHA1 fingerprint” 中的值即为 Android 签名证书的 Sha1 值&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Android" scheme="http://markchyl.cn/tags/Android/"/>
+    
+  </entry>
   
   <entry>
     <title>Android动态更换APP图标及名称</title>
