@@ -61,7 +61,7 @@ var _hmt = _hmt || [];
 			<img src="/img/mark_avatar.jpg" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">Mark Chen</a></h1>
+		  <h1 class="header-author"><a href="/">Mark先生</a></h1>
 		</hgroup>
 		
 		<p class="header-subtitle">数风流人物，还看今朝</p>
@@ -85,6 +85,8 @@ var _hmt = _hmt || [];
     			
             
     			
+    			<a q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">我的好友</a>
+    			
             
     			
     			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
@@ -99,12 +101,14 @@ var _hmt = _hmt || [];
 					<a class="mail" target="_blank" href="mailto:2285581945@qq.com" title="mail"><i class="icon-mail"></i></a>
 		        
 			</div>
+		
 		</nav>
 		
 	</header>	
+
 	<div style="position:absolute; bottom: 10px ;left:auto; width:85%">
-		<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=260 height=86 
-		src="//music.163.com/outchain/player?type=2&id=30031580&auto=1&height=66"></iframe>
+		<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86
+		 src="//music.163.com/outchain/player?type=2&id=1314811712&auto=1&height=66"></iframe>
 	</div>	
 </div>
 
@@ -122,7 +126,7 @@ var _hmt = _hmt || [];
 				<img src="/img/mark_avatar.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">Mark Chen</h1>
+			  <h1 class="header-author js-header-author">Mark先生</h1>
 			</hgroup>
 			
 			<p class="header-subtitle"><i class="icon icon-quo-left"></i>数风流人物，还看今朝<i class="icon icon-quo-right"></i></p>
@@ -569,7 +573,7 @@ child: leading,</code></pre><p>   );<br> }<br>修改方式为， leading为null�
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2020 Mark Chen
+    		&copy; 2020 Mark先生
 		</div>
 
     <!--统计start-->
@@ -623,6 +627,8 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
       
     
       
+      
+      
     
       
       
@@ -634,13 +640,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     
       
-      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
       
         
       
+      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'friends')"><a href="javascript:void(0)" q-class="active:friends">我的好友</a></li>
+      
         
       
-      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
+      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
       
         
     </ul>
@@ -661,11 +669,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android</a>
+                <a href="javascript:void(0)" class="js-tag color5">工具使用</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">工具使用</a>
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -673,19 +681,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Error</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Flutter</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+                <a href="javascript:void(0)" class="js-tag color1">Error</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Flutter实战</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -795,6 +803,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     	</section>
     
 
+    
+    	<section class="tools-section tools-section-friends" q-show="friends">
+  		
+        <ul class="search-ul">
+          
+            <li class="search-li">
+              <a href="https://blog.csdn.net/fuxiaoyuandroid/article/details/90140409" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>付工</a>
+            </li>
+          
+        </ul>
+  		
+    	</section>
     
 
     
