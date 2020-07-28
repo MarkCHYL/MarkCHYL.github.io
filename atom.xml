@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://markchyl.cn/"/>
-  <updated>2020-07-21T13:07:44.112Z</updated>
+  <updated>2020-07-28T01:12:07.860Z</updated>
   <id>http://markchyl.cn/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Mac 每次都要执行source ~/.bash_profile 配置的环境变量才生效</title>
+    <link href="http://markchyl.cn/2020/07/28/Mac-%E6%AF%8F%E6%AC%A1%E9%83%BD%E8%A6%81%E6%89%A7%E8%A1%8Csource-bash-profile-%E9%85%8D%E7%BD%AE%E7%9A%84%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E6%89%8D%E7%94%9F%E6%95%88/"/>
+    <id>http://markchyl.cn/2020/07/28/Mac-每次都要执行source-bash-profile-配置的环境变量才生效/</id>
+    <published>2020-07-28T01:02:31.000Z</published>
+    <updated>2020-07-28T01:12:07.860Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>遇到一个问题，前段时间由于系统升级之后，做了一下用户群组的改动，在开发的时候发现之前在<br><code>.bash_profile</code>中设置的环境变量都不见了，还只能在终端中执行一次<code>source .bash_profile</code>,环境变量才能生效。</p><h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><p>在系统根目录下，在~/.zshrc文件最后，增加一行：<br>source ~/.bash_profile</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h3&gt;&lt;p&gt;遇到一个问题，前段时间由于系统升级之后，做了一下用户群组的改动，在开发的时候发现之前在&lt;br&gt;&lt;code&gt;.bash_profile&lt;/co
+      
+    
+    </summary>
+    
+    
+      <category term="系统" scheme="http://markchyl.cn/tags/%E7%B3%BB%E7%BB%9F/"/>
+    
+  </entry>
   
   <entry>
     <title>自定义Toat及其弹出时间控制</title>
