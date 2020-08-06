@@ -175,6 +175,281 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-自定义控件实现（二）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/06/自定义控件实现（二）/">自定义控件实现（二）</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/06/自定义控件实现（二）/" class="archive-article-date">
+  	<time datetime="2020-08-06T05:52:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-06</time>
+</a>
+        
+         <!-- 添加代码 -->
+        
+    </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">技术原理</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/06/自定义控件实现（二）/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+<!-- 目录内容 -->
+     
+
+
+  
+    <article id="post-Android-ANR发生的原因总结和解决办法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/06/Android-ANR发生的原因总结和解决办法/">Android ANR发生的原因总结和解决办法</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/06/Android-ANR发生的原因总结和解决办法/" class="archive-article-date">
+  	<time datetime="2020-08-06T02:10:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-06</time>
+</a>
+        
+         <!-- 添加代码 -->
+        
+    </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="什么是ANR？"><a href="#什么是ANR？" class="headerlink" title="什么是ANR？"></a>什么是ANR？</h3><blockquote>
+<p>ANR的全称是application not responding，是指应用程序未响应，Android系统对于一些事件需要在一定的时间范围内完成，如果超过预定时间能未能得到有效响应或者响应时间过长，都会造成ANR。一般地，这时往往会弹出一个提示框，告知用户当前xxx未响应，用户可选择继续等待或者Force Close。</p>
+</blockquote>
+<hr>
+<h3 id="官方指定的产生ANR一般有以下类型："><a href="#官方指定的产生ANR一般有以下类型：" class="headerlink" title="官方指定的产生ANR一般有以下类型："></a>官方指定的产生ANR一般有以下类型：</h3><p>1：KeyDispatchTimeout（5秒）–主要类型<br>按键或触摸事件在特定时间无响应</p>
+<p>2：BroadcastTimeout（10秒）<br>BroadcastReceiver在特定时间无法处理完成</p>
+<p>3：ServiceTimeout（ 20秒）–小概率类型<br>服务在特定的时间无法处理完成</p>
+<hr>
+<h3 id="导致ANR的根本原因"><a href="#导致ANR的根本原因" class="headerlink" title="导致ANR的根本原因"></a>导致ANR的根本原因</h3><p>1.主线程执行了耗时操作，比如数据库操作或网络编程,I/O操作</p>
+<p>2.其他进程（就是其他程序）占用CPU导致本进程得不到CPU时间片，比如其他进程的频繁读写操作可能会导致这个问题。</p>
+<p>细分的话，导致ANR的原因有如下几点：<br>   1.耗时的网络访问<br>   2.大量的数据读写<br>   3.数据库操作<br>   4.硬件操作（比如camera)<br>   5.调用thread的join()方法、sleep()方法、wait()方法或者等待线程锁的时候<br>   6.service binder的数量达到上限<br>   7.system server中发生WatchDog ANR<br>   8.service忙导致超时无响应<br>   9.其他线程持有锁，导致主线程等待超时<br>   10.其它线程终止或崩溃导致主线程一直等待</p>
+<hr>
+<h3 id="调查并解决ANR"><a href="#调查并解决ANR" class="headerlink" title="调查并解决ANR"></a>调查并解决ANR</h3><ul>
+<li>1、首先分析log</li>
+<li>2、从trace.txt文件查看调用堆栈。-$ adb拉取data / anr / traces.txt。</li>
+<li>3、看代码</li>
+<li>4、仔细查看ANR的成因（iowait？block？memoryleak？）</li>
+</ul>
+<hr>
+<h3 id="如何避免ANR的发生"><a href="#如何避免ANR的发生" class="headerlink" title="如何避免ANR的发生"></a>如何避免ANR的发生</h3><p>1.避免在主线程执行耗时操作，所有耗时操作应新开一个子线程完成，然后再在主线程更新UI。</p>
+<p>2.BroadcastReceiver要执行耗时操作时应启动一个service，将耗时操作交给service来完成。</p>
+<p>3.避免在Intent Receiver里启动一个Activity，因为它会创建一个新的画面，并从当前用户正在运行的程序上抢夺焦点。如果你的应用程序在响应Intent广 播时需要向用户展示什么，你应该使用Notification Manager来实现。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/06/Android-ANR发生的原因总结和解决办法/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+<!-- 目录内容 -->
+     
+
+
+  
+    <article id="post-自定义控件实现（一）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/05/自定义控件实现（一）/">自定义控件实现（一）</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/05/自定义控件实现（一）/" class="archive-article-date">
+  	<time datetime="2020-08-05T11:59:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-05</time>
+</a>
+        
+         <!-- 添加代码 -->
+        
+    </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>被别人问题一愣一愣，骄傲的自己准备好好复习哈！</strong><br><a href="https://www.jianshu.com/p/6572ebed0d99" target="_blank" rel="noopener">几乎完全使用这位大佬的</a></p>
+<hr>
+<h3 id="什么是自定义控件？"><a href="#什么是自定义控件？" class="headerlink" title="什么是自定义控件？"></a>什么是自定义控件？</h3><p>Android中所有控件和布局的基本类都是View，自定控件就是继承View或者View的派生类，然后重写类中的内部方法。<br>通常自定义控件分为三种：<br>1、自定义View：继承View<br>2、基于现有的组件：继承View的派生类<br>3、组合的方式：自定义控件中包含了其他组件<br>下图体现了各种控件的继承关系：<br><img src="https://upload-images.jianshu.io/upload_images/4115762-ec0d29c74a7935a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200/format/webp" alt></p>
+<h3 id="来实践一下组合自定义控件"><a href="#来实践一下组合自定义控件" class="headerlink" title="来实践一下组合自定义控件"></a>来实践一下组合自定义控件</h3><p>需要实现的效果如图：<br><img src="https://upload-images.jianshu.io/upload_images/4115762-d5e8f14dd6a4f111.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/848/format/webp" alt></p>
+<p><a href="../../public/2020/08/06/自定义控件实现（二）/index.html">自定义控件实现（二）</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">技术原理</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/05/自定义控件实现（一）/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+<!-- 目录内容 -->
+     
+
+
+  
     <article id="post-Mac-每次都要执行source-bash-profile-配置的环境变量才生效" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -820,270 +1095,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-Description-Could-not-find-the-specified-file-Suggestion-Check-that-the-path-you-have-specified-is-correct" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/27/Description-Could-not-find-the-specified-file-Suggestion-Check-that-the-path-you-have-specified-is-correct/"> Description : Could not find the specified file.  Suggestion : Check that the path you have specified is correct.</a>
-    </h1>
-  
-
-        
-        <a href="/2019/12/27/Description-Could-not-find-the-specified-file-Suggestion-Check-that-the-path-you-have-specified-is-correct/" class="archive-article-date">
-  	<time datetime="2019-12-27T02:08:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-27</time>
-</a>
-        
-         <!-- 添加代码 -->
-        
-    </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>记录下我使用 CornerStone 利用SVN 进行版本代码管理。我已经快两个月没提交代码啦，今天一提交发现好多问题，各种报错。<br>譬如这类错误：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Description : Could not find the specified file.  Suggestion : Check that the path you have specified is correct.   Technical Information =====================        Error : V4FileNotFoundError   Exception : ZSVNNoSuchEntryException  Causal Information</span><br></pre></td></tr></table></figure>
-
-<p> 解决办法：<br> 我在missing选项中删除错误的就OK了，提交前全选 =&gt;删除，重新手动编辑提交，重新提交前执行一下  clean。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Error</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/27/Description-Could-not-find-the-specified-file-Suggestion-Check-that-the-path-you-have-specified-is-correct/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-<!-- 目录内容 -->
-     
-
-
-  
-    <article id="post-error-item-inner-element-must-either-be-a-resource-reference-or-empty" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/25/error-item-inner-element-must-either-be-a-resource-reference-or-empty/">error: &lt;item&gt; inner element must either be a resource reference or empty.</a>
-    </h1>
-  
-
-        
-        <a href="/2019/12/25/error-item-inner-element-must-either-be-a-resource-reference-or-empty/" class="archive-article-date">
-  	<time datetime="2019-12-25T07:47:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-25</time>
-</a>
-        
-         <!-- 添加代码 -->
-        
-    </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">FAQ:</span><br><span class="line"></span><br><span class="line">Android resource compilation failed</span><br><span class="line">Output: /home/cmm/code/AndroidHttpCapture/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml:733: error: &lt;item&gt; inner element must either be a resource reference or empty.</span><br><span class="line"></span><br><span class="line">Command: /home/cmm/.gradle/caches/transforms-1/files-1.1/aapt2-3.2.0-4818971-linux.jar/8e0275d065e63c2601af4fb5800833ab/aapt2-3.2.0-4818971-linux/aapt2 compile --legacy \</span><br><span class="line">-o \</span><br><span class="line">/home/cmm/code/AndroidHttpCapture/app/build/intermediates/res/merged/debug \</span><br><span class="line">/home/cmm/code/AndroidHttpCapture/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml</span><br><span class="line">Daemon: AAPT2 aapt2-3.2.0-4818971-linux Daemon #1</span><br></pre></td></tr></table></figure>
-
-<p>如上错误原来是values.xm资源文件中，元素定义了id后，就不能在后面给值了</p>
-<p>发现 :<br><code>&lt;item name=&quot;split&quot; type=&quot;id&quot;&gt;false&lt;/item&gt;</code></p>
-<p>改为 :<br><code>&lt;item name=&quot;split&quot; type=&quot;id&quot;/&gt;</code><br>即可.</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Error</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/25/error-item-inner-element-must-either-be-a-resource-reference-or-empty/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-<!-- 目录内容 -->
-     
-
-
-  
-    <article id="post-Charles抓包工具在mac上如何配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/18/Charles抓包工具在mac上如何配置/">Charles抓包工具在mac上如何配置</a>
-    </h1>
-  
-
-        
-        <a href="/2019/12/18/Charles抓包工具在mac上如何配置/" class="archive-article-date">
-  	<time datetime="2019-12-18T05:25:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-18</time>
-</a>
-        
-         <!-- 添加代码 -->
-        
-    </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="配置："><a href="#配置：" class="headerlink" title="配置："></a>配置：</h4><ul>
-<li>电脑：MacBook Pro (13-inch, 2017, Two Thunderbolt 3 ports)</li>
-<li>手机：安卓手机4.4版本（是定制的）</li>
-<li>Charles版本：v4.5.5</li>
-<li>手机与macbook需要连接同一网段的网络，macbook可以是有线，手机连wifi，也可以两者连接同一个wifi。</li>
-</ul>
-<hr>
-<h3 id="第一、电脑上安装Charles"><a href="#第一、电脑上安装Charles" class="headerlink" title="第一、电脑上安装Charles"></a>第一、电脑上安装Charles</h3><p>官网下载安装：<a href="https://www.charlesproxy.com/download/" target="_blank" rel="noopener">官网地址</a><br>下载后安装</p>
-<h3 id="第二、设置charles代理"><a href="#第二、设置charles代理" class="headerlink" title="第二、设置charles代理"></a>第二、设置charles代理</h3><p>打开charles/proxy/proxy-settings，设置一个端口号，默认的8888就可以。<br><img src="https://upload-images.jianshu.io/upload_images/15401334-20cfc497e7e2cf4b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1170/format/webp" alt="网图盗用下"></p>
-<h3 id="第三、手机安装charles证书"><a href="#第三、手机安装charles证书" class="headerlink" title="第三、手机安装charles证书"></a>第三、手机安装charles证书</h3><p>需要安装charles的证书。点击help/SSL proxying<br><img src="https://upload-images.jianshu.io/upload_images/15401334-c6275ae48d9c8373.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200/format/webp" alt><br>查询macbook的ip地址，并在手机连接的wifi上手动设置代理，代理主机名为ip地址，代理端口号为8888，会弹出一个框，显示的意思是手机上的wify需要设置代理。</p>
-<h3 id="第三、手机设置代理"><a href="#第三、手机设置代理" class="headerlink" title="第三、手机设置代理"></a>第三、手机设置代理</h3><p>查询macbook的ip地址，并在手机连接的wifi上手动设置代理，代理主机名为ip地址，代理端口号为8888，这时候用手机访问网页，charles会弹出下列框，说明charles已经开始对手机抓包了，点击允许。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/15401334-347966a5b212d2ae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200/format/webp" alt></p>
-<p>然后在手机浏览器中访问手机<a href="http://charlesproxy.com/getssl，安装即可，" target="_blank" rel="noopener">http://charlesproxy.com/getssl，安装即可，</a><br><img src="https://upload-images.jianshu.io/upload_images/15401334-d3fda9e1abf13bcb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1080/format/webp" alt></p>
-<p>好了，现在就可以流畅的抓取手机上的各种http/https请求了，想要学习更多charles工具方法.</p>
-<p>本人不做推广，只是供自己即好友参考做的笔记<br>感谢开发员：<a href="https://www.jianshu.com/p/50f844c9beaf" target="_blank" rel="noopener">小小的开发人员</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工具</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/18/Charles抓包工具在mac上如何配置/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-<!-- 目录内容 -->
-     
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1194,15 +1205,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">工具使用</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Android</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Flutter</a>
+                <a href="javascript:void(0)" class="js-tag color5">工具使用</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1214,11 +1221,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Flutter实战</a>
+                <a href="javascript:void(0)" class="js-tag color3">Flutter</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Flutter实战</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1230,7 +1241,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">kotlin</a>
+                <a href="javascript:void(0)" class="js-tag color5">视频直播</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1238,11 +1249,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">视频直播</a>
+                <a href="javascript:void(0)" class="js-tag color3">系统</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">系统</a>
+                <a href="javascript:void(0)" class="js-tag color2">kotlin</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1279,6 +1290,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">自定义控件</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">技术原理</a>
               </li>
              
               <li class="article-tag-list-item">

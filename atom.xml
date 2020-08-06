@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://markchyl.cn/"/>
-  <updated>2020-07-28T01:12:07.860Z</updated>
+  <updated>2020-08-06T05:53:34.166Z</updated>
   <id>http://markchyl.cn/</id>
   
   <author>
@@ -15,6 +15,73 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>自定义控件实现（二）</title>
+    <link href="http://markchyl.cn/2020/08/06/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6%E5%AE%9E%E7%8E%B0%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
+    <id>http://markchyl.cn/2020/08/06/自定义控件实现（二）/</id>
+    <published>2020-08-06T05:52:23.000Z</published>
+    <updated>2020-08-06T05:53:34.166Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+      <category term="Android" scheme="http://markchyl.cn/tags/Android/"/>
+    
+      <category term="技术原理" scheme="http://markchyl.cn/tags/%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android ANR发生的原因总结和解决办法</title>
+    <link href="http://markchyl.cn/2020/08/06/Android-ANR%E5%8F%91%E7%94%9F%E7%9A%84%E5%8E%9F%E5%9B%A0%E6%80%BB%E7%BB%93%E5%92%8C%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"/>
+    <id>http://markchyl.cn/2020/08/06/Android-ANR发生的原因总结和解决办法/</id>
+    <published>2020-08-06T02:10:16.000Z</published>
+    <updated>2020-08-06T05:51:24.884Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="什么是ANR？"><a href="#什么是ANR？" class="headerlink" title="什么是ANR？"></a>什么是ANR？</h3><blockquote><p>ANR的全称是application not responding，是指应用程序未响应，Android系统对于一些事件需要在一定的时间范围内完成，如果超过预定时间能未能得到有效响应或者响应时间过长，都会造成ANR。一般地，这时往往会弹出一个提示框，告知用户当前xxx未响应，用户可选择继续等待或者Force Close。</p></blockquote><hr><h3 id="官方指定的产生ANR一般有以下类型："><a href="#官方指定的产生ANR一般有以下类型：" class="headerlink" title="官方指定的产生ANR一般有以下类型："></a>官方指定的产生ANR一般有以下类型：</h3><p>1：KeyDispatchTimeout（5秒）–主要类型<br>按键或触摸事件在特定时间无响应</p><p>2：BroadcastTimeout（10秒）<br>BroadcastReceiver在特定时间无法处理完成</p><p>3：ServiceTimeout（ 20秒）–小概率类型<br>服务在特定的时间无法处理完成</p><hr><h3 id="导致ANR的根本原因"><a href="#导致ANR的根本原因" class="headerlink" title="导致ANR的根本原因"></a>导致ANR的根本原因</h3><p>1.主线程执行了耗时操作，比如数据库操作或网络编程,I/O操作</p><p>2.其他进程（就是其他程序）占用CPU导致本进程得不到CPU时间片，比如其他进程的频繁读写操作可能会导致这个问题。</p><p>细分的话，导致ANR的原因有如下几点：<br>   1.耗时的网络访问<br>   2.大量的数据读写<br>   3.数据库操作<br>   4.硬件操作（比如camera)<br>   5.调用thread的join()方法、sleep()方法、wait()方法或者等待线程锁的时候<br>   6.service binder的数量达到上限<br>   7.system server中发生WatchDog ANR<br>   8.service忙导致超时无响应<br>   9.其他线程持有锁，导致主线程等待超时<br>   10.其它线程终止或崩溃导致主线程一直等待</p><hr><h3 id="调查并解决ANR"><a href="#调查并解决ANR" class="headerlink" title="调查并解决ANR"></a>调查并解决ANR</h3><ul><li>1、首先分析log</li><li>2、从trace.txt文件查看调用堆栈。-$ adb拉取data / anr / traces.txt。</li><li>3、看代码</li><li>4、仔细查看ANR的成因（iowait？block？memoryleak？）</li></ul><hr><h3 id="如何避免ANR的发生"><a href="#如何避免ANR的发生" class="headerlink" title="如何避免ANR的发生"></a>如何避免ANR的发生</h3><p>1.避免在主线程执行耗时操作，所有耗时操作应新开一个子线程完成，然后再在主线程更新UI。</p><p>2.BroadcastReceiver要执行耗时操作时应启动一个service，将耗时操作交给service来完成。</p><p>3.避免在Intent Receiver里启动一个Activity，因为它会创建一个新的画面，并从当前用户正在运行的程序上抢夺焦点。如果你的应用程序在响应Intent广 播时需要向用户展示什么，你应该使用Notification Manager来实现。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;什么是ANR？&quot;&gt;&lt;a href=&quot;#什么是ANR？&quot; class=&quot;headerlink&quot; title=&quot;什么是ANR？&quot;&gt;&lt;/a&gt;什么是ANR？&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;ANR的全称是application not responding，是指应
+      
+    
+    </summary>
+    
+    
+      <category term="Android" scheme="http://markchyl.cn/tags/Android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>自定义控件实现（一）</title>
+    <link href="http://markchyl.cn/2020/08/05/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6%E5%AE%9E%E7%8E%B0%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+    <id>http://markchyl.cn/2020/08/05/自定义控件实现（一）/</id>
+    <published>2020-08-05T11:59:33.000Z</published>
+    <updated>2020-08-06T06:46:34.275Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>被别人问题一愣一愣，骄傲的自己准备好好复习哈！</strong><br><a href="https://www.jianshu.com/p/6572ebed0d99" target="_blank" rel="noopener">几乎完全使用这位大佬的</a></p><hr><h3 id="什么是自定义控件？"><a href="#什么是自定义控件？" class="headerlink" title="什么是自定义控件？"></a>什么是自定义控件？</h3><p>Android中所有控件和布局的基本类都是View，自定控件就是继承View或者View的派生类，然后重写类中的内部方法。<br>通常自定义控件分为三种：<br>1、自定义View：继承View<br>2、基于现有的组件：继承View的派生类<br>3、组合的方式：自定义控件中包含了其他组件<br>下图体现了各种控件的继承关系：<br><img src="https://upload-images.jianshu.io/upload_images/4115762-ec0d29c74a7935a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200/format/webp" alt></p><h3 id="来实践一下组合自定义控件"><a href="#来实践一下组合自定义控件" class="headerlink" title="来实践一下组合自定义控件"></a>来实践一下组合自定义控件</h3><p>需要实现的效果如图：<br><img src="https://upload-images.jianshu.io/upload_images/4115762-d5e8f14dd6a4f111.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/848/format/webp" alt></p><p><a href="../../public/2020/08/06/自定义控件实现（二）/index.html">自定义控件实现（二）</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;strong&gt;被别人问题一愣一愣，骄傲的自己准备好好复习哈！&lt;/strong&gt;&lt;br&gt;&lt;a href=&quot;https://www.jianshu.com/p/6572ebed0d99&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;几乎完全使用这位大佬的&lt;/
+      
+    
+    </summary>
+    
+    
+      <category term="Android" scheme="http://markchyl.cn/tags/Android/"/>
+    
+      <category term="技术原理" scheme="http://markchyl.cn/tags/%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86/"/>
+    
+  </entry>
   
   <entry>
     <title>Mac 每次都要执行source ~/.bash_profile 配置的环境变量才生效</title>
