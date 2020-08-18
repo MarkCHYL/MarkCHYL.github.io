@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Mark的私人博客">
 <meta property="og:description" content="Git 的安装就不再次啰嗦了：sudo apt-get install git 1.创建代码仓库Step 1：先配置下身份，这样在提交代码的时候Git就可以知道是谁提交的，命令如下：12git config --global user.name &amp;quot;MarkCHYL&amp;quot;git config --global user.email &amp;quot;2285581945@qq.com&amp;qu">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-08-17T08:23:57.513Z">
+<meta property="og:updated_time" content="2020-08-18T08:34:32.727Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git使用教程之本地仓库的基本操">
 <meta name="twitter:description" content="Git 的安装就不再次啰嗦了：sudo apt-get install git 1.创建代码仓库Step 1：先配置下身份，这样在提交代码的时候Git就可以知道是谁提交的，命令如下：12git config --global user.name &amp;quot;MarkCHYL&amp;quot;git config --global user.email &amp;quot;2285581945@qq.com&amp;qu">
@@ -205,7 +205,8 @@ var _hmt = _hmt || [];
 <p>检查下配置是否成功：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mark@Markxiansheng blog % git config --global user.name </span><br><span class="line">MarkCHYL</span><br><span class="line">mark@Markxiansheng blog % git config --global user.email</span><br><span class="line">2285581945@qq.com</span><br></pre></td></tr></table></figure>
 
-<h4 id="Step-2：找个地方创建我们的代码仓库"><a href="#Step-2：找个地方创建我们的代码仓库" class="headerlink" title="Step 2：找个地方创建我们的代码仓库"></a>Step 2：找个地方创建我们的代码仓库</h4><blockquote>
+<h4 id="Step-2：找个地方创建我们的代码仓库"><a href="#Step-2：找个地方创建我们的代码仓库" class="headerlink" title="Step 2：找个地方创建我们的代码仓库"></a>Step 2：找个地方创建我们的代码仓库</h4><a id="more"></a>
+<blockquote>
 <p>git init</p>
 </blockquote>
 <p>继续输入：ls - al可以看到下目录下有个.git的文件夹就是他了</p>
@@ -264,7 +265,7 @@ var _hmt = _hmt || [];
 <blockquote>
 <p>git reset –hard ad2080c</p>
 </blockquote>
-
+<h3 id="7-代码提交到GitHub"><a href="#7-代码提交到GitHub" class="headerlink" title="7.代码提交到GitHub"></a>7.代码提交到GitHub</h3> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">git add README.md</span><br><span class="line">git commit -m &quot;first commit&quot;</span><br><span class="line">git remote add origin https://github.com/MarkCHYL/AndroidReViews.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
       
 
       
@@ -379,6 +380,15 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
+    <a href="/2020/08/18/Git之使用GitHub搭建远程仓库/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Git之使用GitHub搭建远程仓库
+        
+      </div>
+    </a>
+  
   
     <a href="/2020/08/07/Android-安装APP-失败-INSTALL-FAILED-TEST-ONLY/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">Android 安装APP 失败 INSTALL_FAILED_TEST_ONLY</div>
@@ -408,7 +418,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-创建代码仓库"><span class="toc-number">1.</span> <span class="toc-text">1.创建代码仓库</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Step-1：先配置下身份，这样在提交代码的时候Git就可以知道是谁提交的，命令如下："><span class="toc-number">1.1.</span> <span class="toc-text">Step 1：先配置下身份，这样在提交代码的时候Git就可以知道是谁提交的，命令如下：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Step-2：找个地方创建我们的代码仓库"><span class="toc-number">1.2.</span> <span class="toc-text">Step 2：找个地方创建我们的代码仓库</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-提交本地代码"><span class="toc-number">2.</span> <span class="toc-text">2.提交本地代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-查看修改内容"><span class="toc-number">3.</span> <span class="toc-text">3.查看修改内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-查看提交记录"><span class="toc-number">4.</span> <span class="toc-text">4.查看提交记录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-撤销未提交的修改"><span class="toc-number">5.</span> <span class="toc-text">5.撤销未提交的修改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-版本回退"><span class="toc-number">6.</span> <span class="toc-text">6.版本回退</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-创建代码仓库"><span class="toc-number">1.</span> <span class="toc-text">1.创建代码仓库</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Step-1：先配置下身份，这样在提交代码的时候Git就可以知道是谁提交的，命令如下："><span class="toc-number">1.1.</span> <span class="toc-text">Step 1：先配置下身份，这样在提交代码的时候Git就可以知道是谁提交的，命令如下：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Step-2：找个地方创建我们的代码仓库"><span class="toc-number">1.2.</span> <span class="toc-text">Step 2：找个地方创建我们的代码仓库</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-提交本地代码"><span class="toc-number">2.</span> <span class="toc-text">2.提交本地代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-查看修改内容"><span class="toc-number">3.</span> <span class="toc-text">3.查看修改内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-查看提交记录"><span class="toc-number">4.</span> <span class="toc-text">4.查看提交记录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-撤销未提交的修改"><span class="toc-number">5.</span> <span class="toc-text">5.撤销未提交的修改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-版本回退"><span class="toc-number">6.</span> <span class="toc-text">6.版本回退</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-代码提交到GitHub"><span class="toc-number">7.</span> <span class="toc-text">7.代码提交到GitHub</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -470,7 +480,7 @@ var _hmt = _hmt || [];
   <div id="toc-article" class="toc-article">
       <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
       <strong class="toc-title">文章目录</strong>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-创建代码仓库"><span class="toc-number">1.</span> <span class="toc-text">1.创建代码仓库</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Step-1：先配置下身份，这样在提交代码的时候Git就可以知道是谁提交的，命令如下："><span class="toc-number">1.1.</span> <span class="toc-text">Step 1：先配置下身份，这样在提交代码的时候Git就可以知道是谁提交的，命令如下：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Step-2：找个地方创建我们的代码仓库"><span class="toc-number">1.2.</span> <span class="toc-text">Step 2：找个地方创建我们的代码仓库</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-提交本地代码"><span class="toc-number">2.</span> <span class="toc-text">2.提交本地代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-查看修改内容"><span class="toc-number">3.</span> <span class="toc-text">3.查看修改内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-查看提交记录"><span class="toc-number">4.</span> <span class="toc-text">4.查看提交记录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-撤销未提交的修改"><span class="toc-number">5.</span> <span class="toc-text">5.撤销未提交的修改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-版本回退"><span class="toc-number">6.</span> <span class="toc-text">6.版本回退</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-创建代码仓库"><span class="toc-number">1.</span> <span class="toc-text">1.创建代码仓库</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Step-1：先配置下身份，这样在提交代码的时候Git就可以知道是谁提交的，命令如下："><span class="toc-number">1.1.</span> <span class="toc-text">Step 1：先配置下身份，这样在提交代码的时候Git就可以知道是谁提交的，命令如下：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Step-2：找个地方创建我们的代码仓库"><span class="toc-number">1.2.</span> <span class="toc-text">Step 2：找个地方创建我们的代码仓库</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-提交本地代码"><span class="toc-number">2.</span> <span class="toc-text">2.提交本地代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-查看修改内容"><span class="toc-number">3.</span> <span class="toc-text">3.查看修改内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-查看提交记录"><span class="toc-number">4.</span> <span class="toc-text">4.查看提交记录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-撤销未提交的修改"><span class="toc-number">5.</span> <span class="toc-text">5.撤销未提交的修改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-版本回退"><span class="toc-number">6.</span> <span class="toc-text">6.版本回退</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-代码提交到GitHub"><span class="toc-number">7.</span> <span class="toc-text">7.代码提交到GitHub</span></a></li></ol>
  </div>
  <script type="text/javascript">
   function showToc(){
@@ -604,11 +614,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Flutter</a>
+                <a href="javascript:void(0)" class="js-tag color3">工具</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具</a>
+                <a href="javascript:void(0)" class="js-tag color3">Flutter</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -628,11 +638,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">工具搭建</a>
+                <a href="javascript:void(0)" class="js-tag color3">系统</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -640,7 +646,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">系统</a>
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">工具搭建</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -656,11 +666,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">冲突</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color3">冲突</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -668,11 +678,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+                <a href="javascript:void(0)" class="js-tag color5">Android、Kotlin、学习笔记</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Android、Kotlin、学习笔记</a>
+                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
