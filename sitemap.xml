@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://markchyl.cn/2020/08/25/vue%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8-1/</loc>
+    
+    <lastmod>2020-08-25</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://markchyl.cn/2020/08/25/vue%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8-2/</loc>
+    
+    <lastmod>2020-08-25</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://markchyl.cn/2020/08/25/Mac-%E7%94%B5%E8%84%91%E5%A6%82%E4%BD%95%E5%8D%B8%E8%BD%BD-node%E5%92%8Cnpm/</loc>
     
     <lastmod>2020-08-25</lastmod>
@@ -480,13 +494,6 @@
   </url>
   
   <url>
-    <loc>http://markchyl.cn/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/</loc>
-    <lastmod>2020-08-25</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://markchyl.cn/tags/Error/</loc>
     <lastmod>2020-08-25</lastmod>
     <changefreq>daily</changefreq>
@@ -494,7 +501,7 @@
   </url>
   
   <url>
-    <loc>http://markchyl.cn/tags/%E5%B7%A5%E5%85%B7/</loc>
+    <loc>http://markchyl.cn/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/</loc>
     <lastmod>2020-08-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -502,6 +509,13 @@
   
   <url>
     <loc>http://markchyl.cn/tags/Flutter/</loc>
+    <lastmod>2020-08-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://markchyl.cn/tags/%E5%B7%A5%E5%85%B7/</loc>
     <lastmod>2020-08-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -536,13 +550,6 @@
   </url>
   
   <url>
-    <loc>http://markchyl.cn/tags/kotlin/</loc>
-    <lastmod>2020-08-25</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://markchyl.cn/tags/Linux/</loc>
     <lastmod>2020-08-25</lastmod>
     <changefreq>daily</changefreq>
@@ -564,6 +571,13 @@
   </url>
   
   <url>
+    <loc>http://markchyl.cn/tags/kotlin/</loc>
+    <lastmod>2020-08-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://markchyl.cn/tags/%E7%BD%91%E7%BB%9C%E6%A1%86%E6%9E%B6/</loc>
     <lastmod>2020-08-25</lastmod>
     <changefreq>daily</changefreq>
@@ -578,14 +592,14 @@
   </url>
   
   <url>
-    <loc>http://markchyl.cn/tags/Oracle/</loc>
+    <loc>http://markchyl.cn/tags/Python/</loc>
     <lastmod>2020-08-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://markchyl.cn/tags/Python/</loc>
+    <loc>http://markchyl.cn/tags/Oracle/</loc>
     <lastmod>2020-08-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -606,14 +620,14 @@
   </url>
   
   <url>
-    <loc>http://markchyl.cn/tags/Android%E3%80%81Kotlin%E3%80%81%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
+    <loc>http://markchyl.cn/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</loc>
     <lastmod>2020-08-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://markchyl.cn/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</loc>
+    <loc>http://markchyl.cn/tags/Android%E3%80%81Kotlin%E3%80%81%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2020-08-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -628,6 +642,13 @@
   
   <url>
     <loc>http://markchyl.cn/tags/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6/</loc>
+    <lastmod>2020-08-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://markchyl.cn/tags/vue/</loc>
     <lastmod>2020-08-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

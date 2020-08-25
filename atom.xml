@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://markchyl.cn/"/>
-  <updated>2020-08-25T02:41:51.099Z</updated>
+  <updated>2020-08-25T07:24:35.165Z</updated>
   <id>http://markchyl.cn/</id>
   
   <author>
@@ -15,6 +15,44 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vue基础使用-2</title>
+    <link href="http://markchyl.cn/2020/08/25/vue%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8-2/"/>
+    <id>http://markchyl.cn/2020/08/25/vue基础使用-2/</id>
+    <published>2020-08-25T07:24:35.000Z</published>
+    <updated>2020-08-25T07:24:35.165Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>vue基础使用-1</title>
+    <link href="http://markchyl.cn/2020/08/25/vue%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8-1/"/>
+    <id>http://markchyl.cn/2020/08/25/vue基础使用-1/</id>
+    <published>2020-08-25T06:50:27.000Z</published>
+    <updated>2020-08-25T07:48:23.608Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="安装vue"><a href="#安装vue" class="headerlink" title="安装vue"></a>安装vue</h3><hr><p><a href="https://cn.vuejs.org/v2/guide/installation.html">官方文档</a><br>我才用的是通过 <strong><em>npm</em></strong> 进行安装穿件vue项目的，首先切换到项目根目录下，终端先后执行如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm init &#x2F;&#x2F;如果你是第一次使用npm的话</span><br><span class="line"></span><br><span class="line">npm install --yes &#x2F;&#x2F;安装后会生成一个package.json的文件</span><br><span class="line"></span><br><span class="line">npm install vue &#x2F;&#x2F;执行完后会出现一个node_modules文件夹，这个便是我们vue.js的资源文件</span><br></pre></td></tr></table></figure><h3 id="如何开始使用"><a href="#如何开始使用" class="headerlink" title="如何开始使用"></a>如何开始使用</h3><ul><li><p>1、在body中引包</p><pre><code>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; </span><br><span class="line">src&#x3D;&quot;.&#x2F;node_modules&#x2F;vue&#x2F;dist&#x2F;vue.js&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure></code></pre></li><li><p>2、创建实例化对象</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">new Vue(&#123;</span><br><span class="line">el: &#39;#app&#39;, &#x2F;&#x2F;目的地</span><br><span class="line">    data: data,</span><br><span class="line">template: &#39;&#39;</span><br><span class="line">&#125;);</span><br><span class="line">&#96;&#96;&#96;            </span><br><span class="line">练习代码如下：</span><br></pre></td></tr></table></figure><pre><code>  &lt;div id=&quot;app&quot;&gt;      &lt;!-- vue模块化语法&#123;&#123;&#125;&#125;双大括号插值 react&#123;&#125; --><h3>&#123;&#123;msg&#125;&#125;&lt;/h3&gt;      &lt;h1&gt;&#123;&#123;1+3&#125;&#125;&lt;/h1&gt;      &lt;h2&gt;&#123;&#123;isTure&#125;&#125;&lt;/h2&gt;      &lt;h3&gt;&#123;&#123;str.split('').reverse().join('')&#125;&#125;&lt;/h3&gt;      &lt;h4&gt;&#123;&#123;1>3? true : false&#125;&#125;&lt;/h4&gt;      &lt;h4&gt;&#123;&#123; &#123;name:'Mark'&#125; &#125;&#125;&lt;/h4&gt;  &lt;/div&gt;  &lt;!-- 1、引包 --&gt;  &lt;script type=&quot;text/javascript&quot; src=&quot;./node_modules/vue/dist/vue.js&quot;&gt;&lt;/script&gt;  &lt;script type=&quot;text/javascript&quot;&gt;      &lt;!-- 2、创建实例化对象 --&gt;      var data = &#123;          msg: &quot;马克先生&quot;, //数据属性          isTure: 1 == 1,          str: &#39;hello vue&#39;      &#125;;      //如果template中定义了内容      //那么优先你家在template,如果没有定义加载的便是#app的模板      var vm = new Vue(&#123;          el: &#39;#app&#39;, //目的地          data: data,          template: &#39;&#39;      &#125;);      console.log(vm);      console.log(vm.$el === document.getElementById(&#39;app&#39;));      console.log(vm.$data === data);  &lt;/script&gt;</code></pre></li></ul><p>```<br><a href="">本节练习代码</a></p><p>下一章<a href="">vue基础使用-2</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;安装vue&quot;&gt;&lt;a href=&quot;#安装vue&quot; class=&quot;headerlink&quot; title=&quot;安装vue&quot;&gt;&lt;/a&gt;安装vue&lt;/h3&gt;&lt;hr&gt;
+&lt;p&gt;&lt;a href=&quot;https://cn.vuejs.org/v2/guide/installation.h
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="http://markchyl.cn/tags/vue/"/>
+    
+  </entry>
   
   <entry>
     <title>Mac 电脑如何卸载 node和npm</title>
@@ -469,54 +507,6 @@
     
     
       <category term="工具" scheme="http://markchyl.cn/tags/%E5%B7%A5%E5%85%B7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Error:注: 某些输入文件使用或覆盖了已过时的 API。 注: 有关详细信息, 请使用 -Xlint:deprecation 重新编译。</title>
-    <link href="http://markchyl.cn/2019/12/12/Error-%E6%B3%A8-%E6%9F%90%E4%BA%9B%E8%BE%93%E5%85%A5%E6%96%87%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%88%96%E8%A6%86%E7%9B%96%E4%BA%86%E5%B7%B2%E8%BF%87%E6%97%B6%E7%9A%84-API%E3%80%82-%E6%B3%A8-%E6%9C%89%E5%85%B3%E8%AF%A6%E7%BB%86%E4%BF%A1%E6%81%AF-%E8%AF%B7%E4%BD%BF%E7%94%A8-Xlint-deprecation-%E9%87%8D%E6%96%B0%E7%BC%96%E8%AF%91%E3%80%82/"/>
-    <id>http://markchyl.cn/2019/12/12/Error-注-某些输入文件使用或覆盖了已过时的-API。-注-有关详细信息-请使用-Xlint-deprecation-重新编译。/</id>
-    <published>2019-12-12T08:33:40.000Z</published>
-    <updated>2019-12-12T08:37:02.863Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="https://blog.csdn.net/dong19900415/article/details/52882529?utm_source=blogxgwz3">原文</a></p><p>Error:注: 某些输入文件使用或覆盖了已过时的 API。<br>注: 有关详细信息, 请使用 -Xlint:deprecation 重新编译。<br>注: 某些输入文件使用了未经检查或不安全的操作。<br>注: 有关详细信息, 请使用 -Xlint:unchecked 重新编译。<br>FAILURE: Build failed with an exception.<br>最近项目出现的一些问题可以在build中加入</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">allprojects &#123;</span><br><span class="line">    gradle.projectsEvaluated &#123;</span><br><span class="line">        tasks.withType(JavaCompile) &#123;</span><br><span class="line">            options.compilerArgs &lt;&lt; &quot;-Xlint:unchecked&quot; &lt;&lt; &quot;-Xlint:deprecation&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/dong19900415/article/details/52882529?utm_source=blogxgwz3&quot;&gt;原文&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Error:注: 某些输入文件使用或覆盖了已过时的 API。&lt;b
-      
-    
-    </summary>
-    
-    
-      <category term="Error" scheme="http://markchyl.cn/tags/Error/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>如何打Jar工具包</title>
-    <link href="http://markchyl.cn/2019/12/10/%E5%A6%82%E4%BD%95%E6%89%93Jar%E5%B7%A5%E5%85%B7%E5%8C%85/"/>
-    <id>http://markchyl.cn/2019/12/10/如何打Jar工具包/</id>
-    <published>2019-12-10T08:00:11.000Z</published>
-    <updated>2019-12-10T08:29:18.468Z</updated>
-    
-    <content type="html"><![CDATA[<p><strong>打开Moudle包的build文件添加如下代码</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">task makeJar(type: Copy) &#123;</span><br><span class="line">    def filename &#x3D; projects.name + &#39;-V&#39;</span><br><span class="line">    delete &quot;build&#x2F;libs&#x2F;MarkZXing1.0.jar&quot;</span><br><span class="line">    from(&#39;build&#x2F;intermediates&#x2F;packaged-classes&#x2F;release&#39;)</span><br><span class="line">    into(&#39;build&#x2F;libs&#x2F;&#39;)</span><br><span class="line">    include(&#39;classes.jar&#39;)</span><br><span class="line">    rename(&#39;classes.jar&#39;, &#39;MarkZXing1.0.jar&#39;)</span><br><span class="line">&#125;</span><br><span class="line">makeJar.dependsOn(build)</span><br></pre></td></tr></table></figure><p><strong>点开我们右侧的Gradle，找到项目下的第一步新建的模块Module名称 ，点开 Tasks/other 文件 找到 makeJar， 双击即可，等待出现BUILD SUCCESSFUL， Task execution finished ‘makeJar’.==》编译完成，此时去Module目录下的libs/下找到的test.jar，便是制作的jar包。</strong></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;strong&gt;打开Moudle包的build文件添加如下代码&lt;/strong&gt;&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/spa
-      
-    
-    </summary>
-    
-    
-      <category term="Android" scheme="http://markchyl.cn/tags/Android/"/>
     
   </entry>
   
