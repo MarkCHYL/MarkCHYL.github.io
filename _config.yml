@@ -95,7 +95,7 @@ Plugins:
 feed:
   type: atom
   path: atom.xml
-  limit: 100
+  limit: 20
 
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/

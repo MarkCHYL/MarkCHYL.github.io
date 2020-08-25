@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<!-- vue模块化语法{{}}双大括号插值 react{} -->
+			<h3>{{msg}}</h3>
+			<h1>{{1+3}}</h1>
+			<h2>{{isTure}}</h2>
+			<h3>{{str.split('').reverse().join('')}}</h3>
+			<h4>{{1>3? true : false}}</h4>
+			<h4>{{ {name:'Mark'} }}</h4>
+		</div>
+		<!-- 1、引包 -->
+		<script type="text/javascript" src="./node_modules/vue/dist/vue.js"></script>
+
+		<script type="text/javascript">
+			<!-- 创建实例化对象 -->
+
+			var data = {
+				msg: "马克先生", //数据属性
+				isTure: 1 == 1,
+				str: 'hello vue'
+			};
+
+			//如果template中定义了内容
+			//那么优先你家在template,如果没有定义加载的便是#app的模板
+			var vm = new Vue({
+				el: '#app', //目的地
+				data: data,
+				template: ''
+			});
+
+			console.log(vm);
+			console.log(vm.$el === document.getElementById('app'));
+			console.log(vm.$data === data);
+		</script>
+	</body>
+</html>

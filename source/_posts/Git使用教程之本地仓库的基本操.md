@@ -15,6 +15,7 @@ git config --global user.name "MarkCHYL"
 git config --global user.email "2285581945@qq.com"
 ```
 检查下配置是否成功：
+<!-- more -->
 ```
 mark@Markxiansheng blog % git config --global user.name 
 MarkCHYL
