@@ -28,8 +28,8 @@ npm install vue //执行完后会出现一个node_modules文件夹，这个便�
 	    data: data,
 		template: ''
 	});  
-   
-        
-[本节练习代码]()
+
+
+[本节练习代码](https://github.com/MarkCHYL/BLOG/blob/master/source/marksource/01_vue基础使用.html)
 
 下一章[vue基础使用-2](http://markchyl.cn/2020/08/25/vue基础使用-2/)
