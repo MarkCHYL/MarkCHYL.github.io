@@ -35,17 +35,14 @@
     <link href="http://markchyl.cn/2020/08/25/vue%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8-1/"/>
     <id>http://markchyl.cn/2020/08/25/vue基础使用-1/</id>
     <published>2020-08-25T06:50:27.000Z</published>
-    <updated>2020-08-25T07:53:44.200Z</updated>
+    <updated>2020-08-25T08:11:07.437Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="安装vue"><a href="#安装vue" class="headerlink" title="安装vue"></a>安装vue</h3><hr><p><a href="https://cn.vuejs.org/v2/guide/installation.html">官方文档</a><br>我才用的是通过 <strong><em>npm</em></strong> 进行安装穿件vue项目的，首先切换到项目根目录下，终端先后执行如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm init &#x2F;&#x2F;如果你是第一次使用npm的话</span><br><span class="line"></span><br><span class="line">npm install --yes &#x2F;&#x2F;安装后会生成一个package.json的文件</span><br><span class="line"></span><br><span class="line">npm install vue &#x2F;&#x2F;执行完后会出现一个node_modules文件夹，这个便是我们vue.js的资源文件</span><br></pre></td></tr></table></figure><h3 id="如何开始使用"><a href="#如何开始使用" class="headerlink" title="如何开始使用"></a>如何开始使用</h3><ul><li><p>1、在body中引包<br><code> &lt;script type=&quot;text/javascript&quot; src=&quot;./node_modules/vue/dist/vue.js&quot;&gt;&lt;/script&gt;</code></p></li><li><p>2、创建实例化对象</p><blockquote><p>new Vue({</p><pre><code>  el: &#39;#app&#39;, //目的地  data: data,  template: &#39;&#39;</code></pre><p>  });<br><a href="">本节练习代码</a></p></blockquote></li></ul><p>下一章<a href="">vue基础使用-2</a></p>]]></content>
+    <content type="html"><![CDATA[<h3 id="安装vue"><a href="#安装vue" class="headerlink" title="安装vue"></a>安装vue</h3><hr><p><a href="https://cn.vuejs.org/v2/guide/installation.html">官方文档</a><br>我才用的是通过 <strong><em>npm</em></strong> 进行安装穿件vue项目的，首先切换到项目根目录下，终端先后执行如下：</p><a id="more"></a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm init &#x2F;&#x2F;如果你是第一次使用npm的话</span><br><span class="line"></span><br><span class="line">npm install --yes &#x2F;&#x2F;安装后会生成一个package.json的文件</span><br><span class="line"></span><br><span class="line">npm install vue &#x2F;&#x2F;执行完后会出现一个node_modules文件夹，这个便是我们vue.js的资源文件</span><br></pre></td></tr></table></figure><h3 id="如何开始使用"><a href="#如何开始使用" class="headerlink" title="如何开始使用"></a>如何开始使用</h3><ul><li><p>1、在body中引包<br><code> &lt;script type=&quot;text/javascript&quot; src=&quot;./node_modules/vue/dist/vue.js&quot;&gt;&lt;/script&gt;</code></p></li><li><p>2、创建实例化对象</p><blockquote><p>new Vue({</p><pre><code>  el: &#39;#app&#39;, //目的地  data: data,  template: &#39;&#39;</code></pre><p>  });  </p></blockquote></li></ul><p><a href="https://github.com/MarkCHYL/BLOG/blob/master/marksource/01_vue%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8.html">本节练习代码</a></p><p>下一章<a href="http://markchyl.cn/2020/08/25/vue%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8-2/">vue基础使用-2</a></p>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;h3 id=&quot;安装vue&quot;&gt;&lt;a href=&quot;#安装vue&quot; class=&quot;headerlink&quot; title=&quot;安装vue&quot;&gt;&lt;/a&gt;安装vue&lt;/h3&gt;&lt;hr&gt;
-&lt;p&gt;&lt;a href=&quot;https://cn.vuejs.org/v2/guide/installation.h
-      
+      &lt;h3 id=&quot;安装vue&quot;&gt;&lt;a href=&quot;#安装vue&quot; class=&quot;headerlink&quot; title=&quot;安装vue&quot;&gt;&lt;/a&gt;安装vue&lt;/h3&gt;&lt;hr&gt;
+&lt;p&gt;&lt;a href=&quot;https://cn.vuejs.org/v2/guide/installation.html&quot;&gt;官方文档&lt;/a&gt;&lt;br&gt;我才用的是通过 &lt;strong&gt;&lt;em&gt;npm&lt;/em&gt;&lt;/strong&gt; 进行安装穿件vue项目的，首先切换到项目根目录下，终端先后执行如下：&lt;/p&gt;
     
     </summary>
     
