@@ -265,48 +265,18 @@ var _hmt = _hmt || [];
 <p><a target="_blank" rel="noopener" href="https://cn.vuejs.org/v2/guide/installation.html">官方文档</a><br>我才用的是通过 <strong><em>npm</em></strong> 进行安装穿件vue项目的，首先切换到项目根目录下，终端先后执行如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm init &#x2F;&#x2F;如果你是第一次使用npm的话</span><br><span class="line"></span><br><span class="line">npm install --yes &#x2F;&#x2F;安装后会生成一个package.json的文件</span><br><span class="line"></span><br><span class="line">npm install vue &#x2F;&#x2F;执行完后会出现一个node_modules文件夹，这个便是我们vue.js的资源文件</span><br></pre></td></tr></table></figure>
 <h3 id="如何开始使用"><a href="#如何开始使用" class="headerlink" title="如何开始使用"></a>如何开始使用</h3><ul>
-<li><p>1、在body中引包</p>
-<pre><code>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; </span><br><span class="line">src&#x3D;&quot;.&#x2F;node_modules&#x2F;vue&#x2F;dist&#x2F;vue.js&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure></code></pre>
+<li><p>1、在body中引包<br><code> &lt;script type=&quot;text/javascript&quot; src=&quot;./node_modules/vue/dist/vue.js&quot;&gt;&lt;/script&gt;</code></p>
 </li>
 <li><p>2、创建实例化对象</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">new Vue(&#123;</span><br><span class="line">		el: &#39;#app&#39;, &#x2F;&#x2F;目的地</span><br><span class="line">	    data: data,</span><br><span class="line">		template: &#39;&#39;</span><br><span class="line">	&#125;);</span><br><span class="line">&#96;&#96;&#96;            </span><br><span class="line">练习代码如下：</span><br></pre></td></tr></table></figure>
-
-<pre><code>  &lt;div id=&quot;app&quot;&gt;
-      &lt;!-- vue模块化语法&#123;&#123;&#125;&#125;双大括号插值 react&#123;&#125; -->
-			<h3>&#123;&#123;msg&#125;&#125;&lt;/h3&gt;
-      &lt;h1&gt;&#123;&#123;1+3&#125;&#125;&lt;/h1&gt;
-      &lt;h2&gt;&#123;&#123;isTure&#125;&#125;&lt;/h2&gt;
-      &lt;h3&gt;&#123;&#123;str.split('').reverse().join('')&#125;&#125;&lt;/h3&gt;
-      &lt;h4&gt;&#123;&#123;1>3? true : false&#125;&#125;&lt;/h4&gt;
-      &lt;h4&gt;&#123;&#123; &#123;name:'Mark'&#125; &#125;&#125;&lt;/h4&gt;
-  &lt;/div&gt;
-  &lt;!-- 1、引包 --&gt;
-  &lt;script type=&quot;text/javascript&quot; src=&quot;./node_modules/vue/dist/vue.js&quot;&gt;&lt;/script&gt;
-
-  &lt;script type=&quot;text/javascript&quot;&gt;
-      &lt;!-- 2、创建实例化对象 --&gt;
-
-      var data = &#123;
-          msg: &quot;马克先生&quot;, //数据属性
-          isTure: 1 == 1,
-          str: &#39;hello vue&#39;
-      &#125;;
-
-      //如果template中定义了内容
-      //那么优先你家在template,如果没有定义加载的便是#app的模板
-      var vm = new Vue(&#123;
-          el: &#39;#app&#39;, //目的地
-          data: data,
-          template: &#39;&#39;
-      &#125;);
-
-      console.log(vm);
-      console.log(vm.$el === document.getElementById(&#39;app&#39;));
-      console.log(vm.$data === data);
-  &lt;/script&gt;</code></pre>
+<blockquote>
+<p>new Vue({</p>
+<pre><code>  el: &#39;#app&#39;, //目的地
+  data: data,
+  template: &#39;&#39;</code></pre>
+<p>  });<br><a href="">本节练习代码</a></p>
+</blockquote>
 </li>
 </ul>
-<p>```<br><a href="">本节练习代码</a></p>
 <p>下一章<a href="">vue基础使用-2</a></p>
 
       
