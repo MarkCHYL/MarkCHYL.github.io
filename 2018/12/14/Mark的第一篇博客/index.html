@@ -74,11 +74,15 @@ var _hmt = _hmt || [];
 			<ul>
 			
 				<li><a href="/">主页</a></li>
-	        
+			
 				<li><a href="/archives">归档</a></li>
-	        
+			
 				<li><a href="/guestbook">留言板</a></li>
-	        
+			
+				<li><a href="/tags">标签</a></li>
+			
+				<li><a href="/categories">分类</a></li>
+			
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -86,15 +90,15 @@ var _hmt = _hmt || [];
     			
     			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
     			
-            
+			
     			
     			<a q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">友链</a>
     			
-            
+			
     			
     			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
     			
-            
+			
 		</nav>
 		<nav class="header-nav">
 			<div class="social">
@@ -110,6 +114,7 @@ var _hmt = _hmt || [];
 					<a class="mail" target="_blank" href="mailto:2285581945@qq.com" title="mail"><i class="icon-mail"></i></a>
 		        
 			</div>
+			<a>总文章数:64</a>
 		</nav>
 	</header>	
 
@@ -144,6 +149,10 @@ var _hmt = _hmt || [];
 			
 				
 			
+				
+			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -166,11 +175,15 @@ var _hmt = _hmt || [];
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
+					<li style="width: 20%"><a href="/">主页</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/archives">归档</a></li>
+					<li style="width: 20%"><a href="/archives">归档</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/guestbook">留言板</a></li>
+					<li style="width: 20%"><a href="/guestbook">留言板</a></li>
+		        
+					<li style="width: 20%"><a href="/tags">标签</a></li>
+		        
+					<li style="width: 20%"><a href="/categories">分类</a></li>
 		        
 				</ul>
 			</nav>
@@ -245,7 +258,7 @@ var _hmt = _hmt || [];
 <p>2.添加SSH Key到Github<br>进入github首页在设置洁面<br><img src="https://images2017.cnblogs.com/blog/1250458/201710/1250458-20171017153636849-294935886.png"></p>
 <hr>
 <h4 id="添加SSH-Key"><a href="#添加SSH-Key" class="headerlink" title="添加SSH Key"></a>添加SSH Key</h4><p><img src="https://images2017.cnblogs.com/blog/1250458/201710/1250458-20171017153642521-647884655.png"><br>找到系统当前用户目录下(开启查看隐藏文件) C:\Users\用户名\ .ssh id_rsa.pub文件以文本方式打开。打开之后全部复制到key中<br><img src="https://images2017.cnblogs.com/blog/1250458/201710/1250458-20171017153648631-441574444.png"><br>到了这就可以测试一下是否成功了:</p>
-<p>ssh -T <a href="mailto:&#103;&#105;&#116;&#x40;&#x67;&#105;&#x74;&#x68;&#x75;&#x62;&#46;&#x63;&#x6f;&#109;">&#103;&#105;&#116;&#x40;&#x67;&#105;&#x74;&#x68;&#x75;&#x62;&#46;&#x63;&#x6f;&#109;</a><br>#之后会要你输入yes/no,输入yes就好了。<br>设置你的账号信息:</p>
+<p>ssh -T <a href="mailto:&#103;&#x69;&#x74;&#x40;&#103;&#x69;&#116;&#104;&#x75;&#98;&#x2e;&#x63;&#x6f;&#x6d;">&#103;&#x69;&#x74;&#x40;&#103;&#x69;&#116;&#104;&#x75;&#98;&#x2e;&#x63;&#x6f;&#x6d;</a><br>#之后会要你输入yes/no,输入yes就好了。<br>设置你的账号信息:</p>
 <p>git config –global user.name “你的名字”     #真实名字不是github用户名<br>git config –global user.email “邮箱@邮箱.com”    #github邮箱<br>3.部署到github<br>hexo d<br>这时再刷新 username.github.io 就可以看到你的博客了。</p>
 <p>到了这你以为就结束了吗？没有，还有坑没有给你们填好。</p>
 <p>如果你的SSH配置的时候哪找的.ssh文件的化，可以参照<a target="_blank" rel="noopener" href="https://www.cnblogs.com/ailiailan/p/8577411.html">mac 上传本地代码到 Github 教程</a>,我就是参照上面的步骤配置的。</p>
@@ -304,6 +317,17 @@ var _hmt = _hmt || [];
 	</div>
 
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/工具使用//" class="article-tag-list-link color5">工具使用</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -563,10 +587,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Flutter</a>
               </li>
              
@@ -611,11 +631,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Oracle</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color2">Oracle</a>
               </li>
              
               <li class="article-tag-list-item">
