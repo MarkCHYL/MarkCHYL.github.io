@@ -196,16 +196,16 @@ var _hmt = _hmt || [];
             <article id="post-Kotlin基础入门学习笔记" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
-      <header class="article-header">
-        
+      <header class=" article-header">
+  
   
     <h1 class="article-title" itemprop="name">
       Kotlin基础入门学习笔记
     </h1>
   
 
-        
-        
+  
+  
 	<!-- 不蒜子统计 -->
 	<span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
 		  <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
@@ -214,12 +214,12 @@ var _hmt = _hmt || [];
 <a href="/2019/12/03/Kotlin%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="archive-article-date">
   	<time datetime="2019-12-03T01:51:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-03</time>
 </a>
-        
-      </header>
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>若不留下点啥笔记，感觉对不住自己一个星期半的学习加复习。</p>
+    <p>若不留下点啥笔记，感觉对不住自己一个星期半的学习加复习。</p>
 <h3 id="一、如何实现单列模式？"><a href="#一、如何实现单列模式？" class="headerlink" title="一、如何实现单列模式？"></a>一、如何实现单列模式？</h3><p>使用关键字 <strong>object</strong> 修饰的类,替换掉class关键字，便会在整套程序中生成一个且是唯一的对象实例。<br>譬如如下代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">object BigHeadSon:IWash &#123;</span><br><span class="line">    override fun wash() &#123;</span><br><span class="line">        println(&quot;大头儿子洗完收费1元钱&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>那样之后该类的实例变量整个项目中有且只有一个。</p>
@@ -258,44 +258,45 @@ var _hmt = _hmt || [];
 <h3 id="十一、人机交互"><a href="#十一、人机交互" class="headerlink" title="十一、人机交互"></a>十一、人机交互</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">fun main(args:Array&lt;String&gt;)&#123;</span><br><span class="line">	println(&quot;请输入第一个数字：&quot;)</span><br><span class="line">	var c &#x3D; readLine()</span><br><span class="line">	println(&quot;请输入第二个数字：&quot;)</span><br><span class="line">	var d &#x3D; readLine()</span><br><span class="line">	</span><br><span class="line">	try&#123;</span><br><span class="line">		var a &#x3D; c!!.toInt()</span><br><span class="line">	    var b &#x3D; d!!.toInt()</span><br><span class="line">		println(&quot;$&#123;a&#125; + $&#123;b&#125; &#x3D; $&#123;a + b&#125;&quot;)</span><br><span class="line">	&#125;catch(e:Exception)&#123;</span><br><span class="line">		println(&quot;输入数据有误！，请重新输入&quot;)</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>**!!.**确保不为空<br>**?.**可为空</p>
 
-      
+    
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/img/alipay.jpg">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/img/weixin.png">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
+    
+    <div class="page-reward">
+      <a href="javascript:;" class="page-reward-btn tooltip-top">
+        <div class="tooltip tooltip-east">
+          <span class="tooltip-item">
+            赏
+          </span>
+          <span class="tooltip-content">
+            <span class="tooltip-text">
+              <span class="tooltip-inner">
+                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i
+                    class="icon icon-quo-right"></i></p>
+                <div class="reward-box">
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/alipay.jpg">
+                    <span class="reward-type">支付宝</span>
                   </div>
-                </span>
+                  
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/weixin.png">
+                    <span class="reward-type">微信</span>
+                  </div>
+                  
+                </div>
               </span>
             </span>
-          </div>
-          </a>
+          </span>
         </div>
-      
+      </a>
     </div>
-    <div class="article-info article-info-index">
-      
-      
+    
+  </div>
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -307,7 +308,7 @@ var _hmt = _hmt || [];
 		</ul>
 	</div>
 
-      
+    
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -320,10 +321,10 @@ var _hmt = _hmt || [];
 	</div>
 
 
-      
+    
 
-      
-        
+    
+    
 <div class="share-btn share-icons tooltip-left">
   <div class="tooltip tooltip-east">
     <span class="tooltip-item">
@@ -373,13 +374,13 @@ var _hmt = _hmt || [];
 </div>
 
 <div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
 
-  
+
 <nav id="article-nav">
   
     <a href="/2019/12/10/%E5%A6%82%E4%BD%95%E6%89%93Jar%E5%B7%A5%E5%85%B7%E5%8C%85/" id="article-nav-newer" class="article-nav-link-wrap">
@@ -431,19 +432,30 @@ var _hmt = _hmt || [];
 
 
 
-  
-  
-  
 
-  
 
-  
-    <section id="comments" class="comments">
-      <style>
-        .comments{margin:30px;padding:10px;background:#fff}
-        @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
-      </style>
-      <div id="vcomment" class="comment"></div> 
+
+
+
+
+
+<section id="comments" class="comments">
+  <style>
+    .comments {
+      margin: 30px;
+      padding: 10px;
+      background: #fff
+    }
+
+    @media screen and (max-width:800px) {
+      .comments {
+        margin: auto;
+        padding: 10px;
+        background: #fff
+      }
+    }
+  </style>
+  <div id="vcomment" class="comment"></div> 
 <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
 <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
 <script>
@@ -461,13 +473,28 @@ var _hmt = _hmt || [];
         });
     }
 </script>
-      </section>
-    
-
+</section>
 
   
+<!-- 《utteranc评论：基于github issue的评论系统 -->
 
-  
+  <section id="comments" class="comments">
+    <style>
+      .utterances{max-width: 100%;}
+    </style>
+      <script src="https://utteranc.es/client.js"
+              repo="MarkCHYL/MarkCHYL.github.io"
+              issue-term="title"
+              theme="github-light"
+              crossorigin="anonymous"
+              async>
+      </script>
+</section>
+
+<!-- utteranc评论》 -->
+
+
+
 
 
           </div>
@@ -627,11 +654,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color2">Oracle</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Oracle</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -202,16 +202,16 @@ var _hmt = _hmt || [];
             <article id="post-MAC搭建基于RTMP的本地Nginx服务器" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
-      <header class="article-header">
-        
+      <header class=" article-header">
+  
   
     <h1 class="article-title" itemprop="name">
       MAC搭建基于RTMP的本地Nginx服务器
     </h1>
   
 
-        
-        
+  
+  
 	<!-- 不蒜子统计 -->
 	<span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
 		  <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
@@ -220,12 +220,12 @@ var _hmt = _hmt || [];
 <a href="/2018/12/17/MAC%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8ERTMP%E7%9A%84%E6%9C%AC%E5%9C%B0Nginx%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="archive-article-date">
   	<time datetime="2018-12-17T03:02:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-17</time>
 </a>
-        
-      </header>
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="MAC搭建基于RTMP的本地Nginx服务器，实现电脑上视频推流。"><a href="#MAC搭建基于RTMP的本地Nginx服务器，实现电脑上视频推流。" class="headerlink" title="MAC搭建基于RTMP的本地Nginx服务器，实现电脑上视频推流。"></a>MAC搭建基于RTMP的本地Nginx服务器，实现电脑上视频推流。</h3><h1 id="1、先安装homeView"><a href="#1、先安装homeView" class="headerlink" title="1、先安装homeView"></a>1、先安装homeView</h1><a id="more"></a>
+    <h3 id="MAC搭建基于RTMP的本地Nginx服务器，实现电脑上视频推流。"><a href="#MAC搭建基于RTMP的本地Nginx服务器，实现电脑上视频推流。" class="headerlink" title="MAC搭建基于RTMP的本地Nginx服务器，实现电脑上视频推流。"></a>MAC搭建基于RTMP的本地Nginx服务器，实现电脑上视频推流。</h3><h1 id="1、先安装homeView"><a href="#1、先安装homeView" class="headerlink" title="1、先安装homeView"></a>1、先安装homeView</h1><a id="more"></a>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;安装命令</span><br><span class="line">ruby -e &quot;$(curl -fsSL https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Homebrew&#x2F;install&#x2F;master&#x2F;install)&quot;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;移除命令</span><br><span class="line">ruby -e &quot;$(curl -fsSL https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Homebrew&#x2F;install&#x2F;master&#x2F;uninstall)&quot;</span><br></pre></td></tr></table></figure>
 
 <h1 id="2、安装Nginx服务器"><a href="#2、安装Nginx服务器" class="headerlink" title="2、安装Nginx服务器"></a>2、安装Nginx服务器</h1><h3 id="增加对nginx的扩展-也就是从github上下载-home-brew对ngixnx的扩展"><a href="#增加对nginx的扩展-也就是从github上下载-home-brew对ngixnx的扩展" class="headerlink" title="增加对nginx的扩展;也就是从github上下载,home-brew对ngixnx的扩展"></a>增加对nginx的扩展;也就是从github上下载,home-brew对ngixnx的扩展</h3><h3 id="homebrew-nginx的git路径变了-貌似是2018年3月更新"><a href="#homebrew-nginx的git路径变了-貌似是2018年3月更新" class="headerlink" title="homebrew/nginx的git路径变了(貌似是2018年3月更新)"></a>homebrew/nginx的git路径变了(貌似是2018年3月更新)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew tap homebrew&#x2F;nginx</span><br></pre></td></tr></table></figure>
@@ -252,44 +252,45 @@ var _hmt = _hmt || [];
 </li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -re -i &#x2F;Users&#x2F;apple&#x2F;Desktop&#x2F;ffmepg&#x2F;story.mp4 -vcodec libx264 -vprofile baseline -acodec aac -ar 44100 -strict -2 -ac 1 -f flv -s 1280x720 -q 10 rtmp:&#x2F;&#x2F;localhost:1935&#x2F;hls&#x2F;demo</span><br></pre></td></tr></table></figure>
-      
+    
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/img/alipay.jpg">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/img/weixin.png">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
+    
+    <div class="page-reward">
+      <a href="javascript:;" class="page-reward-btn tooltip-top">
+        <div class="tooltip tooltip-east">
+          <span class="tooltip-item">
+            赏
+          </span>
+          <span class="tooltip-content">
+            <span class="tooltip-text">
+              <span class="tooltip-inner">
+                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i
+                    class="icon icon-quo-right"></i></p>
+                <div class="reward-box">
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/alipay.jpg">
+                    <span class="reward-type">支付宝</span>
                   </div>
-                </span>
+                  
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/weixin.png">
+                    <span class="reward-type">微信</span>
+                  </div>
+                  
+                </div>
               </span>
             </span>
-          </div>
-          </a>
+          </span>
         </div>
-      
+      </a>
     </div>
-    <div class="article-info article-info-index">
-      
-      
+    
+  </div>
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -305,7 +306,7 @@ var _hmt = _hmt || [];
 		</ul>
 	</div>
 
-      
+    
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -318,10 +319,10 @@ var _hmt = _hmt || [];
 	</div>
 
 
-      
+    
 
-      
-        
+    
+    
 <div class="share-btn share-icons tooltip-left">
   <div class="tooltip tooltip-east">
     <span class="tooltip-item">
@@ -371,13 +372,13 @@ var _hmt = _hmt || [];
 </div>
 
 <div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
 
-  
+
 <nav id="article-nav">
   
     <a href="/2018/12/17/Mark%E7%9A%84Flutter%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" id="article-nav-newer" class="article-nav-link-wrap">
@@ -429,19 +430,30 @@ var _hmt = _hmt || [];
 
 
 
-  
-  
-  
 
-  
 
-  
-    <section id="comments" class="comments">
-      <style>
-        .comments{margin:30px;padding:10px;background:#fff}
-        @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
-      </style>
-      <div id="vcomment" class="comment"></div> 
+
+
+
+
+
+<section id="comments" class="comments">
+  <style>
+    .comments {
+      margin: 30px;
+      padding: 10px;
+      background: #fff
+    }
+
+    @media screen and (max-width:800px) {
+      .comments {
+        margin: auto;
+        padding: 10px;
+        background: #fff
+      }
+    }
+  </style>
+  <div id="vcomment" class="comment"></div> 
 <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
 <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
 <script>
@@ -459,13 +471,28 @@ var _hmt = _hmt || [];
         });
     }
 </script>
-      </section>
-    
-
+</section>
 
   
+<!-- 《utteranc评论：基于github issue的评论系统 -->
 
-  
+  <section id="comments" class="comments">
+    <style>
+      .utterances{max-width: 100%;}
+    </style>
+      <script src="https://utteranc.es/client.js"
+              repo="MarkCHYL/MarkCHYL.github.io"
+              issue-term="title"
+              theme="github-light"
+              crossorigin="anonymous"
+              async>
+      </script>
+</section>
+
+<!-- utteranc评论》 -->
+
+
+
 
 
           </div>
@@ -625,11 +652,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color2">Oracle</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Oracle</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">

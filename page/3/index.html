@@ -196,34 +196,34 @@ var _hmt = _hmt || [];
     <article id="post-Error-注-某些输入文件使用或覆盖了已过时的-API。-注-有关详细信息-请使用-Xlint-deprecation-重新编译。" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
-      <header class="article-header">
-        
+      <header class=" article-header">
+  
   
     <h1 itemprop="name">
       <a class="article-title" href="/2019/12/12/Error-%E6%B3%A8-%E6%9F%90%E4%BA%9B%E8%BE%93%E5%85%A5%E6%96%87%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%88%96%E8%A6%86%E7%9B%96%E4%BA%86%E5%B7%B2%E8%BF%87%E6%97%B6%E7%9A%84-API%E3%80%82-%E6%B3%A8-%E6%9C%89%E5%85%B3%E8%AF%A6%E7%BB%86%E4%BF%A1%E6%81%AF-%E8%AF%B7%E4%BD%BF%E7%94%A8-Xlint-deprecation-%E9%87%8D%E6%96%B0%E7%BC%96%E8%AF%91%E3%80%82/">Error:注: 某些输入文件使用或覆盖了已过时的 API。 注: 有关详细信息, 请使用 -Xlint:deprecation 重新编译。</a>
     </h1>
   
 
-        
-        
+  
+  
 <a href="/2019/12/12/Error-%E6%B3%A8-%E6%9F%90%E4%BA%9B%E8%BE%93%E5%85%A5%E6%96%87%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%88%96%E8%A6%86%E7%9B%96%E4%BA%86%E5%B7%B2%E8%BF%87%E6%97%B6%E7%9A%84-API%E3%80%82-%E6%B3%A8-%E6%9C%89%E5%85%B3%E8%AF%A6%E7%BB%86%E4%BF%A1%E6%81%AF-%E8%AF%B7%E4%BD%BF%E7%94%A8-Xlint-deprecation-%E9%87%8D%E6%96%B0%E7%BC%96%E8%AF%91%E3%80%82/" class="archive-article-date">
   	<time datetime="2019-12-12T08:33:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-12</time>
 </a>
-        
-      </header>
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/dong19900415/article/details/52882529?utm_source=blogxgwz3">原文</a></p>
+    <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/dong19900415/article/details/52882529?utm_source=blogxgwz3">原文</a></p>
 <p>Error:注: 某些输入文件使用或覆盖了已过时的 API。<br>注: 有关详细信息, 请使用 -Xlint:deprecation 重新编译。<br>注: 某些输入文件使用了未经检查或不安全的操作。<br>注: 有关详细信息, 请使用 -Xlint:unchecked 重新编译。<br>FAILURE: Build failed with an exception.<br>最近项目出现的一些问题可以在build中加入</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">allprojects &#123;</span><br><span class="line">    gradle.projectsEvaluated &#123;</span><br><span class="line">        tasks.withType(JavaCompile) &#123;</span><br><span class="line">            options.compilerArgs &lt;&lt; &quot;-Xlint:unchecked&quot; &lt;&lt; &quot;-Xlint:deprecation&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
+    
 
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+    
+  </div>
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -235,17 +235,17 @@ var _hmt = _hmt || [];
 		</ul>
 	</div>
 
-      
+    
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/12/Error-%E6%B3%A8-%E6%9F%90%E4%BA%9B%E8%BE%93%E5%85%A5%E6%96%87%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%88%96%E8%A6%86%E7%9B%96%E4%BA%86%E5%B7%B2%E8%BF%87%E6%97%B6%E7%9A%84-API%E3%80%82-%E6%B3%A8-%E6%9C%89%E5%85%B3%E8%AF%A6%E7%BB%86%E4%BF%A1%E6%81%AF-%E8%AF%B7%E4%BD%BF%E7%94%A8-Xlint-deprecation-%E9%87%8D%E6%96%B0%E7%BC%96%E8%AF%91%E3%80%82/">展开全文 >></a>
-        </p>
-      
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2019/12/12/Error-%E6%B3%A8-%E6%9F%90%E4%BA%9B%E8%BE%93%E5%85%A5%E6%96%87%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%88%96%E8%A6%86%E7%9B%96%E4%BA%86%E5%B7%B2%E8%BF%87%E6%97%B6%E7%9A%84-API%E3%80%82-%E6%B3%A8-%E6%9C%89%E5%85%B3%E8%AF%A6%E7%BB%86%E4%BF%A1%E6%81%AF-%E8%AF%B7%E4%BD%BF%E7%94%A8-Xlint-deprecation-%E9%87%8D%E6%96%B0%E7%BC%96%E8%AF%91%E3%80%82/">展开全文 >></a>
+    </p>
+    
 
-      
-      <div class="clearfix"></div>
-    </div>
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
 
@@ -267,40 +267,39 @@ var _hmt = _hmt || [];
 
 
 
-
   
     <article id="post-如何打Jar工具包" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
-      <header class="article-header">
-        
+      <header class=" article-header">
+  
   
     <h1 itemprop="name">
       <a class="article-title" href="/2019/12/10/%E5%A6%82%E4%BD%95%E6%89%93Jar%E5%B7%A5%E5%85%B7%E5%8C%85/">如何打Jar工具包</a>
     </h1>
   
 
-        
-        
+  
+  
 <a href="/2019/12/10/%E5%A6%82%E4%BD%95%E6%89%93Jar%E5%B7%A5%E5%85%B7%E5%8C%85/" class="archive-article-date">
   	<time datetime="2019-12-10T08:00:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-10</time>
 </a>
-        
-      </header>
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>打开Moudle包的build文件添加如下代码</strong></p>
+    <p><strong>打开Moudle包的build文件添加如下代码</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">task makeJar(type: Copy) &#123;</span><br><span class="line">    def filename &#x3D; projects.name + &#39;-V&#39;</span><br><span class="line">    delete &quot;build&#x2F;libs&#x2F;MarkZXing1.0.jar&quot;</span><br><span class="line">    from(&#39;build&#x2F;intermediates&#x2F;packaged-classes&#x2F;release&#39;)</span><br><span class="line">    into(&#39;build&#x2F;libs&#x2F;&#39;)</span><br><span class="line">    include(&#39;classes.jar&#39;)</span><br><span class="line">    rename(&#39;classes.jar&#39;, &#39;MarkZXing1.0.jar&#39;)</span><br><span class="line">&#125;</span><br><span class="line">makeJar.dependsOn(build)</span><br></pre></td></tr></table></figure>
 <p><strong>点开我们右侧的Gradle，找到项目下的第一步新建的模块Module名称 ，点开 Tasks/other 文件 找到 makeJar， 双击即可，等待出现BUILD SUCCESSFUL， Task execution finished ‘makeJar’.==》编译完成，此时去Module目录下的libs/下找到的test.jar，便是制作的jar包。</strong></p>
 
-      
+    
 
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+    
+  </div>
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -312,7 +311,7 @@ var _hmt = _hmt || [];
 		</ul>
 	</div>
 
-      
+    
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -325,15 +324,15 @@ var _hmt = _hmt || [];
 	</div>
 
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/10/%E5%A6%82%E4%BD%95%E6%89%93Jar%E5%B7%A5%E5%85%B7%E5%8C%85/">展开全文 >></a>
-        </p>
-      
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2019/12/10/%E5%A6%82%E4%BD%95%E6%89%93Jar%E5%B7%A5%E5%85%B7%E5%8C%85/">展开全文 >></a>
+    </p>
+    
 
-      
-      <div class="clearfix"></div>
-    </div>
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
 
@@ -355,43 +354,42 @@ var _hmt = _hmt || [];
 
 
 
-
   
     <article id="post-Kotlin基础入门学习笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
-      <header class="article-header">
-        
+      <header class=" article-header">
+  
   
     <h1 itemprop="name">
       <a class="article-title" href="/2019/12/03/Kotlin%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Kotlin基础入门学习笔记</a>
     </h1>
   
 
-        
-        
+  
+  
 <a href="/2019/12/03/Kotlin%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="archive-article-date">
   	<time datetime="2019-12-03T01:51:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-03</time>
 </a>
-        
-      </header>
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>若不留下点啥笔记，感觉对不住自己一个星期半的学习加复习。</p>
+    <p>若不留下点啥笔记，感觉对不住自己一个星期半的学习加复习。</p>
 <h3 id="一、如何实现单列模式？"><a href="#一、如何实现单列模式？" class="headerlink" title="一、如何实现单列模式？"></a>一、如何实现单列模式？</h3><p>使用关键字 <strong>object</strong> 修饰的类,替换掉class关键字，便会在整套程序中生成一个且是唯一的对象实例。<br>譬如如下代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">object BigHeadSon:IWash &#123;</span><br><span class="line">    override fun wash() &#123;</span><br><span class="line">        println(&quot;大头儿子洗完收费1元钱&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>那样之后该类的实例变量整个项目中有且只有一个。</p>
-        
-          <a class="article-more-a" href="/2019/12/03/Kotlin%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/#more">more >></a>
-        
-      
+    
+    <a class="article-more-a" href="/2019/12/03/Kotlin%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/#more">more >></a>
+    
+    
 
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+    
+  </div>
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -403,7 +401,7 @@ var _hmt = _hmt || [];
 		</ul>
 	</div>
 
-      
+    
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -416,15 +414,15 @@ var _hmt = _hmt || [];
 	</div>
 
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/03/Kotlin%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">展开全文 >></a>
-        </p>
-      
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2019/12/03/Kotlin%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">展开全文 >></a>
+    </p>
+    
 
-      
-      <div class="clearfix"></div>
-    </div>
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
 
@@ -446,39 +444,38 @@ var _hmt = _hmt || [];
 
 
 
-
   
     <article id="post-kotlin学习笔记第一章" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
-      <header class="article-header">
-        
+      <header class=" article-header">
+  
   
     <h1 itemprop="name">
       <a class="article-title" href="/2019/11/19/kotlin%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%AC%AC%E4%B8%80%E7%AB%A0/">kotlin学习笔记第一章</a>
     </h1>
   
 
-        
-        
+  
+  
 <a href="/2019/11/19/kotlin%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%AC%AC%E4%B8%80%E7%AB%A0/" class="archive-article-date">
   	<time datetime="2019-11-19T01:28:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-19</time>
 </a>
-        
-      </header>
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="第一章-搭建-Kotlin-开发环境"><a href="#第一章-搭建-Kotlin-开发环境" class="headerlink" title="第一章 搭建 Kotlin 开发环境"></a>第一章 搭建 Kotlin 开发环境</h2><hr>
+    <h2 id="第一章-搭建-Kotlin-开发环境"><a href="#第一章-搭建-Kotlin-开发环境" class="headerlink" title="第一章 搭建 Kotlin 开发环境"></a>第一章 搭建 Kotlin 开发环境</h2><hr>
 <h3 id="一、Kotlin简介："><a href="#一、Kotlin简介：" class="headerlink" title="一、Kotlin简介："></a>一、Kotlin简介：</h3><p>Kotlin是一种基于JVM的新型编程语言，它完全兼容Java语言。</p>
 
-      
+    
 
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+    
+  </div>
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -490,7 +487,7 @@ var _hmt = _hmt || [];
 		</ul>
 	</div>
 
-      
+    
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -503,15 +500,15 @@ var _hmt = _hmt || [];
 	</div>
 
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/19/kotlin%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%AC%AC%E4%B8%80%E7%AB%A0/">展开全文 >></a>
-        </p>
-      
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2019/11/19/kotlin%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%AC%AC%E4%B8%80%E7%AB%A0/">展开全文 >></a>
+    </p>
+    
 
-      
-      <div class="clearfix"></div>
-    </div>
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
 
@@ -533,30 +530,29 @@ var _hmt = _hmt || [];
 
 
 
-
   
     <article id="post-Oracle数据库基础理论" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
-      <header class="article-header">
-        
+      <header class=" article-header">
+  
   
     <h1 itemprop="name">
       <a class="article-title" href="/2019/11/14/Oracle%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA/">Oracle数据库基础理论</a>
     </h1>
   
 
-        
-        
+  
+  
 <a href="/2019/11/14/Oracle%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA/" class="archive-article-date">
   	<time datetime="2019-11-14T07:29:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-14</time>
 </a>
-        
-      </header>
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Oracle数据库是关系型数据库"><a href="#Oracle数据库是关系型数据库" class="headerlink" title="Oracle数据库是关系型数据库"></a><strong>Oracle数据库是关系型数据库</strong></h2><h3 id="一、什么是关系型数据库？"><a href="#一、什么是关系型数据库？" class="headerlink" title="一、什么是关系型数据库？"></a>一、什么是关系型数据库？</h3><hr>
+    <h2 id="Oracle数据库是关系型数据库"><a href="#Oracle数据库是关系型数据库" class="headerlink" title="Oracle数据库是关系型数据库"></a><strong>Oracle数据库是关系型数据库</strong></h2><h3 id="一、什么是关系型数据库？"><a href="#一、什么是关系型数据库？" class="headerlink" title="一、什么是关系型数据库？"></a>一、什么是关系型数据库？</h3><hr>
 <ul>
 <li>关系型数据理论最早是有E.F.Codd博士在1970年提出的。</li>
 <li>Codd博士制定了一个数据库产品成为关系型数据库所必须符合的一些列相关的标准。</li>
@@ -577,13 +573,13 @@ var _hmt = _hmt || [];
 <li>客户端和服务端的配置</li>
 </ul>
 
-      
+    
 
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+    
+  </div>
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -595,7 +591,7 @@ var _hmt = _hmt || [];
 		</ul>
 	</div>
 
-      
+    
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -608,15 +604,15 @@ var _hmt = _hmt || [];
 	</div>
 
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/14/Oracle%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA/">展开全文 >></a>
-        </p>
-      
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2019/11/14/Oracle%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA/">展开全文 >></a>
+    </p>
+    
 
-      
-      <div class="clearfix"></div>
-    </div>
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
 
@@ -635,7 +631,6 @@ var _hmt = _hmt || [];
         
     </div>
 </aside>
-
 
 
 
@@ -643,35 +638,35 @@ var _hmt = _hmt || [];
     <article id="post-Flutter解决启动白屏" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
-      <header class="article-header">
-        
+      <header class=" article-header">
+  
   
     <h1 itemprop="name">
       <a class="article-title" href="/2019/11/14/Flutter%E8%A7%A3%E5%86%B3%E5%90%AF%E5%8A%A8%E7%99%BD%E5%B1%8F/">Flutter解决启动白屏</a>
     </h1>
   
 
-        
-        
+  
+  
 <a href="/2019/11/14/Flutter%E8%A7%A3%E5%86%B3%E5%90%AF%E5%8A%A8%E7%99%BD%E5%B1%8F/" class="archive-article-date">
   	<time datetime="2019-11-14T01:36:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-14</time>
 </a>
-        
-      </header>
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="为什么启动会出现白屏？"><a href="#为什么启动会出现白屏？" class="headerlink" title="为什么启动会出现白屏？"></a>为什么启动会出现白屏？</h3><p>由于Android启动的时候要进行一系列初始化，如检查权限，开启进程，绑定application，startActivity。<br>这些初始化会稍微需要一点点时间，比如一秒钟。白屏持续的时间长短当然也和设备有关，设备越差白屏持续时间越长。</p>
-        
-          <a class="article-more-a" href="/2019/11/14/Flutter%E8%A7%A3%E5%86%B3%E5%90%AF%E5%8A%A8%E7%99%BD%E5%B1%8F/#more">more >></a>
-        
-      
+    <h3 id="为什么启动会出现白屏？"><a href="#为什么启动会出现白屏？" class="headerlink" title="为什么启动会出现白屏？"></a>为什么启动会出现白屏？</h3><p>由于Android启动的时候要进行一系列初始化，如检查权限，开启进程，绑定application，startActivity。<br>这些初始化会稍微需要一点点时间，比如一秒钟。白屏持续的时间长短当然也和设备有关，设备越差白屏持续时间越长。</p>
+    
+    <a class="article-more-a" href="/2019/11/14/Flutter%E8%A7%A3%E5%86%B3%E5%90%AF%E5%8A%A8%E7%99%BD%E5%B1%8F/#more">more >></a>
+    
+    
 
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+    
+  </div>
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -683,7 +678,7 @@ var _hmt = _hmt || [];
 		</ul>
 	</div>
 
-      
+    
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -696,15 +691,15 @@ var _hmt = _hmt || [];
 	</div>
 
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/14/Flutter%E8%A7%A3%E5%86%B3%E5%90%AF%E5%8A%A8%E7%99%BD%E5%B1%8F/">展开全文 >></a>
-        </p>
-      
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2019/11/14/Flutter%E8%A7%A3%E5%86%B3%E5%90%AF%E5%8A%A8%E7%99%BD%E5%B1%8F/">展开全文 >></a>
+    </p>
+    
 
-      
-      <div class="clearfix"></div>
-    </div>
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
 
@@ -723,7 +718,6 @@ var _hmt = _hmt || [];
         
     </div>
 </aside>
-
 
 
 
@@ -731,36 +725,36 @@ var _hmt = _hmt || [];
     <article id="post-Flutter如何打包安卓apk包" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
-      <header class="article-header">
-        
+      <header class=" article-header">
+  
   
     <h1 itemprop="name">
       <a class="article-title" href="/2019/11/14/Flutter%E5%A6%82%E4%BD%95%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93apk%E5%8C%85/">Flutter如何打包安卓apk包</a>
     </h1>
   
 
-        
-        
+  
+  
 <a href="/2019/11/14/Flutter%E5%A6%82%E4%BD%95%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93apk%E5%8C%85/" class="archive-article-date">
   	<time datetime="2019-11-14T01:05:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-14</time>
 </a>
-        
-      </header>
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>作为安卓原生开发多年的我，也是第一次接触这种方式配置打包信息。原谅我的无知。</p>
+    <p>作为安卓原生开发多年的我，也是第一次接触这种方式配置打包信息。原谅我的无知。</p>
 <h3 id="一、在项目根目录下新建-key-properties-文件"><a href="#一、在项目根目录下新建-key-properties-文件" class="headerlink" title="一、在项目根目录下新建 key.properties 文件"></a>一、在项目根目录下新建 key.properties 文件</h3><p>配置签名的基本信息</p>
-        
-          <a class="article-more-a" href="/2019/11/14/Flutter%E5%A6%82%E4%BD%95%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93apk%E5%8C%85/#more">more >></a>
-        
-      
+    
+    <a class="article-more-a" href="/2019/11/14/Flutter%E5%A6%82%E4%BD%95%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93apk%E5%8C%85/#more">more >></a>
+    
+    
 
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+    
+  </div>
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -772,7 +766,7 @@ var _hmt = _hmt || [];
 		</ul>
 	</div>
 
-      
+    
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -785,15 +779,15 @@ var _hmt = _hmt || [];
 	</div>
 
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/14/Flutter%E5%A6%82%E4%BD%95%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93apk%E5%8C%85/">展开全文 >></a>
-        </p>
-      
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2019/11/14/Flutter%E5%A6%82%E4%BD%95%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93apk%E5%8C%85/">展开全文 >></a>
+    </p>
+    
 
-      
-      <div class="clearfix"></div>
-    </div>
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
 
@@ -815,30 +809,29 @@ var _hmt = _hmt || [];
 
 
 
-
   
     <article id="post-ping端口是否开放-macos" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
-      <header class="article-header">
-        
+      <header class=" article-header">
+  
   
     <h1 itemprop="name">
       <a class="article-title" href="/2019/10/30/ping%E7%AB%AF%E5%8F%A3%E6%98%AF%E5%90%A6%E5%BC%80%E6%94%BE-macos/">ping端口是否开放(macos)</a>
     </h1>
   
 
-        
-        
+  
+  
 <a href="/2019/10/30/ping%E7%AB%AF%E5%8F%A3%E6%98%AF%E5%90%A6%E5%BC%80%E6%94%BE-macos/" class="archive-article-date">
   	<time datetime="2019-10-30T09:01:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-30</time>
 </a>
-        
-      </header>
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><em>简单的实用积累</em></p>
+    <p><em>简单的实用积累</em></p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/woodwindforward/article/details/89641636">原文转自</a></p>
 <h3 id="mac中："><a href="#mac中：" class="headerlink" title="mac中："></a>mac中：</h3><p>打开终端：</p>
 <ul>
@@ -850,13 +843,13 @@ var _hmt = _hmt || [];
 </li>
 </ul>
 
-      
+    
 
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+    
+  </div>
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -868,17 +861,28 @@ var _hmt = _hmt || [];
 		</ul>
 	</div>
 
-      
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/网络编程//" class="article-tag-list-link color5">网络编程</a>
+        		</li>
+      		
+		</ul>
+	</div>
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/30/ping%E7%AB%AF%E5%8F%A3%E6%98%AF%E5%90%A6%E5%BC%80%E6%94%BE-macos/">展开全文 >></a>
-        </p>
-      
 
-      
-      <div class="clearfix"></div>
-    </div>
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2019/10/30/ping%E7%AB%AF%E5%8F%A3%E6%98%AF%E5%90%A6%E5%BC%80%E6%94%BE-macos/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
 
@@ -900,43 +904,42 @@ var _hmt = _hmt || [];
 
 
 
-
   
     <article id="post-Python实现批量生产二维码" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
-      <header class="article-header">
-        
+      <header class=" article-header">
+  
   
     <h1 itemprop="name">
       <a class="article-title" href="/2019/10/18/Python%E5%AE%9E%E7%8E%B0%E6%89%B9%E9%87%8F%E7%94%9F%E4%BA%A7%E4%BA%8C%E7%BB%B4%E7%A0%81/">Python实现批量生产二维码</a>
     </h1>
   
 
-        
-        
+  
+  
 <a href="/2019/10/18/Python%E5%AE%9E%E7%8E%B0%E6%89%B9%E9%87%8F%E7%94%9F%E4%BA%A7%E4%BA%8C%E7%BB%B4%E7%A0%81/" class="archive-article-date">
   	<time datetime="2019-10-18T02:11:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-18</time>
 </a>
-        
-      </header>
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="工具库："><a href="#工具库：" class="headerlink" title="工具库："></a>工具库：</h3><ul>
+    <h3 id="工具库："><a href="#工具库：" class="headerlink" title="工具库："></a>工具库：</h3><ul>
 <li>pip3 install pillow</li>
 <li>pip3 install qrcode</li>
 <li>pip3 install xlrd<br>具体是什呢？再次不做介绍，百度官网查询。
-        
-          <a class="article-more-a" href="/2019/10/18/Python%E5%AE%9E%E7%8E%B0%E6%89%B9%E9%87%8F%E7%94%9F%E4%BA%A7%E4%BA%8C%E7%BB%B4%E7%A0%81/#more">more >></a>
-        
-      
+    
+    <a class="article-more-a" href="/2019/10/18/Python%E5%AE%9E%E7%8E%B0%E6%89%B9%E9%87%8F%E7%94%9F%E4%BA%A7%E4%BA%8C%E7%BB%B4%E7%A0%81/#more">more >></a>
+    
+    
 
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+    
+  </div>
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -948,7 +951,7 @@ var _hmt = _hmt || [];
 		</ul>
 	</div>
 
-      
+    
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -961,15 +964,15 @@ var _hmt = _hmt || [];
 	</div>
 
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/18/Python%E5%AE%9E%E7%8E%B0%E6%89%B9%E9%87%8F%E7%94%9F%E4%BA%A7%E4%BA%8C%E7%BB%B4%E7%A0%81/">展开全文 >></a>
-        </p>
-      
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2019/10/18/Python%E5%AE%9E%E7%8E%B0%E6%89%B9%E9%87%8F%E7%94%9F%E4%BA%A7%E4%BA%8C%E7%BB%B4%E7%A0%81/">展开全文 >></a>
+    </p>
+    
 
-      
-      <div class="clearfix"></div>
-    </div>
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
 
@@ -991,43 +994,42 @@ var _hmt = _hmt || [];
 
 
 
-
   
     <article id="post-如何防止重新启动" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
-      <header class="article-header">
-        
+      <header class=" article-header">
+  
   
     <h1 itemprop="name">
       <a class="article-title" href="/2019/10/14/%E5%A6%82%E4%BD%95%E9%98%B2%E6%AD%A2%E9%87%8D%E6%96%B0%E5%90%AF%E5%8A%A8/">如何防止重新启动</a>
     </h1>
   
 
-        
-        
+  
+  
 <a href="/2019/10/14/%E5%A6%82%E4%BD%95%E9%98%B2%E6%AD%A2%E9%87%8D%E6%96%B0%E5%90%AF%E5%8A%A8/" class="archive-article-date">
   	<time datetime="2019-10-14T07:31:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-14</time>
 </a>
-        
-      </header>
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>我的问题描述：</p>
+    <p>我的问题描述：</p>
 <blockquote>
 <p>app需要登陆才能进入主页，每次退到后台或返回之后都会重新进入LoginActivity，我需要的效果是登陆后，每次都去跳MainActivity。</p>
 </blockquote>
-        
-          <a class="article-more-a" href="/2019/10/14/%E5%A6%82%E4%BD%95%E9%98%B2%E6%AD%A2%E9%87%8D%E6%96%B0%E5%90%AF%E5%8A%A8/#more">more >></a>
-        
-      
+    
+    <a class="article-more-a" href="/2019/10/14/%E5%A6%82%E4%BD%95%E9%98%B2%E6%AD%A2%E9%87%8D%E6%96%B0%E5%90%AF%E5%8A%A8/#more">more >></a>
+    
+    
 
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+    
+  </div>
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -1039,7 +1041,7 @@ var _hmt = _hmt || [];
 		</ul>
 	</div>
 
-      
+    
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -1052,15 +1054,15 @@ var _hmt = _hmt || [];
 	</div>
 
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/14/%E5%A6%82%E4%BD%95%E9%98%B2%E6%AD%A2%E9%87%8D%E6%96%B0%E5%90%AF%E5%8A%A8/">展开全文 >></a>
-        </p>
-      
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2019/10/14/%E5%A6%82%E4%BD%95%E9%98%B2%E6%AD%A2%E9%87%8D%E6%96%B0%E5%90%AF%E5%8A%A8/">展开全文 >></a>
+    </p>
+    
 
-      
-      <div class="clearfix"></div>
-    </div>
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
 
@@ -1079,7 +1081,6 @@ var _hmt = _hmt || [];
         
     </div>
 </aside>
-
 
 
 
@@ -1248,11 +1249,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color2">Oracle</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Oracle</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">

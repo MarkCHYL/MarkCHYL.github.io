@@ -196,16 +196,16 @@ var _hmt = _hmt || [];
             <article id="post-Android7-0至Android8-0适配记录" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
-      <header class="article-header">
-        
+      <header class=" article-header">
+  
   
     <h1 class="article-title" itemprop="name">
       Android7.0至Android8.0适配记录
     </h1>
   
 
-        
-        
+  
+  
 	<!-- 不蒜子统计 -->
 	<span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
 		  <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
@@ -214,12 +214,12 @@ var _hmt = _hmt || [];
 <a href="/2018/12/17/Android7-0%E8%87%B3Android8-0%E9%80%82%E9%85%8D%E8%AE%B0%E5%BD%95/" class="archive-article-date">
   	<time datetime="2018-12-17T02:55:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-17</time>
 </a>
-        
-      </header>
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Android7-0至Android8-0适配记录"><a href="#Android7-0至Android8-0适配记录" class="headerlink" title="Android7.0至Android8.0适配记录"></a>Android7.0至Android8.0适配记录</h2><h4 id="一五年的老项目，里面存在过时的API众多，导致高版本的编译时运行时报错，而我这次做的适配遇到的困难重要有三个"><a href="#一五年的老项目，里面存在过时的API众多，导致高版本的编译时运行时报错，而我这次做的适配遇到的困难重要有三个" class="headerlink" title="一五年的老项目，里面存在过时的API众多，导致高版本的编译时运行时报错，而我这次做的适配遇到的困难重要有三个"></a>一五年的老项目，里面存在过时的API众多，导致高版本的编译时运行时报错，而我这次做的适配遇到的困难重要有三个</h4><h3 id=""><a href="#" class="headerlink" title=""></a></h3><a id="more"></a>
+    <h2 id="Android7-0至Android8-0适配记录"><a href="#Android7-0至Android8-0适配记录" class="headerlink" title="Android7.0至Android8.0适配记录"></a>Android7.0至Android8.0适配记录</h2><h4 id="一五年的老项目，里面存在过时的API众多，导致高版本的编译时运行时报错，而我这次做的适配遇到的困难重要有三个"><a href="#一五年的老项目，里面存在过时的API众多，导致高版本的编译时运行时报错，而我这次做的适配遇到的困难重要有三个" class="headerlink" title="一五年的老项目，里面存在过时的API众多，导致高版本的编译时运行时报错，而我这次做的适配遇到的困难重要有三个"></a>一五年的老项目，里面存在过时的API众多，导致高版本的编译时运行时报错，而我这次做的适配遇到的困难重要有三个</h4><h3 id=""><a href="#" class="headerlink" title=""></a></h3><a id="more"></a>
 <ul>
 <li><h3 id="广播接收者（BroadCastReceiver）无法正常己收到广播去发起通知。"><a href="#广播接收者（BroadCastReceiver）无法正常己收到广播去发起通知。" class="headerlink" title="广播接收者（BroadCastReceiver）无法正常己收到广播去发起通知。"></a>广播接收者（BroadCastReceiver）无法正常己收到广播去发起通知。</h3></li>
 <li><h3 id="8-0系统的手机上，全面的界面不能填充完整。"><a href="#8-0系统的手机上，全面的界面不能填充完整。" class="headerlink" title="8.0系统的手机上，全面的界面不能填充完整。"></a>8.0系统的手机上，全面的界面不能填充完整。</h3></li>
@@ -230,44 +230,45 @@ var _hmt = _hmt || [];
 <h2 id="第三、-HttpClient-和-HttpConnection的强制使用Utils的低版本API"><a href="#第三、-HttpClient-和-HttpConnection的强制使用Utils的低版本API" class="headerlink" title="第三、 HttpClient 和 HttpConnection的强制使用Utils的低版本API"></a>第三、 HttpClient 和 HttpConnection的强制使用Utils的低版本API</h2><h4 id="这个我在网上找到一个配置方法，但是还是编译失败，所以弃用，起码现在编译成功"><a href="#这个我在网上找到一个配置方法，但是还是编译失败，所以弃用，起码现在编译成功" class="headerlink" title="这个我在网上找到一个配置方法，但是还是编译失败，所以弃用，起码现在编译成功"></a>这个我在网上找到一个配置方法，但是还是编译失败，所以弃用，起码现在编译成功</h4><p>在app中的build文件中添加：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useLibrary &#39;org.apache.http.legacy&#39;</span><br></pre></td></tr></table></figure>
 
-      
+    
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/img/alipay.jpg">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/img/weixin.png">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
+    
+    <div class="page-reward">
+      <a href="javascript:;" class="page-reward-btn tooltip-top">
+        <div class="tooltip tooltip-east">
+          <span class="tooltip-item">
+            赏
+          </span>
+          <span class="tooltip-content">
+            <span class="tooltip-text">
+              <span class="tooltip-inner">
+                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i
+                    class="icon icon-quo-right"></i></p>
+                <div class="reward-box">
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/alipay.jpg">
+                    <span class="reward-type">支付宝</span>
                   </div>
-                </span>
+                  
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/weixin.png">
+                    <span class="reward-type">微信</span>
+                  </div>
+                  
+                </div>
               </span>
             </span>
-          </div>
-          </a>
+          </span>
         </div>
-      
+      </a>
     </div>
-    <div class="article-info article-info-index">
-      
-      
+    
+  </div>
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -279,7 +280,7 @@ var _hmt = _hmt || [];
 		</ul>
 	</div>
 
-      
+    
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -292,10 +293,10 @@ var _hmt = _hmt || [];
 	</div>
 
 
-      
+    
 
-      
-        
+    
+    
 <div class="share-btn share-icons tooltip-left">
   <div class="tooltip tooltip-east">
     <span class="tooltip-item">
@@ -345,13 +346,13 @@ var _hmt = _hmt || [];
 </div>
 
 <div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
 
-  
+
 <nav id="article-nav">
   
     <a href="/2018/12/17/python%E7%9A%84%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98%E7%AC%94%E8%AE%B0%E4%B8%80/" id="article-nav-newer" class="article-nav-link-wrap">
@@ -403,19 +404,30 @@ var _hmt = _hmt || [];
 
 
 
-  
-  
-  
 
-  
 
-  
-    <section id="comments" class="comments">
-      <style>
-        .comments{margin:30px;padding:10px;background:#fff}
-        @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
-      </style>
-      <div id="vcomment" class="comment"></div> 
+
+
+
+
+
+<section id="comments" class="comments">
+  <style>
+    .comments {
+      margin: 30px;
+      padding: 10px;
+      background: #fff
+    }
+
+    @media screen and (max-width:800px) {
+      .comments {
+        margin: auto;
+        padding: 10px;
+        background: #fff
+      }
+    }
+  </style>
+  <div id="vcomment" class="comment"></div> 
 <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
 <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
 <script>
@@ -433,13 +445,28 @@ var _hmt = _hmt || [];
         });
     }
 </script>
-      </section>
-    
-
+</section>
 
   
+<!-- 《utteranc评论：基于github issue的评论系统 -->
 
-  
+  <section id="comments" class="comments">
+    <style>
+      .utterances{max-width: 100%;}
+    </style>
+      <script src="https://utteranc.es/client.js"
+              repo="MarkCHYL/MarkCHYL.github.io"
+              issue-term="title"
+              theme="github-light"
+              crossorigin="anonymous"
+              async>
+      </script>
+</section>
+
+<!-- utteranc评论》 -->
+
+
+
 
 
           </div>
@@ -599,11 +626,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color2">Oracle</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Oracle</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
