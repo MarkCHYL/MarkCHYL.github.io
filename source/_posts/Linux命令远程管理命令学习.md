@@ -5,6 +5,7 @@ toc: true
 reward: true
 date: 2020-04-09 00:28:01
 tags: [Linux]
+categories: [Linux]
 ---
 
 ## 远程管理命令

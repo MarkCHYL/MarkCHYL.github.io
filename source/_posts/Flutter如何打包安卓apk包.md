@@ -5,6 +5,7 @@ toc: true
 reward: true
 date: 2019-11-14 09:05:43
 tags: [Flutter]
+categories: [Flutter]
 ---
 
 作为安卓原生开发多年的我，也是第一次接触这种方式配置打包信息。原谅我的无知。

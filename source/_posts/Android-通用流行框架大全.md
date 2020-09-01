@@ -5,6 +5,7 @@ toc: true
 reward: true
 date: 2020-08-07 08:49:16
 tags: [Android]
+categories: [Android]
 ---
 
 >1.缓存

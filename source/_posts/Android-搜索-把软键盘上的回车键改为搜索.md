@@ -5,6 +5,7 @@ date: 2019-09-25 15:33:45
 toc: true
 reward: true
 tags: [Android]
+categories: [Android]
 ---
 
 ### 前言：

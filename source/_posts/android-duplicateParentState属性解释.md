@@ -5,6 +5,7 @@ toc: false
 reward: false
 date: 2019-12-31 11:01:21
 tags: [Android]
+categories: [Android]
 ---
 
 **android:duplicateParentState指的是当前控件是否跟随父控件的(点击、焦点等)状态**

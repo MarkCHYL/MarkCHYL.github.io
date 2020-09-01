@@ -4,7 +4,8 @@ title: Git之使用GitHub搭建远程仓库
 toc: true
 reward: true
 date: 2020-08-18 16:00:15
-tags: [工具]
+tags: [工具使用]
+categories: [工具使用]
 ---
 ### 1.账号注册&仓库创建：
 不做记录，简单

@@ -5,6 +5,7 @@ toc: true
 reward: true
 date: 2020-08-07 09:40:00
 tags: [Android,Error]
+categories: [Android]
 ---
 ### android studio 进行真机安装时失败，报错：
 > Installation did not succeed.

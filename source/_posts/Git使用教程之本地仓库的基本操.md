@@ -4,7 +4,8 @@ title: Git使用教程之本地仓库的基本操
 toc: true
 reward: true
 date: 2020-08-17 15:43:07
-tags: [工具]
+tags: [工具使用]
+categories: [工具使用]
 ---
 Git 的安装就不再次啰嗦了：
 `sudo apt-get install git`

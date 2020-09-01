@@ -5,6 +5,7 @@ toc: true
 reward: true
 date: 2020-08-06 10:10:16
 tags: [Android]
+categories: [Android]
 ---
 ### 什么是ANR？
 > ANR的全称是application not responding，是指应用程序未响应，Android系统对于一些事件需要在一定的时间范围内完成，如果超过预定时间能未能得到有效响应或者响应时间过长，都会造成ANR。一般地，这时往往会弹出一个提示框，告知用户当前xxx未响应，用户可选择继续等待或者Force Close。

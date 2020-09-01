@@ -5,6 +5,7 @@ date: 2018-12-17 14:40:28
 toc: true
 reward: true
 tags: [Android,数据库]
+categories: [Android]
 ---
 GreenDao很早就想看看了，最近由于业务需求的变化，我就开始学习下简单的增、删、改、查。
 ***

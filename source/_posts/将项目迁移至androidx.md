@@ -5,6 +5,7 @@ toc: true
 reward: true
 date: 2019-10-14 13:25:50
 tags: [Android]
+categories: [Android]
 ---
 ## 自己的工具：
 * Android studio3.4.1

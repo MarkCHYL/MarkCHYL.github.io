@@ -5,6 +5,7 @@ date: 2018-12-29 09:04:39
 reward: true
 toc: true
 tags: [Python]
+categories: [Python]
 ---
 ### Python3的基础练习代码
 

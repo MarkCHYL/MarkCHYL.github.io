@@ -5,6 +5,7 @@ date: 2019-01-25 09:32:40
 toc: true
 reward: true
 tags: [Android,架构]
+categories: [Android]
 ---
 ### 前言
 之前我写的一个笔记，没有结合网络请求，现在我想记录下我这次结合网络请求Retrofit的MVP编程。

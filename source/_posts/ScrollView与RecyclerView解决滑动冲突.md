@@ -3,6 +3,7 @@ layout: post
 title: ScrollView与RecyclerView解决滑动冲突
 date: 2019-09-02 13:04:32
 tags: [Android,冲突]
+categories: [Android]
 ---
 [原文](https://www.jianshu.com/p/3e0ad704bee5)
 

@@ -5,6 +5,7 @@ date: 2018-12-17 11:02:21
 toc: true
 reward: true
 tags: [Android,视频直播]
+categories: [Android]
 ---
 ### MAC搭建基于RTMP的本地Nginx服务器，实现电脑上视频推流。
 # 1、先安装homeView

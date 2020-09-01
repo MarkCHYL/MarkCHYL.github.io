@@ -5,6 +5,7 @@ date: 2018-12-17 10:30:47
 toc: true
 reward: true
 tags: [Android,网络框架]
+categories: [Android]
 ---
 ## Retrofit介绍 :
 改造将您的HTTP API变成一个Java界面。Square公司针对Android和Java的类型安全HTTP客户端

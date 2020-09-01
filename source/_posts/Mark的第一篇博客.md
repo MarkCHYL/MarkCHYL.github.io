@@ -5,6 +5,7 @@ date: 2018-12-14 20:30:47
 toc: true
 reward: true
 tags: [Hexo,工具搭建]
+categories: [工具使用]
 ---
 ***
 # **标题: Mark的个人博客搭建**

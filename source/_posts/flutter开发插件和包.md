@@ -5,6 +5,7 @@ date: 2019-07-02 09:43:22
 toc: true
 reward: true
 tags: [Flutter]
+categories: [Flutter]
 ---
 
 ## cmd 命令创建开发插件包

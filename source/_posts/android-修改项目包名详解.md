@@ -3,6 +3,7 @@ layout: post
 title: android 修改项目包名详解
 date: 2019-08-06 23:00:42
 tags: [Android]
+categories: [Android]
 ---
 再简单的东西也的记下来，不然容易忘记。
 此处原文地址来源：https://www.jianshu.com/p/1891d5a1a121

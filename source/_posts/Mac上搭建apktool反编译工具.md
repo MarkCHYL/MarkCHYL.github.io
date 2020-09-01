@@ -5,6 +5,7 @@ date: 2019-06-13 15:32:38
 toc: true
 reward: true
 tags: [工具搭建]
+categories: [工具使用]
 ---
 apktool下载地址：
 `https://ibotpeaches.github.io/Apktool/install/`

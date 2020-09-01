@@ -5,6 +5,7 @@ toc: true
 reward: true
 date: 2019-12-03 09:51:56
 tags: [kotlin]
+categories: [Android]
 ---
 若不留下点啥笔记，感觉对不住自己一个星期半的学习加复习。
 ### 一、如何实现单列模式？

@@ -5,6 +5,7 @@ date: 2019-01-18 15:20:12
 toc: true
 reward: true
 tags: [Android,自定义控件]
+categories: [Android]
 ---
 ![Broccoli](https://github.com/samlss/Broccoli/raw/master/screenshots/Broccoli.png)
 

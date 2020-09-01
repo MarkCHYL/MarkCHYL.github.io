@@ -5,6 +5,7 @@ date: 2019-07-11 15:25:43
 toc: true
 reward: true
 tags: [Flutter,Flutter问题]
+categories: [Flutter]
 ---
 [csdn上原博文](https://blog.csdn.net/email_jade/article/details/85317859###)
 

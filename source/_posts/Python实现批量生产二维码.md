@@ -5,6 +5,7 @@ toc: true
 reward: true
 date: 2019-10-18 10:11:29
 tags: [Python]
+categories: [Python]
 ---
 ### 工具库：
 * pip3 install pillow

@@ -5,6 +5,7 @@ date: 2018-12-17 10:55:42
 toc: true
 reward: true
 tags: [Android]
+categories: [Android]
 ---
 ## Android7.0至Android8.0适配记录
 #### 一五年的老项目，里面存在过时的API众多，导致高版本的编译时运行时报错，而我这次做的适配遇到的困难重要有三个

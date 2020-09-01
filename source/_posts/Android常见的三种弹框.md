@@ -3,6 +3,7 @@ layout: post
 title: Android常见的三种弹框
 date: 2019-08-06 09:26:13
 tags: [Android]
+categories: [Android]
 ---
 再简单的东西时间长了，用的次数少了，会容易忘记。反之再复杂的东西其实也是由普普通通的东西实现的。
 **[感谢这位博主](https://blog.csdn.net/qq_35698774/article/details/79779238)总结**。

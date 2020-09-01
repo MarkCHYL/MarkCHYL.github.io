@@ -5,6 +5,7 @@ date: 2018-12-17 09:31:39
 toc: true
 reward: true
 tags: [Android]
+categories: [Android]
 ---
 ![image](http://hi.csdn.net/attachment/201109/1/0_1314838777He6C.gif)
 #### 1.启动Activity：系统会先调用onCreate方法，这是生命周期第一个方法，然后调用onStart方法，最后调用onResume，Activity进入运行状态。

@@ -5,6 +5,7 @@ toc: true
 reward: true
 date: 2019-12-10 16:00:11
 tags: [Android]
+categories: [Android]
 ---
 **打开Moudle包的build文件添加如下代码**
 ```

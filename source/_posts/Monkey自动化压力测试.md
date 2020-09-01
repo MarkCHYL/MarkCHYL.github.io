@@ -5,6 +5,7 @@ toc: true
 reward: true
 date: 2020-06-22 10:53:50
 tags: [Android]
+categories: [Android]
 ---
 ## 第一部分 背景
  ### 1、为什么要开展压力测试？

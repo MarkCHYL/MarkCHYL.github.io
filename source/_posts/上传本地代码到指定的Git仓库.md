@@ -5,6 +5,7 @@ date: 2019-05-29 11:05:46
 toc: true
 reward: true
 tags: [工具使用]
+categories: [Git]
 ---
 
 ### 1、本地安装git环境

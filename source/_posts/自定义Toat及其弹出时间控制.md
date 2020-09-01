@@ -5,6 +5,7 @@ toc: true
 reward: true
 date: 2020-07-21 16:47:53
 tags: [Android]
+categories: [Android]
 ---
 效果就是实现Toast布局自定义，弹出的事件进行控制
 ### 一、先自定义布局

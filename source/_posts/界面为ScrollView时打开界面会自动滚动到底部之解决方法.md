@@ -3,6 +3,7 @@ layout: post
 title: 界面为ScrollView时打开界面会自动滚动到底部之解决方法
 date: 2019-09-02 13:40:15
 tags: [Android,冲突]
+categories: [Android]
 ---
 版权声明：本文为博主原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接和本声明。
 本文链接：https://blog.csdn.net/u014449096/article/details/72885947

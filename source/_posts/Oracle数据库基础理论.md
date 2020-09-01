@@ -5,6 +5,7 @@ toc: true
 reward: true
 date: 2019-11-14 15:29:18
 tags: [Oracle]
+categories: [Oracle]
 ---
 ## **Oracle数据库是关系型数据库**
 ### 一、什么是关系型数据库？

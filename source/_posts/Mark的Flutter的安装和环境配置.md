@@ -5,6 +5,7 @@ date: 2018-12-17 11:08:44
 toc: true
 reward: true
 tags: [Android,Flutter]
+categories: [Flutter]
 ---
 ## 前言：
         我是一名Android原生开发程序员，目前熟练掌握Java语言和kotlin语言去编写安卓。RN出来的时候我没去学习，现在我想赶上Flutter这列火车。

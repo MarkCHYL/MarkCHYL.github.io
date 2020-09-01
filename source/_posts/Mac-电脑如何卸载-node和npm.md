@@ -5,6 +5,7 @@ toc: true
 reward: false
 date: 2020-08-25 10:37:35
 tags: [系统]
+categories: [工具使用]
 ---
 记录下我自己重新安装npm，因为npm是和node.js安装一起的，也就是说是重新弄*node*
 <!-- more -->

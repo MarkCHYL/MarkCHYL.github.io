@@ -5,6 +5,7 @@ toc: true
 reward: true
 date: 2020-01-13 15:38:54
 tags: [Android]
+categories: [Android]
 ---
 实现之前觉得万分难，我查阅了很多博客.
 报错-----应用未安装

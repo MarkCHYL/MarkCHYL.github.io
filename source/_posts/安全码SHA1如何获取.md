@@ -5,6 +5,7 @@ toc: true
 reward: true
 date: 2020-01-15 08:57:39
 tags: [Android]
+categories: [Android]
 ---
 在高德地图集成的时候遇到那玩意。
 [原文](https://blog.csdn.net/qq_33704095/article/details/80861146)

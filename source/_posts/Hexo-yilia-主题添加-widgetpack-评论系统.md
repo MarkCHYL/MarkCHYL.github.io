@@ -5,6 +5,7 @@ date: 2019-07-21 22:24:41
 toc: true
 reward: true
 tags: [Hexo,工具搭建]
+categories: [工具使用]
 ---
 ## 前言：
 ---

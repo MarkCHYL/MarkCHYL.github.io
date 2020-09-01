@@ -5,6 +5,7 @@ toc: true
 reward: true
 date: 2019-11-14 09:36:51
 tags: [Flutter]
+categories: [Flutter]
 ---
 ### 为什么启动会出现白屏？
 由于Android启动的时候要进行一系列初始化，如检查权限，开启进程，绑定application，startActivity。
