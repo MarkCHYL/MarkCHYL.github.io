@@ -6,7 +6,7 @@
   <link href="http://markchyl.cn/atom.xml" rel="self"/>
   
   <link href="http://markchyl.cn/"/>
-  <updated>2020-08-31T08:07:59.000Z</updated>
+  <updated>2020-09-03T01:14:59.000Z</updated>
   <id>http://markchyl.cn/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>android retrofit End of input at line 1 column 1 path</title>
+    <link href="http://markchyl.cn/2020/09/03/android-retrofit-End-of-input-at-line-1-column-1-path/"/>
+    <id>http://markchyl.cn/2020/09/03/android-retrofit-End-of-input-at-line-1-column-1-path/</id>
+    <published>2020-09-03T01:14:59.000Z</published>
+    <updated>2020-09-03T01:14:59.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;在使用retrofit作为项目的网络请求库时，接口定义如下：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;@GET(ACT_GET_NEW_STAFF)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Call&amp;lt;TaskEn&amp;gt; reqGetNewStaff();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;接口从服务端获取了数据，通过GsonConverterFactory将服务端相应内容解析成对应的实体类。在接口正常响应时（有数据返回），并没有什么异常发生，但当接口请求的数据为空，我们的服务端人员并不是返回理论意义上的空，null或者[]（数据集合空），而是返回没有响应体body，只有响应头header，content-length为0的Response&lt;/p&gt;
+&lt;p&gt;这时候GsonConverterFactory就解析异常了，并抛出如下异常：&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Android" scheme="http://markchyl.cn/categories/Android/"/>
+    
+    
+    <category term="Error" scheme="http://markchyl.cn/tags/Error/"/>
+    
+  </entry>
   
   <entry>
     <title>Glide添加请求头</title>
@@ -243,7 +265,7 @@
     
     <category term="Android" scheme="http://markchyl.cn/tags/Android/"/>
     
-    <category term="技术原理" scheme="http://markchyl.cn/tags/%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86/"/>
+    <category term="自定义控件" scheme="http://markchyl.cn/tags/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6/"/>
     
   </entry>
   
@@ -298,7 +320,7 @@
     
     <category term="Android" scheme="http://markchyl.cn/tags/Android/"/>
     
-    <category term="技术原理" scheme="http://markchyl.cn/tags/%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86/"/>
+    <category term="自定义控件" scheme="http://markchyl.cn/tags/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6/"/>
     
   </entry>
   
@@ -485,29 +507,6 @@
         
     <summary type="html">&lt;p&gt;记录下我使用 CornerStone 利用SVN 进行版本代码管理。我已经快两个月没提交代码啦，今天一提交发现好多问题，各种报错。&lt;br&gt;譬如这类错误：&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td</summary>
-        
-      
-    
-    
-    
-    
-    <category term="Error" scheme="http://markchyl.cn/tags/Error/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>error: &lt;item&gt; inner element must either be a resource reference or empty.</title>
-    <link href="http://markchyl.cn/2019/12/25/error-item-inner-element-must-either-be-a-resource-reference-or-empty/"/>
-    <id>http://markchyl.cn/2019/12/25/error-item-inner-element-must-either-be-a-resource-reference-or-empty/</id>
-    <published>2019-12-25T07:47:08.000Z</published>
-    <updated>2019-12-25T07:47:08.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span</summary>
         
       
     
