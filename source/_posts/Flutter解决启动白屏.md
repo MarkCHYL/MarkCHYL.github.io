@@ -20,13 +20,17 @@ categories: [Flutter]
 导包总是报错，先手敲代码，再导包。支持自定义启动布局。
 安卓的配置步骤多点。
 **下面是我安卓配置：**
-![](https://thumbnail0.baidupcs.com/thumbnail/477735a56f90cd1d64169d2917a87770?fid=3761439320-250528-246305797275251&time=1573696800&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-G9FxrL0R8wPZgpghMa0UmLf4liU%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=7361838327784451279&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video)
+
+![](https://github.com/MarkCHYL/BLOG/blob/master/marksource/images/WechatIMG308.png?raw=true)
 至于额为什么字体显示红色，别紧张，运行没得问题的。
 其他的配置看官方文档。
+
 **下面是我 IOS 配置：**
 * 导入启动图片
-![](https://thumbnail0.baidupcs.com/thumbnail/8f43bb0ad5a59ab03ed661aa656a7046?fid=3761439320-250528-119014613827010&time=1573696800&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-MVtW4kap4%2BVX1pHhbojCnEHjvLc%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=7362027953528330279&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video)
+![](https://github.com/MarkCHYL/BLOG/blob/master/marksource/images/WechatIMG309.png?raw=true)
 * 配置启动图片
-![](https://thumbnail0.baidupcs.com/thumbnail/37e039082e477ed6eb598eb35be32040?fid=3761439320-250528-291075177673625&time=1573696800&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-Uxe3IMjyZGyTpPolQclxnVFPyAo%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=7362084701809447864&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video)
+![](https://github.com/MarkCHYL/BLOG/blob/master/marksource/images/WechatIMG310.png?raw=true)
+
+
 
 

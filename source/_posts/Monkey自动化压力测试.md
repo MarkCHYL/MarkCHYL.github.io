@@ -47,7 +47,14 @@ crash和ANR
 ## 第三部分：实践
 * 步骤一：打开手机USB调试功能
 * 步骤二：确认手机和电脑已经连接，执行`adb devices`
-  ![效果图](https://thumbnail0.baidupcs.com/thumbnail/c2439e434kb986d6a3989946387f8455?fid=3761439320-250528-622176958452329&time=1592805600&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-Nqvywj6pwih9WbcOB8SokjVreIw%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=567530952357307099&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video)
+```
+mark@Markxiansheng blog % adb devices
+* daemon not running; starting now at tcp:5037
+* daemon started successfully
+List of devices attached
+HCW0001811005556        device
+
+```
 * 步骤三：安装测试app，`adb install package.apk`
 * 步骤四：发送压测指令 `adb shell monkey 1000`执行1000次随机操作指令
 * 步骤五：获取app报名：执行`adb logcat | grep START`
