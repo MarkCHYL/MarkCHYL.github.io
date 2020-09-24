@@ -128,32 +128,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Android 搜索 把软键盘上的回车键改为搜索</title>
-    <url>/2019/09/25/Android-%E6%90%9C%E7%B4%A2-%E6%8A%8A%E8%BD%AF%E9%94%AE%E7%9B%98%E4%B8%8A%E7%9A%84%E5%9B%9E%E8%BD%A6%E9%94%AE%E6%94%B9%E4%B8%BA%E6%90%9C%E7%B4%A2/</url>
-    <content><![CDATA[<h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><blockquote>
-<p>项目中需要自定义一个搜做的功能，但是我通过更具UI的显示，完全没法使用V7包下的SearchView控件，于是我使用EditView自己写的。<br><img src="https://thumbnail0.baidupcs.com/thumbnail/cede3f055d8aeb66477c40eb3af2066a?fid=3761439320-250528-957214977420267&time=1569398400&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-T/jYZusknxVB1gKzQcIJFFErJ/M=&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=443423899171394619&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video"></p>
-</blockquote>
-<a id="more"></a>
-<h3 id="具体实现如下："><a href="#具体实现如下：" class="headerlink" title="具体实现如下："></a>具体实现如下：</h3><ul>
-<li><p>修改Editview属性：</p>
-<p><code>android:imeOptions=&quot;actionSearch&quot;   </code></p>
-<p>在该Editview获得焦点的时候将“回车”键改为“搜索”</p>
-<p>android:singleLine=”true”     </p>
-<p>不然回车【搜索】会换行。</p>
-</li>
-<li><p>EditView编写监听按下控件监听，监听确认键的按下</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">etSearchstr.setOnKeyListener(new View.OnKeyListener() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public boolean onKey(View v, int keyCode, KeyEvent event) &#123;</span><br><span class="line">                if (keyCode &#x3D;&#x3D; KeyEvent.KEYCODE_ENTER) &#123;</span><br><span class="line">                    &#x2F;&#x2F; 先隐藏键盘</span><br><span class="line">                    ((InputMethodManager) getSystemService(INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(GoodsListActivity.this.getCurrentFocus()</span><br><span class="line">                            .getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);</span><br><span class="line">                    &#x2F;&#x2F;进行搜索操作的方法，在该方法中可以加入mEditSearchUser的非空判断</span><br><span class="line">                    refresh.autoRefresh();</span><br><span class="line">                &#125;</span><br><span class="line">                return false;</span><br><span class="line">            &#125;</span><br><span class="line">    &#125; </span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Android 通用流行框架大全</title>
     <url>/2020/08/07/Android-%E9%80%9A%E7%94%A8%E6%B5%81%E8%A1%8C%E6%A1%86%E6%9E%B6%E5%A4%A7%E5%85%A8/</url>
     <content><![CDATA[<blockquote>
@@ -535,6 +509,32 @@
       </tags>
   </entry>
   <entry>
+    <title>Android 搜索 把软键盘上的回车键改为搜索</title>
+    <url>/2019/09/25/Android-%E6%90%9C%E7%B4%A2-%E6%8A%8A%E8%BD%AF%E9%94%AE%E7%9B%98%E4%B8%8A%E7%9A%84%E5%9B%9E%E8%BD%A6%E9%94%AE%E6%94%B9%E4%B8%BA%E6%90%9C%E7%B4%A2/</url>
+    <content><![CDATA[<h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><blockquote>
+<p>项目中需要自定义一个搜做的功能，但是我通过更具UI的显示，完全没法使用V7包下的SearchView控件，于是我使用EditView自己写的。<br><img src="https://thumbnail0.baidupcs.com/thumbnail/cede3f055d8aeb66477c40eb3af2066a?fid=3761439320-250528-957214977420267&time=1569398400&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-T/jYZusknxVB1gKzQcIJFFErJ/M=&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=443423899171394619&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video"></p>
+</blockquote>
+<a id="more"></a>
+<h3 id="具体实现如下："><a href="#具体实现如下：" class="headerlink" title="具体实现如下："></a>具体实现如下：</h3><ul>
+<li><p>修改Editview属性：</p>
+<p><code>android:imeOptions=&quot;actionSearch&quot;   </code></p>
+<p>在该Editview获得焦点的时候将“回车”键改为“搜索”</p>
+<p>android:singleLine=”true”     </p>
+<p>不然回车【搜索】会换行。</p>
+</li>
+<li><p>EditView编写监听按下控件监听，监听确认键的按下</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">etSearchstr.setOnKeyListener(new View.OnKeyListener() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public boolean onKey(View v, int keyCode, KeyEvent event) &#123;</span><br><span class="line">                if (keyCode &#x3D;&#x3D; KeyEvent.KEYCODE_ENTER) &#123;</span><br><span class="line">                    &#x2F;&#x2F; 先隐藏键盘</span><br><span class="line">                    ((InputMethodManager) getSystemService(INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(GoodsListActivity.this.getCurrentFocus()</span><br><span class="line">                            .getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);</span><br><span class="line">                    &#x2F;&#x2F;进行搜索操作的方法，在该方法中可以加入mEditSearchUser的非空判断</span><br><span class="line">                    refresh.autoRefresh();</span><br><span class="line">                &#125;</span><br><span class="line">                return false;</span><br><span class="line">            &#125;</span><br><span class="line">    &#125; </span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Android7.0至Android8.0适配记录</title>
     <url>/2018/12/17/Android7-0%E8%87%B3Android8-0%E9%80%82%E9%85%8D%E8%AE%B0%E5%BD%95/</url>
     <content><![CDATA[<h2 id="Android7-0至Android8-0适配记录"><a href="#Android7-0至Android8-0适配记录" class="headerlink" title="Android7.0至Android8.0适配记录"></a>Android7.0至Android8.0适配记录</h2><h4 id="一五年的老项目，里面存在过时的API众多，导致高版本的编译时运行时报错，而我这次做的适配遇到的困难重要有三个"><a href="#一五年的老项目，里面存在过时的API众多，导致高版本的编译时运行时报错，而我这次做的适配遇到的困难重要有三个" class="headerlink" title="一五年的老项目，里面存在过时的API众多，导致高版本的编译时运行时报错，而我这次做的适配遇到的困难重要有三个"></a>一五年的老项目，里面存在过时的API众多，导致高版本的编译时运行时报错，而我这次做的适配遇到的困难重要有三个</h4><h3 id=""><a href="#" class="headerlink" title=""></a></h3><a id="more"></a>
@@ -648,6 +648,28 @@
       </tags>
   </entry>
   <entry>
+    <title>Dart的基础知识学习</title>
+    <url>/2018/12/17/Dart%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<h3 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h3><pre><code>    Google和其他地方的开发人员使用Dart为iOS，Android和网络创建高质量，关键任务的应用程序。Dart具有针对客户端开发的功能，非常适合移动和Web应用程序。
+    Dart对于许多现有的开发人员来说都很熟悉，这要归功于它不出异的面向对象和语法。如果您已经了解C ++，C＃或Java，那么只需几天就可以使用Dart。
+    Dart编译为ARM和x86代码，因此Dart移动应用程序可以在iOS，Android及更高版本上本机运行。对于Web应用程序，Dart会转换为JavaScript。
+    Dart提供优化的提前编译，以在移动设备和Web上实现可预测的高性能和快速启动。</code></pre>
+<hr>
+ <a id="more"></a>
+<h3 id="工具："><a href="#工具：" class="headerlink" title="工具："></a>工具：</h3><p><img src="https://note.youdao.com/yws/api/personal/file/WEB2e99b7c66fa25ec939b46b986618bc0e?method=download&shareKey=6e3cd2073bc556b731b1d3a68a1c6acf" alt="https://note.youdao.com/yws/api/personal/file/WEB2e99b7c66fa25ec939b46b986618bc0e?method=download&amp;shareKey=6e3cd2073bc556b731b1d3a68a1c6acf"></p>
+<h5 id="无需安装就可以验证编译代码运行。"><a href="#无需安装就可以验证编译代码运行。" class="headerlink" title="无需安装就可以验证编译代码运行。"></a>无需安装就可以验证编译代码运行。</h5><p>DartPad是一种很好的，无需下载的方法来学习Dart语法和试验Dart语言功能。它支持Dart的核心库，但dart：io等VM库除外。<a href="https://dartpad.dartlang.org/">链接</a><br>IDE和编辑器<br>这些常用的IDE存在Dart插件。<br><img src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=1105042996,1878674339&fm=58&bpow=496&bpoh=405"><br> Android Studio<br> <img src="https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=330314814,3181569317&fm=58&bpow=310&bpoh=270" alt="3aaf76a25ee53fd2b4c50db1cc857576.svg+xml"><br>  IntelliJ IDEA （和其他JetBrains IDE）<br>  <img src="http://cms-bucket.nosdn.127.net/catchpic/9/9a/9aa087361923a8896e8c0f5f6dd22b05.jpg?imageView&thumbnail=550x0"><br>   Visual Studio代码</p>
+<hr>
+<h3 id="HelloWorld："><a href="#HelloWorld：" class="headerlink" title="HelloWorld："></a>HelloWorld：</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void main() &#123;</span><br><span class="line">  print(&#39;Hello, World!&#39;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="默认值"><a href="#默认值" class="headerlink" title="默认值"></a>默认值</h3><pre><code>    未初始化的变量默认值是 null。即使变量是数字 类型默认值也是 null，因为在 Dart 中一切都是对象，数字类型 也不例外</code></pre>
+]]></content>
+      <categories>
+        <category>Flutter</category>
+      </categories>
+      <tags>
+        <tag>Flutter</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Charles抓包工具在mac上如何配置</title>
     <url>/2019/12/18/Charles%E6%8A%93%E5%8C%85%E5%B7%A5%E5%85%B7%E5%9C%A8mac%E4%B8%8A%E5%A6%82%E4%BD%95%E9%85%8D%E7%BD%AE/</url>
     <content><![CDATA[<h4 id="配置："><a href="#配置：" class="headerlink" title="配置："></a>配置：</h4><ul>
@@ -672,28 +694,6 @@
       </categories>
       <tags>
         <tag>工具使用</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Dart的基础知识学习</title>
-    <url>/2018/12/17/Dart%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%AD%A6%E4%B9%A0/</url>
-    <content><![CDATA[<h3 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h3><pre><code>    Google和其他地方的开发人员使用Dart为iOS，Android和网络创建高质量，关键任务的应用程序。Dart具有针对客户端开发的功能，非常适合移动和Web应用程序。
-    Dart对于许多现有的开发人员来说都很熟悉，这要归功于它不出异的面向对象和语法。如果您已经了解C ++，C＃或Java，那么只需几天就可以使用Dart。
-    Dart编译为ARM和x86代码，因此Dart移动应用程序可以在iOS，Android及更高版本上本机运行。对于Web应用程序，Dart会转换为JavaScript。
-    Dart提供优化的提前编译，以在移动设备和Web上实现可预测的高性能和快速启动。</code></pre>
-<hr>
- <a id="more"></a>
-<h3 id="工具："><a href="#工具：" class="headerlink" title="工具："></a>工具：</h3><p><img src="https://note.youdao.com/yws/api/personal/file/WEB2e99b7c66fa25ec939b46b986618bc0e?method=download&shareKey=6e3cd2073bc556b731b1d3a68a1c6acf" alt="https://note.youdao.com/yws/api/personal/file/WEB2e99b7c66fa25ec939b46b986618bc0e?method=download&amp;shareKey=6e3cd2073bc556b731b1d3a68a1c6acf"></p>
-<h5 id="无需安装就可以验证编译代码运行。"><a href="#无需安装就可以验证编译代码运行。" class="headerlink" title="无需安装就可以验证编译代码运行。"></a>无需安装就可以验证编译代码运行。</h5><p>DartPad是一种很好的，无需下载的方法来学习Dart语法和试验Dart语言功能。它支持Dart的核心库，但dart：io等VM库除外。<a href="https://dartpad.dartlang.org/">链接</a><br>IDE和编辑器<br>这些常用的IDE存在Dart插件。<br><img src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=1105042996,1878674339&fm=58&bpow=496&bpoh=405"><br> Android Studio<br> <img src="https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=330314814,3181569317&fm=58&bpow=310&bpoh=270" alt="3aaf76a25ee53fd2b4c50db1cc857576.svg+xml"><br>  IntelliJ IDEA （和其他JetBrains IDE）<br>  <img src="http://cms-bucket.nosdn.127.net/catchpic/9/9a/9aa087361923a8896e8c0f5f6dd22b05.jpg?imageView&thumbnail=550x0"><br>   Visual Studio代码</p>
-<hr>
-<h3 id="HelloWorld："><a href="#HelloWorld：" class="headerlink" title="HelloWorld："></a>HelloWorld：</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void main() &#123;</span><br><span class="line">  print(&#39;Hello, World!&#39;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="默认值"><a href="#默认值" class="headerlink" title="默认值"></a>默认值</h3><pre><code>    未初始化的变量默认值是 null。即使变量是数字 类型默认值也是 null，因为在 Dart 中一切都是对象，数字类型 也不例外</code></pre>
-]]></content>
-      <categories>
-        <category>Flutter</category>
-      </categories>
-      <tags>
-        <tag>Flutter</tag>
       </tags>
   </entry>
   <entry>
@@ -750,31 +750,6 @@
 <p>这样下来安卓的配置信息配置完成。<br>下面修改buildType是：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">buildTypes &#123;</span><br><span class="line">       release &#123;</span><br><span class="line">           &#x2F;&#x2F; Signing with the debug keys for now, so &#96;flutter run --release&#96; works.</span><br><span class="line">           signingConfig signingConfigs.release</span><br><span class="line">       &#125;</span><br><span class="line">       debug &#123;</span><br><span class="line">           &#x2F;&#x2F; Signing with the debug keys for now, so &#96;flutter run --release&#96; works.</span><br><span class="line">           signingConfig signingConfigs.debug</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 <h3 id="三、切换到Terminal中"><a href="#三、切换到Terminal中" class="headerlink" title="三、切换到Terminal中"></a>三、切换到Terminal中</h3><p>输入 <code>Flutter build apk</code>,请静待程序运行完成。</p>
-]]></content>
-      <categories>
-        <category>Flutter</category>
-      </categories>
-      <tags>
-        <tag>Flutter</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Flutter解决启动白屏</title>
-    <url>/2019/11/14/Flutter%E8%A7%A3%E5%86%B3%E5%90%AF%E5%8A%A8%E7%99%BD%E5%B1%8F/</url>
-    <content><![CDATA[<h3 id="为什么启动会出现白屏？"><a href="#为什么启动会出现白屏？" class="headerlink" title="为什么启动会出现白屏？"></a>为什么启动会出现白屏？</h3><p>由于Android启动的时候要进行一系列初始化，如检查权限，开启进程，绑定application，startActivity。<br>这些初始化会稍微需要一点点时间，比如一秒钟。白屏持续的时间长短当然也和设备有关，设备越差白屏持续时间越长。</p>
-<a id="more"></a>
-<h3 id="如何解决？"><a href="#如何解决？" class="headerlink" title="如何解决？"></a>如何解决？</h3><p>我这里使用第三方的插件进行解决。<a href="https://pub.flutter-io.cn/packages/flutter_splash_screen">flutter_splash_screen</a>.</p>
-<p>其使用方法看他的文档。</p>
-<h3 id="记录下配置的时候遇到的问题？"><a href="#记录下配置的时候遇到的问题？" class="headerlink" title="记录下配置的时候遇到的问题？"></a>记录下配置的时候遇到的问题？</h3><p>导包总是报错，先手敲代码，再导包。支持自定义启动布局。<br>安卓的配置步骤多点。<br><strong>下面是我安卓配置：</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import org.devio.flutter.splashscreen.SplashScreen;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class MainActivity extends FlutterActivity &#123;</span><br><span class="line">  @Override</span><br><span class="line">  protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">    SplashScreen.show(this, true);&#x2F;&#x2F; here</span><br><span class="line">    super.onCreate(savedInstanceState);</span><br><span class="line">    GeneratedPluginRegistrant.registerWith(this);</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;&#x2F;注册自己的 Plugin 插件</span><br><span class="line">    resisterSelfPlugin();</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<p>至于额为什么字体显示红色，别紧张，运行没得问题的。<br>其他的配置看官方文档。<br>添加<br><code>launch_screen.xml</code></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;RelativeLayout xmlns:android&#x3D;&quot;http:&#x2F;&#x2F;schemas.android.com&#x2F;apk&#x2F;res&#x2F;android&quot;</span><br><span class="line">    android:layout_width&#x3D;&quot;match_parent&quot;</span><br><span class="line">    android:layout_height&#x3D;&quot;match_parent&quot;</span><br><span class="line">    android:orientation&#x3D;&quot;vertical&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;ImageView</span><br><span class="line">        android:layout_width&#x3D;&quot;match_parent&quot;</span><br><span class="line">        android:layout_height&#x3D;&quot;match_parent&quot;</span><br><span class="line">        android:scaleType&#x3D;&quot;centerCrop&quot;</span><br><span class="line">        android:src&#x3D;&quot;@mipmap&#x2F;screen_full&quot; &#x2F;&gt;</span><br><span class="line">&lt;&#x2F;RelativeLayout&gt;</span><br></pre></td></tr></table></figure>
-
-<p><strong>下面是我 IOS 配置：</strong></p>
-<ul>
-<li>导入启动图片<br><img src="https://github.com/MarkCHYL/BLOG/blob/master/marksource/images/WechatIMG309.png?raw=true"></li>
-<li>配置启动图片<br><img src="https://github.com/MarkCHYL/BLOG/blob/master/marksource/images/WechatIMG310.png?raw=true"></li>
-</ul>
 ]]></content>
       <categories>
         <category>Flutter</category>
@@ -1334,6 +1309,31 @@
       </tags>
   </entry>
   <entry>
+    <title>Flutter解决启动白屏</title>
+    <url>/2019/11/14/Flutter%E8%A7%A3%E5%86%B3%E5%90%AF%E5%8A%A8%E7%99%BD%E5%B1%8F/</url>
+    <content><![CDATA[<h3 id="为什么启动会出现白屏？"><a href="#为什么启动会出现白屏？" class="headerlink" title="为什么启动会出现白屏？"></a>为什么启动会出现白屏？</h3><p>由于Android启动的时候要进行一系列初始化，如检查权限，开启进程，绑定application，startActivity。<br>这些初始化会稍微需要一点点时间，比如一秒钟。白屏持续的时间长短当然也和设备有关，设备越差白屏持续时间越长。</p>
+<a id="more"></a>
+<h3 id="如何解决？"><a href="#如何解决？" class="headerlink" title="如何解决？"></a>如何解决？</h3><p>我这里使用第三方的插件进行解决。<a href="https://pub.flutter-io.cn/packages/flutter_splash_screen">flutter_splash_screen</a>.</p>
+<p>其使用方法看他的文档。</p>
+<h3 id="记录下配置的时候遇到的问题？"><a href="#记录下配置的时候遇到的问题？" class="headerlink" title="记录下配置的时候遇到的问题？"></a>记录下配置的时候遇到的问题？</h3><p>导包总是报错，先手敲代码，再导包。支持自定义启动布局。<br>安卓的配置步骤多点。<br><strong>下面是我安卓配置：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import org.devio.flutter.splashscreen.SplashScreen;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class MainActivity extends FlutterActivity &#123;</span><br><span class="line">  @Override</span><br><span class="line">  protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">    SplashScreen.show(this, true);&#x2F;&#x2F; here</span><br><span class="line">    super.onCreate(savedInstanceState);</span><br><span class="line">    GeneratedPluginRegistrant.registerWith(this);</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;&#x2F;注册自己的 Plugin 插件</span><br><span class="line">    resisterSelfPlugin();</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>至于额为什么字体显示红色，别紧张，运行没得问题的。<br>其他的配置看官方文档。<br>添加<br><code>launch_screen.xml</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;RelativeLayout xmlns:android&#x3D;&quot;http:&#x2F;&#x2F;schemas.android.com&#x2F;apk&#x2F;res&#x2F;android&quot;</span><br><span class="line">    android:layout_width&#x3D;&quot;match_parent&quot;</span><br><span class="line">    android:layout_height&#x3D;&quot;match_parent&quot;</span><br><span class="line">    android:orientation&#x3D;&quot;vertical&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;ImageView</span><br><span class="line">        android:layout_width&#x3D;&quot;match_parent&quot;</span><br><span class="line">        android:layout_height&#x3D;&quot;match_parent&quot;</span><br><span class="line">        android:scaleType&#x3D;&quot;centerCrop&quot;</span><br><span class="line">        android:src&#x3D;&quot;@mipmap&#x2F;screen_full&quot; &#x2F;&gt;</span><br><span class="line">&lt;&#x2F;RelativeLayout&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>下面是我 IOS 配置：</strong></p>
+<ul>
+<li>导入启动图片<br><img src="https://github.com/MarkCHYL/BLOG/blob/master/marksource/images/WechatIMG309.png?raw=true"></li>
+<li>配置启动图片<br><img src="https://github.com/MarkCHYL/BLOG/blob/master/marksource/images/WechatIMG310.png?raw=true"></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Flutter</category>
+      </categories>
+      <tags>
+        <tag>Flutter</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Mark的Flutter的安装和环境配置</title>
     <url>/2018/12/17/Mark%E7%9A%84Flutter%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</url>
     <content><![CDATA[<h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><pre><code>    我是一名Android原生开发程序员，目前熟练掌握Java语言和kotlin语言去编写安卓。RN出来的时候我没去学习，现在我想赶上Flutter这列火车。</code></pre>
@@ -1459,6 +1459,56 @@
       </tags>
   </entry>
   <entry>
+    <title>Mark的个人博客搭建</title>
+    <url>/2018/12/14/Mark%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<hr>
+<h1 id="标题-Mark的个人博客搭建"><a href="#标题-Mark的个人博客搭建" class="headerlink" title="标题: Mark的个人博客搭建"></a><strong>标题: Mark的个人博客搭建</strong></h1><hr>
+<h3 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a><strong>一、前言</strong></h3><blockquote>
+<p>大家好，我是Mark，一个Android程序员，目前从事软件应用开发，其实我很早就像想很多的大佬们一样拥有自己的博客，在下在网上搜了一波，发现可以通过 GitHub + Hexo 搭建自己个人的博客，这次我就想彻底好好的把这个弄好，主要是可以方便自己把自己的笔记记录在上面，方便自己的以后的只是复习。我的脑子不太好使，记东西过了不久就会忘记，好记性不容烂笔头，对于一个程序员如果还在用笔记本自己手写笔记确实让我自己感到惭愧，程序的代码量和知识点很多，若是每个自己的笔记都去用手写，那样我的工作效率就会很低。在此我想大家推荐，</p>
+</blockquote>
+<a id="more"></a>
+<h3 id="二、记录下我搭建此博客方法"><a href="#二、记录下我搭建此博客方法" class="headerlink" title="二、记录下我搭建此博客方法"></a><strong>二、记录下我搭建此博客方法</strong></h3><p>利用GitHub + Hexo 搭建个人的博客，网上有很多的大佬的文章，这里我想大家推荐一个博客文章<a href="https://www.cnblogs.com/jackyroc/p/7681938.html">JackyRoc的文章链接</a>，至于怎么利用Hexo在下推荐先看看此文章<a href="https://www.cnblogs.com/liuxianan/p/build-blog-website-by-hexo-github.html">小茗同学的博客园</a>.</p>
+<p>好了！现在开始记录我自己的搭建步骤：</p>
+<h4 id="首先：我们的搭建环境是-MacBook-Pro，准备的编写博客的编辑器-Visual-Studio-Code-GitHub，以及重要的安装好-git，再就是很重要的是耐心和百折不挠的信息。Start！！！"><a href="#首先：我们的搭建环境是-MacBook-Pro，准备的编写博客的编辑器-Visual-Studio-Code-GitHub，以及重要的安装好-git，再就是很重要的是耐心和百折不挠的信息。Start！！！" class="headerlink" title="首先：我们的搭建环境是 MacBook Pro，准备的编写博客的编辑器 Visual Studio Code,GitHub，以及重要的安装好 git，再就是很重要的是耐心和百折不挠的信息。Start！！！"></a>首先：我们的搭建环境是 MacBook Pro，准备的编写博客的编辑器 <strong><a href="https://code.visualstudio.com/?wt.mc_id=DX_841432">Visual Studio Code</a></strong>,<strong>GitHub</strong>，以及重要的安装好 <strong>git</strong>，再就是很重要的是耐心和百折不挠的信息。Start！！！</h4><h3 id="1-创建仓库（https-markchyl-github-io-）"><a href="#1-创建仓库（https-markchyl-github-io-）" class="headerlink" title="1. 创建仓库（https://markchyl.github.io/）"></a>1. 创建仓库（<a href="https://markchyl.github.io/%EF%BC%89">https://markchyl.github.io/）</a></h3><p>   仓库的名字是这个格式 XXXXX.github.io，XXXXX 就是你的自己可以定义的，后面的 .github.io 一定要这样，当然如果你有自己的个人域名地址也是可以在后面的步骤中绑定的。创建仓库的步骤我就不啰嗦了！简单。</p>
+<h3 id="2-Hexo的安装"><a href="#2-Hexo的安装" class="headerlink" title="2. Hexo的安装"></a>2. Hexo的安装</h3><p>   要使用Hexo,需要安装Nodejs以及Git，<br>   <a href="http://www.runoob.com/nodejs/nodejs-install-setup.html">参考:安装Node.js</a></p>
+<p>   在你需要安装Hexo的目录下(新建一个文件夹)右键选择 Git Bash</p>
+<p>npm install hexo-cli -g<br>hexo init #初始化网站<br>npm install<br>hexo g #生成或 hexo generate<br>hexo s #启动本地服务器 或者 hexo server,这一步之后就可以通过<a href="http://localhost:4000/">http://localhost:4000</a>  查看了<br>详细命令请参考Hexo文档</p>
+<p>这里介绍一下怎么创建一篇文章</p>
+<p>hexo new “文章名” #新建文章<br>hexo new page “页面名” #新建页面<br>常用简写</p>
+<p>hexo n == hexo new<br>hexo g == hexo generate<br>hexo s == hexo server<br>hexo d == hexo deploy<br>新建一篇文章后就可以预览了,在hexo new之后执行一次生成hexo g再执行hexo s启动本地服务器,如果之前还在hexo s 按Ctrl + C 结束.</p>
+<h3 id="3-添加主题"><a href="#3-添加主题" class="headerlink" title="3.添加主题"></a>3.添加主题</h3><p>安装主题(yilia主题):<br>hexo clean<br>git clone <a href="https://github.com/litten/hexo-theme-yilia.git">https://github.com/litten/hexo-theme-yilia.git</a> themes/yilia<br>启动主题<br>找到目录下的_config.yml 文件,打开找到 theme：属性并设置为yilia</p>
+<p>更新主题<br>cd themes/yilia<br>git pull<br>hexo g<br>hexo s<br>此时刷新<a href="http://localhost:4000/%E9%A1%B5%E9%9D%A2%E5%B0%B1%E8%83%BD%E7%9C%8B%E5%88%B0%E6%96%B0%E7%9A%84%E4%B8%BB%E9%A2%98%E4%BA%86">http://localhost:4000/页面就能看到新的主题了</a>.</p>
+<h3 id="4-部署到Github"><a href="#4-部署到Github" class="headerlink" title="4. 部署到Github"></a>4. 部署到Github</h3><p>1.检查SSH keys的设置</p>
+<p>以下命令均是在Git bash里输入</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd ~&#x2F;.ssh</span><br><span class="line">ls</span><br></pre></td></tr></table></figure>
+<p>#此时会显示一些文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mkdir key_backup</span><br><span class="line">cp id_rsa* key_backup</span><br><span class="line">rm id_rsa* </span><br></pre></td></tr></table></figure>
+
+<p>#以上三步为备份和移除原来的SSH key设置</p>
+<blockquote>
+<p>ssh-keygen -t rsa -C “邮件地址@youremail.com” #生成新的key文件,</p>
+</blockquote>
+<p><strong>邮箱地址填你的Github地址</strong></p>
+<hr>
+<p>#Enter file in which to save the key (/Users/your_user_directory/.ssh/id_rsa):&lt;回车就好&gt;<br>#接下来会让你输入密码<br>之后就可以看到成功的界面。</p>
+<hr>
+<p>2.添加SSH Key到Github<br>进入github首页在设置洁面<br><img src="https://images2017.cnblogs.com/blog/1250458/201710/1250458-20171017153636849-294935886.png"></p>
+<hr>
+<h4 id="添加SSH-Key"><a href="#添加SSH-Key" class="headerlink" title="添加SSH Key"></a>添加SSH Key</h4><p><img src="https://images2017.cnblogs.com/blog/1250458/201710/1250458-20171017153642521-647884655.png"><br>找到系统当前用户目录下(开启查看隐藏文件) C:\Users\用户名\ .ssh id_rsa.pub文件以文本方式打开。打开之后全部复制到key中<br><img src="https://images2017.cnblogs.com/blog/1250458/201710/1250458-20171017153648631-441574444.png"><br>到了这就可以测试一下是否成功了:</p>
+<p>ssh -T <a href="mailto:&#x67;&#105;&#x74;&#64;&#x67;&#105;&#116;&#x68;&#117;&#98;&#46;&#x63;&#x6f;&#x6d;">&#x67;&#105;&#x74;&#64;&#x67;&#105;&#116;&#x68;&#117;&#98;&#46;&#x63;&#x6f;&#x6d;</a><br>#之后会要你输入yes/no,输入yes就好了。<br>设置你的账号信息:</p>
+<p>git config –global user.name “你的名字”     #真实名字不是github用户名<br>git config –global user.email “邮箱@邮箱.com”    #github邮箱<br>3.部署到github<br>hexo d<br>这时再刷新 username.github.io 就可以看到你的博客了。</p>
+<p>到了这你以为就结束了吗？没有，还有坑没有给你们填好。</p>
+<p>如果你的SSH配置的时候哪找的.ssh文件的化，可以参照<a href="https://www.cnblogs.com/ailiailan/p/8577411.html">mac 上传本地代码到 Github 教程</a>,我就是参照上面的步骤配置的。</p>
+]]></content>
+      <categories>
+        <category>工具使用</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>工具搭建</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Mark的架构学习笔记— Android_MVP(二)</title>
     <url>/2019/01/25/Mark%E7%9A%84%E6%9E%B6%E6%9E%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94-Android-MVP-%E4%BA%8C/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>之前我写的一个笔记，没有结合网络请求，现在我想记录下我这次结合网络请求Retrofit的MVP编程。<br>我上一篇的笔记：<a href="https://markchyl.github.io/2018/12/17/Mark%E7%9A%84%E6%9E%B6%E6%9E%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Android-MVP/">马克的架构学习笔记— Android_MVP</a>,代码笔记中有链接。</p>
@@ -1506,53 +1556,34 @@
       </tags>
   </entry>
   <entry>
-    <title>Mark的个人博客搭建</title>
-    <url>/2018/12/14/Mark%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<hr>
-<h1 id="标题-Mark的个人博客搭建"><a href="#标题-Mark的个人博客搭建" class="headerlink" title="标题: Mark的个人博客搭建"></a><strong>标题: Mark的个人博客搭建</strong></h1><hr>
-<h3 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a><strong>一、前言</strong></h3><blockquote>
-<p>大家好，我是Mark，一个Android程序员，目前从事软件应用开发，其实我很早就像想很多的大佬们一样拥有自己的博客，在下在网上搜了一波，发现可以通过 GitHub + Hexo 搭建自己个人的博客，这次我就想彻底好好的把这个弄好，主要是可以方便自己把自己的笔记记录在上面，方便自己的以后的只是复习。我的脑子不太好使，记东西过了不久就会忘记，好记性不容烂笔头，对于一个程序员如果还在用笔记本自己手写笔记确实让我自己感到惭愧，程序的代码量和知识点很多，若是每个自己的笔记都去用手写，那样我的工作效率就会很低。在此我想大家推荐，</p>
-</blockquote>
-<a id="more"></a>
-<h3 id="二、记录下我搭建此博客方法"><a href="#二、记录下我搭建此博客方法" class="headerlink" title="二、记录下我搭建此博客方法"></a><strong>二、记录下我搭建此博客方法</strong></h3><p>利用GitHub + Hexo 搭建个人的博客，网上有很多的大佬的文章，这里我想大家推荐一个博客文章<a href="https://www.cnblogs.com/jackyroc/p/7681938.html">JackyRoc的文章链接</a>，至于怎么利用Hexo在下推荐先看看此文章<a href="https://www.cnblogs.com/liuxianan/p/build-blog-website-by-hexo-github.html">小茗同学的博客园</a>.</p>
-<p>好了！现在开始记录我自己的搭建步骤：</p>
-<h4 id="首先：我们的搭建环境是-MacBook-Pro，准备的编写博客的编辑器-Visual-Studio-Code-GitHub，以及重要的安装好-git，再就是很重要的是耐心和百折不挠的信息。Start！！！"><a href="#首先：我们的搭建环境是-MacBook-Pro，准备的编写博客的编辑器-Visual-Studio-Code-GitHub，以及重要的安装好-git，再就是很重要的是耐心和百折不挠的信息。Start！！！" class="headerlink" title="首先：我们的搭建环境是 MacBook Pro，准备的编写博客的编辑器 Visual Studio Code,GitHub，以及重要的安装好 git，再就是很重要的是耐心和百折不挠的信息。Start！！！"></a>首先：我们的搭建环境是 MacBook Pro，准备的编写博客的编辑器 <strong><a href="https://code.visualstudio.com/?wt.mc_id=DX_841432">Visual Studio Code</a></strong>,<strong>GitHub</strong>，以及重要的安装好 <strong>git</strong>，再就是很重要的是耐心和百折不挠的信息。Start！！！</h4><h3 id="1-创建仓库（https-markchyl-github-io-）"><a href="#1-创建仓库（https-markchyl-github-io-）" class="headerlink" title="1. 创建仓库（https://markchyl.github.io/）"></a>1. 创建仓库（<a href="https://markchyl.github.io/%EF%BC%89">https://markchyl.github.io/）</a></h3><p>   仓库的名字是这个格式 XXXXX.github.io，XXXXX 就是你的自己可以定义的，后面的 .github.io 一定要这样，当然如果你有自己的个人域名地址也是可以在后面的步骤中绑定的。创建仓库的步骤我就不啰嗦了！简单。</p>
-<h3 id="2-Hexo的安装"><a href="#2-Hexo的安装" class="headerlink" title="2. Hexo的安装"></a>2. Hexo的安装</h3><p>   要使用Hexo,需要安装Nodejs以及Git，<br>   <a href="http://www.runoob.com/nodejs/nodejs-install-setup.html">参考:安装Node.js</a></p>
-<p>   在你需要安装Hexo的目录下(新建一个文件夹)右键选择 Git Bash</p>
-<p>npm install hexo-cli -g<br>hexo init #初始化网站<br>npm install<br>hexo g #生成或 hexo generate<br>hexo s #启动本地服务器 或者 hexo server,这一步之后就可以通过<a href="http://localhost:4000/">http://localhost:4000</a>  查看了<br>详细命令请参考Hexo文档</p>
-<p>这里介绍一下怎么创建一篇文章</p>
-<p>hexo new “文章名” #新建文章<br>hexo new page “页面名” #新建页面<br>常用简写</p>
-<p>hexo n == hexo new<br>hexo g == hexo generate<br>hexo s == hexo server<br>hexo d == hexo deploy<br>新建一篇文章后就可以预览了,在hexo new之后执行一次生成hexo g再执行hexo s启动本地服务器,如果之前还在hexo s 按Ctrl + C 结束.</p>
-<h3 id="3-添加主题"><a href="#3-添加主题" class="headerlink" title="3.添加主题"></a>3.添加主题</h3><p>安装主题(yilia主题):<br>hexo clean<br>git clone <a href="https://github.com/litten/hexo-theme-yilia.git">https://github.com/litten/hexo-theme-yilia.git</a> themes/yilia<br>启动主题<br>找到目录下的_config.yml 文件,打开找到 theme：属性并设置为yilia</p>
-<p>更新主题<br>cd themes/yilia<br>git pull<br>hexo g<br>hexo s<br>此时刷新<a href="http://localhost:4000/%E9%A1%B5%E9%9D%A2%E5%B0%B1%E8%83%BD%E7%9C%8B%E5%88%B0%E6%96%B0%E7%9A%84%E4%B8%BB%E9%A2%98%E4%BA%86">http://localhost:4000/页面就能看到新的主题了</a>.</p>
-<h3 id="4-部署到Github"><a href="#4-部署到Github" class="headerlink" title="4. 部署到Github"></a>4. 部署到Github</h3><p>1.检查SSH keys的设置</p>
-<p>以下命令均是在Git bash里输入</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd ~&#x2F;.ssh</span><br><span class="line">ls</span><br></pre></td></tr></table></figure>
-<p>#此时会显示一些文件</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mkdir key_backup</span><br><span class="line">cp id_rsa* key_backup</span><br><span class="line">rm id_rsa* </span><br></pre></td></tr></table></figure>
-
-<p>#以上三步为备份和移除原来的SSH key设置</p>
-<blockquote>
-<p>ssh-keygen -t rsa -C “邮件地址@youremail.com” #生成新的key文件,</p>
-</blockquote>
-<p><strong>邮箱地址填你的Github地址</strong></p>
-<hr>
-<p>#Enter file in which to save the key (/Users/your_user_directory/.ssh/id_rsa):&lt;回车就好&gt;<br>#接下来会让你输入密码<br>之后就可以看到成功的界面。</p>
-<hr>
-<p>2.添加SSH Key到Github<br>进入github首页在设置洁面<br><img src="https://images2017.cnblogs.com/blog/1250458/201710/1250458-20171017153636849-294935886.png"></p>
-<hr>
-<h4 id="添加SSH-Key"><a href="#添加SSH-Key" class="headerlink" title="添加SSH Key"></a>添加SSH Key</h4><p><img src="https://images2017.cnblogs.com/blog/1250458/201710/1250458-20171017153642521-647884655.png"><br>找到系统当前用户目录下(开启查看隐藏文件) C:\Users\用户名\ .ssh id_rsa.pub文件以文本方式打开。打开之后全部复制到key中<br><img src="https://images2017.cnblogs.com/blog/1250458/201710/1250458-20171017153648631-441574444.png"><br>到了这就可以测试一下是否成功了:</p>
-<p>ssh -T <a href="mailto:&#103;&#105;&#x74;&#x40;&#x67;&#105;&#116;&#x68;&#x75;&#98;&#46;&#99;&#x6f;&#109;">&#103;&#105;&#x74;&#x40;&#x67;&#105;&#116;&#x68;&#x75;&#98;&#46;&#99;&#x6f;&#109;</a><br>#之后会要你输入yes/no,输入yes就好了。<br>设置你的账号信息:</p>
-<p>git config –global user.name “你的名字”     #真实名字不是github用户名<br>git config –global user.email “邮箱@邮箱.com”    #github邮箱<br>3.部署到github<br>hexo d<br>这时再刷新 username.github.io 就可以看到你的博客了。</p>
-<p>到了这你以为就结束了吗？没有，还有坑没有给你们填好。</p>
-<p>如果你的SSH配置的时候哪找的.ssh文件的化，可以参照<a href="https://www.cnblogs.com/ailiailan/p/8577411.html">mac 上传本地代码到 Github 教程</a>,我就是参照上面的步骤配置的。</p>
+    <title>Oracle数据库基础理论</title>
+    <url>/2019/11/14/Oracle%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA/</url>
+    <content><![CDATA[<h2 id="Oracle数据库是关系型数据库"><a href="#Oracle数据库是关系型数据库" class="headerlink" title="Oracle数据库是关系型数据库"></a><strong>Oracle数据库是关系型数据库</strong></h2><h3 id="一、什么是关系型数据库？"><a href="#一、什么是关系型数据库？" class="headerlink" title="一、什么是关系型数据库？"></a>一、什么是关系型数据库？</h3><hr>
+<ul>
+<li>关系型数据理论最早是有E.F.Codd博士在1970年提出的。</li>
+<li>Codd博士制定了一个数据库产品成为关系型数据库所必须符合的一些列相关的标准。</li>
+<li>它是RDBMS(关系型数据库管理系统)的基础。</li>
+<li>关系型数据库需包含下面三个方面：<ul>
+<li>对象或关系的集合</li>
+<li>基于关系的操作集合</li>
+<li>因数据的精确性和一致性而带来的数据的完整性</li>
+</ul>
+</li>
+<li>关系型数据库是关系的集合或者是说是二维表的集合</li>
+</ul>
+<h3 id="二、Oracle数据库简介"><a href="#二、Oracle数据库简介" class="headerlink" title="二、Oracle数据库简介"></a>二、Oracle数据库简介</h3><ul>
+<li>一个存储数据的地方</li>
+<li>能快速获取数据</li>
+<li>数据库安全性</li>
+<li>分布式数据库</li>
+<li>客户端和服务端的配置</li>
+</ul>
 ]]></content>
       <categories>
-        <category>工具使用</category>
+        <category>Oracle</category>
       </categories>
       <tags>
-        <tag>Hexo</tag>
-        <tag>工具搭建</tag>
+        <tag>Oracle</tag>
       </tags>
   </entry>
   <entry>
@@ -1631,37 +1662,6 @@
       </categories>
       <tags>
         <tag>Android</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Oracle数据库基础理论</title>
-    <url>/2019/11/14/Oracle%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA/</url>
-    <content><![CDATA[<h2 id="Oracle数据库是关系型数据库"><a href="#Oracle数据库是关系型数据库" class="headerlink" title="Oracle数据库是关系型数据库"></a><strong>Oracle数据库是关系型数据库</strong></h2><h3 id="一、什么是关系型数据库？"><a href="#一、什么是关系型数据库？" class="headerlink" title="一、什么是关系型数据库？"></a>一、什么是关系型数据库？</h3><hr>
-<ul>
-<li>关系型数据理论最早是有E.F.Codd博士在1970年提出的。</li>
-<li>Codd博士制定了一个数据库产品成为关系型数据库所必须符合的一些列相关的标准。</li>
-<li>它是RDBMS(关系型数据库管理系统)的基础。</li>
-<li>关系型数据库需包含下面三个方面：<ul>
-<li>对象或关系的集合</li>
-<li>基于关系的操作集合</li>
-<li>因数据的精确性和一致性而带来的数据的完整性</li>
-</ul>
-</li>
-<li>关系型数据库是关系的集合或者是说是二维表的集合</li>
-</ul>
-<h3 id="二、Oracle数据库简介"><a href="#二、Oracle数据库简介" class="headerlink" title="二、Oracle数据库简介"></a>二、Oracle数据库简介</h3><ul>
-<li>一个存储数据的地方</li>
-<li>能快速获取数据</li>
-<li>数据库安全性</li>
-<li>分布式数据库</li>
-<li>客户端和服务端的配置</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Oracle</category>
-      </categories>
-      <tags>
-        <tag>Oracle</tag>
       </tags>
   </entry>
   <entry>
@@ -1870,6 +1870,30 @@
       </tags>
   </entry>
   <entry>
+    <title>flutter开发插件和包</title>
+    <url>/2019/07/02/flutter%E5%BC%80%E5%8F%91%E6%8F%92%E4%BB%B6%E5%92%8C%E5%8C%85/</url>
+    <content><![CDATA[<h2 id="cmd-命令创建开发插件包"><a href="#cmd-命令创建开发插件包" class="headerlink" title="cmd 命令创建开发插件包"></a>cmd 命令创建开发插件包</h2><p> <code>flutter create --org com.mark --template markplugin</code><br>  使用该–org选项以反向域名表示法指定您的组织。此值用于生成的Android和iOS代码中的各种包和包标识符。<br>  其中 com.mark 就是我的组织名，markplugin 就是我的插件项目名字<br>  生成如下：</p>
+<a id="more"></a>
+<p><img src="https://img-blog.csdnimg.cn/20190702095035265.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01hcmtfQ0hZTA==,size_16,color_FFFFFF,t_70" alt="&quot;插件包生成内容&quot;"></p>
+<p><strong><em>默认情况下，插件项目使用Objective-C for iOS代码和Java for Android代码。如果您更喜欢Swift或Kotlin，您可以使用-i和/或使用Android语言指定iOS语言-a.</em></strong></p>
+<p>例如：<br><code> flutter create --org com.mark --template=plugin -i swift -a kotlin markkotlinpugin</code></p>
+<p><img src="https://img-blog.csdnimg.cn/20190702101606454.png" alt="在这里插入图片描述"></p>
+<h2 id="如何通过命令创建Flutter包"><a href="#如何通过命令创建Flutter包" class="headerlink" title="如何通过命令创建Flutter包"></a>如何通过命令创建Flutter包</h2><p>要创建Dart包，请使用以下–template=package标志flutter create：<br> <code>flutter create --org com.mark --template=package hello</code></p>
+<p>这将在hello/文件夹中创建一个包项目，其中包含以下专门内容：</p>
+<p>`<br>lib/hello.dart：包的Dart代码。</p>
+<p>test/hello_test.dart：该单元测试包装。`</p>
+<p><img src="https://img-blog.csdnimg.cn/20190702102101747.png" alt="在这里插入图片描述"></p>
+<h2 id="配置好pubspec-paml上的信息-添加开源协议，编写使用说明"><a href="#配置好pubspec-paml上的信息-添加开源协议，编写使用说明" class="headerlink" title="配置好pubspec.paml上的信息,添加开源协议，编写使用说明"></a>配置好pubspec.paml上的信息,添加开源协议，编写使用说明</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">name: flutter_tools</span><br><span class="line">description: A new Flutter Tools package. it works on ios and android</span><br><span class="line">version: 0.0.1</span><br><span class="line">author: MarkCHYL &lt;2285581945@qq.com&gt;</span><br><span class="line">homepage: https:&#x2F;&#x2F;github.com&#x2F;MarkCHYL&#x2F;flutter_tools</span><br></pre></td></tr></table></figure>
+<h2 id="发布包"><a href="#发布包" class="headerlink" title="发布包"></a>发布包</h2><p><a href="https://flutter.dev/docs/development/packages-and-plugins/developing-packages">参考地址</a><br>首先我们执行：<br><code>flutter pub pub publish --dry-run</code><br>会检查发布包时是否准备好，是否有错误。<br><code>flutter packages pub publish</code>发布包，<br>但是我因网络原因，没上传成功过。首次大包上传需要登陆谷歌的网站，谷歌账号登陆便好。</p>
+]]></content>
+      <categories>
+        <category>Flutter</category>
+      </categories>
+      <tags>
+        <tag>Flutter</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>flutter入门之常见的flutter问题汇总</title>
     <url>/2019/07/11/flutter%E5%85%A5%E9%97%A8%E4%B9%8B%E5%B8%B8%E8%A7%81%E7%9A%84flutter%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/</url>
     <content><![CDATA[<p><a href="https://blog.csdn.net/email_jade/article/details/85317859###">csdn上原博文</a></p>
@@ -1984,30 +2008,6 @@
       <tags>
         <tag>Flutter</tag>
         <tag>Flutter问题</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>flutter开发插件和包</title>
-    <url>/2019/07/02/flutter%E5%BC%80%E5%8F%91%E6%8F%92%E4%BB%B6%E5%92%8C%E5%8C%85/</url>
-    <content><![CDATA[<h2 id="cmd-命令创建开发插件包"><a href="#cmd-命令创建开发插件包" class="headerlink" title="cmd 命令创建开发插件包"></a>cmd 命令创建开发插件包</h2><p> <code>flutter create --org com.mark --template markplugin</code><br>  使用该–org选项以反向域名表示法指定您的组织。此值用于生成的Android和iOS代码中的各种包和包标识符。<br>  其中 com.mark 就是我的组织名，markplugin 就是我的插件项目名字<br>  生成如下：</p>
-<a id="more"></a>
-<p><img src="https://img-blog.csdnimg.cn/20190702095035265.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01hcmtfQ0hZTA==,size_16,color_FFFFFF,t_70" alt="&quot;插件包生成内容&quot;"></p>
-<p><strong><em>默认情况下，插件项目使用Objective-C for iOS代码和Java for Android代码。如果您更喜欢Swift或Kotlin，您可以使用-i和/或使用Android语言指定iOS语言-a.</em></strong></p>
-<p>例如：<br><code> flutter create --org com.mark --template=plugin -i swift -a kotlin markkotlinpugin</code></p>
-<p><img src="https://img-blog.csdnimg.cn/20190702101606454.png" alt="在这里插入图片描述"></p>
-<h2 id="如何通过命令创建Flutter包"><a href="#如何通过命令创建Flutter包" class="headerlink" title="如何通过命令创建Flutter包"></a>如何通过命令创建Flutter包</h2><p>要创建Dart包，请使用以下–template=package标志flutter create：<br> <code>flutter create --org com.mark --template=package hello</code></p>
-<p>这将在hello/文件夹中创建一个包项目，其中包含以下专门内容：</p>
-<p>`<br>lib/hello.dart：包的Dart代码。</p>
-<p>test/hello_test.dart：该单元测试包装。`</p>
-<p><img src="https://img-blog.csdnimg.cn/20190702102101747.png" alt="在这里插入图片描述"></p>
-<h2 id="配置好pubspec-paml上的信息-添加开源协议，编写使用说明"><a href="#配置好pubspec-paml上的信息-添加开源协议，编写使用说明" class="headerlink" title="配置好pubspec.paml上的信息,添加开源协议，编写使用说明"></a>配置好pubspec.paml上的信息,添加开源协议，编写使用说明</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">name: flutter_tools</span><br><span class="line">description: A new Flutter Tools package. it works on ios and android</span><br><span class="line">version: 0.0.1</span><br><span class="line">author: MarkCHYL &lt;2285581945@qq.com&gt;</span><br><span class="line">homepage: https:&#x2F;&#x2F;github.com&#x2F;MarkCHYL&#x2F;flutter_tools</span><br></pre></td></tr></table></figure>
-<h2 id="发布包"><a href="#发布包" class="headerlink" title="发布包"></a>发布包</h2><p><a href="https://flutter.dev/docs/development/packages-and-plugins/developing-packages">参考地址</a><br>首先我们执行：<br><code>flutter pub pub publish --dry-run</code><br>会检查发布包时是否准备好，是否有错误。<br><code>flutter packages pub publish</code>发布包，<br>但是我因网络原因，没上传成功过。首次大包上传需要登陆谷歌的网站，谷歌账号登陆便好。</p>
-]]></content>
-      <categories>
-        <category>Flutter</category>
-      </categories>
-      <tags>
-        <tag>Flutter</tag>
       </tags>
   </entry>
   <entry>
@@ -2246,6 +2246,23 @@
       </tags>
   </entry>
   <entry>
+    <title>安卓的启动模式详解</title>
+    <url>/2018/12/16/%E5%AE%89%E5%8D%93%E7%9A%84%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3/</url>
+    <content><![CDATA[<h4 id="安卓开发者基本都知道Activity的四大启动模式，但是一到被问到之间区别的时候，再问深一点的时候，往往都会回答的不是很让面试官满意，鄙人就是，嘴皮子笨不懂得如何表达清楚。"><a href="#安卓开发者基本都知道Activity的四大启动模式，但是一到被问到之间区别的时候，再问深一点的时候，往往都会回答的不是很让面试官满意，鄙人就是，嘴皮子笨不懂得如何表达清楚。" class="headerlink" title="安卓开发者基本都知道Activity的四大启动模式，但是一到被问到之间区别的时候，再问深一点的时候，往往都会回答的不是很让面试官满意，鄙人就是，嘴皮子笨不懂得如何表达清楚。"></a>安卓开发者基本都知道Activity的四大启动模式，但是一到被问到之间区别的时候，再问深一点的时候，往往都会回答的不是很让面试官满意，鄙人就是，嘴皮子笨不懂得如何表达清楚。</h4><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a><strong>简介</strong></h2><h4 id="我们在创建一个Activity后，都知道要在清单文件中去注册，在程序员创建该Activity实例时，系统会按照先进先出的原则，创建一个任务栈将其实例放入其中，然后按back键时或finish时，系统就会将栈顶的Activity移除栈，我们可以在清单文件中指明该Activity的启动模式，系统默认的Activity的启动模式是standard模式。"><a href="#我们在创建一个Activity后，都知道要在清单文件中去注册，在程序员创建该Activity实例时，系统会按照先进先出的原则，创建一个任务栈将其实例放入其中，然后按back键时或finish时，系统就会将栈顶的Activity移除栈，我们可以在清单文件中指明该Activity的启动模式，系统默认的Activity的启动模式是standard模式。" class="headerlink" title="我们在创建一个Activity后，都知道要在清单文件中去注册，在程序员创建该Activity实例时，系统会按照先进先出的原则，创建一个任务栈将其实例放入其中，然后按back键时或finish时，系统就会将栈顶的Activity移除栈，我们可以在清单文件中指明该Activity的启动模式，系统默认的Activity的启动模式是standard模式。"></a>我们在创建一个Activity后，都知道要在清单文件中去注册，在程序员创建该Activity实例时，系统会按照先进先出的原则，创建一个任务栈将其实例放入其中，然后按back键时或finish时，系统就会将栈顶的Activity移除栈，我们可以在清单文件中指明该Activity的启动模式，系统默认的Activity的启动模式是standard模式。</h4><hr>
+<a id="more"></a>
+<h3 id="Activity的启动模式："><a href="#Activity的启动模式：" class="headerlink" title="Activity的启动模式："></a>Activity的启动模式：</h3><h4 id="standard、singleTask、singleTop、singleInstance"><a href="#standard、singleTask、singleTop、singleInstance" class="headerlink" title="standard、singleTask、singleTop、singleInstance"></a><strong><em>standard、singleTask、singleTop、singleInstance</em></strong></h4><h4 id="1-standard-标准模式"><a href="#1-standard-标准模式" class="headerlink" title="1. standard(标准模式)"></a>1. standard(标准模式)</h4><p><strong><em>不管这个Activity的实例是否存在于任务栈中或者和启动它的Activity是否在相同的任务栈中，每次启动Activity都会创建一个新的实例。谁启动了它，它就属于启动它的Activity的任务栈中，</em></strong></p>
+<h3 id="无论核实启动哪个Activity，都会重新创建页面实例并收入栈尾"><a href="#无论核实启动哪个Activity，都会重新创建页面实例并收入栈尾" class="headerlink" title="无论核实启动哪个Activity，都会重新创建页面实例并收入栈尾"></a><strong><em>无论核实启动哪个Activity，都会重新创建页面实例并收入栈尾</em></strong></h3><h4 id="2-singleTask-栈内复用模式"><a href="#2-singleTask-栈内复用模式" class="headerlink" title="2. singleTask(栈内复用模式)"></a>2. singleTask(栈内复用模式)</h4><p><strong><em>在这个模式下，如果栈内存在该Activity的实例，不管是否存在于栈顶都不会再创建实例，而是会将该实例前的Activity清出栈顶（cleanTop），并且会回调onNewIntent方法。其实在这个过程中，首先是会进行任务栈的匹配，这个任务栈就是通过taskAffinity属性指定，如果不存在这个任务栈，就会创建一个任务栈，并将该Activity放入栈中。流程图比较清晰，如下所见：</em></strong><br><img src="https://user-gold-cdn.xitu.io/2017/5/17/490fd5b297a2a07d60d1ffdad58e6cc3" alt="image"></p>
+<h3 id="启动activity时，判断栈中存在activity的实例，就重新利用，并清除位于该实例上面的所有实例，否则情况和standard一样"><a href="#启动activity时，判断栈中存在activity的实例，就重新利用，并清除位于该实例上面的所有实例，否则情况和standard一样" class="headerlink" title="启动activity时，判断栈中存在activity的实例，就重新利用，并清除位于该实例上面的所有实例，否则情况和standard一样"></a><strong><em>启动activity时，判断栈中存在activity的实例，就重新利用，并清除位于该实例上面的所有实例，否则情况和standard一样</em></strong></h3><h4 id="3-singleTop-栈顶复用模式"><a href="#3-singleTop-栈顶复用模式" class="headerlink" title="3. singleTop(栈顶复用模式)"></a>3. singleTop(栈顶复用模式)</h4><p><strong><em>这个模式下，如果Activity的实例已经存在在栈顶，启动它就不会再创建新的实例，而是会调用onNewIntent，通过此方法的参数我们可以去除当前请求的信息。随后会调用onResume方法，不再调用onCreate、onStart方法，因为它没有变化。如果没有存在的话，就会如同standard模式一样。这种模式可以用来防止多次打开同一个Activity。</em></strong></p>
+<h3 id="启动activity时，判断栈顶正好时该activity的实例，就重新使用，否则就会创建新的实例放入栈顶，否则的情况和standard类似"><a href="#启动activity时，判断栈顶正好时该activity的实例，就重新使用，否则就会创建新的实例放入栈顶，否则的情况和standard类似" class="headerlink" title="启动activity时，判断栈顶正好时该activity的实例，就重新使用，否则就会创建新的实例放入栈顶，否则的情况和standard类似"></a><strong><em>启动activity时，判断栈顶正好时该activity的实例，就重新使用，否则就会创建新的实例放入栈顶，否则的情况和standard类似</em></strong></h3><h4 id="4、singleInstance（全局唯一模式）"><a href="#4、singleInstance（全局唯一模式）" class="headerlink" title="4、singleInstance（全局唯一模式）"></a>4、singleInstance（全局唯一模式）</h4><p><strong><em>该模式具备singleTask模式的所有特性外，与它的区别就是，这种模式下的Activity会单独占用一个Task栈，具有全局唯一性，即整个系统中就这么一个实例，由于栈内复用的特性，后续的请求均不会创建新的Activity实例，除非这个特殊的任务栈被销毁了。以singleInstance模式启动的Activity在整个系统中是单例的，如果在启动这样的Activiyt时，已经存在了一个实例，那么会把它所在的任务调度到前台，重用这个实例。</em></strong></p>
+<h3 id="启动activity时，将该Activity的实例放入一个新的栈中，原栈中的实例保持不变"><a href="#启动activity时，将该Activity的实例放入一个新的栈中，原栈中的实例保持不变" class="headerlink" title="启动activity时，将该Activity的实例放入一个新的栈中，原栈中的实例保持不变"></a><strong><em>启动activity时，将该Activity的实例放入一个新的栈中，原栈中的实例保持不变</em></strong></h3><h4 id="ps：-adb-shell-dumpsys-activity-查看adb运行日志"><a href="#ps：-adb-shell-dumpsys-activity-查看adb运行日志" class="headerlink" title="ps：[adb shell dumpsys activity],查看adb运行日志"></a>ps：[adb shell dumpsys activity],查看adb运行日志</h4>]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>安全码SHA1如何获取</title>
     <url>/2020/01/15/%E5%AE%89%E5%85%A8%E7%A0%81SHA1%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96/</url>
     <content><![CDATA[<p>在高德地图集成的时候遇到那玩意。<br><a href="https://blog.csdn.net/qq_33704095/article/details/80861146">原文</a></p>
@@ -2276,46 +2293,6 @@
 </li>
 </ul>
 ]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>安卓的启动模式详解</title>
-    <url>/2018/12/16/%E5%AE%89%E5%8D%93%E7%9A%84%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3/</url>
-    <content><![CDATA[<h4 id="安卓开发者基本都知道Activity的四大启动模式，但是一到被问到之间区别的时候，再问深一点的时候，往往都会回答的不是很让面试官满意，鄙人就是，嘴皮子笨不懂得如何表达清楚。"><a href="#安卓开发者基本都知道Activity的四大启动模式，但是一到被问到之间区别的时候，再问深一点的时候，往往都会回答的不是很让面试官满意，鄙人就是，嘴皮子笨不懂得如何表达清楚。" class="headerlink" title="安卓开发者基本都知道Activity的四大启动模式，但是一到被问到之间区别的时候，再问深一点的时候，往往都会回答的不是很让面试官满意，鄙人就是，嘴皮子笨不懂得如何表达清楚。"></a>安卓开发者基本都知道Activity的四大启动模式，但是一到被问到之间区别的时候，再问深一点的时候，往往都会回答的不是很让面试官满意，鄙人就是，嘴皮子笨不懂得如何表达清楚。</h4><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a><strong>简介</strong></h2><h4 id="我们在创建一个Activity后，都知道要在清单文件中去注册，在程序员创建该Activity实例时，系统会按照先进先出的原则，创建一个任务栈将其实例放入其中，然后按back键时或finish时，系统就会将栈顶的Activity移除栈，我们可以在清单文件中指明该Activity的启动模式，系统默认的Activity的启动模式是standard模式。"><a href="#我们在创建一个Activity后，都知道要在清单文件中去注册，在程序员创建该Activity实例时，系统会按照先进先出的原则，创建一个任务栈将其实例放入其中，然后按back键时或finish时，系统就会将栈顶的Activity移除栈，我们可以在清单文件中指明该Activity的启动模式，系统默认的Activity的启动模式是standard模式。" class="headerlink" title="我们在创建一个Activity后，都知道要在清单文件中去注册，在程序员创建该Activity实例时，系统会按照先进先出的原则，创建一个任务栈将其实例放入其中，然后按back键时或finish时，系统就会将栈顶的Activity移除栈，我们可以在清单文件中指明该Activity的启动模式，系统默认的Activity的启动模式是standard模式。"></a>我们在创建一个Activity后，都知道要在清单文件中去注册，在程序员创建该Activity实例时，系统会按照先进先出的原则，创建一个任务栈将其实例放入其中，然后按back键时或finish时，系统就会将栈顶的Activity移除栈，我们可以在清单文件中指明该Activity的启动模式，系统默认的Activity的启动模式是standard模式。</h4><hr>
-<a id="more"></a>
-<h3 id="Activity的启动模式："><a href="#Activity的启动模式：" class="headerlink" title="Activity的启动模式："></a>Activity的启动模式：</h3><h4 id="standard、singleTask、singleTop、singleInstance"><a href="#standard、singleTask、singleTop、singleInstance" class="headerlink" title="standard、singleTask、singleTop、singleInstance"></a><strong><em>standard、singleTask、singleTop、singleInstance</em></strong></h4><h4 id="1-standard-标准模式"><a href="#1-standard-标准模式" class="headerlink" title="1. standard(标准模式)"></a>1. standard(标准模式)</h4><p><strong><em>不管这个Activity的实例是否存在于任务栈中或者和启动它的Activity是否在相同的任务栈中，每次启动Activity都会创建一个新的实例。谁启动了它，它就属于启动它的Activity的任务栈中，</em></strong></p>
-<h3 id="无论核实启动哪个Activity，都会重新创建页面实例并收入栈尾"><a href="#无论核实启动哪个Activity，都会重新创建页面实例并收入栈尾" class="headerlink" title="无论核实启动哪个Activity，都会重新创建页面实例并收入栈尾"></a><strong><em>无论核实启动哪个Activity，都会重新创建页面实例并收入栈尾</em></strong></h3><h4 id="2-singleTask-栈内复用模式"><a href="#2-singleTask-栈内复用模式" class="headerlink" title="2. singleTask(栈内复用模式)"></a>2. singleTask(栈内复用模式)</h4><p><strong><em>在这个模式下，如果栈内存在该Activity的实例，不管是否存在于栈顶都不会再创建实例，而是会将该实例前的Activity清出栈顶（cleanTop），并且会回调onNewIntent方法。其实在这个过程中，首先是会进行任务栈的匹配，这个任务栈就是通过taskAffinity属性指定，如果不存在这个任务栈，就会创建一个任务栈，并将该Activity放入栈中。流程图比较清晰，如下所见：</em></strong><br><img src="https://user-gold-cdn.xitu.io/2017/5/17/490fd5b297a2a07d60d1ffdad58e6cc3" alt="image"></p>
-<h3 id="启动activity时，判断栈中存在activity的实例，就重新利用，并清除位于该实例上面的所有实例，否则情况和standard一样"><a href="#启动activity时，判断栈中存在activity的实例，就重新利用，并清除位于该实例上面的所有实例，否则情况和standard一样" class="headerlink" title="启动activity时，判断栈中存在activity的实例，就重新利用，并清除位于该实例上面的所有实例，否则情况和standard一样"></a><strong><em>启动activity时，判断栈中存在activity的实例，就重新利用，并清除位于该实例上面的所有实例，否则情况和standard一样</em></strong></h3><h4 id="3-singleTop-栈顶复用模式"><a href="#3-singleTop-栈顶复用模式" class="headerlink" title="3. singleTop(栈顶复用模式)"></a>3. singleTop(栈顶复用模式)</h4><p><strong><em>这个模式下，如果Activity的实例已经存在在栈顶，启动它就不会再创建新的实例，而是会调用onNewIntent，通过此方法的参数我们可以去除当前请求的信息。随后会调用onResume方法，不再调用onCreate、onStart方法，因为它没有变化。如果没有存在的话，就会如同standard模式一样。这种模式可以用来防止多次打开同一个Activity。</em></strong></p>
-<h3 id="启动activity时，判断栈顶正好时该activity的实例，就重新使用，否则就会创建新的实例放入栈顶，否则的情况和standard类似"><a href="#启动activity时，判断栈顶正好时该activity的实例，就重新使用，否则就会创建新的实例放入栈顶，否则的情况和standard类似" class="headerlink" title="启动activity时，判断栈顶正好时该activity的实例，就重新使用，否则就会创建新的实例放入栈顶，否则的情况和standard类似"></a><strong><em>启动activity时，判断栈顶正好时该activity的实例，就重新使用，否则就会创建新的实例放入栈顶，否则的情况和standard类似</em></strong></h3><h4 id="4、singleInstance（全局唯一模式）"><a href="#4、singleInstance（全局唯一模式）" class="headerlink" title="4、singleInstance（全局唯一模式）"></a>4、singleInstance（全局唯一模式）</h4><p><strong><em>该模式具备singleTask模式的所有特性外，与它的区别就是，这种模式下的Activity会单独占用一个Task栈，具有全局唯一性，即整个系统中就这么一个实例，由于栈内复用的特性，后续的请求均不会创建新的Activity实例，除非这个特殊的任务栈被销毁了。以singleInstance模式启动的Activity在整个系统中是单例的，如果在启动这样的Activiyt时，已经存在了一个实例，那么会把它所在的任务调度到前台，重用这个实例。</em></strong></p>
-<h3 id="启动activity时，将该Activity的实例放入一个新的栈中，原栈中的实例保持不变"><a href="#启动activity时，将该Activity的实例放入一个新的栈中，原栈中的实例保持不变" class="headerlink" title="启动activity时，将该Activity的实例放入一个新的栈中，原栈中的实例保持不变"></a><strong><em>启动activity时，将该Activity的实例放入一个新的栈中，原栈中的实例保持不变</em></strong></h3><h4 id="ps：-adb-shell-dumpsys-activity-查看adb运行日志"><a href="#ps：-adb-shell-dumpsys-activity-查看adb运行日志" class="headerlink" title="ps：[adb shell dumpsys activity],查看adb运行日志"></a>ps：[adb shell dumpsys activity],查看adb运行日志</h4>]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>将项目迁移至androidx</title>
-    <url>/2019/10/14/%E5%B0%86%E9%A1%B9%E7%9B%AE%E8%BF%81%E7%A7%BB%E8%87%B3androidx/</url>
-    <content><![CDATA[<h2 id="自己的工具："><a href="#自己的工具：" class="headerlink" title="自己的工具："></a>自己的工具：</h2><ul>
-<li>Android studio3.4.1</li>
-<li>MacBook</li>
-</ul>
-<h2 id="迁移步骤："><a href="#迁移步骤：" class="headerlink" title="迁移步骤："></a>迁移步骤：</h2><ul>
-<li>在gradle.properties添加如下内容：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  &#x2F;**</span><br><span class="line">*android.useAndroidX&#x3D;true 表示当前项目启用 androidx</span><br><span class="line">*android.enableJetifier&#x3D;true 表示将依赖包也迁移到androidx 。如果取值为false,表示不迁移依赖包</span><br><span class="line">*到androidx，但在使用依赖包中的内容时可能会出现问题</span><br><span class="line">*&#x2F;</span><br><span class="line">android.useAndroidX&#x3D;true   </span><br><span class="line">android.enableJetifier&#x3D;true </span><br></pre></td></tr></table></figure>
-<a id="more"></a></li>
-<li>在AndroidStudio 3.2或更高（因为一个个去改太麻烦，这个版本有一键迁移的功能 Refactor -&gt; Migrate to AndroidX  在执行该操作时会提醒我们是否将当前项目打包备份。如果你提前已经做好了备份，可以忽略；如果没有备份，则先备份。）<br><img src="https://img-blog.csdnimg.cn/20190711092020175.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNzcxMjU4,size_16,color_FFFFFF,t_70" alt="示意图"></li>
-</ul>
-<p><em>gradle版本至少为3.2.0以上，以及compileSdkVersion为28以上。（否则点击Migrate to Androidx会出现如下错误）</em></p>
-<p><img src="https://img-blog.csdnimg.cn/2019071109224159.png"></p>
-<p>然后手动检查项目的并修改，先 build会报很多的错，慢慢改。</p>
-<h3 id="没有或不能适配AndroidX的插件包，建议能删掉的就删掉"><a href="#没有或不能适配AndroidX的插件包，建议能删掉的就删掉" class="headerlink" title="没有或不能适配AndroidX的插件包，建议能删掉的就删掉"></a><em>没有或不能适配AndroidX的插件包，建议能删掉的就删掉</em></h3>]]></content>
       <categories>
         <category>Android</category>
       </categories>
@@ -2430,19 +2407,26 @@
       </tags>
   </entry>
   <entry>
-    <title>界面为ScrollView时打开界面会自动滚动到底部之解决方法</title>
-    <url>/2019/09/02/%E7%95%8C%E9%9D%A2%E4%B8%BAScrollView%E6%97%B6%E6%89%93%E5%BC%80%E7%95%8C%E9%9D%A2%E4%BC%9A%E8%87%AA%E5%8A%A8%E6%BB%9A%E5%8A%A8%E5%88%B0%E5%BA%95%E9%83%A8%E4%B9%8B%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</url>
-    <content><![CDATA[<p>版权声明：本文为博主原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接和本声明。<br>本文链接：<a href="https://blog.csdn.net/u014449096/article/details/72885947">https://blog.csdn.net/u014449096/article/details/72885947</a></p>
-<p><strong>开发中遇到了这样的一个问题，界面最外层是ScrollView，然后里面有嵌套了一个ListView还有其他可以获取焦点的View，然后每次打开界面都会自动滚动到最底部，经过一番折腾，发现了一个简单的方法,<br>获取ScrollView里面一个上层任意view，然后调用如下方法：</strong><br> <a id="more"></a><br><code>view.setFocusable(true);  view.setFocusableInTouchMode(true);  view.requestFocus();</code></p>
-<p>**或者将scrollview包裹的内容设置上以下两个属性 **<br><code>android:focusable=”true” android:focusableInTouchMode=”true”</code></p>
-<p>例如：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;ScrollView</span><br><span class="line">    android:layout_width&#x3D;&quot;match_parent&quot;</span><br><span class="line">    android:layout_height&#x3D;&quot;wrap_content&quot;</span><br><span class="line">    android:scrollbars&#x3D;&quot;none&quot;</span><br><span class="line">    &gt;</span><br><span class="line">    &lt;LinearLayout</span><br><span class="line">        android:layout_width&#x3D;&quot;wrap_content&quot;</span><br><span class="line">        android:layout_height&#x3D;&quot;match_parent&quot;</span><br><span class="line">        android:orientation&#x3D;&quot;vertical&quot;</span><br><span class="line">        android:focusable&#x3D;&quot;true&quot;</span><br><span class="line">        android:focusableInTouchMode&#x3D;&quot;true&quot; &#x2F;&gt;</span><br><span class="line">        </span><br><span class="line">&lt;&#x2F;ScrollView</span><br></pre></td></tr></table></figure>]]></content>
+    <title>将项目迁移至androidx</title>
+    <url>/2019/10/14/%E5%B0%86%E9%A1%B9%E7%9B%AE%E8%BF%81%E7%A7%BB%E8%87%B3androidx/</url>
+    <content><![CDATA[<h2 id="自己的工具："><a href="#自己的工具：" class="headerlink" title="自己的工具："></a>自己的工具：</h2><ul>
+<li>Android studio3.4.1</li>
+<li>MacBook</li>
+</ul>
+<h2 id="迁移步骤："><a href="#迁移步骤：" class="headerlink" title="迁移步骤："></a>迁移步骤：</h2><ul>
+<li>在gradle.properties添加如下内容：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  &#x2F;**</span><br><span class="line">*android.useAndroidX&#x3D;true 表示当前项目启用 androidx</span><br><span class="line">*android.enableJetifier&#x3D;true 表示将依赖包也迁移到androidx 。如果取值为false,表示不迁移依赖包</span><br><span class="line">*到androidx，但在使用依赖包中的内容时可能会出现问题</span><br><span class="line">*&#x2F;</span><br><span class="line">android.useAndroidX&#x3D;true   </span><br><span class="line">android.enableJetifier&#x3D;true </span><br></pre></td></tr></table></figure>
+<a id="more"></a></li>
+<li>在AndroidStudio 3.2或更高（因为一个个去改太麻烦，这个版本有一键迁移的功能 Refactor -&gt; Migrate to AndroidX  在执行该操作时会提醒我们是否将当前项目打包备份。如果你提前已经做好了备份，可以忽略；如果没有备份，则先备份。）<br><img src="https://img-blog.csdnimg.cn/20190711092020175.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNzcxMjU4,size_16,color_FFFFFF,t_70" alt="示意图"></li>
+</ul>
+<p><em>gradle版本至少为3.2.0以上，以及compileSdkVersion为28以上。（否则点击Migrate to Androidx会出现如下错误）</em></p>
+<p><img src="https://img-blog.csdnimg.cn/2019071109224159.png"></p>
+<p>然后手动检查项目的并修改，先 build会报很多的错，慢慢改。</p>
+<h3 id="没有或不能适配AndroidX的插件包，建议能删掉的就删掉"><a href="#没有或不能适配AndroidX的插件包，建议能删掉的就删掉" class="headerlink" title="没有或不能适配AndroidX的插件包，建议能删掉的就删掉"></a><em>没有或不能适配AndroidX的插件包，建议能删掉的就删掉</em></h3>]]></content>
       <categories>
         <category>Android</category>
       </categories>
       <tags>
         <tag>Android</tag>
-        <tag>冲突</tag>
       </tags>
   </entry>
   <entry>
@@ -2458,6 +2442,22 @@
       </categories>
       <tags>
         <tag>Android</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>界面为ScrollView时打开界面会自动滚动到底部之解决方法</title>
+    <url>/2019/09/02/%E7%95%8C%E9%9D%A2%E4%B8%BAScrollView%E6%97%B6%E6%89%93%E5%BC%80%E7%95%8C%E9%9D%A2%E4%BC%9A%E8%87%AA%E5%8A%A8%E6%BB%9A%E5%8A%A8%E5%88%B0%E5%BA%95%E9%83%A8%E4%B9%8B%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<p>版权声明：本文为博主原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接和本声明。<br>本文链接：<a href="https://blog.csdn.net/u014449096/article/details/72885947">https://blog.csdn.net/u014449096/article/details/72885947</a></p>
+<p><strong>开发中遇到了这样的一个问题，界面最外层是ScrollView，然后里面有嵌套了一个ListView还有其他可以获取焦点的View，然后每次打开界面都会自动滚动到最底部，经过一番折腾，发现了一个简单的方法,<br>获取ScrollView里面一个上层任意view，然后调用如下方法：</strong><br> <a id="more"></a><br><code>view.setFocusable(true);  view.setFocusableInTouchMode(true);  view.requestFocus();</code></p>
+<p>**或者将scrollview包裹的内容设置上以下两个属性 **<br><code>android:focusable=”true” android:focusableInTouchMode=”true”</code></p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;ScrollView</span><br><span class="line">    android:layout_width&#x3D;&quot;match_parent&quot;</span><br><span class="line">    android:layout_height&#x3D;&quot;wrap_content&quot;</span><br><span class="line">    android:scrollbars&#x3D;&quot;none&quot;</span><br><span class="line">    &gt;</span><br><span class="line">    &lt;LinearLayout</span><br><span class="line">        android:layout_width&#x3D;&quot;wrap_content&quot;</span><br><span class="line">        android:layout_height&#x3D;&quot;match_parent&quot;</span><br><span class="line">        android:orientation&#x3D;&quot;vertical&quot;</span><br><span class="line">        android:focusable&#x3D;&quot;true&quot;</span><br><span class="line">        android:focusableInTouchMode&#x3D;&quot;true&quot; &#x2F;&gt;</span><br><span class="line">        </span><br><span class="line">&lt;&#x2F;ScrollView</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>冲突</tag>
       </tags>
   </entry>
   <entry>
