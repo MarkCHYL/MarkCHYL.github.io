@@ -648,13 +648,6 @@
   </url>
   
   <url>
-    <loc>http://markchyl.cn/tags/Android%E3%80%81Kotlin%E3%80%81%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2020-09-24</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://markchyl.cn/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</loc>
     <lastmod>2020-09-24</lastmod>
     <changefreq>daily</changefreq>
@@ -662,7 +655,7 @@
   </url>
   
   <url>
-    <loc>http://markchyl.cn/tags/%E7%88%AC%E8%99%AB/</loc>
+    <loc>http://markchyl.cn/tags/Android%E3%80%81Kotlin%E3%80%81%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2020-09-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -670,6 +663,13 @@
   
   <url>
     <loc>http://markchyl.cn/tags/vue/</loc>
+    <lastmod>2020-09-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://markchyl.cn/tags/%E7%88%AC%E8%99%AB/</loc>
     <lastmod>2020-09-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -755,14 +755,14 @@
   </url>
   
   <url>
-    <loc>http://markchyl.cn/categories/Python/%E7%88%AC%E8%99%AB/</loc>
+    <loc>http://markchyl.cn/categories/vue/</loc>
     <lastmod>2020-09-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://markchyl.cn/categories/vue/</loc>
+    <loc>http://markchyl.cn/categories/Python/%E7%88%AC%E8%99%AB/</loc>
     <lastmod>2020-09-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
