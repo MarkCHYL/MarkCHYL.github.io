@@ -6,7 +6,7 @@
   <link href="http://markchyl.cn/atom.xml" rel="self"/>
   
   <link href="http://markchyl.cn/"/>
-  <updated>2020-09-23T02:50:17.000Z</updated>
+  <updated>2020-10-09T06:48:16.000Z</updated>
   <id>http://markchyl.cn/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Android消息传递机制总结(一)</title>
+    <link href="http://markchyl.cn/2020/10/09/Android%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6%E6%80%BB%E7%BB%93(%E4%B8%80%EF%BC%89/"/>
+    <id>http://markchyl.cn/2020/10/09/Android%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6%E6%80%BB%E7%BB%93(%E4%B8%80%EF%BC%89/</id>
+    <published>2020-10-09T06:48:16.000Z</published>
+    <updated>2020-10-09T06:48:16.000Z</updated>
+    
+    
+    <summary type="html">&lt;h4 id=&quot;安卓业务层的核心灵魂就是层层的消息传递，今天就来总结一下andorid的应用层的各种消息传递。&quot;&gt;&lt;a href=&quot;#安卓业务层的核心灵魂就是层层的消息传递，今天就来总结一下andorid的应用层的各种消息传递。&quot; class=&quot;headerlink&quot; title=&quot;安卓业务层的核心灵魂就是层层的消息传递，今天就来总结一下andorid的应用层的各种消息传递。&quot;&gt;&lt;/a&gt;安卓业务层的核心灵魂就是层层的消息传递，今天就来总结一下andorid的应用层的各种消息传递。&lt;/h4&gt;&lt;p&gt;1.线程间通讯 ——— Handler，HandlerThread等。&lt;br&gt;2.组件间通信 ——— BroadcastReceiver，接口回调等。&lt;br&gt;3. 第三方通信 ——— EventBus，rxBus&lt;br&gt;4.进程间通信 ——— Content Provider ，Broadcast ，AIDL等。&lt;br&gt;5.长连接推送 ——— WebSocket，XMPP等。&lt;/p&gt;
+&lt;h3 id=&quot;1-线程间通信&quot;&gt;&lt;a href=&quot;#1-线程间通信&quot; class=&quot;headerlink&quot; title=&quot;1.线程间通信&quot;&gt;&lt;/a&gt;1.线程间通信&lt;/h3&gt;&lt;p&gt;Android通过Handler消息机制来实现线程之间的通讯。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Android" scheme="http://markchyl.cn/categories/Android/"/>
+    
+    
+    <category term="消息通信" scheme="http://markchyl.cn/tags/%E6%B6%88%E6%81%AF%E9%80%9A%E4%BF%A1/"/>
+    
+  </entry>
   
   <entry>
     <title>dynamic、var、Object三者的区别</title>
@@ -490,25 +510,6 @@
 &lt;p&gt;Windows：依次在 eclipse 中打开 Window -&amp;gt; Preferances -&amp;gt; Android -&amp;gt; Build。&lt;/p&gt;
 &lt;p&gt;Mac：依次在 eclipse 中打开 Eclipse/ADT-&amp;gt;Preferances -&amp;gt; Android -&amp;gt; Build。&lt;/p&gt;
 &lt;p&gt;在弹出的 Build 对话框中 “SHA1 fingerprint” 中的值即为 Android 签名证书的 Sha1 值&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Android" scheme="http://markchyl.cn/categories/Android/"/>
-    
-    
-    <category term="Android" scheme="http://markchyl.cn/tags/Android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android动态更换APP图标及名称</title>
-    <link href="http://markchyl.cn/2020/01/13/Android%E5%8A%A8%E6%80%81%E6%9B%B4%E6%8D%A2APP%E5%9B%BE%E6%A0%87%E5%8F%8A%E5%90%8D%E7%A7%B0/"/>
-    <id>http://markchyl.cn/2020/01/13/Android%E5%8A%A8%E6%80%81%E6%9B%B4%E6%8D%A2APP%E5%9B%BE%E6%A0%87%E5%8F%8A%E5%90%8D%E7%A7%B0/</id>
-    <published>2020-01-13T07:38:54.000Z</published>
-    <updated>2020-01-13T07:38:54.000Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;实现之前觉得万分难，我查阅了很多博客.&lt;br&gt;报错—–应用未安装&lt;br&gt;Stop，停下来我先抽支烟，喝杯茶，仔细看看别人的介绍。再次感谢这个博主的博客&lt;a href=&quot;https://blog.csdn.net/ozhuimeng123/article/details/92734825&quot;&gt;倚栏静望&lt;/a&gt;&lt;/p&gt;</summary>
     
     
     
