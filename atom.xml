@@ -24,14 +24,11 @@
     <updated>2020-10-10T07:25:12.000Z</updated>
     
     
-      
-      
-        
-        
     <summary type="html">&lt;p&gt;第三方通信 ——— EventBus，rxBus&lt;/p&gt;
-&lt;h3 id=&quot;3-第三方通信&quot;&gt;&lt;a href=&quot;#3-第三方通信&quot; class=&quot;headerlink&quot; title=&quot;3. 第三方通信&quot;&gt;&lt;/a&gt;3.</summary>
-        
-      
+&lt;h3 id=&quot;3-第三方通信&quot;&gt;&lt;a href=&quot;#3-第三方通信&quot; class=&quot;headerlink&quot; title=&quot;3. 第三方通信&quot;&gt;&lt;/a&gt;3. 第三方通信&lt;/h3&gt;&lt;p&gt;EventBus主要角色:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Event 传递的事件对象&lt;br&gt; Subscriber  事件的订阅者&lt;br&gt; Publisher  事件的发布者&lt;br&gt; ThreadMode 定义函数在何种线程中执行&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
     
     
     
