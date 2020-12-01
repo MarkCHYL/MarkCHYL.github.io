@@ -24,14 +24,17 @@
     <updated>2020-12-01T01:04:34.000Z</updated>
     
     
-      
-      
-        
-        
     <summary type="html">&lt;p&gt;&lt;a href=&quot;https://www.cnblogs.com/lihanqing/p/12329480.html&quot;&gt;原文转载自大佬笑等茶凉&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;1-下载并安装Docker&quot;&gt;&lt;a href=&quot;#1-下载并安装Docker&quot;</summary>
-        
-      
+&lt;h3 id=&quot;1-下载并安装Docker&quot;&gt;&lt;a href=&quot;#1-下载并安装Docker&quot; class=&quot;headerlink&quot; title=&quot;1.下载并安装Docker&quot;&gt;&lt;/a&gt;1.下载并安装Docker&lt;/h3&gt;&lt;p&gt;官方下载地址：&lt;a href=&quot;https://download.docker.com/mac/stable/Docker.dmg&quot;&gt;https://download.docker.com/mac/stable/Docker.dmg&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;2-用docker下载镜像，在终端输入：&quot;&gt;&lt;a href=&quot;#2-用docker下载镜像，在终端输入：&quot; class=&quot;headerlink&quot; title=&quot;2.用docker下载镜像，在终端输入：&quot;&gt;&lt;/a&gt;2.用docker下载镜像，在终端输入：&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;docker pull registry.cn-hangzhou.aliyuncs.com/helowin/oracle_11g&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;3-启动oracle镜像作为容器：&quot;&gt;&lt;a href=&quot;#3-启动oracle镜像作为容器：&quot; class=&quot;headerlink&quot; title=&quot;3.启动oracle镜像作为容器：&quot;&gt;&lt;/a&gt;3.启动oracle镜像作为容器：&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;docker run -d -p 1521:1521 –name oracle11g registry.cn-hangzhou.aliyuncs.com/helowin/oracle_11g&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;4-进入镜像配置&quot;&gt;&lt;a href=&quot;#4-进入镜像配置&quot; class=&quot;headerlink&quot; title=&quot;4.进入镜像配置&quot;&gt;&lt;/a&gt;4.进入镜像配置&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;docker exec -it oracle11g bash&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
     
     
     
@@ -52,14 +55,17 @@
     <updated>2020-11-07T08:38:19.000Z</updated>
     
     
-      
-      
-        
-        
     <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;代码混淆（Obfuscated</summary>
-        
-      
+&lt;p&gt;代码混淆（Obfuscated code）亦称花指令，是将计算机程序的代码，转换成一种功能上等价，但是难于阅读和理解的形式的行为。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;为什么要加代码混淆?&lt;br&gt;不想开源应用，为了加大反编译的成本,但是并不能彻底防止反编译&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;开启混淆&quot;&gt;&lt;a href=&quot;#开启混淆&quot; class=&quot;headerlink&quot; title=&quot;开启混淆&quot;&gt;&lt;/a&gt;开启混淆&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;通常我们需要找到项目路径下app目录下的build.gradle文件&lt;/li&gt;
+&lt;li&gt;找到minifyEnabled这个配置,然后设置为true即可.&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;release&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;           minifyEnabled true&amp;#x2F;&amp;#x2F;是否启动混淆 ture:打开   false:关闭&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;           proguardFiles getDefaultProguardFile(&amp;#39;proguard-android.txt&amp;#39;), &amp;#39;proguard-rules.pro&amp;#39;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+proguard-rules.pro文件的作用&lt;/li&gt;
+&lt;li&gt;只要在工程应用目录的gradle文件中设置minifyEnabled:true即可。然后我们就可以到proguard-rules.pro文件中加入我们的混淆规则了</summary>
     
     
     
@@ -78,13 +84,11 @@
     <updated>2020-10-19T08:47:15.000Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;h3 id=&quot;Hello-World&quot;&gt;&lt;a href=&quot;#Hello-World&quot; class=&quot;headerlink&quot; title=&quot;Hello World!&quot;&gt;&lt;/a&gt;Hello</summary>
-        
-      
+    <summary type="html">&lt;h3 id=&quot;Hello-World&quot;&gt;&lt;a href=&quot;#Hello-World&quot; class=&quot;headerlink&quot; title=&quot;Hello World!&quot;&gt;&lt;/a&gt;Hello World!&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;RxJava1.1.7.jar&lt;br&gt;代码演示：&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;public static void main(String[] args) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&amp;#x2F;&amp;#x2F;第一步、创建被观察者&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		Observable&amp;lt;String&amp;gt; mObservable &amp;#x3D; Observable.create(new OnSubscribe&amp;lt;String&amp;gt;()&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			@Override&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			public void call(Subscriber&amp;lt;? super String&amp;gt; subscriber) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;				subscriber.onNext(&amp;quot;Hello World!&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;				subscriber.onCompleted();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&amp;#x2F;&amp;#x2F;第二步、创建观察者&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		Subscriber&amp;lt;String&amp;gt; mSubscriber &amp;#x3D; new Subscriber&amp;lt;String&amp;gt;() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			@Override&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			public void onCompleted() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;				&amp;#x2F;&amp;#x2F; TODO Auto-generated method stub&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;				System.out.println(&amp;quot;onCompleted&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			@Override&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			public void onError(Throwable arg0) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;				&amp;#x2F;&amp;#x2F; TODO Auto-generated method stub&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;				System.out.println(&amp;quot;onError&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			@Override&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			public void onNext(String arg0) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;				&amp;#x2F;&amp;#x2F; TODO Auto-generated method stub&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;				System.out.println(&amp;quot;OnNext:&amp;quot;+arg0);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;				&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&amp;#x2F;&amp;#x2F;第三步、订阅事件&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		mObservable.subscribe(mSubscriber);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;p&gt;例如代码中所演示的，RxJava的使用就是那么简单，通过订阅事件将被观察者和观察者进行绑定。&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
     
     
     
