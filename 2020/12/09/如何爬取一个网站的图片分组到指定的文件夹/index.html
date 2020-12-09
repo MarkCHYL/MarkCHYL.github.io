@@ -8,12 +8,12 @@
   <link rel="dns-prefetch" href="http://markchyl.cn">
   <title>如何爬取一个网站的图片分组到指定的文件夹 | Mark的私人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="开发工具： Mac电脑      PyCharm  Python3.7  工具包 bs4、os、requests   网页信息 从上面这张图我们可以看出，一页有多套图，这个时候我们就要想怎么把每一套图分开存放（后边具体解释）通过分析，所有信息在页面中都可以拿到，我们就不考虑异步加载，那么要考虑的就是分页问题了，通过点击不同的页面，很容易看清楚分页规则  很容易明白分页URL的构造，图片链接都在源码">
+  <meta name="description" content="开发工具： Mac电脑      PyCharm  Python3.7  工具包 bs4、os、requests   网页信息">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何爬取一个网站的图片分组到指定的文件夹">
 <meta property="og:url" content="http://markchyl.cn/2020/12/09/%E5%A6%82%E4%BD%95%E7%88%AC%E5%8F%96%E4%B8%80%E4%B8%AA%E7%BD%91%E7%AB%99%E7%9A%84%E5%9B%BE%E7%89%87%E5%88%86%E7%BB%84%E5%88%B0%E6%8C%87%E5%AE%9A%E7%9A%84%E6%96%87%E4%BB%B6%E5%A4%B9/index.html">
 <meta property="og:site_name" content="Mark的私人博客">
-<meta property="og:description" content="开发工具： Mac电脑      PyCharm  Python3.7  工具包 bs4、os、requests   网页信息 从上面这张图我们可以看出，一页有多套图，这个时候我们就要想怎么把每一套图分开存放（后边具体解释）通过分析，所有信息在页面中都可以拿到，我们就不考虑异步加载，那么要考虑的就是分页问题了，通过点击不同的页面，很容易看清楚分页规则  很容易明白分页URL的构造，图片链接都在源码">
+<meta property="og:description" content="开发工具： Mac电脑      PyCharm  Python3.7  工具包 bs4、os、requests   网页信息">
 <meta property="og:locale">
 <meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/WGyNiboAjLV7cHtVA3p3bYOrDpxiaSCGicr8QmibfJePDfkanj24gu7Qjka5LEicltPQbZIKt7XSb94t43vG22UJxtw/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1">
 <meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/WGyNiboAjLV7cHtVA3p3bYOrDpxiaSCGicroN6T3CN0vmAKkOdPIZ6GsL2LxAicSXDROH4NGvlssb2iaV7vT3I9PZgQ/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1">
@@ -240,6 +240,8 @@ var _hmt = _hmt || [];
 </li>
 </ul>
 <h4 id="网页信息"><a href="#网页信息" class="headerlink" title="网页信息"></a>网页信息</h4><p><img src="https://mmbiz.qpic.cn/mmbiz_png/WGyNiboAjLV7cHtVA3p3bYOrDpxiaSCGicr8QmibfJePDfkanj24gu7Qjka5LEicltPQbZIKt7XSb94t43vG22UJxtw/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
+<a id="more"></a>
+
 <p><em>从上面这张图我们可以看出，一页有多套图，这个时候我们就要想怎么把每一套图分开存放（后边具体解释）</em><br>通过分析，所有信息在页面中都可以拿到，我们就不考虑异步加载，那么要考虑的就是分页问题了，通过点击不同的页面，很容易看清楚分页规则</p>
 <p><img src="https://mmbiz.qpic.cn/mmbiz_png/WGyNiboAjLV7cHtVA3p3bYOrDpxiaSCGicroN6T3CN0vmAKkOdPIZ6GsL2LxAicSXDROH4NGvlssb2iaV7vT3I9PZgQ/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
 <p><em>很容易明白分页URL的构造，图片链接都在源码中，就不做具体说明了明白了这个之后就可以去写代码抓图片了</em></p>
