@@ -6,7 +6,7 @@
   <link href="http://markchyl.cn/atom.xml" rel="self"/>
   
   <link href="http://markchyl.cn/"/>
-  <updated>2020-12-14T05:46:59.000Z</updated>
+  <updated>2020-12-30T02:44:33.000Z</updated>
   <id>http://markchyl.cn/</id>
   
   <author>
@@ -15,6 +15,82 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Android 的事件分发机制</title>
+    <link href="http://markchyl.cn/2020/12/30/Android-%E7%9A%84%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E6%9C%BA%E5%88%B6/"/>
+    <id>http://markchyl.cn/2020/12/30/Android-%E7%9A%84%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E6%9C%BA%E5%88%B6/</id>
+    <published>2020-12-30T02:44:33.000Z</published>
+    <updated>2020-12-30T02:44:33.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;一般情况下，事件列都是从用户按下（ACTION_DOWN）的那一刻产生的，&lt;br&gt;负责对事件进行分发的方法主要有三个，分别是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;dispatchTouchEvent()&lt;/li&gt;
+&lt;li&gt;onTouchEvent()&lt;/li&gt;
+&lt;li&gt;onInte</summary>
+        
+      
+    
+    
+    
+    <category term="Android" scheme="http://markchyl.cn/categories/Android/"/>
+    
+    
+    <category term="Android" scheme="http://markchyl.cn/tags/Android/"/>
+    
+    <category term="事件分发" scheme="http://markchyl.cn/tags/%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android事件分发机制完全解,从源码的角度分析理解</title>
+    <link href="http://markchyl.cn/2020/12/30/Android%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E6%9C%BA%E5%88%B6%E5%AE%8C%E5%85%A8%E8%A7%A3-%E4%BB%8E%E6%BA%90%E7%A0%81%E7%9A%84%E8%A7%92%E5%BA%A6%E5%88%86%E6%9E%90%E7%90%86%E8%A7%A3/"/>
+    <id>http://markchyl.cn/2020/12/30/Android%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E6%9C%BA%E5%88%B6%E5%AE%8C%E5%85%A8%E8%A7%A3-%E4%BB%8E%E6%BA%90%E7%A0%81%E7%9A%84%E8%A7%92%E5%BA%A6%E5%88%86%E6%9E%90%E7%90%86%E8%A7%A3/</id>
+    <published>2020-12-30T02:30:15.000Z</published>
+    <updated>2020-12-30T02:30:15.000Z</updated>
+    
+    
+    
+    
+    <category term="Android" scheme="http://markchyl.cn/categories/Android/"/>
+    
+    
+    <category term="Android" scheme="http://markchyl.cn/tags/Android/"/>
+    
+    <category term="事件分发" scheme="http://markchyl.cn/tags/%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用 Gradle 工具检查此项目的依赖</title>
+    <link href="http://markchyl.cn/2020/12/18/%E4%BD%BF%E7%94%A8-Gradle-%E5%B7%A5%E5%85%B7%E6%A3%80%E6%9F%A5%E6%AD%A4%E9%A1%B9%E7%9B%AE%E7%9A%84%E4%BE%9D%E8%B5%96/"/>
+    <id>http://markchyl.cn/2020/12/18/%E4%BD%BF%E7%94%A8-Gradle-%E5%B7%A5%E5%85%B7%E6%A3%80%E6%9F%A5%E6%AD%A4%E9%A1%B9%E7%9B%AE%E7%9A%84%E4%BE%9D%E8%B5%96/</id>
+    <published>2020-12-18T07:48:51.000Z</published>
+    <updated>2020-12-18T07:48:51.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;使用 Gradle 工具检查此项目的依赖，进入项目目录，执行如下指令进行依赖检查：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span</summary>
+        
+      
+    
+    
+    
+    <category term="Android" scheme="http://markchyl.cn/categories/Android/"/>
+    
+    
+    <category term="Android" scheme="http://markchyl.cn/tags/Android/"/>
+    
+  </entry>
   
   <entry>
     <title>android反编译apktool---dex2jar---jdgui</title>
@@ -302,9 +378,34 @@ proguard-rules.pro文件的作用&lt;/li&gt;
     
     <summary type="html">&lt;p&gt;&lt;a href=&quot;https://mp.weixin.qq.com/s/IN30Gc1o23fJ8wYEpp8AMQ&quot;&gt;原文链接  程序员小乐&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;以下是（2016、2017 、阿里、腾讯、百度、华为、京东、搜狗和滴滴面试题汇集）&lt;/p&gt;
-&lt;h2 id=&quot;Android基础&quot;&gt;&lt;a href=&quot;#Android基础&quot; class=&quot;headerlink&quot; title=&quot;Android基础&quot;&gt;&lt;/a&gt;Android基础&lt;/h2&gt;&lt;p&gt;1、什么是ANR 如何避免它？&lt;br&gt;如果耗时操作需要让用户等待，那么可以在界面上显示进度条。&lt;/p&gt;
-&lt;p&gt;2、View的绘制流程；自定义View如何考虑机型适配；自定义View的事件&lt;/p&gt;
-&lt;p&gt;3、分发机制；View和ViewGroup分别有哪些事件分发相关的回调方法；自定义View如何提供获取View属性的接口；&lt;/p&gt;</summary>
+&lt;h2 id=&quot;Android基础&quot;&gt;&lt;a href=&quot;#Android基础&quot; class=&quot;headerlink&quot; title=&quot;Android基础&quot;&gt;&lt;/a&gt;Android基础&lt;/h2&gt;&lt;h3 id=&quot;1、什么是ANR-如何避免它？&quot;&gt;&lt;a href=&quot;#1、什么是ANR-如何避免它？&quot; class=&quot;headerlink&quot; title=&quot;1、什么是ANR 如何避免它？&quot;&gt;&lt;/a&gt;1、什么是ANR 如何避免它？&lt;/h3&gt;&lt;p&gt;ANR 就是一个无响应的对话框,主要原因就是在主线程做了耗时操作。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;全称为Application Not Responding。在Android 中，如果你的应用程序有一段时间没有响应，系统会向用户显示一个对话框，这个对话框称作应用程序无响应对话框。&lt;br&gt;不同的组件发生ANR 的时间不一样，&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;主线程（Activity）是5 秒;&lt;/li&gt;
+&lt;li&gt;BroadCastReceiver 是10 秒;&lt;/li&gt;
+&lt;li&gt;Service：20 秒（均为前台）,Service 在20 秒内无法处理完成。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;解决方案：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;将所有耗时操作，比如访问网络，Socket 通信，查询大量SQL 语句，复杂逻辑计算等都放在子线程中去，然后通过handler.sendMessage、runonUITread、AsyncTask 等方式更新UI，以确保用户界面操作的流畅度.&lt;/li&gt;
+&lt;li&gt;如果耗时操作需要让用户等待，那么可以在界面上显示进度条。&lt;/li&gt;
+&lt;li&gt;避免在activity里面做耗时操作，oncreate &amp;amp; onresume&lt;/li&gt;
+&lt;li&gt;避免在onReceiver里面做过多操作&lt;/li&gt;
+&lt;li&gt;避免在Intent Receiver里启动一个Activity，因为它会创建一个新的画面，并从当前用户正在运行的程序上抢夺焦点。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;2、View的绘制流程；自定义View如何考虑机型适配；自定义View的事件&quot;&gt;&lt;a href=&quot;#2、View的绘制流程；自定义View如何考虑机型适配；自定义View的事件&quot; class=&quot;headerlink&quot; title=&quot;2、View的绘制流程；自定义View如何考虑机型适配；自定义View的事件&quot;&gt;&lt;/a&gt;2、View的绘制流程；自定义View如何考虑机型适配；自定义View的事件&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;View的绘制流程：OnMeasure()——&amp;gt;OnLayout()——&amp;gt;OnDraw()&lt;br&gt;组合控件、继承原有的控件、继承原有的控件&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;第一步：OnMeasure()：测量视图大小。从顶层父View到子View递归调用measure方法，measure方法又回调OnMeasure。&lt;/li&gt;
+&lt;li&gt;第二步：OnLayout()：确定View位置，进行页面布局。从顶层父View向子View的递归调用view.layout方法的过程，即父View根据上一步measure子View所得到的布局大小和布局参数，将子View放在合适的位置上。&lt;/li&gt;
+&lt;li&gt;第三步：OnDraw()：绘制视图。ViewRoot创建一个Canvas对象，然后调用OnDraw()。六个步骤：绘制视图的背景、保存画布的图层(Layer)、绘制View的内容、绘制View子视图、还原图层(Layer)、绘制滚动条（如果没有就不用）;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;3、分发机制；View和ViewGroup分别有哪些事件分发相关的回调方法；自定义View如何提供获取View属性的接口；&quot;&gt;&lt;a href=&quot;#3、分发机制；View和ViewGroup分别有哪些事件分发相关的回调方法；自定义View如何提供获取View属性的接口；&quot; class=&quot;headerlink&quot; title=&quot;3、分发机制；View和ViewGroup分别有哪些事件分发相关的回调方法；自定义View如何提供获取View属性的接口；&quot;&gt;&lt;/a&gt;3、分发机制；View和ViewGroup分别有哪些事件分发相关的回调方法；自定义View如何提供获取View属性的接口；&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;基本会遵从 Activity =&amp;gt; ViewGroup =&amp;gt; View 的顺序进行事件分发，然后通过调用 onTouchEvent() 方法进行事件的处理。我们在项目中一般会对 MotionEvent.ACTION_DOWN，MotionEvent.ACTION_UP，MotionEvent.ACTION_MOVE，MotionEvent.ACTION_CANCEL 分情况进行操作。&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
     
     
     
@@ -418,74 +519,6 @@ proguard-rules.pro文件的作用&lt;/li&gt;
     
     
     <category term="系统" scheme="http://markchyl.cn/tags/%E7%B3%BB%E7%BB%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Git之使用GitHub搭建远程仓库</title>
-    <link href="http://markchyl.cn/2020/08/18/Git%E4%B9%8B%E4%BD%BF%E7%94%A8GitHub%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93/"/>
-    <id>http://markchyl.cn/2020/08/18/Git%E4%B9%8B%E4%BD%BF%E7%94%A8GitHub%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93/</id>
-    <published>2020-08-18T08:00:15.000Z</published>
-    <updated>2020-08-18T08:00:15.000Z</updated>
-    
-    
-    <summary type="html">&lt;h3 id=&quot;1-账号注册-amp-仓库创建：&quot;&gt;&lt;a href=&quot;#1-账号注册-amp-仓库创建：&quot; class=&quot;headerlink&quot; title=&quot;1.账号注册&amp;amp;仓库创建：&quot;&gt;&lt;/a&gt;1.账号注册&amp;amp;仓库创建：&lt;/h3&gt;&lt;p&gt;不做记录，简单&lt;/p&gt;
-&lt;h3 id=&quot;2-Clone代码库到本地&quot;&gt;&lt;a href=&quot;#2-Clone代码库到本地&quot; class=&quot;headerlink&quot; title=&quot;2.Clone代码库到本地&quot;&gt;&lt;/a&gt;2.Clone代码库到本地&lt;/h3&gt;</summary>
-    
-    
-    
-    <category term="工具使用" scheme="http://markchyl.cn/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/"/>
-    
-    
-    <category term="工具使用" scheme="http://markchyl.cn/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Git使用教程之本地仓库的基本操</title>
-    <link href="http://markchyl.cn/2020/08/17/Git%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B%E4%B9%8B%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D/"/>
-    <id>http://markchyl.cn/2020/08/17/Git%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B%E4%B9%8B%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D/</id>
-    <published>2020-08-17T07:43:07.000Z</published>
-    <updated>2020-08-17T07:43:07.000Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;Git 的安装就不再次啰嗦了：&lt;br&gt;&lt;code&gt;sudo apt-get install git&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id=&quot;1-创建代码仓库&quot;&gt;&lt;a href=&quot;#1-创建代码仓库&quot; class=&quot;headerlink&quot; title=&quot;1.创建代码仓库&quot;&gt;&lt;/a&gt;1.创建代码仓库&lt;/h3&gt;&lt;h4 id=&quot;Step-1：先配置下身份，这样在提交代码的时候Git就可以知道是谁提交的，命令如下：&quot;&gt;&lt;a href=&quot;#Step-1：先配置下身份，这样在提交代码的时候Git就可以知道是谁提交的，命令如下：&quot; class=&quot;headerlink&quot; title=&quot;Step 1：先配置下身份，这样在提交代码的时候Git就可以知道是谁提交的，命令如下：&quot;&gt;&lt;/a&gt;Step 1：先配置下身份，这样在提交代码的时候Git就可以知道是谁提交的，命令如下：&lt;/h4&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;git config --global user.name &amp;quot;MarkCHYL&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;git config --global user.email &amp;quot;2285581945@qq.com&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;检查下配置是否成功：&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="工具使用" scheme="http://markchyl.cn/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/"/>
-    
-    
-    <category term="工具使用" scheme="http://markchyl.cn/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android 安装APP 失败 INSTALL_FAILED_TEST_ONLY</title>
-    <link href="http://markchyl.cn/2020/08/07/Android-%E5%AE%89%E8%A3%85APP-%E5%A4%B1%E8%B4%A5-INSTALL-FAILED-TEST-ONLY/"/>
-    <id>http://markchyl.cn/2020/08/07/Android-%E5%AE%89%E8%A3%85APP-%E5%A4%B1%E8%B4%A5-INSTALL-FAILED-TEST-ONLY/</id>
-    <published>2020-08-07T01:40:00.000Z</published>
-    <updated>2020-08-07T01:40:00.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h3 id=&quot;android-studio-进行真机安装时失败，报错：&quot;&gt;&lt;a href=&quot;#android-studio-进行真机安装时失败，报错：&quot; class=&quot;headerlink&quot; title=&quot;android studio</summary>
-        
-      
-    
-    
-    
-    <category term="Android" scheme="http://markchyl.cn/categories/Android/"/>
-    
-    
-    <category term="Android" scheme="http://markchyl.cn/tags/Android/"/>
-    
-    <category term="Error" scheme="http://markchyl.cn/tags/Error/"/>
     
   </entry>
   
