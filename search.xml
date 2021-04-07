@@ -1,6 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Activity的生命周期</title>
+    <url>/2018/12/17/Activity%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</url>
+    <content><![CDATA[<p><img src="http://hi.csdn.net/attachment/201109/1/0_1314838777He6C.gif" alt="image"></p>
+<h4 id="1-启动Activity：系统会先调用onCreate方法，这是生命周期第一个方法，然后调用onStart方法，最后调用onResume，Activity进入运行状态。"><a href="#1-启动Activity：系统会先调用onCreate方法，这是生命周期第一个方法，然后调用onStart方法，最后调用onResume，Activity进入运行状态。" class="headerlink" title="1.启动Activity：系统会先调用onCreate方法，这是生命周期第一个方法，然后调用onStart方法，最后调用onResume，Activity进入运行状态。"></a>1.启动Activity：系统会先调用onCreate方法，这是生命周期第一个方法，然后调用onStart方法，最后调用onResume，Activity进入运行状态。</h4><a id="more"></a>
+<p>onCreate方法：一般做一些初始化工作，比如setContentView去加载布局资源，初始化Activity所需的数据。</p>
+<p>onStart方法：表示Activity正在启动，已经可见，但是无法和用户交互。<br>/Users/mark/Downloads/Activity的生命周期.md<br>onResume方法：Activity已经可见并且开始活动，已经出现在前台。</p>
+<h4 id="2-当前Activity被其他Activity覆盖其上或被锁屏："><a href="#2-当前Activity被其他Activity覆盖其上或被锁屏：" class="headerlink" title="2.当前Activity被其他Activity覆盖其上或被锁屏："></a>2.当前Activity被其他Activity覆盖其上或被锁屏：</h4><p>（可以理解为没有完全遮挡界面的）</p>
+<p>系统会调用onPause方法，暂停当前Activity的执行。</p>
+<h4 id="3-当前Activity由被覆盖状态回到前台或解锁屏："><a href="#3-当前Activity由被覆盖状态回到前台或解锁屏：" class="headerlink" title="3.当前Activity由被覆盖状态回到前台或解锁屏："></a>3.当前Activity由被覆盖状态回到前台或解锁屏：</h4><p>系统会调用onResume方法，再次进入运行状态。</p>
+<h4 id="4-当前Activity转到新的Activity界面或按Home键回到主屏，自身退居后台："><a href="#4-当前Activity转到新的Activity界面或按Home键回到主屏，自身退居后台：" class="headerlink" title="4.当前Activity转到新的Activity界面或按Home键回到主屏，自身退居后台："></a>4.当前Activity转到新的Activity界面或按Home键回到主屏，自身退居后台：</h4><p>系统会先调用onPause方法，然后调用onStop方法，进入停滞状态。</p>
+<h4 id="5-用户后退回到此Activity："><a href="#5-用户后退回到此Activity：" class="headerlink" title="5.用户后退回到此Activity："></a>5.用户后退回到此Activity：</h4><p>系统会先调用onRestart方法，</p>
+<p>然后调用onStart方法，</p>
+<p>最后调用onResume方法，</p>
+<p>再次进入运行状态。</p>
+<h4 id="6-用户退出当前Activity：系统先调用onPause方法，然后调用onStop方法，最后调用onDestory方法，结束当前Activity。"><a href="#6-用户退出当前Activity：系统先调用onPause方法，然后调用onStop方法，最后调用onDestory方法，结束当前Activity。" class="headerlink" title="6.用户退出当前Activity：系统先调用onPause方法，然后调用onStop方法，最后调用onDestory方法，结束当前Activity。"></a>6.用户退出当前Activity：系统先调用onPause方法，然后调用onStop方法，最后调用onDestory方法，结束当前Activity。</h4><p>但是知道这些还不够，我们必须亲自试验一下才能深刻体会，融会贯通。</p>
+<hr>
+<p>Activity四种启动模式的区别：standard    singleTop  singleTask   singleInstance</p>
+<p>standard：每次激活Activity时(startActivity)，都创建Activity实例，并放入任务栈； </p>
+<p>singleTop：如果某个Activity自己激活自己并且Activity处于栈顶，则不需要创 建，其余情况都要创建Activity实例；</p>
+<p>singleTask：如果要激活的那个Activity在任务栈中存在该实例，则不需要创建，只需要把 此Activity放入栈顶，即把该Activity以上的Activity实例都pop，并调用其onNewIntent；</p>
+<p>singleInstance：应用1的任务栈中创建了MainActivity实例，如果应用2也要激活 MainActivity，则不需要创建，两应用共享该Activity实例。</p>
+<hr>
+<p>onSaveInstanceState的调用遵循一个重要原则，即当系统“未经你许可”时销毁了你的 activity，则onSaveInstanceState会被系统调用，这是系统的责任，因为它必须要提供一 个机会让你保存的数据。<br>至于onRestoreInstanceState方法，需要注意的是， onSaveInstanceState方法和onRestoreInstanceState方法“不一定”是成对的被调用 的。 </p>
+<p>onRestoreInstanceState被调用的前提是，activity A“确实”被系统销毁了，而如果仅仅 是停留在有这种可能性的情况下，则该方法不会被调用，例如，当正在显示activity A的时 候，用户按下HOME键回到主界面，然后用户紧接着又返回到activity A，这种情况下 activity A一般不会因为内存的原因被系统销毁<br>故activity A的onRestoreInstanceState方 法不会被执行。</p>
+<p> 另外，onRestoreInstanceState的bundle参数也会传递到onCreate方法中，你也可以选择 在onCreate方法中做数据还原。</p>
+<p>切换横竖屏的生命周期：</p>
+<p>1、不设置Activity的android:configChanges时，切屏会重新调用各个生命周期，<br>切横屏时会执行一次，切竖屏时会执行两次</p>
+<p>2、设置Activity的android:configChanges=”orientation”时，切屏还是会重新调<br>用各个生命周期，切横、竖屏时只会执行一次</p>
+<p>3、设置Activity的android:configChanges=”orientation|keyboardHidden”时，<br>切屏不会重新调用各个生命周期，只会执行onConfigurationChanged方法</p>
+<h4 id="Activity运行时按下HOME键-跟被完全覆盖是一样的-："><a href="#Activity运行时按下HOME键-跟被完全覆盖是一样的-：" class="headerlink" title="Activity运行时按下HOME键(跟被完全覆盖是一样的)："></a>Activity运行时按下HOME键(跟被完全覆盖是一样的)：</h4><hr>
+<h2 id="–-gt-onPause–-gt-onPauseonSaveInstanceState–-gt-onStop-–-gt-onRestart–-gt-onStart—-gt-onResume"><a href="#–-gt-onPause–-gt-onPauseonSaveInstanceState–-gt-onStop-–-gt-onRestart–-gt-onStart—-gt-onResume" class="headerlink" title="–&gt; onPause–&gt; onPauseonSaveInstanceState–&gt; onStop  –&gt; onRestart–&gt;onStart—&gt;onResume"></a>–&gt; onPause–&gt; onPauseonSaveInstanceState–&gt; onStop  –&gt; onRestart–&gt;onStart—&gt;onResume</h2><h4 id="Activity未被完全覆盖只是失去焦点：onPause—-gt-onResume（我没复现过这个，待考证）"><a href="#Activity未被完全覆盖只是失去焦点：onPause—-gt-onResume（我没复现过这个，待考证）" class="headerlink" title="Activity未被完全覆盖只是失去焦点：onPause—&gt;onResume（我没复现过这个，待考证）"></a>Activity未被完全覆盖只是失去焦点：onPause—&gt;onResume（我没复现过这个，待考证）</h4><h4 id="A跳转到B，然后按-back回退到A，A的生命周期："><a href="#A跳转到B，然后按-back回退到A，A的生命周期：" class="headerlink" title="A跳转到B，然后按 back回退到A，A的生命周期："></a>A跳转到B，然后按 back回退到A，A的生命周期：</h4><hr>
+<h2 id="–-gt-onCreate-–-gt-onStart-–-gt-onResume-–-gt-onPause-–-gt-onSaveInstanceState-–-gt-onStop-然后回退–-gt-onRestart-–-gt-onStart-–-gt-onResume"><a href="#–-gt-onCreate-–-gt-onStart-–-gt-onResume-–-gt-onPause-–-gt-onSaveInstanceState-–-gt-onStop-然后回退–-gt-onRestart-–-gt-onStart-–-gt-onResume" class="headerlink" title="–&gt;onCreate –&gt;onStart –&gt;onResume –&gt;onPause –&gt;onSaveInstanceState –&gt;onStop 然后回退–&gt;onRestart –&gt;onStart –&gt;onResume "></a>–&gt;onCreate –&gt;onStart –&gt;onResume –&gt;onPause –&gt;onSaveInstanceState –&gt;onStop 然后回退–&gt;onRestart –&gt;onStart –&gt;onResume </h2>]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>基础理论</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Android ANR发生的原因总结和解决办法</title>
     <url>/2020/08/06/Android-ANR%E5%8F%91%E7%94%9F%E7%9A%84%E5%8E%9F%E5%9B%A0%E6%80%BB%E7%BB%93%E5%92%8C%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</url>
     <content><![CDATA[<h3 id="什么是ANR？"><a href="#什么是ANR？" class="headerlink" title="什么是ANR？"></a>什么是ANR？</h3><blockquote>
@@ -30,8 +70,8 @@
         <category>Android</category>
       </categories>
       <tags>
-        <tag>Error</tag>
         <tag>基础理论</tag>
+        <tag>Error</tag>
       </tags>
   </entry>
   <entry>
@@ -630,6 +670,22 @@
 <p><img src="https://img-blog.csdn.net/20180401211644887"></p>
 <p><a href="https://blog.csdn.net/qq_35698774/article/details/79779238">原文链接：</a></p>
 ]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Android根据字符串加载Activity和res目录下图片</title>
+    <url>/2021/01/15/Android%E6%A0%B9%E6%8D%AE%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8A%A0%E8%BD%BDActivity%E5%92%8Cres%E7%9B%AE%E5%BD%95%E4%B8%8B%E5%9B%BE%E7%89%87/</url>
+    <content><![CDATA[<h3 id="根据传入的字符串跳转Activity"><a href="#根据传入的字符串跳转Activity" class="headerlink" title="根据传入的字符串跳转Activity"></a>根据传入的字符串跳转Activity</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Intent intent &#x3D; new Intent(context,Class.forName(&quot;com.packname.Activity&quot;));</span><br><span class="line">startActivity(intent);</span><br></pre></td></tr></table></figure>
+<h3 id="根据传入的字符加载资源"><a href="#根据传入的字符加载资源" class="headerlink" title="根据传入的字符加载资源"></a>根据传入的字符加载资源</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int icon &#x3D; getResources().getIdentifier(“imageid”, &quot;drawable&quot;,getPackageName());</span><br></pre></td></tr></table></figure>
+<p>优化：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public static int getDrawableId(Context context, String var) &#123;</span><br><span class="line"></span><br><span class="line">        try &#123;</span><br><span class="line">            int imageId &#x3D; context.getResources().getIdentifier(var, &quot;drawable&quot;, context.getPackageName());</span><br><span class="line">            return imageId;</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            return 0;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>getIdentifier的函数签名如下：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public int getIdentifier (String name, String defType, String defPackage)</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>Android</category>
       </categories>
@@ -1376,6 +1432,19 @@ proguard-rules.pro文件的作用</li>
       </tags>
   </entry>
   <entry>
+    <title>Log日志工具类(一)</title>
+    <url>/2021/04/07/Log%E6%97%A5%E5%BF%97%E5%B7%A5%E5%85%B7%E7%B1%BB-%E4%B8%80/</url>
+    <content><![CDATA[<p>实现的效果能将json字符串以格式化的方式显示</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * $desc$ Log日志工具类</span><br><span class="line"> *</span><br><span class="line"> * @Author mark</span><br><span class="line"> * @Date 2018&#x2F;11&#x2F;26</span><br><span class="line"> *&#x2F;</span><br><span class="line">public class LogUtils &#123;</span><br><span class="line">    &#x2F;&#x2F;是否Debug</span><br><span class="line">    public static final boolean isMarkDebug &#x3D; true;</span><br><span class="line"></span><br><span class="line">    public static final String LINE_SEPARATOR &#x3D; System.getProperty(&quot;line.separator&quot;);</span><br><span class="line">    public static void printLog(String name,String strContent)&#123;</span><br><span class="line">        if (isMarkDebug)&#123;</span><br><span class="line">            Log.d(name,strContent);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public static void printLine(String tag, boolean isTop) &#123;</span><br><span class="line">        if (isTop) &#123;</span><br><span class="line">            Log.d(tag, &quot;╔═══════════════════════════════════════════════════════════════════════════════════════&quot;);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            Log.d(tag, &quot;╚═══════════════════════════════════════════════════════════════════════════════════════&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public static void printJson(String tag, String msg, String headString) &#123;</span><br><span class="line"></span><br><span class="line">        String message;</span><br><span class="line"></span><br><span class="line">        try &#123;</span><br><span class="line">            if (msg.startsWith(&quot;&#123;&quot;)) &#123;</span><br><span class="line">                JSONObject jsonObject &#x3D; new JSONObject(msg);</span><br><span class="line">                message &#x3D; jsonObject.toString(4);&#x2F;&#x2F;最重要的方法，就一行，返回格式化的json字符串，其中的数字4是缩进字符数</span><br><span class="line">            &#125; else if (msg.startsWith(&quot;[&quot;)) &#123;</span><br><span class="line">                JSONArray jsonArray &#x3D; new JSONArray(msg);</span><br><span class="line">                message &#x3D; jsonArray.toString(4);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                message &#x3D; msg;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; catch (JSONException e) &#123;</span><br><span class="line">            message &#x3D; msg;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        printLine(tag, true);</span><br><span class="line">        message &#x3D; headString + LINE_SEPARATOR + message;</span><br><span class="line">        String[] lines &#x3D; message.split(LINE_SEPARATOR);</span><br><span class="line">        for (String line : lines) &#123;</span><br><span class="line">            Log.d(tag, &quot;║ &quot; + line);</span><br><span class="line">        &#125;</span><br><span class="line">        printLine(tag, false);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Utils</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>MAC搭建基于RTMP的本地Nginx服务器</title>
     <url>/2018/12/17/MAC%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8ERTMP%E7%9A%84%E6%9C%AC%E5%9C%B0Nginx%E6%9C%8D%E5%8A%A1%E5%99%A8/</url>
     <content><![CDATA[<h3 id="MAC搭建基于RTMP的本地Nginx服务器，实现电脑上视频推流。"><a href="#MAC搭建基于RTMP的本地Nginx服务器，实现电脑上视频推流。" class="headerlink" title="MAC搭建基于RTMP的本地Nginx服务器，实现电脑上视频推流。"></a>MAC搭建基于RTMP的本地Nginx服务器，实现电脑上视频推流。</h3><h1 id="1、先安装homeView"><a href="#1、先安装homeView" class="headerlink" title="1、先安装homeView"></a>1、先安装homeView</h1><a id="more"></a>
@@ -1880,7 +1949,7 @@ proguard-rules.pro文件的作用</li>
 <p>2.添加SSH Key到Github<br>进入github首页在设置洁面<br><img src="https://images2017.cnblogs.com/blog/1250458/201710/1250458-20171017153636849-294935886.png"></p>
 <hr>
 <h4 id="添加SSH-Key"><a href="#添加SSH-Key" class="headerlink" title="添加SSH Key"></a>添加SSH Key</h4><p><img src="https://images2017.cnblogs.com/blog/1250458/201710/1250458-20171017153642521-647884655.png"><br>找到系统当前用户目录下(开启查看隐藏文件) C:\Users\用户名\ .ssh id_rsa.pub文件以文本方式打开。打开之后全部复制到key中<br><img src="https://images2017.cnblogs.com/blog/1250458/201710/1250458-20171017153648631-441574444.png"><br>到了这就可以测试一下是否成功了:</p>
-<p>ssh -T <a href="mailto:&#x67;&#105;&#x74;&#64;&#103;&#x69;&#116;&#104;&#x75;&#x62;&#x2e;&#x63;&#111;&#109;">&#x67;&#105;&#x74;&#64;&#103;&#x69;&#116;&#104;&#x75;&#x62;&#x2e;&#x63;&#111;&#109;</a><br>#之后会要你输入yes/no,输入yes就好了。<br>设置你的账号信息:</p>
+<p>ssh -T <a href="mailto:&#x67;&#105;&#116;&#x40;&#x67;&#105;&#116;&#x68;&#x75;&#98;&#46;&#x63;&#111;&#x6d;">&#x67;&#105;&#116;&#x40;&#x67;&#105;&#116;&#x68;&#x75;&#98;&#46;&#x63;&#111;&#x6d;</a><br>#之后会要你输入yes/no,输入yes就好了。<br>设置你的账号信息:</p>
 <p>git config –global user.name “你的名字”     #真实名字不是github用户名<br>git config –global user.email “邮箱@邮箱.com”    #github邮箱<br>3.部署到github<br>hexo d<br>这时再刷新 username.github.io 就可以看到你的博客了。</p>
 <p>到了这你以为就结束了吗？没有，还有坑没有给你们填好。</p>
 <p>如果你的SSH配置的时候哪找的.ssh文件的化，可以参照<a href="https://www.cnblogs.com/ailiailan/p/8577411.html">mac 上传本地代码到 Github 教程</a>,我就是参照上面的步骤配置的。</p>
@@ -2658,6 +2727,45 @@ proguard-rules.pro文件的作用</li>
       </tags>
   </entry>
   <entry>
+    <title>如何爬取一个网站的图片分组到指定的文件夹</title>
+    <url>/2020/12/09/%E5%A6%82%E4%BD%95%E7%88%AC%E5%8F%96%E4%B8%80%E4%B8%AA%E7%BD%91%E7%AB%99%E7%9A%84%E5%9B%BE%E7%89%87%E5%88%86%E7%BB%84%E5%88%B0%E6%8C%87%E5%AE%9A%E7%9A%84%E6%96%87%E4%BB%B6%E5%A4%B9/</url>
+    <content><![CDATA[<h3 id="开发工具："><a href="#开发工具：" class="headerlink" title="开发工具："></a>开发工具：</h3><ul>
+<li><p>Mac电脑    </p>
+</li>
+<li><p>PyCharm</p>
+</li>
+<li><p>Python3.7</p>
+</li>
+<li><p>工具包 <strong>bs4、os、requests</strong></p>
+</li>
+</ul>
+<h4 id="网页信息"><a href="#网页信息" class="headerlink" title="网页信息"></a>网页信息</h4><p><img src="https://mmbiz.qpic.cn/mmbiz_png/WGyNiboAjLV7cHtVA3p3bYOrDpxiaSCGicr8QmibfJePDfkanj24gu7Qjka5LEicltPQbZIKt7XSb94t43vG22UJxtw/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
+<a id="more"></a>
+
+<p><em>从上面这张图我们可以看出，一页有多套图，这个时候我们就要想怎么把每一套图分开存放（后边具体解释）</em><br>通过分析，所有信息在页面中都可以拿到，我们就不考虑异步加载，那么要考虑的就是分页问题了，通过点击不同的页面，很容易看清楚分页规则</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/WGyNiboAjLV7cHtVA3p3bYOrDpxiaSCGicroN6T3CN0vmAKkOdPIZ6GsL2LxAicSXDROH4NGvlssb2iaV7vT3I9PZgQ/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
+<p><em>很容易明白分页URL的构造，图片链接都在源码中，就不做具体说明了明白了这个之后就可以去写代码抓图片了</em></p>
+<h4 id="存图片的思路"><a href="#存图片的思路" class="headerlink" title="存图片的思路"></a>存图片的思路</h4><p>因为要把每一套图存入一个文件夹中（os模块），文件夹的命名我就以每一套图的URL的最后的几位数字命名，然后文件从文件路径分隔出最后一个字段命名,具体看下边的截图。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/WGyNiboAjLV7cHtVA3p3bYOrDpxiaSCGicrs1YO4cw4sWDegXqZ54ujz7VZ1fZds5TRIlUicRZqpJ0OzzPceeW71ng/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/WGyNiboAjLV7cHtVA3p3bYOrDpxiaSCGicrR89T7BTesr71ibH0iaYWZU7XnXEpcu4FdzmamOPib0ZefkEsUv8Ykx9pg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
+<p>这些搞明白之后，接下来就是代码了（可以参考我的解析思路，只获取了30页作为测试）<strong>全部源码</strong>,下面的源码有原文中的有点不一样。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">doutuSpider</span>(<span class="params">object</span>):</span></span><br><span class="line">    headers = &#123;</span><br><span class="line">        <span class="string">&quot;user-agent&quot;</span>: <span class="string">&quot;Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36&quot;</span>&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_url</span>(<span class="params">self, url</span>):</span></span><br><span class="line">        data = requests.get(url, headers=self.headers)</span><br><span class="line">        soup = BeautifulSoup(data.content, <span class="string">&#x27;lxml&#x27;</span>)</span><br><span class="line">        totals = soup.findAll(<span class="string">&quot;a&quot;</span>, &#123;<span class="string">&quot;class&quot;</span>: <span class="string">&quot;list-group-item&quot;</span>&#125;)</span><br><span class="line">        <span class="keyword">for</span> one <span class="keyword">in</span> totals:</span><br><span class="line">            sub_url = one.get(<span class="string">&#x27;href&#x27;</span>)</span><br><span class="line">            <span class="keyword">global</span> path</span><br><span class="line">            path = <span class="string">&quot;/Users/mark/Desktop/Mark/doutu/&quot;</span> + sub_url.split(<span class="string">&#x27;/&#x27;</span>)[<span class="number">-1</span>]</span><br><span class="line">            os.makedirs(path, exist_ok=<span class="literal">True</span>)</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                self.get_img_url(sub_url)</span><br><span class="line">            <span class="keyword">except</span>:</span><br><span class="line">                <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_img_url</span>(<span class="params">self, url</span>):</span></span><br><span class="line">        data = requests.get(url, headers=self.headers)</span><br><span class="line">        soup = BeautifulSoup(data.content, <span class="string">&#x27;lxml&#x27;</span>)</span><br><span class="line">        totals = soup.find_all(<span class="string">&#x27;div&#x27;</span>, &#123;<span class="string">&#x27;class&#x27;</span>: <span class="string">&#x27;artile_des&#x27;</span>&#125;)</span><br><span class="line">        <span class="keyword">for</span> one <span class="keyword">in</span> totals:</span><br><span class="line">            img = one.find(<span class="string">&#x27;img&#x27;</span>)</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                sub_url = img.get(<span class="string">&#x27;src&#x27;</span>)</span><br><span class="line">            <span class="keyword">except</span>:</span><br><span class="line">                <span class="keyword">pass</span></span><br><span class="line">            <span class="keyword">finally</span>:</span><br><span class="line">                <span class="comment"># http://ww1.sinaimg.cn/large/9150e4e5gy1g59ef4u9edg206o06ogni.gif</span></span><br><span class="line">                print(sub_url)</span><br><span class="line">                <span class="keyword">try</span>:</span><br><span class="line">                    self.get_img(sub_url)</span><br><span class="line">                <span class="keyword">except</span>:</span><br><span class="line">                    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_img</span>(<span class="params">self, url</span>):</span></span><br><span class="line">        filename = url.split(<span class="string">&#x27;/&#x27;</span>)[<span class="number">-1</span>]</span><br><span class="line">        <span class="keyword">global</span> path</span><br><span class="line">        img_path = path + <span class="string">&#x27;/&#x27;</span> + filename</span><br><span class="line">        print(<span class="string">&#x27;正在下载----&#x27;</span>, url)</span><br><span class="line">        print(<span class="string">&#x27;存储地址为----&#x27;</span>, img_path)</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            img = requests.get(url, headers=self.headers)</span><br><span class="line">            <span class="keyword">with</span> open(img_path, <span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">                f.write(img.content)</span><br><span class="line">                f.close()</span><br><span class="line">        <span class="keyword">except</span> requests.RequestException:</span><br><span class="line">            print(<span class="string">&#x27;请求图片出错&#x27;</span>, url)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">create</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">for</span> count <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">2</span>):</span><br><span class="line">            url = <span class="string">&#x27;https://www.doutula.com/article/list/?page=&#123;&#125;&#x27;</span>.format(count)</span><br><span class="line">            print(<span class="string">&#x27;开始下载第&#123;&#125;页&#x27;</span>.format(count))</span><br><span class="line">            self.get_url(url)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    doutu = doutuSpider()</span><br><span class="line">    doutu.create()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h4><p><img src="https://mmbiz.qpic.cn/mmbiz_png/WGyNiboAjLV7cHtVA3p3bYOrDpxiaSCGicrTamKCbHGDr8Z4sGGZbnLOUGMOGickw2Raa1HVowjrgKDib0wwXmqKQmw/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/WGyNiboAjLV7cHtVA3p3bYOrDpxiaSCGicrhzHDdct4Y6FZ4melwBj3NdY5lKUicvrk9ib5ZNFdN140PicmQiaSBxRMwQ/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/WGyNiboAjLV7cHtVA3p3bYOrDpxiaSCGicrMWzicYkDdR1nC7viaw97CTmzynWs7JJexuF297FWdChrJNNAn25lNSAg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>总的来说，这个网站结构相对来说不是很复杂，大家可以参考一下，爬一些有趣的</p>
+<p>原创作者：loading_miracle，原文链接:<br><a href="https://www.jianshu.com/p/88098728aafd">https://www.jianshu.com/p/88098728aafd</a></p>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>爬虫</tag>
+        <tag>Python3.7</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>如何防止重新启动</title>
     <url>/2019/10/14/%E5%A6%82%E4%BD%95%E9%98%B2%E6%AD%A2%E9%87%8D%E6%96%B0%E5%90%AF%E5%8A%A8/</url>
     <content><![CDATA[<p>我的问题描述：</p>
@@ -2737,45 +2845,6 @@ proguard-rules.pro文件的作用</li>
       </categories>
       <tags>
         <tag>Android</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何爬取一个网站的图片分组到指定的文件夹</title>
-    <url>/2020/12/09/%E5%A6%82%E4%BD%95%E7%88%AC%E5%8F%96%E4%B8%80%E4%B8%AA%E7%BD%91%E7%AB%99%E7%9A%84%E5%9B%BE%E7%89%87%E5%88%86%E7%BB%84%E5%88%B0%E6%8C%87%E5%AE%9A%E7%9A%84%E6%96%87%E4%BB%B6%E5%A4%B9/</url>
-    <content><![CDATA[<h3 id="开发工具："><a href="#开发工具：" class="headerlink" title="开发工具："></a>开发工具：</h3><ul>
-<li><p>Mac电脑    </p>
-</li>
-<li><p>PyCharm</p>
-</li>
-<li><p>Python3.7</p>
-</li>
-<li><p>工具包 <strong>bs4、os、requests</strong></p>
-</li>
-</ul>
-<h4 id="网页信息"><a href="#网页信息" class="headerlink" title="网页信息"></a>网页信息</h4><p><img src="https://mmbiz.qpic.cn/mmbiz_png/WGyNiboAjLV7cHtVA3p3bYOrDpxiaSCGicr8QmibfJePDfkanj24gu7Qjka5LEicltPQbZIKt7XSb94t43vG22UJxtw/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
-<a id="more"></a>
-
-<p><em>从上面这张图我们可以看出，一页有多套图，这个时候我们就要想怎么把每一套图分开存放（后边具体解释）</em><br>通过分析，所有信息在页面中都可以拿到，我们就不考虑异步加载，那么要考虑的就是分页问题了，通过点击不同的页面，很容易看清楚分页规则</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/WGyNiboAjLV7cHtVA3p3bYOrDpxiaSCGicroN6T3CN0vmAKkOdPIZ6GsL2LxAicSXDROH4NGvlssb2iaV7vT3I9PZgQ/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
-<p><em>很容易明白分页URL的构造，图片链接都在源码中，就不做具体说明了明白了这个之后就可以去写代码抓图片了</em></p>
-<h4 id="存图片的思路"><a href="#存图片的思路" class="headerlink" title="存图片的思路"></a>存图片的思路</h4><p>因为要把每一套图存入一个文件夹中（os模块），文件夹的命名我就以每一套图的URL的最后的几位数字命名，然后文件从文件路径分隔出最后一个字段命名,具体看下边的截图。</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/WGyNiboAjLV7cHtVA3p3bYOrDpxiaSCGicrs1YO4cw4sWDegXqZ54ujz7VZ1fZds5TRIlUicRZqpJ0OzzPceeW71ng/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/WGyNiboAjLV7cHtVA3p3bYOrDpxiaSCGicrR89T7BTesr71ibH0iaYWZU7XnXEpcu4FdzmamOPib0ZefkEsUv8Ykx9pg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
-<p>这些搞明白之后，接下来就是代码了（可以参考我的解析思路，只获取了30页作为测试）<strong>全部源码</strong>,下面的源码有原文中的有点不一样。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">doutuSpider</span>(<span class="params">object</span>):</span></span><br><span class="line">    headers = &#123;</span><br><span class="line">        <span class="string">&quot;user-agent&quot;</span>: <span class="string">&quot;Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36&quot;</span>&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_url</span>(<span class="params">self, url</span>):</span></span><br><span class="line">        data = requests.get(url, headers=self.headers)</span><br><span class="line">        soup = BeautifulSoup(data.content, <span class="string">&#x27;lxml&#x27;</span>)</span><br><span class="line">        totals = soup.findAll(<span class="string">&quot;a&quot;</span>, &#123;<span class="string">&quot;class&quot;</span>: <span class="string">&quot;list-group-item&quot;</span>&#125;)</span><br><span class="line">        <span class="keyword">for</span> one <span class="keyword">in</span> totals:</span><br><span class="line">            sub_url = one.get(<span class="string">&#x27;href&#x27;</span>)</span><br><span class="line">            <span class="keyword">global</span> path</span><br><span class="line">            path = <span class="string">&quot;/Users/mark/Desktop/Mark/doutu/&quot;</span> + sub_url.split(<span class="string">&#x27;/&#x27;</span>)[<span class="number">-1</span>]</span><br><span class="line">            os.makedirs(path, exist_ok=<span class="literal">True</span>)</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                self.get_img_url(sub_url)</span><br><span class="line">            <span class="keyword">except</span>:</span><br><span class="line">                <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_img_url</span>(<span class="params">self, url</span>):</span></span><br><span class="line">        data = requests.get(url, headers=self.headers)</span><br><span class="line">        soup = BeautifulSoup(data.content, <span class="string">&#x27;lxml&#x27;</span>)</span><br><span class="line">        totals = soup.find_all(<span class="string">&#x27;div&#x27;</span>, &#123;<span class="string">&#x27;class&#x27;</span>: <span class="string">&#x27;artile_des&#x27;</span>&#125;)</span><br><span class="line">        <span class="keyword">for</span> one <span class="keyword">in</span> totals:</span><br><span class="line">            img = one.find(<span class="string">&#x27;img&#x27;</span>)</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                sub_url = img.get(<span class="string">&#x27;src&#x27;</span>)</span><br><span class="line">            <span class="keyword">except</span>:</span><br><span class="line">                <span class="keyword">pass</span></span><br><span class="line">            <span class="keyword">finally</span>:</span><br><span class="line">                <span class="comment"># http://ww1.sinaimg.cn/large/9150e4e5gy1g59ef4u9edg206o06ogni.gif</span></span><br><span class="line">                print(sub_url)</span><br><span class="line">                <span class="keyword">try</span>:</span><br><span class="line">                    self.get_img(sub_url)</span><br><span class="line">                <span class="keyword">except</span>:</span><br><span class="line">                    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_img</span>(<span class="params">self, url</span>):</span></span><br><span class="line">        filename = url.split(<span class="string">&#x27;/&#x27;</span>)[<span class="number">-1</span>]</span><br><span class="line">        <span class="keyword">global</span> path</span><br><span class="line">        img_path = path + <span class="string">&#x27;/&#x27;</span> + filename</span><br><span class="line">        print(<span class="string">&#x27;正在下载----&#x27;</span>, url)</span><br><span class="line">        print(<span class="string">&#x27;存储地址为----&#x27;</span>, img_path)</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            img = requests.get(url, headers=self.headers)</span><br><span class="line">            <span class="keyword">with</span> open(img_path, <span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">                f.write(img.content)</span><br><span class="line">                f.close()</span><br><span class="line">        <span class="keyword">except</span> requests.RequestException:</span><br><span class="line">            print(<span class="string">&#x27;请求图片出错&#x27;</span>, url)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">create</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">for</span> count <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">2</span>):</span><br><span class="line">            url = <span class="string">&#x27;https://www.doutula.com/article/list/?page=&#123;&#125;&#x27;</span>.format(count)</span><br><span class="line">            print(<span class="string">&#x27;开始下载第&#123;&#125;页&#x27;</span>.format(count))</span><br><span class="line">            self.get_url(url)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    doutu = doutuSpider()</span><br><span class="line">    doutu.create()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h4 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h4><p><img src="https://mmbiz.qpic.cn/mmbiz_png/WGyNiboAjLV7cHtVA3p3bYOrDpxiaSCGicrTamKCbHGDr8Z4sGGZbnLOUGMOGickw2Raa1HVowjrgKDib0wwXmqKQmw/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/WGyNiboAjLV7cHtVA3p3bYOrDpxiaSCGicrhzHDdct4Y6FZ4melwBj3NdY5lKUicvrk9ib5ZNFdN140PicmQiaSBxRMwQ/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/WGyNiboAjLV7cHtVA3p3bYOrDpxiaSCGicrMWzicYkDdR1nC7viaw97CTmzynWs7JJexuF297FWdChrJNNAn25lNSAg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>总的来说，这个网站结构相对来说不是很复杂，大家可以参考一下，爬一些有趣的</p>
-<p>原创作者：loading_miracle，原文链接:<br><a href="https://www.jianshu.com/p/88098728aafd">https://www.jianshu.com/p/88098728aafd</a></p>
-]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
-        <tag>爬虫</tag>
-        <tag>Python3.7</tag>
       </tags>
   </entry>
   <entry>
@@ -3272,75 +3341,6 @@ proguard-rules.pro文件的作用</li>
       </categories>
       <tags>
         <tag>面试</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Activity的生命周期</title>
-    <url>/2018/12/17/Activity%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</url>
-    <content><![CDATA[<p><img src="http://hi.csdn.net/attachment/201109/1/0_1314838777He6C.gif" alt="image"></p>
-<h4 id="1-启动Activity：系统会先调用onCreate方法，这是生命周期第一个方法，然后调用onStart方法，最后调用onResume，Activity进入运行状态。"><a href="#1-启动Activity：系统会先调用onCreate方法，这是生命周期第一个方法，然后调用onStart方法，最后调用onResume，Activity进入运行状态。" class="headerlink" title="1.启动Activity：系统会先调用onCreate方法，这是生命周期第一个方法，然后调用onStart方法，最后调用onResume，Activity进入运行状态。"></a>1.启动Activity：系统会先调用onCreate方法，这是生命周期第一个方法，然后调用onStart方法，最后调用onResume，Activity进入运行状态。</h4><a id="more"></a>
-<p>onCreate方法：一般做一些初始化工作，比如setContentView去加载布局资源，初始化Activity所需的数据。</p>
-<p>onStart方法：表示Activity正在启动，已经可见，但是无法和用户交互。<br>/Users/mark/Downloads/Activity的生命周期.md<br>onResume方法：Activity已经可见并且开始活动，已经出现在前台。</p>
-<h4 id="2-当前Activity被其他Activity覆盖其上或被锁屏："><a href="#2-当前Activity被其他Activity覆盖其上或被锁屏：" class="headerlink" title="2.当前Activity被其他Activity覆盖其上或被锁屏："></a>2.当前Activity被其他Activity覆盖其上或被锁屏：</h4><p>（可以理解为没有完全遮挡界面的）</p>
-<p>系统会调用onPause方法，暂停当前Activity的执行。</p>
-<h4 id="3-当前Activity由被覆盖状态回到前台或解锁屏："><a href="#3-当前Activity由被覆盖状态回到前台或解锁屏：" class="headerlink" title="3.当前Activity由被覆盖状态回到前台或解锁屏："></a>3.当前Activity由被覆盖状态回到前台或解锁屏：</h4><p>系统会调用onResume方法，再次进入运行状态。</p>
-<h4 id="4-当前Activity转到新的Activity界面或按Home键回到主屏，自身退居后台："><a href="#4-当前Activity转到新的Activity界面或按Home键回到主屏，自身退居后台：" class="headerlink" title="4.当前Activity转到新的Activity界面或按Home键回到主屏，自身退居后台："></a>4.当前Activity转到新的Activity界面或按Home键回到主屏，自身退居后台：</h4><p>系统会先调用onPause方法，然后调用onStop方法，进入停滞状态。</p>
-<h4 id="5-用户后退回到此Activity："><a href="#5-用户后退回到此Activity：" class="headerlink" title="5.用户后退回到此Activity："></a>5.用户后退回到此Activity：</h4><p>系统会先调用onRestart方法，</p>
-<p>然后调用onStart方法，</p>
-<p>最后调用onResume方法，</p>
-<p>再次进入运行状态。</p>
-<h4 id="6-用户退出当前Activity：系统先调用onPause方法，然后调用onStop方法，最后调用onDestory方法，结束当前Activity。"><a href="#6-用户退出当前Activity：系统先调用onPause方法，然后调用onStop方法，最后调用onDestory方法，结束当前Activity。" class="headerlink" title="6.用户退出当前Activity：系统先调用onPause方法，然后调用onStop方法，最后调用onDestory方法，结束当前Activity。"></a>6.用户退出当前Activity：系统先调用onPause方法，然后调用onStop方法，最后调用onDestory方法，结束当前Activity。</h4><p>但是知道这些还不够，我们必须亲自试验一下才能深刻体会，融会贯通。</p>
-<hr>
-<p>Activity四种启动模式的区别：standard    singleTop  singleTask   singleInstance</p>
-<p>standard：每次激活Activity时(startActivity)，都创建Activity实例，并放入任务栈； </p>
-<p>singleTop：如果某个Activity自己激活自己并且Activity处于栈顶，则不需要创 建，其余情况都要创建Activity实例；</p>
-<p>singleTask：如果要激活的那个Activity在任务栈中存在该实例，则不需要创建，只需要把 此Activity放入栈顶，即把该Activity以上的Activity实例都pop，并调用其onNewIntent；</p>
-<p>singleInstance：应用1的任务栈中创建了MainActivity实例，如果应用2也要激活 MainActivity，则不需要创建，两应用共享该Activity实例。</p>
-<hr>
-<p>onSaveInstanceState的调用遵循一个重要原则，即当系统“未经你许可”时销毁了你的 activity，则onSaveInstanceState会被系统调用，这是系统的责任，因为它必须要提供一 个机会让你保存的数据。<br>至于onRestoreInstanceState方法，需要注意的是， onSaveInstanceState方法和onRestoreInstanceState方法“不一定”是成对的被调用 的。 </p>
-<p>onRestoreInstanceState被调用的前提是，activity A“确实”被系统销毁了，而如果仅仅 是停留在有这种可能性的情况下，则该方法不会被调用，例如，当正在显示activity A的时 候，用户按下HOME键回到主界面，然后用户紧接着又返回到activity A，这种情况下 activity A一般不会因为内存的原因被系统销毁<br>故activity A的onRestoreInstanceState方 法不会被执行。</p>
-<p> 另外，onRestoreInstanceState的bundle参数也会传递到onCreate方法中，你也可以选择 在onCreate方法中做数据还原。</p>
-<p>切换横竖屏的生命周期：</p>
-<p>1、不设置Activity的android:configChanges时，切屏会重新调用各个生命周期，<br>切横屏时会执行一次，切竖屏时会执行两次</p>
-<p>2、设置Activity的android:configChanges=”orientation”时，切屏还是会重新调<br>用各个生命周期，切横、竖屏时只会执行一次</p>
-<p>3、设置Activity的android:configChanges=”orientation|keyboardHidden”时，<br>切屏不会重新调用各个生命周期，只会执行onConfigurationChanged方法</p>
-<h4 id="Activity运行时按下HOME键-跟被完全覆盖是一样的-："><a href="#Activity运行时按下HOME键-跟被完全覆盖是一样的-：" class="headerlink" title="Activity运行时按下HOME键(跟被完全覆盖是一样的)："></a>Activity运行时按下HOME键(跟被完全覆盖是一样的)：</h4><hr>
-<h2 id="–-gt-onPause–-gt-onPauseonSaveInstanceState–-gt-onStop-–-gt-onRestart–-gt-onStart—-gt-onResume"><a href="#–-gt-onPause–-gt-onPauseonSaveInstanceState–-gt-onStop-–-gt-onRestart–-gt-onStart—-gt-onResume" class="headerlink" title="–&gt; onPause–&gt; onPauseonSaveInstanceState–&gt; onStop  –&gt; onRestart–&gt;onStart—&gt;onResume"></a>–&gt; onPause–&gt; onPauseonSaveInstanceState–&gt; onStop  –&gt; onRestart–&gt;onStart—&gt;onResume</h2><h4 id="Activity未被完全覆盖只是失去焦点：onPause—-gt-onResume（我没复现过这个，待考证）"><a href="#Activity未被完全覆盖只是失去焦点：onPause—-gt-onResume（我没复现过这个，待考证）" class="headerlink" title="Activity未被完全覆盖只是失去焦点：onPause—&gt;onResume（我没复现过这个，待考证）"></a>Activity未被完全覆盖只是失去焦点：onPause—&gt;onResume（我没复现过这个，待考证）</h4><h4 id="A跳转到B，然后按-back回退到A，A的生命周期："><a href="#A跳转到B，然后按-back回退到A，A的生命周期：" class="headerlink" title="A跳转到B，然后按 back回退到A，A的生命周期："></a>A跳转到B，然后按 back回退到A，A的生命周期：</h4><hr>
-<h2 id="–-gt-onCreate-–-gt-onStart-–-gt-onResume-–-gt-onPause-–-gt-onSaveInstanceState-–-gt-onStop-然后回退–-gt-onRestart-–-gt-onStart-–-gt-onResume"><a href="#–-gt-onCreate-–-gt-onStart-–-gt-onResume-–-gt-onPause-–-gt-onSaveInstanceState-–-gt-onStop-然后回退–-gt-onRestart-–-gt-onStart-–-gt-onResume" class="headerlink" title="–&gt;onCreate –&gt;onStart –&gt;onResume –&gt;onPause –&gt;onSaveInstanceState –&gt;onStop 然后回退–&gt;onRestart –&gt;onStart –&gt;onResume "></a>–&gt;onCreate –&gt;onStart –&gt;onResume –&gt;onPause –&gt;onSaveInstanceState –&gt;onStop 然后回退–&gt;onRestart –&gt;onStart –&gt;onResume </h2>]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>基础理论</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Android根据字符串加载Activity和res目录下图片</title>
-    <url>/2021/01/15/Android%E6%A0%B9%E6%8D%AE%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8A%A0%E8%BD%BDActivity%E5%92%8Cres%E7%9B%AE%E5%BD%95%E4%B8%8B%E5%9B%BE%E7%89%87/</url>
-    <content><![CDATA[<h3 id="根据传入的字符串跳转Activity"><a href="#根据传入的字符串跳转Activity" class="headerlink" title="根据传入的字符串跳转Activity"></a>根据传入的字符串跳转Activity</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Intent intent &#x3D; new Intent(context,Class.forName(&quot;com.packname.Activity&quot;));</span><br><span class="line">startActivity(intent);</span><br></pre></td></tr></table></figure>
-<h3 id="根据传入的字符加载资源"><a href="#根据传入的字符加载资源" class="headerlink" title="根据传入的字符加载资源"></a>根据传入的字符加载资源</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int icon &#x3D; getResources().getIdentifier(“imageid”, &quot;drawable&quot;,getPackageName());</span><br></pre></td></tr></table></figure>
-<p>优化：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public static int getDrawableId(Context context, String var) &#123;</span><br><span class="line"></span><br><span class="line">        try &#123;</span><br><span class="line">            int imageId &#x3D; context.getResources().getIdentifier(var, &quot;drawable&quot;, context.getPackageName());</span><br><span class="line">            return imageId;</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            return 0;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p><strong>getIdentifier的函数签名如下：</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public int getIdentifier (String name, String defType, String defPackage)</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Log日志工具类(一)</title>
-    <url>/2021/04/07/Log%E6%97%A5%E5%BF%97%E5%B7%A5%E5%85%B7%E7%B1%BB-%E4%B8%80/</url>
-    <content><![CDATA[<p>实现的效果能将json字符串以格式化的方式显示</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * $desc$ Log日志工具类</span><br><span class="line"> *</span><br><span class="line"> * @Author mark</span><br><span class="line"> * @Date 2018&#x2F;11&#x2F;26</span><br><span class="line"> *&#x2F;</span><br><span class="line">public class LogUtils &#123;</span><br><span class="line">    &#x2F;&#x2F;是否Debug</span><br><span class="line">    public static final boolean isMarkDebug &#x3D; true;</span><br><span class="line"></span><br><span class="line">    public static final String LINE_SEPARATOR &#x3D; System.getProperty(&quot;line.separator&quot;);</span><br><span class="line">    public static void printLog(String name,String strContent)&#123;</span><br><span class="line">        if (isMarkDebug)&#123;</span><br><span class="line">            Log.d(name,strContent);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public static void printLine(String tag, boolean isTop) &#123;</span><br><span class="line">        if (isTop) &#123;</span><br><span class="line">            Log.d(tag, &quot;╔═══════════════════════════════════════════════════════════════════════════════════════&quot;);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            Log.d(tag, &quot;╚═══════════════════════════════════════════════════════════════════════════════════════&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public static void printJson(String tag, String msg, String headString) &#123;</span><br><span class="line"></span><br><span class="line">        String message;</span><br><span class="line"></span><br><span class="line">        try &#123;</span><br><span class="line">            if (msg.startsWith(&quot;&#123;&quot;)) &#123;</span><br><span class="line">                JSONObject jsonObject &#x3D; new JSONObject(msg);</span><br><span class="line">                message &#x3D; jsonObject.toString(4);&#x2F;&#x2F;最重要的方法，就一行，返回格式化的json字符串，其中的数字4是缩进字符数</span><br><span class="line">            &#125; else if (msg.startsWith(&quot;[&quot;)) &#123;</span><br><span class="line">                JSONArray jsonArray &#x3D; new JSONArray(msg);</span><br><span class="line">                message &#x3D; jsonArray.toString(4);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                message &#x3D; msg;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; catch (JSONException e) &#123;</span><br><span class="line">            message &#x3D; msg;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        printLine(tag, true);</span><br><span class="line">        message &#x3D; headString + LINE_SEPARATOR + message;</span><br><span class="line">        String[] lines &#x3D; message.split(LINE_SEPARATOR);</span><br><span class="line">        for (String line : lines) &#123;</span><br><span class="line">            Log.d(tag, &quot;║ &quot; + line);</span><br><span class="line">        &#125;</span><br><span class="line">        printLine(tag, false);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Utils</tag>
       </tags>
   </entry>
 </search>
