@@ -6,7 +6,7 @@
   <link href="http://markchyl.cn/atom.xml" rel="self"/>
   
   <link href="http://markchyl.cn/"/>
-  <updated>2021-01-15T08:51:12.000Z</updated>
+  <updated>2021-04-07T01:05:54.000Z</updated>
   <id>http://markchyl.cn/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Log日志工具类(一)</title>
+    <link href="http://markchyl.cn/2021/04/07/Log%E6%97%A5%E5%BF%97%E5%B7%A5%E5%85%B7%E7%B1%BB-%E4%B8%80/"/>
+    <id>http://markchyl.cn/2021/04/07/Log%E6%97%A5%E5%BF%97%E5%B7%A5%E5%85%B7%E7%B1%BB-%E4%B8%80/</id>
+    <published>2021-04-07T01:05:54.000Z</published>
+    <updated>2021-04-07T01:05:54.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;实现的效果能将json字符串以格式化的方式显示&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span</summary>
+        
+      
+    
+    
+    
+    <category term="Android" scheme="http://markchyl.cn/categories/Android/"/>
+    
+    
+    <category term="Utils" scheme="http://markchyl.cn/tags/Utils/"/>
+    
+  </entry>
   
   <entry>
     <title>Android根据字符串加载Activity和res目录下图片</title>
@@ -496,26 +522,6 @@ proguard-rules.pro文件的作用&lt;/li&gt;
     <published>2020-08-25T07:24:35.000Z</published>
     <updated>2020-08-25T07:24:35.000Z</updated>
     
-    
-    
-    
-    <category term="vue" scheme="http://markchyl.cn/categories/vue/"/>
-    
-    
-    <category term="vue" scheme="http://markchyl.cn/tags/vue/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vue基础使用-1</title>
-    <link href="http://markchyl.cn/2020/08/25/vue%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8-1/"/>
-    <id>http://markchyl.cn/2020/08/25/vue%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8-1/</id>
-    <published>2020-08-25T06:50:27.000Z</published>
-    <updated>2020-08-25T06:50:27.000Z</updated>
-    
-    
-    <summary type="html">&lt;h3 id=&quot;安装vue&quot;&gt;&lt;a href=&quot;#安装vue&quot; class=&quot;headerlink&quot; title=&quot;安装vue&quot;&gt;&lt;/a&gt;安装vue&lt;/h3&gt;&lt;hr&gt;
-&lt;p&gt;&lt;a href=&quot;https://cn.vuejs.org/v2/guide/installation.html&quot;&gt;官方文档&lt;/a&gt;&lt;br&gt;我才用的是通过 &lt;strong&gt;&lt;em&gt;npm&lt;/em&gt;&lt;/strong&gt; 进行安装穿件vue项目的，首先切换到项目根目录下，终端先后执行如下：&lt;/p&gt;</summary>
     
     
     
