@@ -15,15 +15,13 @@
 <meta property="og:site_name" content="Mark的私人博客">
 <meta property="og:description" content="前言：时间久了之前在熟悉的东西也会渐疏，好记性不如乱笔头。 工具介绍 apktool    ​     作用：主要查看res文件下xml文件、AndroidManifest.xml和图片。（注意：如果直接解压.apk文件，xml文件打开全部是乱码）  dex2jar  ​     作用：将apk反编译成Java源码（classes.dex转化成jar文件）  jd-gui  ​     作用：查看">
 <meta property="og:locale">
-<meta property="og:image" content="https://thumbnail0.baidupcs.com/thumbnail/38e813d52e3dfc10234ae12835819ff7?fid=3761439320-250528-346821393816278&time=1569459600&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-Z3HFxH7YdDPEq0mUN8y6UzOnddE=&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=460436671360346953&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video">
-<meta property="og:image" content="https://thumbnail0.baidupcs.com/thumbnail/b2f82f60dfcffa6927c2d670daa72d38?fid=3761439320-250528-558451696215383&time=1569459600&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-CsFMBIHt1kd3a8Va1ABYkxhUg9I=&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=460411839476402063&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video">
-<meta property="og:image" content="https://thumbnail0.baidupcs.com/thumbnail/f9ced22da6e5c604c33ff6227c86ddb6?fid=3761439320-250528-1034439241785614&time=1569459600&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-nRulMxiMtqZORfZtt33jt7cyZPo=&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=460498225017852308&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200326094455532.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2RpcmtzbWFsbGVy,size_16,color_FFFFFF,t_70">
 <meta property="article:published_time" content="2019-09-26T01:48:57.000Z">
 <meta property="article:modified_time" content="2019-09-26T01:48:57.000Z">
 <meta property="article:author" content="Mark先生">
 <meta property="article:tag" content="工具使用">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://thumbnail0.baidupcs.com/thumbnail/38e813d52e3dfc10234ae12835819ff7?fid=3761439320-250528-346821393816278&time=1569459600&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-Z3HFxH7YdDPEq0mUN8y6UzOnddE=&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=460436671360346953&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200326094455532.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2RpcmtzbWFsbGVy,size_16,color_FFFFFF,t_70">
   
     <link rel="alternative" href="/atom.xml" title="Mark的私人博客" type="application/atom+xml">
   
@@ -241,13 +239,16 @@ var _hmt = _hmt || [];
 
 <h2 id="新版本apktool用法："><a href="#新版本apktool用法：" class="headerlink" title="新版本apktool用法："></a>新版本apktool用法：</h2><p>1、下载和安装方法：</p>
 <p><a target="_blank" rel="noopener" href="https://ibotpeaches.github.io/Apktool/install/">https://ibotpeaches.github.io/Apktool/install/</a></p>
-<p><img src="https://thumbnail0.baidupcs.com/thumbnail/38e813d52e3dfc10234ae12835819ff7?fid=3761439320-250528-346821393816278&time=1569459600&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-Z3HFxH7YdDPEq0mUN8y6UzOnddE=&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=460436671360346953&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video"></p>
+<p><img src="https://img-blog.csdnimg.cn/20200326094455532.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2RpcmtzbWFsbGVy,size_16,color_FFFFFF,t_70"></p>
+<p><strong>需要注意的是</strong><br>步骤一种的脚步，另存为apktool后，一定要把下载的apktool_xxxx.jar重命名为apktool.jar ，并且要和apktool脚本放在同一级目录下。</p>
 <p>2、使用方法</p>
 <p><a target="_blank" rel="noopener" href="https://ibotpeaches.github.io/Apktool/documentation/">https://ibotpeaches.github.io/Apktool/documentation/</a></p>
-<p><code>apktool d -f xxxx.apk</code><br><img src="https://thumbnail0.baidupcs.com/thumbnail/b2f82f60dfcffa6927c2d670daa72d38?fid=3761439320-250528-558451696215383&time=1569459600&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-CsFMBIHt1kd3a8Va1ABYkxhUg9I=&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=460411839476402063&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video"></p>
+<p><code>apktool d -f xxxx.apk</code></p>
 <p>3、反编译开始</p>
-<p>Mark获得结果只有res文件的是可读性的：</p>
-<p><img src="https://thumbnail0.baidupcs.com/thumbnail/f9ced22da6e5c604c33ff6227c86ddb6?fid=3761439320-250528-1034439241785614&time=1569459600&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-nRulMxiMtqZORfZtt33jt7cyZPo=&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=460498225017852308&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video"></p>
+<p>反编译：</p>
+<p><code>apktool d test.apk -o test</code></p>
+<p>回编译</p>
+<p><code>apktool b test -o new_test.apk</code></p>
 <h2 id="蚂蚁虽小也是肉，细心积累，慢慢提高自己，加油！"><a href="#蚂蚁虽小也是肉，细心积累，慢慢提高自己，加油！" class="headerlink" title="蚂蚁虽小也是肉，细心积累，慢慢提高自己，加油！"></a>蚂蚁虽小也是肉，细心积累，慢慢提高自己，加油！</h2>
     
 
