@@ -3347,4 +3347,40 @@ proguard-rules.pro文件的作用</li>
         <tag>面试</tag>
       </tags>
   </entry>
+  <entry>
+    <title>MAC使用APKTool反编译apk修改版本号后重新打包</title>
+    <url>/2021/04/14/MAC%E4%BD%BF%E7%94%A8APKTool%E5%8F%8D%E7%BC%96%E8%AF%91apk%E4%BF%AE%E6%94%B9%E7%89%88%E6%9C%AC%E5%8F%B7%E5%90%8E%E9%87%8D%E6%96%B0%E6%89%93%E5%8C%85/</url>
+    <content><![CDATA[<p>现在业务上出现客户要求如若生产环境出现紧急事件，需要版本回退的情况下，我这边的代码又没做版本分之处理，那么只能更改之前的版本号来实现。<br><a href="https://blog.csdn.net/weixin_40998254/article/details/110474885">不敢夺他人之功，原文在此处</a></p>
+<p><a href="https://markchyl.cn/2020/12/14/android%E5%8F%8D%E7%BC%96%E8%AF%91apktool-dex2jar-jdgui/">我之前的文章：android反编译apktool—dex2jar—jdgui</a></p>
+<h3 id="一、反编译apk并修改版本号"><a href="#一、反编译apk并修改版本号" class="headerlink" title="一、反编译apk并修改版本号"></a>一、反编译apk并修改版本号</h3><p>在apk所在目录控制台输入下面指令，即可将文件名为source的apk反编译到outDir目录</p>
+<ul>
+<li><p>开始反编译apk</p>
+<p><code>apktool d -o outDir source.apk</code><br>或者<br><code>apktool d source.apk -o outDir</code></p>
+</li>
+</ul>
+<h3 id="二、修改版本号"><a href="#二、修改版本号" class="headerlink" title="二、修改版本号"></a>二、修改版本号</h3><p>打开输入目录outDir找到apktool.yml文件，编辑修改versionCode</p>
+<h3 id="三、重新打包"><a href="#三、重新打包" class="headerlink" title="三、重新打包"></a>三、重新打包</h3><p>通过以下命令就可以将目录outDir中的文件重新打包为no_sign_result.apk</p>
+<ul>
+<li><code>apktool b -o no_sign_result.apk outDir</code></li>
+</ul>
+<p>或者</p>
+<ul>
+<li><code>apktool b outDir -o  no_sign_result.apk </code></li>
+</ul>
+<h3 id="四、重新签名"><a href="#四、重新签名" class="headerlink" title="四、重新签名"></a>四、重新签名</h3><p>使用如下命令进行签名<br><code>jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore demostore.jks -signedjar result-signed.apk no_sign_result.apk yourkey</code><br>注：</p>
+<ul>
+<li>demostore.jks为签名文件</li>
+<li>no_sign_result.apk为要签名的源文件</li>
+<li>result-signed.apk为签名后的目标文件</li>
+<li>yourkey为签名的key</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>工具搭建</tag>
+        <tag>反编译</tag>
+      </tags>
+  </entry>
 </search>

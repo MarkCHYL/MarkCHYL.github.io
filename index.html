@@ -108,7 +108,7 @@ var _hmt = _hmt || [];
 					<a class="mail" target="_blank" href="mailto:2285581945@qq.com" title="mail"><i class="icon-mail"></i></a>
 		        
 			</div>
-			<a>总文章数:83</a>
+			<a>总文章数:84</a>
 		</nav>
 	</header>	
 
@@ -193,6 +193,118 @@ var _hmt = _hmt || [];
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-MAC使用APKTool反编译apk修改版本号后重新打包" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class=" article-header">
+  
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/04/14/MAC%E4%BD%BF%E7%94%A8APKTool%E5%8F%8D%E7%BC%96%E8%AF%91apk%E4%BF%AE%E6%94%B9%E7%89%88%E6%9C%AC%E5%8F%B7%E5%90%8E%E9%87%8D%E6%96%B0%E6%89%93%E5%8C%85/">MAC使用APKTool反编译apk修改版本号后重新打包</a>
+    </h1>
+  
+
+  
+  
+<a href="/2021/04/14/MAC%E4%BD%BF%E7%94%A8APKTool%E5%8F%8D%E7%BC%96%E8%AF%91apk%E4%BF%AE%E6%94%B9%E7%89%88%E6%9C%AC%E5%8F%B7%E5%90%8E%E9%87%8D%E6%96%B0%E6%89%93%E5%8C%85/" class="archive-article-date">
+  	<time datetime="2021-04-14T08:49:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-14</time>
+</a>
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>现在业务上出现客户要求如若生产环境出现紧急事件，需要版本回退的情况下，我这边的代码又没做版本分之处理，那么只能更改之前的版本号来实现。<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_40998254/article/details/110474885">不敢夺他人之功，原文在此处</a></p>
+<p><a href="https://markchyl.cn/2020/12/14/android%E5%8F%8D%E7%BC%96%E8%AF%91apktool-dex2jar-jdgui/">我之前的文章：android反编译apktool—dex2jar—jdgui</a></p>
+<h3 id="一、反编译apk并修改版本号"><a href="#一、反编译apk并修改版本号" class="headerlink" title="一、反编译apk并修改版本号"></a>一、反编译apk并修改版本号</h3><p>在apk所在目录控制台输入下面指令，即可将文件名为source的apk反编译到outDir目录</p>
+<ul>
+<li><p>开始反编译apk</p>
+<p><code>apktool d -o outDir source.apk</code><br>或者<br><code>apktool d source.apk -o outDir</code></p>
+</li>
+</ul>
+<h3 id="二、修改版本号"><a href="#二、修改版本号" class="headerlink" title="二、修改版本号"></a>二、修改版本号</h3><p>打开输入目录outDir找到apktool.yml文件，编辑修改versionCode</p>
+<h3 id="三、重新打包"><a href="#三、重新打包" class="headerlink" title="三、重新打包"></a>三、重新打包</h3><p>通过以下命令就可以将目录outDir中的文件重新打包为no_sign_result.apk</p>
+<ul>
+<li><code>apktool b -o no_sign_result.apk outDir</code></li>
+</ul>
+<p>或者</p>
+<ul>
+<li><code>apktool b outDir -o  no_sign_result.apk </code></li>
+</ul>
+<h3 id="四、重新签名"><a href="#四、重新签名" class="headerlink" title="四、重新签名"></a>四、重新签名</h3><p>使用如下命令进行签名<br><code>jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore demostore.jks -signedjar result-signed.apk no_sign_result.apk yourkey</code><br>注：</p>
+<ul>
+<li>demostore.jks为签名文件</li>
+<li>no_sign_result.apk为要签名的源文件</li>
+<li>result-signed.apk为签名后的目标文件</li>
+<li>yourkey为签名的key</li>
+</ul>
+
+    
+
+    
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">工具搭建</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">反编译</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Android//" class="article-tag-list-link color3">Android</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021/04/14/MAC%E4%BD%BF%E7%94%A8APKTool%E5%8F%8D%E7%BC%96%E8%AF%91apk%E4%BF%AE%E6%94%B9%E7%89%88%E6%9C%AC%E5%8F%B7%E5%90%8E%E9%87%8D%E6%96%B0%E6%89%93%E5%8C%85/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
   
     <article id="post-Log日志工具类-一" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -1003,97 +1115,6 @@ proguard-rules.pro文件的作用</li>
     
     <p class="article-more-link">
       <a class="article-more-a" href="/2020/11/07/Android%E6%B7%B7%E6%B7%86/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-    <article id="post-RxJava学习笔记一" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class=" article-header">
-  
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/19/RxJava%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%80/">RxJava学习笔记一</a>
-    </h1>
-  
-
-  
-  
-<a href="/2020/10/19/RxJava%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%80/" class="archive-article-date">
-  	<time datetime="2020-10-19T08:47:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-19</time>
-</a>
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h3 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World!"></a>Hello World!</h3><ul>
-<li>RxJava1.1.7.jar<br>代码演示：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">		&#x2F;&#x2F;第一步、创建被观察者</span><br><span class="line">		Observable&lt;String&gt; mObservable &#x3D; Observable.create(new OnSubscribe&lt;String&gt;()&#123;</span><br><span class="line">			@Override</span><br><span class="line">			public void call(Subscriber&lt;? super String&gt; subscriber) &#123;</span><br><span class="line">				subscriber.onNext(&quot;Hello World!&quot;);</span><br><span class="line">				subscriber.onCompleted();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;第二步、创建观察者</span><br><span class="line">		Subscriber&lt;String&gt; mSubscriber &#x3D; new Subscriber&lt;String&gt;() &#123;</span><br><span class="line"></span><br><span class="line">			@Override</span><br><span class="line">			public void onCompleted() &#123;</span><br><span class="line">				&#x2F;&#x2F; TODO Auto-generated method stub</span><br><span class="line">				System.out.println(&quot;onCompleted&quot;);</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			@Override</span><br><span class="line">			public void onError(Throwable arg0) &#123;</span><br><span class="line">				&#x2F;&#x2F; TODO Auto-generated method stub</span><br><span class="line">				System.out.println(&quot;onError&quot;);</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			@Override</span><br><span class="line">			public void onNext(String arg0) &#123;</span><br><span class="line">				&#x2F;&#x2F; TODO Auto-generated method stub</span><br><span class="line">				System.out.println(&quot;OnNext:&quot;+arg0);</span><br><span class="line">				</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;;</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;第三步、订阅事件</span><br><span class="line">		mObservable.subscribe(mSubscriber);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>例如代码中所演示的，RxJava的使用就是那么简单，通过订阅事件将被观察者和观察者进行绑定。</p>
-</blockquote>
-    
-    <a class="article-more-a" href="/2020/10/19/RxJava%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%80/#more">more >></a>
-    
-    
-
-    
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">RxJava</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/RxJava//" class="article-tag-list-link color2">RxJava</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2020/10/19/RxJava%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%80/">展开全文 >></a>
     </p>
     
 

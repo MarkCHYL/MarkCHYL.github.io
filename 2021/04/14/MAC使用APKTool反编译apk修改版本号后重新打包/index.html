@@ -6,25 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://markchyl.cn">
-  <title>Charles抓包工具在mac上如何配置 | Mark的私人博客</title>
+  <title>MAC使用APKTool反编译apk修改版本号后重新打包 | Mark的私人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="配置： 电脑：MacBook Pro (13-inch, 2017, Two Thunderbolt 3 ports) 手机：安卓手机4.4版本（是定制的） Charles版本：v4.5.5 手机与macbook需要连接同一网段的网络，macbook可以是有线，手机连wifi，也可以两者连接同一个wifi。   第一、电脑上安装Charles官网下载安装：官网地址下载后安装 第二、设置charle">
+  <meta name="description" content="现在业务上出现客户要求如若生产环境出现紧急事件，需要版本回退的情况下，我这边的代码又没做版本分之处理，那么只能更改之前的版本号来实现。不敢夺他人之功，原文在此处 我之前的文章：android反编译apktool—dex2jar—jdgui 一、反编译apk并修改版本号在apk所在目录控制台输入下面指令，即可将文件名为source的apk反编译到outDir目录  开始反编译apk apktool">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Charles抓包工具在mac上如何配置">
-<meta property="og:url" content="http://markchyl.cn/2019/12/18/Charles%E6%8A%93%E5%8C%85%E5%B7%A5%E5%85%B7%E5%9C%A8mac%E4%B8%8A%E5%A6%82%E4%BD%95%E9%85%8D%E7%BD%AE/index.html">
+<meta property="og:title" content="MAC使用APKTool反编译apk修改版本号后重新打包">
+<meta property="og:url" content="http://markchyl.cn/2021/04/14/MAC%E4%BD%BF%E7%94%A8APKTool%E5%8F%8D%E7%BC%96%E8%AF%91apk%E4%BF%AE%E6%94%B9%E7%89%88%E6%9C%AC%E5%8F%B7%E5%90%8E%E9%87%8D%E6%96%B0%E6%89%93%E5%8C%85/index.html">
 <meta property="og:site_name" content="Mark的私人博客">
-<meta property="og:description" content="配置： 电脑：MacBook Pro (13-inch, 2017, Two Thunderbolt 3 ports) 手机：安卓手机4.4版本（是定制的） Charles版本：v4.5.5 手机与macbook需要连接同一网段的网络，macbook可以是有线，手机连wifi，也可以两者连接同一个wifi。   第一、电脑上安装Charles官网下载安装：官网地址下载后安装 第二、设置charle">
+<meta property="og:description" content="现在业务上出现客户要求如若生产环境出现紧急事件，需要版本回退的情况下，我这边的代码又没做版本分之处理，那么只能更改之前的版本号来实现。不敢夺他人之功，原文在此处 我之前的文章：android反编译apktool—dex2jar—jdgui 一、反编译apk并修改版本号在apk所在目录控制台输入下面指令，即可将文件名为source的apk反编译到outDir目录  开始反编译apk apktool">
 <meta property="og:locale">
-<meta property="og:image" content="https://github.com/MarkCHYL/BLOG/blob/master/marksource/images/accxv-s218u.jpg?raw=true">
-<meta property="og:image" content="https://github.com/MarkCHYL/BLOG/blob/master/marksource/images/aa1g5-ewu90.jpg?raw=true">
-<meta property="og:image" content="https://github.com/MarkCHYL/BLOG/blob/master/marksource/images/a1evd-z9c3a.jpg?raw=true">
-<meta property="og:image" content="https://github.com/MarkCHYL/BLOG/blob/master/marksource/images/a921v-hyhye.jpg?raw=true">
-<meta property="article:published_time" content="2019-12-18T05:25:37.000Z">
-<meta property="article:modified_time" content="2019-12-18T05:25:37.000Z">
+<meta property="article:published_time" content="2021-04-14T08:49:22.000Z">
+<meta property="article:modified_time" content="2021-04-14T08:49:22.000Z">
 <meta property="article:author" content="Mark先生">
-<meta property="article:tag" content="工具使用">
+<meta property="article:tag" content="工具搭建">
+<meta property="article:tag" content="反编译">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://github.com/MarkCHYL/BLOG/blob/master/marksource/images/accxv-s218u.jpg?raw=true">
   
     <link rel="alternative" href="/atom.xml" title="Mark的私人博客" type="application/atom+xml">
   
@@ -199,14 +195,14 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Charles抓包工具在mac上如何配置" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-MAC使用APKTool反编译apk修改版本号后重新打包" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class=" article-header">
   
   
     <h1 class="article-title" itemprop="name">
-      Charles抓包工具在mac上如何配置
+      MAC使用APKTool反编译apk修改版本号后重新打包
     </h1>
   
 
@@ -217,30 +213,38 @@ var _hmt = _hmt || [];
 		  <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
 	</span>
 
-<a href="/2019/12/18/Charles%E6%8A%93%E5%8C%85%E5%B7%A5%E5%85%B7%E5%9C%A8mac%E4%B8%8A%E5%A6%82%E4%BD%95%E9%85%8D%E7%BD%AE/" class="archive-article-date">
-  	<time datetime="2019-12-18T05:25:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-18</time>
+<a href="/2021/04/14/MAC%E4%BD%BF%E7%94%A8APKTool%E5%8F%8D%E7%BC%96%E8%AF%91apk%E4%BF%AE%E6%94%B9%E7%89%88%E6%9C%AC%E5%8F%B7%E5%90%8E%E9%87%8D%E6%96%B0%E6%89%93%E5%8C%85/" class="archive-article-date">
+  	<time datetime="2021-04-14T08:49:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-14</time>
 </a>
   
   </header>
   
   <div class="article-entry" itemprop="articleBody">
     
-    <h4 id="配置："><a href="#配置：" class="headerlink" title="配置："></a>配置：</h4><ul>
-<li>电脑：MacBook Pro (13-inch, 2017, Two Thunderbolt 3 ports)</li>
-<li>手机：安卓手机4.4版本（是定制的）</li>
-<li>Charles版本：v4.5.5</li>
-<li>手机与macbook需要连接同一网段的网络，macbook可以是有线，手机连wifi，也可以两者连接同一个wifi。</li>
+    <p>现在业务上出现客户要求如若生产环境出现紧急事件，需要版本回退的情况下，我这边的代码又没做版本分之处理，那么只能更改之前的版本号来实现。<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_40998254/article/details/110474885">不敢夺他人之功，原文在此处</a></p>
+<p><a href="https://markchyl.cn/2020/12/14/android%E5%8F%8D%E7%BC%96%E8%AF%91apktool-dex2jar-jdgui/">我之前的文章：android反编译apktool—dex2jar—jdgui</a></p>
+<h3 id="一、反编译apk并修改版本号"><a href="#一、反编译apk并修改版本号" class="headerlink" title="一、反编译apk并修改版本号"></a>一、反编译apk并修改版本号</h3><p>在apk所在目录控制台输入下面指令，即可将文件名为source的apk反编译到outDir目录</p>
+<ul>
+<li><p>开始反编译apk</p>
+<p><code>apktool d -o outDir source.apk</code><br>或者<br><code>apktool d source.apk -o outDir</code></p>
+</li>
 </ul>
-<hr>
-<h3 id="第一、电脑上安装Charles"><a href="#第一、电脑上安装Charles" class="headerlink" title="第一、电脑上安装Charles"></a>第一、电脑上安装Charles</h3><p>官网下载安装：<a target="_blank" rel="noopener" href="https://www.charlesproxy.com/download/">官网地址</a><br>下载后安装</p>
-<h3 id="第二、设置charles代理"><a href="#第二、设置charles代理" class="headerlink" title="第二、设置charles代理"></a>第二、设置charles代理</h3><p>打开charles/proxy/proxy-settings，设置一个端口号，默认的8888就可以。<br><img src="https://github.com/MarkCHYL/BLOG/blob/master/marksource/images/accxv-s218u.jpg?raw=true" alt="网图盗用下"></p>
-<h3 id="第三、手机安装charles证书"><a href="#第三、手机安装charles证书" class="headerlink" title="第三、手机安装charles证书"></a>第三、手机安装charles证书</h3><p>需要安装charles的证书。点击help/SSL proxying</p>
-<p><img src="https://github.com/MarkCHYL/BLOG/blob/master/marksource/images/aa1g5-ewu90.jpg?raw=true"><br>查询macbook的ip地址，并在手机连接的wifi上手动设置代理，代理主机名为ip地址，代理端口号为8888，会弹出一个框，显示的意思是手机上的wify需要设置代理。</p>
-<h3 id="第三、手机设置代理"><a href="#第三、手机设置代理" class="headerlink" title="第三、手机设置代理"></a>第三、手机设置代理</h3><p>查询macbook的ip地址，并在手机连接的wifi上手动设置代理，代理主机名为ip地址，代理端口号为8888，这时候用手机访问网页，charles会弹出下列框，说明charles已经开始对手机抓包了，点击允许。</p>
-<p><img src="https://github.com/MarkCHYL/BLOG/blob/master/marksource/images/a1evd-z9c3a.jpg?raw=true"></p>
-<p>然后在手机浏览器中访问手机<a target="_blank" rel="noopener" href="http://charlesproxy.com/getssl%EF%BC%8C%E5%AE%89%E8%A3%85%E5%8D%B3%E5%8F%AF%EF%BC%8C">http://charlesproxy.com/getssl，安装即可，</a><br><img src="https://github.com/MarkCHYL/BLOG/blob/master/marksource/images/a921v-hyhye.jpg?raw=true"></p>
-<p>好了，现在就可以流畅的抓取手机上的各种http/https请求了，想要学习更多charles工具方法.</p>
-<p>本人不做推广，只是供自己即好友参考做的笔记<br>感谢开发员：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/50f844c9beaf">小小的开发人员</a></p>
+<h3 id="二、修改版本号"><a href="#二、修改版本号" class="headerlink" title="二、修改版本号"></a>二、修改版本号</h3><p>打开输入目录outDir找到apktool.yml文件，编辑修改versionCode</p>
+<h3 id="三、重新打包"><a href="#三、重新打包" class="headerlink" title="三、重新打包"></a>三、重新打包</h3><p>通过以下命令就可以将目录outDir中的文件重新打包为no_sign_result.apk</p>
+<ul>
+<li><code>apktool b -o no_sign_result.apk outDir</code></li>
+</ul>
+<p>或者</p>
+<ul>
+<li><code>apktool b outDir -o  no_sign_result.apk </code></li>
+</ul>
+<h3 id="四、重新签名"><a href="#四、重新签名" class="headerlink" title="四、重新签名"></a>四、重新签名</h3><p>使用如下命令进行签名<br><code>jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore demostore.jks -signedjar result-signed.apk no_sign_result.apk yourkey</code><br>注：</p>
+<ul>
+<li>demostore.jks为签名文件</li>
+<li>no_sign_result.apk为要签名的源文件</li>
+<li>result-signed.apk为签名后的目标文件</li>
+<li>yourkey为签名的key</li>
+</ul>
 
     
 
@@ -286,7 +290,11 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">工具使用</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">工具搭建</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">反编译</a>
         		</li>
       		
 		</ul>
@@ -298,7 +306,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/工具使用//" class="article-tag-list-link color5">工具使用</a>
+        			<a href="/categories/Android//" class="article-tag-list-link color3">Android</a>
         		</li>
       		
 		</ul>
@@ -353,7 +361,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://markchyl.cn/2019/12/18/Charles%E6%8A%93%E5%8C%85%E5%B7%A5%E5%85%B7%E5%9C%A8mac%E4%B8%8A%E5%A6%82%E4%BD%95%E9%85%8D%E7%BD%AE/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://markchyl.cn/2021/04/14/MAC%E4%BD%BF%E7%94%A8APKTool%E5%8F%8D%E7%BC%96%E8%AF%91apk%E4%BF%AE%E6%94%B9%E7%89%88%E6%9C%AC%E5%8F%B7%E5%90%8E%E9%87%8D%E6%96%B0%E6%89%93%E5%8C%85/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -367,18 +375,9 @@ var _hmt = _hmt || [];
 
 <nav id="article-nav">
   
-    <a href="/2019/12/25/error-item-inner-element-must-either-be-a-resource-reference-or-empty/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          error: &lt;item&gt; inner element must either be a resource reference or empty.
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/12/12/Error-%E6%B3%A8-%E6%9F%90%E4%BA%9B%E8%BE%93%E5%85%A5%E6%96%87%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%88%96%E8%A6%86%E7%9B%96%E4%BA%86%E5%B7%B2%E8%BF%87%E6%97%B6%E7%9A%84-API%E3%80%82-%E6%B3%A8-%E6%9C%89%E5%85%B3%E8%AF%A6%E7%BB%86%E4%BF%A1%E6%81%AF-%E8%AF%B7%E4%BD%BF%E7%94%A8-Xlint-deprecation-%E9%87%8D%E6%96%B0%E7%BC%96%E8%AF%91%E3%80%82/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Error:注: 某些输入文件使用或覆盖了已过时的 API。 注: 有关详细信息, 请使用 -Xlint:deprecation 重新编译。</div>
+    <a href="/2021/04/07/Log%E6%97%A5%E5%BF%97%E5%B7%A5%E5%85%B7%E7%B1%BB-%E4%B8%80/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Log日志工具类(一)</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -397,6 +396,19 @@ var _hmt = _hmt || [];
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%8F%8D%E7%BC%96%E8%AF%91apk%E5%B9%B6%E4%BF%AE%E6%94%B9%E7%89%88%E6%9C%AC%E5%8F%B7"><span class="toc-number">1.</span> <span class="toc-text">一、反编译apk并修改版本号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E4%BF%AE%E6%94%B9%E7%89%88%E6%9C%AC%E5%8F%B7"><span class="toc-number">2.</span> <span class="toc-text">二、修改版本号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E9%87%8D%E6%96%B0%E6%89%93%E5%8C%85"><span class="toc-number">3.</span> <span class="toc-text">三、重新打包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E9%87%8D%E6%96%B0%E7%AD%BE%E5%90%8D"><span class="toc-number">4.</span> <span class="toc-text">四、重新签名</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>

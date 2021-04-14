@@ -6,7 +6,7 @@
   <link href="http://markchyl.cn/atom.xml" rel="self"/>
   
   <link href="http://markchyl.cn/"/>
-  <updated>2021-04-07T01:05:54.000Z</updated>
+  <updated>2021-04-14T08:49:22.000Z</updated>
   <id>http://markchyl.cn/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MAC使用APKTool反编译apk修改版本号后重新打包</title>
+    <link href="http://markchyl.cn/2021/04/14/MAC%E4%BD%BF%E7%94%A8APKTool%E5%8F%8D%E7%BC%96%E8%AF%91apk%E4%BF%AE%E6%94%B9%E7%89%88%E6%9C%AC%E5%8F%B7%E5%90%8E%E9%87%8D%E6%96%B0%E6%89%93%E5%8C%85/"/>
+    <id>http://markchyl.cn/2021/04/14/MAC%E4%BD%BF%E7%94%A8APKTool%E5%8F%8D%E7%BC%96%E8%AF%91apk%E4%BF%AE%E6%94%B9%E7%89%88%E6%9C%AC%E5%8F%B7%E5%90%8E%E9%87%8D%E6%96%B0%E6%89%93%E5%8C%85/</id>
+    <published>2021-04-14T08:49:22.000Z</published>
+    <updated>2021-04-14T08:49:22.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;现在业务上出现客户要求如若生产环境出现紧急事件，需要版本回退的情况下，我这边的代码又没做版本分之处理，那么只能更改之前的版本号来实现。&lt;br&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="Android" scheme="http://markchyl.cn/categories/Android/"/>
+    
+    
+    <category term="工具搭建" scheme="http://markchyl.cn/tags/%E5%B7%A5%E5%85%B7%E6%90%AD%E5%BB%BA/"/>
+    
+    <category term="反编译" scheme="http://markchyl.cn/tags/%E5%8F%8D%E7%BC%96%E8%AF%91/"/>
+    
+  </entry>
   
   <entry>
     <title>Log日志工具类(一)</title>
@@ -512,23 +539,6 @@ proguard-rules.pro文件的作用&lt;/li&gt;
     <category term="工具使用" scheme="http://markchyl.cn/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/"/>
     
     <category term="Android" scheme="http://markchyl.cn/tags/Android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vue基础使用-2</title>
-    <link href="http://markchyl.cn/2020/08/25/vue%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8-2/"/>
-    <id>http://markchyl.cn/2020/08/25/vue%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8-2/</id>
-    <published>2020-08-25T07:24:35.000Z</published>
-    <updated>2020-08-25T07:24:35.000Z</updated>
-    
-    
-    
-    
-    <category term="vue" scheme="http://markchyl.cn/categories/vue/"/>
-    
-    
-    <category term="vue" scheme="http://markchyl.cn/tags/vue/"/>
     
   </entry>
   
