@@ -3383,4 +3383,83 @@ proguard-rules.pro文件的作用</li>
         <tag>反编译</tag>
       </tags>
   </entry>
+  <entry>
+    <title>如何修改表结构：ALERT语句</title>
+    <url>/2021/04/19/%E5%A6%82%E4%BD%95%E4%BF%AE%E6%94%B9%E8%A1%A8%E7%BB%93%E6%9E%84%EF%BC%9AALERT%E8%AF%AD%E5%8F%A5/</url>
+    <content><![CDATA[<p>应用场景：当我们的业务需要对已经存在的表进行表结构修改时，我们需要使用 ALERT 语句进行修改。</p>
+<h3 id="增加表列"><a href="#增加表列" class="headerlink" title="增加表列:"></a>增加表列:</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ALERT TABLE tablenamme ADD</span><br><span class="line">(</span><br><span class="line">    column dataType [DEFAULT expr][NOT NULL],</span><br><span class="line">    column dataType [DEFAULT expr][NOT NULL],</span><br><span class="line">    ....</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h3 id="修改表列"><a href="#修改表列" class="headerlink" title="修改表列:"></a>修改表列:</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ALERT TABLE tablenamme MODIFY</span><br><span class="line">(</span><br><span class="line">    column dataType [DEFAULT expr][NOT NULL],</span><br><span class="line">    column dataType [DEFAULT expr][NOT NULL],</span><br><span class="line">    ....</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p><strong>注意事项</strong>：</p>
+<ul>
+<li>修改表列时，可以增加 <code>NOT NULL</code>及默认值约束，不能增加其他约束</li>
+<li>增加的默认值只会影响到后来插入的值</li>
+<li>若是要缩小列的宽度时，只有表中该列为空后者表里没有记录</li>
+<li>如若这列有空值，则不能添加非空约束</li>
+<li>若是改变该列的类型，只有表中该列为空后者表里没有记录</li>
+</ul>
+<h3 id="删除表中的列"><a href="#删除表中的列" class="headerlink" title="删除表中的列"></a>删除表中的列</h3><p><code>ALERT TABLE tablenamme DROP column col_name;</code></p>
+<h3 id="增加约束"><a href="#增加约束" class="headerlink" title="增加约束"></a>增加约束</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ALERT TABLE tablenamme </span><br><span class="line">ADD [CONSTRAINT constraint] type (column);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>增加 <code>NOT NULL</code>约束只能在增加列和修改列的时候添加</li>
+</ul>
+]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>Oracle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Kotlin中可变参数</title>
+    <url>/2021/04/26/Kotlin%E4%B8%AD%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0/</url>
+    <content><![CDATA[<p><a href="https://www.jianshu.com/p/174c0e254713">原文简书</a></p>
+<hr>
+<h3 id="对比-Java-中的可变参数"><a href="#对比-Java-中的可变参数" class="headerlink" title="对比 Java 中的可变参数"></a>对比 Java 中的可变参数</h3><p>先看下 Java 的可变参数，用我们最熟悉的 main 函数</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String... args)</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>从 Java5 开始引入了可变参数（varargs）<br>对应的 Kotlin 的代码，参数为可变参数：</p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">(<span class="keyword">vararg</span> args: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>Java代码中参数应该是数组：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对应的 Kotlin 的代码，也是两种方式，参数为数组：</p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">String</span>&gt;)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="可变参数的本质"><a href="#可变参数的本质" class="headerlink" title="可变参数的本质"></a>可变参数的本质</h3><figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    foo(<span class="string">&quot;1&quot;</span>, <span class="string">&quot;2&quot;</span>, <span class="string">&quot;3&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">foo</span><span class="params">(<span class="keyword">vararg</span> args: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">    println(args::<span class="class"><span class="keyword">class</span>)</span></span><br><span class="line">    println(args.contentToString())</span><br><span class="line">    <span class="keyword">for</span> (i <span class="keyword">in</span> args.indices) &#123;</span><br><span class="line">        println(args[i])</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>打印：</p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">kotlin</span>.<span class="title">Array</span></span></span><br><span class="line"><span class="keyword">val</span> kotlin.reflect.KClass&lt;T&gt;.java: java.lang.Class&lt;T&gt;</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
+<p>我们可以清晰的看到 args 的类型为数组类型，并且可以直接调用数组的方法。</p>
+<blockquote>
+<p>如果你的第一行打印结果是：</p>
+<p>class [Ljava.lang.String; (Kotlin reflection is not available)</p>
+<p>需要在 build.gradle 中添加依赖：</p>
+<p>implementation “org.jetbrains.kotlin:kotlin-reflect:$kotlin_version”</p>
+</blockquote>
+<hr>
+<p><strong><strong>准确的说 args 的类型是 Array<out String> 类型:</strong></strong></p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    foo(<span class="string">&quot;1&quot;</span>, <span class="string">&quot;2&quot;</span>, <span class="string">&quot;3&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">foo</span><span class="params">(<span class="keyword">vararg</span> args: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">    bar(args)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">bar</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">out</span> <span class="type">String</span>&gt;)</span></span> &#123;</span><br><span class="line">    println(args.contentToString())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="可变参数的传参"><a href="#可变参数的传参" class="headerlink" title="可变参数的传参"></a>可变参数的传参</h3><p>我们再来改造一下 bar 函数的参数类型，看下可变参数的传参：</p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    foo(<span class="string">&quot;1&quot;</span>, <span class="string">&quot;2&quot;</span>, <span class="string">&quot;3&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">foo</span><span class="params">(<span class="keyword">vararg</span> args: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">    bar(args)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">bar</span><span class="params">(<span class="keyword">vararg</span> args: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">    println(args.contentToString())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>编译器提示类型不匹配，需要一个 String 类型的参数，而传入了数组类型。<br>然而在 Java 中可变参数是可以直接传递，并且可以和数组相互转换传递：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    foo(<span class="string">&quot;1&quot;</span>, <span class="string">&quot;2&quot;</span>, <span class="string">&quot;3&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">foo</span><span class="params">(String... args)</span> </span>&#123;</span><br><span class="line">    bar1(args);</span><br><span class="line">    bar2(args);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">bar1</span><span class="params">(String... args)</span> </span>&#123;</span><br><span class="line">    System.out.println(Arrays.toString(args));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">bar2</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    bar1(args);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在 Kotlin 中如果想将数组类型传入到可变参数，就需要使用一个特定的符号 <code>* </code>：</p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    foo(<span class="string">&quot;1&quot;</span>, <span class="string">&quot;2&quot;</span>, <span class="string">&quot;3&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">foo</span><span class="params">(<span class="keyword">vararg</span> args: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">    bar1(*args)</span><br><span class="line">    bar2(args)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">bar1</span><span class="params">(<span class="keyword">vararg</span> args: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">    println(args.contentToString())</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">bar2</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">out</span> <span class="type">String</span>&gt;)</span></span> &#123;</span><br><span class="line">    bar1(*args)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>我对 Kotlin 中d可变参数的理解是：</p>
+<ol>
+<li>可变参数会在函数体中，自动转变为数组类型</li>
+<li>数组类型不能作为参数，直接传递给可变参数</li>
+<li>在数组类型前面添加 * ，可以传递给可变参数</li>
+</ol>
+<p>最后，我们可以反编译看下 Kotlin 中的 foo 函数，看看 * 到底做了什么：</p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> static <span class="keyword">final</span> void foo(<span class="meta">@NotNull</span> String... args) &#123;</span><br><span class="line">    bar1((String[]) Arrays.copyOf(args, args.length));</span><br><span class="line">    bar2(args);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>就是一个复制数组的操作，相比 Kotlin 还是 Java 做的更便捷，可以在数组和可变参数之间直接自由转换。</p>
+]]></content>
+      <categories>
+        <category>Kotlin</category>
+      </categories>
+      <tags>
+        <tag>Kotlin基础</tag>
+      </tags>
+  </entry>
 </search>

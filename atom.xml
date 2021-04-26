@@ -6,7 +6,7 @@
   <link href="http://markchyl.cn/atom.xml" rel="self"/>
   
   <link href="http://markchyl.cn/"/>
-  <updated>2021-04-14T08:49:22.000Z</updated>
+  <updated>2021-04-26T01:22:07.000Z</updated>
   <id>http://markchyl.cn/</id>
   
   <author>
@@ -15,6 +15,56 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Kotlin中可变参数</title>
+    <link href="http://markchyl.cn/2021/04/26/Kotlin%E4%B8%AD%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0/"/>
+    <id>http://markchyl.cn/2021/04/26/Kotlin%E4%B8%AD%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0/</id>
+    <published>2021-04-26T01:22:07.000Z</published>
+    <updated>2021-04-26T01:22:07.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://www.jianshu.com/p/174c0e254713&quot;&gt;原文简书&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;对比-Java-中的可变参数&quot;&gt;&lt;a href=&quot;#对比-Java-中的可变参数&quot; class=&quot;headerlink&quot; title=&quot;对比 Java 中的可变参数&quot;&gt;&lt;/a&gt;对比 Java 中的可变参数&lt;/h3&gt;&lt;p&gt;先看下 Java 的可变参数，用我们最熟悉的 main 函数&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(String... args)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;从 Java5 开始引入了可变参数（varargs）&lt;br&gt;对应的 Kotlin 的代码，参数为可变参数：&lt;/p&gt;
+&lt;figure class=&quot;highlight kotlin&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;fun&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;keyword&quot;&gt;vararg&lt;/span&gt; args: &lt;span class=&quot;type&quot;&gt;String&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="Kotlin" scheme="http://markchyl.cn/categories/Kotlin/"/>
+    
+    
+    <category term="Kotlin基础" scheme="http://markchyl.cn/tags/Kotlin%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何修改表结构：ALERT语句</title>
+    <link href="http://markchyl.cn/2021/04/19/%E5%A6%82%E4%BD%95%E4%BF%AE%E6%94%B9%E8%A1%A8%E7%BB%93%E6%9E%84%EF%BC%9AALERT%E8%AF%AD%E5%8F%A5/"/>
+    <id>http://markchyl.cn/2021/04/19/%E5%A6%82%E4%BD%95%E4%BF%AE%E6%94%B9%E8%A1%A8%E7%BB%93%E6%9E%84%EF%BC%9AALERT%E8%AF%AD%E5%8F%A5/</id>
+    <published>2021-04-19T08:32:02.000Z</published>
+    <updated>2021-04-19T08:32:02.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;应用场景：当我们的业务需要对已经存在的表进行表结构修改时，我们需要使用 ALERT 语句进行修改。&lt;/p&gt;
+&lt;h3 id=&quot;增加表列&quot;&gt;&lt;a href=&quot;#增加表列&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="数据库" scheme="http://markchyl.cn/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+    <category term="Oracle" scheme="http://markchyl.cn/tags/Oracle/"/>
+    
+  </entry>
   
   <entry>
     <title>MAC使用APKTool反编译apk修改版本号后重新打包</title>
@@ -489,56 +539,6 @@ proguard-rules.pro文件的作用&lt;/li&gt;
     
     
     <category term="面试" scheme="http://markchyl.cn/tags/%E9%9D%A2%E8%AF%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>android retrofit End of input at line 1 column 1 path</title>
-    <link href="http://markchyl.cn/2020/09/03/android-retrofit-End-of-input-at-line-1-column-1-path/"/>
-    <id>http://markchyl.cn/2020/09/03/android-retrofit-End-of-input-at-line-1-column-1-path/</id>
-    <published>2020-09-03T01:14:59.000Z</published>
-    <updated>2020-09-03T01:14:59.000Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;在使用retrofit作为项目的网络请求库时，接口定义如下：&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;@GET(ACT_GET_NEW_STAFF)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Call&amp;lt;TaskEn&amp;gt; reqGetNewStaff();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;接口从服务端获取了数据，通过GsonConverterFactory将服务端相应内容解析成对应的实体类。在接口正常响应时（有数据返回），并没有什么异常发生，但当接口请求的数据为空，我们的服务端人员并不是返回理论意义上的空，null或者[]（数据集合空），而是返回没有响应体body，只有响应头header，content-length为0的Response&lt;/p&gt;
-&lt;p&gt;这时候GsonConverterFactory就解析异常了，并抛出如下异常：&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Android" scheme="http://markchyl.cn/categories/Android/"/>
-    
-    
-    <category term="Error，retrofit" scheme="http://markchyl.cn/tags/Error%EF%BC%8Cretrofit/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Glide添加请求头</title>
-    <link href="http://markchyl.cn/2020/08/31/Glide%E6%B7%BB%E5%8A%A0%E8%AF%B7%E6%B1%82%E5%A4%B4/"/>
-    <id>http://markchyl.cn/2020/08/31/Glide%E6%B7%BB%E5%8A%A0%E8%AF%B7%E6%B1%82%E5%A4%B4/</id>
-    <published>2020-08-31T08:07:59.000Z</published>
-    <updated>2020-08-31T08:07:59.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://www.jianshu.com/p/a425b5ca89dd&quot;&gt;原文来自&lt;/a&gt;&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span</summary>
-        
-      
-    
-    
-    
-    <category term="Android" scheme="http://markchyl.cn/categories/Android/"/>
-    
-    
-    <category term="工具使用" scheme="http://markchyl.cn/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/"/>
-    
-    <category term="Android" scheme="http://markchyl.cn/tags/Android/"/>
     
   </entry>
   
