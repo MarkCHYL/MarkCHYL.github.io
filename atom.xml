@@ -24,7 +24,7 @@
     <updated>2021-05-13T06:42:47.000Z</updated>
     
     
-    <summary type="html">&lt;p&gt;[TOC]&lt;/p&gt;
+    <summary type="html">&lt;p&gt;[toc]&lt;/p&gt;
 &lt;h3 id=&quot;ConnectionFactory的作用&quot;&gt;&lt;a href=&quot;#ConnectionFactory的作用&quot; class=&quot;headerlink&quot; title=&quot;ConnectionFactory的作用&quot;&gt;&lt;/a&gt;ConnectionFactory的作用&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;利用工厂模式提升代码的额重要性&lt;/li&gt;
 &lt;li&gt;封装注册数据库的驱动和获得数据库的连接&lt;/li&gt;
@@ -51,7 +51,16 @@
     <updated>2021-05-13T06:41:05.000Z</updated>
     
     
-    <summary type="html">&lt;h3 id=&quot;JDBC的API结构和使用流程&quot;&gt;&lt;a href=&quot;#JDBC的API结构和使用流程&quot; class=&quot;headerlink&quot; title=&quot;JDBC的API结构和使用流程&quot;&gt;&lt;/a&gt;JDBC的API结构和使用流程&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;graph TB&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    A0[DriverManager] --&amp;gt; B0[Driver]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    A0[DriverManager] --&amp;gt; B1[Driver] &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    B0[Driver] --&amp;gt; C0[Connection]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    B1[Driver] --&amp;gt;C1[Connection]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    B1[Driver] --&amp;gt;C2[Connection]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    C0[Connection]--&amp;gt;D0[Statement]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    C0[Connection]--&amp;gt;D1[Statement]--&amp;gt;E0[ResultSet]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    C0[Connection]--&amp;gt;D2[Statement]--&amp;gt;E1[ResultSet]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    C1[Connection]--&amp;gt;D3[Statement]--&amp;gt;E2[ResultSet]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    <summary type="html">&lt;h3 id=&quot;JDBC的API结构和使用流程&quot;&gt;&lt;a href=&quot;#JDBC的API结构和使用流程&quot; class=&quot;headerlink&quot; title=&quot;JDBC的API结构和使用流程&quot;&gt;&lt;/a&gt;JDBC的API结构和使用流程&lt;/h3&gt;&lt;pre class=&quot;mermaid&quot;&gt;graph TB
+    A0[DriverManager] --&gt; B0[Driver]
+    A0[DriverManager] --&gt; B1[Driver] 
+    B0[Driver] --&gt; C0[Connection]
+    B1[Driver] --&gt;C1[Connection]
+    B1[Driver] --&gt;C2[Connection]
+    C0[Connection]--&gt;D0[Statement]
+    C0[Connection]--&gt;D1[Statement]--&gt;E0[ResultSet]
+    C0[Connection]--&gt;D2[Statement]--&gt;E1[ResultSet]
+    C1[Connection]--&gt;D3[Statement]--&gt;E2[ResultSet]&lt;/pre&gt;</summary>
     
     
     
@@ -101,7 +110,9 @@
       
         
         
-    <summary type="html">&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span</summary>
+    <summary type="html">&lt;pre class=&quot;mermaid&quot;&gt;graph TB
+    A0[进入系统偏好设置] --&gt; B0[打印机与扫描仪] --&gt; C0[添加打印机] --&gt;  D0[选择IP]
+    D0[选择IP]  --&gt; E0[</summary>
         
       
     
@@ -185,9 +196,9 @@
     <category term="Android" scheme="http://markchyl.cn/categories/Android/"/>
     
     
-    <category term="工具搭建" scheme="http://markchyl.cn/tags/%E5%B7%A5%E5%85%B7%E6%90%AD%E5%BB%BA/"/>
-    
     <category term="反编译" scheme="http://markchyl.cn/tags/%E5%8F%8D%E7%BC%96%E8%AF%91/"/>
+    
+    <category term="工具搭建" scheme="http://markchyl.cn/tags/%E5%B7%A5%E5%85%B7%E6%90%AD%E5%BB%BA/"/>
     
   </entry>
   
@@ -326,20 +337,19 @@
     
     <summary type="html">&lt;h2 id=&quot;反编译的工具（MAC环境下）&quot;&gt;&lt;a href=&quot;#反编译的工具（MAC环境下）&quot; class=&quot;headerlink&quot; title=&quot;反编译的工具（MAC环境下）&quot;&gt;&lt;/a&gt;反编译的工具（MAC环境下）&lt;/h2&gt;&lt;p&gt;下载地址：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://ibotpeaches.github.io/Apktool/install/&quot;&gt;apkTool：一款用于反编译apk资源文件&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://sourceforge.net/projects/dex2jar/files/&quot;&gt;dex2jar：是用于将class.dex 转换成classes-dex2jar.jar的工具&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://java-decompiler.github.io/&quot;&gt;jdgui：这个用于查看classes-dex2jar.jar 源码工具&lt;/a&gt;&lt;/p&gt;</summary>
+&lt;li&gt;&lt;a href=&quot;https://ibotpeaches.github.io/Apktool/install/&quot;&gt;apkTool：一款用于反编译apk资源文件&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://sourceforge.net/projects/dex2jar/files/&quot;&gt;dex2jar：是用于将class.dex 转换成classes-dex2jar.jar的工具&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://java-decompiler.github.io/&quot;&gt;jdgui：这个用于查看classes-dex2jar.jar 源码工具&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</summary>
     
     
     
     <category term="Android" scheme="http://markchyl.cn/categories/Android/"/>
     
     
-    <category term="工具搭建" scheme="http://markchyl.cn/tags/%E5%B7%A5%E5%85%B7%E6%90%AD%E5%BB%BA/"/>
-    
     <category term="反编译" scheme="http://markchyl.cn/tags/%E5%8F%8D%E7%BC%96%E8%AF%91/"/>
+    
+    <category term="工具搭建" scheme="http://markchyl.cn/tags/%E5%B7%A5%E5%85%B7%E6%90%AD%E5%BB%BA/"/>
     
   </entry>
   
