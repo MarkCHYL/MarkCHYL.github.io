@@ -6,7 +6,7 @@
   <link href="http://markchyl.cn/atom.xml" rel="self"/>
   
   <link href="http://markchyl.cn/"/>
-  <updated>2021-04-26T01:22:07.000Z</updated>
+  <updated>2021-05-13T06:42:47.000Z</updated>
   <id>http://markchyl.cn/</id>
   
   <author>
@@ -15,6 +15,109 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JDBC学习--ConnectinnFactory</title>
+    <link href="http://markchyl.cn/2021/05/13/JDBC%E5%AD%A6%E4%B9%A0-ConnectinnFactory/"/>
+    <id>http://markchyl.cn/2021/05/13/JDBC%E5%AD%A6%E4%B9%A0-ConnectinnFactory/</id>
+    <published>2021-05-13T06:42:47.000Z</published>
+    <updated>2021-05-13T06:42:47.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h3 id=&quot;ConnectionFactory的作用&quot;&gt;&lt;a href=&quot;#ConnectionFactory的作用&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="JavaWeb" scheme="http://markchyl.cn/categories/JavaWeb/"/>
+    
+    
+    <category term="JDBC" scheme="http://markchyl.cn/tags/JDBC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JDBC学习--Statement</title>
+    <link href="http://markchyl.cn/2021/05/13/JDBC%E5%AD%A6%E4%B9%A0-Statement/"/>
+    <id>http://markchyl.cn/2021/05/13/JDBC%E5%AD%A6%E4%B9%A0-Statement/</id>
+    <published>2021-05-13T06:41:05.000Z</published>
+    <updated>2021-05-13T06:41:05.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;JDBC的API结构和使用流程&quot;&gt;&lt;a href=&quot;#JDBC的API结构和使用流程&quot; class=&quot;headerlink&quot; title=&quot;JDBC的API结构和使用流程&quot;&gt;&lt;/a&gt;JDBC的API结构和使用流程&lt;/h3&gt;&lt;figure</summary>
+        
+      
+    
+    
+    
+    <category term="JavaWeb" scheme="http://markchyl.cn/categories/JavaWeb/"/>
+    
+    
+    <category term="JDBC" scheme="http://markchyl.cn/tags/JDBC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mac电脑maven安装与配置</title>
+    <link href="http://markchyl.cn/2021/05/13/Mac%E7%94%B5%E8%84%91maven%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/"/>
+    <id>http://markchyl.cn/2021/05/13/Mac%E7%94%B5%E8%84%91maven%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</id>
+    <published>2021-05-13T02:39:04.000Z</published>
+    <updated>2021-05-13T02:39:04.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://www.cnblogs.com/zdz8207/p/mac-java-maven.html&quot;&gt;原文地址：大自然的流风&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;Mac电脑maven安装与配置&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="环境配置" scheme="http://markchyl.cn/categories/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
+    
+    
+    <category term="Maven" scheme="http://markchyl.cn/tags/Maven/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mac连接京瓷打印机Fs-1030MFP/DP</title>
+    <link href="http://markchyl.cn/2021/05/13/Mac%E8%BF%9E%E6%8E%A5%E4%BA%AC%E7%93%B7%E6%89%93%E5%8D%B0%E6%9C%BAFs-1030MFP-DP/"/>
+    <id>http://markchyl.cn/2021/05/13/Mac%E8%BF%9E%E6%8E%A5%E4%BA%AC%E7%93%B7%E6%89%93%E5%8D%B0%E6%9C%BAFs-1030MFP-DP/</id>
+    <published>2021-05-13T01:27:45.000Z</published>
+    <updated>2021-05-13T01:27:45.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span</summary>
+        
+      
+    
+    
+    
+    <category term="工具使用" scheme="http://markchyl.cn/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/"/>
+    
+    
+    <category term="工具搭建" scheme="http://markchyl.cn/tags/%E5%B7%A5%E5%85%B7%E6%90%AD%E5%BB%BA/"/>
+    
+  </entry>
   
   <entry>
     <title>Kotlin中可变参数</title>
@@ -426,119 +529,6 @@ proguard-rules.pro文件的作用&lt;/li&gt;
     
     
     <category term="消息通信" scheme="http://markchyl.cn/tags/%E6%B6%88%E6%81%AF%E9%80%9A%E4%BF%A1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android消息传递机制总结(二)</title>
-    <link href="http://markchyl.cn/2020/10/10/Android%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6%E6%80%BB%E7%BB%93%E4%BA%8C/"/>
-    <id>http://markchyl.cn/2020/10/10/Android%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6%E6%80%BB%E7%BB%93%E4%BA%8C/</id>
-    <published>2020-10-10T02:38:54.000Z</published>
-    <updated>2020-10-10T02:38:54.000Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;组件间通信 ——— BroadcastReceiver，接口回调等。&lt;/p&gt;
-&lt;h3 id=&quot;2-组件间通信&quot;&gt;&lt;a href=&quot;#2-组件间通信&quot; class=&quot;headerlink&quot; title=&quot;2.组件间通信&quot;&gt;&lt;/a&gt;2.组件间通信&lt;/h3&gt;&lt;p&gt;BroadcastReceiver广播就不再介绍， 广播传递本身是有安全隐患的，需要设置权限，每一个Activity都要定义、注册，解注册广播无形中加大了工作量和维护成本。已经不适应用在组件间通信。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Android" scheme="http://markchyl.cn/categories/Android/"/>
-    
-    
-    <category term="消息通信" scheme="http://markchyl.cn/tags/%E6%B6%88%E6%81%AF%E9%80%9A%E4%BF%A1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android消息传递机制总结(一)</title>
-    <link href="http://markchyl.cn/2020/10/09/Android%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6%E6%80%BB%E7%BB%93(%E4%B8%80%EF%BC%89/"/>
-    <id>http://markchyl.cn/2020/10/09/Android%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6%E6%80%BB%E7%BB%93(%E4%B8%80%EF%BC%89/</id>
-    <published>2020-10-09T06:48:16.000Z</published>
-    <updated>2020-10-09T06:48:16.000Z</updated>
-    
-    
-    <summary type="html">&lt;h4 id=&quot;安卓业务层的核心灵魂就是层层的消息传递，今天就来总结一下andorid的应用层的各种消息传递。&quot;&gt;&lt;a href=&quot;#安卓业务层的核心灵魂就是层层的消息传递，今天就来总结一下andorid的应用层的各种消息传递。&quot; class=&quot;headerlink&quot; title=&quot;安卓业务层的核心灵魂就是层层的消息传递，今天就来总结一下andorid的应用层的各种消息传递。&quot;&gt;&lt;/a&gt;安卓业务层的核心灵魂就是层层的消息传递，今天就来总结一下andorid的应用层的各种消息传递。&lt;/h4&gt;&lt;p&gt;1.线程间通讯 ——— Handler，HandlerThread等。&lt;br&gt;2.组件间通信 ——— BroadcastReceiver，接口回调等。&lt;br&gt;3. 第三方通信 ——— EventBus，rxBus&lt;br&gt;4.进程间通信 ——— Content Provider ，Broadcast ，AIDL等。&lt;br&gt;5.长连接推送 ——— WebSocket，XMPP等。&lt;/p&gt;
-&lt;h3 id=&quot;1-线程间通信&quot;&gt;&lt;a href=&quot;#1-线程间通信&quot; class=&quot;headerlink&quot; title=&quot;1.线程间通信&quot;&gt;&lt;/a&gt;1.线程间通信&lt;/h3&gt;&lt;p&gt;Android通过Handler消息机制来实现线程之间的通讯。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Android" scheme="http://markchyl.cn/categories/Android/"/>
-    
-    
-    <category term="消息通信" scheme="http://markchyl.cn/tags/%E6%B6%88%E6%81%AF%E9%80%9A%E4%BF%A1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>dynamic、var、Object三者的区别</title>
-    <link href="http://markchyl.cn/2020/09/23/dynamic%E3%80%81var%E3%80%81Object%E4%B8%89%E8%80%85%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
-    <id>http://markchyl.cn/2020/09/23/dynamic%E3%80%81var%E3%80%81Object%E4%B8%89%E8%80%85%E7%9A%84%E5%8C%BA%E5%88%AB/</id>
-    <published>2020-09-23T02:50:17.000Z</published>
-    <updated>2020-09-23T02:50:17.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h3 id=&quot;dynamic：&quot;&gt;&lt;a href=&quot;#dynamic：&quot; class=&quot;headerlink&quot; title=&quot;dynamic：&quot;&gt;&lt;/a&gt;dynamic：&lt;/h3&gt;&lt;p&gt;是所有Dart对象的基础类型，</summary>
-        
-      
-    
-    
-    
-    <category term="flutter" scheme="http://markchyl.cn/categories/flutter/"/>
-    
-    
-    <category term="dart" scheme="http://markchyl.cn/tags/dart/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>阿里、腾讯、百度、华为、京东、搜狗和滴滴最新面试题汇集</title>
-    <link href="http://markchyl.cn/2020/09/03/%E9%98%BF%E9%87%8C%E3%80%81%E8%85%BE%E8%AE%AF%E3%80%81%E7%99%BE%E5%BA%A6%E3%80%81%E5%8D%8E%E4%B8%BA%E3%80%81%E4%BA%AC%E4%B8%9C%E3%80%81%E6%90%9C%E7%8B%97%E5%92%8C%E6%BB%B4%E6%BB%B4%E6%9C%80%E6%96%B0%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B1%87%E9%9B%86/"/>
-    <id>http://markchyl.cn/2020/09/03/%E9%98%BF%E9%87%8C%E3%80%81%E8%85%BE%E8%AE%AF%E3%80%81%E7%99%BE%E5%BA%A6%E3%80%81%E5%8D%8E%E4%B8%BA%E3%80%81%E4%BA%AC%E4%B8%9C%E3%80%81%E6%90%9C%E7%8B%97%E5%92%8C%E6%BB%B4%E6%BB%B4%E6%9C%80%E6%96%B0%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B1%87%E9%9B%86/</id>
-    <published>2020-09-03T05:15:54.000Z</published>
-    <updated>2020-09-03T05:15:54.000Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://mp.weixin.qq.com/s/IN30Gc1o23fJ8wYEpp8AMQ&quot;&gt;原文链接  程序员小乐&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;以下是（2016、2017 、阿里、腾讯、百度、华为、京东、搜狗和滴滴面试题汇集）&lt;/p&gt;
-&lt;h2 id=&quot;Android基础&quot;&gt;&lt;a href=&quot;#Android基础&quot; class=&quot;headerlink&quot; title=&quot;Android基础&quot;&gt;&lt;/a&gt;Android基础&lt;/h2&gt;&lt;h3 id=&quot;1、什么是ANR-如何避免它？&quot;&gt;&lt;a href=&quot;#1、什么是ANR-如何避免它？&quot; class=&quot;headerlink&quot; title=&quot;1、什么是ANR 如何避免它？&quot;&gt;&lt;/a&gt;1、什么是ANR 如何避免它？&lt;/h3&gt;&lt;p&gt;ANR 就是一个无响应的对话框,主要原因就是在主线程做了耗时操作。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;全称为Application Not Responding。在Android 中，如果你的应用程序有一段时间没有响应，系统会向用户显示一个对话框，这个对话框称作应用程序无响应对话框。&lt;br&gt;不同的组件发生ANR 的时间不一样，&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;主线程（Activity）是5 秒;&lt;/li&gt;
-&lt;li&gt;BroadCastReceiver 是10 秒;&lt;/li&gt;
-&lt;li&gt;Service：20 秒（均为前台）,Service 在20 秒内无法处理完成。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;解决方案：&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;将所有耗时操作，比如访问网络，Socket 通信，查询大量SQL 语句，复杂逻辑计算等都放在子线程中去，然后通过handler.sendMessage、runonUITread、AsyncTask 等方式更新UI，以确保用户界面操作的流畅度.&lt;/li&gt;
-&lt;li&gt;如果耗时操作需要让用户等待，那么可以在界面上显示进度条。&lt;/li&gt;
-&lt;li&gt;避免在activity里面做耗时操作，oncreate &amp;amp; onresume&lt;/li&gt;
-&lt;li&gt;避免在onReceiver里面做过多操作&lt;/li&gt;
-&lt;li&gt;避免在Intent Receiver里启动一个Activity，因为它会创建一个新的画面，并从当前用户正在运行的程序上抢夺焦点。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;2、View的绘制流程；自定义View如何考虑机型适配；自定义View的事件&quot;&gt;&lt;a href=&quot;#2、View的绘制流程；自定义View如何考虑机型适配；自定义View的事件&quot; class=&quot;headerlink&quot; title=&quot;2、View的绘制流程；自定义View如何考虑机型适配；自定义View的事件&quot;&gt;&lt;/a&gt;2、View的绘制流程；自定义View如何考虑机型适配；自定义View的事件&lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;View的绘制流程：OnMeasure()——&amp;gt;OnLayout()——&amp;gt;OnDraw()&lt;br&gt;组合控件、继承原有的控件、继承原有的控件&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;第一步：OnMeasure()：测量视图大小。从顶层父View到子View递归调用measure方法，measure方法又回调OnMeasure。&lt;/li&gt;
-&lt;li&gt;第二步：OnLayout()：确定View位置，进行页面布局。从顶层父View向子View的递归调用view.layout方法的过程，即父View根据上一步measure子View所得到的布局大小和布局参数，将子View放在合适的位置上。&lt;/li&gt;
-&lt;li&gt;第三步：OnDraw()：绘制视图。ViewRoot创建一个Canvas对象，然后调用OnDraw()。六个步骤：绘制视图的背景、保存画布的图层(Layer)、绘制View的内容、绘制View子视图、还原图层(Layer)、绘制滚动条（如果没有就不用）;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;3、分发机制；View和ViewGroup分别有哪些事件分发相关的回调方法；自定义View如何提供获取View属性的接口；&quot;&gt;&lt;a href=&quot;#3、分发机制；View和ViewGroup分别有哪些事件分发相关的回调方法；自定义View如何提供获取View属性的接口；&quot; class=&quot;headerlink&quot; title=&quot;3、分发机制；View和ViewGroup分别有哪些事件分发相关的回调方法；自定义View如何提供获取View属性的接口；&quot;&gt;&lt;/a&gt;3、分发机制；View和ViewGroup分别有哪些事件分发相关的回调方法；自定义View如何提供获取View属性的接口；&lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;基本会遵从 Activity =&amp;gt; ViewGroup =&amp;gt; View 的顺序进行事件分发，然后通过调用 onTouchEvent() 方法进行事件的处理。我们在项目中一般会对 MotionEvent.ACTION_DOWN，MotionEvent.ACTION_UP，MotionEvent.ACTION_MOVE，MotionEvent.ACTION_CANCEL 分情况进行操作。&lt;/p&gt;
-&lt;/blockquote&gt;</summary>
-    
-    
-    
-    <category term="面试" scheme="http://markchyl.cn/categories/%E9%9D%A2%E8%AF%95/"/>
-    
-    
-    <category term="面试" scheme="http://markchyl.cn/tags/%E9%9D%A2%E8%AF%95/"/>
     
   </entry>
   

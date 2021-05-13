@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://markchyl.cn/2021/05/13/JDBC%E5%AD%A6%E4%B9%A0-ConnectinnFactory/</loc>
+    <lastmod>2021-05-13</lastmod>
+  </url>
+  <url>
+    <loc>http://markchyl.cn/2021/05/13/JDBC%E5%AD%A6%E4%B9%A0-Statement/</loc>
+    <lastmod>2021-05-13</lastmod>
+  </url>
+  <url>
+    <loc>http://markchyl.cn/2021/05/13/Mac%E7%94%B5%E8%84%91maven%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</loc>
+    <lastmod>2021-05-13</lastmod>
+  </url>
+  <url>
+    <loc>http://markchyl.cn/2021/05/13/Mac%E8%BF%9E%E6%8E%A5%E4%BA%AC%E7%93%B7%E6%89%93%E5%8D%B0%E6%9C%BAFs-1030MFP-DP/</loc>
+    <lastmod>2021-05-13</lastmod>
+  </url>
+  <url>
     <loc>http://markchyl.cn/2021/04/26/Kotlin%E4%B8%AD%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0/</loc>
     <lastmod>2021-04-26</lastmod>
   </url>
