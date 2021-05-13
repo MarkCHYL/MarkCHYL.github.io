@@ -224,34 +224,9 @@ var _hmt = _hmt || [];
 <h3 id="ConnectionFactory的开发"><a href="#ConnectionFactory的开发" class="headerlink" title="ConnectionFactory的开发"></a>ConnectionFactory的开发</h3><ul>
 <li><p>配置文件 <code>jdbcinfo.properties</code></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">oracle.driver=oracle.jdbc.driver.OracleDriver  <span class="comment">//数据库驱动</span></span><br><span class="line">oracle.url=jdbc:oracle:thin:<span class="meta">@localhost</span>:<span class="number">1521</span>:helowin <span class="comment">//数据库地址 helowin:数据库的名字</span></span><br><span class="line">oracle.user=mark  <span class="comment">//管理账户</span></span><br><span class="line">oracle.password=chenyunlin  <span class="comment">//密码</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<ul>
-<li><p>配置文件信息的获取</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> &#123;</span><br><span class="line">        Properties props = <span class="keyword">new</span> Properties();</span><br><span class="line">        <span class="comment">// 加载配置文件中的数据</span></span><br><span class="line">        InputStream is =</span><br><span class="line">                ConnectionFactory.class.getClassLoader().getResourceAsStream(&quot;jdbcinfo.properties&quot;);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            props.load(is);</span><br><span class="line">            DRIVER = props.getProperty(<span class="string">&quot;oracle.driver&quot;</span>);</span><br><span class="line">            URL = props.getProperty(<span class="string">&quot;oracle.url&quot;</span>);</span><br><span class="line">            USER = props.getProperty(<span class="string">&quot;oracle.user&quot;</span>);</span><br><span class="line">            PASSWORD = props.getProperty(<span class="string">&quot;oracle.password&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>数据库连接Connection的获取</p>
-<ul>
-<li><pre><code class="java">public static connection getConnection()&#123;
-
-Connection conn = null;
-        try &#123;
-            Class.forName(DRIVER);
-            conn = DriverManager.getConnection(URL, USER, PASSWORD);
-        &#125; catch (ClassNotFoundException | SQLException e) &#123;
-            e.printStackTrace();
-        &#125;
-        return conn;
-
-&#125;</code></pre>
-<blockquote>
-<p>调用getConnection()方法后，<br>Console输出：<code>oracle.jdbc.driver.T4CConnection@f8c1ddd</code>  表示数据连接成功</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ul>
-
+    
+    <a class="article-more-a" href="/2021/05/13/JDBC%E5%AD%A6%E4%B9%A0-ConnectinnFactory/#more">more >></a>
+    
     
 
     
@@ -336,30 +311,9 @@ Connection conn = null;
   <div class="article-entry" itemprop="articleBody">
     
     <h3 id="JDBC的API结构和使用流程"><a href="#JDBC的API结构和使用流程" class="headerlink" title="JDBC的API结构和使用流程"></a>JDBC的API结构和使用流程</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">graph TB</span><br><span class="line">    A0[DriverManager] --&gt; B0[Driver]</span><br><span class="line">    A0[DriverManager] --&gt; B1[Driver] </span><br><span class="line">    B0[Driver] --&gt; C0[Connection]</span><br><span class="line">    B1[Driver] --&gt;C1[Connection]</span><br><span class="line">    B1[Driver] --&gt;C2[Connection]</span><br><span class="line">    C0[Connection]--&gt;D0[Statement]</span><br><span class="line">    C0[Connection]--&gt;D1[Statement]--&gt;E0[ResultSet]</span><br><span class="line">    C0[Connection]--&gt;D2[Statement]--&gt;E1[ResultSet]</span><br><span class="line">    C1[Connection]--&gt;D3[Statement]--&gt;E2[ResultSet]</span><br></pre></td></tr></table></figure>
-<h3 id="创建Statement的方式"><a href="#创建Statement的方式" class="headerlink" title="创建Statement的方式"></a>创建Statement的方式</h3><ul>
-<li><p><code>Statement  stmt = Connection.createStatement(......);</code></p>
-<ul>
-<li>执行不带参数的简单SQL语句</li>
-</ul>
-</li>
-<li><p><code>PreparedStatement  pstmt = Connection.prepareStatement(......);</code></p>
-<ul>
-<li>执行带参数或不带参数的SQL语句</li>
-</ul>
-</li>
-<li><p><code>CallableStatement   cstmt  =  Connection.prepareCall(...);</code></p>
-<ul>
-<li>执行对数据库已存储的PL/SQL程序的调用</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h3 id="执行SQL语句"><a href="#执行SQL语句" class="headerlink" title="执行SQL语句"></a>执行SQL语句</h3><ul>
-<li><code>executeQuery()</code>：执行查询语句，返回查询结果集 <code>ResultSet</code><br>返回结果集 <code>rs.getFetchSize()</code>记录着当前返回数量的大小：<code>10</code></li>
-<li><code>executeUpdate()</code>: 执行DML和DDL 语句，返回int类型</li>
-<li><code>execute()</code>: 执行任何SQL语句，返回boolean类型，指示是否有ResultSet返回</li>
-</ul>
-
+    
+    <a class="article-more-a" href="/2021/05/13/JDBC%E5%AD%A6%E4%B9%A0-Statement/#more">more >></a>
+    
     
 
     

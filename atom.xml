@@ -24,14 +24,15 @@
     <updated>2021-05-13T06:42:47.000Z</updated>
     
     
-      
-      
-        
-        
     <summary type="html">&lt;p&gt;[TOC]&lt;/p&gt;
-&lt;h3 id=&quot;ConnectionFactory的作用&quot;&gt;&lt;a href=&quot;#ConnectionFactory的作用&quot; class=&quot;headerlink&quot;</summary>
-        
-      
+&lt;h3 id=&quot;ConnectionFactory的作用&quot;&gt;&lt;a href=&quot;#ConnectionFactory的作用&quot; class=&quot;headerlink&quot; title=&quot;ConnectionFactory的作用&quot;&gt;&lt;/a&gt;ConnectionFactory的作用&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;利用工厂模式提升代码的额重要性&lt;/li&gt;
+&lt;li&gt;封装注册数据库的驱动和获得数据库的连接&lt;/li&gt;
+&lt;li&gt;利用配置文件减少硬编码，便于维护&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;ConnectionFactory的开发&quot;&gt;&lt;a href=&quot;#ConnectionFactory的开发&quot; class=&quot;headerlink&quot; title=&quot;ConnectionFactory的开发&quot;&gt;&lt;/a&gt;ConnectionFactory的开发&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;配置文件 &lt;code&gt;jdbcinfo.properties&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;oracle.driver=oracle.jdbc.driver.OracleDriver  &lt;span class=&quot;comment&quot;&gt;//数据库驱动&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;oracle.url=jdbc:oracle:thin:&lt;span class=&quot;meta&quot;&gt;@localhost&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;1521&lt;/span&gt;:helowin &lt;span class=&quot;comment&quot;&gt;//数据库地址 helowin:数据库的名字&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;oracle.user=mark  &lt;span class=&quot;comment&quot;&gt;//管理账户&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;oracle.password=chenyunlin  &lt;span class=&quot;comment&quot;&gt;//密码&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
     
     
     
@@ -50,13 +51,7 @@
     <updated>2021-05-13T06:41:05.000Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;h3 id=&quot;JDBC的API结构和使用流程&quot;&gt;&lt;a href=&quot;#JDBC的API结构和使用流程&quot; class=&quot;headerlink&quot; title=&quot;JDBC的API结构和使用流程&quot;&gt;&lt;/a&gt;JDBC的API结构和使用流程&lt;/h3&gt;&lt;figure</summary>
-        
-      
+    <summary type="html">&lt;h3 id=&quot;JDBC的API结构和使用流程&quot;&gt;&lt;a href=&quot;#JDBC的API结构和使用流程&quot; class=&quot;headerlink&quot; title=&quot;JDBC的API结构和使用流程&quot;&gt;&lt;/a&gt;JDBC的API结构和使用流程&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;graph TB&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    A0[DriverManager] --&amp;gt; B0[Driver]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    A0[DriverManager] --&amp;gt; B1[Driver] &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    B0[Driver] --&amp;gt; C0[Connection]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    B1[Driver] --&amp;gt;C1[Connection]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    B1[Driver] --&amp;gt;C2[Connection]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    C0[Connection]--&amp;gt;D0[Statement]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    C0[Connection]--&amp;gt;D1[Statement]--&amp;gt;E0[ResultSet]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    C0[Connection]--&amp;gt;D2[Statement]--&amp;gt;E1[ResultSet]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    C1[Connection]--&amp;gt;D3[Statement]--&amp;gt;E2[ResultSet]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
     
     
     

@@ -221,6 +221,7 @@ var _hmt = _hmt || [];
   <div class="article-entry" itemprop="articleBody">
     
     <h3 id="JDBC的API结构和使用流程"><a href="#JDBC的API结构和使用流程" class="headerlink" title="JDBC的API结构和使用流程"></a>JDBC的API结构和使用流程</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">graph TB</span><br><span class="line">    A0[DriverManager] --&gt; B0[Driver]</span><br><span class="line">    A0[DriverManager] --&gt; B1[Driver] </span><br><span class="line">    B0[Driver] --&gt; C0[Connection]</span><br><span class="line">    B1[Driver] --&gt;C1[Connection]</span><br><span class="line">    B1[Driver] --&gt;C2[Connection]</span><br><span class="line">    C0[Connection]--&gt;D0[Statement]</span><br><span class="line">    C0[Connection]--&gt;D1[Statement]--&gt;E0[ResultSet]</span><br><span class="line">    C0[Connection]--&gt;D2[Statement]--&gt;E1[ResultSet]</span><br><span class="line">    C1[Connection]--&gt;D3[Statement]--&gt;E2[ResultSet]</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <h3 id="创建Statement的方式"><a href="#创建Statement的方式" class="headerlink" title="创建Statement的方式"></a>创建Statement的方式</h3><ul>
 <li><p><code>Statement  stmt = Connection.createStatement(......);</code></p>
 <ul>
