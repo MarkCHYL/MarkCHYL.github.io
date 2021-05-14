@@ -1,40 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Android ANR发生的原因总结和解决办法</title>
-    <url>/2020/08/06/Android-ANR%E5%8F%91%E7%94%9F%E7%9A%84%E5%8E%9F%E5%9B%A0%E6%80%BB%E7%BB%93%E5%92%8C%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</url>
-    <content><![CDATA[<h3 id="什么是ANR？"><a href="#什么是ANR？" class="headerlink" title="什么是ANR？"></a>什么是ANR？</h3><blockquote>
-<p>ANR的全称是application not responding，是指应用程序未响应，Android系统对于一些事件需要在一定的时间范围内完成，如果超过预定时间能未能得到有效响应或者响应时间过长，都会造成ANR。一般地，这时往往会弹出一个提示框，告知用户当前xxx未响应，用户可选择继续等待或者Force Close。</p>
-</blockquote>
-<hr>
-<h3 id="官方指定的产生ANR一般有以下类型："><a href="#官方指定的产生ANR一般有以下类型：" class="headerlink" title="官方指定的产生ANR一般有以下类型："></a>官方指定的产生ANR一般有以下类型：</h3><p>1：KeyDispatchTimeout（5秒）–主要类型<br>按键或触摸事件在特定时间无响应</p>
-<p>2：BroadcastTimeout（10秒）<br>BroadcastReceiver在特定时间无法处理完成</p>
-<p>3：ServiceTimeout（ 20秒）–小概率类型<br>服务在特定的时间无法处理完成</p>
-<hr>
-<h3 id="导致ANR的根本原因"><a href="#导致ANR的根本原因" class="headerlink" title="导致ANR的根本原因"></a>导致ANR的根本原因</h3><p>1.主线程执行了耗时操作，比如数据库操作或网络编程,I/O操作</p>
-<p>2.其他进程（就是其他程序）占用CPU导致本进程得不到CPU时间片，比如其他进程的频繁读写操作可能会导致这个问题。</p>
-<p>细分的话，导致ANR的原因有如下几点：<br>   1.耗时的网络访问<br>   2.大量的数据读写<br>   3.数据库操作<br>   4.硬件操作（比如camera)<br>   5.调用thread的join()方法、sleep()方法、wait()方法或者等待线程锁的时候<br>   6.service binder的数量达到上限<br>   7.system server中发生WatchDog ANR<br>   8.service忙导致超时无响应<br>   9.其他线程持有锁，导致主线程等待超时<br>   10.其它线程终止或崩溃导致主线程一直等待</p>
-<hr>
-<h3 id="调查并解决ANR"><a href="#调查并解决ANR" class="headerlink" title="调查并解决ANR"></a>调查并解决ANR</h3><ul>
-<li>1、首先分析log</li>
-<li>2、从trace.txt文件查看调用堆栈。-$ adb拉取data / anr / traces.txt。</li>
-<li>3、看代码</li>
-<li>4、仔细查看ANR的成因（iowait？block？memoryleak？）</li>
-</ul>
-<hr>
-<h3 id="如何避免ANR的发生"><a href="#如何避免ANR的发生" class="headerlink" title="如何避免ANR的发生"></a>如何避免ANR的发生</h3><p>1.避免在主线程执行耗时操作，所有耗时操作应新开一个子线程完成，然后再在主线程更新UI。</p>
-<p>2.BroadcastReceiver要执行耗时操作时应启动一个service，将耗时操作交给service来完成。</p>
-<p>3.避免在Intent Receiver里启动一个Activity，因为它会创建一个新的画面，并从当前用户正在运行的程序上抢夺焦点。如果你的应用程序在响应Intent广 播时需要向用户展示什么，你应该使用Notification Manager来实现。</p>
-]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Error</tag>
-        <tag>基础理论</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Activity的生命周期</title>
     <url>/2018/12/17/Activity%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</url>
     <content><![CDATA[<p><img src="http://hi.csdn.net/attachment/201109/1/0_1314838777He6C.gif" alt="image"></p>
@@ -72,6 +38,40 @@
       </categories>
       <tags>
         <tag>基础理论</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Android ANR发生的原因总结和解决办法</title>
+    <url>/2020/08/06/Android-ANR%E5%8F%91%E7%94%9F%E7%9A%84%E5%8E%9F%E5%9B%A0%E6%80%BB%E7%BB%93%E5%92%8C%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</url>
+    <content><![CDATA[<h3 id="什么是ANR？"><a href="#什么是ANR？" class="headerlink" title="什么是ANR？"></a>什么是ANR？</h3><blockquote>
+<p>ANR的全称是application not responding，是指应用程序未响应，Android系统对于一些事件需要在一定的时间范围内完成，如果超过预定时间能未能得到有效响应或者响应时间过长，都会造成ANR。一般地，这时往往会弹出一个提示框，告知用户当前xxx未响应，用户可选择继续等待或者Force Close。</p>
+</blockquote>
+<hr>
+<h3 id="官方指定的产生ANR一般有以下类型："><a href="#官方指定的产生ANR一般有以下类型：" class="headerlink" title="官方指定的产生ANR一般有以下类型："></a>官方指定的产生ANR一般有以下类型：</h3><p>1：KeyDispatchTimeout（5秒）–主要类型<br>按键或触摸事件在特定时间无响应</p>
+<p>2：BroadcastTimeout（10秒）<br>BroadcastReceiver在特定时间无法处理完成</p>
+<p>3：ServiceTimeout（ 20秒）–小概率类型<br>服务在特定的时间无法处理完成</p>
+<hr>
+<h3 id="导致ANR的根本原因"><a href="#导致ANR的根本原因" class="headerlink" title="导致ANR的根本原因"></a>导致ANR的根本原因</h3><p>1.主线程执行了耗时操作，比如数据库操作或网络编程,I/O操作</p>
+<p>2.其他进程（就是其他程序）占用CPU导致本进程得不到CPU时间片，比如其他进程的频繁读写操作可能会导致这个问题。</p>
+<p>细分的话，导致ANR的原因有如下几点：<br>   1.耗时的网络访问<br>   2.大量的数据读写<br>   3.数据库操作<br>   4.硬件操作（比如camera)<br>   5.调用thread的join()方法、sleep()方法、wait()方法或者等待线程锁的时候<br>   6.service binder的数量达到上限<br>   7.system server中发生WatchDog ANR<br>   8.service忙导致超时无响应<br>   9.其他线程持有锁，导致主线程等待超时<br>   10.其它线程终止或崩溃导致主线程一直等待</p>
+<hr>
+<h3 id="调查并解决ANR"><a href="#调查并解决ANR" class="headerlink" title="调查并解决ANR"></a>调查并解决ANR</h3><ul>
+<li>1、首先分析log</li>
+<li>2、从trace.txt文件查看调用堆栈。-$ adb拉取data / anr / traces.txt。</li>
+<li>3、看代码</li>
+<li>4、仔细查看ANR的成因（iowait？block？memoryleak？）</li>
+</ul>
+<hr>
+<h3 id="如何避免ANR的发生"><a href="#如何避免ANR的发生" class="headerlink" title="如何避免ANR的发生"></a>如何避免ANR的发生</h3><p>1.避免在主线程执行耗时操作，所有耗时操作应新开一个子线程完成，然后再在主线程更新UI。</p>
+<p>2.BroadcastReceiver要执行耗时操作时应启动一个service，将耗时操作交给service来完成。</p>
+<p>3.避免在Intent Receiver里启动一个Activity，因为它会创建一个新的画面，并从当前用户正在运行的程序上抢夺焦点。如果你的应用程序在响应Intent广 播时需要向用户展示什么，你应该使用Notification Manager来实现。</p>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>基础理论</tag>
+        <tag>Error</tag>
       </tags>
   </entry>
   <entry>
@@ -154,6 +154,24 @@
       </categories>
       <tags>
         <tag>Android</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Android 的事件分发机制</title>
+    <url>/2020/12/30/Android-%E7%9A%84%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E6%9C%BA%E5%88%B6/</url>
+    <content><![CDATA[<p>一般情况下，事件列都是从用户按下（ACTION_DOWN）的那一刻产生的，<br>负责对事件进行分发的方法主要有三个，分别是：</p>
+<ul>
+<li>dispatchTouchEvent()</li>
+<li>onTouchEvent()</li>
+<li>onInterceptTouchEvent()</li>
+</ul>
+<p>它们并不存在于所有负责分发的组件中，其具体情况总结于下面的表格中：<br>dispatchTouchEvent,onTouchEvent方法存在于上文的三个组件中。而onInterceptTouchEvent为ViewGroup独有。<br>ViewGroup类中，实际是没有onTouchEvent方法的，但是由于ViewGroup继承自View，而View拥有onTouchEvent方法，故ViewGroup的对象也是可以调用onTouchEvent方法的。</p>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>基础理论</tag>
       </tags>
   </entry>
   <entry>
@@ -536,24 +554,6 @@
       <tags>
         <tag>框架</tag>
         <tag>图片</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Android 的事件分发机制</title>
-    <url>/2020/12/30/Android-%E7%9A%84%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E6%9C%BA%E5%88%B6/</url>
-    <content><![CDATA[<p>一般情况下，事件列都是从用户按下（ACTION_DOWN）的那一刻产生的，<br>负责对事件进行分发的方法主要有三个，分别是：</p>
-<ul>
-<li>dispatchTouchEvent()</li>
-<li>onTouchEvent()</li>
-<li>onInterceptTouchEvent()</li>
-</ul>
-<p>它们并不存在于所有负责分发的组件中，其具体情况总结于下面的表格中：<br>dispatchTouchEvent,onTouchEvent方法存在于上文的三个组件中。而onInterceptTouchEvent为ViewGroup独有。<br>ViewGroup类中，实际是没有onTouchEvent方法的，但是由于ViewGroup继承自View，而View拥有onTouchEvent方法，故ViewGroup的对象也是可以调用onTouchEvent方法的。</p>
-]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>基础理论</tag>
       </tags>
   </entry>
   <entry>
@@ -986,20 +986,6 @@ proguard-rules.pro文件的作用</li>
       </tags>
   </entry>
   <entry>
-    <title> Description : Could not find the specified file.  Suggestion : Check that the path you have specified is correct.</title>
-    <url>/2019/12/27/Description-Could-not-find-the-specified-file-Suggestion-Check-that-the-path-you-have-specified-is-correct/</url>
-    <content><![CDATA[<p>记录下我使用 CornerStone 利用SVN 进行版本代码管理。我已经快两个月没提交代码啦，今天一提交发现好多问题，各种报错。<br>譬如这类错误：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Description : Could not find the specified file.  Suggestion : Check that the path you have specified is correct.   Technical Information &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;        Error : V4FileNotFoundError   Exception : ZSVNNoSuchEntryException  Causal Information </span><br></pre></td></tr></table></figure>
-<p> 解决办法：<br> 我在missing选项中删除错误的就OK了，提交前全选 =&gt;删除，重新手动编辑提交，重新提交前执行一下  clean。</p>
-]]></content>
-      <categories>
-        <category>svn</category>
-      </categories>
-      <tags>
-        <tag>Error</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Dart的基础知识学习</title>
     <url>/2018/12/17/Dart%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%AD%A6%E4%B9%A0/</url>
     <content><![CDATA[<h3 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h3><pre><code>    Google和其他地方的开发人员使用Dart为iOS，Android和网络创建高质量，关键任务的应用程序。Dart具有针对客户端开发的功能，非常适合移动和Web应用程序。
@@ -1024,6 +1010,33 @@ proguard-rules.pro文件的作用</li>
       </tags>
   </entry>
   <entry>
+    <title> Description : Could not find the specified file.  Suggestion : Check that the path you have specified is correct.</title>
+    <url>/2019/12/27/Description-Could-not-find-the-specified-file-Suggestion-Check-that-the-path-you-have-specified-is-correct/</url>
+    <content><![CDATA[<p>记录下我使用 CornerStone 利用SVN 进行版本代码管理。我已经快两个月没提交代码啦，今天一提交发现好多问题，各种报错。<br>譬如这类错误：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Description : Could not find the specified file.  Suggestion : Check that the path you have specified is correct.   Technical Information &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;        Error : V4FileNotFoundError   Exception : ZSVNNoSuchEntryException  Causal Information </span><br></pre></td></tr></table></figure>
+<p> 解决办法：<br> 我在missing选项中删除错误的就OK了，提交前全选 =&gt;删除，重新手动编辑提交，重新提交前执行一下  clean。</p>
+]]></content>
+      <categories>
+        <category>svn</category>
+      </categories>
+      <tags>
+        <tag>Error</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Error:注: 某些输入文件使用或覆盖了已过时的 API。 注: 有关详细信息, 请使用 -Xlint:deprecation 重新编译。</title>
+    <url>/2019/12/12/Error-%E6%B3%A8-%E6%9F%90%E4%BA%9B%E8%BE%93%E5%85%A5%E6%96%87%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%88%96%E8%A6%86%E7%9B%96%E4%BA%86%E5%B7%B2%E8%BF%87%E6%97%B6%E7%9A%84-API%E3%80%82-%E6%B3%A8-%E6%9C%89%E5%85%B3%E8%AF%A6%E7%BB%86%E4%BF%A1%E6%81%AF-%E8%AF%B7%E4%BD%BF%E7%94%A8-Xlint-deprecation-%E9%87%8D%E6%96%B0%E7%BC%96%E8%AF%91%E3%80%82/</url>
+    <content><![CDATA[<p><a href="https://blog.csdn.net/dong19900415/article/details/52882529?utm_source=blogxgwz3">原文</a></p>
+<p>Error:注: 某些输入文件使用或覆盖了已过时的 API。<br>注: 有关详细信息, 请使用 -Xlint:deprecation 重新编译。<br>注: 某些输入文件使用了未经检查或不安全的操作。<br>注: 有关详细信息, 请使用 -Xlint:unchecked 重新编译。<br>FAILURE: Build failed with an exception.<br>最近项目出现的一些问题可以在build中加入</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">allprojects &#123;</span><br><span class="line">    gradle.projectsEvaluated &#123;</span><br><span class="line">        tasks.withType(JavaCompile) &#123;</span><br><span class="line">            options.compilerArgs &lt;&lt; &quot;-Xlint:unchecked&quot; &lt;&lt; &quot;-Xlint:deprecation&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Error</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Flutter中使用Banner 图</title>
     <url>/2019/04/10/Flutter%E4%B8%AD%E4%BD%BF%E7%94%A8Banner-%E5%9B%BE/</url>
     <content><![CDATA[<h2 id="实现效果"><a href="#实现效果" class="headerlink" title="实现效果"></a>实现效果</h2><p><img src="https://img-blog.csdnimg.cn/20190410142106370.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01hcmtfQ0hZTA==,size_16,color_FFFFFF,t_70" alt="&quot;效果图&quot;" title="效果图"><br> <span id="more"></span></p>
@@ -1039,19 +1052,6 @@ proguard-rules.pro文件的作用</li>
       </categories>
       <tags>
         <tag>Flutter</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Error:注: 某些输入文件使用或覆盖了已过时的 API。 注: 有关详细信息, 请使用 -Xlint:deprecation 重新编译。</title>
-    <url>/2019/12/12/Error-%E6%B3%A8-%E6%9F%90%E4%BA%9B%E8%BE%93%E5%85%A5%E6%96%87%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%88%96%E8%A6%86%E7%9B%96%E4%BA%86%E5%B7%B2%E8%BF%87%E6%97%B6%E7%9A%84-API%E3%80%82-%E6%B3%A8-%E6%9C%89%E5%85%B3%E8%AF%A6%E7%BB%86%E4%BF%A1%E6%81%AF-%E8%AF%B7%E4%BD%BF%E7%94%A8-Xlint-deprecation-%E9%87%8D%E6%96%B0%E7%BC%96%E8%AF%91%E3%80%82/</url>
-    <content><![CDATA[<p><a href="https://blog.csdn.net/dong19900415/article/details/52882529?utm_source=blogxgwz3">原文</a></p>
-<p>Error:注: 某些输入文件使用或覆盖了已过时的 API。<br>注: 有关详细信息, 请使用 -Xlint:deprecation 重新编译。<br>注: 某些输入文件使用了未经检查或不安全的操作。<br>注: 有关详细信息, 请使用 -Xlint:unchecked 重新编译。<br>FAILURE: Build failed with an exception.<br>最近项目出现的一些问题可以在build中加入</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">allprojects &#123;</span><br><span class="line">    gradle.projectsEvaluated &#123;</span><br><span class="line">        tasks.withType(JavaCompile) &#123;</span><br><span class="line">            options.compilerArgs &lt;&lt; &quot;-Xlint:unchecked&quot; &lt;&lt; &quot;-Xlint:deprecation&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Error</tag>
       </tags>
   </entry>
   <entry>
@@ -1103,6 +1103,20 @@ proguard-rules.pro文件的作用</li>
       </tags>
   </entry>
   <entry>
+    <title>Flutter项目实战目录</title>
+    <url>/2019/07/29/Flutter%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%E7%9B%AE%E5%BD%95/</url>
+    <content><![CDATA[<h1 id="Flutter-实战项目源码目录"><a href="#Flutter-实战项目源码目录" class="headerlink" title="Flutter 实战项目源码目录"></a>Flutter 实战项目源码目录</h1><ul>
+<li>携程App项目实战 <a href="https://github.com/MarkCHYL/flutter_mark_trip">源码地址</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Flutter</category>
+      </categories>
+      <tags>
+        <tag>Flutter实战</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Git之使用GitHub搭建远程仓库</title>
     <url>/2020/08/18/Git%E4%B9%8B%E4%BD%BF%E7%94%A8GitHub%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93/</url>
     <content><![CDATA[<h3 id="1-账号注册-amp-仓库创建："><a href="#1-账号注册-amp-仓库创建：" class="headerlink" title="1.账号注册&amp;仓库创建："></a>1.账号注册&amp;仓库创建：</h3><p>不做记录，简单</p>
@@ -1126,33 +1140,6 @@ proguard-rules.pro文件的作用</li>
       </categories>
       <tags>
         <tag>工具使用</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Flutter项目实战目录</title>
-    <url>/2019/07/29/Flutter%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%E7%9B%AE%E5%BD%95/</url>
-    <content><![CDATA[<h1 id="Flutter-实战项目源码目录"><a href="#Flutter-实战项目源码目录" class="headerlink" title="Flutter 实战项目源码目录"></a>Flutter 实战项目源码目录</h1><ul>
-<li>携程App项目实战 <a href="https://github.com/MarkCHYL/flutter_mark_trip">源码地址</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Flutter</category>
-      </categories>
-      <tags>
-        <tag>Flutter实战</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Glide添加请求头</title>
-    <url>/2020/08/31/Glide%E6%B7%BB%E5%8A%A0%E8%AF%B7%E6%B1%82%E5%A4%B4/</url>
-    <content><![CDATA[<p><a href="https://www.jianshu.com/p/a425b5ca89dd">原文来自</a></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">GlideUrl glideUrl &#x3D; new GlideUrl(url, new Headers() &#123;</span><br><span class="line">           @Override</span><br><span class="line">           public Map&lt;String, String&gt; getHeaders() &#123;</span><br><span class="line">               Map&lt;String, String&gt; header &#x3D; new HashMap&lt;&gt;();</span><br><span class="line">               &#x2F;&#x2F;不一定都要添加，具体看原站的请求信息</span><br><span class="line">               header.put(&quot;Referer&quot;, &quot;http:&#x2F;&#x2F;www.baidu.com&quot;);</span><br><span class="line">               return header;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;);</span><br><span class="line"></span><br><span class="line">      Glide.with(context).load(url).into(imageView);</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>工具使用</tag>
-        <tag>Android</tag>
       </tags>
   </entry>
   <entry>
@@ -1227,6 +1214,19 @@ proguard-rules.pro文件的作用</li>
       </categories>
       <tags>
         <tag>工具使用</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Glide添加请求头</title>
+    <url>/2020/08/31/Glide%E6%B7%BB%E5%8A%A0%E8%AF%B7%E6%B1%82%E5%A4%B4/</url>
+    <content><![CDATA[<p><a href="https://www.jianshu.com/p/a425b5ca89dd">原文来自</a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">GlideUrl glideUrl &#x3D; new GlideUrl(url, new Headers() &#123;</span><br><span class="line">           @Override</span><br><span class="line">           public Map&lt;String, String&gt; getHeaders() &#123;</span><br><span class="line">               Map&lt;String, String&gt; header &#x3D; new HashMap&lt;&gt;();</span><br><span class="line">               &#x2F;&#x2F;不一定都要添加，具体看原站的请求信息</span><br><span class="line">               header.put(&quot;Referer&quot;, &quot;http:&#x2F;&#x2F;www.baidu.com&quot;);</span><br><span class="line">               return header;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;);</span><br><span class="line"></span><br><span class="line">      Glide.with(context).load(url).into(imageView);</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>工具使用</tag>
+        <tag>Android</tag>
       </tags>
   </entry>
   <entry>
@@ -1417,55 +1417,6 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
-    <title>Kotlin基础入门学习笔记</title>
-    <url>/2019/12/03/Kotlin%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>若不留下点啥笔记，感觉对不住自己一个星期半的学习加复习。</p>
-<h3 id="一、如何实现单列模式？"><a href="#一、如何实现单列模式？" class="headerlink" title="一、如何实现单列模式？"></a>一、如何实现单列模式？</h3><p>使用关键字 <strong>object</strong> 修饰的类,替换掉class关键字，便会在整套程序中生成一个且是唯一的对象实例。<br>譬如如下代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">object BigHeadSon:IWash &#123;</span><br><span class="line">    override fun wash() &#123;</span><br><span class="line">        println(&quot;大头儿子洗完收费1元钱&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>那样之后该类的实例变量整个项目中有且只有一个。</p>
-<span id="more"></span>
-<hr>
-<h3 id="二、如何实现枚举？"><a href="#二、如何实现枚举？" class="headerlink" title="二、如何实现枚举？"></a>二、如何实现枚举？</h3><p>实现枚举的代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">enum class Week &#123;</span><br><span class="line">    星期一, 星期二, 星期三, 星期四, 星期五, 星期六, 星期日</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun main(args: Array&lt;String&gt;) &#123;</span><br><span class="line">    println(Week.星期一.ordinal)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>使用关键字 enum 修饰类</p>
-<hr>
-<h3 id="三、如何实现印章类？"><a href="#三、如何实现印章类？" class="headerlink" title="三、如何实现印章类？"></a>三、如何实现印章类？</h3><p>举个例子一匹母驴、一屁公马和一匹公驴一碗酒后乱性，过了几天母驴怀孕了，不只是公马的还是公驴的。那么问题来了马和驴的后代是骡子，母驴和公驴的后代当然还是驴。<br>就像盖了章一样，使用<strong>sealed</strong>关键字修饰类,可以指定子类和个数。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 印章sealed类</span><br><span class="line">&#x2F;&#x2F;指定子类种类和个数</span><br><span class="line"></span><br><span class="line">sealed class Son &#123;</span><br><span class="line">    fun sayHello()&#123;</span><br><span class="line">        println(&quot;大家好！！！&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">    class smallBlackMule():Son()</span><br><span class="line"></span><br><span class="line">    class smallDonkey():Son()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun main(args: Array&lt;String&gt;) &#123;</span><br><span class="line">    var s1: Son &#x3D; Son.smallBlackMule()</span><br><span class="line"></span><br><span class="line">    var s2: Son &#x3D; Son.smallBlackMule()</span><br><span class="line"></span><br><span class="line">    var s3 &#x3D; Son.smallDonkey()</span><br><span class="line"></span><br><span class="line">    var list &#x3D; listOf&lt;Son&gt;( s1, s2, s3 )</span><br><span class="line"></span><br><span class="line">    for ( h in list)&#123;</span><br><span class="line">        if(h is Son.smallDonkey) &#123;</span><br><span class="line">            h.sayHello()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="四、如是实现委托和代理？"><a href="#四、如是实现委托和代理？" class="headerlink" title="四、如是实现委托和代理？"></a>四、如是实现委托和代理？</h3><p>利用关键字 <strong>by</strong> 实现，示例代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class SmallHeadFather : IWash by BigHeadSon() &#123;</span><br><span class="line">    override fun wash() &#123;</span><br><span class="line">        println(&quot;小头爸爸洗完收费10块钱！！！&quot;)</span><br><span class="line">        BigHeadSon().wash()</span><br><span class="line">        println(&quot;小头爸爸看见儿子把碗洗好了&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="五、如何实现多态和继承？"><a href="#五、如何实现多态和继承？" class="headerlink" title="五、如何实现多态和继承？"></a>五、如何实现多态和继承？</h3><p>kotlin是面向对象的语言，子类可以继承父类的方法和属性。<br><strong>抽象类</strong>：如父类，同一类具有同样基本属性和方法的类事物的描述，事物的本质描述。<br><strong>接口</strong>：指具有同样基本属性和方法的能力，事物的能力描述。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;抽象类</span><br><span class="line">abstract class Human(var name:String) &#123;</span><br><span class="line">    abstract fun eat()</span><br><span class="line"></span><br><span class="line">    abstract fun pee()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;男人</span><br><span class="line">class Man(name: String) : Human(name) &#123;</span><br><span class="line">    override fun eat() &#123;</span><br><span class="line">        println(&quot;$&#123;name&#125;大口的吃饭,暴力&quot;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    override fun pee() &#123;</span><br><span class="line">        println(&quot;$&#123;name&#125;站着尿尿---&quot;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;女人</span><br><span class="line">class Woman(name: String) :Human(name) &#123;</span><br><span class="line">    override fun pee() &#123;</span><br><span class="line">        println(&quot;$&#123;name&#125;蹲着尿尿---&quot;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    override fun eat() &#123;</span><br><span class="line">        println(&quot;$&#123;name&#125;小口慢慢的吃饭，文雅&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;测试</span><br><span class="line">fun main(args: Array&lt;String&gt;) &#123;</span><br><span class="line">    var person1 &#x3D; Man(&quot;金三胖&quot;)</span><br><span class="line">    var person2 &#x3D; Woman(&quot;波多野结衣&quot;)</span><br><span class="line">    var person3 &#x3D; Woman(&quot;貂蝉&quot;)</span><br><span class="line">    var person4 &#x3D; Man(&quot;吕布&quot;)</span><br><span class="line"></span><br><span class="line">    var humanList &#x3D; listOf&lt;Human&gt;(person1,person2,person3,person4)</span><br><span class="line"></span><br><span class="line">    for (h in humanList)&#123;</span><br><span class="line">        h.name</span><br><span class="line">&#x2F;&#x2F;        h.eat()</span><br><span class="line">        h.pee()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="六、when的表达式："><a href="#六、when的表达式：" class="headerlink" title="六、when的表达式："></a>六、when的表达式：</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;考试成绩评级10分 9分A 8分B 7分C</span><br><span class="line"></span><br><span class="line">fun scoreMatch(score:Int):String&#123;</span><br><span class="line">	when(score)&#123;</span><br><span class="line">		10 -&gt; return &quot;恭喜你拿了满分S&quot;</span><br><span class="line">		9 -&gt; return &quot;恭喜你拿了A&quot;</span><br><span class="line">		8 -&gt; return &quot;恭喜你拿了B&quot;</span><br><span class="line">		7 -&gt; return &quot;你拿了C，还需更加努力&quot;</span><br><span class="line">		else -&gt; return &quot;对不起你被OUT啦！&quot;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun main(agrs:Array&lt;String&gt;)&#123;</span><br><span class="line">	println(scoreMatch(10))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="七、空值判断："><a href="#七、空值判断：" class="headerlink" title="七、空值判断："></a>七、空值判断：</h3><p>加上问好代表参数可以为空</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;接收一个参数，参数为非空的String类型   </span><br><span class="line">fun heat(str:String?):String&#123;</span><br><span class="line">	return &quot;热$&#123;str&#125;&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun main(agrs:Array&lt;String&gt;)&#123;</span><br><span class="line">	var result1 &#x3D; &quot;油&quot;</span><br><span class="line">	println(heat(result1))</span><br><span class="line">	</span><br><span class="line">	var result2 &#x3D; null</span><br><span class="line">	println(heat(result2))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="八、函数表达式"><a href="#八、函数表达式" class="headerlink" title="八、函数表达式"></a>八、函数表达式</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">fun main(args:Array&lt;String&gt;)&#123;</span><br><span class="line">	&#x2F;&#x2F;函数</span><br><span class="line">	var result &#x3D; add(3,4)</span><br><span class="line">	println(result)</span><br><span class="line">	</span><br><span class="line">	&#x2F;&#x2F;函数表达式</span><br><span class="line">	var i &#x3D; &#123;x:Int,y:Int -&gt; x+y&#125;</span><br><span class="line">	var result2 &#x3D; i(3,4)</span><br><span class="line">	var temp &#x3D; result2&#x3D;&#x3D;(7)</span><br><span class="line">	println(&quot;$&#123;temp&#125;&quot;)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun add(a:Int,b:Int):Int &#x3D; a+b</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="九、递归演示："><a href="#九、递归演示：" class="headerlink" title="九、递归演示："></a>九、递归演示：</h3><p><strong>BigInteger</strong>函数是Java数值运算大值时使用的属性，特殊的超级<strong>Int</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;演示一</span><br><span class="line">import java.math.BigInteger</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 递归演示</span><br><span class="line">&#x2F;&#x2F; 阶乘  5的阶乘：5*4*3*2*1</span><br><span class="line">fun main(args:Array&lt;String&gt;)&#123;</span><br><span class="line">	&#x2F;&#x2F;&#x2F;BigInteger是一个不可描述超大的数字</span><br><span class="line">	println(&quot;请输入数字：&quot;)</span><br><span class="line">	var a &#x3D; readLine()</span><br><span class="line">    try&#123;</span><br><span class="line">		var b:BigInteger &#x3D; a!!.toBigInteger()</span><br><span class="line">		&#x2F;&#x2F;阶乘</span><br><span class="line">		println(fact(b))</span><br><span class="line">	&#125;catch(e:Exception)&#123;</span><br><span class="line">		println(&quot;输入数字有误！！&quot;)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun fact(a:BigInteger):BigInteger&#123;</span><br><span class="line">	if(a&#x3D;&#x3D;BigInteger.ONE)</span><br><span class="line">	    return BigInteger.ONE</span><br><span class="line">	else</span><br><span class="line">		return a*fact(a-BigInteger.ONE)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>尾递归 <strong>tailrec</strong>修饰方法,譬如超过电脑运算周期范围的计算</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">fun main(args:Array&lt;String&gt;)&#123;</span><br><span class="line">	var a &#x3D; readLine()!!.toInt()</span><br><span class="line">	var num:Int &#x3D; 0</span><br><span class="line">	var result:Int &#x3D; 0</span><br><span class="line">	println(add(a,num,result))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;尾递归 tailrec修饰方法</span><br><span class="line">tailrec fun add(nuk:Int,nn:Int,result:Int):Int&#123;</span><br><span class="line">	var nns &#x3D; nn+1</span><br><span class="line">	var results &#x3D; result + nuk</span><br><span class="line">	println(&quot;计算机第$&#123;nns&#125;次运算,结果为：$&#123;results&#125;&quot;)</span><br><span class="line">	if(nuk&#x3D;&#x3D;1)</span><br><span class="line">		return results</span><br><span class="line">	else</span><br><span class="line">		</span><br><span class="line">		return add(nuk-1,nns,results)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="十、List和Map"><a href="#十、List和Map" class="headerlink" title="十、List和Map"></a>十、List和Map</h3><p>List演示：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> fun main(args:Array&lt;String&gt;)&#123;</span><br><span class="line">	 var lists &#x3D; listOf(&quot;买鸡蛋&quot;,&quot;买可乐&quot;,&quot;买猪肉&quot;,&quot;买大米&quot;)</span><br><span class="line">	 </span><br><span class="line">	 for(a in lists)&#123;</span><br><span class="line">		 println(a)</span><br><span class="line">		&#125;</span><br><span class="line">	 </span><br><span class="line">	 for((i,e) in lists.withIndex())</span><br><span class="line">		 println(&quot;$i,$e&quot;)</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Map演示：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import java.util.TreeMap</span><br><span class="line"></span><br><span class="line">fun main(args:Array&lt;String&gt;)&#123;</span><br><span class="line">	&#x2F;&#x2F;TreeMap 同一key的value不能重复存在</span><br><span class="line">	var map &#x3D; TreeMap&lt;String,String&gt;()</span><br><span class="line">	var list &#x3D; listOf(&quot;好&quot;,&quot;好&quot;,&quot;学习&quot;,&quot;天&quot;,&quot;天&quot;,&quot;向上&quot;)</span><br><span class="line">	</span><br><span class="line">	map[&quot;好&quot;] &#x3D; &quot;Good&quot;</span><br><span class="line">	map[&quot;学习&quot;] &#x3D; &quot;Study&quot;</span><br><span class="line">	map[&quot;天&quot;]  &#x3D; &quot;Day&quot;</span><br><span class="line">	map[&quot;向上&quot;]  &#x3D; &quot;Up&quot;</span><br><span class="line">	</span><br><span class="line">	for(a in list)&#123;</span><br><span class="line">		print(&quot;$&#123;map[a]&#125;  &quot;)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="十一、人机交互"><a href="#十一、人机交互" class="headerlink" title="十一、人机交互"></a>十一、人机交互</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">fun main(args:Array&lt;String&gt;)&#123;</span><br><span class="line">	println(&quot;请输入第一个数字：&quot;)</span><br><span class="line">	var c &#x3D; readLine()</span><br><span class="line">	println(&quot;请输入第二个数字：&quot;)</span><br><span class="line">	var d &#x3D; readLine()</span><br><span class="line">	</span><br><span class="line">	try&#123;</span><br><span class="line">		var a &#x3D; c!!.toInt()</span><br><span class="line">	    var b &#x3D; d!!.toInt()</span><br><span class="line">		println(&quot;$&#123;a&#125; + $&#123;b&#125; &#x3D; $&#123;a + b&#125;&quot;)</span><br><span class="line">	&#125;catch(e:Exception)&#123;</span><br><span class="line">		println(&quot;输入数据有误！，请重新输入&quot;)</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>**!!.**确保不为空<br>**?.**可为空</p>
-]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>kotlin</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Kotlin中可变参数</title>
     <url>/2021/04/26/Kotlin%E4%B8%AD%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0/</url>
     <content><![CDATA[<p><a href="https://www.jianshu.com/p/174c0e254713">原文简书</a></p>
@@ -1515,6 +1466,55 @@ Connection conn = null;
       </categories>
       <tags>
         <tag>Kotlin基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Kotlin基础入门学习笔记</title>
+    <url>/2019/12/03/Kotlin%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>若不留下点啥笔记，感觉对不住自己一个星期半的学习加复习。</p>
+<h3 id="一、如何实现单列模式？"><a href="#一、如何实现单列模式？" class="headerlink" title="一、如何实现单列模式？"></a>一、如何实现单列模式？</h3><p>使用关键字 <strong>object</strong> 修饰的类,替换掉class关键字，便会在整套程序中生成一个且是唯一的对象实例。<br>譬如如下代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">object BigHeadSon:IWash &#123;</span><br><span class="line">    override fun wash() &#123;</span><br><span class="line">        println(&quot;大头儿子洗完收费1元钱&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>那样之后该类的实例变量整个项目中有且只有一个。</p>
+<span id="more"></span>
+<hr>
+<h3 id="二、如何实现枚举？"><a href="#二、如何实现枚举？" class="headerlink" title="二、如何实现枚举？"></a>二、如何实现枚举？</h3><p>实现枚举的代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">enum class Week &#123;</span><br><span class="line">    星期一, 星期二, 星期三, 星期四, 星期五, 星期六, 星期日</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun main(args: Array&lt;String&gt;) &#123;</span><br><span class="line">    println(Week.星期一.ordinal)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用关键字 enum 修饰类</p>
+<hr>
+<h3 id="三、如何实现印章类？"><a href="#三、如何实现印章类？" class="headerlink" title="三、如何实现印章类？"></a>三、如何实现印章类？</h3><p>举个例子一匹母驴、一屁公马和一匹公驴一碗酒后乱性，过了几天母驴怀孕了，不只是公马的还是公驴的。那么问题来了马和驴的后代是骡子，母驴和公驴的后代当然还是驴。<br>就像盖了章一样，使用<strong>sealed</strong>关键字修饰类,可以指定子类和个数。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 印章sealed类</span><br><span class="line">&#x2F;&#x2F;指定子类种类和个数</span><br><span class="line"></span><br><span class="line">sealed class Son &#123;</span><br><span class="line">    fun sayHello()&#123;</span><br><span class="line">        println(&quot;大家好！！！&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">    class smallBlackMule():Son()</span><br><span class="line"></span><br><span class="line">    class smallDonkey():Son()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun main(args: Array&lt;String&gt;) &#123;</span><br><span class="line">    var s1: Son &#x3D; Son.smallBlackMule()</span><br><span class="line"></span><br><span class="line">    var s2: Son &#x3D; Son.smallBlackMule()</span><br><span class="line"></span><br><span class="line">    var s3 &#x3D; Son.smallDonkey()</span><br><span class="line"></span><br><span class="line">    var list &#x3D; listOf&lt;Son&gt;( s1, s2, s3 )</span><br><span class="line"></span><br><span class="line">    for ( h in list)&#123;</span><br><span class="line">        if(h is Son.smallDonkey) &#123;</span><br><span class="line">            h.sayHello()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="四、如是实现委托和代理？"><a href="#四、如是实现委托和代理？" class="headerlink" title="四、如是实现委托和代理？"></a>四、如是实现委托和代理？</h3><p>利用关键字 <strong>by</strong> 实现，示例代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class SmallHeadFather : IWash by BigHeadSon() &#123;</span><br><span class="line">    override fun wash() &#123;</span><br><span class="line">        println(&quot;小头爸爸洗完收费10块钱！！！&quot;)</span><br><span class="line">        BigHeadSon().wash()</span><br><span class="line">        println(&quot;小头爸爸看见儿子把碗洗好了&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="五、如何实现多态和继承？"><a href="#五、如何实现多态和继承？" class="headerlink" title="五、如何实现多态和继承？"></a>五、如何实现多态和继承？</h3><p>kotlin是面向对象的语言，子类可以继承父类的方法和属性。<br><strong>抽象类</strong>：如父类，同一类具有同样基本属性和方法的类事物的描述，事物的本质描述。<br><strong>接口</strong>：指具有同样基本属性和方法的能力，事物的能力描述。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;抽象类</span><br><span class="line">abstract class Human(var name:String) &#123;</span><br><span class="line">    abstract fun eat()</span><br><span class="line"></span><br><span class="line">    abstract fun pee()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;男人</span><br><span class="line">class Man(name: String) : Human(name) &#123;</span><br><span class="line">    override fun eat() &#123;</span><br><span class="line">        println(&quot;$&#123;name&#125;大口的吃饭,暴力&quot;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    override fun pee() &#123;</span><br><span class="line">        println(&quot;$&#123;name&#125;站着尿尿---&quot;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;女人</span><br><span class="line">class Woman(name: String) :Human(name) &#123;</span><br><span class="line">    override fun pee() &#123;</span><br><span class="line">        println(&quot;$&#123;name&#125;蹲着尿尿---&quot;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    override fun eat() &#123;</span><br><span class="line">        println(&quot;$&#123;name&#125;小口慢慢的吃饭，文雅&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;测试</span><br><span class="line">fun main(args: Array&lt;String&gt;) &#123;</span><br><span class="line">    var person1 &#x3D; Man(&quot;金三胖&quot;)</span><br><span class="line">    var person2 &#x3D; Woman(&quot;波多野结衣&quot;)</span><br><span class="line">    var person3 &#x3D; Woman(&quot;貂蝉&quot;)</span><br><span class="line">    var person4 &#x3D; Man(&quot;吕布&quot;)</span><br><span class="line"></span><br><span class="line">    var humanList &#x3D; listOf&lt;Human&gt;(person1,person2,person3,person4)</span><br><span class="line"></span><br><span class="line">    for (h in humanList)&#123;</span><br><span class="line">        h.name</span><br><span class="line">&#x2F;&#x2F;        h.eat()</span><br><span class="line">        h.pee()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="六、when的表达式："><a href="#六、when的表达式：" class="headerlink" title="六、when的表达式："></a>六、when的表达式：</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;考试成绩评级10分 9分A 8分B 7分C</span><br><span class="line"></span><br><span class="line">fun scoreMatch(score:Int):String&#123;</span><br><span class="line">	when(score)&#123;</span><br><span class="line">		10 -&gt; return &quot;恭喜你拿了满分S&quot;</span><br><span class="line">		9 -&gt; return &quot;恭喜你拿了A&quot;</span><br><span class="line">		8 -&gt; return &quot;恭喜你拿了B&quot;</span><br><span class="line">		7 -&gt; return &quot;你拿了C，还需更加努力&quot;</span><br><span class="line">		else -&gt; return &quot;对不起你被OUT啦！&quot;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun main(agrs:Array&lt;String&gt;)&#123;</span><br><span class="line">	println(scoreMatch(10))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="七、空值判断："><a href="#七、空值判断：" class="headerlink" title="七、空值判断："></a>七、空值判断：</h3><p>加上问好代表参数可以为空</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;接收一个参数，参数为非空的String类型   </span><br><span class="line">fun heat(str:String?):String&#123;</span><br><span class="line">	return &quot;热$&#123;str&#125;&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun main(agrs:Array&lt;String&gt;)&#123;</span><br><span class="line">	var result1 &#x3D; &quot;油&quot;</span><br><span class="line">	println(heat(result1))</span><br><span class="line">	</span><br><span class="line">	var result2 &#x3D; null</span><br><span class="line">	println(heat(result2))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="八、函数表达式"><a href="#八、函数表达式" class="headerlink" title="八、函数表达式"></a>八、函数表达式</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">fun main(args:Array&lt;String&gt;)&#123;</span><br><span class="line">	&#x2F;&#x2F;函数</span><br><span class="line">	var result &#x3D; add(3,4)</span><br><span class="line">	println(result)</span><br><span class="line">	</span><br><span class="line">	&#x2F;&#x2F;函数表达式</span><br><span class="line">	var i &#x3D; &#123;x:Int,y:Int -&gt; x+y&#125;</span><br><span class="line">	var result2 &#x3D; i(3,4)</span><br><span class="line">	var temp &#x3D; result2&#x3D;&#x3D;(7)</span><br><span class="line">	println(&quot;$&#123;temp&#125;&quot;)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun add(a:Int,b:Int):Int &#x3D; a+b</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="九、递归演示："><a href="#九、递归演示：" class="headerlink" title="九、递归演示："></a>九、递归演示：</h3><p><strong>BigInteger</strong>函数是Java数值运算大值时使用的属性，特殊的超级<strong>Int</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;演示一</span><br><span class="line">import java.math.BigInteger</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 递归演示</span><br><span class="line">&#x2F;&#x2F; 阶乘  5的阶乘：5*4*3*2*1</span><br><span class="line">fun main(args:Array&lt;String&gt;)&#123;</span><br><span class="line">	&#x2F;&#x2F;&#x2F;BigInteger是一个不可描述超大的数字</span><br><span class="line">	println(&quot;请输入数字：&quot;)</span><br><span class="line">	var a &#x3D; readLine()</span><br><span class="line">    try&#123;</span><br><span class="line">		var b:BigInteger &#x3D; a!!.toBigInteger()</span><br><span class="line">		&#x2F;&#x2F;阶乘</span><br><span class="line">		println(fact(b))</span><br><span class="line">	&#125;catch(e:Exception)&#123;</span><br><span class="line">		println(&quot;输入数字有误！！&quot;)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun fact(a:BigInteger):BigInteger&#123;</span><br><span class="line">	if(a&#x3D;&#x3D;BigInteger.ONE)</span><br><span class="line">	    return BigInteger.ONE</span><br><span class="line">	else</span><br><span class="line">		return a*fact(a-BigInteger.ONE)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>尾递归 <strong>tailrec</strong>修饰方法,譬如超过电脑运算周期范围的计算</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">fun main(args:Array&lt;String&gt;)&#123;</span><br><span class="line">	var a &#x3D; readLine()!!.toInt()</span><br><span class="line">	var num:Int &#x3D; 0</span><br><span class="line">	var result:Int &#x3D; 0</span><br><span class="line">	println(add(a,num,result))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;尾递归 tailrec修饰方法</span><br><span class="line">tailrec fun add(nuk:Int,nn:Int,result:Int):Int&#123;</span><br><span class="line">	var nns &#x3D; nn+1</span><br><span class="line">	var results &#x3D; result + nuk</span><br><span class="line">	println(&quot;计算机第$&#123;nns&#125;次运算,结果为：$&#123;results&#125;&quot;)</span><br><span class="line">	if(nuk&#x3D;&#x3D;1)</span><br><span class="line">		return results</span><br><span class="line">	else</span><br><span class="line">		</span><br><span class="line">		return add(nuk-1,nns,results)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="十、List和Map"><a href="#十、List和Map" class="headerlink" title="十、List和Map"></a>十、List和Map</h3><p>List演示：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> fun main(args:Array&lt;String&gt;)&#123;</span><br><span class="line">	 var lists &#x3D; listOf(&quot;买鸡蛋&quot;,&quot;买可乐&quot;,&quot;买猪肉&quot;,&quot;买大米&quot;)</span><br><span class="line">	 </span><br><span class="line">	 for(a in lists)&#123;</span><br><span class="line">		 println(a)</span><br><span class="line">		&#125;</span><br><span class="line">	 </span><br><span class="line">	 for((i,e) in lists.withIndex())</span><br><span class="line">		 println(&quot;$i,$e&quot;)</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Map演示：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import java.util.TreeMap</span><br><span class="line"></span><br><span class="line">fun main(args:Array&lt;String&gt;)&#123;</span><br><span class="line">	&#x2F;&#x2F;TreeMap 同一key的value不能重复存在</span><br><span class="line">	var map &#x3D; TreeMap&lt;String,String&gt;()</span><br><span class="line">	var list &#x3D; listOf(&quot;好&quot;,&quot;好&quot;,&quot;学习&quot;,&quot;天&quot;,&quot;天&quot;,&quot;向上&quot;)</span><br><span class="line">	</span><br><span class="line">	map[&quot;好&quot;] &#x3D; &quot;Good&quot;</span><br><span class="line">	map[&quot;学习&quot;] &#x3D; &quot;Study&quot;</span><br><span class="line">	map[&quot;天&quot;]  &#x3D; &quot;Day&quot;</span><br><span class="line">	map[&quot;向上&quot;]  &#x3D; &quot;Up&quot;</span><br><span class="line">	</span><br><span class="line">	for(a in list)&#123;</span><br><span class="line">		print(&quot;$&#123;map[a]&#125;  &quot;)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="十一、人机交互"><a href="#十一、人机交互" class="headerlink" title="十一、人机交互"></a>十一、人机交互</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">fun main(args:Array&lt;String&gt;)&#123;</span><br><span class="line">	println(&quot;请输入第一个数字：&quot;)</span><br><span class="line">	var c &#x3D; readLine()</span><br><span class="line">	println(&quot;请输入第二个数字：&quot;)</span><br><span class="line">	var d &#x3D; readLine()</span><br><span class="line">	</span><br><span class="line">	try&#123;</span><br><span class="line">		var a &#x3D; c!!.toInt()</span><br><span class="line">	    var b &#x3D; d!!.toInt()</span><br><span class="line">		println(&quot;$&#123;a&#125; + $&#123;b&#125; &#x3D; $&#123;a + b&#125;&quot;)</span><br><span class="line">	&#125;catch(e:Exception)&#123;</span><br><span class="line">		println(&quot;输入数据有误！，请重新输入&quot;)</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>**!!.**确保不为空<br>**?.**可为空</p>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>kotlin</tag>
       </tags>
   </entry>
   <entry>
@@ -1593,6 +1593,40 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
+    <title>MAC使用APKTool反编译apk修改版本号后重新打包</title>
+    <url>/2021/04/14/MAC%E4%BD%BF%E7%94%A8APKTool%E5%8F%8D%E7%BC%96%E8%AF%91apk%E4%BF%AE%E6%94%B9%E7%89%88%E6%9C%AC%E5%8F%B7%E5%90%8E%E9%87%8D%E6%96%B0%E6%89%93%E5%8C%85/</url>
+    <content><![CDATA[<p>现在业务上出现客户要求如若生产环境出现紧急事件，需要版本回退的情况下，我这边的代码又没做版本分之处理，那么只能更改之前的版本号来实现。<br><a href="https://blog.csdn.net/weixin_40998254/article/details/110474885">不敢夺他人之功，原文在此处</a></p>
+<p><a href="https://markchyl.cn/2020/12/14/android%E5%8F%8D%E7%BC%96%E8%AF%91apktool-dex2jar-jdgui/">我之前的文章：android反编译apktool—dex2jar—jdgui</a></p>
+<h3 id="一、反编译apk并修改版本号"><a href="#一、反编译apk并修改版本号" class="headerlink" title="一、反编译apk并修改版本号"></a>一、反编译apk并修改版本号</h3><p>在apk所在目录控制台输入下面指令，即可将文件名为source的apk反编译到outDir目录</p>
+<ul>
+<li>开始反编译apk<code>apktool d -o outDir source.apk</code><br>或者<br><code>apktool d source.apk -o outDir</code></li>
+</ul>
+<h3 id="二、修改版本号"><a href="#二、修改版本号" class="headerlink" title="二、修改版本号"></a>二、修改版本号</h3><p>打开输入目录outDir找到apktool.yml文件，编辑修改versionCode</p>
+<h3 id="三、重新打包"><a href="#三、重新打包" class="headerlink" title="三、重新打包"></a>三、重新打包</h3><p>通过以下命令就可以将目录outDir中的文件重新打包为no_sign_result.apk</p>
+<ul>
+<li><code>apktool b -o no_sign_result.apk outDir</code></li>
+</ul>
+<p>或者</p>
+<ul>
+<li><code>apktool b outDir -o  no_sign_result.apk </code></li>
+</ul>
+<h3 id="四、重新签名"><a href="#四、重新签名" class="headerlink" title="四、重新签名"></a>四、重新签名</h3><p>使用如下命令进行签名<br><code>jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore demostore.jks -signedjar result-signed.apk no_sign_result.apk yourkey</code><br>注：</p>
+<ul>
+<li>demostore.jks为签名文件</li>
+<li>no_sign_result.apk为要签名的源文件</li>
+<li>result-signed.apk为签名后的目标文件</li>
+<li>yourkey为签名的key</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>反编译</tag>
+        <tag>工具搭建</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>MAC搭建基于RTMP的本地Nginx服务器</title>
     <url>/2018/12/17/MAC%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8ERTMP%E7%9A%84%E6%9C%AC%E5%9C%B0Nginx%E6%9C%8D%E5%8A%A1%E5%99%A8/</url>
     <content><![CDATA[<h3 id="MAC搭建基于RTMP的本地Nginx服务器，实现电脑上视频推流。"><a href="#MAC搭建基于RTMP的本地Nginx服务器，实现电脑上视频推流。" class="headerlink" title="MAC搭建基于RTMP的本地Nginx服务器，实现电脑上视频推流。"></a>MAC搭建基于RTMP的本地Nginx服务器，实现电脑上视频推流。</h3><h1 id="1、先安装homeView"><a href="#1、先安装homeView" class="headerlink" title="1、先安装homeView"></a>1、先安装homeView</h1><span id="more"></span>
@@ -1631,46 +1665,10 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
-    <title>MAC使用APKTool反编译apk修改版本号后重新打包</title>
-    <url>/2021/04/14/MAC%E4%BD%BF%E7%94%A8APKTool%E5%8F%8D%E7%BC%96%E8%AF%91apk%E4%BF%AE%E6%94%B9%E7%89%88%E6%9C%AC%E5%8F%B7%E5%90%8E%E9%87%8D%E6%96%B0%E6%89%93%E5%8C%85/</url>
-    <content><![CDATA[<p>现在业务上出现客户要求如若生产环境出现紧急事件，需要版本回退的情况下，我这边的代码又没做版本分之处理，那么只能更改之前的版本号来实现。<br><a href="https://blog.csdn.net/weixin_40998254/article/details/110474885">不敢夺他人之功，原文在此处</a></p>
-<p><a href="https://markchyl.cn/2020/12/14/android%E5%8F%8D%E7%BC%96%E8%AF%91apktool-dex2jar-jdgui/">我之前的文章：android反编译apktool—dex2jar—jdgui</a></p>
-<h3 id="一、反编译apk并修改版本号"><a href="#一、反编译apk并修改版本号" class="headerlink" title="一、反编译apk并修改版本号"></a>一、反编译apk并修改版本号</h3><p>在apk所在目录控制台输入下面指令，即可将文件名为source的apk反编译到outDir目录</p>
-<ul>
-<li>开始反编译apk<code>apktool d -o outDir source.apk</code><br>或者<br><code>apktool d source.apk -o outDir</code></li>
-</ul>
-<h3 id="二、修改版本号"><a href="#二、修改版本号" class="headerlink" title="二、修改版本号"></a>二、修改版本号</h3><p>打开输入目录outDir找到apktool.yml文件，编辑修改versionCode</p>
-<h3 id="三、重新打包"><a href="#三、重新打包" class="headerlink" title="三、重新打包"></a>三、重新打包</h3><p>通过以下命令就可以将目录outDir中的文件重新打包为no_sign_result.apk</p>
-<ul>
-<li><code>apktool b -o no_sign_result.apk outDir</code></li>
-</ul>
-<p>或者</p>
-<ul>
-<li><code>apktool b outDir -o  no_sign_result.apk </code></li>
-</ul>
-<h3 id="四、重新签名"><a href="#四、重新签名" class="headerlink" title="四、重新签名"></a>四、重新签名</h3><p>使用如下命令进行签名<br><code>jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore demostore.jks -signedjar result-signed.apk no_sign_result.apk yourkey</code><br>注：</p>
-<ul>
-<li>demostore.jks为签名文件</li>
-<li>no_sign_result.apk为要签名的源文件</li>
-<li>result-signed.apk为签名后的目标文件</li>
-<li>yourkey为签名的key</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>反编译</tag>
-        <tag>工具搭建</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Mac 电脑如何卸载 node和npm</title>
-    <url>/2020/08/25/Mac-%E7%94%B5%E8%84%91%E5%A6%82%E4%BD%95%E5%8D%B8%E8%BD%BD-node%E5%92%8Cnpm/</url>
-    <content><![CDATA[<p>记录下我自己重新安装npm，因为npm是和node.js安装一起的，也就是说是重新弄<em>node</em></p>
-<span id="more"></span>
-<h3 id="一、在终端依次输入以下命令"><a href="#一、在终端依次输入以下命令" class="headerlink" title="一、在终端依次输入以下命令"></a>一、在终端依次输入以下命令</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo npm uninstall npm -g</span><br><span class="line">sudo rm -rf &#x2F;usr&#x2F;local&#x2F;lib&#x2F;node &#x2F;usr&#x2F;local&#x2F;lib&#x2F;node_modules &#x2F;var&#x2F;db&#x2F;receipts&#x2F;org.nodejs.*</span><br><span class="line">sudo rm -rf &#x2F;usr&#x2F;local&#x2F;include&#x2F;node &#x2F;Users&#x2F;$USER&#x2F;.npm</span><br><span class="line">sudo rm &#x2F;usr&#x2F;local&#x2F;bin&#x2F;node</span><br><span class="line">sudo rm &#x2F;usr&#x2F;local&#x2F;share&#x2F;man&#x2F;man1&#x2F;node.1</span><br></pre></td></tr></table></figure>
-<h3 id="二"><a href="#二" class="headerlink" title="二"></a>二</h3><p>输入 npm -v 和node -v 验证是否卸载成功。</p>
+    <title>Mac 每次都要执行source ~/.bash_profile 配置的环境变量才生效</title>
+    <url>/2020/07/28/Mac-%E6%AF%8F%E6%AC%A1%E9%83%BD%E8%A6%81%E6%89%A7%E8%A1%8Csource-bash-profile-%E9%85%8D%E7%BD%AE%E7%9A%84%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E6%89%8D%E7%94%9F%E6%95%88/</url>
+    <content><![CDATA[<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>遇到一个问题，前段时间由于系统升级之后，做了一下用户群组的改动，在开发的时候发现之前在<br><code>.bash_profile</code>中设置的环境变量都不见了，还只能在终端中执行一次<code>source .bash_profile</code>,环境变量才能生效。</p>
+<h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><p>在系统根目录下，在~/.zshrc文件最后，增加一行：<br>source ~/.bash_profile</p>
 ]]></content>
       <categories>
         <category>工具使用</category>
@@ -1680,10 +1678,12 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
-    <title>Mac 每次都要执行source ~/.bash_profile 配置的环境变量才生效</title>
-    <url>/2020/07/28/Mac-%E6%AF%8F%E6%AC%A1%E9%83%BD%E8%A6%81%E6%89%A7%E8%A1%8Csource-bash-profile-%E9%85%8D%E7%BD%AE%E7%9A%84%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E6%89%8D%E7%94%9F%E6%95%88/</url>
-    <content><![CDATA[<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>遇到一个问题，前段时间由于系统升级之后，做了一下用户群组的改动，在开发的时候发现之前在<br><code>.bash_profile</code>中设置的环境变量都不见了，还只能在终端中执行一次<code>source .bash_profile</code>,环境变量才能生效。</p>
-<h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><p>在系统根目录下，在~/.zshrc文件最后，增加一行：<br>source ~/.bash_profile</p>
+    <title>Mac 电脑如何卸载 node和npm</title>
+    <url>/2020/08/25/Mac-%E7%94%B5%E8%84%91%E5%A6%82%E4%BD%95%E5%8D%B8%E8%BD%BD-node%E5%92%8Cnpm/</url>
+    <content><![CDATA[<p>记录下我自己重新安装npm，因为npm是和node.js安装一起的，也就是说是重新弄<em>node</em></p>
+<span id="more"></span>
+<h3 id="一、在终端依次输入以下命令"><a href="#一、在终端依次输入以下命令" class="headerlink" title="一、在终端依次输入以下命令"></a>一、在终端依次输入以下命令</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo npm uninstall npm -g</span><br><span class="line">sudo rm -rf &#x2F;usr&#x2F;local&#x2F;lib&#x2F;node &#x2F;usr&#x2F;local&#x2F;lib&#x2F;node_modules &#x2F;var&#x2F;db&#x2F;receipts&#x2F;org.nodejs.*</span><br><span class="line">sudo rm -rf &#x2F;usr&#x2F;local&#x2F;include&#x2F;node &#x2F;Users&#x2F;$USER&#x2F;.npm</span><br><span class="line">sudo rm &#x2F;usr&#x2F;local&#x2F;bin&#x2F;node</span><br><span class="line">sudo rm &#x2F;usr&#x2F;local&#x2F;share&#x2F;man&#x2F;man1&#x2F;node.1</span><br></pre></td></tr></table></figure>
+<h3 id="二"><a href="#二" class="headerlink" title="二"></a>二</h3><p>输入 npm -v 和node -v 验证是否卸载成功。</p>
 ]]></content>
       <categories>
         <category>工具使用</category>
@@ -1735,34 +1735,6 @@ Connection conn = null;
       <tags>
         <tag>反编译</tag>
         <tag>工具搭建</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Mac电脑maven安装与配置</title>
-    <url>/2021/05/13/Mac%E7%94%B5%E8%84%91maven%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<p><a href="https://www.cnblogs.com/zdz8207/p/mac-java-maven.html">原文地址：大自然的流风</a></p>
-<hr>
-<h3 id="Mac电脑maven安装与配置"><a href="#Mac电脑maven安装与配置" class="headerlink" title="Mac电脑maven安装与配置"></a>Mac电脑maven安装与配置</h3><ol>
-<li><p>下载：<a href="http://maven.apache.org/download.cgi">http://maven.apache.org/download.cgi</a></p>
-</li>
-<li><p>安装：解压下载好的maven的文件，解压到你想要的文件夹下。</p>
-</li>
-<li><p>配置：打开终端输入命令 sudo vim ~/.bash_profile （编辑环境变量配置文件）</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export MAVEN_HOME&#x3D;maven文件夹路径</span><br><span class="line">export PATH&#x3D;$PATH:$MAVEN_HOME&#x2F;bin</span><br></pre></td></tr></table></figure>
-<p><strong>小技巧</strong></p>
-<blockquote>
-<p>复制文件夹路径方法：点击文件夹，然后使用组合快捷键：command + option + c 就会把路径复制到粘贴板了。<br>或者把文件夹拖放到控制台也可以显示出来<br>让mac文件夹显示文件夹和文件路径，执行命令：defaults write com.apple.finder _FXShowPosixPathInTitle -bool YES</p>
-</blockquote>
-</li>
-<li><p><code>:wq</code>退出并保存当前文件,<code>source .bash_profile</code>，按下Enter键使bash_profile生效。<br><code>mvn -v</code>查看是否成功</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@Markxiansheng ~ % mvn -v</span><br><span class="line">Apache Maven 3.8.1 (05c21c65bdfed0f71a2f2ada8b84da59348c4c5d)</span><br><span class="line">Maven home: &#x2F;Users&#x2F;mark&#x2F;Library&#x2F;maven&#x2F;apache-maven-3.8.1</span><br><span class="line">Java version: 11.0.11, vendor: Amazon.com Inc., runtime: &#x2F;Users&#x2F;mark&#x2F;Library&#x2F;Java&#x2F;JavaVirtualMachines&#x2F;corretto-11.0.11&#x2F;Contents&#x2F;Home</span><br><span class="line">Default locale: zh_CN_#Hans, platform encoding: UTF-8</span><br><span class="line">OS name: &quot;mac os x&quot;, version: &quot;10.15.7&quot;, arch: &quot;x86_64&quot;, family: &quot;mac&quot;</span><br></pre></td></tr></table></figure></li>
-</ol>
-]]></content>
-      <categories>
-        <category>环境配置</category>
-      </categories>
-      <tags>
-        <tag>Maven</tag>
       </tags>
   </entry>
   <entry>
@@ -1840,6 +1812,58 @@ Connection conn = null;
       <tags>
         <tag>环境搭建</tag>
         <tag>Oracle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Mac电脑maven安装与配置</title>
+    <url>/2021/05/13/Mac%E7%94%B5%E8%84%91maven%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<p><a href="https://www.cnblogs.com/zdz8207/p/mac-java-maven.html">原文地址：大自然的流风</a></p>
+<hr>
+<h3 id="Mac电脑maven安装与配置"><a href="#Mac电脑maven安装与配置" class="headerlink" title="Mac电脑maven安装与配置"></a>Mac电脑maven安装与配置</h3><ol>
+<li><p>下载：<a href="http://maven.apache.org/download.cgi">http://maven.apache.org/download.cgi</a></p>
+</li>
+<li><p>安装：解压下载好的maven的文件，解压到你想要的文件夹下。</p>
+</li>
+<li><p>配置：打开终端输入命令 sudo vim ~/.bash_profile （编辑环境变量配置文件）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export MAVEN_HOME&#x3D;maven文件夹路径</span><br><span class="line">export PATH&#x3D;$PATH:$MAVEN_HOME&#x2F;bin</span><br></pre></td></tr></table></figure>
+<p><strong>小技巧</strong></p>
+<blockquote>
+<p>复制文件夹路径方法：点击文件夹，然后使用组合快捷键：command + option + c 就会把路径复制到粘贴板了。<br>或者把文件夹拖放到控制台也可以显示出来<br>让mac文件夹显示文件夹和文件路径，执行命令：defaults write com.apple.finder _FXShowPosixPathInTitle -bool YES</p>
+</blockquote>
+</li>
+<li><p><code>:wq</code>退出并保存当前文件,<code>source .bash_profile</code>，按下Enter键使bash_profile生效。<br><code>mvn -v</code>查看是否成功</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@Markxiansheng ~ % mvn -v</span><br><span class="line">Apache Maven 3.8.1 (05c21c65bdfed0f71a2f2ada8b84da59348c4c5d)</span><br><span class="line">Maven home: &#x2F;Users&#x2F;mark&#x2F;Library&#x2F;maven&#x2F;apache-maven-3.8.1</span><br><span class="line">Java version: 11.0.11, vendor: Amazon.com Inc., runtime: &#x2F;Users&#x2F;mark&#x2F;Library&#x2F;Java&#x2F;JavaVirtualMachines&#x2F;corretto-11.0.11&#x2F;Contents&#x2F;Home</span><br><span class="line">Default locale: zh_CN_#Hans, platform encoding: UTF-8</span><br><span class="line">OS name: &quot;mac os x&quot;, version: &quot;10.15.7&quot;, arch: &quot;x86_64&quot;, family: &quot;mac&quot;</span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+      <categories>
+        <category>环境配置</category>
+      </categories>
+      <tags>
+        <tag>Maven</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Mac连接京瓷打印机Fs-1030MFP/DP</title>
+    <url>/2021/05/13/Mac%E8%BF%9E%E6%8E%A5%E4%BA%AC%E7%93%B7%E6%89%93%E5%8D%B0%E6%9C%BAFs-1030MFP-DP/</url>
+    <content><![CDATA[<pre class="mermaid">graph TB
+    A0[进入系统偏好设置] --> B0[打印机与扫描仪] --> C0[添加打印机] -->  D0[选择IP]
+    D0[选择IP]  --> E0[ 输入IP地址,协议选择行式打印机监控程序-LPD,使用那选择普通PCL打印机,然后系统会自动添加打印机驱动]  --> F0[OK开始打印吧]</pre>
+<ol>
+<li>进入系统偏好设置。</li>
+<li>打印机与扫描仪</li>
+<li>添加打印机</li>
+<li>选择IP</li>
+<li>输入IP地址，协议选择“行式打印机监控程序-LPD”，使用那选择“普通PCL打印机”，然后系统会自动添加打印机驱动。</li>
+<li>OK开始打印吧</li>
+</ol>
+<hr>
+<p>就是这么简单</p>
+]]></content>
+      <categories>
+        <category>工具使用</category>
+      </categories>
+      <tags>
+        <tag>工具搭建</tag>
       </tags>
   </entry>
   <entry>
@@ -1947,30 +1971,6 @@ Connection conn = null;
       </categories>
       <tags>
         <tag>工具使用</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Mac连接京瓷打印机Fs-1030MFP/DP</title>
-    <url>/2021/05/13/Mac%E8%BF%9E%E6%8E%A5%E4%BA%AC%E7%93%B7%E6%89%93%E5%8D%B0%E6%9C%BAFs-1030MFP-DP/</url>
-    <content><![CDATA[<pre class="mermaid">graph TB
-    A0[进入系统偏好设置] --> B0[打印机与扫描仪] --> C0[添加打印机] -->  D0[选择IP]
-    D0[选择IP]  --> E0[ 输入IP地址,协议选择行式打印机监控程序-LPD,使用那选择普通PCL打印机,然后系统会自动添加打印机驱动]  --> F0[OK开始打印吧]</pre>
-<ol>
-<li>进入系统偏好设置。</li>
-<li>打印机与扫描仪</li>
-<li>添加打印机</li>
-<li>选择IP</li>
-<li>输入IP地址，协议选择“行式打印机监控程序-LPD”，使用那选择“普通PCL打印机”，然后系统会自动添加打印机驱动。</li>
-<li>OK开始打印吧</li>
-</ol>
-<hr>
-<p>就是这么简单</p>
-]]></content>
-      <categories>
-        <category>工具使用</category>
-      </categories>
-      <tags>
-        <tag>工具搭建</tag>
       </tags>
   </entry>
   <entry>
@@ -2184,7 +2184,7 @@ Connection conn = null;
 <p>2.添加SSH Key到Github<br>进入github首页在设置洁面<br><img src="https://images2017.cnblogs.com/blog/1250458/201710/1250458-20171017153636849-294935886.png"></p>
 <hr>
 <h4 id="添加SSH-Key"><a href="#添加SSH-Key" class="headerlink" title="添加SSH Key"></a>添加SSH Key</h4><p><img src="https://images2017.cnblogs.com/blog/1250458/201710/1250458-20171017153642521-647884655.png"><br>找到系统当前用户目录下(开启查看隐藏文件) C:\Users\用户名\ .ssh id_rsa.pub文件以文本方式打开。打开之后全部复制到key中<br><img src="https://images2017.cnblogs.com/blog/1250458/201710/1250458-20171017153648631-441574444.png"><br>到了这就可以测试一下是否成功了:</p>
-<p>ssh -T <a href="mailto:&#x67;&#x69;&#116;&#64;&#103;&#105;&#116;&#x68;&#x75;&#98;&#x2e;&#99;&#x6f;&#109;">&#x67;&#x69;&#116;&#64;&#103;&#105;&#116;&#x68;&#x75;&#98;&#x2e;&#99;&#x6f;&#109;</a><br>#之后会要你输入yes/no,输入yes就好了。<br>设置你的账号信息:</p>
+<p>ssh -T <a href="mailto:&#x67;&#105;&#116;&#64;&#x67;&#x69;&#116;&#x68;&#117;&#98;&#x2e;&#x63;&#x6f;&#x6d;">&#x67;&#105;&#116;&#64;&#x67;&#x69;&#116;&#x68;&#117;&#98;&#x2e;&#x63;&#x6f;&#x6d;</a><br>#之后会要你输入yes/no,输入yes就好了。<br>设置你的账号信息:</p>
 <p>git config –global user.name “你的名字”     #真实名字不是github用户名<br>git config –global user.email “邮箱@邮箱.com”    #github邮箱<br>3.部署到github<br>hexo d<br>这时再刷新 username.github.io 就可以看到你的博客了。</p>
 <p>到了这你以为就结束了吗？没有，还有坑没有给你们填好。</p>
 <p>如果你的SSH配置的时候哪找的.ssh文件的化，可以参照<a href="https://www.cnblogs.com/ailiailan/p/8577411.html">mac 上传本地代码到 Github 教程</a>,我就是参照上面的步骤配置的。</p>
@@ -2274,18 +2274,6 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
-    <title>Python基础学习</title>
-    <url>/2018/12/29/Python%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/</url>
-    <content><![CDATA[<h3 id="Python3的基础练习代码"><a href="#Python3的基础练习代码" class="headerlink" title="Python3的基础练习代码"></a>Python3的基础练习代码</h3><p><a href="https://github.com/MarkPythonWorld/MarkPython">这是Python基础练习的代码</a></p>
-]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Oracle数据库基础理论</title>
     <url>/2019/11/14/Oracle%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA/</url>
     <content><![CDATA[<h2 id="Oracle数据库是关系型数据库"><a href="#Oracle数据库是关系型数据库" class="headerlink" title="Oracle数据库是关系型数据库"></a><strong>Oracle数据库是关系型数据库</strong></h2><h3 id="一、什么是关系型数据库？"><a href="#一、什么是关系型数据库？" class="headerlink" title="一、什么是关系型数据库？"></a>一、什么是关系型数据库？</h3><hr>
@@ -2314,6 +2302,18 @@ Connection conn = null;
       </categories>
       <tags>
         <tag>Oracle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python基础学习</title>
+    <url>/2018/12/29/Python%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<h3 id="Python3的基础练习代码"><a href="#Python3的基础练习代码" class="headerlink" title="Python3的基础练习代码"></a>Python3的基础练习代码</h3><p><a href="https://github.com/MarkPythonWorld/MarkPython">这是Python基础练习的代码</a></p>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
@@ -2404,6 +2404,39 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
+    <title>android retrofit End of input at line 1 column 1 path</title>
+    <url>/2020/09/03/android-retrofit-End-of-input-at-line-1-column-1-path/</url>
+    <content><![CDATA[<p>在使用retrofit作为项目的网络请求库时，接口定义如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@GET(ACT_GET_NEW_STAFF)</span><br><span class="line">Call&lt;TaskEn&gt; reqGetNewStaff();</span><br></pre></td></tr></table></figure>
+<p>接口从服务端获取了数据，通过GsonConverterFactory将服务端相应内容解析成对应的实体类。在接口正常响应时（有数据返回），并没有什么异常发生，但当接口请求的数据为空，我们的服务端人员并不是返回理论意义上的空，null或者[]（数据集合空），而是返回没有响应体body，只有响应头header，content-length为0的Response</p>
+<p>这时候GsonConverterFactory就解析异常了，并抛出如下异常：</p>
+<span id="more"></span>
+<blockquote>
+<p>java.io.EOFException:End of input at line 1 column 1 path </p>
+</blockquote>
+<p>一般来说，如果接口本身就是不需要处理body的，那么我们通常定义接口为</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Call&lt;Void&gt;</span><br></pre></td></tr></table></figure>
+<p> 这和上面的那两个接口是不一样的。</p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><ul>
+<li>请服务端人员吃顿饭，让他们规范接口，当数据为空时，返回null或者[]</li>
+<li>自己动手丰衣足食</li>
+</ul>
+<p>  自定义一个ConverterFactory</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public class NullOnEmptyConverterFactory extends Converter.Factory &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public Converter&lt;ResponseBody, ?&gt; responseBodyConverter(Type type, Annotation[] annotations, Retrofit retrofit) &#123;</span><br><span class="line">        final Converter&lt;ResponseBody, ?&gt; delegate &#x3D; retrofit.nextResponseBodyConverter(this, type, annotations);</span><br><span class="line">        return new Converter&lt;ResponseBody,Object&gt;() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public Object convert(ResponseBody body) throws IOException &#123;</span><br><span class="line">                if (body.contentLength() &#x3D;&#x3D; 0) return null;</span><br><span class="line">                return delegate.convert(body);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后设置到retrofit</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Retrofit retrofit &#x3D; new Retrofit.Builder()</span><br><span class="line">    ....</span><br><span class="line">    .addConverterFactory(new NullOnEmptyConverterFactory())</span><br><span class="line">    .addConverterFactory(GsonConverterFactory.create())</span><br><span class="line">    .build();</span><br></pre></td></tr></table></figure>
+
+<p>需要注意的是，NullOnEmptyConverterFactory必需在GsonConverterFactory之前addConverterFactory</p>
+<p><a href="http://www.voidcn.com/article/p-xoiqdiuz-re.html">原文连接</a></p>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Error，retrofit</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>android 修改项目包名详解</title>
     <url>/2019/08/06/android-%E4%BF%AE%E6%94%B9%E9%A1%B9%E7%9B%AE%E5%8C%85%E5%90%8D%E8%AF%A6%E8%A7%A3/</url>
     <content><![CDATA[<p>再简单的东西也的记下来，不然容易忘记。<br>此处原文地址来源：<a href="https://www.jianshu.com/p/1891d5a1a121">https://www.jianshu.com/p/1891d5a1a121</a></p>
@@ -2477,39 +2510,6 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
-    <title>android retrofit End of input at line 1 column 1 path</title>
-    <url>/2020/09/03/android-retrofit-End-of-input-at-line-1-column-1-path/</url>
-    <content><![CDATA[<p>在使用retrofit作为项目的网络请求库时，接口定义如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@GET(ACT_GET_NEW_STAFF)</span><br><span class="line">Call&lt;TaskEn&gt; reqGetNewStaff();</span><br></pre></td></tr></table></figure>
-<p>接口从服务端获取了数据，通过GsonConverterFactory将服务端相应内容解析成对应的实体类。在接口正常响应时（有数据返回），并没有什么异常发生，但当接口请求的数据为空，我们的服务端人员并不是返回理论意义上的空，null或者[]（数据集合空），而是返回没有响应体body，只有响应头header，content-length为0的Response</p>
-<p>这时候GsonConverterFactory就解析异常了，并抛出如下异常：</p>
-<span id="more"></span>
-<blockquote>
-<p>java.io.EOFException:End of input at line 1 column 1 path </p>
-</blockquote>
-<p>一般来说，如果接口本身就是不需要处理body的，那么我们通常定义接口为</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Call&lt;Void&gt;</span><br></pre></td></tr></table></figure>
-<p> 这和上面的那两个接口是不一样的。</p>
-<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><ul>
-<li>请服务端人员吃顿饭，让他们规范接口，当数据为空时，返回null或者[]</li>
-<li>自己动手丰衣足食</li>
-</ul>
-<p>  自定义一个ConverterFactory</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public class NullOnEmptyConverterFactory extends Converter.Factory &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public Converter&lt;ResponseBody, ?&gt; responseBodyConverter(Type type, Annotation[] annotations, Retrofit retrofit) &#123;</span><br><span class="line">        final Converter&lt;ResponseBody, ?&gt; delegate &#x3D; retrofit.nextResponseBodyConverter(this, type, annotations);</span><br><span class="line">        return new Converter&lt;ResponseBody,Object&gt;() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public Object convert(ResponseBody body) throws IOException &#123;</span><br><span class="line">                if (body.contentLength() &#x3D;&#x3D; 0) return null;</span><br><span class="line">                return delegate.convert(body);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>然后设置到retrofit</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Retrofit retrofit &#x3D; new Retrofit.Builder()</span><br><span class="line">    ....</span><br><span class="line">    .addConverterFactory(new NullOnEmptyConverterFactory())</span><br><span class="line">    .addConverterFactory(GsonConverterFactory.create())</span><br><span class="line">    .build();</span><br></pre></td></tr></table></figure>
-
-<p>需要注意的是，NullOnEmptyConverterFactory必需在GsonConverterFactory之前addConverterFactory</p>
-<p><a href="http://www.voidcn.com/article/p-xoiqdiuz-re.html">原文连接</a></p>
-]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Error，retrofit</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>android反编译apktool---dex2jar---jdgui</title>
     <url>/2020/12/14/android%E5%8F%8D%E7%BC%96%E8%AF%91apktool-dex2jar-jdgui/</url>
     <content><![CDATA[<h2 id="反编译的工具（MAC环境下）"><a href="#反编译的工具（MAC环境下）" class="headerlink" title="反编译的工具（MAC环境下）"></a>反编译的工具（MAC环境下）</h2><p>下载地址：</p>
@@ -2563,6 +2563,23 @@ Connection conn = null;
       </categories>
       <tags>
         <tag>dart</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>error: &lt;item&gt; inner element must either be a resource reference or empty.</title>
+    <url>/2019/12/25/error-item-inner-element-must-either-be-a-resource-reference-or-empty/</url>
+    <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">FAQ:</span><br><span class="line"></span><br><span class="line">Android resource compilation failed</span><br><span class="line">Output: &#x2F;home&#x2F;cmm&#x2F;code&#x2F;AndroidHttpCapture&#x2F;app&#x2F;build&#x2F;intermediates&#x2F;incremental&#x2F;mergeDebugResources&#x2F;merged.dir&#x2F;values&#x2F;values.xml:733: error: &lt;item&gt; inner element must either be a resource reference or empty.</span><br><span class="line"></span><br><span class="line">Command: &#x2F;home&#x2F;cmm&#x2F;.gradle&#x2F;caches&#x2F;transforms-1&#x2F;files-1.1&#x2F;aapt2-3.2.0-4818971-linux.jar&#x2F;8e0275d065e63c2601af4fb5800833ab&#x2F;aapt2-3.2.0-4818971-linux&#x2F;aapt2 compile --legacy \</span><br><span class="line">-o \</span><br><span class="line">&#x2F;home&#x2F;cmm&#x2F;code&#x2F;AndroidHttpCapture&#x2F;app&#x2F;build&#x2F;intermediates&#x2F;res&#x2F;merged&#x2F;debug \</span><br><span class="line">&#x2F;home&#x2F;cmm&#x2F;code&#x2F;AndroidHttpCapture&#x2F;app&#x2F;build&#x2F;intermediates&#x2F;incremental&#x2F;mergeDebugResources&#x2F;merged.dir&#x2F;values&#x2F;values.xml</span><br><span class="line">Daemon: AAPT2 aapt2-3.2.0-4818971-linux Daemon #1</span><br></pre></td></tr></table></figure>
+
+
+<p>如上错误原来是values.xm资源文件中，元素定义了id后，就不能在后面给值了</p>
+<p>发现 :<br><code>&lt;item name=&quot;split&quot; type=&quot;id&quot;&gt;false&lt;/item&gt;</code></p>
+<p>改为 :<br><code>&lt;item name=&quot;split&quot; type=&quot;id&quot;/&gt;</code><br>即可.</p>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Error</tag>
       </tags>
   </entry>
   <entry>
@@ -2679,23 +2696,6 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
-    <title>error: &lt;item&gt; inner element must either be a resource reference or empty.</title>
-    <url>/2019/12/25/error-item-inner-element-must-either-be-a-resource-reference-or-empty/</url>
-    <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">FAQ:</span><br><span class="line"></span><br><span class="line">Android resource compilation failed</span><br><span class="line">Output: &#x2F;home&#x2F;cmm&#x2F;code&#x2F;AndroidHttpCapture&#x2F;app&#x2F;build&#x2F;intermediates&#x2F;incremental&#x2F;mergeDebugResources&#x2F;merged.dir&#x2F;values&#x2F;values.xml:733: error: &lt;item&gt; inner element must either be a resource reference or empty.</span><br><span class="line"></span><br><span class="line">Command: &#x2F;home&#x2F;cmm&#x2F;.gradle&#x2F;caches&#x2F;transforms-1&#x2F;files-1.1&#x2F;aapt2-3.2.0-4818971-linux.jar&#x2F;8e0275d065e63c2601af4fb5800833ab&#x2F;aapt2-3.2.0-4818971-linux&#x2F;aapt2 compile --legacy \</span><br><span class="line">-o \</span><br><span class="line">&#x2F;home&#x2F;cmm&#x2F;code&#x2F;AndroidHttpCapture&#x2F;app&#x2F;build&#x2F;intermediates&#x2F;res&#x2F;merged&#x2F;debug \</span><br><span class="line">&#x2F;home&#x2F;cmm&#x2F;code&#x2F;AndroidHttpCapture&#x2F;app&#x2F;build&#x2F;intermediates&#x2F;incremental&#x2F;mergeDebugResources&#x2F;merged.dir&#x2F;values&#x2F;values.xml</span><br><span class="line">Daemon: AAPT2 aapt2-3.2.0-4818971-linux Daemon #1</span><br></pre></td></tr></table></figure>
-
-
-<p>如上错误原来是values.xm资源文件中，元素定义了id后，就不能在后面给值了</p>
-<p>发现 :<br><code>&lt;item name=&quot;split&quot; type=&quot;id&quot;&gt;false&lt;/item&gt;</code></p>
-<p>改为 :<br><code>&lt;item name=&quot;split&quot; type=&quot;id&quot;/&gt;</code><br>即可.</p>
-]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Error</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>flutter开发插件和包</title>
     <url>/2019/07/02/flutter%E5%BC%80%E5%8F%91%E6%8F%92%E4%BB%B6%E5%92%8C%E5%8C%85/</url>
     <content><![CDATA[<h2 id="cmd-命令创建开发插件包"><a href="#cmd-命令创建开发插件包" class="headerlink" title="cmd 命令创建开发插件包"></a>cmd 命令创建开发插件包</h2><p> <code>flutter create --org com.mark --template markplugin</code><br>  使用该–org选项以反向域名表示法指定您的组织。此值用于生成的Android和iOS代码中的各种包和包标识符。<br>  其中 com.mark 就是我的组织名，markplugin 就是我的插件项目名字<br>  生成如下：</p>
@@ -2733,6 +2733,28 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
+    <title>ping端口是否开放(macos)</title>
+    <url>/2019/10/30/ping%E7%AB%AF%E5%8F%A3%E6%98%AF%E5%90%A6%E5%BC%80%E6%94%BE-macos/</url>
+    <content><![CDATA[<p><em>简单的实用积累</em></p>
+<p><a href="https://blog.csdn.net/woodwindforward/article/details/89641636">原文转自</a></p>
+<h3 id="mac中："><a href="#mac中：" class="headerlink" title="mac中："></a>mac中：</h3><p>打开终端：</p>
+<ul>
+<li><p>输入 ping 域名：ping <a href="http://www.baidu.com/">www.baidu.com</a></p>
+<p><img src="https://img2018.cnblogs.com/blog/1368523/201904/1368523-20190425193812807-428916356.png"></p>
+</li>
+<li><p>ping端口：nc -vz -w 2 <a href="http://www.baidu.com/">www.baidu.com</a> 8080</p>
+<p><img src="https://img2018.cnblogs.com/blog/1368523/201904/1368523-20190425193241938-258296742.png"></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>网络编程</category>
+      </categories>
+      <tags>
+        <tag>网络编程</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>python的爬虫学习实战笔记一</title>
     <url>/2018/12/17/python%E7%9A%84%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98%E7%AC%94%E8%AE%B0%E4%B8%80/</url>
     <content><![CDATA[<h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><h4 id="Python3的爬虫基础学习，编写URL管理器、网页下载器、网页分析器、数据输出器、如何连接到MySQL。网上能搜到许多的库，在这我只是开始我的基础学起，瞎猫死猫能运行就可以。"><a href="#Python3的爬虫基础学习，编写URL管理器、网页下载器、网页分析器、数据输出器、如何连接到MySQL。网上能搜到许多的库，在这我只是开始我的基础学起，瞎猫死猫能运行就可以。" class="headerlink" title="Python3的爬虫基础学习，编写URL管理器、网页下载器、网页分析器、数据输出器、如何连接到MySQL。网上能搜到许多的库，在这我只是开始我的基础学起，瞎猫死猫能运行就可以。"></a>Python3的爬虫基础学习，编写URL管理器、网页下载器、网页分析器、数据输出器、如何连接到MySQL。网上能搜到许多的库，在这我只是开始我的基础学起，瞎猫死猫能运行就可以。</h4><hr>
@@ -2761,39 +2783,6 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
-    <title>ping端口是否开放(macos)</title>
-    <url>/2019/10/30/ping%E7%AB%AF%E5%8F%A3%E6%98%AF%E5%90%A6%E5%BC%80%E6%94%BE-macos/</url>
-    <content><![CDATA[<p><em>简单的实用积累</em></p>
-<p><a href="https://blog.csdn.net/woodwindforward/article/details/89641636">原文转自</a></p>
-<h3 id="mac中："><a href="#mac中：" class="headerlink" title="mac中："></a>mac中：</h3><p>打开终端：</p>
-<ul>
-<li><p>输入 ping 域名：ping <a href="http://www.baidu.com/">www.baidu.com</a></p>
-<p><img src="https://img2018.cnblogs.com/blog/1368523/201904/1368523-20190425193812807-428916356.png"></p>
-</li>
-<li><p>ping端口：nc -vz -w 2 <a href="http://www.baidu.com/">www.baidu.com</a> 8080</p>
-<p><img src="https://img2018.cnblogs.com/blog/1368523/201904/1368523-20190425193241938-258296742.png"></p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>网络编程</category>
-      </categories>
-      <tags>
-        <tag>网络编程</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>vue基础使用-2</title>
-    <url>/2020/08/25/vue%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8-2/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>vue</category>
-      </categories>
-      <tags>
-        <tag>vue</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>vue基础使用-1</title>
     <url>/2020/08/25/vue%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8-1/</url>
     <content><![CDATA[<h3 id="安装vue"><a href="#安装vue" class="headerlink" title="安装vue"></a>安装vue</h3><hr>
@@ -2815,6 +2804,17 @@ Connection conn = null;
 <p><a href="https://github.com/MarkCHYL/BLOG/blob/master/marksource/01_vue%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8.html">本节练习代码</a></p>
 <p>下一章<a href="http://markchyl.cn/2020/08/25/vue%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8-2/">vue基础使用-2</a></p>
 ]]></content>
+      <categories>
+        <category>vue</category>
+      </categories>
+      <tags>
+        <tag>vue</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>vue基础使用-2</title>
+    <url>/2020/08/25/vue%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8-2/</url>
+    <content><![CDATA[]]></content>
       <categories>
         <category>vue</category>
       </categories>
@@ -2876,37 +2876,6 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
-    <title>图片加水印</title>
-    <url>/2019/03/05/%E5%9B%BE%E7%89%87%E5%8A%A0%E6%B0%B4%E5%8D%B0/</url>
-    <content><![CDATA[<h1 id="我尝试了两种实现水印的方式"><a href="#我尝试了两种实现水印的方式" class="headerlink" title="我尝试了两种实现水印的方式"></a>我尝试了两种实现水印的方式</h1><h2 id="1、一个轻量级是我文字和图片水印框架"><a href="#1、一个轻量级是我文字和图片水印框架" class="headerlink" title="1、一个轻量级是我文字和图片水印框架"></a>1、<a href="https://github.com/MarkCHYL/MarkImage_Watermark">一个轻量级是我文字和图片水印框架</a></h2><h2 id="2、通过Canvas绘制水印"><a href="#2、通过Canvas绘制水印" class="headerlink" title="2、通过Canvas绘制水印"></a>2、<a href="https://github.com/MarkCHYL/MarkBingCheng">通过Canvas绘制水印</a></h2><h4 id="轻量级的我就不做笔记了，因为很简单就能实现你想要的水印，留意内存溢出就好。"><a href="#轻量级的我就不做笔记了，因为很简单就能实现你想要的水印，留意内存溢出就好。" class="headerlink" title="轻量级的我就不做笔记了，因为很简单就能实现你想要的水印，留意内存溢出就好。"></a>轻量级的我就不做笔记了，因为很简单就能实现你想要的水印，留意内存溢出就好。</h4> <span id="more"></span>
-<p>下面主要记录下第二种方式加水印。<br>效果图如下：<br><img src="https://note.youdao.com/yws/api/personal/file/WEBdb77376deaca765aa7a3e6edb0356506?method=download&shareKey=562be4884a22b72841f3ecd26d15c5c2" alt="&quot;扫码前&quot;" title="扫码前"></p>
-<p><img src="https://note.youdao.com/yws/api/personal/file/WEB88deb0577afd1cc96101d6982ecc978d?method=download&shareKey=3f220832549b9ac09e08d302731a8dc3" alt="拍照后" title="拍照后"></p>
-<h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;打开相机</span><br><span class="line"> openCamera(this);</span><br><span class="line">&#x2F;**</span><br><span class="line">  * 打开相机</span><br><span class="line">  *&#x2F;</span><br><span class="line"> private void openCamera(Activity activity) &#123;</span><br><span class="line">     &#x2F;&#x2F;獲取系統版本</span><br><span class="line">     int currentapiVersion &#x3D; android.os.Build.VERSION.SDK_INT;</span><br><span class="line">     if (tvResult.getText().toString().length() &gt; 0) &#123;</span><br><span class="line">         &#x2F;&#x2F;执行拍照前，应该先判断SD卡是否存在</span><br><span class="line">         String SDState &#x3D; Environment.getExternalStorageState();</span><br><span class="line">         Intent intent &#x3D; new Intent(MediaStore.ACTION_IMAGE_CAPTURE);&#x2F;&#x2F;&quot;android.media.action.IMAGE_CAPTURE&quot;</span><br><span class="line">         if (SDState.equals(Environment.MEDIA_MOUNTED)) &#123;</span><br><span class="line"></span><br><span class="line">             File file &#x3D; new File(FileUtil.getInstance().getImageFile( tvResult.getText().toString()));</span><br><span class="line">             if (!file.exists()) &#123;</span><br><span class="line">                 file.mkdirs();</span><br><span class="line">             &#125;</span><br><span class="line">             &#x2F;&#x2F; 从文件中创建uri</span><br><span class="line">             imageUri &#x3D; Uri.fromFile(file);</span><br><span class="line">             if (currentapiVersion &lt; 24) &#123;</span><br><span class="line">                 intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);</span><br><span class="line">                 intent.putExtra(FILE_PATH, file.getAbsoluteFile());</span><br><span class="line">             &#125; else &#123;</span><br><span class="line">                 &#x2F;&#x2F;兼容android7.0 使用共享文件的形式</span><br><span class="line">                 ContentValues contentValues &#x3D; new ContentValues(1);</span><br><span class="line">                 contentValues.put(MediaStore.Images.Media.DATA, file.getAbsolutePath());</span><br><span class="line">                 imageUri &#x3D; getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);</span><br><span class="line">                 intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);</span><br><span class="line">             &#125;</span><br><span class="line">             startActivityForResult(intent, TAKE_PICTURE);</span><br><span class="line">             Log.d(&quot;tag&quot;, &quot;filepath &#x3D; &quot; + file.getAbsoluteFile());</span><br><span class="line"></span><br><span class="line">         &#125; else &#123;</span><br><span class="line">             Toast.makeText(this, getString(R.string.no_sd_card), Toast.LENGTH_LONG).show();</span><br><span class="line">         &#125;</span><br><span class="line"></span><br><span class="line">     &#125; else &#123;</span><br><span class="line"></span><br><span class="line">         Toast.makeText(this, &quot;请先进行扫描或输入条形码&quot;, Toast.LENGTH_SHORT).show();</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<p>有人会说打开相机需要这么繁琐的代码吗？其实不需要，只是我的业务需要获取图片的路径，安卓碎片重，高版本的注重用户隐私的保护，相片就是用户隐私，所以需要区别对待。</p>
-<p>获取图片路径：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line">    * 选择图片后，获取图片的路径</span><br><span class="line">    *</span><br><span class="line">    * @param requestCode</span><br><span class="line">    * @param data</span><br><span class="line">    *&#x2F;</span><br><span class="line">   private void doPhoto(int requestCode, Intent data) &#123;</span><br><span class="line"></span><br><span class="line">       &#x2F;**</span><br><span class="line">        * 获取到的图片路径</span><br><span class="line">        *&#x2F;</span><br><span class="line">       String picPath &#x3D; null;</span><br><span class="line">       SimpleDateFormat simpleDateFormat &#x3D; new SimpleDateFormat(&quot;yyyy年MM月dd日 HH:mm:ss&quot;);&#x2F;&#x2F; HH:mm:ss</span><br><span class="line">       &#x2F;&#x2F; 获取当前时间</span><br><span class="line">       Date date &#x3D; new Date(System.currentTimeMillis());</span><br><span class="line">       String dateStr &#x3D; simpleDateFormat.format(date).toString();</span><br><span class="line"></span><br><span class="line">       if (requestCode &#x3D;&#x3D; TAKE_PICTURE) &#123;</span><br><span class="line">           String[] pojo &#x3D; &#123;MediaStore.Images.Media.DATA&#125;;</span><br><span class="line">           Cursor cursor &#x3D; getContentResolver().query(imageUri, pojo, null, null, null);</span><br><span class="line">           if (cursor !&#x3D; null) &#123;</span><br><span class="line">               int columnIndex &#x3D; cursor.getColumnIndexOrThrow(pojo[0]);</span><br><span class="line">               cursor.moveToFirst();</span><br><span class="line">               picPath &#x3D; cursor.getString(columnIndex);</span><br><span class="line">               cursor.close();</span><br><span class="line">           &#125; else &#123;   &#x2F;&#x2F;小米4上取不到图片路径</span><br><span class="line">               try &#123;</span><br><span class="line">                   String[] strPaths &#x3D; imageUri.toString().split(&quot;&#x2F;&#x2F;&quot;);</span><br><span class="line">                   picPath &#x3D; strPaths[1];</span><br><span class="line">               &#125; catch (Exception e) &#123;</span><br><span class="line">                   e.printStackTrace();</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">           if (picPath !&#x3D; null &amp;&amp; (picPath.toLowerCase().endsWith(&quot;.png&quot;) || picPath.toLowerCase().endsWith(&quot;.jpg&quot;))) &#123;</span><br><span class="line">               if (picPath &#x3D;&#x3D; null || picPath.equals(&quot;&quot;)) &#123;</span><br><span class="line">                   Toast.makeText(this, &quot;请重新拍照&quot;, Toast.LENGTH_SHORT).show();</span><br><span class="line">                   return;</span><br><span class="line">               &#125;</span><br><span class="line">               Toast.makeText(this, &quot;pic &#x3D; &quot; + picPath, Toast.LENGTH_SHORT).show();</span><br><span class="line">               Bitmap bm &#x3D; null;</span><br><span class="line">               try &#123;</span><br><span class="line">                   bm &#x3D; FileUtil.getInstance().getImage(picPath, btnOpenCamera.getWidth(), btnOpenCamera.getHeight()); &#x2F;&#x2F;获取限定宽高的bitmap，不限定则容易占用内存过大及OOM</span><br><span class="line">                   if (bm &#x3D;&#x3D; null) &#123;</span><br><span class="line">                       Toast.makeText(this, &quot;请重新拍照&quot;, Toast.LENGTH_SHORT).show();</span><br><span class="line">                   &#125; else &#123;</span><br><span class="line">                       if (addWatermarkBitmap(bm, dateStr, btnOpenCamera.getWidth(), btnOpenCamera.getHeight())) &#123;</span><br><span class="line">                           Toast.makeText(this, &quot;水印生成成功，文件已保存在 &quot; + FileUtil.getInstance().IMAGE_PATH, Toast.LENGTH_SHORT).show();</span><br><span class="line">                       &#125;</span><br><span class="line">                   &#125;</span><br><span class="line">               &#125; catch (OutOfMemoryError e) &#123;</span><br><span class="line">                   e.printStackTrace();</span><br><span class="line">                   if (bm !&#x3D; null) &#123;</span><br><span class="line">                       bm.recycle();</span><br><span class="line">                   &#125;</span><br><span class="line">                   System.gc();</span><br><span class="line">               &#125;</span><br><span class="line">           &#125; else &#123;</span><br><span class="line">               Toast.makeText(this, &quot;请重新拍照&quot;, Toast.LENGTH_LONG).show();</span><br><span class="line">           &#125;</span><br><span class="line"></span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-
-<p>然后调用加水印并保存</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> private boolean addWatermarkBitmap(Bitmap bitmap, String str, int w, int h) &#123;</span><br><span class="line">        int destWidth &#x3D; w;   &#x2F;&#x2F;此处的bitmap已经限定好宽高</span><br><span class="line">        int destHeight &#x3D; h;</span><br><span class="line">        Log.v(&quot;tag&quot;, &quot;width &#x3D; &quot; + destWidth + &quot; height &#x3D; &quot; + destHeight);</span><br><span class="line"></span><br><span class="line">        Bitmap icon &#x3D; Bitmap.createBitmap(destWidth, destHeight, Bitmap.Config.ARGB_8888); &#x2F;&#x2F;定好宽高的全彩bitmap</span><br><span class="line">        Canvas canvas &#x3D; new Canvas(icon);&#x2F;&#x2F;初始化画布绘制的图像到icon上</span><br><span class="line"></span><br><span class="line">        Paint photoPaint &#x3D; new Paint(); &#x2F;&#x2F;建立画笔</span><br><span class="line">        photoPaint.setDither(true); &#x2F;&#x2F;获取跟清晰的图像采样</span><br><span class="line">        photoPaint.setFilterBitmap(true);&#x2F;&#x2F;过滤一些</span><br><span class="line"></span><br><span class="line">        Rect src &#x3D; new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());&#x2F;&#x2F;创建一个指定的新矩形的坐标</span><br><span class="line">        Rect dst &#x3D; new Rect(0, 0, destWidth, destHeight);&#x2F;&#x2F;创建一个指定的新矩形的坐标</span><br><span class="line">        canvas.drawBitmap(bitmap, src, dst, photoPaint);&#x2F;&#x2F;将photo 缩放或则扩大到 dst使用的填充区photoPaint</span><br><span class="line"></span><br><span class="line">        Paint textPaint &#x3D; new Paint(Paint.ANTI_ALIAS_FLAG | Paint.DEV_KERN_TEXT_FLAG);&#x2F;&#x2F;设置画笔</span><br><span class="line">        textPaint.setTextSize(destWidth &#x2F; 20);&#x2F;&#x2F;字体大小</span><br><span class="line">        textPaint.setTextAlign(Paint.Align.CENTER);</span><br><span class="line">        textPaint.setTypeface(Typeface.DEFAULT_BOLD);&#x2F;&#x2F;采用默认的宽度</span><br><span class="line">        textPaint.setAntiAlias(true);  &#x2F;&#x2F;抗锯齿</span><br><span class="line">        textPaint.setStrokeWidth(1);</span><br><span class="line">        textPaint.setAlpha(30);</span><br><span class="line">&#x2F;&#x2F;        textPaint.setStyle(Paint.Style.STROKE); &#x2F;&#x2F;空心</span><br><span class="line">        textPaint.setColor(Color.WHITE);&#x2F;&#x2F;采用的颜色</span><br><span class="line">&#x2F;&#x2F;        textPaint.setShadowLayer(1f, 0f, 3f, Color.LTGRAY);</span><br><span class="line">&#x2F;&#x2F;        textPaint.setShadowLayer(3f, 1, 1,getResources().getColor(android.R.color.white));&#x2F;&#x2F;影音的设置</span><br><span class="line">        canvas.drawText(str, destWidth &#x2F; 2, destHeight - 45, textPaint);&#x2F;&#x2F;绘制上去字，开始未知x,y采用那只笔绘制</span><br><span class="line">&#x2F;&#x2F;        canvas.save(Canvas.ALL_SAVE_FLAG);</span><br><span class="line">        canvas.save();</span><br><span class="line">        canvas.restore();</span><br><span class="line">        bitmap.recycle();</span><br><span class="line">        btnOpenCamera.setImageBitmap(icon);</span><br><span class="line">        return FileUtil.getInstance().saveMyBitmap(icon, tvResult.getText().toString()); &#x2F;&#x2F;保存至文件</span><br><span class="line">&#x2F;&#x2F;        return true;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<p>我在这个重点是实现功能。over，完成。返回显示不难，难在难在加水印，然后保存，代码中也可以看出，添加的水印是自己在控件上方画中来的，然后更具控件的大小新生成一张图保存。主要是其中的一句话：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Rect src &#x3D; new Rect(0, 0, bitmap.getWidth(),    bitmap.getHeight());&#x2F;&#x2F;创建一个指定的新矩形的坐标</span><br><span class="line">Rect dst &#x3D; new Rect(0, 0, destWidth, destHeight);&#x2F;&#x2F;创建一个指定的新矩形的坐标</span><br><span class="line">canvas.drawBitmap(bitmap, src, dst, photoPaint);&#x2F;&#x2F;将photo 缩放或则扩大到 dst使用的填充区photoPaint</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>那样先拍照的图片就在Canvas上面了，然后通过画笔Paint 在上面写字，保存图片：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Bitmap icon &#x3D; Bitmap.createBitmap(destWidth, destHeight, Bitmap.Config.ARGB_8888); &#x2F;&#x2F;定好宽高的全彩bitmap</span><br><span class="line">Canvas canvas &#x3D; new Canvas(icon);&#x2F;&#x2F;初始化画布绘制的图像到icon上</span><br><span class="line">     </span><br></pre></td></tr></table></figure>
-
-
-
-
-]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>占位符 Broccoli 的使用</title>
     <url>/2019/01/18/%E5%8D%A0%E4%BD%8D%E7%AC%A6-Broccoli-%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<p><img src="https://github.com/samlss/Broccoli/raw/master/screenshots/Broccoli.png" alt="Broccoli"></p>
@@ -2934,11 +2903,28 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
-    <title>如何打Jar工具包</title>
-    <url>/2019/12/10/%E5%A6%82%E4%BD%95%E6%89%93Jar%E5%B7%A5%E5%85%B7%E5%8C%85/</url>
-    <content><![CDATA[<p><strong>打开Moudle包的build文件添加如下代码</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">task makeJar(type: Copy) &#123;</span><br><span class="line">    def filename &#x3D; projects.name + &#39;-V&#39;</span><br><span class="line">    delete &quot;build&#x2F;libs&#x2F;MarkZXing1.0.jar&quot;</span><br><span class="line">    from(&#39;build&#x2F;intermediates&#x2F;packaged-classes&#x2F;release&#39;)</span><br><span class="line">    into(&#39;build&#x2F;libs&#x2F;&#39;)</span><br><span class="line">    include(&#39;classes.jar&#39;)</span><br><span class="line">    rename(&#39;classes.jar&#39;, &#39;MarkZXing1.0.jar&#39;)</span><br><span class="line">&#125;</span><br><span class="line">makeJar.dependsOn(build)</span><br></pre></td></tr></table></figure>
-<p><strong>点开我们右侧的Gradle，找到项目下的第一步新建的模块Module名称 ，点开 Tasks/other 文件 找到 makeJar， 双击即可，等待出现BUILD SUCCESSFUL， Task execution finished ‘makeJar’.==》编译完成，此时去Module目录下的libs/下找到的test.jar，便是制作的jar包。</strong></p>
+    <title>图片加水印</title>
+    <url>/2019/03/05/%E5%9B%BE%E7%89%87%E5%8A%A0%E6%B0%B4%E5%8D%B0/</url>
+    <content><![CDATA[<h1 id="我尝试了两种实现水印的方式"><a href="#我尝试了两种实现水印的方式" class="headerlink" title="我尝试了两种实现水印的方式"></a>我尝试了两种实现水印的方式</h1><h2 id="1、一个轻量级是我文字和图片水印框架"><a href="#1、一个轻量级是我文字和图片水印框架" class="headerlink" title="1、一个轻量级是我文字和图片水印框架"></a>1、<a href="https://github.com/MarkCHYL/MarkImage_Watermark">一个轻量级是我文字和图片水印框架</a></h2><h2 id="2、通过Canvas绘制水印"><a href="#2、通过Canvas绘制水印" class="headerlink" title="2、通过Canvas绘制水印"></a>2、<a href="https://github.com/MarkCHYL/MarkBingCheng">通过Canvas绘制水印</a></h2><h4 id="轻量级的我就不做笔记了，因为很简单就能实现你想要的水印，留意内存溢出就好。"><a href="#轻量级的我就不做笔记了，因为很简单就能实现你想要的水印，留意内存溢出就好。" class="headerlink" title="轻量级的我就不做笔记了，因为很简单就能实现你想要的水印，留意内存溢出就好。"></a>轻量级的我就不做笔记了，因为很简单就能实现你想要的水印，留意内存溢出就好。</h4> <span id="more"></span>
+<p>下面主要记录下第二种方式加水印。<br>效果图如下：<br><img src="https://note.youdao.com/yws/api/personal/file/WEBdb77376deaca765aa7a3e6edb0356506?method=download&shareKey=562be4884a22b72841f3ecd26d15c5c2" alt="&quot;扫码前&quot;" title="扫码前"></p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/WEB88deb0577afd1cc96101d6982ecc978d?method=download&shareKey=3f220832549b9ac09e08d302731a8dc3" alt="拍照后" title="拍照后"></p>
+<h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;打开相机</span><br><span class="line"> openCamera(this);</span><br><span class="line">&#x2F;**</span><br><span class="line">  * 打开相机</span><br><span class="line">  *&#x2F;</span><br><span class="line"> private void openCamera(Activity activity) &#123;</span><br><span class="line">     &#x2F;&#x2F;獲取系統版本</span><br><span class="line">     int currentapiVersion &#x3D; android.os.Build.VERSION.SDK_INT;</span><br><span class="line">     if (tvResult.getText().toString().length() &gt; 0) &#123;</span><br><span class="line">         &#x2F;&#x2F;执行拍照前，应该先判断SD卡是否存在</span><br><span class="line">         String SDState &#x3D; Environment.getExternalStorageState();</span><br><span class="line">         Intent intent &#x3D; new Intent(MediaStore.ACTION_IMAGE_CAPTURE);&#x2F;&#x2F;&quot;android.media.action.IMAGE_CAPTURE&quot;</span><br><span class="line">         if (SDState.equals(Environment.MEDIA_MOUNTED)) &#123;</span><br><span class="line"></span><br><span class="line">             File file &#x3D; new File(FileUtil.getInstance().getImageFile( tvResult.getText().toString()));</span><br><span class="line">             if (!file.exists()) &#123;</span><br><span class="line">                 file.mkdirs();</span><br><span class="line">             &#125;</span><br><span class="line">             &#x2F;&#x2F; 从文件中创建uri</span><br><span class="line">             imageUri &#x3D; Uri.fromFile(file);</span><br><span class="line">             if (currentapiVersion &lt; 24) &#123;</span><br><span class="line">                 intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);</span><br><span class="line">                 intent.putExtra(FILE_PATH, file.getAbsoluteFile());</span><br><span class="line">             &#125; else &#123;</span><br><span class="line">                 &#x2F;&#x2F;兼容android7.0 使用共享文件的形式</span><br><span class="line">                 ContentValues contentValues &#x3D; new ContentValues(1);</span><br><span class="line">                 contentValues.put(MediaStore.Images.Media.DATA, file.getAbsolutePath());</span><br><span class="line">                 imageUri &#x3D; getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);</span><br><span class="line">                 intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);</span><br><span class="line">             &#125;</span><br><span class="line">             startActivityForResult(intent, TAKE_PICTURE);</span><br><span class="line">             Log.d(&quot;tag&quot;, &quot;filepath &#x3D; &quot; + file.getAbsoluteFile());</span><br><span class="line"></span><br><span class="line">         &#125; else &#123;</span><br><span class="line">             Toast.makeText(this, getString(R.string.no_sd_card), Toast.LENGTH_LONG).show();</span><br><span class="line">         &#125;</span><br><span class="line"></span><br><span class="line">     &#125; else &#123;</span><br><span class="line"></span><br><span class="line">         Toast.makeText(this, &quot;请先进行扫描或输入条形码&quot;, Toast.LENGTH_SHORT).show();</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>有人会说打开相机需要这么繁琐的代码吗？其实不需要，只是我的业务需要获取图片的路径，安卓碎片重，高版本的注重用户隐私的保护，相片就是用户隐私，所以需要区别对待。</p>
+<p>获取图片路径：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line">    * 选择图片后，获取图片的路径</span><br><span class="line">    *</span><br><span class="line">    * @param requestCode</span><br><span class="line">    * @param data</span><br><span class="line">    *&#x2F;</span><br><span class="line">   private void doPhoto(int requestCode, Intent data) &#123;</span><br><span class="line"></span><br><span class="line">       &#x2F;**</span><br><span class="line">        * 获取到的图片路径</span><br><span class="line">        *&#x2F;</span><br><span class="line">       String picPath &#x3D; null;</span><br><span class="line">       SimpleDateFormat simpleDateFormat &#x3D; new SimpleDateFormat(&quot;yyyy年MM月dd日 HH:mm:ss&quot;);&#x2F;&#x2F; HH:mm:ss</span><br><span class="line">       &#x2F;&#x2F; 获取当前时间</span><br><span class="line">       Date date &#x3D; new Date(System.currentTimeMillis());</span><br><span class="line">       String dateStr &#x3D; simpleDateFormat.format(date).toString();</span><br><span class="line"></span><br><span class="line">       if (requestCode &#x3D;&#x3D; TAKE_PICTURE) &#123;</span><br><span class="line">           String[] pojo &#x3D; &#123;MediaStore.Images.Media.DATA&#125;;</span><br><span class="line">           Cursor cursor &#x3D; getContentResolver().query(imageUri, pojo, null, null, null);</span><br><span class="line">           if (cursor !&#x3D; null) &#123;</span><br><span class="line">               int columnIndex &#x3D; cursor.getColumnIndexOrThrow(pojo[0]);</span><br><span class="line">               cursor.moveToFirst();</span><br><span class="line">               picPath &#x3D; cursor.getString(columnIndex);</span><br><span class="line">               cursor.close();</span><br><span class="line">           &#125; else &#123;   &#x2F;&#x2F;小米4上取不到图片路径</span><br><span class="line">               try &#123;</span><br><span class="line">                   String[] strPaths &#x3D; imageUri.toString().split(&quot;&#x2F;&#x2F;&quot;);</span><br><span class="line">                   picPath &#x3D; strPaths[1];</span><br><span class="line">               &#125; catch (Exception e) &#123;</span><br><span class="line">                   e.printStackTrace();</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">           if (picPath !&#x3D; null &amp;&amp; (picPath.toLowerCase().endsWith(&quot;.png&quot;) || picPath.toLowerCase().endsWith(&quot;.jpg&quot;))) &#123;</span><br><span class="line">               if (picPath &#x3D;&#x3D; null || picPath.equals(&quot;&quot;)) &#123;</span><br><span class="line">                   Toast.makeText(this, &quot;请重新拍照&quot;, Toast.LENGTH_SHORT).show();</span><br><span class="line">                   return;</span><br><span class="line">               &#125;</span><br><span class="line">               Toast.makeText(this, &quot;pic &#x3D; &quot; + picPath, Toast.LENGTH_SHORT).show();</span><br><span class="line">               Bitmap bm &#x3D; null;</span><br><span class="line">               try &#123;</span><br><span class="line">                   bm &#x3D; FileUtil.getInstance().getImage(picPath, btnOpenCamera.getWidth(), btnOpenCamera.getHeight()); &#x2F;&#x2F;获取限定宽高的bitmap，不限定则容易占用内存过大及OOM</span><br><span class="line">                   if (bm &#x3D;&#x3D; null) &#123;</span><br><span class="line">                       Toast.makeText(this, &quot;请重新拍照&quot;, Toast.LENGTH_SHORT).show();</span><br><span class="line">                   &#125; else &#123;</span><br><span class="line">                       if (addWatermarkBitmap(bm, dateStr, btnOpenCamera.getWidth(), btnOpenCamera.getHeight())) &#123;</span><br><span class="line">                           Toast.makeText(this, &quot;水印生成成功，文件已保存在 &quot; + FileUtil.getInstance().IMAGE_PATH, Toast.LENGTH_SHORT).show();</span><br><span class="line">                       &#125;</span><br><span class="line">                   &#125;</span><br><span class="line">               &#125; catch (OutOfMemoryError e) &#123;</span><br><span class="line">                   e.printStackTrace();</span><br><span class="line">                   if (bm !&#x3D; null) &#123;</span><br><span class="line">                       bm.recycle();</span><br><span class="line">                   &#125;</span><br><span class="line">                   System.gc();</span><br><span class="line">               &#125;</span><br><span class="line">           &#125; else &#123;</span><br><span class="line">               Toast.makeText(this, &quot;请重新拍照&quot;, Toast.LENGTH_LONG).show();</span><br><span class="line">           &#125;</span><br><span class="line"></span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后调用加水印并保存</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> private boolean addWatermarkBitmap(Bitmap bitmap, String str, int w, int h) &#123;</span><br><span class="line">        int destWidth &#x3D; w;   &#x2F;&#x2F;此处的bitmap已经限定好宽高</span><br><span class="line">        int destHeight &#x3D; h;</span><br><span class="line">        Log.v(&quot;tag&quot;, &quot;width &#x3D; &quot; + destWidth + &quot; height &#x3D; &quot; + destHeight);</span><br><span class="line"></span><br><span class="line">        Bitmap icon &#x3D; Bitmap.createBitmap(destWidth, destHeight, Bitmap.Config.ARGB_8888); &#x2F;&#x2F;定好宽高的全彩bitmap</span><br><span class="line">        Canvas canvas &#x3D; new Canvas(icon);&#x2F;&#x2F;初始化画布绘制的图像到icon上</span><br><span class="line"></span><br><span class="line">        Paint photoPaint &#x3D; new Paint(); &#x2F;&#x2F;建立画笔</span><br><span class="line">        photoPaint.setDither(true); &#x2F;&#x2F;获取跟清晰的图像采样</span><br><span class="line">        photoPaint.setFilterBitmap(true);&#x2F;&#x2F;过滤一些</span><br><span class="line"></span><br><span class="line">        Rect src &#x3D; new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());&#x2F;&#x2F;创建一个指定的新矩形的坐标</span><br><span class="line">        Rect dst &#x3D; new Rect(0, 0, destWidth, destHeight);&#x2F;&#x2F;创建一个指定的新矩形的坐标</span><br><span class="line">        canvas.drawBitmap(bitmap, src, dst, photoPaint);&#x2F;&#x2F;将photo 缩放或则扩大到 dst使用的填充区photoPaint</span><br><span class="line"></span><br><span class="line">        Paint textPaint &#x3D; new Paint(Paint.ANTI_ALIAS_FLAG | Paint.DEV_KERN_TEXT_FLAG);&#x2F;&#x2F;设置画笔</span><br><span class="line">        textPaint.setTextSize(destWidth &#x2F; 20);&#x2F;&#x2F;字体大小</span><br><span class="line">        textPaint.setTextAlign(Paint.Align.CENTER);</span><br><span class="line">        textPaint.setTypeface(Typeface.DEFAULT_BOLD);&#x2F;&#x2F;采用默认的宽度</span><br><span class="line">        textPaint.setAntiAlias(true);  &#x2F;&#x2F;抗锯齿</span><br><span class="line">        textPaint.setStrokeWidth(1);</span><br><span class="line">        textPaint.setAlpha(30);</span><br><span class="line">&#x2F;&#x2F;        textPaint.setStyle(Paint.Style.STROKE); &#x2F;&#x2F;空心</span><br><span class="line">        textPaint.setColor(Color.WHITE);&#x2F;&#x2F;采用的颜色</span><br><span class="line">&#x2F;&#x2F;        textPaint.setShadowLayer(1f, 0f, 3f, Color.LTGRAY);</span><br><span class="line">&#x2F;&#x2F;        textPaint.setShadowLayer(3f, 1, 1,getResources().getColor(android.R.color.white));&#x2F;&#x2F;影音的设置</span><br><span class="line">        canvas.drawText(str, destWidth &#x2F; 2, destHeight - 45, textPaint);&#x2F;&#x2F;绘制上去字，开始未知x,y采用那只笔绘制</span><br><span class="line">&#x2F;&#x2F;        canvas.save(Canvas.ALL_SAVE_FLAG);</span><br><span class="line">        canvas.save();</span><br><span class="line">        canvas.restore();</span><br><span class="line">        bitmap.recycle();</span><br><span class="line">        btnOpenCamera.setImageBitmap(icon);</span><br><span class="line">        return FileUtil.getInstance().saveMyBitmap(icon, tvResult.getText().toString()); &#x2F;&#x2F;保存至文件</span><br><span class="line">&#x2F;&#x2F;        return true;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p>我在这个重点是实现功能。over，完成。返回显示不难，难在难在加水印，然后保存，代码中也可以看出，添加的水印是自己在控件上方画中来的，然后更具控件的大小新生成一张图保存。主要是其中的一句话：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Rect src &#x3D; new Rect(0, 0, bitmap.getWidth(),    bitmap.getHeight());&#x2F;&#x2F;创建一个指定的新矩形的坐标</span><br><span class="line">Rect dst &#x3D; new Rect(0, 0, destWidth, destHeight);&#x2F;&#x2F;创建一个指定的新矩形的坐标</span><br><span class="line">canvas.drawBitmap(bitmap, src, dst, photoPaint);&#x2F;&#x2F;将photo 缩放或则扩大到 dst使用的填充区photoPaint</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>那样先拍照的图片就在Canvas上面了，然后通过画笔Paint 在上面写字，保存图片：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Bitmap icon &#x3D; Bitmap.createBitmap(destWidth, destHeight, Bitmap.Config.ARGB_8888); &#x2F;&#x2F;定好宽高的全彩bitmap</span><br><span class="line">Canvas canvas &#x3D; new Canvas(icon);&#x2F;&#x2F;初始化画布绘制的图像到icon上</span><br><span class="line">     </span><br></pre></td></tr></table></figure>
+
+
+
+
 ]]></content>
       <categories>
         <category>Android</category>
@@ -2975,20 +2961,12 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
-    <title>如何防止重新启动</title>
-    <url>/2019/10/14/%E5%A6%82%E4%BD%95%E9%98%B2%E6%AD%A2%E9%87%8D%E6%96%B0%E5%90%AF%E5%8A%A8/</url>
-    <content><![CDATA[<p>我的问题描述：</p>
-<blockquote>
-<p>app需要登陆才能进入主页，每次退到后台或返回之后都会重新进入LoginActivity，我需要的效果是登陆后，每次都去跳MainActivity。</p>
-</blockquote>
-<span id="more"></span>
-<p>说做就做，方法有很多种，我这记录的主要是利用回退栈 *moveTaskToBack(false)*来实现：</p>
-<ul>
-<li>LoginActivity的onCreate()方法中添加： <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if (!isTaskRoot()) &#123;</span><br><span class="line">     finish();</span><br><span class="line">     return;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-  <em>注意添加再布局设置之前</em></li>
-<li>再MainActivity中重写<code>onKeyDown</code>   和<code>onBackPressed</code>方法：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@Override</span><br><span class="line"> public boolean onKeyDown(int keyCode, KeyEvent event) &#123;</span><br><span class="line">     if (keyCode &#x3D;&#x3D; KeyEvent.KEYCODE_BACK) &#123;</span><br><span class="line">         moveTaskToBack(false);</span><br><span class="line">         return true;</span><br><span class="line">     &#125;</span><br><span class="line">     return super.onKeyDown(keyCode, event);</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> @Override</span><br><span class="line"> public void onBackPressed() &#123;</span><br><span class="line">     moveTaskToBack(false);</span><br><span class="line">     super.onBackPressed();</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="moveTaskToBack-boolean-isToTask-这个方法的使用自己的理解就是不让Activity被系统主动回收。"><a href="#moveTaskToBack-boolean-isToTask-这个方法的使用自己的理解就是不让Activity被系统主动回收。" class="headerlink" title="moveTaskToBack(boolean  isToTask)这个方法的使用自己的理解就是不让Activity被系统主动回收。"></a>moveTaskToBack(boolean  isToTask)这个方法的使用自己的理解就是不让Activity被系统主动回收。</h3>]]></content>
+    <title>如何打Jar工具包</title>
+    <url>/2019/12/10/%E5%A6%82%E4%BD%95%E6%89%93Jar%E5%B7%A5%E5%85%B7%E5%8C%85/</url>
+    <content><![CDATA[<p><strong>打开Moudle包的build文件添加如下代码</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">task makeJar(type: Copy) &#123;</span><br><span class="line">    def filename &#x3D; projects.name + &#39;-V&#39;</span><br><span class="line">    delete &quot;build&#x2F;libs&#x2F;MarkZXing1.0.jar&quot;</span><br><span class="line">    from(&#39;build&#x2F;intermediates&#x2F;packaged-classes&#x2F;release&#39;)</span><br><span class="line">    into(&#39;build&#x2F;libs&#x2F;&#39;)</span><br><span class="line">    include(&#39;classes.jar&#39;)</span><br><span class="line">    rename(&#39;classes.jar&#39;, &#39;MarkZXing1.0.jar&#39;)</span><br><span class="line">&#125;</span><br><span class="line">makeJar.dependsOn(build)</span><br></pre></td></tr></table></figure>
+<p><strong>点开我们右侧的Gradle，找到项目下的第一步新建的模块Module名称 ，点开 Tasks/other 文件 找到 makeJar， 双击即可，等待出现BUILD SUCCESSFUL， Task execution finished ‘makeJar’.==》编译完成，此时去Module目录下的libs/下找到的test.jar，便是制作的jar包。</strong></p>
+]]></content>
       <categories>
         <category>Android</category>
       </categories>
@@ -3033,6 +3011,28 @@ Connection conn = null;
       <tags>
         <tag>爬虫</tag>
         <tag>Python3.7</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何防止重新启动</title>
+    <url>/2019/10/14/%E5%A6%82%E4%BD%95%E9%98%B2%E6%AD%A2%E9%87%8D%E6%96%B0%E5%90%AF%E5%8A%A8/</url>
+    <content><![CDATA[<p>我的问题描述：</p>
+<blockquote>
+<p>app需要登陆才能进入主页，每次退到后台或返回之后都会重新进入LoginActivity，我需要的效果是登陆后，每次都去跳MainActivity。</p>
+</blockquote>
+<span id="more"></span>
+<p>说做就做，方法有很多种，我这记录的主要是利用回退栈 *moveTaskToBack(false)*来实现：</p>
+<ul>
+<li>LoginActivity的onCreate()方法中添加： <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if (!isTaskRoot()) &#123;</span><br><span class="line">     finish();</span><br><span class="line">     return;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+  <em>注意添加再布局设置之前</em></li>
+<li>再MainActivity中重写<code>onKeyDown</code>   和<code>onBackPressed</code>方法：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@Override</span><br><span class="line"> public boolean onKeyDown(int keyCode, KeyEvent event) &#123;</span><br><span class="line">     if (keyCode &#x3D;&#x3D; KeyEvent.KEYCODE_BACK) &#123;</span><br><span class="line">         moveTaskToBack(false);</span><br><span class="line">         return true;</span><br><span class="line">     &#125;</span><br><span class="line">     return super.onKeyDown(keyCode, event);</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> @Override</span><br><span class="line"> public void onBackPressed() &#123;</span><br><span class="line">     moveTaskToBack(false);</span><br><span class="line">     super.onBackPressed();</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="moveTaskToBack-boolean-isToTask-这个方法的使用自己的理解就是不让Activity被系统主动回收。"><a href="#moveTaskToBack-boolean-isToTask-这个方法的使用自己的理解就是不让Activity被系统主动回收。" class="headerlink" title="moveTaskToBack(boolean  isToTask)这个方法的使用自己的理解就是不让Activity被系统主动回收。"></a>moveTaskToBack(boolean  isToTask)这个方法的使用自己的理解就是不让Activity被系统主动回收。</h3>]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
       </tags>
   </entry>
   <entry>
@@ -3223,21 +3223,6 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
-    <title>自定义Toat及其弹出时间控制</title>
-    <url>/2020/07/21/%E8%87%AA%E5%AE%9A%E4%B9%89Toat%E5%8F%8A%E5%85%B6%E5%BC%B9%E5%87%BA%E6%97%B6%E9%97%B4%E6%8E%A7%E5%88%B6/</url>
-    <content><![CDATA[<p>效果就是实现Toast布局自定义，弹出的事件进行控制</p>
-<h3 id="一、先自定义布局"><a href="#一、先自定义布局" class="headerlink" title="一、先自定义布局"></a>一、先自定义布局</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Toast toast &#x3D; Toast.makeText(mContext, str, Toast.   LENGTH_SHORT);</span><br><span class="line">View view &#x3D; LayoutInflater.from(mContext).inflate(R.layout.item_toast, null);</span><br><span class="line">TextView textView &#x3D; view.findViewById(R.id.str_toast);</span><br><span class="line">      textView.setText(str);</span><br><span class="line">      toast.setView(view);</span><br><span class="line">      toast.setGravity(Gravity.CENTER, 0, 0);</span><br><span class="line">Utils.showTimeToast(toast,500);</span><br></pre></td></tr></table></figure>
-<h3 id="二、自定义弹出时间"><a href="#二、自定义弹出时间" class="headerlink" title="二、自定义弹出时间"></a>二、自定义弹出时间</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line">    * Toast自定义时间</span><br><span class="line">    * Toast对象时间需要为Toast.LENGH_LONG</span><br><span class="line">    *&#x2F;</span><br><span class="line">   public static void showTimeToast(final Toast toast, final int time) &#123;</span><br><span class="line">       final Timer timer &#x3D; new Timer();</span><br><span class="line">       timer.schedule(new TimerTask() &#123;</span><br><span class="line">           @Override</span><br><span class="line">           public void run() &#123;</span><br><span class="line">               toast.show();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;, 0, 3000);</span><br><span class="line">       new Timer().schedule(new TimerTask() &#123;</span><br><span class="line">           @Override</span><br><span class="line">           public void run() &#123;</span><br><span class="line">               toast.cancel();</span><br><span class="line">               timer.cancel();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;, time);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<p>就是那么简单，利用Timer和schedule实现事件监听，控制toast的弹出时间。</p>
-]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>界面为ScrollView时打开界面会自动滚动到底部之解决方法</title>
     <url>/2019/09/02/%E7%95%8C%E9%9D%A2%E4%B8%BAScrollView%E6%97%B6%E6%89%93%E5%BC%80%E7%95%8C%E9%9D%A2%E4%BC%9A%E8%87%AA%E5%8A%A8%E6%BB%9A%E5%8A%A8%E5%88%B0%E5%BA%95%E9%83%A8%E4%B9%8B%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</url>
     <content><![CDATA[<p>版权声明：本文为博主原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接和本声明。<br>本文链接：<a href="https://blog.csdn.net/u014449096/article/details/72885947">https://blog.csdn.net/u014449096/article/details/72885947</a></p>
@@ -3254,15 +3239,18 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
-    <title>自定义控件实现（二）</title>
-    <url>/2020/08/06/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6%E5%AE%9E%E7%8E%B0%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
-    <content><![CDATA[]]></content>
+    <title>自定义Toat及其弹出时间控制</title>
+    <url>/2020/07/21/%E8%87%AA%E5%AE%9A%E4%B9%89Toat%E5%8F%8A%E5%85%B6%E5%BC%B9%E5%87%BA%E6%97%B6%E9%97%B4%E6%8E%A7%E5%88%B6/</url>
+    <content><![CDATA[<p>效果就是实现Toast布局自定义，弹出的事件进行控制</p>
+<h3 id="一、先自定义布局"><a href="#一、先自定义布局" class="headerlink" title="一、先自定义布局"></a>一、先自定义布局</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Toast toast &#x3D; Toast.makeText(mContext, str, Toast.   LENGTH_SHORT);</span><br><span class="line">View view &#x3D; LayoutInflater.from(mContext).inflate(R.layout.item_toast, null);</span><br><span class="line">TextView textView &#x3D; view.findViewById(R.id.str_toast);</span><br><span class="line">      textView.setText(str);</span><br><span class="line">      toast.setView(view);</span><br><span class="line">      toast.setGravity(Gravity.CENTER, 0, 0);</span><br><span class="line">Utils.showTimeToast(toast,500);</span><br></pre></td></tr></table></figure>
+<h3 id="二、自定义弹出时间"><a href="#二、自定义弹出时间" class="headerlink" title="二、自定义弹出时间"></a>二、自定义弹出时间</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line">    * Toast自定义时间</span><br><span class="line">    * Toast对象时间需要为Toast.LENGH_LONG</span><br><span class="line">    *&#x2F;</span><br><span class="line">   public static void showTimeToast(final Toast toast, final int time) &#123;</span><br><span class="line">       final Timer timer &#x3D; new Timer();</span><br><span class="line">       timer.schedule(new TimerTask() &#123;</span><br><span class="line">           @Override</span><br><span class="line">           public void run() &#123;</span><br><span class="line">               toast.show();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;, 0, 3000);</span><br><span class="line">       new Timer().schedule(new TimerTask() &#123;</span><br><span class="line">           @Override</span><br><span class="line">           public void run() &#123;</span><br><span class="line">               toast.cancel();</span><br><span class="line">               timer.cancel();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;, time);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>就是那么简单，利用Timer和schedule实现事件监听，控制toast的弹出时间。</p>
+]]></content>
       <categories>
         <category>Android</category>
       </categories>
       <tags>
         <tag>Android</tag>
-        <tag>自定义控件</tag>
       </tags>
   </entry>
   <entry>
@@ -3274,6 +3262,18 @@ Connection conn = null;
 <h3 id="来实践一下组合自定义控件"><a href="#来实践一下组合自定义控件" class="headerlink" title="来实践一下组合自定义控件"></a>来实践一下组合自定义控件</h3><p>需要实现的效果如图：<br><img src="https://github.com/MarkCHYL/BLOG/blob/master/marksource/images/avr1u-cdm3a.jpg?raw=true"></p>
 <p><a href="../../public/2020/08/06/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6%E5%AE%9E%E7%8E%B0%EF%BC%88%E4%BA%8C%EF%BC%89/index.html">自定义控件实现（二）</a></p>
 ]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>自定义控件</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>自定义控件实现（二）</title>
+    <url>/2020/08/06/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6%E5%AE%9E%E7%8E%B0%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
+    <content><![CDATA[]]></content>
       <categories>
         <category>Android</category>
       </categories>
