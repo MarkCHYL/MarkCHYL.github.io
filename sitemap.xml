@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://markchyl.cn/photos/data.json</loc>
+    
+    <lastmod>2021-05-14</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://markchyl.cn/photos/index.html</loc>
+    
+    <lastmod>2021-05-14</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://markchyl.cn/2021/05/13/JDBC%E5%AD%A6%E4%B9%A0-ConnectinnFactory/</loc>
     
     <lastmod>2021-05-13</lastmod>
