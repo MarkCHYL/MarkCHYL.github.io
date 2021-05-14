@@ -669,20 +669,6 @@
 
   
   <url>
-    <loc>http://markchyl.cn/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/</loc>
-    <lastmod>2021-05-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://markchyl.cn/tags/%E5%8F%8D%E7%BC%96%E8%AF%91/</loc>
-    <lastmod>2021-05-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://markchyl.cn/tags/Error/</loc>
     <lastmod>2021-05-14</lastmod>
     <changefreq>daily</changefreq>
@@ -697,7 +683,14 @@
   </url>
   
   <url>
-    <loc>http://markchyl.cn/tags/Android/</loc>
+    <loc>http://markchyl.cn/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/</loc>
+    <lastmod>2021-05-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://markchyl.cn/tags/%E5%8F%8D%E7%BC%96%E8%AF%91/</loc>
     <lastmod>2021-05-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -719,6 +712,13 @@
   
   <url>
     <loc>http://markchyl.cn/tags/%E9%80%82%E9%85%8D/</loc>
+    <lastmod>2021-05-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://markchyl.cn/tags/Android/</loc>
     <lastmod>2021-05-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -767,13 +767,6 @@
   </url>
   
   <url>
-    <loc>http://markchyl.cn/tags/JDBC/</loc>
-    <lastmod>2021-05-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://markchyl.cn/tags/Hexo/</loc>
     <lastmod>2021-05-14</lastmod>
     <changefreq>daily</changefreq>
@@ -788,14 +781,14 @@
   </url>
   
   <url>
-    <loc>http://markchyl.cn/tags/Kotlin%E5%9F%BA%E7%A1%80/</loc>
+    <loc>http://markchyl.cn/tags/JDBC/</loc>
     <lastmod>2021-05-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://markchyl.cn/tags/kotlin/</loc>
+    <loc>http://markchyl.cn/tags/Kotlin%E5%9F%BA%E7%A1%80/</loc>
     <lastmod>2021-05-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -879,14 +872,14 @@
   </url>
   
   <url>
-    <loc>http://markchyl.cn/tags/%E5%86%B2%E7%AA%81/</loc>
+    <loc>http://markchyl.cn/tags/%E5%B8%83%E5%B1%80/</loc>
     <lastmod>2021-05-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://markchyl.cn/tags/%E5%B8%83%E5%B1%80/</loc>
+    <loc>http://markchyl.cn/tags/%E5%86%B2%E7%AA%81/</loc>
     <lastmod>2021-05-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -914,20 +907,6 @@
   </url>
   
   <url>
-    <loc>http://markchyl.cn/tags/Android%E3%80%81Kotlin%E3%80%81%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2021-05-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://markchyl.cn/tags/%E7%88%AC%E8%99%AB/</loc>
-    <lastmod>2021-05-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://markchyl.cn/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</loc>
     <lastmod>2021-05-14</lastmod>
     <changefreq>daily</changefreq>
@@ -936,6 +915,20 @@
   
   <url>
     <loc>http://markchyl.cn/tags/vue/</loc>
+    <lastmod>2021-05-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://markchyl.cn/tags/Android%E3%80%81Kotlin%E3%80%81%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2021-05-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://markchyl.cn/tags/%E7%88%AC%E8%99%AB/</loc>
     <lastmod>2021-05-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -964,6 +957,13 @@
   
   <url>
     <loc>http://markchyl.cn/tags/%E7%AC%AC%E4%B8%89%E6%96%B9%E9%9B%86%E6%88%90/</loc>
+    <lastmod>2021-05-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://markchyl.cn/tags/kotlin/</loc>
     <lastmod>2021-05-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1070,13 +1070,6 @@
   </url>
   
   <url>
-    <loc>http://markchyl.cn/categories/Python/%E7%88%AC%E8%99%AB/</loc>
-    <lastmod>2021-05-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://markchyl.cn/categories/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</loc>
     <lastmod>2021-05-14</lastmod>
     <changefreq>daily</changefreq>
@@ -1085,6 +1078,13 @@
   
   <url>
     <loc>http://markchyl.cn/categories/vue/</loc>
+    <lastmod>2021-05-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://markchyl.cn/categories/Python/%E7%88%AC%E8%99%AB/</loc>
     <lastmod>2021-05-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
