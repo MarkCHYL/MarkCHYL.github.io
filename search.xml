@@ -1230,50 +1230,6 @@ proguard-rules.pro文件的作用</li>
       </tags>
   </entry>
   <entry>
-    <title>GreenDao数据库框架的基础学习</title>
-    <url>/2018/12/17/GreenDao%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A1%86%E6%9E%B6%E7%9A%84%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/</url>
-    <content><![CDATA[<p>GreenDao很早就想看看了，最近由于业务需求的变化，我就开始学习下简单的增、删、改、查。</p>
-<hr>
-<h2 id="资料参考："><a href="#资料参考：" class="headerlink" title="资料参考："></a>资料参考：</h2><ul>
-<li>首先这是官网地址：<a href="https://github.com/greenrobot/greendao">https://github.com/greenrobot/greendao</a></li>
-<li>参考博客为：<a href="https://www.cnblogs.com/wjtaigwh/p/6394288.html">https://www.cnblogs.com/wjtaigwh/p/6394288.html</a></li>
-<li>慕课网上的视频教程（有点老了，个人觉得）</li>
-</ul>
-<hr>
-<span id="more"></span>
-<h3 id="一、咱们先来学习下GreenDao的Api属性："><a href="#一、咱们先来学习下GreenDao的Api属性：" class="headerlink" title="一、咱们先来学习下GreenDao的Api属性："></a>一、咱们先来学习下GreenDao的Api属性：</h3><blockquote>
-<p><strong>GreenDao是使用ORM（Object RelationShop Mapping）对象关系映射，就是通过GreenDao将数据库和Bean关联起来有以下优点：</strong></p>
-</blockquote>
-<ul>
-<li>存取速度快</li>
-<li>支持数据库加密</li>
-<li>轻量级</li>
-<li>激活实体</li>
-<li>支持缓存</li>
-<li>代码自动生成<h3 id="二、代码的接入配置"><a href="#二、代码的接入配置" class="headerlink" title="二、代码的接入配置"></a>二、代码的接入配置</h3></li>
-<li> app项目目录下build文件中添加<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apply plugin: &#39;org.greenrobot.greendao&#39;</span><br><span class="line">Android&#123;</span><br><span class="line">   &#x2F;&#x2F;greendao配置</span><br><span class="line">    greendao&#123;</span><br><span class="line">       &#x2F;&#x2F;版本号，升级时可配置</span><br><span class="line">       schemaVersion 1</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">    implementation &#39;org.greenrobot:greendao:3.2.2&#39; &#x2F;&#x2F; add library</span><br><span class="line">    implementation &#39;org.greenrobot:greendao-generator:3.2.2&#39;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-<li>在更目录中build文件中需要添加<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">   classpath &#39;org.greenrobot:greendao-gradle-plugin:3.2.2&#39;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="预览效果："><a href="#预览效果：" class="headerlink" title="预览效果："></a>预览效果：</h4></li>
-</ul>
-<p><img src="https://user-gold-cdn.xitu.io/2018/8/9/1651c88d14c0e067?w=1036&h=1598&f=png&s=492342" title="是不是很丑"></p>
-<ul>
-<li><h3 id="Bean-对象注释的解释"><a href="#Bean-对象注释的解释" class="headerlink" title="Bean 对象注释的解释"></a>Bean 对象注释的解释</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@Entity：告诉GreenDao该对象为实体，只有被@Entity注释的Bean类才能被dao类操作</span><br><span class="line">@Id：对象的Id，使用Long类型作为EntityId，否则会报错。(autoincrement &#x3D; true)表示主键会自增，如果false就会使用旧值</span><br><span class="line">@Property：可以自定义字段名，注意外键不能使用该属性</span><br><span class="line">@NotNull：属性不能为空</span><br><span class="line">@Transient：使用该注释的属性不会被存入数据库的字段中</span><br><span class="line">@Unique：该属性值必须在数据库中是唯一值</span><br><span class="line">@Generated：编译后自动生成的构造函数、方法等的注释，提示构造函数、方法等不能被修改</span><br></pre></td></tr></table></figure></li>
-<li><h3 id="在Application中初始化自己的数据库"><a href="#在Application中初始化自己的数据库" class="headerlink" title="在Application中初始化自己的数据库"></a>在Application中初始化自己的数据库</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * 配置数据库</span><br><span class="line"> *&#x2F;</span><br><span class="line">private void setupDatabase() &#123;</span><br><span class="line">    &#x2F;&#x2F;创建数据库shop.db</span><br><span class="line">    DaoMaster.DevOpenHelper helper &#x3D; new DaoMaster.DevOpenHelper(this,&quot;shop.db&quot;,null);</span><br><span class="line">    &#x2F;&#x2F;获取可写数据库</span><br><span class="line">    SQLiteDatabase db &#x3D; helper.getWritableDatabase();</span><br><span class="line">    &#x2F;&#x2F;获取数据库对象</span><br><span class="line">    DaoMaster daoMaster &#x3D; new DaoMaster(db);</span><br><span class="line">    &#x2F;&#x2F;获取dao对象管理者</span><br><span class="line">    daoSession &#x3D; daoMaster.newSession();</span><br><span class="line">&#125;</span><br><span class="line">public static DaoSession getDaoInstant()&#123;</span><br><span class="line">    return daoSession;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><h3 id="在使用前我们海的封装一个数据库的操作类，提供简单的Shop对象的增删该查的简单方法"><a href="#在使用前我们海的封装一个数据库的操作类，提供简单的Shop对象的增删该查的简单方法" class="headerlink" title="在使用前我们海的封装一个数据库的操作类，提供简单的Shop对象的增删该查的简单方法"></a>在使用前我们海的封装一个数据库的操作类，提供简单的Shop对象的增删该查的简单方法</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 使用GreenDao 实现简单的增删改查，下面是基本方法</span><br><span class="line">  * 增加单个数据</span><br><span class="line">* getShopDao().insert(shop);</span><br><span class="line">* getShopDao().insertOrReplace(shop);</span><br><span class="line">* 增加多个数据</span><br><span class="line">* getShopDao().insertInTx(shopList);</span><br><span class="line">* getShopDao().insertOrReplaceInTx(shopList);</span><br><span class="line">* 查询全部</span><br><span class="line">* List&lt; Shop&gt; list &#x3D; getShopDao().loadAll();</span><br><span class="line">* List&lt; Shop&gt; list &#x3D; getShopDao().queryBuilder().list();</span><br><span class="line">* 查询附加单个条件</span><br><span class="line">* .where()</span><br><span class="line">* .whereOr()</span><br><span class="line">* 查询附加多个条件</span><br><span class="line">* .where(, , ,)</span><br><span class="line">* .whereOr(, , ,)</span><br><span class="line">* 查询附加排序</span><br><span class="line">* .orderDesc()</span><br><span class="line">* .orderAsc()</span><br><span class="line">* 查询限制当页个数</span><br><span class="line">* .limit()</span><br><span class="line">* 查询总个数</span><br><span class="line">* .count()</span><br><span class="line">* 修改单个数据</span><br><span class="line">* getShopDao().update(shop);</span><br><span class="line">* 修改多个数据</span><br><span class="line">* getShopDao().updateInTx(shopList);</span><br><span class="line">* 删除单个数据</span><br><span class="line">* getTABUserDao().delete(user);</span><br><span class="line">* 删除多个数据</span><br><span class="line">* getUserDao().deleteInTx(userList);</span><br><span class="line">* 删除数据ByKey</span><br><span class="line">* getTABUserDao().deleteByKey();</span><br></pre></td></tr></table></figure></li>
-</ul>
-<p><em><strong><strong>我的代码和网上大佬的一样，其实就是自己平时封装的工具类！累。。。。。<br>那么那么久</strong></strong></em></p>
-<p>最后附上自己的练习代码：<a href="https://coding.net/u/Mark_Chen/p/MarkGreenDaoDemo/git">Coding</a><br>在大佬的基础上学习就是快！！！</p>
-<p>大佬的博客为：<a href="http://www.cnblogs.com/wjtaigwh/">http://www.cnblogs.com/wjtaigwh/</a></p>
-]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>数据库</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hexo yilia 主题添加 widgetpack 评论系统</title>
     <url>/2019/07/21/Hexo-yilia-%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0-widgetpack-%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/</url>
     <content><![CDATA[<h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><hr>
@@ -1322,6 +1278,50 @@ proguard-rules.pro文件的作用</li>
       <tags>
         <tag>Hexo</tag>
         <tag>工具搭建</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>GreenDao数据库框架的基础学习</title>
+    <url>/2018/12/17/GreenDao%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A1%86%E6%9E%B6%E7%9A%84%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<p>GreenDao很早就想看看了，最近由于业务需求的变化，我就开始学习下简单的增、删、改、查。</p>
+<hr>
+<h2 id="资料参考："><a href="#资料参考：" class="headerlink" title="资料参考："></a>资料参考：</h2><ul>
+<li>首先这是官网地址：<a href="https://github.com/greenrobot/greendao">https://github.com/greenrobot/greendao</a></li>
+<li>参考博客为：<a href="https://www.cnblogs.com/wjtaigwh/p/6394288.html">https://www.cnblogs.com/wjtaigwh/p/6394288.html</a></li>
+<li>慕课网上的视频教程（有点老了，个人觉得）</li>
+</ul>
+<hr>
+<span id="more"></span>
+<h3 id="一、咱们先来学习下GreenDao的Api属性："><a href="#一、咱们先来学习下GreenDao的Api属性：" class="headerlink" title="一、咱们先来学习下GreenDao的Api属性："></a>一、咱们先来学习下GreenDao的Api属性：</h3><blockquote>
+<p><strong>GreenDao是使用ORM（Object RelationShop Mapping）对象关系映射，就是通过GreenDao将数据库和Bean关联起来有以下优点：</strong></p>
+</blockquote>
+<ul>
+<li>存取速度快</li>
+<li>支持数据库加密</li>
+<li>轻量级</li>
+<li>激活实体</li>
+<li>支持缓存</li>
+<li>代码自动生成<h3 id="二、代码的接入配置"><a href="#二、代码的接入配置" class="headerlink" title="二、代码的接入配置"></a>二、代码的接入配置</h3></li>
+<li> app项目目录下build文件中添加<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apply plugin: &#39;org.greenrobot.greendao&#39;</span><br><span class="line">Android&#123;</span><br><span class="line">   &#x2F;&#x2F;greendao配置</span><br><span class="line">    greendao&#123;</span><br><span class="line">       &#x2F;&#x2F;版本号，升级时可配置</span><br><span class="line">       schemaVersion 1</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">    implementation &#39;org.greenrobot:greendao:3.2.2&#39; &#x2F;&#x2F; add library</span><br><span class="line">    implementation &#39;org.greenrobot:greendao-generator:3.2.2&#39;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li>在更目录中build文件中需要添加<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">   classpath &#39;org.greenrobot:greendao-gradle-plugin:3.2.2&#39;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="预览效果："><a href="#预览效果：" class="headerlink" title="预览效果："></a>预览效果：</h4></li>
+</ul>
+<p><img src="https://user-gold-cdn.xitu.io/2018/8/9/1651c88d14c0e067?w=1036&h=1598&f=png&s=492342" title="是不是很丑"></p>
+<ul>
+<li><h3 id="Bean-对象注释的解释"><a href="#Bean-对象注释的解释" class="headerlink" title="Bean 对象注释的解释"></a>Bean 对象注释的解释</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@Entity：告诉GreenDao该对象为实体，只有被@Entity注释的Bean类才能被dao类操作</span><br><span class="line">@Id：对象的Id，使用Long类型作为EntityId，否则会报错。(autoincrement &#x3D; true)表示主键会自增，如果false就会使用旧值</span><br><span class="line">@Property：可以自定义字段名，注意外键不能使用该属性</span><br><span class="line">@NotNull：属性不能为空</span><br><span class="line">@Transient：使用该注释的属性不会被存入数据库的字段中</span><br><span class="line">@Unique：该属性值必须在数据库中是唯一值</span><br><span class="line">@Generated：编译后自动生成的构造函数、方法等的注释，提示构造函数、方法等不能被修改</span><br></pre></td></tr></table></figure></li>
+<li><h3 id="在Application中初始化自己的数据库"><a href="#在Application中初始化自己的数据库" class="headerlink" title="在Application中初始化自己的数据库"></a>在Application中初始化自己的数据库</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * 配置数据库</span><br><span class="line"> *&#x2F;</span><br><span class="line">private void setupDatabase() &#123;</span><br><span class="line">    &#x2F;&#x2F;创建数据库shop.db</span><br><span class="line">    DaoMaster.DevOpenHelper helper &#x3D; new DaoMaster.DevOpenHelper(this,&quot;shop.db&quot;,null);</span><br><span class="line">    &#x2F;&#x2F;获取可写数据库</span><br><span class="line">    SQLiteDatabase db &#x3D; helper.getWritableDatabase();</span><br><span class="line">    &#x2F;&#x2F;获取数据库对象</span><br><span class="line">    DaoMaster daoMaster &#x3D; new DaoMaster(db);</span><br><span class="line">    &#x2F;&#x2F;获取dao对象管理者</span><br><span class="line">    daoSession &#x3D; daoMaster.newSession();</span><br><span class="line">&#125;</span><br><span class="line">public static DaoSession getDaoInstant()&#123;</span><br><span class="line">    return daoSession;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><h3 id="在使用前我们海的封装一个数据库的操作类，提供简单的Shop对象的增删该查的简单方法"><a href="#在使用前我们海的封装一个数据库的操作类，提供简单的Shop对象的增删该查的简单方法" class="headerlink" title="在使用前我们海的封装一个数据库的操作类，提供简单的Shop对象的增删该查的简单方法"></a>在使用前我们海的封装一个数据库的操作类，提供简单的Shop对象的增删该查的简单方法</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 使用GreenDao 实现简单的增删改查，下面是基本方法</span><br><span class="line">  * 增加单个数据</span><br><span class="line">* getShopDao().insert(shop);</span><br><span class="line">* getShopDao().insertOrReplace(shop);</span><br><span class="line">* 增加多个数据</span><br><span class="line">* getShopDao().insertInTx(shopList);</span><br><span class="line">* getShopDao().insertOrReplaceInTx(shopList);</span><br><span class="line">* 查询全部</span><br><span class="line">* List&lt; Shop&gt; list &#x3D; getShopDao().loadAll();</span><br><span class="line">* List&lt; Shop&gt; list &#x3D; getShopDao().queryBuilder().list();</span><br><span class="line">* 查询附加单个条件</span><br><span class="line">* .where()</span><br><span class="line">* .whereOr()</span><br><span class="line">* 查询附加多个条件</span><br><span class="line">* .where(, , ,)</span><br><span class="line">* .whereOr(, , ,)</span><br><span class="line">* 查询附加排序</span><br><span class="line">* .orderDesc()</span><br><span class="line">* .orderAsc()</span><br><span class="line">* 查询限制当页个数</span><br><span class="line">* .limit()</span><br><span class="line">* 查询总个数</span><br><span class="line">* .count()</span><br><span class="line">* 修改单个数据</span><br><span class="line">* getShopDao().update(shop);</span><br><span class="line">* 修改多个数据</span><br><span class="line">* getShopDao().updateInTx(shopList);</span><br><span class="line">* 删除单个数据</span><br><span class="line">* getTABUserDao().delete(user);</span><br><span class="line">* 删除多个数据</span><br><span class="line">* getUserDao().deleteInTx(userList);</span><br><span class="line">* 删除数据ByKey</span><br><span class="line">* getTABUserDao().deleteByKey();</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><em><strong><strong>我的代码和网上大佬的一样，其实就是自己平时封装的工具类！累。。。。。<br>那么那么久</strong></strong></em></p>
+<p>最后附上自己的练习代码：<a href="https://coding.net/u/Mark_Chen/p/MarkGreenDaoDemo/git">Coding</a><br>在大佬的基础上学习就是快！！！</p>
+<p>大佬的博客为：<a href="http://www.cnblogs.com/wjtaigwh/">http://www.cnblogs.com/wjtaigwh/</a></p>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>数据库</tag>
       </tags>
   </entry>
   <entry>
@@ -2184,7 +2184,7 @@ Connection conn = null;
 <p>2.添加SSH Key到Github<br>进入github首页在设置洁面<br><img src="https://images2017.cnblogs.com/blog/1250458/201710/1250458-20171017153636849-294935886.png"></p>
 <hr>
 <h4 id="添加SSH-Key"><a href="#添加SSH-Key" class="headerlink" title="添加SSH Key"></a>添加SSH Key</h4><p><img src="https://images2017.cnblogs.com/blog/1250458/201710/1250458-20171017153642521-647884655.png"><br>找到系统当前用户目录下(开启查看隐藏文件) C:\Users\用户名\ .ssh id_rsa.pub文件以文本方式打开。打开之后全部复制到key中<br><img src="https://images2017.cnblogs.com/blog/1250458/201710/1250458-20171017153648631-441574444.png"><br>到了这就可以测试一下是否成功了:</p>
-<p>ssh -T <a href="mailto:&#x67;&#x69;&#x74;&#64;&#x67;&#105;&#x74;&#104;&#117;&#x62;&#46;&#x63;&#111;&#109;">&#x67;&#x69;&#x74;&#64;&#x67;&#105;&#x74;&#104;&#117;&#x62;&#46;&#x63;&#111;&#109;</a><br>#之后会要你输入yes/no,输入yes就好了。<br>设置你的账号信息:</p>
+<p>ssh -T <a href="mailto:&#103;&#105;&#116;&#x40;&#x67;&#x69;&#x74;&#104;&#117;&#x62;&#x2e;&#99;&#111;&#x6d;">&#103;&#105;&#116;&#x40;&#x67;&#x69;&#x74;&#104;&#117;&#x62;&#x2e;&#99;&#111;&#x6d;</a><br>#之后会要你输入yes/no,输入yes就好了。<br>设置你的账号信息:</p>
 <p>git config –global user.name “你的名字”     #真实名字不是github用户名<br>git config –global user.email “邮箱@邮箱.com”    #github邮箱<br>3.部署到github<br>hexo d<br>这时再刷新 username.github.io 就可以看到你的博客了。</p>
 <p>到了这你以为就结束了吗？没有，还有坑没有给你们填好。</p>
 <p>如果你的SSH配置的时候哪找的.ssh文件的化，可以参照<a href="https://www.cnblogs.com/ailiailan/p/8577411.html">mac 上传本地代码到 Github 教程</a>,我就是参照上面的步骤配置的。</p>
@@ -2861,21 +2861,6 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
-    <title>使用 Gradle 工具检查此项目的依赖</title>
-    <url>/2020/12/18/%E4%BD%BF%E7%94%A8-Gradle-%E5%B7%A5%E5%85%B7%E6%A3%80%E6%9F%A5%E6%AD%A4%E9%A1%B9%E7%9B%AE%E7%9A%84%E4%BE%9D%E8%B5%96/</url>
-    <content><![CDATA[<p>使用 Gradle 工具检查此项目的依赖，进入项目目录，执行如下指令进行依赖检查：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd app</span><br><span class="line">gradle dependencies</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>打印出如下图所示的依赖树，依赖树显示了你 build 脚本声明的顶级依赖和它们的传递依赖：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">+--- androidx.test.ext:junit:1.1.1</span><br><span class="line">|    +--- junit:junit:4.12</span><br><span class="line">|    |    \--- org.hamcrest:hamcrest-core:1.3</span><br><span class="line">|    +--- androidx.test:core:1.2.0</span><br><span class="line">|    |    +--- androidx.annotation:annotation:1.0.0 -&gt; 1.1.0</span><br><span class="line">|    |    +--- androidx.test:monitor:1.2.0</span><br><span class="line">|    |    |    \--- androidx.annotation:annotation:1.0.0 -&gt; 1.1.0</span><br><span class="line">|    |    \--- androidx.lifecycle:lifecycle-common:2.0.0 -&gt; 2.1.0</span><br><span class="line">|    |         \--- androidx.annotation:annotation:1.1.0</span><br><span class="line">|    +--- androidx.test:monitor:1.2.0 (*)</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>Gradle</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>占位符 Broccoli 的使用</title>
     <url>/2019/01/18/%E5%8D%A0%E4%BD%8D%E7%AC%A6-Broccoli-%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<p><img src="https://github.com/samlss/Broccoli/raw/master/screenshots/Broccoli.png" alt="Broccoli"></p>
@@ -2900,6 +2885,21 @@ Connection conn = null;
       <tags>
         <tag>Android</tag>
         <tag>自定义控件</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用 Gradle 工具检查此项目的依赖</title>
+    <url>/2020/12/18/%E4%BD%BF%E7%94%A8-Gradle-%E5%B7%A5%E5%85%B7%E6%A3%80%E6%9F%A5%E6%AD%A4%E9%A1%B9%E7%9B%AE%E7%9A%84%E4%BE%9D%E8%B5%96/</url>
+    <content><![CDATA[<p>使用 Gradle 工具检查此项目的依赖，进入项目目录，执行如下指令进行依赖检查：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd app</span><br><span class="line">gradle dependencies</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>打印出如下图所示的依赖树，依赖树显示了你 build 脚本声明的顶级依赖和它们的传递依赖：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">+--- androidx.test.ext:junit:1.1.1</span><br><span class="line">|    +--- junit:junit:4.12</span><br><span class="line">|    |    \--- org.hamcrest:hamcrest-core:1.3</span><br><span class="line">|    +--- androidx.test:core:1.2.0</span><br><span class="line">|    |    +--- androidx.annotation:annotation:1.0.0 -&gt; 1.1.0</span><br><span class="line">|    |    +--- androidx.test:monitor:1.2.0</span><br><span class="line">|    |    |    \--- androidx.annotation:annotation:1.0.0 -&gt; 1.1.0</span><br><span class="line">|    |    \--- androidx.lifecycle:lifecycle-common:2.0.0 -&gt; 2.1.0</span><br><span class="line">|    |         \--- androidx.annotation:annotation:1.1.0</span><br><span class="line">|    +--- androidx.test:monitor:1.2.0 (*)</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>Gradle</tag>
       </tags>
   </entry>
   <entry>
@@ -3074,23 +3074,6 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
-    <title>安卓的启动模式详解</title>
-    <url>/2018/12/16/%E5%AE%89%E5%8D%93%E7%9A%84%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3/</url>
-    <content><![CDATA[<h4 id="安卓开发者基本都知道Activity的四大启动模式，但是一到被问到之间区别的时候，再问深一点的时候，往往都会回答的不是很让面试官满意，鄙人就是，嘴皮子笨不懂得如何表达清楚。"><a href="#安卓开发者基本都知道Activity的四大启动模式，但是一到被问到之间区别的时候，再问深一点的时候，往往都会回答的不是很让面试官满意，鄙人就是，嘴皮子笨不懂得如何表达清楚。" class="headerlink" title="安卓开发者基本都知道Activity的四大启动模式，但是一到被问到之间区别的时候，再问深一点的时候，往往都会回答的不是很让面试官满意，鄙人就是，嘴皮子笨不懂得如何表达清楚。"></a>安卓开发者基本都知道Activity的四大启动模式，但是一到被问到之间区别的时候，再问深一点的时候，往往都会回答的不是很让面试官满意，鄙人就是，嘴皮子笨不懂得如何表达清楚。</h4><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a><strong>简介</strong></h2><h4 id="我们在创建一个Activity后，都知道要在清单文件中去注册，在程序员创建该Activity实例时，系统会按照先进先出的原则，创建一个任务栈将其实例放入其中，然后按back键时或finish时，系统就会将栈顶的Activity移除栈，我们可以在清单文件中指明该Activity的启动模式，系统默认的Activity的启动模式是standard模式。"><a href="#我们在创建一个Activity后，都知道要在清单文件中去注册，在程序员创建该Activity实例时，系统会按照先进先出的原则，创建一个任务栈将其实例放入其中，然后按back键时或finish时，系统就会将栈顶的Activity移除栈，我们可以在清单文件中指明该Activity的启动模式，系统默认的Activity的启动模式是standard模式。" class="headerlink" title="我们在创建一个Activity后，都知道要在清单文件中去注册，在程序员创建该Activity实例时，系统会按照先进先出的原则，创建一个任务栈将其实例放入其中，然后按back键时或finish时，系统就会将栈顶的Activity移除栈，我们可以在清单文件中指明该Activity的启动模式，系统默认的Activity的启动模式是standard模式。"></a>我们在创建一个Activity后，都知道要在清单文件中去注册，在程序员创建该Activity实例时，系统会按照先进先出的原则，创建一个任务栈将其实例放入其中，然后按back键时或finish时，系统就会将栈顶的Activity移除栈，我们可以在清单文件中指明该Activity的启动模式，系统默认的Activity的启动模式是standard模式。</h4><hr>
-<span id="more"></span>
-<h3 id="Activity的启动模式："><a href="#Activity的启动模式：" class="headerlink" title="Activity的启动模式："></a>Activity的启动模式：</h3><h4 id="standard、singleTask、singleTop、singleInstance"><a href="#standard、singleTask、singleTop、singleInstance" class="headerlink" title="standard、singleTask、singleTop、singleInstance"></a><em><strong>standard、singleTask、singleTop、singleInstance</strong></em></h4><h4 id="1-standard-标准模式"><a href="#1-standard-标准模式" class="headerlink" title="1. standard(标准模式)"></a>1. standard(标准模式)</h4><p><em><strong>不管这个Activity的实例是否存在于任务栈中或者和启动它的Activity是否在相同的任务栈中，每次启动Activity都会创建一个新的实例。谁启动了它，它就属于启动它的Activity的任务栈中，</strong></em></p>
-<h3 id="无论核实启动哪个Activity，都会重新创建页面实例并收入栈尾"><a href="#无论核实启动哪个Activity，都会重新创建页面实例并收入栈尾" class="headerlink" title="无论核实启动哪个Activity，都会重新创建页面实例并收入栈尾"></a><em><strong>无论核实启动哪个Activity，都会重新创建页面实例并收入栈尾</strong></em></h3><h4 id="2-singleTask-栈内复用模式"><a href="#2-singleTask-栈内复用模式" class="headerlink" title="2. singleTask(栈内复用模式)"></a>2. singleTask(栈内复用模式)</h4><p><em><strong>在这个模式下，如果栈内存在该Activity的实例，不管是否存在于栈顶都不会再创建实例，而是会将该实例前的Activity清出栈顶（cleanTop），并且会回调onNewIntent方法。其实在这个过程中，首先是会进行任务栈的匹配，这个任务栈就是通过taskAffinity属性指定，如果不存在这个任务栈，就会创建一个任务栈，并将该Activity放入栈中。流程图比较清晰，如下所见：</strong></em><br><img src="https://user-gold-cdn.xitu.io/2017/5/17/490fd5b297a2a07d60d1ffdad58e6cc3" alt="image"></p>
-<h3 id="启动activity时，判断栈中存在activity的实例，就重新利用，并清除位于该实例上面的所有实例，否则情况和standard一样"><a href="#启动activity时，判断栈中存在activity的实例，就重新利用，并清除位于该实例上面的所有实例，否则情况和standard一样" class="headerlink" title="启动activity时，判断栈中存在activity的实例，就重新利用，并清除位于该实例上面的所有实例，否则情况和standard一样"></a><em><strong>启动activity时，判断栈中存在activity的实例，就重新利用，并清除位于该实例上面的所有实例，否则情况和standard一样</strong></em></h3><h4 id="3-singleTop-栈顶复用模式"><a href="#3-singleTop-栈顶复用模式" class="headerlink" title="3. singleTop(栈顶复用模式)"></a>3. singleTop(栈顶复用模式)</h4><p><em><strong>这个模式下，如果Activity的实例已经存在在栈顶，启动它就不会再创建新的实例，而是会调用onNewIntent，通过此方法的参数我们可以去除当前请求的信息。随后会调用onResume方法，不再调用onCreate、onStart方法，因为它没有变化。如果没有存在的话，就会如同standard模式一样。这种模式可以用来防止多次打开同一个Activity。</strong></em></p>
-<h3 id="启动activity时，判断栈顶正好时该activity的实例，就重新使用，否则就会创建新的实例放入栈顶，否则的情况和standard类似"><a href="#启动activity时，判断栈顶正好时该activity的实例，就重新使用，否则就会创建新的实例放入栈顶，否则的情况和standard类似" class="headerlink" title="启动activity时，判断栈顶正好时该activity的实例，就重新使用，否则就会创建新的实例放入栈顶，否则的情况和standard类似"></a><em><strong>启动activity时，判断栈顶正好时该activity的实例，就重新使用，否则就会创建新的实例放入栈顶，否则的情况和standard类似</strong></em></h3><h4 id="4、singleInstance（全局唯一模式）"><a href="#4、singleInstance（全局唯一模式）" class="headerlink" title="4、singleInstance（全局唯一模式）"></a>4、singleInstance（全局唯一模式）</h4><p><em><strong>该模式具备singleTask模式的所有特性外，与它的区别就是，这种模式下的Activity会单独占用一个Task栈，具有全局唯一性，即整个系统中就这么一个实例，由于栈内复用的特性，后续的请求均不会创建新的Activity实例，除非这个特殊的任务栈被销毁了。以singleInstance模式启动的Activity在整个系统中是单例的，如果在启动这样的Activiyt时，已经存在了一个实例，那么会把它所在的任务调度到前台，重用这个实例。</strong></em></p>
-<h3 id="启动activity时，将该Activity的实例放入一个新的栈中，原栈中的实例保持不变"><a href="#启动activity时，将该Activity的实例放入一个新的栈中，原栈中的实例保持不变" class="headerlink" title="启动activity时，将该Activity的实例放入一个新的栈中，原栈中的实例保持不变"></a><em><strong>启动activity时，将该Activity的实例放入一个新的栈中，原栈中的实例保持不变</strong></em></h3><h4 id="ps：-adb-shell-dumpsys-activity-查看adb运行日志"><a href="#ps：-adb-shell-dumpsys-activity-查看adb运行日志" class="headerlink" title="ps：[adb shell dumpsys activity],查看adb运行日志"></a>ps：[adb shell dumpsys activity],查看adb运行日志</h4>]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>将项目迁移至androidx</title>
     <url>/2019/10/14/%E5%B0%86%E9%A1%B9%E7%9B%AE%E8%BF%81%E7%A7%BB%E8%87%B3androidx/</url>
     <content><![CDATA[<h2 id="自己的工具："><a href="#自己的工具：" class="headerlink" title="自己的工具："></a>自己的工具：</h2><ul>
@@ -3106,6 +3089,23 @@ Connection conn = null;
 <p><img src="https://img-blog.csdnimg.cn/2019071109224159.png"></p>
 <p>然后手动检查项目的并修改，先 build会报很多的错，慢慢改。</p>
 <h3 id="没有或不能适配AndroidX的插件包，建议能删掉的就删掉"><a href="#没有或不能适配AndroidX的插件包，建议能删掉的就删掉" class="headerlink" title="没有或不能适配AndroidX的插件包，建议能删掉的就删掉"></a><em>没有或不能适配AndroidX的插件包，建议能删掉的就删掉</em></h3>]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>安卓的启动模式详解</title>
+    <url>/2018/12/16/%E5%AE%89%E5%8D%93%E7%9A%84%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3/</url>
+    <content><![CDATA[<h4 id="安卓开发者基本都知道Activity的四大启动模式，但是一到被问到之间区别的时候，再问深一点的时候，往往都会回答的不是很让面试官满意，鄙人就是，嘴皮子笨不懂得如何表达清楚。"><a href="#安卓开发者基本都知道Activity的四大启动模式，但是一到被问到之间区别的时候，再问深一点的时候，往往都会回答的不是很让面试官满意，鄙人就是，嘴皮子笨不懂得如何表达清楚。" class="headerlink" title="安卓开发者基本都知道Activity的四大启动模式，但是一到被问到之间区别的时候，再问深一点的时候，往往都会回答的不是很让面试官满意，鄙人就是，嘴皮子笨不懂得如何表达清楚。"></a>安卓开发者基本都知道Activity的四大启动模式，但是一到被问到之间区别的时候，再问深一点的时候，往往都会回答的不是很让面试官满意，鄙人就是，嘴皮子笨不懂得如何表达清楚。</h4><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a><strong>简介</strong></h2><h4 id="我们在创建一个Activity后，都知道要在清单文件中去注册，在程序员创建该Activity实例时，系统会按照先进先出的原则，创建一个任务栈将其实例放入其中，然后按back键时或finish时，系统就会将栈顶的Activity移除栈，我们可以在清单文件中指明该Activity的启动模式，系统默认的Activity的启动模式是standard模式。"><a href="#我们在创建一个Activity后，都知道要在清单文件中去注册，在程序员创建该Activity实例时，系统会按照先进先出的原则，创建一个任务栈将其实例放入其中，然后按back键时或finish时，系统就会将栈顶的Activity移除栈，我们可以在清单文件中指明该Activity的启动模式，系统默认的Activity的启动模式是standard模式。" class="headerlink" title="我们在创建一个Activity后，都知道要在清单文件中去注册，在程序员创建该Activity实例时，系统会按照先进先出的原则，创建一个任务栈将其实例放入其中，然后按back键时或finish时，系统就会将栈顶的Activity移除栈，我们可以在清单文件中指明该Activity的启动模式，系统默认的Activity的启动模式是standard模式。"></a>我们在创建一个Activity后，都知道要在清单文件中去注册，在程序员创建该Activity实例时，系统会按照先进先出的原则，创建一个任务栈将其实例放入其中，然后按back键时或finish时，系统就会将栈顶的Activity移除栈，我们可以在清单文件中指明该Activity的启动模式，系统默认的Activity的启动模式是standard模式。</h4><hr>
+<span id="more"></span>
+<h3 id="Activity的启动模式："><a href="#Activity的启动模式：" class="headerlink" title="Activity的启动模式："></a>Activity的启动模式：</h3><h4 id="standard、singleTask、singleTop、singleInstance"><a href="#standard、singleTask、singleTop、singleInstance" class="headerlink" title="standard、singleTask、singleTop、singleInstance"></a><em><strong>standard、singleTask、singleTop、singleInstance</strong></em></h4><h4 id="1-standard-标准模式"><a href="#1-standard-标准模式" class="headerlink" title="1. standard(标准模式)"></a>1. standard(标准模式)</h4><p><em><strong>不管这个Activity的实例是否存在于任务栈中或者和启动它的Activity是否在相同的任务栈中，每次启动Activity都会创建一个新的实例。谁启动了它，它就属于启动它的Activity的任务栈中，</strong></em></p>
+<h3 id="无论核实启动哪个Activity，都会重新创建页面实例并收入栈尾"><a href="#无论核实启动哪个Activity，都会重新创建页面实例并收入栈尾" class="headerlink" title="无论核实启动哪个Activity，都会重新创建页面实例并收入栈尾"></a><em><strong>无论核实启动哪个Activity，都会重新创建页面实例并收入栈尾</strong></em></h3><h4 id="2-singleTask-栈内复用模式"><a href="#2-singleTask-栈内复用模式" class="headerlink" title="2. singleTask(栈内复用模式)"></a>2. singleTask(栈内复用模式)</h4><p><em><strong>在这个模式下，如果栈内存在该Activity的实例，不管是否存在于栈顶都不会再创建实例，而是会将该实例前的Activity清出栈顶（cleanTop），并且会回调onNewIntent方法。其实在这个过程中，首先是会进行任务栈的匹配，这个任务栈就是通过taskAffinity属性指定，如果不存在这个任务栈，就会创建一个任务栈，并将该Activity放入栈中。流程图比较清晰，如下所见：</strong></em><br><img src="https://user-gold-cdn.xitu.io/2017/5/17/490fd5b297a2a07d60d1ffdad58e6cc3" alt="image"></p>
+<h3 id="启动activity时，判断栈中存在activity的实例，就重新利用，并清除位于该实例上面的所有实例，否则情况和standard一样"><a href="#启动activity时，判断栈中存在activity的实例，就重新利用，并清除位于该实例上面的所有实例，否则情况和standard一样" class="headerlink" title="启动activity时，判断栈中存在activity的实例，就重新利用，并清除位于该实例上面的所有实例，否则情况和standard一样"></a><em><strong>启动activity时，判断栈中存在activity的实例，就重新利用，并清除位于该实例上面的所有实例，否则情况和standard一样</strong></em></h3><h4 id="3-singleTop-栈顶复用模式"><a href="#3-singleTop-栈顶复用模式" class="headerlink" title="3. singleTop(栈顶复用模式)"></a>3. singleTop(栈顶复用模式)</h4><p><em><strong>这个模式下，如果Activity的实例已经存在在栈顶，启动它就不会再创建新的实例，而是会调用onNewIntent，通过此方法的参数我们可以去除当前请求的信息。随后会调用onResume方法，不再调用onCreate、onStart方法，因为它没有变化。如果没有存在的话，就会如同standard模式一样。这种模式可以用来防止多次打开同一个Activity。</strong></em></p>
+<h3 id="启动activity时，判断栈顶正好时该activity的实例，就重新使用，否则就会创建新的实例放入栈顶，否则的情况和standard类似"><a href="#启动activity时，判断栈顶正好时该activity的实例，就重新使用，否则就会创建新的实例放入栈顶，否则的情况和standard类似" class="headerlink" title="启动activity时，判断栈顶正好时该activity的实例，就重新使用，否则就会创建新的实例放入栈顶，否则的情况和standard类似"></a><em><strong>启动activity时，判断栈顶正好时该activity的实例，就重新使用，否则就会创建新的实例放入栈顶，否则的情况和standard类似</strong></em></h3><h4 id="4、singleInstance（全局唯一模式）"><a href="#4、singleInstance（全局唯一模式）" class="headerlink" title="4、singleInstance（全局唯一模式）"></a>4、singleInstance（全局唯一模式）</h4><p><em><strong>该模式具备singleTask模式的所有特性外，与它的区别就是，这种模式下的Activity会单独占用一个Task栈，具有全局唯一性，即整个系统中就这么一个实例，由于栈内复用的特性，后续的请求均不会创建新的Activity实例，除非这个特殊的任务栈被销毁了。以singleInstance模式启动的Activity在整个系统中是单例的，如果在启动这样的Activiyt时，已经存在了一个实例，那么会把它所在的任务调度到前台，重用这个实例。</strong></em></p>
+<h3 id="启动activity时，将该Activity的实例放入一个新的栈中，原栈中的实例保持不变"><a href="#启动activity时，将该Activity的实例放入一个新的栈中，原栈中的实例保持不变" class="headerlink" title="启动activity时，将该Activity的实例放入一个新的栈中，原栈中的实例保持不变"></a><em><strong>启动activity时，将该Activity的实例放入一个新的栈中，原栈中的实例保持不变</strong></em></h3><h4 id="ps：-adb-shell-dumpsys-activity-查看adb运行日志"><a href="#ps：-adb-shell-dumpsys-activity-查看adb运行日志" class="headerlink" title="ps：[adb shell dumpsys activity],查看adb运行日志"></a>ps：[adb shell dumpsys activity],查看adb运行日志</h4>]]></content>
       <categories>
         <category>Android</category>
       </categories>
@@ -3239,21 +3239,6 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
-    <title>自定义Toat及其弹出时间控制</title>
-    <url>/2020/07/21/%E8%87%AA%E5%AE%9A%E4%B9%89Toat%E5%8F%8A%E5%85%B6%E5%BC%B9%E5%87%BA%E6%97%B6%E9%97%B4%E6%8E%A7%E5%88%B6/</url>
-    <content><![CDATA[<p>效果就是实现Toast布局自定义，弹出的事件进行控制</p>
-<h3 id="一、先自定义布局"><a href="#一、先自定义布局" class="headerlink" title="一、先自定义布局"></a>一、先自定义布局</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Toast toast &#x3D; Toast.makeText(mContext, str, Toast.   LENGTH_SHORT);</span><br><span class="line">View view &#x3D; LayoutInflater.from(mContext).inflate(R.layout.item_toast, null);</span><br><span class="line">TextView textView &#x3D; view.findViewById(R.id.str_toast);</span><br><span class="line">      textView.setText(str);</span><br><span class="line">      toast.setView(view);</span><br><span class="line">      toast.setGravity(Gravity.CENTER, 0, 0);</span><br><span class="line">Utils.showTimeToast(toast,500);</span><br></pre></td></tr></table></figure>
-<h3 id="二、自定义弹出时间"><a href="#二、自定义弹出时间" class="headerlink" title="二、自定义弹出时间"></a>二、自定义弹出时间</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line">    * Toast自定义时间</span><br><span class="line">    * Toast对象时间需要为Toast.LENGH_LONG</span><br><span class="line">    *&#x2F;</span><br><span class="line">   public static void showTimeToast(final Toast toast, final int time) &#123;</span><br><span class="line">       final Timer timer &#x3D; new Timer();</span><br><span class="line">       timer.schedule(new TimerTask() &#123;</span><br><span class="line">           @Override</span><br><span class="line">           public void run() &#123;</span><br><span class="line">               toast.show();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;, 0, 3000);</span><br><span class="line">       new Timer().schedule(new TimerTask() &#123;</span><br><span class="line">           @Override</span><br><span class="line">           public void run() &#123;</span><br><span class="line">               toast.cancel();</span><br><span class="line">               timer.cancel();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;, time);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<p>就是那么简单，利用Timer和schedule实现事件监听，控制toast的弹出时间。</p>
-]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>自定义控件实现（一）</title>
     <url>/2020/08/05/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6%E5%AE%9E%E7%8E%B0%EF%BC%88%E4%B8%80%EF%BC%89/</url>
     <content><![CDATA[<p><strong>被别人问题一愣一愣，骄傲的自己准备好好复习哈！</strong><br><a href="https://www.jianshu.com/p/6572ebed0d99">几乎完全使用这位大佬的</a></p>
@@ -3268,6 +3253,21 @@ Connection conn = null;
       <tags>
         <tag>Android</tag>
         <tag>自定义控件</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>自定义Toat及其弹出时间控制</title>
+    <url>/2020/07/21/%E8%87%AA%E5%AE%9A%E4%B9%89Toat%E5%8F%8A%E5%85%B6%E5%BC%B9%E5%87%BA%E6%97%B6%E9%97%B4%E6%8E%A7%E5%88%B6/</url>
+    <content><![CDATA[<p>效果就是实现Toast布局自定义，弹出的事件进行控制</p>
+<h3 id="一、先自定义布局"><a href="#一、先自定义布局" class="headerlink" title="一、先自定义布局"></a>一、先自定义布局</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Toast toast &#x3D; Toast.makeText(mContext, str, Toast.   LENGTH_SHORT);</span><br><span class="line">View view &#x3D; LayoutInflater.from(mContext).inflate(R.layout.item_toast, null);</span><br><span class="line">TextView textView &#x3D; view.findViewById(R.id.str_toast);</span><br><span class="line">      textView.setText(str);</span><br><span class="line">      toast.setView(view);</span><br><span class="line">      toast.setGravity(Gravity.CENTER, 0, 0);</span><br><span class="line">Utils.showTimeToast(toast,500);</span><br></pre></td></tr></table></figure>
+<h3 id="二、自定义弹出时间"><a href="#二、自定义弹出时间" class="headerlink" title="二、自定义弹出时间"></a>二、自定义弹出时间</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line">    * Toast自定义时间</span><br><span class="line">    * Toast对象时间需要为Toast.LENGH_LONG</span><br><span class="line">    *&#x2F;</span><br><span class="line">   public static void showTimeToast(final Toast toast, final int time) &#123;</span><br><span class="line">       final Timer timer &#x3D; new Timer();</span><br><span class="line">       timer.schedule(new TimerTask() &#123;</span><br><span class="line">           @Override</span><br><span class="line">           public void run() &#123;</span><br><span class="line">               toast.show();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;, 0, 3000);</span><br><span class="line">       new Timer().schedule(new TimerTask() &#123;</span><br><span class="line">           @Override</span><br><span class="line">           public void run() &#123;</span><br><span class="line">               toast.cancel();</span><br><span class="line">               timer.cancel();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;, time);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>就是那么简单，利用Timer和schedule实现事件监听，控制toast的弹出时间。</p>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
       </tags>
   </entry>
   <entry>
