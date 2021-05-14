@@ -75,6 +75,24 @@
       </tags>
   </entry>
   <entry>
+    <title>Android 安装APP 失败 INSTALL_FAILED_TEST_ONLY</title>
+    <url>/2020/08/07/Android-%E5%AE%89%E8%A3%85APP-%E5%A4%B1%E8%B4%A5-INSTALL-FAILED-TEST-ONLY/</url>
+    <content><![CDATA[<h3 id="android-studio-进行真机安装时失败，报错："><a href="#android-studio-进行真机安装时失败，报错：" class="headerlink" title="android studio 进行真机安装时失败，报错："></a>android studio 进行真机安装时失败，报错：</h3><blockquote>
+<p>Installation did not succeed.<br>The application could not be installed: INSTALL_FAILED_TEST_ONLY<br>Installation failed due to: ‘null’</p>
+</blockquote>
+<h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><p>在<code>gradle.properties 文件中</code>添加</p>
+<blockquote>
+<p>android.injected.testOnly=false</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Error</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Android APK反编译 apktool使用教程</title>
     <url>/2019/09/26/Android-APK%E5%8F%8D%E7%BC%96%E8%AF%91-apktool%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</url>
     <content><![CDATA[<h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><p>时间久了之前在熟悉的东西也会渐疏，好记性不如乱笔头。</p>
@@ -114,21 +132,21 @@
       </tags>
   </entry>
   <entry>
-    <title>Android 安装APP 失败 INSTALL_FAILED_TEST_ONLY</title>
-    <url>/2020/08/07/Android-%E5%AE%89%E8%A3%85APP-%E5%A4%B1%E8%B4%A5-INSTALL-FAILED-TEST-ONLY/</url>
-    <content><![CDATA[<h3 id="android-studio-进行真机安装时失败，报错："><a href="#android-studio-进行真机安装时失败，报错：" class="headerlink" title="android studio 进行真机安装时失败，报错："></a>android studio 进行真机安装时失败，报错：</h3><blockquote>
-<p>Installation did not succeed.<br>The application could not be installed: INSTALL_FAILED_TEST_ONLY<br>Installation failed due to: ‘null’</p>
-</blockquote>
-<h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><p>在<code>gradle.properties 文件中</code>添加</p>
-<blockquote>
-<p>android.injected.testOnly=false</p>
-</blockquote>
+    <title>Android 的事件分发机制</title>
+    <url>/2020/12/30/Android-%E7%9A%84%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E6%9C%BA%E5%88%B6/</url>
+    <content><![CDATA[<p>一般情况下，事件列都是从用户按下（ACTION_DOWN）的那一刻产生的，<br>负责对事件进行分发的方法主要有三个，分别是：</p>
+<ul>
+<li>dispatchTouchEvent()</li>
+<li>onTouchEvent()</li>
+<li>onInterceptTouchEvent()</li>
+</ul>
+<p>它们并不存在于所有负责分发的组件中，其具体情况总结于下面的表格中：<br>dispatchTouchEvent,onTouchEvent方法存在于上文的三个组件中。而onInterceptTouchEvent为ViewGroup独有。<br>ViewGroup类中，实际是没有onTouchEvent方法的，但是由于ViewGroup继承自View，而View拥有onTouchEvent方法，故ViewGroup的对象也是可以调用onTouchEvent方法的。</p>
 ]]></content>
       <categories>
         <category>Android</category>
       </categories>
       <tags>
-        <tag>Error</tag>
+        <tag>基础理论</tag>
       </tags>
   </entry>
   <entry>
@@ -154,24 +172,6 @@
       </categories>
       <tags>
         <tag>Android</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Android 的事件分发机制</title>
-    <url>/2020/12/30/Android-%E7%9A%84%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E6%9C%BA%E5%88%B6/</url>
-    <content><![CDATA[<p>一般情况下，事件列都是从用户按下（ACTION_DOWN）的那一刻产生的，<br>负责对事件进行分发的方法主要有三个，分别是：</p>
-<ul>
-<li>dispatchTouchEvent()</li>
-<li>onTouchEvent()</li>
-<li>onInterceptTouchEvent()</li>
-</ul>
-<p>它们并不存在于所有负责分发的组件中，其具体情况总结于下面的表格中：<br>dispatchTouchEvent,onTouchEvent方法存在于上文的三个组件中。而onInterceptTouchEvent为ViewGroup独有。<br>ViewGroup类中，实际是没有onTouchEvent方法的，但是由于ViewGroup继承自View，而View拥有onTouchEvent方法，故ViewGroup的对象也是可以调用onTouchEvent方法的。</p>
-]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>基础理论</tag>
       </tags>
   </entry>
   <entry>
@@ -589,6 +589,22 @@
       </tags>
   </entry>
   <entry>
+    <title>Android根据字符串加载Activity和res目录下图片</title>
+    <url>/2021/01/15/Android%E6%A0%B9%E6%8D%AE%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8A%A0%E8%BD%BDActivity%E5%92%8Cres%E7%9B%AE%E5%BD%95%E4%B8%8B%E5%9B%BE%E7%89%87/</url>
+    <content><![CDATA[<h3 id="根据传入的字符串跳转Activity"><a href="#根据传入的字符串跳转Activity" class="headerlink" title="根据传入的字符串跳转Activity"></a>根据传入的字符串跳转Activity</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Intent intent &#x3D; new Intent(context,Class.forName(&quot;com.packname.Activity&quot;));</span><br><span class="line">startActivity(intent);</span><br></pre></td></tr></table></figure>
+<h3 id="根据传入的字符加载资源"><a href="#根据传入的字符加载资源" class="headerlink" title="根据传入的字符加载资源"></a>根据传入的字符加载资源</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int icon &#x3D; getResources().getIdentifier(“imageid”, &quot;drawable&quot;,getPackageName());</span><br></pre></td></tr></table></figure>
+<p>优化：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public static int getDrawableId(Context context, String var) &#123;</span><br><span class="line"></span><br><span class="line">        try &#123;</span><br><span class="line">            int imageId &#x3D; context.getResources().getIdentifier(var, &quot;drawable&quot;, context.getPackageName());</span><br><span class="line">            return imageId;</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            return 0;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>getIdentifier的函数签名如下：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public int getIdentifier (String name, String defType, String defPackage)</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Android动态更换APP图标及名称</title>
     <url>/2020/01/13/Android%E5%8A%A8%E6%80%81%E6%9B%B4%E6%8D%A2APP%E5%9B%BE%E6%A0%87%E5%8F%8A%E5%90%8D%E7%A7%B0/</url>
     <content><![CDATA[<p>实现之前觉得万分难，我查阅了很多博客.<br>报错—–应用未安装<br>Stop，停下来我先抽支烟，喝杯茶，仔细看看别人的介绍。再次感谢这个博主的博客<a href="https://blog.csdn.net/ozhuimeng123/article/details/92734825">倚栏静望</a></p>
@@ -673,22 +689,6 @@
 <p><img src="https://img-blog.csdn.net/20180401211644887"></p>
 <p><a href="https://blog.csdn.net/qq_35698774/article/details/79779238">原文链接：</a></p>
 ]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Android根据字符串加载Activity和res目录下图片</title>
-    <url>/2021/01/15/Android%E6%A0%B9%E6%8D%AE%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8A%A0%E8%BD%BDActivity%E5%92%8Cres%E7%9B%AE%E5%BD%95%E4%B8%8B%E5%9B%BE%E7%89%87/</url>
-    <content><![CDATA[<h3 id="根据传入的字符串跳转Activity"><a href="#根据传入的字符串跳转Activity" class="headerlink" title="根据传入的字符串跳转Activity"></a>根据传入的字符串跳转Activity</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Intent intent &#x3D; new Intent(context,Class.forName(&quot;com.packname.Activity&quot;));</span><br><span class="line">startActivity(intent);</span><br></pre></td></tr></table></figure>
-<h3 id="根据传入的字符加载资源"><a href="#根据传入的字符加载资源" class="headerlink" title="根据传入的字符加载资源"></a>根据传入的字符加载资源</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int icon &#x3D; getResources().getIdentifier(“imageid”, &quot;drawable&quot;,getPackageName());</span><br></pre></td></tr></table></figure>
-<p>优化：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public static int getDrawableId(Context context, String var) &#123;</span><br><span class="line"></span><br><span class="line">        try &#123;</span><br><span class="line">            int imageId &#x3D; context.getResources().getIdentifier(var, &quot;drawable&quot;, context.getPackageName());</span><br><span class="line">            return imageId;</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            return 0;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p><strong>getIdentifier的函数签名如下：</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public int getIdentifier (String name, String defType, String defPackage)</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>Android</category>
       </categories>
@@ -1010,20 +1010,6 @@ proguard-rules.pro文件的作用</li>
       </tags>
   </entry>
   <entry>
-    <title> Description : Could not find the specified file.  Suggestion : Check that the path you have specified is correct.</title>
-    <url>/2019/12/27/Description-Could-not-find-the-specified-file-Suggestion-Check-that-the-path-you-have-specified-is-correct/</url>
-    <content><![CDATA[<p>记录下我使用 CornerStone 利用SVN 进行版本代码管理。我已经快两个月没提交代码啦，今天一提交发现好多问题，各种报错。<br>譬如这类错误：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Description : Could not find the specified file.  Suggestion : Check that the path you have specified is correct.   Technical Information &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;        Error : V4FileNotFoundError   Exception : ZSVNNoSuchEntryException  Causal Information </span><br></pre></td></tr></table></figure>
-<p> 解决办法：<br> 我在missing选项中删除错误的就OK了，提交前全选 =&gt;删除，重新手动编辑提交，重新提交前执行一下  clean。</p>
-]]></content>
-      <categories>
-        <category>svn</category>
-      </categories>
-      <tags>
-        <tag>Error</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Error:注: 某些输入文件使用或覆盖了已过时的 API。 注: 有关详细信息, 请使用 -Xlint:deprecation 重新编译。</title>
     <url>/2019/12/12/Error-%E6%B3%A8-%E6%9F%90%E4%BA%9B%E8%BE%93%E5%85%A5%E6%96%87%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%88%96%E8%A6%86%E7%9B%96%E4%BA%86%E5%B7%B2%E8%BF%87%E6%97%B6%E7%9A%84-API%E3%80%82-%E6%B3%A8-%E6%9C%89%E5%85%B3%E8%AF%A6%E7%BB%86%E4%BF%A1%E6%81%AF-%E8%AF%B7%E4%BD%BF%E7%94%A8-Xlint-deprecation-%E9%87%8D%E6%96%B0%E7%BC%96%E8%AF%91%E3%80%82/</url>
     <content><![CDATA[<p><a href="https://blog.csdn.net/dong19900415/article/details/52882529?utm_source=blogxgwz3">原文</a></p>
@@ -1037,21 +1023,17 @@ proguard-rules.pro文件的作用</li>
       </tags>
   </entry>
   <entry>
-    <title>Flutter中使用Banner 图</title>
-    <url>/2019/04/10/Flutter%E4%B8%AD%E4%BD%BF%E7%94%A8Banner-%E5%9B%BE/</url>
-    <content><![CDATA[<h2 id="实现效果"><a href="#实现效果" class="headerlink" title="实现效果"></a>实现效果</h2><p><img src="https://img-blog.csdnimg.cn/20190410142106370.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01hcmtfQ0hZTA==,size_16,color_FFFFFF,t_70" alt="&quot;效果图&quot;" title="效果图"><br> <span id="more"></span></p>
-<h2 id="首先导入flutter-swiper插件："><a href="#首先导入flutter-swiper插件：" class="headerlink" title="首先导入flutter_swiper插件："></a>首先导入flutter_swiper插件：</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dependencies:</span><br><span class="line">  flutter_swiper: ^1.1.6</span><br></pre></td></tr></table></figure>
-<p><a href="https://pub.dartlang.org/packages/flutter_swiper#-installing-tab-">配置文件的链接地址</a></p>
-<h2 id="使用swiper插件"><a href="#使用swiper插件" class="headerlink" title="使用swiper插件"></a>使用swiper插件</h2><p>需要在使用的dart页面添加：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import &#39;package:flutter_swiper&#x2F;flutter_swiper.dart&#39;;</span><br></pre></td></tr></table></figure>
-<p>然后才能在页面中使用轮播插件：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">body:  new Swiper(</span><br><span class="line">        itemBuilder: (BuildContext context,int index)&#123;</span><br><span class="line">          return new Image.network(&quot;http:&#x2F;&#x2F;via.placeholder.com&#x2F;350x150&quot;,fit: BoxFit.fill,);</span><br><span class="line">        &#125;,</span><br><span class="line">        itemCount: 3,</span><br><span class="line">        pagination: new SwiperPagination(),</span><br><span class="line">        control: new SwiperControl(),</span><br><span class="line">      ),</span><br><span class="line">    );</span><br></pre></td></tr></table></figure>
+    <title> Description : Could not find the specified file.  Suggestion : Check that the path you have specified is correct.</title>
+    <url>/2019/12/27/Description-Could-not-find-the-specified-file-Suggestion-Check-that-the-path-you-have-specified-is-correct/</url>
+    <content><![CDATA[<p>记录下我使用 CornerStone 利用SVN 进行版本代码管理。我已经快两个月没提交代码啦，今天一提交发现好多问题，各种报错。<br>譬如这类错误：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Description : Could not find the specified file.  Suggestion : Check that the path you have specified is correct.   Technical Information &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;        Error : V4FileNotFoundError   Exception : ZSVNNoSuchEntryException  Causal Information </span><br></pre></td></tr></table></figure>
+<p> 解决办法：<br> 我在missing选项中删除错误的就OK了，提交前全选 =&gt;删除，重新手动编辑提交，重新提交前执行一下  clean。</p>
 ]]></content>
       <categories>
-        <category>Flutter</category>
+        <category>svn</category>
       </categories>
       <tags>
-        <tag>Flutter</tag>
+        <tag>Error</tag>
       </tags>
   </entry>
   <entry>
@@ -1114,32 +1096,6 @@ proguard-rules.pro文件的作用</li>
       </categories>
       <tags>
         <tag>Flutter实战</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Git之使用GitHub搭建远程仓库</title>
-    <url>/2020/08/18/Git%E4%B9%8B%E4%BD%BF%E7%94%A8GitHub%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93/</url>
-    <content><![CDATA[<h3 id="1-账号注册-amp-仓库创建："><a href="#1-账号注册-amp-仓库创建：" class="headerlink" title="1.账号注册&amp;仓库创建："></a>1.账号注册&amp;仓库创建：</h3><p>不做记录，简单</p>
-<h3 id="2-Clone代码库到本地"><a href="#2-Clone代码库到本地" class="headerlink" title="2.Clone代码库到本地"></a>2.Clone代码库到本地</h3><span id="more"></span>
-<p><code>git clone https://github.com/ZPJay/Garbage.git</code></p>
-<h3 id="3-分支管理"><a href="#3-分支管理" class="headerlink" title="3.分支管理"></a>3.分支管理</h3><p>①创建分支(后者创建同时会切换分支):</p>
-<blockquote>
-<p>git branch v1.0.3 或 git checkout -b v1.0.4<br>②查看版本库中所有分支：<br>git branch -a<br>③切换到某一分支：<br>git checkout v1.0.3<br>④删除某一分支：<br>git branch -D v1.0.4<br>⑤合并分支<br>git merge v1.0.3</p>
-</blockquote>
-<h3 id="4-本地仓库与远程仓库同步问题"><a href="#4-本地仓库与远程仓库同步问题" class="headerlink" title="4.本地仓库与远程仓库同步问题"></a>4.本地仓库与远程仓库同步问题</h3><p>先对我们的本地仓库做一点点修改，接着git add和git commit本地准备后，然后：</p>
-<blockquote>
-<p>git push origin master 或者直接 git push</p>
-</blockquote>
-<p>有同步到服务器，肯定有服务器同步到本地是吧，很简单，就一个</p>
-<blockquote>
-<p>git pull</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>工具使用</category>
-      </categories>
-      <tags>
-        <tag>工具使用</tag>
       </tags>
   </entry>
   <entry>
@@ -1217,6 +1173,32 @@ proguard-rules.pro文件的作用</li>
       </tags>
   </entry>
   <entry>
+    <title>Git之使用GitHub搭建远程仓库</title>
+    <url>/2020/08/18/Git%E4%B9%8B%E4%BD%BF%E7%94%A8GitHub%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93/</url>
+    <content><![CDATA[<h3 id="1-账号注册-amp-仓库创建："><a href="#1-账号注册-amp-仓库创建：" class="headerlink" title="1.账号注册&amp;仓库创建："></a>1.账号注册&amp;仓库创建：</h3><p>不做记录，简单</p>
+<h3 id="2-Clone代码库到本地"><a href="#2-Clone代码库到本地" class="headerlink" title="2.Clone代码库到本地"></a>2.Clone代码库到本地</h3><span id="more"></span>
+<p><code>git clone https://github.com/ZPJay/Garbage.git</code></p>
+<h3 id="3-分支管理"><a href="#3-分支管理" class="headerlink" title="3.分支管理"></a>3.分支管理</h3><p>①创建分支(后者创建同时会切换分支):</p>
+<blockquote>
+<p>git branch v1.0.3 或 git checkout -b v1.0.4<br>②查看版本库中所有分支：<br>git branch -a<br>③切换到某一分支：<br>git checkout v1.0.3<br>④删除某一分支：<br>git branch -D v1.0.4<br>⑤合并分支<br>git merge v1.0.3</p>
+</blockquote>
+<h3 id="4-本地仓库与远程仓库同步问题"><a href="#4-本地仓库与远程仓库同步问题" class="headerlink" title="4.本地仓库与远程仓库同步问题"></a>4.本地仓库与远程仓库同步问题</h3><p>先对我们的本地仓库做一点点修改，接着git add和git commit本地准备后，然后：</p>
+<blockquote>
+<p>git push origin master 或者直接 git push</p>
+</blockquote>
+<p>有同步到服务器，肯定有服务器同步到本地是吧，很简单，就一个</p>
+<blockquote>
+<p>git pull</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>工具使用</category>
+      </categories>
+      <tags>
+        <tag>工具使用</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Glide添加请求头</title>
     <url>/2020/08/31/Glide%E6%B7%BB%E5%8A%A0%E8%AF%B7%E6%B1%82%E5%A4%B4/</url>
     <content><![CDATA[<p><a href="https://www.jianshu.com/p/a425b5ca89dd">原文来自</a></p>
@@ -1227,57 +1209,6 @@ proguard-rules.pro文件的作用</li>
       <tags>
         <tag>工具使用</tag>
         <tag>Android</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo yilia 主题添加 widgetpack 评论系统</title>
-    <url>/2019/07/21/Hexo-yilia-%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0-widgetpack-%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/</url>
-    <content><![CDATA[<h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><hr>
-<blockquote>
-<p>记得这周都在忙着给我的博客添加评论功能，脑子都懵逼啦！开始起初是想利用GitHub的gitment和gittalk进行集成，按照的网上的套路也弄了，总是报错，对于我只是安卓原生的小码农来说，我完全抓瞎。</p>
-</blockquote>
-<span id="more"></span>
-<p><strong>下面的分析来自</strong><a href="https://blog.csdn.net/ganzhilin520/article/details/79048010">阿甘的博客</a></p>
-<p>目前博客站点使用的评论功能，多说，网易云跟贴都已经下线。Disqus也被挡在墙外，友言貌似也不行。</p>
-<p>可用的评论系统大概有：  </p>
-<ul>
-<li><p>HyperComments：<a href="https://www.hypercomments.com/">https://www.hypercomments.com</a> （来自俄罗斯的评论系统，使用谷歌账号注册。可以访问，不会用，好气，，）</p>
-</li>
-<li><p>来必力：<a href="https://livere.com/">https://livere.com</a> （来自韩国，使用邮箱注册。）</p>
-</li>
-<li><p>畅言： <a href="http://changyan.kuaizhan.com/">http://changyan.kuaizhan.com</a> （安装需要备案号。不太好用。）</p>
-</li>
-<li><p>Gitment： <a href="https://github.com/imsun/gitment">https://github.com/imsun/gitment</a> （有点小bug，比如说每次需要手动初始化，登录时会跳到主页。。）</p>
-</li>
-<li><p>Valine: <a href="https://github.com/xCss/Valine">https://github.com/xCss/Valine</a> (基于Leancloud的极简风评论系统，用了下，没效果，是我Next主题的原因还是？）</p>
-</li>
-</ul>
-<p>综上，我开始采用了来必力。<br>**可能是来必力来自韩国，我没调查资料，是看上面的文字时韩国的瞎说的，功能我到是实现了，界面渲染有点卡顿，最终放弃了。</p>
-<h1 id="widgetpack-评论系统"><a href="#widgetpack-评论系统" class="headerlink" title="widgetpack 评论系统"></a>widgetpack 评论系统</h1><p>这是我这次笔记的重点，此刻是周末晚上，明早就要上班啦！给自己定的任务计划没完成，Mark我有点睡不着，无聊的我打开了电脑发现了这个<strong>widgetpack</strong>，在此感谢博主的贡献<a href="https://blog.csdn.net/maosidiaoxian/article/details/94651023">貌似掉线</a>,</p>
-<ul>
-<li>免费的</li>
-<li>哪儿的？国外的，放心没被强，我是科学守法的好公民</li>
-<li>还没调查，貌似是欧洲的，<a href="https://widgetpack.com/comment-system">介绍地址</a></li>
-<li>邮箱注册便可</li>
-</ul>
-<p>下面是<a href="https://blog.csdn.net/maosidiaoxian/article/details/94651023">貌似掉线</a>的原文：</p>
-<h2 id="集成步骤："><a href="#集成步骤：" class="headerlink" title="集成步骤："></a>集成步骤：</h2><h3 id="1-主题配置添加-widgetpack"><a href="#1-主题配置添加-widgetpack" class="headerlink" title="1. 主题配置添加 widgetpack"></a>1. 主题配置添加 widgetpack</h3><p>修改 hexo 博客目录的 theme/yilia 中的 _config.yml 文件，增加如下配置：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># widgetpack。将 false 改为 widgetpack 上的 id 则启用该评论系统。</span><br><span class="line">widgetpack: false</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-新增-widgetpack-代码文件"><a href="#2-新增-widgetpack-代码文件" class="headerlink" title="2. 新增 widgetpack 代码文件"></a>2. 新增 widgetpack 代码文件</h3><p>在 yilia 中的 layout/_partial/post 下新增 widgetpack.ejs文件，内容如下：<br>这段代码，在你注册 widgetpack 之后也会有</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;wpac-comment&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">wpac_init &#x3D; window.wpac_init || [];</span><br><span class="line">wpac_init.push(&#123;widget: &#39;Comment&#39;, id: &lt;%&#x3D;theme.widgetpack%&gt;&#125;);</span><br><span class="line">(function() &#123;</span><br><span class="line">    if (&#39;WIDGETPACK_LOADED&#39; in window) return;</span><br><span class="line">    WIDGETPACK_LOADED &#x3D; true;</span><br><span class="line">    var mc &#x3D; document.createElement(&#39;script&#39;);</span><br><span class="line">    mc.type &#x3D; &#39;text&#x2F;javascript&#39;;</span><br><span class="line">    mc.async &#x3D; true;</span><br><span class="line">    mc.src &#x3D; &#39;https:&#x2F;&#x2F;embed.widgetpack.com&#x2F;widget.js&#39;;</span><br><span class="line">    var s &#x3D; document.getElementsByTagName(&#39;script&#39;)[0]; s.parentNode.insertBefore(mc, s.nextSibling);</span><br><span class="line">&#125;)();</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line">&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;widgetpack.com&quot; class&#x3D;&quot;wpac-cr&quot;&gt;Comments System WIDGET PACK&lt;&#x2F;a&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="3-修改-article-ejs"><a href="#3-修改-article-ejs" class="headerlink" title="3. 修改 article.ejs"></a>3. 修改 article.ejs</h3><p>由于我使用的 yilia 主题没有自带 widgetpack 的代码，修改 yilia 中的 layout/_partial/article.ejs 文件，在 &lt;% if (!index &amp;&amp; post.comments){ %&gt; 后的任意一个评论代码前或后插入如下代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;%if (theme.widgetpack) &#123; %&gt;</span><br><span class="line">  &lt;%- partial(&#39;post&#x2F;widgetpack&#39;) %&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
-<p>这段代码加在哪儿？打开之后好好的看编辑器上的代码。</p>
-<hr>
-<p><strong>如上三步，修改完成。如果要启用，修改主题的 _config.yml 文件，将 widgetpack 的值改为 widgetpack 上的 id 即可，注意冒号之后有空格</strong></p>
-]]></content>
-      <categories>
-        <category>工具使用</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>工具搭建</tag>
       </tags>
   </entry>
   <entry>
@@ -1372,48 +1303,54 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
-    <title>JDBC学习--Statement</title>
-    <url>/2021/05/13/JDBC%E5%AD%A6%E4%B9%A0-Statement/</url>
-    <content><![CDATA[<h3 id="JDBC的API结构和使用流程"><a href="#JDBC的API结构和使用流程" class="headerlink" title="JDBC的API结构和使用流程"></a>JDBC的API结构和使用流程</h3><pre class="mermaid">graph TB
-    A0[DriverManager] --> B0[Driver]
-    A0[DriverManager] --> B1[Driver] 
-    B0[Driver] --> C0[Connection]
-    B1[Driver] -->C1[Connection]
-    B1[Driver] -->C2[Connection]
-    C0[Connection]-->D0[Statement]
-    C0[Connection]-->D1[Statement]-->E0[ResultSet]
-    C0[Connection]-->D2[Statement]-->E1[ResultSet]
-    C1[Connection]-->D3[Statement]-->E2[ResultSet]</pre>
+    <title>Hexo yilia 主题添加 widgetpack 评论系统</title>
+    <url>/2019/07/21/Hexo-yilia-%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0-widgetpack-%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/</url>
+    <content><![CDATA[<h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><hr>
+<blockquote>
+<p>记得这周都在忙着给我的博客添加评论功能，脑子都懵逼啦！开始起初是想利用GitHub的gitment和gittalk进行集成，按照的网上的套路也弄了，总是报错，对于我只是安卓原生的小码农来说，我完全抓瞎。</p>
+</blockquote>
 <span id="more"></span>
-<h3 id="创建Statement的方式"><a href="#创建Statement的方式" class="headerlink" title="创建Statement的方式"></a>创建Statement的方式</h3><ul>
-<li><p><code>Statement  stmt = Connection.createStatement(......);</code></p>
+<p><strong>下面的分析来自</strong><a href="https://blog.csdn.net/ganzhilin520/article/details/79048010">阿甘的博客</a></p>
+<p>目前博客站点使用的评论功能，多说，网易云跟贴都已经下线。Disqus也被挡在墙外，友言貌似也不行。</p>
+<p>可用的评论系统大概有：  </p>
 <ul>
-<li>执行不带参数的简单SQL语句</li>
-</ul>
+<li><p>HyperComments：<a href="https://www.hypercomments.com/">https://www.hypercomments.com</a> （来自俄罗斯的评论系统，使用谷歌账号注册。可以访问，不会用，好气，，）</p>
 </li>
-<li><p><code>PreparedStatement  pstmt = Connection.prepareStatement(......);</code></p>
-<ul>
-<li>执行带参数或不带参数的SQL语句</li>
-</ul>
+<li><p>来必力：<a href="https://livere.com/">https://livere.com</a> （来自韩国，使用邮箱注册。）</p>
 </li>
-<li><p><code>CallableStatement   cstmt  =  Connection.prepareCall(...);</code></p>
-<ul>
-<li>执行对数据库已存储的PL/SQL程序的调用</li>
-</ul>
+<li><p>畅言： <a href="http://changyan.kuaizhan.com/">http://changyan.kuaizhan.com</a> （安装需要备案号。不太好用。）</p>
+</li>
+<li><p>Gitment： <a href="https://github.com/imsun/gitment">https://github.com/imsun/gitment</a> （有点小bug，比如说每次需要手动初始化，登录时会跳到主页。。）</p>
+</li>
+<li><p>Valine: <a href="https://github.com/xCss/Valine">https://github.com/xCss/Valine</a> (基于Leancloud的极简风评论系统，用了下，没效果，是我Next主题的原因还是？）</p>
 </li>
 </ul>
+<p>综上，我开始采用了来必力。<br>**可能是来必力来自韩国，我没调查资料，是看上面的文字时韩国的瞎说的，功能我到是实现了，界面渲染有点卡顿，最终放弃了。</p>
+<h1 id="widgetpack-评论系统"><a href="#widgetpack-评论系统" class="headerlink" title="widgetpack 评论系统"></a>widgetpack 评论系统</h1><p>这是我这次笔记的重点，此刻是周末晚上，明早就要上班啦！给自己定的任务计划没完成，Mark我有点睡不着，无聊的我打开了电脑发现了这个<strong>widgetpack</strong>，在此感谢博主的贡献<a href="https://blog.csdn.net/maosidiaoxian/article/details/94651023">貌似掉线</a>,</p>
+<ul>
+<li>免费的</li>
+<li>哪儿的？国外的，放心没被强，我是科学守法的好公民</li>
+<li>还没调查，貌似是欧洲的，<a href="https://widgetpack.com/comment-system">介绍地址</a></li>
+<li>邮箱注册便可</li>
+</ul>
+<p>下面是<a href="https://blog.csdn.net/maosidiaoxian/article/details/94651023">貌似掉线</a>的原文：</p>
+<h2 id="集成步骤："><a href="#集成步骤：" class="headerlink" title="集成步骤："></a>集成步骤：</h2><h3 id="1-主题配置添加-widgetpack"><a href="#1-主题配置添加-widgetpack" class="headerlink" title="1. 主题配置添加 widgetpack"></a>1. 主题配置添加 widgetpack</h3><p>修改 hexo 博客目录的 theme/yilia 中的 _config.yml 文件，增加如下配置：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># widgetpack。将 false 改为 widgetpack 上的 id 则启用该评论系统。</span><br><span class="line">widgetpack: false</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-新增-widgetpack-代码文件"><a href="#2-新增-widgetpack-代码文件" class="headerlink" title="2. 新增 widgetpack 代码文件"></a>2. 新增 widgetpack 代码文件</h3><p>在 yilia 中的 layout/_partial/post 下新增 widgetpack.ejs文件，内容如下：<br>这段代码，在你注册 widgetpack 之后也会有</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;wpac-comment&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">wpac_init &#x3D; window.wpac_init || [];</span><br><span class="line">wpac_init.push(&#123;widget: &#39;Comment&#39;, id: &lt;%&#x3D;theme.widgetpack%&gt;&#125;);</span><br><span class="line">(function() &#123;</span><br><span class="line">    if (&#39;WIDGETPACK_LOADED&#39; in window) return;</span><br><span class="line">    WIDGETPACK_LOADED &#x3D; true;</span><br><span class="line">    var mc &#x3D; document.createElement(&#39;script&#39;);</span><br><span class="line">    mc.type &#x3D; &#39;text&#x2F;javascript&#39;;</span><br><span class="line">    mc.async &#x3D; true;</span><br><span class="line">    mc.src &#x3D; &#39;https:&#x2F;&#x2F;embed.widgetpack.com&#x2F;widget.js&#39;;</span><br><span class="line">    var s &#x3D; document.getElementsByTagName(&#39;script&#39;)[0]; s.parentNode.insertBefore(mc, s.nextSibling);</span><br><span class="line">&#125;)();</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line">&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;widgetpack.com&quot; class&#x3D;&quot;wpac-cr&quot;&gt;Comments System WIDGET PACK&lt;&#x2F;a&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="3-修改-article-ejs"><a href="#3-修改-article-ejs" class="headerlink" title="3. 修改 article.ejs"></a>3. 修改 article.ejs</h3><p>由于我使用的 yilia 主题没有自带 widgetpack 的代码，修改 yilia 中的 layout/_partial/article.ejs 文件，在 &lt;% if (!index &amp;&amp; post.comments){ %&gt; 后的任意一个评论代码前或后插入如下代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;%if (theme.widgetpack) &#123; %&gt;</span><br><span class="line">  &lt;%- partial(&#39;post&#x2F;widgetpack&#39;) %&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
+<p>这段代码加在哪儿？打开之后好好的看编辑器上的代码。</p>
 <hr>
-<h3 id="执行SQL语句"><a href="#执行SQL语句" class="headerlink" title="执行SQL语句"></a>执行SQL语句</h3><ul>
-<li><code>executeQuery()</code>：执行查询语句，返回查询结果集 <code>ResultSet</code><br>返回结果集 <code>rs.getFetchSize()</code>记录着当前返回数量的大小：<code>10</code></li>
-<li><code>executeUpdate()</code>: 执行DML和DDL 语句，返回int类型</li>
-<li><code>execute()</code>: 执行任何SQL语句，返回boolean类型，指示是否有ResultSet返回</li>
-</ul>
+<p><strong>如上三步，修改完成。如果要启用，修改主题的 _config.yml 文件，将 widgetpack 的值改为 widgetpack 上的 id 即可，注意冒号之后有空格</strong></p>
 ]]></content>
       <categories>
-        <category>JavaWeb</category>
+        <category>工具使用</category>
       </categories>
       <tags>
-        <tag>JDBC</tag>
+        <tag>Hexo</tag>
+        <tag>工具搭建</tag>
       </tags>
   </entry>
   <entry>
@@ -1466,6 +1403,51 @@ Connection conn = null;
       </categories>
       <tags>
         <tag>Kotlin基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JDBC学习--Statement</title>
+    <url>/2021/05/13/JDBC%E5%AD%A6%E4%B9%A0-Statement/</url>
+    <content><![CDATA[<h3 id="JDBC的API结构和使用流程"><a href="#JDBC的API结构和使用流程" class="headerlink" title="JDBC的API结构和使用流程"></a>JDBC的API结构和使用流程</h3><pre class="mermaid">graph TB
+    A0[DriverManager] --> B0[Driver]
+    A0[DriverManager] --> B1[Driver] 
+    B0[Driver] --> C0[Connection]
+    B1[Driver] -->C1[Connection]
+    B1[Driver] -->C2[Connection]
+    C0[Connection]-->D0[Statement]
+    C0[Connection]-->D1[Statement]-->E0[ResultSet]
+    C0[Connection]-->D2[Statement]-->E1[ResultSet]
+    C1[Connection]-->D3[Statement]-->E2[ResultSet]</pre>
+<span id="more"></span>
+<h3 id="创建Statement的方式"><a href="#创建Statement的方式" class="headerlink" title="创建Statement的方式"></a>创建Statement的方式</h3><ul>
+<li><p><code>Statement  stmt = Connection.createStatement(......);</code></p>
+<ul>
+<li>执行不带参数的简单SQL语句</li>
+</ul>
+</li>
+<li><p><code>PreparedStatement  pstmt = Connection.prepareStatement(......);</code></p>
+<ul>
+<li>执行带参数或不带参数的SQL语句</li>
+</ul>
+</li>
+<li><p><code>CallableStatement   cstmt  =  Connection.prepareCall(...);</code></p>
+<ul>
+<li>执行对数据库已存储的PL/SQL程序的调用</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="执行SQL语句"><a href="#执行SQL语句" class="headerlink" title="执行SQL语句"></a>执行SQL语句</h3><ul>
+<li><code>executeQuery()</code>：执行查询语句，返回查询结果集 <code>ResultSet</code><br>返回结果集 <code>rs.getFetchSize()</code>记录着当前返回数量的大小：<code>10</code></li>
+<li><code>executeUpdate()</code>: 执行DML和DDL 语句，返回int类型</li>
+<li><code>execute()</code>: 执行任何SQL语句，返回boolean类型，指示是否有ResultSet返回</li>
+</ul>
+]]></content>
+      <categories>
+        <category>JavaWeb</category>
+      </categories>
+      <tags>
+        <tag>JDBC</tag>
       </tags>
   </entry>
   <entry>
@@ -1580,19 +1562,6 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
-    <title>Log日志工具类(一)</title>
-    <url>/2021/04/07/Log%E6%97%A5%E5%BF%97%E5%B7%A5%E5%85%B7%E7%B1%BB-%E4%B8%80/</url>
-    <content><![CDATA[<p>实现的效果能将json字符串以格式化的方式显示</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * $desc$ Log日志工具类</span><br><span class="line"> *</span><br><span class="line"> * @Author mark</span><br><span class="line"> * @Date 2018&#x2F;11&#x2F;26</span><br><span class="line"> *&#x2F;</span><br><span class="line">public class LogUtils &#123;</span><br><span class="line">    &#x2F;&#x2F;是否Debug</span><br><span class="line">    public static final boolean isMarkDebug &#x3D; true;</span><br><span class="line"></span><br><span class="line">    public static final String LINE_SEPARATOR &#x3D; System.getProperty(&quot;line.separator&quot;);</span><br><span class="line">    public static void printLog(String name,String strContent)&#123;</span><br><span class="line">        if (isMarkDebug)&#123;</span><br><span class="line">            Log.d(name,strContent);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public static void printLine(String tag, boolean isTop) &#123;</span><br><span class="line">        if (isTop) &#123;</span><br><span class="line">            Log.d(tag, &quot;╔═══════════════════════════════════════════════════════════════════════════════════════&quot;);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            Log.d(tag, &quot;╚═══════════════════════════════════════════════════════════════════════════════════════&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public static void printJson(String tag, String msg, String headString) &#123;</span><br><span class="line"></span><br><span class="line">        String message;</span><br><span class="line"></span><br><span class="line">        try &#123;</span><br><span class="line">            if (msg.startsWith(&quot;&#123;&quot;)) &#123;</span><br><span class="line">                JSONObject jsonObject &#x3D; new JSONObject(msg);</span><br><span class="line">                message &#x3D; jsonObject.toString(4);&#x2F;&#x2F;最重要的方法，就一行，返回格式化的json字符串，其中的数字4是缩进字符数</span><br><span class="line">            &#125; else if (msg.startsWith(&quot;[&quot;)) &#123;</span><br><span class="line">                JSONArray jsonArray &#x3D; new JSONArray(msg);</span><br><span class="line">                message &#x3D; jsonArray.toString(4);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                message &#x3D; msg;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; catch (JSONException e) &#123;</span><br><span class="line">            message &#x3D; msg;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        printLine(tag, true);</span><br><span class="line">        message &#x3D; headString + LINE_SEPARATOR + message;</span><br><span class="line">        String[] lines &#x3D; message.split(LINE_SEPARATOR);</span><br><span class="line">        for (String line : lines) &#123;</span><br><span class="line">            Log.d(tag, &quot;║ &quot; + line);</span><br><span class="line">        &#125;</span><br><span class="line">        printLine(tag, false);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Utils</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>MAC使用APKTool反编译apk修改版本号后重新打包</title>
     <url>/2021/04/14/MAC%E4%BD%BF%E7%94%A8APKTool%E5%8F%8D%E7%BC%96%E8%AF%91apk%E4%BF%AE%E6%94%B9%E7%89%88%E6%9C%AC%E5%8F%B7%E5%90%8E%E9%87%8D%E6%96%B0%E6%89%93%E5%8C%85/</url>
     <content><![CDATA[<p>现在业务上出现客户要求如若生产环境出现紧急事件，需要版本回退的情况下，我这边的代码又没做版本分之处理，那么只能更改之前的版本号来实现。<br><a href="https://blog.csdn.net/weixin_40998254/article/details/110474885">不敢夺他人之功，原文在此处</a></p>
@@ -1624,6 +1593,32 @@ Connection conn = null;
       <tags>
         <tag>反编译</tag>
         <tag>工具搭建</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Log日志工具类(一)</title>
+    <url>/2021/04/07/Log%E6%97%A5%E5%BF%97%E5%B7%A5%E5%85%B7%E7%B1%BB-%E4%B8%80/</url>
+    <content><![CDATA[<p>实现的效果能将json字符串以格式化的方式显示</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * $desc$ Log日志工具类</span><br><span class="line"> *</span><br><span class="line"> * @Author mark</span><br><span class="line"> * @Date 2018&#x2F;11&#x2F;26</span><br><span class="line"> *&#x2F;</span><br><span class="line">public class LogUtils &#123;</span><br><span class="line">    &#x2F;&#x2F;是否Debug</span><br><span class="line">    public static final boolean isMarkDebug &#x3D; true;</span><br><span class="line"></span><br><span class="line">    public static final String LINE_SEPARATOR &#x3D; System.getProperty(&quot;line.separator&quot;);</span><br><span class="line">    public static void printLog(String name,String strContent)&#123;</span><br><span class="line">        if (isMarkDebug)&#123;</span><br><span class="line">            Log.d(name,strContent);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public static void printLine(String tag, boolean isTop) &#123;</span><br><span class="line">        if (isTop) &#123;</span><br><span class="line">            Log.d(tag, &quot;╔═══════════════════════════════════════════════════════════════════════════════════════&quot;);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            Log.d(tag, &quot;╚═══════════════════════════════════════════════════════════════════════════════════════&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public static void printJson(String tag, String msg, String headString) &#123;</span><br><span class="line"></span><br><span class="line">        String message;</span><br><span class="line"></span><br><span class="line">        try &#123;</span><br><span class="line">            if (msg.startsWith(&quot;&#123;&quot;)) &#123;</span><br><span class="line">                JSONObject jsonObject &#x3D; new JSONObject(msg);</span><br><span class="line">                message &#x3D; jsonObject.toString(4);&#x2F;&#x2F;最重要的方法，就一行，返回格式化的json字符串，其中的数字4是缩进字符数</span><br><span class="line">            &#125; else if (msg.startsWith(&quot;[&quot;)) &#123;</span><br><span class="line">                JSONArray jsonArray &#x3D; new JSONArray(msg);</span><br><span class="line">                message &#x3D; jsonArray.toString(4);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                message &#x3D; msg;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; catch (JSONException e) &#123;</span><br><span class="line">            message &#x3D; msg;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        printLine(tag, true);</span><br><span class="line">        message &#x3D; headString + LINE_SEPARATOR + message;</span><br><span class="line">        String[] lines &#x3D; message.split(LINE_SEPARATOR);</span><br><span class="line">        for (String line : lines) &#123;</span><br><span class="line">            Log.d(tag, &quot;║ &quot; + line);</span><br><span class="line">        &#125;</span><br><span class="line">        printLine(tag, false);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Utils</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Mac 每次都要执行source ~/.bash_profile 配置的环境变量才生效</title>
+    <url>/2020/07/28/Mac-%E6%AF%8F%E6%AC%A1%E9%83%BD%E8%A6%81%E6%89%A7%E8%A1%8Csource-bash-profile-%E9%85%8D%E7%BD%AE%E7%9A%84%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E6%89%8D%E7%94%9F%E6%95%88/</url>
+    <content><![CDATA[<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>遇到一个问题，前段时间由于系统升级之后，做了一下用户群组的改动，在开发的时候发现之前在<br><code>.bash_profile</code>中设置的环境变量都不见了，还只能在终端中执行一次<code>source .bash_profile</code>,环境变量才能生效。</p>
+<h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><p>在系统根目录下，在~/.zshrc文件最后，增加一行：<br>source ~/.bash_profile</p>
+]]></content>
+      <categories>
+        <category>工具使用</category>
+      </categories>
+      <tags>
+        <tag>系统</tag>
       </tags>
   </entry>
   <entry>
@@ -1665,34 +1660,6 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
-    <title>Mac 每次都要执行source ~/.bash_profile 配置的环境变量才生效</title>
-    <url>/2020/07/28/Mac-%E6%AF%8F%E6%AC%A1%E9%83%BD%E8%A6%81%E6%89%A7%E8%A1%8Csource-bash-profile-%E9%85%8D%E7%BD%AE%E7%9A%84%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E6%89%8D%E7%94%9F%E6%95%88/</url>
-    <content><![CDATA[<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>遇到一个问题，前段时间由于系统升级之后，做了一下用户群组的改动，在开发的时候发现之前在<br><code>.bash_profile</code>中设置的环境变量都不见了，还只能在终端中执行一次<code>source .bash_profile</code>,环境变量才能生效。</p>
-<h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><p>在系统根目录下，在~/.zshrc文件最后，增加一行：<br>source ~/.bash_profile</p>
-]]></content>
-      <categories>
-        <category>工具使用</category>
-      </categories>
-      <tags>
-        <tag>系统</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Mac 电脑如何卸载 node和npm</title>
-    <url>/2020/08/25/Mac-%E7%94%B5%E8%84%91%E5%A6%82%E4%BD%95%E5%8D%B8%E8%BD%BD-node%E5%92%8Cnpm/</url>
-    <content><![CDATA[<p>记录下我自己重新安装npm，因为npm是和node.js安装一起的，也就是说是重新弄<em>node</em></p>
-<span id="more"></span>
-<h3 id="一、在终端依次输入以下命令"><a href="#一、在终端依次输入以下命令" class="headerlink" title="一、在终端依次输入以下命令"></a>一、在终端依次输入以下命令</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo npm uninstall npm -g</span><br><span class="line">sudo rm -rf &#x2F;usr&#x2F;local&#x2F;lib&#x2F;node &#x2F;usr&#x2F;local&#x2F;lib&#x2F;node_modules &#x2F;var&#x2F;db&#x2F;receipts&#x2F;org.nodejs.*</span><br><span class="line">sudo rm -rf &#x2F;usr&#x2F;local&#x2F;include&#x2F;node &#x2F;Users&#x2F;$USER&#x2F;.npm</span><br><span class="line">sudo rm &#x2F;usr&#x2F;local&#x2F;bin&#x2F;node</span><br><span class="line">sudo rm &#x2F;usr&#x2F;local&#x2F;share&#x2F;man&#x2F;man1&#x2F;node.1</span><br></pre></td></tr></table></figure>
-<h3 id="二"><a href="#二" class="headerlink" title="二"></a>二</h3><p>输入 npm -v 和node -v 验证是否卸载成功。</p>
-]]></content>
-      <categories>
-        <category>工具使用</category>
-      </categories>
-      <tags>
-        <tag>系统</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Mac上实现SVN代码管理</title>
     <url>/2019/05/30/Mac%E4%B8%8A%E5%AE%9E%E7%8E%B0SVN%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86/</url>
     <content><![CDATA[<h3 id="参考地址："><a href="#参考地址：" class="headerlink" title="参考地址："></a>参考地址：</h3><ul>
@@ -1715,6 +1682,21 @@ Connection conn = null;
       </categories>
       <tags>
         <tag>工具使用</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Mac 电脑如何卸载 node和npm</title>
+    <url>/2020/08/25/Mac-%E7%94%B5%E8%84%91%E5%A6%82%E4%BD%95%E5%8D%B8%E8%BD%BD-node%E5%92%8Cnpm/</url>
+    <content><![CDATA[<p>记录下我自己重新安装npm，因为npm是和node.js安装一起的，也就是说是重新弄<em>node</em></p>
+<span id="more"></span>
+<h3 id="一、在终端依次输入以下命令"><a href="#一、在终端依次输入以下命令" class="headerlink" title="一、在终端依次输入以下命令"></a>一、在终端依次输入以下命令</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo npm uninstall npm -g</span><br><span class="line">sudo rm -rf &#x2F;usr&#x2F;local&#x2F;lib&#x2F;node &#x2F;usr&#x2F;local&#x2F;lib&#x2F;node_modules &#x2F;var&#x2F;db&#x2F;receipts&#x2F;org.nodejs.*</span><br><span class="line">sudo rm -rf &#x2F;usr&#x2F;local&#x2F;include&#x2F;node &#x2F;Users&#x2F;$USER&#x2F;.npm</span><br><span class="line">sudo rm &#x2F;usr&#x2F;local&#x2F;bin&#x2F;node</span><br><span class="line">sudo rm &#x2F;usr&#x2F;local&#x2F;share&#x2F;man&#x2F;man1&#x2F;node.1</span><br></pre></td></tr></table></figure>
+<h3 id="二"><a href="#二" class="headerlink" title="二"></a>二</h3><p>输入 npm -v 和node -v 验证是否卸载成功。</p>
+]]></content>
+      <categories>
+        <category>工具使用</category>
+      </categories>
+      <tags>
+        <tag>系统</tag>
       </tags>
   </entry>
   <entry>
@@ -1974,86 +1956,6 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
-    <title>Mark的Flutter的安装和环境配置</title>
-    <url>/2018/12/17/Mark%E7%9A%84Flutter%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><pre><code>    我是一名Android原生开发程序员，目前熟练掌握Java语言和kotlin语言去编写安卓。RN出来的时候我没去学习，现在我想赶上Flutter这列火车。
-</code></pre>
-<span id="more"></span>
-<hr>
-<h3 id="我的配置："><a href="#我的配置：" class="headerlink" title="我的配置："></a>我的配置：</h3><ul>
-<li>   Mac笔记本</li>
-<li>   Android Studio 3.2.0 版本</li>
-<li>   准备了翻墙的软件，貌似没怎么用上</li>
-</ul>
-<hr>
-<h3 id="第一步：获取Flutter代码"><a href="#第一步：获取Flutter代码" class="headerlink" title="第一步：获取Flutter代码"></a>第一步：获取Flutter代码</h3><ol>
-<li><p>我先选择了一个存储Flutter的文件夹：</p>
-<p> <img src="evernotecid://3DE7A385-FFCA-4630-91A9-F88E73A63AF0/appyinxiangcom/22109192/ENResource/p1" alt="56a74cdc0cf7522961022dcd31a0f3ca.png"><br>名字跟随自己的命名习惯。</p>
-</li>
-<li><p>克隆Flutter代码到本地目录：<br>两种方式：自己在GitHub 上面把SDK下下来放到文件中，或者通过终端输入：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone  https:&#x2F;&#x2F;github.com&#x2F;flutter&#x2F;flutter.git</span><br></pre></td></tr></table></figure>
-<p> 最后就是一样的配置：open .bash_profile打开添加以下路径：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export PATH&#x3D;本地目录&#x2F;flutter&#x2F;bin:$PATH</span><br></pre></td></tr></table></figure>
-<pre><code> 配置完了后，应该可以运行Flutter命令了！可以使用下面命令flutter doctor来检查依赖环境是否正常。如果下载有问题的话，可能是网络受限，如果你没有翻墙软件的话，在终端输入如下两条命令：
-</code></pre>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export PUB_HOSTED_URL&#x3D;https:&#x2F;&#x2F;pub.flutter-io.cn</span><br><span class="line">export FLUTTER_STORAGE_BASE_URL&#x3D;https:&#x2F;&#x2F;storage.flutter-io.cn</span><br></pre></td></tr></table></figure>
-<p>官方也给出了方法，就是使用国内的镜像节点下载，在运行flutter doctor之前先运行下面两个命令即可。<br><img src="evernotecid://3DE7A385-FFCA-4630-91A9-F88E73A63AF0/appyinxiangcom/22109192/ENResource/p2" alt="a51a64a974501d1bf53d7f4cd5f82ab2.png"></p>
-</li>
-</ol>
-<hr>
-<h3 id="第二步：配置IOS环境"><a href="#第二步：配置IOS环境" class="headerlink" title="第二步：配置IOS环境"></a>第二步：配置IOS环境</h3><p>我在 App Store下载安装好了Xcode，然后自己安装了Homebrew：<br><a href="https://brew.sh/">Homebrew配置方法地址：</a><br>接下来我就是执行如下的命令：<br>open -a Simulator – 测试成功打开模拟器</p>
-<h6 id="安装用于将Flutter应用部署到iOS设备的工具"><a href="#安装用于将Flutter应用部署到iOS设备的工具" class="headerlink" title="安装用于将Flutter应用部署到iOS设备的工具"></a>安装用于将Flutter应用部署到iOS设备的工具</h6><p>$ brew update<br>$ brew install –HEAD libimobiledevice<br>$ brew install ideviceinstaller ios-deploy cocoapods<br>$ pod setup<br>此处我就是无耻的copy的别人的文章，那位大佬的文章地址：<a href="https://www.jianshu.com/p/0b73cc2af65f">Flutter轻松入门（一） – MAC环境搭建</a></p>
-<hr>
-<h3 id="第三步：在Android-Studio上配置Android开发环境"><a href="#第三步：在Android-Studio上配置Android开发环境" class="headerlink" title="第三步：在Android Studio上配置Android开发环境"></a>第三步：在Android Studio上配置Android开发环境</h3><p>插件怎么安装就不废话啦，直接截图，它会自动安装Flutter和Dart语言插件，Dart有时候可能会安装失败，请耐心点，也可以单独搜Dart进行安装。<br><img src="evernotecid://3DE7A385-FFCA-4630-91A9-F88E73A63AF0/appyinxiangcom/22109192/ENResource/p3" alt="cd5198371c3b49034b3de9a8c41ecf19.png"></p>
-<h3 id="最后终端运行-Flutter-Doctor"><a href="#最后终端运行-Flutter-Doctor" class="headerlink" title="最后终端运行 Flutter Doctor"></a>最后终端运行 Flutter Doctor</h3><p>检查Flutter开发环境是否配置完成，我的如下图：<br><img src="evernotecid://3DE7A385-FFCA-4630-91A9-F88E73A63AF0/appyinxiangcom/22109192/ENResource/p4" alt="586b6df21a8997dcfeb10164a1e39ec4.png"></p>
-<hr>
-<p>笔记收尾处我还得为微我参考的文章打个广告：<a href="https://www.jianshu.com/p/0b73cc2af65f">Flutter轻松入门（一） – MAC环境搭建</a></p>
-]]></content>
-      <categories>
-        <category>Flutter</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>Flutter</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Mark的Retrofit学习第一篇</title>
-    <url>/2018/12/17/Mark%E7%9A%84Retrofit%E5%AD%A6%E4%B9%A0%E7%AC%AC%E4%B8%80%E7%AF%87/</url>
-    <content><![CDATA[<h2 id="Retrofit介绍"><a href="#Retrofit介绍" class="headerlink" title="Retrofit介绍 :"></a>Retrofit介绍 :</h2><p>改造将您的HTTP API变成一个Java界面。Square公司针对Android和Java的类型安全HTTP客户端<br>       Retrofit是Square公司开发的一款针对Android网络请求的框架，Retrofit2底层基于OkHttp实现的，OkHttp现在已经得到Google官方认可，大量的app都采用OkHttp做网络请求，其源码详见OkHttp Github。</p>
-<pre><code>   每个方法都必须有一个提供请求方法和相对URL的HTTP注释。有五个内置注释：GET，POST，PUT，DELETE，和HEAD。资源的相对URL在注释中指定。
-</code></pre>
-<span id="more"></span>
-<h2 id="一、声明接口"><a href="#一、声明接口" class="headerlink" title="一、声明接口"></a>一、声明接口</h2><p>public interface GitHubService {<br>  @GET(“users/{user}/repos”)<br>  Call&lt;List<Repo>&gt; listRepos(@Path(“user”) String user);<br>}</p>
-<p>///Retrofit turns your HTTP API into a Java interface.</p>
-<p>eg：例子：<br>如果链接是<a href="http://ip.taobao.com/service/getIpInfo.php?ip=202.202.33.33">http://ip.taobao.com/service/getIpInfo.php?ip=202.202.33.33</a><br> @GET(“<a href="http://ip.taobao.com/service/getIpInfo.php&quot;">http://ip.taobao.com/service/getIpInfo.php&quot;</a>)<br>    Call getWeather(@Query(“ip”) String ip);</p>
-<p>注意：这里强调一点：Call get();必须是这种形式,这是2.0之后的新形式</p>
-<ul>
-<li>如果不需要转换成Json数据,可以用了ResponseBody;</li>
-<li>你也可以使用Call get();这样的话,需要添加Gson转换器</li>
-</ul>
-<h2 id="二、接口调用"><a href="#二、接口调用" class="headerlink" title="二、接口调用"></a>二、接口调用</h2><p>Retrofit retrofit = new Retrofit.Builder()<br> //这里建议：- Base URL: 总是以/结尾；- @Url: 不要以/开头<br>    .baseUrl(“<a href="https://api.github.com/&quot;">https://api.github.com/&quot;</a>)<br>    .build();</p>
-<p>GitHubService service = retrofit.create(GitHubService.class);</p>
-<p>Call&lt;List<Repo>&gt; repos = service.listRepos(“octocat”);</p>
-<p>//The Retrofit class generates an implementation of the GitHubService interface.<br>强调一点：如果你的@GET后面的URL地址是全拼的地址，那么baseurl就会设置的没有必要，留意哦！！！</p>
-<h2 id="三、同步调用"><a href="#三、同步调用" class="headerlink" title="三、同步调用"></a>三、同步调用</h2><p>  try {<br>            Response bodyResponse = call.execute();<br>            String body = bodyResponse.body().string();//获取返回体的字符串<br>            Log.i(“wxl”, “body=” + body);<br>        } catch (IOException e) {<br>            e.printStackTrace();<br>注意：同步需要处理android.os.NetworkOnMainThreadException</p>
-<h2 id="四、异步调用"><a href="#四、异步调用" class="headerlink" title="四、异步调用"></a>四、异步调用</h2><p>call.enqueue(new Callback() {<br>            @Override<br>            public void onResponse(Response response) {<br>                try {<br>                    Log.i(“wxl”, “response=” + response.body().string());<br>                } catch (IOException e) {<br>                    e.printStackTrace();<br>            @Override<br>            public void onFailure(Throwable t) {<br>                Log.i(“wxl”, “onFailure=” + t.getMessage());<br>        });</p>
-<p>注意这里看不懂的可以参考我的GitHub代码地址：<a href="https://github.com/MarkCHYL/MarkRetrofitDemo">https://github.com/MarkCHYL/MarkRetrofitDemo</a><br>项目中添加了简单的使用方法，只做到如何获取网络接口的数据。</p>
-<h2 id="五、移除请求"><a href="#五、移除请求" class="headerlink" title="五、移除请求"></a>五、移除请求</h2><p>call.cancel();</p>
-<h2 id="六、添加gson依赖"><a href="#六、添加gson依赖" class="headerlink" title="六、添加gson依赖"></a>六、添加gson依赖</h2><p> implementation ‘com.squareup.retrofit2:converter-gson:2.3.0’<br>这里我选择的是与retrofit统一版本的，我怕报错</p>
-<p>后续我会进一步封装！！！</p>
-<h2 id="七、Retrofit2打印-网络请求日志"><a href="#七、Retrofit2打印-网络请求日志" class="headerlink" title="七、Retrofit2打印 网络请求日志"></a>七、Retrofit2打印 网络请求日志</h2><p>添加依赖：<br> implementation ‘com.squareup.okhttp3:logging-interceptor:3.8.1’</p>
-<h2 id="然后就是你初始化拦截器加配置；这个很简单我参考了以下两篇文章"><a href="#然后就是你初始化拦截器加配置；这个很简单我参考了以下两篇文章" class="headerlink" title="然后就是你初始化拦截器加配置；这个很简单我参考了以下两篇文章"></a>然后就是你初始化拦截器加配置；这个很简单我参考了以下两篇文章</h2><p><a href="https://blog.csdn.net/u011511368/article/details/51753315">https://blog.csdn.net/u011511368/article/details/51753315</a><br><a href="https://blog.csdn.net/Picasso_L/article/details/53200926">https://blog.csdn.net/Picasso_L/article/details/53200926</a></p>
-<h3 id="最后附上自己的Github的Demo"><a href="#最后附上自己的Github的Demo" class="headerlink" title="最后附上自己的Github的Demo"></a>最后附上自己的<a href="https://github.com/MarkCHYL/MarkRetrofitDemo">Github的Demo</a></h3>]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>网络框架</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Mark的架构学习笔记---Android_MVP</title>
     <url>/2018/12/17/Mark%E7%9A%84%E6%9E%B6%E6%9E%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Android-MVP/</url>
     <content><![CDATA[<h1 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h1><p>   我是名安卓程序员。当我第一次接触到架构这个概念时，说实话我一头雾水。我现实了解了MVC模式，当我开始接触MVP模式时，我啊真的彻底被搞懵了！怎么把一个activity拆成了四个或五者，如果分装过后会更多，想象下，一下子猛的看那么复杂的对我来说无益处。这边文章呢我实现只是一个加你简单单的Demo练习，参考代码和资料来源于网上（备注于文底部）。<br>   记录只是让自己加深理解。</p>
@@ -2099,6 +2001,86 @@ Connection conn = null;
       <tags>
         <tag>Android</tag>
         <tag>架构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Mark的Retrofit学习第一篇</title>
+    <url>/2018/12/17/Mark%E7%9A%84Retrofit%E5%AD%A6%E4%B9%A0%E7%AC%AC%E4%B8%80%E7%AF%87/</url>
+    <content><![CDATA[<h2 id="Retrofit介绍"><a href="#Retrofit介绍" class="headerlink" title="Retrofit介绍 :"></a>Retrofit介绍 :</h2><p>改造将您的HTTP API变成一个Java界面。Square公司针对Android和Java的类型安全HTTP客户端<br>       Retrofit是Square公司开发的一款针对Android网络请求的框架，Retrofit2底层基于OkHttp实现的，OkHttp现在已经得到Google官方认可，大量的app都采用OkHttp做网络请求，其源码详见OkHttp Github。</p>
+<pre><code>   每个方法都必须有一个提供请求方法和相对URL的HTTP注释。有五个内置注释：GET，POST，PUT，DELETE，和HEAD。资源的相对URL在注释中指定。
+</code></pre>
+<span id="more"></span>
+<h2 id="一、声明接口"><a href="#一、声明接口" class="headerlink" title="一、声明接口"></a>一、声明接口</h2><p>public interface GitHubService {<br>  @GET(“users/{user}/repos”)<br>  Call&lt;List<Repo>&gt; listRepos(@Path(“user”) String user);<br>}</p>
+<p>///Retrofit turns your HTTP API into a Java interface.</p>
+<p>eg：例子：<br>如果链接是<a href="http://ip.taobao.com/service/getIpInfo.php?ip=202.202.33.33">http://ip.taobao.com/service/getIpInfo.php?ip=202.202.33.33</a><br> @GET(“<a href="http://ip.taobao.com/service/getIpInfo.php&quot;">http://ip.taobao.com/service/getIpInfo.php&quot;</a>)<br>    Call getWeather(@Query(“ip”) String ip);</p>
+<p>注意：这里强调一点：Call get();必须是这种形式,这是2.0之后的新形式</p>
+<ul>
+<li>如果不需要转换成Json数据,可以用了ResponseBody;</li>
+<li>你也可以使用Call get();这样的话,需要添加Gson转换器</li>
+</ul>
+<h2 id="二、接口调用"><a href="#二、接口调用" class="headerlink" title="二、接口调用"></a>二、接口调用</h2><p>Retrofit retrofit = new Retrofit.Builder()<br> //这里建议：- Base URL: 总是以/结尾；- @Url: 不要以/开头<br>    .baseUrl(“<a href="https://api.github.com/&quot;">https://api.github.com/&quot;</a>)<br>    .build();</p>
+<p>GitHubService service = retrofit.create(GitHubService.class);</p>
+<p>Call&lt;List<Repo>&gt; repos = service.listRepos(“octocat”);</p>
+<p>//The Retrofit class generates an implementation of the GitHubService interface.<br>强调一点：如果你的@GET后面的URL地址是全拼的地址，那么baseurl就会设置的没有必要，留意哦！！！</p>
+<h2 id="三、同步调用"><a href="#三、同步调用" class="headerlink" title="三、同步调用"></a>三、同步调用</h2><p>  try {<br>            Response bodyResponse = call.execute();<br>            String body = bodyResponse.body().string();//获取返回体的字符串<br>            Log.i(“wxl”, “body=” + body);<br>        } catch (IOException e) {<br>            e.printStackTrace();<br>注意：同步需要处理android.os.NetworkOnMainThreadException</p>
+<h2 id="四、异步调用"><a href="#四、异步调用" class="headerlink" title="四、异步调用"></a>四、异步调用</h2><p>call.enqueue(new Callback() {<br>            @Override<br>            public void onResponse(Response response) {<br>                try {<br>                    Log.i(“wxl”, “response=” + response.body().string());<br>                } catch (IOException e) {<br>                    e.printStackTrace();<br>            @Override<br>            public void onFailure(Throwable t) {<br>                Log.i(“wxl”, “onFailure=” + t.getMessage());<br>        });</p>
+<p>注意这里看不懂的可以参考我的GitHub代码地址：<a href="https://github.com/MarkCHYL/MarkRetrofitDemo">https://github.com/MarkCHYL/MarkRetrofitDemo</a><br>项目中添加了简单的使用方法，只做到如何获取网络接口的数据。</p>
+<h2 id="五、移除请求"><a href="#五、移除请求" class="headerlink" title="五、移除请求"></a>五、移除请求</h2><p>call.cancel();</p>
+<h2 id="六、添加gson依赖"><a href="#六、添加gson依赖" class="headerlink" title="六、添加gson依赖"></a>六、添加gson依赖</h2><p> implementation ‘com.squareup.retrofit2:converter-gson:2.3.0’<br>这里我选择的是与retrofit统一版本的，我怕报错</p>
+<p>后续我会进一步封装！！！</p>
+<h2 id="七、Retrofit2打印-网络请求日志"><a href="#七、Retrofit2打印-网络请求日志" class="headerlink" title="七、Retrofit2打印 网络请求日志"></a>七、Retrofit2打印 网络请求日志</h2><p>添加依赖：<br> implementation ‘com.squareup.okhttp3:logging-interceptor:3.8.1’</p>
+<h2 id="然后就是你初始化拦截器加配置；这个很简单我参考了以下两篇文章"><a href="#然后就是你初始化拦截器加配置；这个很简单我参考了以下两篇文章" class="headerlink" title="然后就是你初始化拦截器加配置；这个很简单我参考了以下两篇文章"></a>然后就是你初始化拦截器加配置；这个很简单我参考了以下两篇文章</h2><p><a href="https://blog.csdn.net/u011511368/article/details/51753315">https://blog.csdn.net/u011511368/article/details/51753315</a><br><a href="https://blog.csdn.net/Picasso_L/article/details/53200926">https://blog.csdn.net/Picasso_L/article/details/53200926</a></p>
+<h3 id="最后附上自己的Github的Demo"><a href="#最后附上自己的Github的Demo" class="headerlink" title="最后附上自己的Github的Demo"></a>最后附上自己的<a href="https://github.com/MarkCHYL/MarkRetrofitDemo">Github的Demo</a></h3>]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>网络框架</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Mark的Flutter的安装和环境配置</title>
+    <url>/2018/12/17/Mark%E7%9A%84Flutter%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><pre><code>    我是一名Android原生开发程序员，目前熟练掌握Java语言和kotlin语言去编写安卓。RN出来的时候我没去学习，现在我想赶上Flutter这列火车。
+</code></pre>
+<span id="more"></span>
+<hr>
+<h3 id="我的配置："><a href="#我的配置：" class="headerlink" title="我的配置："></a>我的配置：</h3><ul>
+<li>   Mac笔记本</li>
+<li>   Android Studio 3.2.0 版本</li>
+<li>   准备了翻墙的软件，貌似没怎么用上</li>
+</ul>
+<hr>
+<h3 id="第一步：获取Flutter代码"><a href="#第一步：获取Flutter代码" class="headerlink" title="第一步：获取Flutter代码"></a>第一步：获取Flutter代码</h3><ol>
+<li><p>我先选择了一个存储Flutter的文件夹：</p>
+<p> <img src="evernotecid://3DE7A385-FFCA-4630-91A9-F88E73A63AF0/appyinxiangcom/22109192/ENResource/p1" alt="56a74cdc0cf7522961022dcd31a0f3ca.png"><br>名字跟随自己的命名习惯。</p>
+</li>
+<li><p>克隆Flutter代码到本地目录：<br>两种方式：自己在GitHub 上面把SDK下下来放到文件中，或者通过终端输入：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone  https:&#x2F;&#x2F;github.com&#x2F;flutter&#x2F;flutter.git</span><br></pre></td></tr></table></figure>
+<p> 最后就是一样的配置：open .bash_profile打开添加以下路径：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export PATH&#x3D;本地目录&#x2F;flutter&#x2F;bin:$PATH</span><br></pre></td></tr></table></figure>
+<pre><code> 配置完了后，应该可以运行Flutter命令了！可以使用下面命令flutter doctor来检查依赖环境是否正常。如果下载有问题的话，可能是网络受限，如果你没有翻墙软件的话，在终端输入如下两条命令：
+</code></pre>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export PUB_HOSTED_URL&#x3D;https:&#x2F;&#x2F;pub.flutter-io.cn</span><br><span class="line">export FLUTTER_STORAGE_BASE_URL&#x3D;https:&#x2F;&#x2F;storage.flutter-io.cn</span><br></pre></td></tr></table></figure>
+<p>官方也给出了方法，就是使用国内的镜像节点下载，在运行flutter doctor之前先运行下面两个命令即可。<br><img src="evernotecid://3DE7A385-FFCA-4630-91A9-F88E73A63AF0/appyinxiangcom/22109192/ENResource/p2" alt="a51a64a974501d1bf53d7f4cd5f82ab2.png"></p>
+</li>
+</ol>
+<hr>
+<h3 id="第二步：配置IOS环境"><a href="#第二步：配置IOS环境" class="headerlink" title="第二步：配置IOS环境"></a>第二步：配置IOS环境</h3><p>我在 App Store下载安装好了Xcode，然后自己安装了Homebrew：<br><a href="https://brew.sh/">Homebrew配置方法地址：</a><br>接下来我就是执行如下的命令：<br>open -a Simulator – 测试成功打开模拟器</p>
+<h6 id="安装用于将Flutter应用部署到iOS设备的工具"><a href="#安装用于将Flutter应用部署到iOS设备的工具" class="headerlink" title="安装用于将Flutter应用部署到iOS设备的工具"></a>安装用于将Flutter应用部署到iOS设备的工具</h6><p>$ brew update<br>$ brew install –HEAD libimobiledevice<br>$ brew install ideviceinstaller ios-deploy cocoapods<br>$ pod setup<br>此处我就是无耻的copy的别人的文章，那位大佬的文章地址：<a href="https://www.jianshu.com/p/0b73cc2af65f">Flutter轻松入门（一） – MAC环境搭建</a></p>
+<hr>
+<h3 id="第三步：在Android-Studio上配置Android开发环境"><a href="#第三步：在Android-Studio上配置Android开发环境" class="headerlink" title="第三步：在Android Studio上配置Android开发环境"></a>第三步：在Android Studio上配置Android开发环境</h3><p>插件怎么安装就不废话啦，直接截图，它会自动安装Flutter和Dart语言插件，Dart有时候可能会安装失败，请耐心点，也可以单独搜Dart进行安装。<br><img src="evernotecid://3DE7A385-FFCA-4630-91A9-F88E73A63AF0/appyinxiangcom/22109192/ENResource/p3" alt="cd5198371c3b49034b3de9a8c41ecf19.png"></p>
+<h3 id="最后终端运行-Flutter-Doctor"><a href="#最后终端运行-Flutter-Doctor" class="headerlink" title="最后终端运行 Flutter Doctor"></a>最后终端运行 Flutter Doctor</h3><p>检查Flutter开发环境是否配置完成，我的如下图：<br><img src="evernotecid://3DE7A385-FFCA-4630-91A9-F88E73A63AF0/appyinxiangcom/22109192/ENResource/p4" alt="586b6df21a8997dcfeb10164a1e39ec4.png"></p>
+<hr>
+<p>笔记收尾处我还得为微我参考的文章打个广告：<a href="https://www.jianshu.com/p/0b73cc2af65f">Flutter轻松入门（一） – MAC环境搭建</a></p>
+]]></content>
+      <categories>
+        <category>Flutter</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>Flutter</tag>
       </tags>
   </entry>
   <entry>
@@ -2184,7 +2166,7 @@ Connection conn = null;
 <p>2.添加SSH Key到Github<br>进入github首页在设置洁面<br><img src="https://images2017.cnblogs.com/blog/1250458/201710/1250458-20171017153636849-294935886.png"></p>
 <hr>
 <h4 id="添加SSH-Key"><a href="#添加SSH-Key" class="headerlink" title="添加SSH Key"></a>添加SSH Key</h4><p><img src="https://images2017.cnblogs.com/blog/1250458/201710/1250458-20171017153642521-647884655.png"><br>找到系统当前用户目录下(开启查看隐藏文件) C:\Users\用户名\ .ssh id_rsa.pub文件以文本方式打开。打开之后全部复制到key中<br><img src="https://images2017.cnblogs.com/blog/1250458/201710/1250458-20171017153648631-441574444.png"><br>到了这就可以测试一下是否成功了:</p>
-<p>ssh -T <a href="mailto:&#103;&#105;&#116;&#x40;&#x67;&#x69;&#x74;&#104;&#117;&#x62;&#x2e;&#99;&#111;&#x6d;">&#103;&#105;&#116;&#x40;&#x67;&#x69;&#x74;&#104;&#117;&#x62;&#x2e;&#99;&#111;&#x6d;</a><br>#之后会要你输入yes/no,输入yes就好了。<br>设置你的账号信息:</p>
+<p>ssh -T <a href="mailto:&#x67;&#105;&#x74;&#x40;&#x67;&#105;&#116;&#x68;&#117;&#98;&#x2e;&#x63;&#x6f;&#x6d;">&#x67;&#105;&#x74;&#x40;&#x67;&#105;&#116;&#x68;&#117;&#98;&#x2e;&#x63;&#x6f;&#x6d;</a><br>#之后会要你输入yes/no,输入yes就好了。<br>设置你的账号信息:</p>
 <p>git config –global user.name “你的名字”     #真实名字不是github用户名<br>git config –global user.email “邮箱@邮箱.com”    #github邮箱<br>3.部署到github<br>hexo d<br>这时再刷新 username.github.io 就可以看到你的博客了。</p>
 <p>到了这你以为就结束了吗？没有，还有坑没有给你们填好。</p>
 <p>如果你的SSH配置的时候哪找的.ssh文件的化，可以参照<a href="https://www.cnblogs.com/ailiailan/p/8577411.html">mac 上传本地代码到 Github 教程</a>,我就是参照上面的步骤配置的。</p>
@@ -2198,110 +2180,21 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
-    <title>Monkey自动化压力测试</title>
-    <url>/2020/06/22/Monkey%E8%87%AA%E5%8A%A8%E5%8C%96%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/</url>
-    <content><![CDATA[<h2 id="第一部分-背景"><a href="#第一部分-背景" class="headerlink" title="第一部分 背景"></a>第一部分 背景</h2><h3 id="1、为什么要开展压力测试？"><a href="#1、为什么要开展压力测试？" class="headerlink" title="1、为什么要开展压力测试？"></a>1、为什么要开展压力测试？</h3><ul>
-<li>提高产品的稳定性</li>
-<li>提高产品的留存率<h3 id="2、什么时候开展压力测试？"><a href="#2、什么时候开展压力测试？" class="headerlink" title="2、什么时候开展压力测试？"></a>2、什么时候开展压力测试？</h3></li>
-<li>首轮功能测试通过后开始</li>
-<li>下班后的夜间进行<h2 id="第二部分-场景"><a href="#第二部分-场景" class="headerlink" title="第二部分 场景"></a>第二部分 场景</h2><h3 id="手工测试场景"><a href="#手工测试场景" class="headerlink" title="手工测试场景"></a>手工测试场景</h3><h3 id="自动化测试场景"><a href="#自动化测试场景" class="headerlink" title="自动化测试场景"></a>自动化测试场景</h3>1、 Monkey<br>Monkey 就在手机里，安卓系统再带的</li>
-</ul>
-<p>2、 什么事ADB？<br>Android Debug Bridge 安卓调试桥</p>
-<span id="more"></span>
-<p>3、 MonkeyScript<br>MonkeyScript是一组可被monkey识别的命令集合。<br>MonkeyScript可以完成重复固定的指令</p>
-<p>4、 MonkeyRunner<br>提供一系列的API，可以模拟事件及截图操作。</p>
-<p>5、Monkey和MonkeyRunner的区别？<br>Monkey：在adb shell中，生成用户或系统的伪随机事件。<br>MonkeyRunner：通过API定义特定命令和事件控制设备。</p>
-<p>MonkeyRunner APIs</p>
-<ul>
-<li> MonkeyRunner:用来连接设备或者模拟器</li>
-<li> MonkeyDevice：提供安装、卸载应用，发送模拟事件</li>
-<li> MonkeyImage：完成图像保存，及对比操作。</li>
-</ul>
-<h3 id="压力测试结果"><a href="#压力测试结果" class="headerlink" title="压力测试结果"></a>压力测试结果</h3><p>crash和ANR</p>
-<p>崩溃和应用无响应</p>
-<h2 id="第三部分：实践"><a href="#第三部分：实践" class="headerlink" title="第三部分：实践"></a>第三部分：实践</h2><ul>
-<li>步骤一：打开手机USB调试功能</li>
-<li>步骤二：确认手机和电脑已经连接，执行<code>adb devices</code><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mark@Markxiansheng blog % adb devices</span><br><span class="line">* daemon not running; starting now at tcp:5037</span><br><span class="line">* daemon started successfully</span><br><span class="line">List of devices attached</span><br><span class="line">HCW0001811005556        device</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-<li>步骤三：安装测试app，<code>adb install package.apk</code></li>
-<li>步骤四：发送压测指令 <code>adb shell monkey 1000</code>执行1000次随机操作指令</li>
-<li>步骤五：获取app报名：执行<code>adb logcat | grep START</code></li>
-<li>步骤六：给指定的包打压力；执行<code>adb shell monkey -p package 1000</code></li>
-</ul>
-<h2 id="第四部分：Monkey高级参数的应用"><a href="#第四部分：Monkey高级参数的应用" class="headerlink" title="第四部分：Monkey高级参数的应用"></a>第四部分：Monkey高级参数的应用</h2><h3 id="1、throttle参数"><a href="#1、throttle参数" class="headerlink" title="1、throttle参数"></a>1、throttle参数</h3><p>指定事件之间的间隔<br><code>adb shell monkey --throttle &lt;milliseconds&gt;</code></p>
-<h3 id="2、seed参数实践"><a href="#2、seed参数实践" class="headerlink" title="2、seed参数实践"></a>2、seed参数实践</h3><p>指定随机生成数的seed值 <code>adb shell monkey -s &lt;seed&gt; &lt;event-count&gt;</code></p>
-<p>例如：<code>adb shell monkey -p com.android.calculator2 -s 100 50</code><br>每次执行结构都是一样，记住清理缓存记录再测试，复现问题</p>
-<h3 id="3、触摸事件"><a href="#3、触摸事件" class="headerlink" title="3、触摸事件"></a>3、触摸事件</h3><p>设定触摸事件百分比<br><code>adb shell monkey --pct-touch &lt;percent&gt;</code></p>
-<p>例如：<code>adb shell monkey -v -p com.cares.rcs --pct-touch 100 100</code>，加上<code>-v</code>是为了看清具体执行的操作是什么</p>
-<h3 id="4、动作事件"><a href="#4、动作事件" class="headerlink" title="4、动作事件"></a>4、动作事件</h3><p>设定动作事件百分比<code>adb shell monkey --pct-motion &lt;percent&gt;</code><br>例如：<code>adb shell monkey -v -p com.cares.rcs --pct-touch 50 --pct-motion 30 100</code><br>执行touch事件50%，motion事件30%，执行一百次事件</p>
-<h3 id="5、轨迹球事件"><a href="#5、轨迹球事件" class="headerlink" title="5、轨迹球事件"></a>5、轨迹球事件</h3><p>设定轨迹球事件百分比<br><code>adb shell monkey --pct-trackball &lt;percent&gt;</code></p>
-<h3 id="6、基本导航事件"><a href="#6、基本导航事件" class="headerlink" title="6、基本导航事件"></a>6、基本导航事件</h3><p>设定基本导航事件百分比，输入设备上的上、下、左、右<br><code>adb shell monkey --pct-nav &lt;percent&gt;</code></p>
-<h3 id="7、主要导航事件"><a href="#7、主要导航事件" class="headerlink" title="7、主要导航事件"></a>7、主要导航事件</h3><p>设定主要导航事件百分比，兼容中间键、返回键、菜单按键<br><code>adb shell monkey --pct-majornav &lt;percent&gt;</code></p>
-<h3 id="8、系统导航事件"><a href="#8、系统导航事件" class="headerlink" title="8、系统导航事件"></a>8、系统导航事件</h3><p>设定系统导航事件百分比，HOME、BACK、拨号及音量按键<br><code>adb shell monkey --pct-syskeys &lt;percent&gt;</code></p>
-<h3 id="9、启动Activity事件"><a href="#9、启动Activity事件" class="headerlink" title="9、启动Activity事件"></a>9、启动Activity事件</h3><p>设定启动Activity的事件百分比<br><code>adb shell monkey --pct-appswitch &lt;percent&gt;</code></p>
-<h3 id="10、不常用事件"><a href="#10、不常用事件" class="headerlink" title="10、不常用事件"></a>10、不常用事件</h3><p><code>adb shell monkey --pct-anyevent &lt;percent&gt;</code></p>
-<h3 id="11、崩溃事件Crash事件"><a href="#11、崩溃事件Crash事件" class="headerlink" title="11、崩溃事件Crash事件"></a>11、崩溃事件Crash事件</h3><p>忽略崩溃和异常<br><code>adb shell monkey --ignore-crashes &lt;percent&gt;</code></p>
-<h3 id="12、超时事件ANR事件"><a href="#12、超时事件ANR事件" class="headerlink" title="12、超时事件ANR事件"></a>12、超时事件ANR事件</h3><p>忽略超时事件<br><code>adb shell monkey --ignore-timeouts &lt;event-count&gt;</code></p>
-<h2 id="第五部分：CRASH结果提取"><a href="#第五部分：CRASH结果提取" class="headerlink" title="第五部分：CRASH结果提取"></a>第五部分：CRASH结果提取</h2><p> <code>adb shell monkey -p com.cares.rcs 1000</code>不断测试执行随机操作</p>
-<h2 id="第六部分：ANR查看"><a href="#第六部分：ANR查看" class="headerlink" title="第六部分：ANR查看"></a>第六部分：ANR查看</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Markxiansheng:Desktop mark$ adb shell</span><br><span class="line">root@vbox86p:&#x2F; #</span><br><span class="line">root@vbox86p:&#x2F; # cd &#x2F;data&#x2F;anr</span><br><span class="line">root@vbox86p:&#x2F;data&#x2F;anr # ls</span><br><span class="line">traces.txt</span><br></pre></td></tr></table></figure>
-<h2 id="Monkey-Script学习使用"><a href="#Monkey-Script学习使用" class="headerlink" title="Monkey Script学习使用"></a>Monkey Script学习使用</h2><blockquote>
-<p>执行语句：<code>adb shell monkey -f &lt;scriptfile&gt; &lt;event-count&gt;</code></p>
-</blockquote>
-<p>常用命令：</p>
-<p>1、<strong>DispatchTrackball</strong>轨迹球事件</p>
-<p>2、<strong>DispatchPointer</strong>点击事件</p>
-<p>3、<strong>DispatchString</strong>输入字符串事件<br><code>DispatchString(String text)</code></p>
-<p>4、<strong>LaunchActivity</strong>启动应用事件<br><code>LaunchAtivity(package,Activity)</code></p>
-<p>5、<strong>UserWait</strong>命令<br>等待事件：<code>UserWait(millinsons)</code></p>
-<p>6、<strong>DispatchPress</strong>命令<br>按下键值：<code>DispatchPress(int keycode)</code> #keycode 66 回车键》</p>
-<p>模拟输入查询一千次</p>
-<ul>
-<li>1、启动App</li>
-<li>2、点击输入框</li>
-<li>3、输入查询词</li>
-<li>4、点击键盘的回车</li>
-<li>5、点击搜索按钮</li>
-<li>6、等待结果的出现</li>
-<li>7、点击clear按钮<br>Mark.script脚本<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">typ &#x3D; user</span><br><span class="line">count &#x3D; 10</span><br><span class="line">speed &#x3D; 1.0</span><br><span class="line">start data &gt;&gt;</span><br><span class="line"></span><br><span class="line">LaunchActivity(com.android.browser,.BrowserActivity)</span><br><span class="line">UserWait(2000)</span><br><span class="line">DispatchPointer(10,10,0,200,200,1,1,-1,1,1,0,0)</span><br><span class="line">DispatchPointer(10,10,1,200,200,1,1,-1,1,1,0,0)</span><br><span class="line">DispatchString(Mark)</span><br><span class="line">UserWait(1000)</span><br><span class="line">DispatchPress(66)</span><br><span class="line">DispatchPointer(10,10,0,600,300,1,1,-1,1,1,0,0)</span><br><span class="line">DispatchPointer(10,10,1,600,300,1,1,-1,1,1,0,0)</span><br><span class="line">UserWait(3000)</span><br></pre></td></tr></table></figure></li>
-</ul>
-<p>小黑技术：SDK目录下tools文件中的bin目录下的 uiautomatorviewer.bat,双击启动，用来获取界面控件位置</p>
-<h2 id="Monkey-Runner学习使用"><a href="#Monkey-Runner学习使用" class="headerlink" title="Monkey Runner学习使用"></a>Monkey Runner学习使用</h2><p>主要是利用python编写脚本文件进行测试，暂停学习</p>
+    <title>Flutter中使用Banner 图</title>
+    <url>/2019/04/10/Flutter%E4%B8%AD%E4%BD%BF%E7%94%A8Banner-%E5%9B%BE/</url>
+    <content><![CDATA[<h2 id="实现效果"><a href="#实现效果" class="headerlink" title="实现效果"></a>实现效果</h2><p><img src="https://img-blog.csdnimg.cn/20190410142106370.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01hcmtfQ0hZTA==,size_16,color_FFFFFF,t_70" alt="&quot;效果图&quot;" title="效果图"><br> <span id="more"></span></p>
+<h2 id="首先导入flutter-swiper插件："><a href="#首先导入flutter-swiper插件：" class="headerlink" title="首先导入flutter_swiper插件："></a>首先导入flutter_swiper插件：</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dependencies:</span><br><span class="line">  flutter_swiper: ^1.1.6</span><br></pre></td></tr></table></figure>
+<p><a href="https://pub.dartlang.org/packages/flutter_swiper#-installing-tab-">配置文件的链接地址</a></p>
+<h2 id="使用swiper插件"><a href="#使用swiper插件" class="headerlink" title="使用swiper插件"></a>使用swiper插件</h2><p>需要在使用的dart页面添加：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import &#39;package:flutter_swiper&#x2F;flutter_swiper.dart&#39;;</span><br></pre></td></tr></table></figure>
+<p>然后才能在页面中使用轮播插件：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">body:  new Swiper(</span><br><span class="line">        itemBuilder: (BuildContext context,int index)&#123;</span><br><span class="line">          return new Image.network(&quot;http:&#x2F;&#x2F;via.placeholder.com&#x2F;350x150&quot;,fit: BoxFit.fill,);</span><br><span class="line">        &#125;,</span><br><span class="line">        itemCount: 3,</span><br><span class="line">        pagination: new SwiperPagination(),</span><br><span class="line">        control: new SwiperControl(),</span><br><span class="line">      ),</span><br><span class="line">    );</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>Android</category>
+        <category>Flutter</category>
       </categories>
       <tags>
-        <tag>Android</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Oracle数据库基础理论</title>
-    <url>/2019/11/14/Oracle%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA/</url>
-    <content><![CDATA[<h2 id="Oracle数据库是关系型数据库"><a href="#Oracle数据库是关系型数据库" class="headerlink" title="Oracle数据库是关系型数据库"></a><strong>Oracle数据库是关系型数据库</strong></h2><h3 id="一、什么是关系型数据库？"><a href="#一、什么是关系型数据库？" class="headerlink" title="一、什么是关系型数据库？"></a>一、什么是关系型数据库？</h3><hr>
-<ul>
-<li>关系型数据理论最早是有E.F.Codd博士在1970年提出的。</li>
-<li>Codd博士制定了一个数据库产品成为关系型数据库所必须符合的一些列相关的标准。</li>
-<li>它是RDBMS(关系型数据库管理系统)的基础。</li>
-<li>关系型数据库需包含下面三个方面：<ul>
-<li>对象或关系的集合</li>
-<li>基于关系的操作集合</li>
-<li>因数据的精确性和一致性而带来的数据的完整性</li>
-</ul>
-</li>
-<li>关系型数据库是关系的集合或者是说是二维表的集合</li>
-</ul>
-<h3 id="二、Oracle数据库简介"><a href="#二、Oracle数据库简介" class="headerlink" title="二、Oracle数据库简介"></a>二、Oracle数据库简介</h3><ul>
-<li>一个存储数据的地方</li>
-<li>能快速获取数据</li>
-<li>数据库安全性</li>
-<li>分布式数据库</li>
-<li>客户端和服务端的配置</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Oracle</category>
-      </categories>
-      <tags>
-        <tag>Oracle</tag>
+        <tag>Flutter</tag>
       </tags>
   </entry>
   <entry>
@@ -2385,25 +2278,6 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
-    <title>android:duplicateParentState属性解释</title>
-    <url>/2019/12/31/android-duplicateParentState%E5%B1%9E%E6%80%A7%E8%A7%A3%E9%87%8A/</url>
-    <content><![CDATA[<p><strong>android:duplicateParentState指的是当前控件是否跟随父控件的(点击、焦点等)状态</strong></p>
-<blockquote>
-<p>例：假设一Layout有两子View，对Layout进行监听点击事件；子ViewA一个设置duplicateParentState为true，子ViewB设置为false，当点击Layout后，子ViewA的点击态背景变色成功，子ViewB背景态变色无效，因为点击事件被Layout捕获。</p>
-</blockquote>
-<span id="more"></span>
-
-<p>————————————————</p>
-<p>原文链接：<a href="https://blog.csdn.net/fancylovejava/article/details/38039847">https://blog.csdn.net/fancylovejava/article/details/38039847</a></p>
-]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>布局</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>android retrofit End of input at line 1 column 1 path</title>
     <url>/2020/09/03/android-retrofit-End-of-input-at-line-1-column-1-path/</url>
     <content><![CDATA[<p>在使用retrofit作为项目的网络请求库时，接口定义如下：</p>
@@ -2434,6 +2308,25 @@ Connection conn = null;
       </categories>
       <tags>
         <tag>Error，retrofit</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>android:duplicateParentState属性解释</title>
+    <url>/2019/12/31/android-duplicateParentState%E5%B1%9E%E6%80%A7%E8%A7%A3%E9%87%8A/</url>
+    <content><![CDATA[<p><strong>android:duplicateParentState指的是当前控件是否跟随父控件的(点击、焦点等)状态</strong></p>
+<blockquote>
+<p>例：假设一Layout有两子View，对Layout进行监听点击事件；子ViewA一个设置duplicateParentState为true，子ViewB设置为false，当点击Layout后，子ViewA的点击态背景变色成功，子ViewB背景态变色无效，因为点击事件被Layout捕获。</p>
+</blockquote>
+<span id="more"></span>
+
+<p>————————————————</p>
+<p>原文链接：<a href="https://blog.csdn.net/fancylovejava/article/details/38039847">https://blog.csdn.net/fancylovejava/article/details/38039847</a></p>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>布局</tag>
       </tags>
   </entry>
   <entry>
@@ -2720,19 +2613,6 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
-    <title>kotlin学习笔记第一章</title>
-    <url>/2019/11/19/kotlin%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%AC%AC%E4%B8%80%E7%AB%A0/</url>
-    <content><![CDATA[<h2 id="第一章-搭建-Kotlin-开发环境"><a href="#第一章-搭建-Kotlin-开发环境" class="headerlink" title="第一章 搭建 Kotlin 开发环境"></a>第一章 搭建 Kotlin 开发环境</h2><hr>
-<h3 id="一、Kotlin简介："><a href="#一、Kotlin简介：" class="headerlink" title="一、Kotlin简介："></a>一、Kotlin简介：</h3><p>Kotlin是一种基于JVM的新型编程语言，它完全兼容Java语言。</p>
-]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Android、Kotlin、学习笔记</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>ping端口是否开放(macos)</title>
     <url>/2019/10/30/ping%E7%AB%AF%E5%8F%A3%E6%98%AF%E5%90%A6%E5%BC%80%E6%94%BE-macos/</url>
     <content><![CDATA[<p><em>简单的实用积累</em></p>
@@ -2755,31 +2635,16 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
-    <title>python的爬虫学习实战笔记一</title>
-    <url>/2018/12/17/python%E7%9A%84%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98%E7%AC%94%E8%AE%B0%E4%B8%80/</url>
-    <content><![CDATA[<h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><h4 id="Python3的爬虫基础学习，编写URL管理器、网页下载器、网页分析器、数据输出器、如何连接到MySQL。网上能搜到许多的库，在这我只是开始我的基础学起，瞎猫死猫能运行就可以。"><a href="#Python3的爬虫基础学习，编写URL管理器、网页下载器、网页分析器、数据输出器、如何连接到MySQL。网上能搜到许多的库，在这我只是开始我的基础学起，瞎猫死猫能运行就可以。" class="headerlink" title="Python3的爬虫基础学习，编写URL管理器、网页下载器、网页分析器、数据输出器、如何连接到MySQL。网上能搜到许多的库，在这我只是开始我的基础学起，瞎猫死猫能运行就可以。"></a>Python3的爬虫基础学习，编写URL管理器、网页下载器、网页分析器、数据输出器、如何连接到MySQL。网上能搜到许多的库，在这我只是开始我的基础学起，瞎猫死猫能运行就可以。</h4><hr>
-<span id="more"></span>
-<h4 id="编写的环境："><a href="#编写的环境：" class="headerlink" title="编写的环境："></a>编写的环境：</h4><p>Mac电脑、MySQL数据库、pymysql库、urllib库、bs4库、Python3、PyCharm编辑器</p>
-<p><a href="http://www.runoob.com/python3/python3-dictionary.html">学习网址</a></p>
-<h3 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h3><p>网络爬虫（Web Spider），又被称为网页蜘蛛，是一种按照一定的规则，自动地抓取网站信息的程序或者脚本。</p>
-<h3 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h3><p>网络蜘蛛是一个很形象的名字。如果把互联网比喻成一个蜘蛛网，那么Spider就是在网上爬来爬去的蜘蛛。网络蜘蛛是通过网页的链接地址来寻找网页，从 网站某一个页面开始，读取网页的内容，找到在网页中的其它链接地址，然后通过这些链接地址寻找下一个网页，这样一直循环下去，直到把这个网站所有的网页都抓取完为止</p>
-<h3 id="爬虫流程："><a href="#爬虫流程：" class="headerlink" title="爬虫流程："></a>爬虫流程：</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">①先由urllib的request打开Url得到网页html文档</span><br><span class="line">——②浏览器打开网页源代码分析元素节点</span><br><span class="line">——③通过BeautifulSoup或则正则表达式提取想要的数据</span><br><span class="line">——④存储数据到本地磁盘或数据库（抓取，分析，存储）</span><br></pre></td></tr></table></figure>
-<h2 id="上代码"><a href="#上代码" class="headerlink" title="上代码"></a>上代码</h2><p>爬虫程序入口：Spider_Main<br>爬虫目标URL：<a href="http://www.hbooker.com/book/10007188">http://www.hbooker.com/book/10007188</a></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">from hbooker_spider import html_downloader</span><br><span class="line">from hbooker_spider import html_outputer</span><br><span class="line">from hbooker_spider import html_parser</span><br><span class="line">from hbooker_spider import url_manager</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class SpiderMain(object):</span><br><span class="line">    def __init__(self):</span><br><span class="line">        # 初始化 URL 管理器</span><br><span class="line">        self.urls &#x3D; url_manager.UrlManager()</span><br><span class="line">        # 初始化 html 下载器</span><br><span class="line">        self.downloader &#x3D; html_downloader.HtmlDownLoader()</span><br><span class="line">        # 初始化 html 解析器</span><br><span class="line">        self.parser &#x3D; html_parser.HtmlParser()</span><br><span class="line">        # 初始化 数据 输出管理器</span><br><span class="line">        self.outputer &#x3D; html_outputer.HtmlOutputer()</span><br><span class="line"></span><br><span class="line">    def craw(self, root_url):</span><br><span class="line">        count &#x3D; 1</span><br><span class="line">        self.urls.add_new_url(root_url)</span><br><span class="line">        while self.urls.has_new_url():</span><br><span class="line">            try:</span><br><span class="line">                new_url &#x3D; self.urls.get_new_url()</span><br><span class="line">                html_cont &#x3D; self.downloader.downloader(new_url)</span><br><span class="line">                new_urls, new_datas &#x3D; self.parser.parse(new_url, html_cont)</span><br><span class="line">                self.urls.add_new_urls(new_urls)</span><br><span class="line">                print(&#39;craw %d : %s&#39; % (count, new_datas))</span><br><span class="line">                self.outputer.collect_data(new_datas)</span><br><span class="line"></span><br><span class="line">                if count &#x3D;&#x3D; 100:</span><br><span class="line">                    break</span><br><span class="line">                count +&#x3D; 1</span><br><span class="line">            except:</span><br><span class="line">                print(&#39;craw failed&#39;)</span><br><span class="line">        self.outputer.output_html()</span><br><span class="line">        self.outputer.output_mysql()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    root_url &#x3D; &#39;http:&#x2F;&#x2F;www.hbooker.com&#x2F;book&#x2F;100071888&#39;</span><br><span class="line">    obj_spider &#x3D; SpiderMain()</span><br><span class="line">    obj_spider.craw(root_url)</span><br></pre></td></tr></table></figure>
-
-<h3 id="网页下载器-html-downloader"><a href="#网页下载器-html-downloader" class="headerlink" title="网页下载器 html_downloader"></a>网页下载器 html_downloader</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># URL下载器</span><br><span class="line">from urllib import request</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class HtmlDownLoader(object):</span><br><span class="line">    def downloader(self, new_url):</span><br><span class="line">        if new_url is None:</span><br><span class="line">            return</span><br><span class="line"></span><br><span class="line">        response &#x3D; request.urlopen(new_url)</span><br><span class="line">        if response.getcode() !&#x3D; 200:</span><br><span class="line">            return None</span><br><span class="line">        return response.read()</span><br></pre></td></tr></table></figure>
-<h3 id="网页解析器-html-parser"><a href="#网页解析器-html-parser" class="headerlink" title="网页解析器 html_parser"></a>网页解析器 html_parser</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># html 解析器</span><br><span class="line">import re</span><br><span class="line">from bs4 import BeautifulSoup</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class HtmlParser(object):</span><br><span class="line">    def _get_new_datas(self, url, soup):</span><br><span class="line">        res_data &#x3D; &#123;&#125;</span><br><span class="line">        res_data[&#39;url&#39;] &#x3D; url</span><br><span class="line">        # &lt;div class&#x3D;&quot;book-title&quot;&gt;&lt;h1&gt;假紫剑圣与B套奶妈&lt;&#x2F;h1&gt;</span><br><span class="line">        title_nodes &#x3D; soup.find(&#39;div&#39;, class_&#x3D;&#39;book-title&#39;).find(&#39;h1&#39;)</span><br><span class="line">        res_data[&#39;title&#39;] &#x3D; title_nodes.get_text()</span><br><span class="line">        return res_data</span><br><span class="line"></span><br><span class="line">    def _get_new_urls(self, url, soup):</span><br><span class="line">        new_urls &#x3D; set()</span><br><span class="line">        # &lt;a class&#x3D;&quot;img&quot; href&#x3D;&quot;http:&#x2F;&#x2F;www.hbooker.com&#x2F;book&#x2F;100075809&quot; target&#x3D;&quot;_blank&quot;&gt;</span><br><span class="line">        links &#x3D; soup.find_all(&#39;a&#39;, class_&#x3D;&#39;img&#39;)</span><br><span class="line">        for link in links:</span><br><span class="line">            new_d_url &#x3D; link[&#39;href&#39;]</span><br><span class="line">            new_urls.add(new_d_url)</span><br><span class="line">        return new_urls</span><br><span class="line"></span><br><span class="line">    def parse(self, url, html_cont):</span><br><span class="line">        if url is None or html_cont is None:</span><br><span class="line">            return</span><br><span class="line"></span><br><span class="line">        soup &#x3D; BeautifulSoup(html_cont, &#39;html.parser&#39;, from_encoding&#x3D;&#39;utf-8&#39;)</span><br><span class="line">        new_urls &#x3D; self._get_new_urls(url, soup)</span><br><span class="line">        new_html_cont &#x3D; self._get_new_datas(url, soup)</span><br><span class="line">        return new_urls, new_html_cont</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="输出起-html-outputer"><a href="#输出起-html-outputer" class="headerlink" title="输出起 html_outputer"></a>输出起 html_outputer</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 数据输出</span><br><span class="line">import pymysql</span><br><span class="line"></span><br><span class="line">#格式化字符串把字典</span><br><span class="line">def dic2sql(sql, data):</span><br><span class="line">    sql2 &#x3D; sql % (str(data[&#39;url&#39;]), str(data[&#39;title&#39;]))</span><br><span class="line">    return sql2</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class HtmlOutputer(object):</span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.datas &#x3D; []</span><br><span class="line"></span><br><span class="line">    def collect_data(self, new_datas):</span><br><span class="line">        if new_datas is None:</span><br><span class="line">            return</span><br><span class="line">        self.datas.append(new_datas)</span><br><span class="line"></span><br><span class="line">    def output_html(self):</span><br><span class="line">        fout &#x3D; open(&#39;output.html&#39;, &#39;w&#39;)</span><br><span class="line">        fout.write(&#39;&lt;html&gt;&#39;)</span><br><span class="line">        fout.write(&#39;&lt;meta http-equiv&#x3D;&quot;Content-Type&quot; content&#x3D;&quot;text&#x2F;html; charset&#x3D;utf-8&quot; &#x2F;&gt;&#39;)</span><br><span class="line">        fout.write(&#39;&lt;body&gt;&#39;)</span><br><span class="line">        fout.write(&#39;&lt;table&gt;&#39;)</span><br><span class="line"></span><br><span class="line">        for data in self.datas:</span><br><span class="line">            fout.write(&#39;&lt;tr&gt;&#39;)</span><br><span class="line">            fout.write(&#39;&lt;td&gt;%s&lt;&#x2F;td&gt;&#39; % data[&#39;url&#39;])</span><br><span class="line">            fout.write(&#39;&lt;td&gt;%s&lt;&#x2F;td&gt;&#39; % data[&#39;title&#39;])</span><br><span class="line">            fout.write(&#39;&lt;&#x2F;tr&gt;&#39;)</span><br><span class="line"></span><br><span class="line">        fout.write(&#39;&lt;&#x2F;table&gt;&#39;)</span><br><span class="line">        fout.write(&#39;&lt;&#x2F;body&gt;&#39;)</span><br><span class="line">        fout.write(&#39;&lt;&#x2F;html&gt;&#39;)</span><br><span class="line">        fout.close()</span><br><span class="line"></span><br><span class="line">    def output_mysql(self):</span><br><span class="line"></span><br><span class="line">        # 打开数据库连接</span><br><span class="line">        db &#x3D; pymysql.connect(&quot;localhost&quot;, &quot;root&quot;, &quot;MarkCHYL&quot;, &quot;TESTDB&quot;)</span><br><span class="line"></span><br><span class="line">        # 使用 cursor() 方法创建一个游标对象 cursor</span><br><span class="line">        cursor &#x3D; db.cursor()</span><br><span class="line"></span><br><span class="line">        # 使用 execute() 方法执行 SQL，如果表存在则删除</span><br><span class="line">        cursor.execute(&quot;DROP TABLE IF EXISTS HBOOKER&quot;)</span><br><span class="line"></span><br><span class="line">        # # 使用预处理语句创建表</span><br><span class="line">        sql &#x3D; &quot;&quot;&quot;CREATE TABLE HBOOKER (</span><br><span class="line">         TITLE  VARCHAR (200) NOT NULL,</span><br><span class="line">         URL  VARCHAR (200))&quot;&quot;&quot;</span><br><span class="line">        print(sql)</span><br><span class="line"></span><br><span class="line">        cursor.execute(sql)</span><br><span class="line">        #</span><br><span class="line">        for data in self.datas:</span><br><span class="line">            # SQL 插入语句</span><br><span class="line">            # sql &#x3D; &quot;INSERT INTO HBOOKER(TITLE, URL) VALUES (\&#39;&quot; + str(data[&#39;title&#39;]) + &quot;&#39;,&#39;&quot; + str(data[&#39;url&#39;]) + &quot;&#39;)&quot;</span><br><span class="line">            sql &#x3D; &quot;INSERT INTO HBOOKER(URL,TITLE) VALUES (&#39;%s&#39;,&#39;%s&#39;)&quot;</span><br><span class="line">            sql1 &#x3D; dic2sql(sql, data)</span><br><span class="line">            print(sql1)</span><br><span class="line">            try:</span><br><span class="line">                # 执行sql语句</span><br><span class="line">                cursor.execute(sql1)</span><br><span class="line">                # 提交到数据库执行</span><br><span class="line">                db.commit()</span><br><span class="line">            except:</span><br><span class="line">                # 如果发生错误则回滚</span><br><span class="line">                db.rollback()</span><br><span class="line"></span><br><span class="line">        # 关闭数据库连接</span><br><span class="line">        db.close()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>后记：代码可能比较多  我只是为了更好的了解整个爬虫的过程</p>
+    <title>kotlin学习笔记第一章</title>
+    <url>/2019/11/19/kotlin%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%AC%AC%E4%B8%80%E7%AB%A0/</url>
+    <content><![CDATA[<h2 id="第一章-搭建-Kotlin-开发环境"><a href="#第一章-搭建-Kotlin-开发环境" class="headerlink" title="第一章 搭建 Kotlin 开发环境"></a>第一章 搭建 Kotlin 开发环境</h2><hr>
+<h3 id="一、Kotlin简介："><a href="#一、Kotlin简介：" class="headerlink" title="一、Kotlin简介："></a>一、Kotlin简介：</h3><p>Kotlin是一种基于JVM的新型编程语言，它完全兼容Java语言。</p>
 ]]></content>
       <categories>
-        <category>Python</category>
-        <category>爬虫</category>
+        <category>Android</category>
       </categories>
       <tags>
-        <tag>Python</tag>
-        <tag>爬虫</tag>
+        <tag>Android、Kotlin、学习笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -2809,6 +2674,34 @@ Connection conn = null;
       </categories>
       <tags>
         <tag>vue</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python的爬虫学习实战笔记一</title>
+    <url>/2018/12/17/python%E7%9A%84%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98%E7%AC%94%E8%AE%B0%E4%B8%80/</url>
+    <content><![CDATA[<h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><h4 id="Python3的爬虫基础学习，编写URL管理器、网页下载器、网页分析器、数据输出器、如何连接到MySQL。网上能搜到许多的库，在这我只是开始我的基础学起，瞎猫死猫能运行就可以。"><a href="#Python3的爬虫基础学习，编写URL管理器、网页下载器、网页分析器、数据输出器、如何连接到MySQL。网上能搜到许多的库，在这我只是开始我的基础学起，瞎猫死猫能运行就可以。" class="headerlink" title="Python3的爬虫基础学习，编写URL管理器、网页下载器、网页分析器、数据输出器、如何连接到MySQL。网上能搜到许多的库，在这我只是开始我的基础学起，瞎猫死猫能运行就可以。"></a>Python3的爬虫基础学习，编写URL管理器、网页下载器、网页分析器、数据输出器、如何连接到MySQL。网上能搜到许多的库，在这我只是开始我的基础学起，瞎猫死猫能运行就可以。</h4><hr>
+<span id="more"></span>
+<h4 id="编写的环境："><a href="#编写的环境：" class="headerlink" title="编写的环境："></a>编写的环境：</h4><p>Mac电脑、MySQL数据库、pymysql库、urllib库、bs4库、Python3、PyCharm编辑器</p>
+<p><a href="http://www.runoob.com/python3/python3-dictionary.html">学习网址</a></p>
+<h3 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h3><p>网络爬虫（Web Spider），又被称为网页蜘蛛，是一种按照一定的规则，自动地抓取网站信息的程序或者脚本。</p>
+<h3 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h3><p>网络蜘蛛是一个很形象的名字。如果把互联网比喻成一个蜘蛛网，那么Spider就是在网上爬来爬去的蜘蛛。网络蜘蛛是通过网页的链接地址来寻找网页，从 网站某一个页面开始，读取网页的内容，找到在网页中的其它链接地址，然后通过这些链接地址寻找下一个网页，这样一直循环下去，直到把这个网站所有的网页都抓取完为止</p>
+<h3 id="爬虫流程："><a href="#爬虫流程：" class="headerlink" title="爬虫流程："></a>爬虫流程：</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">①先由urllib的request打开Url得到网页html文档</span><br><span class="line">——②浏览器打开网页源代码分析元素节点</span><br><span class="line">——③通过BeautifulSoup或则正则表达式提取想要的数据</span><br><span class="line">——④存储数据到本地磁盘或数据库（抓取，分析，存储）</span><br></pre></td></tr></table></figure>
+<h2 id="上代码"><a href="#上代码" class="headerlink" title="上代码"></a>上代码</h2><p>爬虫程序入口：Spider_Main<br>爬虫目标URL：<a href="http://www.hbooker.com/book/10007188">http://www.hbooker.com/book/10007188</a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">from hbooker_spider import html_downloader</span><br><span class="line">from hbooker_spider import html_outputer</span><br><span class="line">from hbooker_spider import html_parser</span><br><span class="line">from hbooker_spider import url_manager</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class SpiderMain(object):</span><br><span class="line">    def __init__(self):</span><br><span class="line">        # 初始化 URL 管理器</span><br><span class="line">        self.urls &#x3D; url_manager.UrlManager()</span><br><span class="line">        # 初始化 html 下载器</span><br><span class="line">        self.downloader &#x3D; html_downloader.HtmlDownLoader()</span><br><span class="line">        # 初始化 html 解析器</span><br><span class="line">        self.parser &#x3D; html_parser.HtmlParser()</span><br><span class="line">        # 初始化 数据 输出管理器</span><br><span class="line">        self.outputer &#x3D; html_outputer.HtmlOutputer()</span><br><span class="line"></span><br><span class="line">    def craw(self, root_url):</span><br><span class="line">        count &#x3D; 1</span><br><span class="line">        self.urls.add_new_url(root_url)</span><br><span class="line">        while self.urls.has_new_url():</span><br><span class="line">            try:</span><br><span class="line">                new_url &#x3D; self.urls.get_new_url()</span><br><span class="line">                html_cont &#x3D; self.downloader.downloader(new_url)</span><br><span class="line">                new_urls, new_datas &#x3D; self.parser.parse(new_url, html_cont)</span><br><span class="line">                self.urls.add_new_urls(new_urls)</span><br><span class="line">                print(&#39;craw %d : %s&#39; % (count, new_datas))</span><br><span class="line">                self.outputer.collect_data(new_datas)</span><br><span class="line"></span><br><span class="line">                if count &#x3D;&#x3D; 100:</span><br><span class="line">                    break</span><br><span class="line">                count +&#x3D; 1</span><br><span class="line">            except:</span><br><span class="line">                print(&#39;craw failed&#39;)</span><br><span class="line">        self.outputer.output_html()</span><br><span class="line">        self.outputer.output_mysql()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    root_url &#x3D; &#39;http:&#x2F;&#x2F;www.hbooker.com&#x2F;book&#x2F;100071888&#39;</span><br><span class="line">    obj_spider &#x3D; SpiderMain()</span><br><span class="line">    obj_spider.craw(root_url)</span><br></pre></td></tr></table></figure>
+
+<h3 id="网页下载器-html-downloader"><a href="#网页下载器-html-downloader" class="headerlink" title="网页下载器 html_downloader"></a>网页下载器 html_downloader</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># URL下载器</span><br><span class="line">from urllib import request</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class HtmlDownLoader(object):</span><br><span class="line">    def downloader(self, new_url):</span><br><span class="line">        if new_url is None:</span><br><span class="line">            return</span><br><span class="line"></span><br><span class="line">        response &#x3D; request.urlopen(new_url)</span><br><span class="line">        if response.getcode() !&#x3D; 200:</span><br><span class="line">            return None</span><br><span class="line">        return response.read()</span><br></pre></td></tr></table></figure>
+<h3 id="网页解析器-html-parser"><a href="#网页解析器-html-parser" class="headerlink" title="网页解析器 html_parser"></a>网页解析器 html_parser</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># html 解析器</span><br><span class="line">import re</span><br><span class="line">from bs4 import BeautifulSoup</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class HtmlParser(object):</span><br><span class="line">    def _get_new_datas(self, url, soup):</span><br><span class="line">        res_data &#x3D; &#123;&#125;</span><br><span class="line">        res_data[&#39;url&#39;] &#x3D; url</span><br><span class="line">        # &lt;div class&#x3D;&quot;book-title&quot;&gt;&lt;h1&gt;假紫剑圣与B套奶妈&lt;&#x2F;h1&gt;</span><br><span class="line">        title_nodes &#x3D; soup.find(&#39;div&#39;, class_&#x3D;&#39;book-title&#39;).find(&#39;h1&#39;)</span><br><span class="line">        res_data[&#39;title&#39;] &#x3D; title_nodes.get_text()</span><br><span class="line">        return res_data</span><br><span class="line"></span><br><span class="line">    def _get_new_urls(self, url, soup):</span><br><span class="line">        new_urls &#x3D; set()</span><br><span class="line">        # &lt;a class&#x3D;&quot;img&quot; href&#x3D;&quot;http:&#x2F;&#x2F;www.hbooker.com&#x2F;book&#x2F;100075809&quot; target&#x3D;&quot;_blank&quot;&gt;</span><br><span class="line">        links &#x3D; soup.find_all(&#39;a&#39;, class_&#x3D;&#39;img&#39;)</span><br><span class="line">        for link in links:</span><br><span class="line">            new_d_url &#x3D; link[&#39;href&#39;]</span><br><span class="line">            new_urls.add(new_d_url)</span><br><span class="line">        return new_urls</span><br><span class="line"></span><br><span class="line">    def parse(self, url, html_cont):</span><br><span class="line">        if url is None or html_cont is None:</span><br><span class="line">            return</span><br><span class="line"></span><br><span class="line">        soup &#x3D; BeautifulSoup(html_cont, &#39;html.parser&#39;, from_encoding&#x3D;&#39;utf-8&#39;)</span><br><span class="line">        new_urls &#x3D; self._get_new_urls(url, soup)</span><br><span class="line">        new_html_cont &#x3D; self._get_new_datas(url, soup)</span><br><span class="line">        return new_urls, new_html_cont</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="输出起-html-outputer"><a href="#输出起-html-outputer" class="headerlink" title="输出起 html_outputer"></a>输出起 html_outputer</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 数据输出</span><br><span class="line">import pymysql</span><br><span class="line"></span><br><span class="line">#格式化字符串把字典</span><br><span class="line">def dic2sql(sql, data):</span><br><span class="line">    sql2 &#x3D; sql % (str(data[&#39;url&#39;]), str(data[&#39;title&#39;]))</span><br><span class="line">    return sql2</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class HtmlOutputer(object):</span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.datas &#x3D; []</span><br><span class="line"></span><br><span class="line">    def collect_data(self, new_datas):</span><br><span class="line">        if new_datas is None:</span><br><span class="line">            return</span><br><span class="line">        self.datas.append(new_datas)</span><br><span class="line"></span><br><span class="line">    def output_html(self):</span><br><span class="line">        fout &#x3D; open(&#39;output.html&#39;, &#39;w&#39;)</span><br><span class="line">        fout.write(&#39;&lt;html&gt;&#39;)</span><br><span class="line">        fout.write(&#39;&lt;meta http-equiv&#x3D;&quot;Content-Type&quot; content&#x3D;&quot;text&#x2F;html; charset&#x3D;utf-8&quot; &#x2F;&gt;&#39;)</span><br><span class="line">        fout.write(&#39;&lt;body&gt;&#39;)</span><br><span class="line">        fout.write(&#39;&lt;table&gt;&#39;)</span><br><span class="line"></span><br><span class="line">        for data in self.datas:</span><br><span class="line">            fout.write(&#39;&lt;tr&gt;&#39;)</span><br><span class="line">            fout.write(&#39;&lt;td&gt;%s&lt;&#x2F;td&gt;&#39; % data[&#39;url&#39;])</span><br><span class="line">            fout.write(&#39;&lt;td&gt;%s&lt;&#x2F;td&gt;&#39; % data[&#39;title&#39;])</span><br><span class="line">            fout.write(&#39;&lt;&#x2F;tr&gt;&#39;)</span><br><span class="line"></span><br><span class="line">        fout.write(&#39;&lt;&#x2F;table&gt;&#39;)</span><br><span class="line">        fout.write(&#39;&lt;&#x2F;body&gt;&#39;)</span><br><span class="line">        fout.write(&#39;&lt;&#x2F;html&gt;&#39;)</span><br><span class="line">        fout.close()</span><br><span class="line"></span><br><span class="line">    def output_mysql(self):</span><br><span class="line"></span><br><span class="line">        # 打开数据库连接</span><br><span class="line">        db &#x3D; pymysql.connect(&quot;localhost&quot;, &quot;root&quot;, &quot;MarkCHYL&quot;, &quot;TESTDB&quot;)</span><br><span class="line"></span><br><span class="line">        # 使用 cursor() 方法创建一个游标对象 cursor</span><br><span class="line">        cursor &#x3D; db.cursor()</span><br><span class="line"></span><br><span class="line">        # 使用 execute() 方法执行 SQL，如果表存在则删除</span><br><span class="line">        cursor.execute(&quot;DROP TABLE IF EXISTS HBOOKER&quot;)</span><br><span class="line"></span><br><span class="line">        # # 使用预处理语句创建表</span><br><span class="line">        sql &#x3D; &quot;&quot;&quot;CREATE TABLE HBOOKER (</span><br><span class="line">         TITLE  VARCHAR (200) NOT NULL,</span><br><span class="line">         URL  VARCHAR (200))&quot;&quot;&quot;</span><br><span class="line">        print(sql)</span><br><span class="line"></span><br><span class="line">        cursor.execute(sql)</span><br><span class="line">        #</span><br><span class="line">        for data in self.datas:</span><br><span class="line">            # SQL 插入语句</span><br><span class="line">            # sql &#x3D; &quot;INSERT INTO HBOOKER(TITLE, URL) VALUES (\&#39;&quot; + str(data[&#39;title&#39;]) + &quot;&#39;,&#39;&quot; + str(data[&#39;url&#39;]) + &quot;&#39;)&quot;</span><br><span class="line">            sql &#x3D; &quot;INSERT INTO HBOOKER(URL,TITLE) VALUES (&#39;%s&#39;,&#39;%s&#39;)&quot;</span><br><span class="line">            sql1 &#x3D; dic2sql(sql, data)</span><br><span class="line">            print(sql1)</span><br><span class="line">            try:</span><br><span class="line">                # 执行sql语句</span><br><span class="line">                cursor.execute(sql1)</span><br><span class="line">                # 提交到数据库执行</span><br><span class="line">                db.commit()</span><br><span class="line">            except:</span><br><span class="line">                # 如果发生错误则回滚</span><br><span class="line">                db.rollback()</span><br><span class="line"></span><br><span class="line">        # 关闭数据库连接</span><br><span class="line">        db.close()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>后记：代码可能比较多  我只是为了更好的了解整个爬虫的过程</p>
+]]></content>
+      <categories>
+        <category>Python</category>
+        <category>爬虫</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>爬虫</tag>
       </tags>
   </entry>
   <entry>
@@ -2861,6 +2754,21 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
+    <title>使用 Gradle 工具检查此项目的依赖</title>
+    <url>/2020/12/18/%E4%BD%BF%E7%94%A8-Gradle-%E5%B7%A5%E5%85%B7%E6%A3%80%E6%9F%A5%E6%AD%A4%E9%A1%B9%E7%9B%AE%E7%9A%84%E4%BE%9D%E8%B5%96/</url>
+    <content><![CDATA[<p>使用 Gradle 工具检查此项目的依赖，进入项目目录，执行如下指令进行依赖检查：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd app</span><br><span class="line">gradle dependencies</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>打印出如下图所示的依赖树，依赖树显示了你 build 脚本声明的顶级依赖和它们的传递依赖：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">+--- androidx.test.ext:junit:1.1.1</span><br><span class="line">|    +--- junit:junit:4.12</span><br><span class="line">|    |    \--- org.hamcrest:hamcrest-core:1.3</span><br><span class="line">|    +--- androidx.test:core:1.2.0</span><br><span class="line">|    |    +--- androidx.annotation:annotation:1.0.0 -&gt; 1.1.0</span><br><span class="line">|    |    +--- androidx.test:monitor:1.2.0</span><br><span class="line">|    |    |    \--- androidx.annotation:annotation:1.0.0 -&gt; 1.1.0</span><br><span class="line">|    |    \--- androidx.lifecycle:lifecycle-common:2.0.0 -&gt; 2.1.0</span><br><span class="line">|    |         \--- androidx.annotation:annotation:1.1.0</span><br><span class="line">|    +--- androidx.test:monitor:1.2.0 (*)</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>Gradle</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>占位符 Broccoli 的使用</title>
     <url>/2019/01/18/%E5%8D%A0%E4%BD%8D%E7%AC%A6-Broccoli-%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<p><img src="https://github.com/samlss/Broccoli/raw/master/screenshots/Broccoli.png" alt="Broccoli"></p>
@@ -2888,18 +2796,34 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
-    <title>使用 Gradle 工具检查此项目的依赖</title>
-    <url>/2020/12/18/%E4%BD%BF%E7%94%A8-Gradle-%E5%B7%A5%E5%85%B7%E6%A3%80%E6%9F%A5%E6%AD%A4%E9%A1%B9%E7%9B%AE%E7%9A%84%E4%BE%9D%E8%B5%96/</url>
-    <content><![CDATA[<p>使用 Gradle 工具检查此项目的依赖，进入项目目录，执行如下指令进行依赖检查：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd app</span><br><span class="line">gradle dependencies</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>打印出如下图所示的依赖树，依赖树显示了你 build 脚本声明的顶级依赖和它们的传递依赖：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">+--- androidx.test.ext:junit:1.1.1</span><br><span class="line">|    +--- junit:junit:4.12</span><br><span class="line">|    |    \--- org.hamcrest:hamcrest-core:1.3</span><br><span class="line">|    +--- androidx.test:core:1.2.0</span><br><span class="line">|    |    +--- androidx.annotation:annotation:1.0.0 -&gt; 1.1.0</span><br><span class="line">|    |    +--- androidx.test:monitor:1.2.0</span><br><span class="line">|    |    |    \--- androidx.annotation:annotation:1.0.0 -&gt; 1.1.0</span><br><span class="line">|    |    \--- androidx.lifecycle:lifecycle-common:2.0.0 -&gt; 2.1.0</span><br><span class="line">|    |         \--- androidx.annotation:annotation:1.1.0</span><br><span class="line">|    +--- androidx.test:monitor:1.2.0 (*)</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+    <title>Oracle数据库基础理论</title>
+    <url>/2019/11/14/Oracle%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA/</url>
+    <content><![CDATA[<h2 id="Oracle数据库是关系型数据库"><a href="#Oracle数据库是关系型数据库" class="headerlink" title="Oracle数据库是关系型数据库"></a><strong>Oracle数据库是关系型数据库</strong></h2><h3 id="一、什么是关系型数据库？"><a href="#一、什么是关系型数据库？" class="headerlink" title="一、什么是关系型数据库？"></a>一、什么是关系型数据库？</h3><hr>
+<ul>
+<li>关系型数据理论最早是有E.F.Codd博士在1970年提出的。</li>
+<li>Codd博士制定了一个数据库产品成为关系型数据库所必须符合的一些列相关的标准。</li>
+<li>它是RDBMS(关系型数据库管理系统)的基础。</li>
+<li>关系型数据库需包含下面三个方面：<ul>
+<li>对象或关系的集合</li>
+<li>基于关系的操作集合</li>
+<li>因数据的精确性和一致性而带来的数据的完整性</li>
+</ul>
+</li>
+<li>关系型数据库是关系的集合或者是说是二维表的集合</li>
+</ul>
+<h3 id="二、Oracle数据库简介"><a href="#二、Oracle数据库简介" class="headerlink" title="二、Oracle数据库简介"></a>二、Oracle数据库简介</h3><ul>
+<li>一个存储数据的地方</li>
+<li>能快速获取数据</li>
+<li>数据库安全性</li>
+<li>分布式数据库</li>
+<li>客户端和服务端的配置</li>
+</ul>
+]]></content>
       <categories>
-        <category>Android</category>
+        <category>Oracle</category>
       </categories>
       <tags>
-        <tag>Android</tag>
-        <tag>Gradle</tag>
+        <tag>Oracle</tag>
       </tags>
   </entry>
   <entry>
@@ -3074,6 +2998,23 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
+    <title>安卓的启动模式详解</title>
+    <url>/2018/12/16/%E5%AE%89%E5%8D%93%E7%9A%84%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3/</url>
+    <content><![CDATA[<h4 id="安卓开发者基本都知道Activity的四大启动模式，但是一到被问到之间区别的时候，再问深一点的时候，往往都会回答的不是很让面试官满意，鄙人就是，嘴皮子笨不懂得如何表达清楚。"><a href="#安卓开发者基本都知道Activity的四大启动模式，但是一到被问到之间区别的时候，再问深一点的时候，往往都会回答的不是很让面试官满意，鄙人就是，嘴皮子笨不懂得如何表达清楚。" class="headerlink" title="安卓开发者基本都知道Activity的四大启动模式，但是一到被问到之间区别的时候，再问深一点的时候，往往都会回答的不是很让面试官满意，鄙人就是，嘴皮子笨不懂得如何表达清楚。"></a>安卓开发者基本都知道Activity的四大启动模式，但是一到被问到之间区别的时候，再问深一点的时候，往往都会回答的不是很让面试官满意，鄙人就是，嘴皮子笨不懂得如何表达清楚。</h4><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a><strong>简介</strong></h2><h4 id="我们在创建一个Activity后，都知道要在清单文件中去注册，在程序员创建该Activity实例时，系统会按照先进先出的原则，创建一个任务栈将其实例放入其中，然后按back键时或finish时，系统就会将栈顶的Activity移除栈，我们可以在清单文件中指明该Activity的启动模式，系统默认的Activity的启动模式是standard模式。"><a href="#我们在创建一个Activity后，都知道要在清单文件中去注册，在程序员创建该Activity实例时，系统会按照先进先出的原则，创建一个任务栈将其实例放入其中，然后按back键时或finish时，系统就会将栈顶的Activity移除栈，我们可以在清单文件中指明该Activity的启动模式，系统默认的Activity的启动模式是standard模式。" class="headerlink" title="我们在创建一个Activity后，都知道要在清单文件中去注册，在程序员创建该Activity实例时，系统会按照先进先出的原则，创建一个任务栈将其实例放入其中，然后按back键时或finish时，系统就会将栈顶的Activity移除栈，我们可以在清单文件中指明该Activity的启动模式，系统默认的Activity的启动模式是standard模式。"></a>我们在创建一个Activity后，都知道要在清单文件中去注册，在程序员创建该Activity实例时，系统会按照先进先出的原则，创建一个任务栈将其实例放入其中，然后按back键时或finish时，系统就会将栈顶的Activity移除栈，我们可以在清单文件中指明该Activity的启动模式，系统默认的Activity的启动模式是standard模式。</h4><hr>
+<span id="more"></span>
+<h3 id="Activity的启动模式："><a href="#Activity的启动模式：" class="headerlink" title="Activity的启动模式："></a>Activity的启动模式：</h3><h4 id="standard、singleTask、singleTop、singleInstance"><a href="#standard、singleTask、singleTop、singleInstance" class="headerlink" title="standard、singleTask、singleTop、singleInstance"></a><em><strong>standard、singleTask、singleTop、singleInstance</strong></em></h4><h4 id="1-standard-标准模式"><a href="#1-standard-标准模式" class="headerlink" title="1. standard(标准模式)"></a>1. standard(标准模式)</h4><p><em><strong>不管这个Activity的实例是否存在于任务栈中或者和启动它的Activity是否在相同的任务栈中，每次启动Activity都会创建一个新的实例。谁启动了它，它就属于启动它的Activity的任务栈中，</strong></em></p>
+<h3 id="无论核实启动哪个Activity，都会重新创建页面实例并收入栈尾"><a href="#无论核实启动哪个Activity，都会重新创建页面实例并收入栈尾" class="headerlink" title="无论核实启动哪个Activity，都会重新创建页面实例并收入栈尾"></a><em><strong>无论核实启动哪个Activity，都会重新创建页面实例并收入栈尾</strong></em></h3><h4 id="2-singleTask-栈内复用模式"><a href="#2-singleTask-栈内复用模式" class="headerlink" title="2. singleTask(栈内复用模式)"></a>2. singleTask(栈内复用模式)</h4><p><em><strong>在这个模式下，如果栈内存在该Activity的实例，不管是否存在于栈顶都不会再创建实例，而是会将该实例前的Activity清出栈顶（cleanTop），并且会回调onNewIntent方法。其实在这个过程中，首先是会进行任务栈的匹配，这个任务栈就是通过taskAffinity属性指定，如果不存在这个任务栈，就会创建一个任务栈，并将该Activity放入栈中。流程图比较清晰，如下所见：</strong></em><br><img src="https://user-gold-cdn.xitu.io/2017/5/17/490fd5b297a2a07d60d1ffdad58e6cc3" alt="image"></p>
+<h3 id="启动activity时，判断栈中存在activity的实例，就重新利用，并清除位于该实例上面的所有实例，否则情况和standard一样"><a href="#启动activity时，判断栈中存在activity的实例，就重新利用，并清除位于该实例上面的所有实例，否则情况和standard一样" class="headerlink" title="启动activity时，判断栈中存在activity的实例，就重新利用，并清除位于该实例上面的所有实例，否则情况和standard一样"></a><em><strong>启动activity时，判断栈中存在activity的实例，就重新利用，并清除位于该实例上面的所有实例，否则情况和standard一样</strong></em></h3><h4 id="3-singleTop-栈顶复用模式"><a href="#3-singleTop-栈顶复用模式" class="headerlink" title="3. singleTop(栈顶复用模式)"></a>3. singleTop(栈顶复用模式)</h4><p><em><strong>这个模式下，如果Activity的实例已经存在在栈顶，启动它就不会再创建新的实例，而是会调用onNewIntent，通过此方法的参数我们可以去除当前请求的信息。随后会调用onResume方法，不再调用onCreate、onStart方法，因为它没有变化。如果没有存在的话，就会如同standard模式一样。这种模式可以用来防止多次打开同一个Activity。</strong></em></p>
+<h3 id="启动activity时，判断栈顶正好时该activity的实例，就重新使用，否则就会创建新的实例放入栈顶，否则的情况和standard类似"><a href="#启动activity时，判断栈顶正好时该activity的实例，就重新使用，否则就会创建新的实例放入栈顶，否则的情况和standard类似" class="headerlink" title="启动activity时，判断栈顶正好时该activity的实例，就重新使用，否则就会创建新的实例放入栈顶，否则的情况和standard类似"></a><em><strong>启动activity时，判断栈顶正好时该activity的实例，就重新使用，否则就会创建新的实例放入栈顶，否则的情况和standard类似</strong></em></h3><h4 id="4、singleInstance（全局唯一模式）"><a href="#4、singleInstance（全局唯一模式）" class="headerlink" title="4、singleInstance（全局唯一模式）"></a>4、singleInstance（全局唯一模式）</h4><p><em><strong>该模式具备singleTask模式的所有特性外，与它的区别就是，这种模式下的Activity会单独占用一个Task栈，具有全局唯一性，即整个系统中就这么一个实例，由于栈内复用的特性，后续的请求均不会创建新的Activity实例，除非这个特殊的任务栈被销毁了。以singleInstance模式启动的Activity在整个系统中是单例的，如果在启动这样的Activiyt时，已经存在了一个实例，那么会把它所在的任务调度到前台，重用这个实例。</strong></em></p>
+<h3 id="启动activity时，将该Activity的实例放入一个新的栈中，原栈中的实例保持不变"><a href="#启动activity时，将该Activity的实例放入一个新的栈中，原栈中的实例保持不变" class="headerlink" title="启动activity时，将该Activity的实例放入一个新的栈中，原栈中的实例保持不变"></a><em><strong>启动activity时，将该Activity的实例放入一个新的栈中，原栈中的实例保持不变</strong></em></h3><h4 id="ps：-adb-shell-dumpsys-activity-查看adb运行日志"><a href="#ps：-adb-shell-dumpsys-activity-查看adb运行日志" class="headerlink" title="ps：[adb shell dumpsys activity],查看adb运行日志"></a>ps：[adb shell dumpsys activity],查看adb运行日志</h4>]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>将项目迁移至androidx</title>
     <url>/2019/10/14/%E5%B0%86%E9%A1%B9%E7%9B%AE%E8%BF%81%E7%A7%BB%E8%87%B3androidx/</url>
     <content><![CDATA[<h2 id="自己的工具："><a href="#自己的工具：" class="headerlink" title="自己的工具："></a>自己的工具：</h2><ul>
@@ -3089,23 +3030,6 @@ Connection conn = null;
 <p><img src="https://img-blog.csdnimg.cn/2019071109224159.png"></p>
 <p>然后手动检查项目的并修改，先 build会报很多的错，慢慢改。</p>
 <h3 id="没有或不能适配AndroidX的插件包，建议能删掉的就删掉"><a href="#没有或不能适配AndroidX的插件包，建议能删掉的就删掉" class="headerlink" title="没有或不能适配AndroidX的插件包，建议能删掉的就删掉"></a><em>没有或不能适配AndroidX的插件包，建议能删掉的就删掉</em></h3>]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>安卓的启动模式详解</title>
-    <url>/2018/12/16/%E5%AE%89%E5%8D%93%E7%9A%84%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3/</url>
-    <content><![CDATA[<h4 id="安卓开发者基本都知道Activity的四大启动模式，但是一到被问到之间区别的时候，再问深一点的时候，往往都会回答的不是很让面试官满意，鄙人就是，嘴皮子笨不懂得如何表达清楚。"><a href="#安卓开发者基本都知道Activity的四大启动模式，但是一到被问到之间区别的时候，再问深一点的时候，往往都会回答的不是很让面试官满意，鄙人就是，嘴皮子笨不懂得如何表达清楚。" class="headerlink" title="安卓开发者基本都知道Activity的四大启动模式，但是一到被问到之间区别的时候，再问深一点的时候，往往都会回答的不是很让面试官满意，鄙人就是，嘴皮子笨不懂得如何表达清楚。"></a>安卓开发者基本都知道Activity的四大启动模式，但是一到被问到之间区别的时候，再问深一点的时候，往往都会回答的不是很让面试官满意，鄙人就是，嘴皮子笨不懂得如何表达清楚。</h4><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a><strong>简介</strong></h2><h4 id="我们在创建一个Activity后，都知道要在清单文件中去注册，在程序员创建该Activity实例时，系统会按照先进先出的原则，创建一个任务栈将其实例放入其中，然后按back键时或finish时，系统就会将栈顶的Activity移除栈，我们可以在清单文件中指明该Activity的启动模式，系统默认的Activity的启动模式是standard模式。"><a href="#我们在创建一个Activity后，都知道要在清单文件中去注册，在程序员创建该Activity实例时，系统会按照先进先出的原则，创建一个任务栈将其实例放入其中，然后按back键时或finish时，系统就会将栈顶的Activity移除栈，我们可以在清单文件中指明该Activity的启动模式，系统默认的Activity的启动模式是standard模式。" class="headerlink" title="我们在创建一个Activity后，都知道要在清单文件中去注册，在程序员创建该Activity实例时，系统会按照先进先出的原则，创建一个任务栈将其实例放入其中，然后按back键时或finish时，系统就会将栈顶的Activity移除栈，我们可以在清单文件中指明该Activity的启动模式，系统默认的Activity的启动模式是standard模式。"></a>我们在创建一个Activity后，都知道要在清单文件中去注册，在程序员创建该Activity实例时，系统会按照先进先出的原则，创建一个任务栈将其实例放入其中，然后按back键时或finish时，系统就会将栈顶的Activity移除栈，我们可以在清单文件中指明该Activity的启动模式，系统默认的Activity的启动模式是standard模式。</h4><hr>
-<span id="more"></span>
-<h3 id="Activity的启动模式："><a href="#Activity的启动模式：" class="headerlink" title="Activity的启动模式："></a>Activity的启动模式：</h3><h4 id="standard、singleTask、singleTop、singleInstance"><a href="#standard、singleTask、singleTop、singleInstance" class="headerlink" title="standard、singleTask、singleTop、singleInstance"></a><em><strong>standard、singleTask、singleTop、singleInstance</strong></em></h4><h4 id="1-standard-标准模式"><a href="#1-standard-标准模式" class="headerlink" title="1. standard(标准模式)"></a>1. standard(标准模式)</h4><p><em><strong>不管这个Activity的实例是否存在于任务栈中或者和启动它的Activity是否在相同的任务栈中，每次启动Activity都会创建一个新的实例。谁启动了它，它就属于启动它的Activity的任务栈中，</strong></em></p>
-<h3 id="无论核实启动哪个Activity，都会重新创建页面实例并收入栈尾"><a href="#无论核实启动哪个Activity，都会重新创建页面实例并收入栈尾" class="headerlink" title="无论核实启动哪个Activity，都会重新创建页面实例并收入栈尾"></a><em><strong>无论核实启动哪个Activity，都会重新创建页面实例并收入栈尾</strong></em></h3><h4 id="2-singleTask-栈内复用模式"><a href="#2-singleTask-栈内复用模式" class="headerlink" title="2. singleTask(栈内复用模式)"></a>2. singleTask(栈内复用模式)</h4><p><em><strong>在这个模式下，如果栈内存在该Activity的实例，不管是否存在于栈顶都不会再创建实例，而是会将该实例前的Activity清出栈顶（cleanTop），并且会回调onNewIntent方法。其实在这个过程中，首先是会进行任务栈的匹配，这个任务栈就是通过taskAffinity属性指定，如果不存在这个任务栈，就会创建一个任务栈，并将该Activity放入栈中。流程图比较清晰，如下所见：</strong></em><br><img src="https://user-gold-cdn.xitu.io/2017/5/17/490fd5b297a2a07d60d1ffdad58e6cc3" alt="image"></p>
-<h3 id="启动activity时，判断栈中存在activity的实例，就重新利用，并清除位于该实例上面的所有实例，否则情况和standard一样"><a href="#启动activity时，判断栈中存在activity的实例，就重新利用，并清除位于该实例上面的所有实例，否则情况和standard一样" class="headerlink" title="启动activity时，判断栈中存在activity的实例，就重新利用，并清除位于该实例上面的所有实例，否则情况和standard一样"></a><em><strong>启动activity时，判断栈中存在activity的实例，就重新利用，并清除位于该实例上面的所有实例，否则情况和standard一样</strong></em></h3><h4 id="3-singleTop-栈顶复用模式"><a href="#3-singleTop-栈顶复用模式" class="headerlink" title="3. singleTop(栈顶复用模式)"></a>3. singleTop(栈顶复用模式)</h4><p><em><strong>这个模式下，如果Activity的实例已经存在在栈顶，启动它就不会再创建新的实例，而是会调用onNewIntent，通过此方法的参数我们可以去除当前请求的信息。随后会调用onResume方法，不再调用onCreate、onStart方法，因为它没有变化。如果没有存在的话，就会如同standard模式一样。这种模式可以用来防止多次打开同一个Activity。</strong></em></p>
-<h3 id="启动activity时，判断栈顶正好时该activity的实例，就重新使用，否则就会创建新的实例放入栈顶，否则的情况和standard类似"><a href="#启动activity时，判断栈顶正好时该activity的实例，就重新使用，否则就会创建新的实例放入栈顶，否则的情况和standard类似" class="headerlink" title="启动activity时，判断栈顶正好时该activity的实例，就重新使用，否则就会创建新的实例放入栈顶，否则的情况和standard类似"></a><em><strong>启动activity时，判断栈顶正好时该activity的实例，就重新使用，否则就会创建新的实例放入栈顶，否则的情况和standard类似</strong></em></h3><h4 id="4、singleInstance（全局唯一模式）"><a href="#4、singleInstance（全局唯一模式）" class="headerlink" title="4、singleInstance（全局唯一模式）"></a>4、singleInstance（全局唯一模式）</h4><p><em><strong>该模式具备singleTask模式的所有特性外，与它的区别就是，这种模式下的Activity会单独占用一个Task栈，具有全局唯一性，即整个系统中就这么一个实例，由于栈内复用的特性，后续的请求均不会创建新的Activity实例，除非这个特殊的任务栈被销毁了。以singleInstance模式启动的Activity在整个系统中是单例的，如果在启动这样的Activiyt时，已经存在了一个实例，那么会把它所在的任务调度到前台，重用这个实例。</strong></em></p>
-<h3 id="启动activity时，将该Activity的实例放入一个新的栈中，原栈中的实例保持不变"><a href="#启动activity时，将该Activity的实例放入一个新的栈中，原栈中的实例保持不变" class="headerlink" title="启动activity时，将该Activity的实例放入一个新的栈中，原栈中的实例保持不变"></a><em><strong>启动activity时，将该Activity的实例放入一个新的栈中，原栈中的实例保持不变</strong></em></h3><h4 id="ps：-adb-shell-dumpsys-activity-查看adb运行日志"><a href="#ps：-adb-shell-dumpsys-activity-查看adb运行日志" class="headerlink" title="ps：[adb shell dumpsys activity],查看adb运行日志"></a>ps：[adb shell dumpsys activity],查看adb运行日志</h4>]]></content>
       <categories>
         <category>Android</category>
       </categories>
@@ -3239,23 +3163,6 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
-    <title>自定义控件实现（一）</title>
-    <url>/2020/08/05/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6%E5%AE%9E%E7%8E%B0%EF%BC%88%E4%B8%80%EF%BC%89/</url>
-    <content><![CDATA[<p><strong>被别人问题一愣一愣，骄傲的自己准备好好复习哈！</strong><br><a href="https://www.jianshu.com/p/6572ebed0d99">几乎完全使用这位大佬的</a></p>
-<hr>
-<h3 id="什么是自定义控件？"><a href="#什么是自定义控件？" class="headerlink" title="什么是自定义控件？"></a>什么是自定义控件？</h3><p>Android中所有控件和布局的基本类都是View，自定控件就是继承View或者View的派生类，然后重写类中的内部方法。<br>通常自定义控件分为三种：<br>1、自定义View：继承View<br>2、基于现有的组件：继承View的派生类<br>3、组合的方式：自定义控件中包含了其他组件<br>下图体现了各种控件的继承关系：<br><img src="https://github.com/MarkCHYL/BLOG/blob/master/marksource/images/ax2z2-cyxgm.jpg?raw=true"></p>
-<h3 id="来实践一下组合自定义控件"><a href="#来实践一下组合自定义控件" class="headerlink" title="来实践一下组合自定义控件"></a>来实践一下组合自定义控件</h3><p>需要实现的效果如图：<br><img src="https://github.com/MarkCHYL/BLOG/blob/master/marksource/images/avr1u-cdm3a.jpg?raw=true"></p>
-<p><a href="../../public/2020/08/06/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6%E5%AE%9E%E7%8E%B0%EF%BC%88%E4%BA%8C%EF%BC%89/index.html">自定义控件实现（二）</a></p>
-]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>自定义控件</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>自定义Toat及其弹出时间控制</title>
     <url>/2020/07/21/%E8%87%AA%E5%AE%9A%E4%B9%89Toat%E5%8F%8A%E5%85%B6%E5%BC%B9%E5%87%BA%E6%97%B6%E9%97%B4%E6%8E%A7%E5%88%B6/</url>
     <content><![CDATA[<p>效果就是实现Toast布局自定义，弹出的事件进行控制</p>
@@ -3274,6 +3181,23 @@ Connection conn = null;
     <title>自定义控件实现（二）</title>
     <url>/2020/08/06/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6%E5%AE%9E%E7%8E%B0%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
     <content><![CDATA[]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>自定义控件</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>自定义控件实现（一）</title>
+    <url>/2020/08/05/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6%E5%AE%9E%E7%8E%B0%EF%BC%88%E4%B8%80%EF%BC%89/</url>
+    <content><![CDATA[<p><strong>被别人问题一愣一愣，骄傲的自己准备好好复习哈！</strong><br><a href="https://www.jianshu.com/p/6572ebed0d99">几乎完全使用这位大佬的</a></p>
+<hr>
+<h3 id="什么是自定义控件？"><a href="#什么是自定义控件？" class="headerlink" title="什么是自定义控件？"></a>什么是自定义控件？</h3><p>Android中所有控件和布局的基本类都是View，自定控件就是继承View或者View的派生类，然后重写类中的内部方法。<br>通常自定义控件分为三种：<br>1、自定义View：继承View<br>2、基于现有的组件：继承View的派生类<br>3、组合的方式：自定义控件中包含了其他组件<br>下图体现了各种控件的继承关系：<br><img src="https://github.com/MarkCHYL/BLOG/blob/master/marksource/images/ax2z2-cyxgm.jpg?raw=true"></p>
+<h3 id="来实践一下组合自定义控件"><a href="#来实践一下组合自定义控件" class="headerlink" title="来实践一下组合自定义控件"></a>来实践一下组合自定义控件</h3><p>需要实现的效果如图：<br><img src="https://github.com/MarkCHYL/BLOG/blob/master/marksource/images/avr1u-cdm3a.jpg?raw=true"></p>
+<p><a href="../../public/2020/08/06/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6%E5%AE%9E%E7%8E%B0%EF%BC%88%E4%BA%8C%EF%BC%89/index.html">自定义控件实现（二）</a></p>
+]]></content>
       <categories>
         <category>Android</category>
       </categories>
@@ -3324,6 +3248,82 @@ Connection conn = null;
       <tags>
         <tag>Flutter</tag>
         <tag>Flutter问题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Monkey自动化压力测试</title>
+    <url>/2020/06/22/Monkey%E8%87%AA%E5%8A%A8%E5%8C%96%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/</url>
+    <content><![CDATA[<h2 id="第一部分-背景"><a href="#第一部分-背景" class="headerlink" title="第一部分 背景"></a>第一部分 背景</h2><h3 id="1、为什么要开展压力测试？"><a href="#1、为什么要开展压力测试？" class="headerlink" title="1、为什么要开展压力测试？"></a>1、为什么要开展压力测试？</h3><ul>
+<li>提高产品的稳定性</li>
+<li>提高产品的留存率<h3 id="2、什么时候开展压力测试？"><a href="#2、什么时候开展压力测试？" class="headerlink" title="2、什么时候开展压力测试？"></a>2、什么时候开展压力测试？</h3></li>
+<li>首轮功能测试通过后开始</li>
+<li>下班后的夜间进行<h2 id="第二部分-场景"><a href="#第二部分-场景" class="headerlink" title="第二部分 场景"></a>第二部分 场景</h2><h3 id="手工测试场景"><a href="#手工测试场景" class="headerlink" title="手工测试场景"></a>手工测试场景</h3><h3 id="自动化测试场景"><a href="#自动化测试场景" class="headerlink" title="自动化测试场景"></a>自动化测试场景</h3>1、 Monkey<br>Monkey 就在手机里，安卓系统再带的</li>
+</ul>
+<p>2、 什么事ADB？<br>Android Debug Bridge 安卓调试桥</p>
+<span id="more"></span>
+<p>3、 MonkeyScript<br>MonkeyScript是一组可被monkey识别的命令集合。<br>MonkeyScript可以完成重复固定的指令</p>
+<p>4、 MonkeyRunner<br>提供一系列的API，可以模拟事件及截图操作。</p>
+<p>5、Monkey和MonkeyRunner的区别？<br>Monkey：在adb shell中，生成用户或系统的伪随机事件。<br>MonkeyRunner：通过API定义特定命令和事件控制设备。</p>
+<p>MonkeyRunner APIs</p>
+<ul>
+<li> MonkeyRunner:用来连接设备或者模拟器</li>
+<li> MonkeyDevice：提供安装、卸载应用，发送模拟事件</li>
+<li> MonkeyImage：完成图像保存，及对比操作。</li>
+</ul>
+<h3 id="压力测试结果"><a href="#压力测试结果" class="headerlink" title="压力测试结果"></a>压力测试结果</h3><p>crash和ANR</p>
+<p>崩溃和应用无响应</p>
+<h2 id="第三部分：实践"><a href="#第三部分：实践" class="headerlink" title="第三部分：实践"></a>第三部分：实践</h2><ul>
+<li>步骤一：打开手机USB调试功能</li>
+<li>步骤二：确认手机和电脑已经连接，执行<code>adb devices</code><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mark@Markxiansheng blog % adb devices</span><br><span class="line">* daemon not running; starting now at tcp:5037</span><br><span class="line">* daemon started successfully</span><br><span class="line">List of devices attached</span><br><span class="line">HCW0001811005556        device</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li>步骤三：安装测试app，<code>adb install package.apk</code></li>
+<li>步骤四：发送压测指令 <code>adb shell monkey 1000</code>执行1000次随机操作指令</li>
+<li>步骤五：获取app报名：执行<code>adb logcat | grep START</code></li>
+<li>步骤六：给指定的包打压力；执行<code>adb shell monkey -p package 1000</code></li>
+</ul>
+<h2 id="第四部分：Monkey高级参数的应用"><a href="#第四部分：Monkey高级参数的应用" class="headerlink" title="第四部分：Monkey高级参数的应用"></a>第四部分：Monkey高级参数的应用</h2><h3 id="1、throttle参数"><a href="#1、throttle参数" class="headerlink" title="1、throttle参数"></a>1、throttle参数</h3><p>指定事件之间的间隔<br><code>adb shell monkey --throttle &lt;milliseconds&gt;</code></p>
+<h3 id="2、seed参数实践"><a href="#2、seed参数实践" class="headerlink" title="2、seed参数实践"></a>2、seed参数实践</h3><p>指定随机生成数的seed值 <code>adb shell monkey -s &lt;seed&gt; &lt;event-count&gt;</code></p>
+<p>例如：<code>adb shell monkey -p com.android.calculator2 -s 100 50</code><br>每次执行结构都是一样，记住清理缓存记录再测试，复现问题</p>
+<h3 id="3、触摸事件"><a href="#3、触摸事件" class="headerlink" title="3、触摸事件"></a>3、触摸事件</h3><p>设定触摸事件百分比<br><code>adb shell monkey --pct-touch &lt;percent&gt;</code></p>
+<p>例如：<code>adb shell monkey -v -p com.cares.rcs --pct-touch 100 100</code>，加上<code>-v</code>是为了看清具体执行的操作是什么</p>
+<h3 id="4、动作事件"><a href="#4、动作事件" class="headerlink" title="4、动作事件"></a>4、动作事件</h3><p>设定动作事件百分比<code>adb shell monkey --pct-motion &lt;percent&gt;</code><br>例如：<code>adb shell monkey -v -p com.cares.rcs --pct-touch 50 --pct-motion 30 100</code><br>执行touch事件50%，motion事件30%，执行一百次事件</p>
+<h3 id="5、轨迹球事件"><a href="#5、轨迹球事件" class="headerlink" title="5、轨迹球事件"></a>5、轨迹球事件</h3><p>设定轨迹球事件百分比<br><code>adb shell monkey --pct-trackball &lt;percent&gt;</code></p>
+<h3 id="6、基本导航事件"><a href="#6、基本导航事件" class="headerlink" title="6、基本导航事件"></a>6、基本导航事件</h3><p>设定基本导航事件百分比，输入设备上的上、下、左、右<br><code>adb shell monkey --pct-nav &lt;percent&gt;</code></p>
+<h3 id="7、主要导航事件"><a href="#7、主要导航事件" class="headerlink" title="7、主要导航事件"></a>7、主要导航事件</h3><p>设定主要导航事件百分比，兼容中间键、返回键、菜单按键<br><code>adb shell monkey --pct-majornav &lt;percent&gt;</code></p>
+<h3 id="8、系统导航事件"><a href="#8、系统导航事件" class="headerlink" title="8、系统导航事件"></a>8、系统导航事件</h3><p>设定系统导航事件百分比，HOME、BACK、拨号及音量按键<br><code>adb shell monkey --pct-syskeys &lt;percent&gt;</code></p>
+<h3 id="9、启动Activity事件"><a href="#9、启动Activity事件" class="headerlink" title="9、启动Activity事件"></a>9、启动Activity事件</h3><p>设定启动Activity的事件百分比<br><code>adb shell monkey --pct-appswitch &lt;percent&gt;</code></p>
+<h3 id="10、不常用事件"><a href="#10、不常用事件" class="headerlink" title="10、不常用事件"></a>10、不常用事件</h3><p><code>adb shell monkey --pct-anyevent &lt;percent&gt;</code></p>
+<h3 id="11、崩溃事件Crash事件"><a href="#11、崩溃事件Crash事件" class="headerlink" title="11、崩溃事件Crash事件"></a>11、崩溃事件Crash事件</h3><p>忽略崩溃和异常<br><code>adb shell monkey --ignore-crashes &lt;percent&gt;</code></p>
+<h3 id="12、超时事件ANR事件"><a href="#12、超时事件ANR事件" class="headerlink" title="12、超时事件ANR事件"></a>12、超时事件ANR事件</h3><p>忽略超时事件<br><code>adb shell monkey --ignore-timeouts &lt;event-count&gt;</code></p>
+<h2 id="第五部分：CRASH结果提取"><a href="#第五部分：CRASH结果提取" class="headerlink" title="第五部分：CRASH结果提取"></a>第五部分：CRASH结果提取</h2><p> <code>adb shell monkey -p com.cares.rcs 1000</code>不断测试执行随机操作</p>
+<h2 id="第六部分：ANR查看"><a href="#第六部分：ANR查看" class="headerlink" title="第六部分：ANR查看"></a>第六部分：ANR查看</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Markxiansheng:Desktop mark$ adb shell</span><br><span class="line">root@vbox86p:&#x2F; #</span><br><span class="line">root@vbox86p:&#x2F; # cd &#x2F;data&#x2F;anr</span><br><span class="line">root@vbox86p:&#x2F;data&#x2F;anr # ls</span><br><span class="line">traces.txt</span><br></pre></td></tr></table></figure>
+<h2 id="Monkey-Script学习使用"><a href="#Monkey-Script学习使用" class="headerlink" title="Monkey Script学习使用"></a>Monkey Script学习使用</h2><blockquote>
+<p>执行语句：<code>adb shell monkey -f &lt;scriptfile&gt; &lt;event-count&gt;</code></p>
+</blockquote>
+<p>常用命令：</p>
+<p>1、<strong>DispatchTrackball</strong>轨迹球事件</p>
+<p>2、<strong>DispatchPointer</strong>点击事件</p>
+<p>3、<strong>DispatchString</strong>输入字符串事件<br><code>DispatchString(String text)</code></p>
+<p>4、<strong>LaunchActivity</strong>启动应用事件<br><code>LaunchAtivity(package,Activity)</code></p>
+<p>5、<strong>UserWait</strong>命令<br>等待事件：<code>UserWait(millinsons)</code></p>
+<p>6、<strong>DispatchPress</strong>命令<br>按下键值：<code>DispatchPress(int keycode)</code> #keycode 66 回车键》</p>
+<p>模拟输入查询一千次</p>
+<ul>
+<li>1、启动App</li>
+<li>2、点击输入框</li>
+<li>3、输入查询词</li>
+<li>4、点击键盘的回车</li>
+<li>5、点击搜索按钮</li>
+<li>6、等待结果的出现</li>
+<li>7、点击clear按钮<br>Mark.script脚本<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">typ &#x3D; user</span><br><span class="line">count &#x3D; 10</span><br><span class="line">speed &#x3D; 1.0</span><br><span class="line">start data &gt;&gt;</span><br><span class="line"></span><br><span class="line">LaunchActivity(com.android.browser,.BrowserActivity)</span><br><span class="line">UserWait(2000)</span><br><span class="line">DispatchPointer(10,10,0,200,200,1,1,-1,1,1,0,0)</span><br><span class="line">DispatchPointer(10,10,1,200,200,1,1,-1,1,1,0,0)</span><br><span class="line">DispatchString(Mark)</span><br><span class="line">UserWait(1000)</span><br><span class="line">DispatchPress(66)</span><br><span class="line">DispatchPointer(10,10,0,600,300,1,1,-1,1,1,0,0)</span><br><span class="line">DispatchPointer(10,10,1,600,300,1,1,-1,1,1,0,0)</span><br><span class="line">UserWait(3000)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>小黑技术：SDK目录下tools文件中的bin目录下的 uiautomatorviewer.bat,双击启动，用来获取界面控件位置</p>
+<h2 id="Monkey-Runner学习使用"><a href="#Monkey-Runner学习使用" class="headerlink" title="Monkey Runner学习使用"></a>Monkey Runner学习使用</h2><p>主要是利用python编写脚本文件进行测试，暂停学习</p>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
       </tags>
   </entry>
   <entry>
