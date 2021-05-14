@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://markchyl.cn/photos/data.json</loc>
+    
+    <lastmod>2021-05-14</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://markchyl.cn/photos/index.html</loc>
+    
+    <lastmod>2021-05-14</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://markchyl.cn/2021/05/13/JDBC%E5%AD%A6%E4%B9%A0-ConnectinnFactory/</loc>
     
     <lastmod>2021-05-13</lastmod>
@@ -767,13 +781,6 @@
   </url>
   
   <url>
-    <loc>http://markchyl.cn/tags/JDBC/</loc>
-    <lastmod>2021-05-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://markchyl.cn/tags/Hexo/</loc>
     <lastmod>2021-05-14</lastmod>
     <changefreq>daily</changefreq>
@@ -782,6 +789,13 @@
   
   <url>
     <loc>http://markchyl.cn/tags/%E5%B7%A5%E5%85%B7%E6%90%AD%E5%BB%BA/</loc>
+    <lastmod>2021-05-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://markchyl.cn/tags/JDBC/</loc>
     <lastmod>2021-05-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -816,14 +830,14 @@
   </url>
   
   <url>
-    <loc>http://markchyl.cn/tags/%E7%B3%BB%E7%BB%9F/</loc>
+    <loc>http://markchyl.cn/tags/%E8%A7%86%E9%A2%91%E7%9B%B4%E6%92%AD/</loc>
     <lastmod>2021-05-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://markchyl.cn/tags/%E8%A7%86%E9%A2%91%E7%9B%B4%E6%92%AD/</loc>
+    <loc>http://markchyl.cn/tags/%E7%B3%BB%E7%BB%9F/</loc>
     <lastmod>2021-05-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -851,14 +865,14 @@
   </url>
   
   <url>
-    <loc>http://markchyl.cn/tags/%E6%9E%B6%E6%9E%84/</loc>
+    <loc>http://markchyl.cn/tags/%E7%BD%91%E7%BB%9C%E6%A1%86%E6%9E%B6/</loc>
     <lastmod>2021-05-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://markchyl.cn/tags/%E7%BD%91%E7%BB%9C%E6%A1%86%E6%9E%B6/</loc>
+    <loc>http://markchyl.cn/tags/%E6%9E%B6%E6%9E%84/</loc>
     <lastmod>2021-05-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -872,13 +886,6 @@
   </url>
   
   <url>
-    <loc>http://markchyl.cn/tags/RxJava/</loc>
-    <lastmod>2021-05-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://markchyl.cn/tags/%E5%86%B2%E7%AA%81/</loc>
     <lastmod>2021-05-14</lastmod>
     <changefreq>daily</changefreq>
@@ -886,7 +893,7 @@
   </url>
   
   <url>
-    <loc>http://markchyl.cn/tags/Error%EF%BC%8Cretrofit/</loc>
+    <loc>http://markchyl.cn/tags/RxJava/</loc>
     <lastmod>2021-05-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -894,6 +901,13 @@
   
   <url>
     <loc>http://markchyl.cn/tags/%E5%B8%83%E5%B1%80/</loc>
+    <lastmod>2021-05-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://markchyl.cn/tags/Error%EF%BC%8Cretrofit/</loc>
     <lastmod>2021-05-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -914,13 +928,6 @@
   </url>
   
   <url>
-    <loc>http://markchyl.cn/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</loc>
-    <lastmod>2021-05-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://markchyl.cn/tags/Android%E3%80%81Kotlin%E3%80%81%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2021-05-14</lastmod>
     <changefreq>daily</changefreq>
@@ -928,14 +935,21 @@
   </url>
   
   <url>
-    <loc>http://markchyl.cn/tags/vue/</loc>
+    <loc>http://markchyl.cn/tags/%E7%88%AC%E8%99%AB/</loc>
     <lastmod>2021-05-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://markchyl.cn/tags/%E7%88%AC%E8%99%AB/</loc>
+    <loc>http://markchyl.cn/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</loc>
+    <lastmod>2021-05-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://markchyl.cn/tags/vue/</loc>
     <lastmod>2021-05-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1042,6 +1056,13 @@
   </url>
   
   <url>
+    <loc>http://markchyl.cn/categories/Oracle/</loc>
+    <lastmod>2021-05-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://markchyl.cn/categories/Python/</loc>
     <lastmod>2021-05-14</lastmod>
     <changefreq>daily</changefreq>
@@ -1063,6 +1084,13 @@
   </url>
   
   <url>
+    <loc>http://markchyl.cn/categories/Python/%E7%88%AC%E8%99%AB/</loc>
+    <lastmod>2021-05-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://markchyl.cn/categories/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</loc>
     <lastmod>2021-05-14</lastmod>
     <changefreq>daily</changefreq>
@@ -1077,21 +1105,7 @@
   </url>
   
   <url>
-    <loc>http://markchyl.cn/categories/Python/%E7%88%AC%E8%99%AB/</loc>
-    <lastmod>2021-05-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://markchyl.cn/categories/Git/</loc>
-    <lastmod>2021-05-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://markchyl.cn/categories/Oracle/</loc>
     <lastmod>2021-05-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
