@@ -1,46 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Activity的生命周期</title>
-    <url>/2018/12/17/Activity%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</url>
-    <content><![CDATA[<p><img src="http://hi.csdn.net/attachment/201109/1/0_1314838777He6C.gif" alt="image"></p>
-<h4 id="1-启动Activity：系统会先调用onCreate方法，这是生命周期第一个方法，然后调用onStart方法，最后调用onResume，Activity进入运行状态。"><a href="#1-启动Activity：系统会先调用onCreate方法，这是生命周期第一个方法，然后调用onStart方法，最后调用onResume，Activity进入运行状态。" class="headerlink" title="1.启动Activity：系统会先调用onCreate方法，这是生命周期第一个方法，然后调用onStart方法，最后调用onResume，Activity进入运行状态。"></a>1.启动Activity：系统会先调用onCreate方法，这是生命周期第一个方法，然后调用onStart方法，最后调用onResume，Activity进入运行状态。</h4><span id="more"></span>
-<p>onCreate方法：一般做一些初始化工作，比如setContentView去加载布局资源，初始化Activity所需的数据。</p>
-<p>onStart方法：表示Activity正在启动，已经可见，但是无法和用户交互。<br>/Users/mark/Downloads/Activity的生命周期.md<br>onResume方法：Activity已经可见并且开始活动，已经出现在前台。</p>
-<h4 id="2-当前Activity被其他Activity覆盖其上或被锁屏："><a href="#2-当前Activity被其他Activity覆盖其上或被锁屏：" class="headerlink" title="2.当前Activity被其他Activity覆盖其上或被锁屏："></a>2.当前Activity被其他Activity覆盖其上或被锁屏：</h4><p>（可以理解为没有完全遮挡界面的）</p>
-<p>系统会调用onPause方法，暂停当前Activity的执行。</p>
-<h4 id="3-当前Activity由被覆盖状态回到前台或解锁屏："><a href="#3-当前Activity由被覆盖状态回到前台或解锁屏：" class="headerlink" title="3.当前Activity由被覆盖状态回到前台或解锁屏："></a>3.当前Activity由被覆盖状态回到前台或解锁屏：</h4><p>系统会调用onResume方法，再次进入运行状态。</p>
-<h4 id="4-当前Activity转到新的Activity界面或按Home键回到主屏，自身退居后台："><a href="#4-当前Activity转到新的Activity界面或按Home键回到主屏，自身退居后台：" class="headerlink" title="4.当前Activity转到新的Activity界面或按Home键回到主屏，自身退居后台："></a>4.当前Activity转到新的Activity界面或按Home键回到主屏，自身退居后台：</h4><p>系统会先调用onPause方法，然后调用onStop方法，进入停滞状态。</p>
-<h4 id="5-用户后退回到此Activity："><a href="#5-用户后退回到此Activity：" class="headerlink" title="5.用户后退回到此Activity："></a>5.用户后退回到此Activity：</h4><p>系统会先调用onRestart方法，</p>
-<p>然后调用onStart方法，</p>
-<p>最后调用onResume方法，</p>
-<p>再次进入运行状态。</p>
-<h4 id="6-用户退出当前Activity：系统先调用onPause方法，然后调用onStop方法，最后调用onDestory方法，结束当前Activity。"><a href="#6-用户退出当前Activity：系统先调用onPause方法，然后调用onStop方法，最后调用onDestory方法，结束当前Activity。" class="headerlink" title="6.用户退出当前Activity：系统先调用onPause方法，然后调用onStop方法，最后调用onDestory方法，结束当前Activity。"></a>6.用户退出当前Activity：系统先调用onPause方法，然后调用onStop方法，最后调用onDestory方法，结束当前Activity。</h4><p>但是知道这些还不够，我们必须亲自试验一下才能深刻体会，融会贯通。</p>
-<hr>
-<p>Activity四种启动模式的区别：standard    singleTop  singleTask   singleInstance</p>
-<p>standard：每次激活Activity时(startActivity)，都创建Activity实例，并放入任务栈； </p>
-<p>singleTop：如果某个Activity自己激活自己并且Activity处于栈顶，则不需要创 建，其余情况都要创建Activity实例；</p>
-<p>singleTask：如果要激活的那个Activity在任务栈中存在该实例，则不需要创建，只需要把 此Activity放入栈顶，即把该Activity以上的Activity实例都pop，并调用其onNewIntent；</p>
-<p>singleInstance：应用1的任务栈中创建了MainActivity实例，如果应用2也要激活 MainActivity，则不需要创建，两应用共享该Activity实例。</p>
-<hr>
-<p>onSaveInstanceState的调用遵循一个重要原则，即当系统“未经你许可”时销毁了你的 activity，则onSaveInstanceState会被系统调用，这是系统的责任，因为它必须要提供一 个机会让你保存的数据。<br>至于onRestoreInstanceState方法，需要注意的是， onSaveInstanceState方法和onRestoreInstanceState方法“不一定”是成对的被调用 的。 </p>
-<p>onRestoreInstanceState被调用的前提是，activity A“确实”被系统销毁了，而如果仅仅 是停留在有这种可能性的情况下，则该方法不会被调用，例如，当正在显示activity A的时 候，用户按下HOME键回到主界面，然后用户紧接着又返回到activity A，这种情况下 activity A一般不会因为内存的原因被系统销毁<br>故activity A的onRestoreInstanceState方 法不会被执行。</p>
-<p> 另外，onRestoreInstanceState的bundle参数也会传递到onCreate方法中，你也可以选择 在onCreate方法中做数据还原。</p>
-<p>切换横竖屏的生命周期：</p>
-<p>1、不设置Activity的android:configChanges时，切屏会重新调用各个生命周期，<br>切横屏时会执行一次，切竖屏时会执行两次</p>
-<p>2、设置Activity的android:configChanges=”orientation”时，切屏还是会重新调<br>用各个生命周期，切横、竖屏时只会执行一次</p>
-<p>3、设置Activity的android:configChanges=”orientation|keyboardHidden”时，<br>切屏不会重新调用各个生命周期，只会执行onConfigurationChanged方法</p>
-<h4 id="Activity运行时按下HOME键-跟被完全覆盖是一样的-："><a href="#Activity运行时按下HOME键-跟被完全覆盖是一样的-：" class="headerlink" title="Activity运行时按下HOME键(跟被完全覆盖是一样的)："></a>Activity运行时按下HOME键(跟被完全覆盖是一样的)：</h4><hr>
-<h2 id="–-gt-onPause–-gt-onPauseonSaveInstanceState–-gt-onStop-–-gt-onRestart–-gt-onStart—-gt-onResume"><a href="#–-gt-onPause–-gt-onPauseonSaveInstanceState–-gt-onStop-–-gt-onRestart–-gt-onStart—-gt-onResume" class="headerlink" title="–&gt; onPause–&gt; onPauseonSaveInstanceState–&gt; onStop  –&gt; onRestart–&gt;onStart—&gt;onResume"></a>–&gt; onPause–&gt; onPauseonSaveInstanceState–&gt; onStop  –&gt; onRestart–&gt;onStart—&gt;onResume</h2><h4 id="Activity未被完全覆盖只是失去焦点：onPause—-gt-onResume（我没复现过这个，待考证）"><a href="#Activity未被完全覆盖只是失去焦点：onPause—-gt-onResume（我没复现过这个，待考证）" class="headerlink" title="Activity未被完全覆盖只是失去焦点：onPause—&gt;onResume（我没复现过这个，待考证）"></a>Activity未被完全覆盖只是失去焦点：onPause—&gt;onResume（我没复现过这个，待考证）</h4><h4 id="A跳转到B，然后按-back回退到A，A的生命周期："><a href="#A跳转到B，然后按-back回退到A，A的生命周期：" class="headerlink" title="A跳转到B，然后按 back回退到A，A的生命周期："></a>A跳转到B，然后按 back回退到A，A的生命周期：</h4><hr>
-<h2 id="–-gt-onCreate-–-gt-onStart-–-gt-onResume-–-gt-onPause-–-gt-onSaveInstanceState-–-gt-onStop-然后回退–-gt-onRestart-–-gt-onStart-–-gt-onResume"><a href="#–-gt-onCreate-–-gt-onStart-–-gt-onResume-–-gt-onPause-–-gt-onSaveInstanceState-–-gt-onStop-然后回退–-gt-onRestart-–-gt-onStart-–-gt-onResume" class="headerlink" title="–&gt;onCreate –&gt;onStart –&gt;onResume –&gt;onPause –&gt;onSaveInstanceState –&gt;onStop 然后回退–&gt;onRestart –&gt;onStart –&gt;onResume "></a>–&gt;onCreate –&gt;onStart –&gt;onResume –&gt;onPause –&gt;onSaveInstanceState –&gt;onStop 然后回退–&gt;onRestart –&gt;onStart –&gt;onResume </h2>]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>基础理论</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Android APK反编译 apktool使用教程</title>
     <url>/2019/09/26/Android-APK%E5%8F%8D%E7%BC%96%E8%AF%91-apktool%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</url>
     <content><![CDATA[<h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><p>时间久了之前在熟悉的东西也会渐疏，好记性不如乱笔头。</p>
@@ -80,21 +40,37 @@
       </tags>
   </entry>
   <entry>
-    <title>Android 安装APP 失败 INSTALL_FAILED_TEST_ONLY</title>
-    <url>/2020/08/07/Android-%E5%AE%89%E8%A3%85APP-%E5%A4%B1%E8%B4%A5-INSTALL-FAILED-TEST-ONLY/</url>
-    <content><![CDATA[<h3 id="android-studio-进行真机安装时失败，报错："><a href="#android-studio-进行真机安装时失败，报错：" class="headerlink" title="android studio 进行真机安装时失败，报错："></a>android studio 进行真机安装时失败，报错：</h3><blockquote>
-<p>Installation did not succeed.<br>The application could not be installed: INSTALL_FAILED_TEST_ONLY<br>Installation failed due to: ‘null’</p>
+    <title>Android ANR发生的原因总结和解决办法</title>
+    <url>/2020/08/06/Android-ANR%E5%8F%91%E7%94%9F%E7%9A%84%E5%8E%9F%E5%9B%A0%E6%80%BB%E7%BB%93%E5%92%8C%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</url>
+    <content><![CDATA[<h3 id="什么是ANR？"><a href="#什么是ANR？" class="headerlink" title="什么是ANR？"></a>什么是ANR？</h3><blockquote>
+<p>ANR的全称是application not responding，是指应用程序未响应，Android系统对于一些事件需要在一定的时间范围内完成，如果超过预定时间能未能得到有效响应或者响应时间过长，都会造成ANR。一般地，这时往往会弹出一个提示框，告知用户当前xxx未响应，用户可选择继续等待或者Force Close。</p>
 </blockquote>
-<h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><p>在<code>gradle.properties 文件中</code>添加</p>
-<blockquote>
-<p>android.injected.testOnly=false</p>
-</blockquote>
+<hr>
+<h3 id="官方指定的产生ANR一般有以下类型："><a href="#官方指定的产生ANR一般有以下类型：" class="headerlink" title="官方指定的产生ANR一般有以下类型："></a>官方指定的产生ANR一般有以下类型：</h3><p>1：KeyDispatchTimeout（5秒）–主要类型<br>按键或触摸事件在特定时间无响应</p>
+<p>2：BroadcastTimeout（10秒）<br>BroadcastReceiver在特定时间无法处理完成</p>
+<p>3：ServiceTimeout（ 20秒）–小概率类型<br>服务在特定的时间无法处理完成</p>
+<hr>
+<h3 id="导致ANR的根本原因"><a href="#导致ANR的根本原因" class="headerlink" title="导致ANR的根本原因"></a>导致ANR的根本原因</h3><p>1.主线程执行了耗时操作，比如数据库操作或网络编程,I/O操作</p>
+<p>2.其他进程（就是其他程序）占用CPU导致本进程得不到CPU时间片，比如其他进程的频繁读写操作可能会导致这个问题。</p>
+<p>细分的话，导致ANR的原因有如下几点：<br>   1.耗时的网络访问<br>   2.大量的数据读写<br>   3.数据库操作<br>   4.硬件操作（比如camera)<br>   5.调用thread的join()方法、sleep()方法、wait()方法或者等待线程锁的时候<br>   6.service binder的数量达到上限<br>   7.system server中发生WatchDog ANR<br>   8.service忙导致超时无响应<br>   9.其他线程持有锁，导致主线程等待超时<br>   10.其它线程终止或崩溃导致主线程一直等待</p>
+<hr>
+<h3 id="调查并解决ANR"><a href="#调查并解决ANR" class="headerlink" title="调查并解决ANR"></a>调查并解决ANR</h3><ul>
+<li>1、首先分析log</li>
+<li>2、从trace.txt文件查看调用堆栈。-$ adb拉取data / anr / traces.txt。</li>
+<li>3、看代码</li>
+<li>4、仔细查看ANR的成因（iowait？block？memoryleak？）</li>
+</ul>
+<hr>
+<h3 id="如何避免ANR的发生"><a href="#如何避免ANR的发生" class="headerlink" title="如何避免ANR的发生"></a>如何避免ANR的发生</h3><p>1.避免在主线程执行耗时操作，所有耗时操作应新开一个子线程完成，然后再在主线程更新UI。</p>
+<p>2.BroadcastReceiver要执行耗时操作时应启动一个service，将耗时操作交给service来完成。</p>
+<p>3.避免在Intent Receiver里启动一个Activity，因为它会创建一个新的画面，并从当前用户正在运行的程序上抢夺焦点。如果你的应用程序在响应Intent广 播时需要向用户展示什么，你应该使用Notification Manager来实现。</p>
 ]]></content>
       <categories>
         <category>Android</category>
       </categories>
       <tags>
         <tag>Error</tag>
+        <tag>基础理论</tag>
       </tags>
   </entry>
   <entry>
@@ -120,6 +96,42 @@
       </categories>
       <tags>
         <tag>Android</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Android 安装APP 失败 INSTALL_FAILED_TEST_ONLY</title>
+    <url>/2020/08/07/Android-%E5%AE%89%E8%A3%85APP-%E5%A4%B1%E8%B4%A5-INSTALL-FAILED-TEST-ONLY/</url>
+    <content><![CDATA[<h3 id="android-studio-进行真机安装时失败，报错："><a href="#android-studio-进行真机安装时失败，报错：" class="headerlink" title="android studio 进行真机安装时失败，报错："></a>android studio 进行真机安装时失败，报错：</h3><blockquote>
+<p>Installation did not succeed.<br>The application could not be installed: INSTALL_FAILED_TEST_ONLY<br>Installation failed due to: ‘null’</p>
+</blockquote>
+<h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><p>在<code>gradle.properties 文件中</code>添加</p>
+<blockquote>
+<p>android.injected.testOnly=false</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Error</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Android 的事件分发机制</title>
+    <url>/2020/12/30/Android-%E7%9A%84%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E6%9C%BA%E5%88%B6/</url>
+    <content><![CDATA[<p>一般情况下，事件列都是从用户按下（ACTION_DOWN）的那一刻产生的，<br>负责对事件进行分发的方法主要有三个，分别是：</p>
+<ul>
+<li>dispatchTouchEvent()</li>
+<li>onTouchEvent()</li>
+<li>onInterceptTouchEvent()</li>
+</ul>
+<p>它们并不存在于所有负责分发的组件中，其具体情况总结于下面的表格中：<br>dispatchTouchEvent,onTouchEvent方法存在于上文的三个组件中。而onInterceptTouchEvent为ViewGroup独有。<br>ViewGroup类中，实际是没有onTouchEvent方法的，但是由于ViewGroup继承自View，而View拥有onTouchEvent方法，故ViewGroup的对象也是可以调用onTouchEvent方法的。</p>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>基础理论</tag>
       </tags>
   </entry>
   <entry>
@@ -505,58 +517,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Android ANR发生的原因总结和解决办法</title>
-    <url>/2020/08/06/Android-ANR%E5%8F%91%E7%94%9F%E7%9A%84%E5%8E%9F%E5%9B%A0%E6%80%BB%E7%BB%93%E5%92%8C%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</url>
-    <content><![CDATA[<h3 id="什么是ANR？"><a href="#什么是ANR？" class="headerlink" title="什么是ANR？"></a>什么是ANR？</h3><blockquote>
-<p>ANR的全称是application not responding，是指应用程序未响应，Android系统对于一些事件需要在一定的时间范围内完成，如果超过预定时间能未能得到有效响应或者响应时间过长，都会造成ANR。一般地，这时往往会弹出一个提示框，告知用户当前xxx未响应，用户可选择继续等待或者Force Close。</p>
-</blockquote>
-<hr>
-<h3 id="官方指定的产生ANR一般有以下类型："><a href="#官方指定的产生ANR一般有以下类型：" class="headerlink" title="官方指定的产生ANR一般有以下类型："></a>官方指定的产生ANR一般有以下类型：</h3><p>1：KeyDispatchTimeout（5秒）–主要类型<br>按键或触摸事件在特定时间无响应</p>
-<p>2：BroadcastTimeout（10秒）<br>BroadcastReceiver在特定时间无法处理完成</p>
-<p>3：ServiceTimeout（ 20秒）–小概率类型<br>服务在特定的时间无法处理完成</p>
-<hr>
-<h3 id="导致ANR的根本原因"><a href="#导致ANR的根本原因" class="headerlink" title="导致ANR的根本原因"></a>导致ANR的根本原因</h3><p>1.主线程执行了耗时操作，比如数据库操作或网络编程,I/O操作</p>
-<p>2.其他进程（就是其他程序）占用CPU导致本进程得不到CPU时间片，比如其他进程的频繁读写操作可能会导致这个问题。</p>
-<p>细分的话，导致ANR的原因有如下几点：<br>   1.耗时的网络访问<br>   2.大量的数据读写<br>   3.数据库操作<br>   4.硬件操作（比如camera)<br>   5.调用thread的join()方法、sleep()方法、wait()方法或者等待线程锁的时候<br>   6.service binder的数量达到上限<br>   7.system server中发生WatchDog ANR<br>   8.service忙导致超时无响应<br>   9.其他线程持有锁，导致主线程等待超时<br>   10.其它线程终止或崩溃导致主线程一直等待</p>
-<hr>
-<h3 id="调查并解决ANR"><a href="#调查并解决ANR" class="headerlink" title="调查并解决ANR"></a>调查并解决ANR</h3><ul>
-<li>1、首先分析log</li>
-<li>2、从trace.txt文件查看调用堆栈。-$ adb拉取data / anr / traces.txt。</li>
-<li>3、看代码</li>
-<li>4、仔细查看ANR的成因（iowait？block？memoryleak？）</li>
-</ul>
-<hr>
-<h3 id="如何避免ANR的发生"><a href="#如何避免ANR的发生" class="headerlink" title="如何避免ANR的发生"></a>如何避免ANR的发生</h3><p>1.避免在主线程执行耗时操作，所有耗时操作应新开一个子线程完成，然后再在主线程更新UI。</p>
-<p>2.BroadcastReceiver要执行耗时操作时应启动一个service，将耗时操作交给service来完成。</p>
-<p>3.避免在Intent Receiver里启动一个Activity，因为它会创建一个新的画面，并从当前用户正在运行的程序上抢夺焦点。如果你的应用程序在响应Intent广 播时需要向用户展示什么，你应该使用Notification Manager来实现。</p>
-]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>基础理论</tag>
-        <tag>Error</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Android 的事件分发机制</title>
-    <url>/2020/12/30/Android-%E7%9A%84%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E6%9C%BA%E5%88%B6/</url>
-    <content><![CDATA[<p>一般情况下，事件列都是从用户按下（ACTION_DOWN）的那一刻产生的，<br>负责对事件进行分发的方法主要有三个，分别是：</p>
-<ul>
-<li>dispatchTouchEvent()</li>
-<li>onTouchEvent()</li>
-<li>onInterceptTouchEvent()</li>
-</ul>
-<p>它们并不存在于所有负责分发的组件中，其具体情况总结于下面的表格中：<br>dispatchTouchEvent,onTouchEvent方法存在于上文的三个组件中。而onInterceptTouchEvent为ViewGroup独有。<br>ViewGroup类中，实际是没有onTouchEvent方法的，但是由于ViewGroup继承自View，而View拥有onTouchEvent方法，故ViewGroup的对象也是可以调用onTouchEvent方法的。</p>
-]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>基础理论</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Android7.0至Android8.0适配记录</title>
     <url>/2018/12/17/Android7-0%E8%87%B3Android8-0%E9%80%82%E9%85%8D%E8%AE%B0%E5%BD%95/</url>
     <content><![CDATA[<h2 id="Android7-0至Android8-0适配记录"><a href="#Android7-0至Android8-0适配记录" class="headerlink" title="Android7.0至Android8.0适配记录"></a>Android7.0至Android8.0适配记录</h2><h4 id="一五年的老项目，里面存在过时的API众多，导致高版本的编译时运行时报错，而我这次做的适配遇到的困难重要有三个"><a href="#一五年的老项目，里面存在过时的API众多，导致高版本的编译时运行时报错，而我这次做的适配遇到的困难重要有三个" class="headerlink" title="一五年的老项目，里面存在过时的API众多，导致高版本的编译时运行时报错，而我这次做的适配遇到的困难重要有三个"></a>一五年的老项目，里面存在过时的API众多，导致高版本的编译时运行时报错，而我这次做的适配遇到的困难重要有三个</h4><h3 id=""><a href="#" class="headerlink" title=""></a></h3><span id="more"></span>
@@ -730,6 +690,28 @@
       </tags>
   </entry>
   <entry>
+    <title>Android消息传递机制总结(五)</title>
+    <url>/2020/10/19/Android%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6%E6%80%BB%E7%BB%93-%E4%BA%94/</url>
+    <content><![CDATA[<p>长连接推送 ——— WebSocket，XMPP等。</p>
+<h3 id="5-长连接推送"><a href="#5-长连接推送" class="headerlink" title="5.长连接推送"></a>5.长连接推送</h3><p>Websocket<br>支持客户端和服务器端的双向通信，而且协议的头部又没有HTTP的Header那么大，于是，Websocket就诞生了！</p>
+<span id="more"></span>
+
+<p>Websocket是应用层第七层上的一个应用层协议，它必须依赖 HTTP 协议进行一次握手 ，握手成功后，数据就直接从 TCP 通道传输，与 HTTP 无关了。</p>
+<p>Websocket的数据传输是frame形式传输的，比如会将一条消息分为几个frame，按照先后顺序传输出去。这样做会有几个好处：</p>
+<p>1 大数据的传输可以分片传输，不用考虑到数据大小导致的长度标志位不足够的情况。</p>
+<p>2 和http的chunk一样，可以边生成数据边传递消息，即提高传输效率。</p>
+<p>XMPP中定义了三个角色，客户端，服务器，网关。通信能够在这三者的任意两个之间双向发生。服务器同时承担了客户端信息记录，连接管理和信息的路由功能。网关承担着与异构即时通信系统的互联互通，异构系统可以包括SMS（短信），MSN，ICQ等。基本的网络形式是单客户端通过TCP/IP连接到单服务器，然后在之上传输XML。</p>
+<p>QQ是使用类似XMPP协议的UDP协议进行发送和接收消息的。当你的机器安装了QQ以后，实际上，你既是服务端（Server），又是客户端（Client）。当你登录QQ时，你的QQ作为Client连接到腾讯公司的主服务器上，当你看谁在线时，你的QQ又一次作为Client从QQ Server上读取在线网友名单。当你和你的QQ伙伴进行聊天时，如果你和对方的连接比较稳定，你和他的聊天内容都是以UDP的形式，在计算机之间传 送。如果你和对方的连接不是很稳定，QQ服务器将为你们的聊天内容进行中转。其他的即时通信软件原理与此大同小异。</p>
+<p>所以基于WebSocke和XMPP都可以开发出IM社交聊天类的app</p>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>消息通信</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Android消息传递机制总结(四)</title>
     <url>/2020/10/12/Android%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6%E6%80%BB%E7%BB%93-%E5%9B%9B/</url>
     <content><![CDATA[<p>进程间通信 ——— Content Provider ，Broadcast ，AIDL等。</p>
@@ -773,25 +755,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Android消息传递机制总结(二)</title>
-    <url>/2020/10/10/Android%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6%E6%80%BB%E7%BB%93%E4%BA%8C/</url>
-    <content><![CDATA[<p>组件间通信 ——— BroadcastReceiver，接口回调等。</p>
-<h3 id="2-组件间通信"><a href="#2-组件间通信" class="headerlink" title="2.组件间通信"></a>2.组件间通信</h3><p>BroadcastReceiver广播就不再介绍， 广播传递本身是有安全隐患的，需要设置权限，每一个Activity都要定义、注册，解注册广播无形中加大了工作量和维护成本。已经不适应用在组件间通信。</p>
-<span id="more"></span>
-<p>接口回调： 和观察者模式大致一样。<br>实例：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">public class DataSynManager &#123;</span><br><span class="line">    &#x2F;&#x2F;监听集合</span><br><span class="line">    private LinkedList&lt;IDataSynListener&gt; autoListeners &#x3D; new LinkedList&lt;&gt;();</span><br><span class="line">    &#x2F;&#x2F;单例引用</span><br><span class="line">    private static DataSynManager mInstance;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 获取单例引用</span><br><span class="line">     *</span><br><span class="line">     * @return</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public static DataSynManager getInstance() &#123;</span><br><span class="line">        if (mInstance &#x3D;&#x3D; null) &#123;</span><br><span class="line">            synchronized (DataSynManager.class) &#123;</span><br><span class="line">                if (mInstance &#x3D;&#x3D; null) &#123;</span><br><span class="line">                    mInstance &#x3D; new DataSynManager();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return mInstance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 添加同步数据监听</span><br><span class="line">     *</span><br><span class="line">     * @param listener</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public void registerDataSynListener(IDataSynListener listener) &#123;</span><br><span class="line">        if (autoListeners &#x3D;&#x3D; null) &#123;</span><br><span class="line">            autoListeners &#x3D; new LinkedList&lt;&gt;();</span><br><span class="line">        &#125;</span><br><span class="line">        if (!autoListeners.contains(listener)) &#123;</span><br><span class="line">            autoListeners.add(listener);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 移除同步数据监听</span><br><span class="line">     *</span><br><span class="line">     * @param listener</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public void unRegisterSynListener(IDataSynListener listener) &#123;</span><br><span class="line">        if (autoListeners &#x3D;&#x3D; null) &#123;</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        if (autoListeners.contains(listener)) &#123;</span><br><span class="line">            autoListeners.remove(listener);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 执行数据同步</span><br><span class="line">     *</span><br><span class="line">     * @param count</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public void doDataSyn(final int count) &#123;</span><br><span class="line">        if (autoListeners &#x3D;&#x3D; null) &#123;</span><br><span class="line">            autoListeners &#x3D; new LinkedList&lt;&gt;();</span><br><span class="line">        &#125;</span><br><span class="line">        new Handler().post(new Runnable() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void run() &#123;</span><br><span class="line">                for (IDataSynListener dataSynListener :</span><br><span class="line">                        autoListeners) &#123;</span><br><span class="line">                    dataSynListener.onDataSyn(count);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 清除所有监听者</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public void release() &#123;</span><br><span class="line">        if (autoListeners !&#x3D; null) &#123;</span><br><span class="line">            autoListeners.clear();</span><br><span class="line">            autoListeners &#x3D; null;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public interface IDataSynListener &#123;</span><br><span class="line">        void onDataSyn(int count);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>使用：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;添加监听</span><br><span class="line">DataSynManager.getInstance().registerDataSynListener(dataSynListener);</span><br><span class="line">&#x2F;&#x2F;移除监听</span><br><span class="line">DataSynManager.getInstance().unRegisterDataSynListener(dataSynListener&#x2F;&#x2F;个监听);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">DataSynManager.IDataSynListener dataSynListener&#x3D;new DataSynManager.IDataSynListener() &#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void onDataSyn(int count) &#123;</span><br><span class="line">            &#x2F;&#x2F;接下来执行同步操作</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">   &#125;;</span><br><span class="line">&#x2F;&#x2F;发送事件</span><br><span class="line">DataSynManager.getInstance().doDa(5);</span><br></pre></td></tr></table></figure>
-<p><a href="http://markchyl.cn/2020/10/10/Android%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6%E6%80%BB%E7%BB%93%E4%B8%89/">3. 第三方通信 ——— EventBus，rxBus</a></p>
-]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>消息通信</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Android消息传递机制总结(三)</title>
     <url>/2020/10/10/Android%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6%E6%80%BB%E7%BB%93%E4%B8%89/</url>
     <content><![CDATA[<p>第三方通信 ——— EventBus，rxBus</p>
@@ -813,6 +776,25 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  @Subscribe(threadMode &#x3D; ThreadMode.MAIN,sticky &#x3D; true) &#x2F;&#x2F;在ui线程执行</span><br><span class="line">    public void onDataEvent(DataEvent event) &#123;</span><br><span class="line">        Log.e(TAG, &quot;event----&gt;&quot; + event.getCount());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;发送粘性事件</span><br><span class="line"></span><br><span class="line">  EventBus.getDefault().postSticky(new DataEvent());</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;对于粘性广播我们都比较清楚属于常驻广播，对于EventBus粘性事件也类似，我们如果不再需要该粘性事件我们可以移除</span><br><span class="line"></span><br><span class="line">  EventBus.getDefault().removeStickyEvent(new DataEvent());</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;或者调用移除所有粘性事件</span><br><span class="line"></span><br><span class="line">  EventBus.getDefault().removeAllStickyEvents();</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>RXBus：如果项目中用了rxjava的话可以参考<a href="https://github.com/AndroidKnife/RxBus">https://github.com/AndroidKnife/RxBus</a> 自己封装一个。</p>
 <h3 id="下一章长链接推送"><a href="#下一章长链接推送" class="headerlink" title="下一章长链接推送"></a><a href="http://markchyl.cn/2020/10/12/Android%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6%E6%80%BB%E7%BB%93-%E5%9B%9B/">下一章长链接推送</a></h3>]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>消息通信</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Android消息传递机制总结(二)</title>
+    <url>/2020/10/10/Android%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6%E6%80%BB%E7%BB%93%E4%BA%8C/</url>
+    <content><![CDATA[<p>组件间通信 ——— BroadcastReceiver，接口回调等。</p>
+<h3 id="2-组件间通信"><a href="#2-组件间通信" class="headerlink" title="2.组件间通信"></a>2.组件间通信</h3><p>BroadcastReceiver广播就不再介绍， 广播传递本身是有安全隐患的，需要设置权限，每一个Activity都要定义、注册，解注册广播无形中加大了工作量和维护成本。已经不适应用在组件间通信。</p>
+<span id="more"></span>
+<p>接口回调： 和观察者模式大致一样。<br>实例：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">public class DataSynManager &#123;</span><br><span class="line">    &#x2F;&#x2F;监听集合</span><br><span class="line">    private LinkedList&lt;IDataSynListener&gt; autoListeners &#x3D; new LinkedList&lt;&gt;();</span><br><span class="line">    &#x2F;&#x2F;单例引用</span><br><span class="line">    private static DataSynManager mInstance;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 获取单例引用</span><br><span class="line">     *</span><br><span class="line">     * @return</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public static DataSynManager getInstance() &#123;</span><br><span class="line">        if (mInstance &#x3D;&#x3D; null) &#123;</span><br><span class="line">            synchronized (DataSynManager.class) &#123;</span><br><span class="line">                if (mInstance &#x3D;&#x3D; null) &#123;</span><br><span class="line">                    mInstance &#x3D; new DataSynManager();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return mInstance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 添加同步数据监听</span><br><span class="line">     *</span><br><span class="line">     * @param listener</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public void registerDataSynListener(IDataSynListener listener) &#123;</span><br><span class="line">        if (autoListeners &#x3D;&#x3D; null) &#123;</span><br><span class="line">            autoListeners &#x3D; new LinkedList&lt;&gt;();</span><br><span class="line">        &#125;</span><br><span class="line">        if (!autoListeners.contains(listener)) &#123;</span><br><span class="line">            autoListeners.add(listener);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 移除同步数据监听</span><br><span class="line">     *</span><br><span class="line">     * @param listener</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public void unRegisterSynListener(IDataSynListener listener) &#123;</span><br><span class="line">        if (autoListeners &#x3D;&#x3D; null) &#123;</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        if (autoListeners.contains(listener)) &#123;</span><br><span class="line">            autoListeners.remove(listener);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 执行数据同步</span><br><span class="line">     *</span><br><span class="line">     * @param count</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public void doDataSyn(final int count) &#123;</span><br><span class="line">        if (autoListeners &#x3D;&#x3D; null) &#123;</span><br><span class="line">            autoListeners &#x3D; new LinkedList&lt;&gt;();</span><br><span class="line">        &#125;</span><br><span class="line">        new Handler().post(new Runnable() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void run() &#123;</span><br><span class="line">                for (IDataSynListener dataSynListener :</span><br><span class="line">                        autoListeners) &#123;</span><br><span class="line">                    dataSynListener.onDataSyn(count);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 清除所有监听者</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public void release() &#123;</span><br><span class="line">        if (autoListeners !&#x3D; null) &#123;</span><br><span class="line">            autoListeners.clear();</span><br><span class="line">            autoListeners &#x3D; null;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public interface IDataSynListener &#123;</span><br><span class="line">        void onDataSyn(int count);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>使用：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;添加监听</span><br><span class="line">DataSynManager.getInstance().registerDataSynListener(dataSynListener);</span><br><span class="line">&#x2F;&#x2F;移除监听</span><br><span class="line">DataSynManager.getInstance().unRegisterDataSynListener(dataSynListener&#x2F;&#x2F;个监听);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">DataSynManager.IDataSynListener dataSynListener&#x3D;new DataSynManager.IDataSynListener() &#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void onDataSyn(int count) &#123;</span><br><span class="line">            &#x2F;&#x2F;接下来执行同步操作</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">   &#125;;</span><br><span class="line">&#x2F;&#x2F;发送事件</span><br><span class="line">DataSynManager.getInstance().doDa(5);</span><br></pre></td></tr></table></figure>
+<p><a href="http://markchyl.cn/2020/10/10/Android%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6%E6%80%BB%E7%BB%93%E4%B8%89/">3. 第三方通信 ——— EventBus，rxBus</a></p>
+]]></content>
       <categories>
         <category>Android</category>
       </categories>
@@ -1056,6 +1038,31 @@ proguard-rules.pro文件的作用</li>
       </tags>
   </entry>
   <entry>
+    <title>Flutter解决启动白屏</title>
+    <url>/2019/11/14/Flutter%E8%A7%A3%E5%86%B3%E5%90%AF%E5%8A%A8%E7%99%BD%E5%B1%8F/</url>
+    <content><![CDATA[<h3 id="为什么启动会出现白屏？"><a href="#为什么启动会出现白屏？" class="headerlink" title="为什么启动会出现白屏？"></a>为什么启动会出现白屏？</h3><p>由于Android启动的时候要进行一系列初始化，如检查权限，开启进程，绑定application，startActivity。<br>这些初始化会稍微需要一点点时间，比如一秒钟。白屏持续的时间长短当然也和设备有关，设备越差白屏持续时间越长。</p>
+<span id="more"></span>
+<h3 id="如何解决？"><a href="#如何解决？" class="headerlink" title="如何解决？"></a>如何解决？</h3><p>我这里使用第三方的插件进行解决。<a href="https://pub.flutter-io.cn/packages/flutter_splash_screen">flutter_splash_screen</a>.</p>
+<p>其使用方法看他的文档。</p>
+<h3 id="记录下配置的时候遇到的问题？"><a href="#记录下配置的时候遇到的问题？" class="headerlink" title="记录下配置的时候遇到的问题？"></a>记录下配置的时候遇到的问题？</h3><p>导包总是报错，先手敲代码，再导包。支持自定义启动布局。<br>安卓的配置步骤多点。<br><strong>下面是我安卓配置：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import org.devio.flutter.splashscreen.SplashScreen;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class MainActivity extends FlutterActivity &#123;</span><br><span class="line">  @Override</span><br><span class="line">  protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">    SplashScreen.show(this, true);&#x2F;&#x2F; here</span><br><span class="line">    super.onCreate(savedInstanceState);</span><br><span class="line">    GeneratedPluginRegistrant.registerWith(this);</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;&#x2F;注册自己的 Plugin 插件</span><br><span class="line">    resisterSelfPlugin();</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>至于额为什么字体显示红色，别紧张，运行没得问题的。<br>其他的配置看官方文档。<br>添加<br><code>launch_screen.xml</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;RelativeLayout xmlns:android&#x3D;&quot;http:&#x2F;&#x2F;schemas.android.com&#x2F;apk&#x2F;res&#x2F;android&quot;</span><br><span class="line">    android:layout_width&#x3D;&quot;match_parent&quot;</span><br><span class="line">    android:layout_height&#x3D;&quot;match_parent&quot;</span><br><span class="line">    android:orientation&#x3D;&quot;vertical&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;ImageView</span><br><span class="line">        android:layout_width&#x3D;&quot;match_parent&quot;</span><br><span class="line">        android:layout_height&#x3D;&quot;match_parent&quot;</span><br><span class="line">        android:scaleType&#x3D;&quot;centerCrop&quot;</span><br><span class="line">        android:src&#x3D;&quot;@mipmap&#x2F;screen_full&quot; &#x2F;&gt;</span><br><span class="line">&lt;&#x2F;RelativeLayout&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>下面是我 IOS 配置：</strong></p>
+<ul>
+<li>导入启动图片<br><img src="https://github.com/MarkCHYL/BLOG/blob/master/marksource/images/WechatIMG309.png?raw=true"></li>
+<li>配置启动图片<br><img src="https://github.com/MarkCHYL/BLOG/blob/master/marksource/images/WechatIMG310.png?raw=true"></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Flutter</category>
+      </categories>
+      <tags>
+        <tag>Flutter</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Flutter项目实战目录</title>
     <url>/2019/07/29/Flutter%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%E7%9B%AE%E5%BD%95/</url>
     <content><![CDATA[<h1 id="Flutter-实战项目源码目录"><a href="#Flutter-实战项目源码目录" class="headerlink" title="Flutter 实战项目源码目录"></a>Flutter 实战项目源码目录</h1><ul>
@@ -1067,6 +1074,46 @@ proguard-rules.pro文件的作用</li>
       </categories>
       <tags>
         <tag>Flutter实战</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Activity的生命周期</title>
+    <url>/2018/12/17/Activity%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</url>
+    <content><![CDATA[<p><img src="http://hi.csdn.net/attachment/201109/1/0_1314838777He6C.gif" alt="image"></p>
+<h4 id="1-启动Activity：系统会先调用onCreate方法，这是生命周期第一个方法，然后调用onStart方法，最后调用onResume，Activity进入运行状态。"><a href="#1-启动Activity：系统会先调用onCreate方法，这是生命周期第一个方法，然后调用onStart方法，最后调用onResume，Activity进入运行状态。" class="headerlink" title="1.启动Activity：系统会先调用onCreate方法，这是生命周期第一个方法，然后调用onStart方法，最后调用onResume，Activity进入运行状态。"></a>1.启动Activity：系统会先调用onCreate方法，这是生命周期第一个方法，然后调用onStart方法，最后调用onResume，Activity进入运行状态。</h4><span id="more"></span>
+<p>onCreate方法：一般做一些初始化工作，比如setContentView去加载布局资源，初始化Activity所需的数据。</p>
+<p>onStart方法：表示Activity正在启动，已经可见，但是无法和用户交互。<br>/Users/mark/Downloads/Activity的生命周期.md<br>onResume方法：Activity已经可见并且开始活动，已经出现在前台。</p>
+<h4 id="2-当前Activity被其他Activity覆盖其上或被锁屏："><a href="#2-当前Activity被其他Activity覆盖其上或被锁屏：" class="headerlink" title="2.当前Activity被其他Activity覆盖其上或被锁屏："></a>2.当前Activity被其他Activity覆盖其上或被锁屏：</h4><p>（可以理解为没有完全遮挡界面的）</p>
+<p>系统会调用onPause方法，暂停当前Activity的执行。</p>
+<h4 id="3-当前Activity由被覆盖状态回到前台或解锁屏："><a href="#3-当前Activity由被覆盖状态回到前台或解锁屏：" class="headerlink" title="3.当前Activity由被覆盖状态回到前台或解锁屏："></a>3.当前Activity由被覆盖状态回到前台或解锁屏：</h4><p>系统会调用onResume方法，再次进入运行状态。</p>
+<h4 id="4-当前Activity转到新的Activity界面或按Home键回到主屏，自身退居后台："><a href="#4-当前Activity转到新的Activity界面或按Home键回到主屏，自身退居后台：" class="headerlink" title="4.当前Activity转到新的Activity界面或按Home键回到主屏，自身退居后台："></a>4.当前Activity转到新的Activity界面或按Home键回到主屏，自身退居后台：</h4><p>系统会先调用onPause方法，然后调用onStop方法，进入停滞状态。</p>
+<h4 id="5-用户后退回到此Activity："><a href="#5-用户后退回到此Activity：" class="headerlink" title="5.用户后退回到此Activity："></a>5.用户后退回到此Activity：</h4><p>系统会先调用onRestart方法，</p>
+<p>然后调用onStart方法，</p>
+<p>最后调用onResume方法，</p>
+<p>再次进入运行状态。</p>
+<h4 id="6-用户退出当前Activity：系统先调用onPause方法，然后调用onStop方法，最后调用onDestory方法，结束当前Activity。"><a href="#6-用户退出当前Activity：系统先调用onPause方法，然后调用onStop方法，最后调用onDestory方法，结束当前Activity。" class="headerlink" title="6.用户退出当前Activity：系统先调用onPause方法，然后调用onStop方法，最后调用onDestory方法，结束当前Activity。"></a>6.用户退出当前Activity：系统先调用onPause方法，然后调用onStop方法，最后调用onDestory方法，结束当前Activity。</h4><p>但是知道这些还不够，我们必须亲自试验一下才能深刻体会，融会贯通。</p>
+<hr>
+<p>Activity四种启动模式的区别：standard    singleTop  singleTask   singleInstance</p>
+<p>standard：每次激活Activity时(startActivity)，都创建Activity实例，并放入任务栈； </p>
+<p>singleTop：如果某个Activity自己激活自己并且Activity处于栈顶，则不需要创 建，其余情况都要创建Activity实例；</p>
+<p>singleTask：如果要激活的那个Activity在任务栈中存在该实例，则不需要创建，只需要把 此Activity放入栈顶，即把该Activity以上的Activity实例都pop，并调用其onNewIntent；</p>
+<p>singleInstance：应用1的任务栈中创建了MainActivity实例，如果应用2也要激活 MainActivity，则不需要创建，两应用共享该Activity实例。</p>
+<hr>
+<p>onSaveInstanceState的调用遵循一个重要原则，即当系统“未经你许可”时销毁了你的 activity，则onSaveInstanceState会被系统调用，这是系统的责任，因为它必须要提供一 个机会让你保存的数据。<br>至于onRestoreInstanceState方法，需要注意的是， onSaveInstanceState方法和onRestoreInstanceState方法“不一定”是成对的被调用 的。 </p>
+<p>onRestoreInstanceState被调用的前提是，activity A“确实”被系统销毁了，而如果仅仅 是停留在有这种可能性的情况下，则该方法不会被调用，例如，当正在显示activity A的时 候，用户按下HOME键回到主界面，然后用户紧接着又返回到activity A，这种情况下 activity A一般不会因为内存的原因被系统销毁<br>故activity A的onRestoreInstanceState方 法不会被执行。</p>
+<p> 另外，onRestoreInstanceState的bundle参数也会传递到onCreate方法中，你也可以选择 在onCreate方法中做数据还原。</p>
+<p>切换横竖屏的生命周期：</p>
+<p>1、不设置Activity的android:configChanges时，切屏会重新调用各个生命周期，<br>切横屏时会执行一次，切竖屏时会执行两次</p>
+<p>2、设置Activity的android:configChanges=”orientation”时，切屏还是会重新调<br>用各个生命周期，切横、竖屏时只会执行一次</p>
+<p>3、设置Activity的android:configChanges=”orientation|keyboardHidden”时，<br>切屏不会重新调用各个生命周期，只会执行onConfigurationChanged方法</p>
+<h4 id="Activity运行时按下HOME键-跟被完全覆盖是一样的-："><a href="#Activity运行时按下HOME键-跟被完全覆盖是一样的-：" class="headerlink" title="Activity运行时按下HOME键(跟被完全覆盖是一样的)："></a>Activity运行时按下HOME键(跟被完全覆盖是一样的)：</h4><hr>
+<h2 id="–-gt-onPause–-gt-onPauseonSaveInstanceState–-gt-onStop-–-gt-onRestart–-gt-onStart—-gt-onResume"><a href="#–-gt-onPause–-gt-onPauseonSaveInstanceState–-gt-onStop-–-gt-onRestart–-gt-onStart—-gt-onResume" class="headerlink" title="–&gt; onPause–&gt; onPauseonSaveInstanceState–&gt; onStop  –&gt; onRestart–&gt;onStart—&gt;onResume"></a>–&gt; onPause–&gt; onPauseonSaveInstanceState–&gt; onStop  –&gt; onRestart–&gt;onStart—&gt;onResume</h2><h4 id="Activity未被完全覆盖只是失去焦点：onPause—-gt-onResume（我没复现过这个，待考证）"><a href="#Activity未被完全覆盖只是失去焦点：onPause—-gt-onResume（我没复现过这个，待考证）" class="headerlink" title="Activity未被完全覆盖只是失去焦点：onPause—&gt;onResume（我没复现过这个，待考证）"></a>Activity未被完全覆盖只是失去焦点：onPause—&gt;onResume（我没复现过这个，待考证）</h4><h4 id="A跳转到B，然后按-back回退到A，A的生命周期："><a href="#A跳转到B，然后按-back回退到A，A的生命周期：" class="headerlink" title="A跳转到B，然后按 back回退到A，A的生命周期："></a>A跳转到B，然后按 back回退到A，A的生命周期：</h4><hr>
+<h2 id="–-gt-onCreate-–-gt-onStart-–-gt-onResume-–-gt-onPause-–-gt-onSaveInstanceState-–-gt-onStop-然后回退–-gt-onRestart-–-gt-onStart-–-gt-onResume"><a href="#–-gt-onCreate-–-gt-onStart-–-gt-onResume-–-gt-onPause-–-gt-onSaveInstanceState-–-gt-onStop-然后回退–-gt-onRestart-–-gt-onStart-–-gt-onResume" class="headerlink" title="–&gt;onCreate –&gt;onStart –&gt;onResume –&gt;onPause –&gt;onSaveInstanceState –&gt;onStop 然后回退–&gt;onRestart –&gt;onStart –&gt;onResume "></a>–&gt;onCreate –&gt;onStart –&gt;onResume –&gt;onPause –&gt;onSaveInstanceState –&gt;onStop 然后回退–&gt;onRestart –&gt;onStart –&gt;onResume </h2>]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>基础理论</tag>
       </tags>
   </entry>
   <entry>
@@ -1096,28 +1143,16 @@ proguard-rules.pro文件的作用</li>
       </tags>
   </entry>
   <entry>
-    <title>Flutter解决启动白屏</title>
-    <url>/2019/11/14/Flutter%E8%A7%A3%E5%86%B3%E5%90%AF%E5%8A%A8%E7%99%BD%E5%B1%8F/</url>
-    <content><![CDATA[<h3 id="为什么启动会出现白屏？"><a href="#为什么启动会出现白屏？" class="headerlink" title="为什么启动会出现白屏？"></a>为什么启动会出现白屏？</h3><p>由于Android启动的时候要进行一系列初始化，如检查权限，开启进程，绑定application，startActivity。<br>这些初始化会稍微需要一点点时间，比如一秒钟。白屏持续的时间长短当然也和设备有关，设备越差白屏持续时间越长。</p>
-<span id="more"></span>
-<h3 id="如何解决？"><a href="#如何解决？" class="headerlink" title="如何解决？"></a>如何解决？</h3><p>我这里使用第三方的插件进行解决。<a href="https://pub.flutter-io.cn/packages/flutter_splash_screen">flutter_splash_screen</a>.</p>
-<p>其使用方法看他的文档。</p>
-<h3 id="记录下配置的时候遇到的问题？"><a href="#记录下配置的时候遇到的问题？" class="headerlink" title="记录下配置的时候遇到的问题？"></a>记录下配置的时候遇到的问题？</h3><p>导包总是报错，先手敲代码，再导包。支持自定义启动布局。<br>安卓的配置步骤多点。<br><strong>下面是我安卓配置：</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import org.devio.flutter.splashscreen.SplashScreen;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class MainActivity extends FlutterActivity &#123;</span><br><span class="line">  @Override</span><br><span class="line">  protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">    SplashScreen.show(this, true);&#x2F;&#x2F; here</span><br><span class="line">    super.onCreate(savedInstanceState);</span><br><span class="line">    GeneratedPluginRegistrant.registerWith(this);</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;&#x2F;注册自己的 Plugin 插件</span><br><span class="line">    resisterSelfPlugin();</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<p>至于额为什么字体显示红色，别紧张，运行没得问题的。<br>其他的配置看官方文档。<br>添加<br><code>launch_screen.xml</code></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;RelativeLayout xmlns:android&#x3D;&quot;http:&#x2F;&#x2F;schemas.android.com&#x2F;apk&#x2F;res&#x2F;android&quot;</span><br><span class="line">    android:layout_width&#x3D;&quot;match_parent&quot;</span><br><span class="line">    android:layout_height&#x3D;&quot;match_parent&quot;</span><br><span class="line">    android:orientation&#x3D;&quot;vertical&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;ImageView</span><br><span class="line">        android:layout_width&#x3D;&quot;match_parent&quot;</span><br><span class="line">        android:layout_height&#x3D;&quot;match_parent&quot;</span><br><span class="line">        android:scaleType&#x3D;&quot;centerCrop&quot;</span><br><span class="line">        android:src&#x3D;&quot;@mipmap&#x2F;screen_full&quot; &#x2F;&gt;</span><br><span class="line">&lt;&#x2F;RelativeLayout&gt;</span><br></pre></td></tr></table></figure>
-
-<p><strong>下面是我 IOS 配置：</strong></p>
-<ul>
-<li>导入启动图片<br><img src="https://github.com/MarkCHYL/BLOG/blob/master/marksource/images/WechatIMG309.png?raw=true"></li>
-<li>配置启动图片<br><img src="https://github.com/MarkCHYL/BLOG/blob/master/marksource/images/WechatIMG310.png?raw=true"></li>
-</ul>
-]]></content>
+    <title>Glide添加请求头</title>
+    <url>/2020/08/31/Glide%E6%B7%BB%E5%8A%A0%E8%AF%B7%E6%B1%82%E5%A4%B4/</url>
+    <content><![CDATA[<p><a href="https://www.jianshu.com/p/a425b5ca89dd">原文来自</a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">GlideUrl glideUrl &#x3D; new GlideUrl(url, new Headers() &#123;</span><br><span class="line">           @Override</span><br><span class="line">           public Map&lt;String, String&gt; getHeaders() &#123;</span><br><span class="line">               Map&lt;String, String&gt; header &#x3D; new HashMap&lt;&gt;();</span><br><span class="line">               &#x2F;&#x2F;不一定都要添加，具体看原站的请求信息</span><br><span class="line">               header.put(&quot;Referer&quot;, &quot;http:&#x2F;&#x2F;www.baidu.com&quot;);</span><br><span class="line">               return header;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;);</span><br><span class="line"></span><br><span class="line">      Glide.with(context).load(url).into(imageView);</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
-        <category>Flutter</category>
+        <category>Android</category>
       </categories>
       <tags>
-        <tag>Flutter</tag>
+        <tag>工具使用</tag>
+        <tag>Android</tag>
       </tags>
   </entry>
   <entry>
@@ -1192,57 +1227,6 @@ proguard-rules.pro文件的作用</li>
       </categories>
       <tags>
         <tag>工具使用</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo yilia 主题添加 widgetpack 评论系统</title>
-    <url>/2019/07/21/Hexo-yilia-%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0-widgetpack-%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/</url>
-    <content><![CDATA[<h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><hr>
-<blockquote>
-<p>记得这周都在忙着给我的博客添加评论功能，脑子都懵逼啦！开始起初是想利用GitHub的gitment和gittalk进行集成，按照的网上的套路也弄了，总是报错，对于我只是安卓原生的小码农来说，我完全抓瞎。</p>
-</blockquote>
-<span id="more"></span>
-<p><strong>下面的分析来自</strong><a href="https://blog.csdn.net/ganzhilin520/article/details/79048010">阿甘的博客</a></p>
-<p>目前博客站点使用的评论功能，多说，网易云跟贴都已经下线。Disqus也被挡在墙外，友言貌似也不行。</p>
-<p>可用的评论系统大概有：  </p>
-<ul>
-<li><p>HyperComments：<a href="https://www.hypercomments.com/">https://www.hypercomments.com</a> （来自俄罗斯的评论系统，使用谷歌账号注册。可以访问，不会用，好气，，）</p>
-</li>
-<li><p>来必力：<a href="https://livere.com/">https://livere.com</a> （来自韩国，使用邮箱注册。）</p>
-</li>
-<li><p>畅言： <a href="http://changyan.kuaizhan.com/">http://changyan.kuaizhan.com</a> （安装需要备案号。不太好用。）</p>
-</li>
-<li><p>Gitment： <a href="https://github.com/imsun/gitment">https://github.com/imsun/gitment</a> （有点小bug，比如说每次需要手动初始化，登录时会跳到主页。。）</p>
-</li>
-<li><p>Valine: <a href="https://github.com/xCss/Valine">https://github.com/xCss/Valine</a> (基于Leancloud的极简风评论系统，用了下，没效果，是我Next主题的原因还是？）</p>
-</li>
-</ul>
-<p>综上，我开始采用了来必力。<br>**可能是来必力来自韩国，我没调查资料，是看上面的文字时韩国的瞎说的，功能我到是实现了，界面渲染有点卡顿，最终放弃了。</p>
-<h1 id="widgetpack-评论系统"><a href="#widgetpack-评论系统" class="headerlink" title="widgetpack 评论系统"></a>widgetpack 评论系统</h1><p>这是我这次笔记的重点，此刻是周末晚上，明早就要上班啦！给自己定的任务计划没完成，Mark我有点睡不着，无聊的我打开了电脑发现了这个<strong>widgetpack</strong>，在此感谢博主的贡献<a href="https://blog.csdn.net/maosidiaoxian/article/details/94651023">貌似掉线</a>,</p>
-<ul>
-<li>免费的</li>
-<li>哪儿的？国外的，放心没被强，我是科学守法的好公民</li>
-<li>还没调查，貌似是欧洲的，<a href="https://widgetpack.com/comment-system">介绍地址</a></li>
-<li>邮箱注册便可</li>
-</ul>
-<p>下面是<a href="https://blog.csdn.net/maosidiaoxian/article/details/94651023">貌似掉线</a>的原文：</p>
-<h2 id="集成步骤："><a href="#集成步骤：" class="headerlink" title="集成步骤："></a>集成步骤：</h2><h3 id="1-主题配置添加-widgetpack"><a href="#1-主题配置添加-widgetpack" class="headerlink" title="1. 主题配置添加 widgetpack"></a>1. 主题配置添加 widgetpack</h3><p>修改 hexo 博客目录的 theme/yilia 中的 _config.yml 文件，增加如下配置：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># widgetpack。将 false 改为 widgetpack 上的 id 则启用该评论系统。</span><br><span class="line">widgetpack: false</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-新增-widgetpack-代码文件"><a href="#2-新增-widgetpack-代码文件" class="headerlink" title="2. 新增 widgetpack 代码文件"></a>2. 新增 widgetpack 代码文件</h3><p>在 yilia 中的 layout/_partial/post 下新增 widgetpack.ejs文件，内容如下：<br>这段代码，在你注册 widgetpack 之后也会有</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;wpac-comment&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">wpac_init &#x3D; window.wpac_init || [];</span><br><span class="line">wpac_init.push(&#123;widget: &#39;Comment&#39;, id: &lt;%&#x3D;theme.widgetpack%&gt;&#125;);</span><br><span class="line">(function() &#123;</span><br><span class="line">    if (&#39;WIDGETPACK_LOADED&#39; in window) return;</span><br><span class="line">    WIDGETPACK_LOADED &#x3D; true;</span><br><span class="line">    var mc &#x3D; document.createElement(&#39;script&#39;);</span><br><span class="line">    mc.type &#x3D; &#39;text&#x2F;javascript&#39;;</span><br><span class="line">    mc.async &#x3D; true;</span><br><span class="line">    mc.src &#x3D; &#39;https:&#x2F;&#x2F;embed.widgetpack.com&#x2F;widget.js&#39;;</span><br><span class="line">    var s &#x3D; document.getElementsByTagName(&#39;script&#39;)[0]; s.parentNode.insertBefore(mc, s.nextSibling);</span><br><span class="line">&#125;)();</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line">&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;widgetpack.com&quot; class&#x3D;&quot;wpac-cr&quot;&gt;Comments System WIDGET PACK&lt;&#x2F;a&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="3-修改-article-ejs"><a href="#3-修改-article-ejs" class="headerlink" title="3. 修改 article.ejs"></a>3. 修改 article.ejs</h3><p>由于我使用的 yilia 主题没有自带 widgetpack 的代码，修改 yilia 中的 layout/_partial/article.ejs 文件，在 &lt;% if (!index &amp;&amp; post.comments){ %&gt; 后的任意一个评论代码前或后插入如下代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;%if (theme.widgetpack) &#123; %&gt;</span><br><span class="line">  &lt;%- partial(&#39;post&#x2F;widgetpack&#39;) %&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
-<p>这段代码加在哪儿？打开之后好好的看编辑器上的代码。</p>
-<hr>
-<p><strong>如上三步，修改完成。如果要启用，修改主题的 _config.yml 文件，将 widgetpack 的值改为 widgetpack 上的 id 即可，注意冒号之后有空格</strong></p>
-]]></content>
-      <categories>
-        <category>工具使用</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>工具搭建</tag>
       </tags>
   </entry>
   <entry>
@@ -1334,6 +1318,57 @@ Connection conn = null;
       </categories>
       <tags>
         <tag>JDBC</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo yilia 主题添加 widgetpack 评论系统</title>
+    <url>/2019/07/21/Hexo-yilia-%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0-widgetpack-%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/</url>
+    <content><![CDATA[<h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><hr>
+<blockquote>
+<p>记得这周都在忙着给我的博客添加评论功能，脑子都懵逼啦！开始起初是想利用GitHub的gitment和gittalk进行集成，按照的网上的套路也弄了，总是报错，对于我只是安卓原生的小码农来说，我完全抓瞎。</p>
+</blockquote>
+<span id="more"></span>
+<p><strong>下面的分析来自</strong><a href="https://blog.csdn.net/ganzhilin520/article/details/79048010">阿甘的博客</a></p>
+<p>目前博客站点使用的评论功能，多说，网易云跟贴都已经下线。Disqus也被挡在墙外，友言貌似也不行。</p>
+<p>可用的评论系统大概有：  </p>
+<ul>
+<li><p>HyperComments：<a href="https://www.hypercomments.com/">https://www.hypercomments.com</a> （来自俄罗斯的评论系统，使用谷歌账号注册。可以访问，不会用，好气，，）</p>
+</li>
+<li><p>来必力：<a href="https://livere.com/">https://livere.com</a> （来自韩国，使用邮箱注册。）</p>
+</li>
+<li><p>畅言： <a href="http://changyan.kuaizhan.com/">http://changyan.kuaizhan.com</a> （安装需要备案号。不太好用。）</p>
+</li>
+<li><p>Gitment： <a href="https://github.com/imsun/gitment">https://github.com/imsun/gitment</a> （有点小bug，比如说每次需要手动初始化，登录时会跳到主页。。）</p>
+</li>
+<li><p>Valine: <a href="https://github.com/xCss/Valine">https://github.com/xCss/Valine</a> (基于Leancloud的极简风评论系统，用了下，没效果，是我Next主题的原因还是？）</p>
+</li>
+</ul>
+<p>综上，我开始采用了来必力。<br>**可能是来必力来自韩国，我没调查资料，是看上面的文字时韩国的瞎说的，功能我到是实现了，界面渲染有点卡顿，最终放弃了。</p>
+<h1 id="widgetpack-评论系统"><a href="#widgetpack-评论系统" class="headerlink" title="widgetpack 评论系统"></a>widgetpack 评论系统</h1><p>这是我这次笔记的重点，此刻是周末晚上，明早就要上班啦！给自己定的任务计划没完成，Mark我有点睡不着，无聊的我打开了电脑发现了这个<strong>widgetpack</strong>，在此感谢博主的贡献<a href="https://blog.csdn.net/maosidiaoxian/article/details/94651023">貌似掉线</a>,</p>
+<ul>
+<li>免费的</li>
+<li>哪儿的？国外的，放心没被强，我是科学守法的好公民</li>
+<li>还没调查，貌似是欧洲的，<a href="https://widgetpack.com/comment-system">介绍地址</a></li>
+<li>邮箱注册便可</li>
+</ul>
+<p>下面是<a href="https://blog.csdn.net/maosidiaoxian/article/details/94651023">貌似掉线</a>的原文：</p>
+<h2 id="集成步骤："><a href="#集成步骤：" class="headerlink" title="集成步骤："></a>集成步骤：</h2><h3 id="1-主题配置添加-widgetpack"><a href="#1-主题配置添加-widgetpack" class="headerlink" title="1. 主题配置添加 widgetpack"></a>1. 主题配置添加 widgetpack</h3><p>修改 hexo 博客目录的 theme/yilia 中的 _config.yml 文件，增加如下配置：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># widgetpack。将 false 改为 widgetpack 上的 id 则启用该评论系统。</span><br><span class="line">widgetpack: false</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-新增-widgetpack-代码文件"><a href="#2-新增-widgetpack-代码文件" class="headerlink" title="2. 新增 widgetpack 代码文件"></a>2. 新增 widgetpack 代码文件</h3><p>在 yilia 中的 layout/_partial/post 下新增 widgetpack.ejs文件，内容如下：<br>这段代码，在你注册 widgetpack 之后也会有</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;wpac-comment&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">wpac_init &#x3D; window.wpac_init || [];</span><br><span class="line">wpac_init.push(&#123;widget: &#39;Comment&#39;, id: &lt;%&#x3D;theme.widgetpack%&gt;&#125;);</span><br><span class="line">(function() &#123;</span><br><span class="line">    if (&#39;WIDGETPACK_LOADED&#39; in window) return;</span><br><span class="line">    WIDGETPACK_LOADED &#x3D; true;</span><br><span class="line">    var mc &#x3D; document.createElement(&#39;script&#39;);</span><br><span class="line">    mc.type &#x3D; &#39;text&#x2F;javascript&#39;;</span><br><span class="line">    mc.async &#x3D; true;</span><br><span class="line">    mc.src &#x3D; &#39;https:&#x2F;&#x2F;embed.widgetpack.com&#x2F;widget.js&#39;;</span><br><span class="line">    var s &#x3D; document.getElementsByTagName(&#39;script&#39;)[0]; s.parentNode.insertBefore(mc, s.nextSibling);</span><br><span class="line">&#125;)();</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line">&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;widgetpack.com&quot; class&#x3D;&quot;wpac-cr&quot;&gt;Comments System WIDGET PACK&lt;&#x2F;a&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="3-修改-article-ejs"><a href="#3-修改-article-ejs" class="headerlink" title="3. 修改 article.ejs"></a>3. 修改 article.ejs</h3><p>由于我使用的 yilia 主题没有自带 widgetpack 的代码，修改 yilia 中的 layout/_partial/article.ejs 文件，在 &lt;% if (!index &amp;&amp; post.comments){ %&gt; 后的任意一个评论代码前或后插入如下代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;%if (theme.widgetpack) &#123; %&gt;</span><br><span class="line">  &lt;%- partial(&#39;post&#x2F;widgetpack&#39;) %&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
+<p>这段代码加在哪儿？打开之后好好的看编辑器上的代码。</p>
+<hr>
+<p><strong>如上三步，修改完成。如果要启用，修改主题的 _config.yml 文件，将 widgetpack 的值改为 widgetpack 上的 id 即可，注意冒号之后有空格</strong></p>
+]]></content>
+      <categories>
+        <category>工具使用</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>工具搭建</tag>
       </tags>
   </entry>
   <entry>
@@ -1434,25 +1469,52 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
-    <title>Android消息传递机制总结(五)</title>
-    <url>/2020/10/19/Android%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6%E6%80%BB%E7%BB%93-%E4%BA%94/</url>
-    <content><![CDATA[<p>长连接推送 ——— WebSocket，XMPP等。</p>
-<h3 id="5-长连接推送"><a href="#5-长连接推送" class="headerlink" title="5.长连接推送"></a>5.长连接推送</h3><p>Websocket<br>支持客户端和服务器端的双向通信，而且协议的头部又没有HTTP的Header那么大，于是，Websocket就诞生了！</p>
+    <title>Kotlin基础入门学习笔记</title>
+    <url>/2019/12/03/Kotlin%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>若不留下点啥笔记，感觉对不住自己一个星期半的学习加复习。</p>
+<h3 id="一、如何实现单列模式？"><a href="#一、如何实现单列模式？" class="headerlink" title="一、如何实现单列模式？"></a>一、如何实现单列模式？</h3><p>使用关键字 <strong>object</strong> 修饰的类,替换掉class关键字，便会在整套程序中生成一个且是唯一的对象实例。<br>譬如如下代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">object BigHeadSon:IWash &#123;</span><br><span class="line">    override fun wash() &#123;</span><br><span class="line">        println(&quot;大头儿子洗完收费1元钱&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>那样之后该类的实例变量整个项目中有且只有一个。</p>
 <span id="more"></span>
-
-<p>Websocket是应用层第七层上的一个应用层协议，它必须依赖 HTTP 协议进行一次握手 ，握手成功后，数据就直接从 TCP 通道传输，与 HTTP 无关了。</p>
-<p>Websocket的数据传输是frame形式传输的，比如会将一条消息分为几个frame，按照先后顺序传输出去。这样做会有几个好处：</p>
-<p>1 大数据的传输可以分片传输，不用考虑到数据大小导致的长度标志位不足够的情况。</p>
-<p>2 和http的chunk一样，可以边生成数据边传递消息，即提高传输效率。</p>
-<p>XMPP中定义了三个角色，客户端，服务器，网关。通信能够在这三者的任意两个之间双向发生。服务器同时承担了客户端信息记录，连接管理和信息的路由功能。网关承担着与异构即时通信系统的互联互通，异构系统可以包括SMS（短信），MSN，ICQ等。基本的网络形式是单客户端通过TCP/IP连接到单服务器，然后在之上传输XML。</p>
-<p>QQ是使用类似XMPP协议的UDP协议进行发送和接收消息的。当你的机器安装了QQ以后，实际上，你既是服务端（Server），又是客户端（Client）。当你登录QQ时，你的QQ作为Client连接到腾讯公司的主服务器上，当你看谁在线时，你的QQ又一次作为Client从QQ Server上读取在线网友名单。当你和你的QQ伙伴进行聊天时，如果你和对方的连接比较稳定，你和他的聊天内容都是以UDP的形式，在计算机之间传 送。如果你和对方的连接不是很稳定，QQ服务器将为你们的聊天内容进行中转。其他的即时通信软件原理与此大同小异。</p>
-<p>所以基于WebSocke和XMPP都可以开发出IM社交聊天类的app</p>
+<hr>
+<h3 id="二、如何实现枚举？"><a href="#二、如何实现枚举？" class="headerlink" title="二、如何实现枚举？"></a>二、如何实现枚举？</h3><p>实现枚举的代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">enum class Week &#123;</span><br><span class="line">    星期一, 星期二, 星期三, 星期四, 星期五, 星期六, 星期日</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun main(args: Array&lt;String&gt;) &#123;</span><br><span class="line">    println(Week.星期一.ordinal)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用关键字 enum 修饰类</p>
+<hr>
+<h3 id="三、如何实现印章类？"><a href="#三、如何实现印章类？" class="headerlink" title="三、如何实现印章类？"></a>三、如何实现印章类？</h3><p>举个例子一匹母驴、一屁公马和一匹公驴一碗酒后乱性，过了几天母驴怀孕了，不只是公马的还是公驴的。那么问题来了马和驴的后代是骡子，母驴和公驴的后代当然还是驴。<br>就像盖了章一样，使用<strong>sealed</strong>关键字修饰类,可以指定子类和个数。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 印章sealed类</span><br><span class="line">&#x2F;&#x2F;指定子类种类和个数</span><br><span class="line"></span><br><span class="line">sealed class Son &#123;</span><br><span class="line">    fun sayHello()&#123;</span><br><span class="line">        println(&quot;大家好！！！&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">    class smallBlackMule():Son()</span><br><span class="line"></span><br><span class="line">    class smallDonkey():Son()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun main(args: Array&lt;String&gt;) &#123;</span><br><span class="line">    var s1: Son &#x3D; Son.smallBlackMule()</span><br><span class="line"></span><br><span class="line">    var s2: Son &#x3D; Son.smallBlackMule()</span><br><span class="line"></span><br><span class="line">    var s3 &#x3D; Son.smallDonkey()</span><br><span class="line"></span><br><span class="line">    var list &#x3D; listOf&lt;Son&gt;( s1, s2, s3 )</span><br><span class="line"></span><br><span class="line">    for ( h in list)&#123;</span><br><span class="line">        if(h is Son.smallDonkey) &#123;</span><br><span class="line">            h.sayHello()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="四、如是实现委托和代理？"><a href="#四、如是实现委托和代理？" class="headerlink" title="四、如是实现委托和代理？"></a>四、如是实现委托和代理？</h3><p>利用关键字 <strong>by</strong> 实现，示例代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class SmallHeadFather : IWash by BigHeadSon() &#123;</span><br><span class="line">    override fun wash() &#123;</span><br><span class="line">        println(&quot;小头爸爸洗完收费10块钱！！！&quot;)</span><br><span class="line">        BigHeadSon().wash()</span><br><span class="line">        println(&quot;小头爸爸看见儿子把碗洗好了&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="五、如何实现多态和继承？"><a href="#五、如何实现多态和继承？" class="headerlink" title="五、如何实现多态和继承？"></a>五、如何实现多态和继承？</h3><p>kotlin是面向对象的语言，子类可以继承父类的方法和属性。<br><strong>抽象类</strong>：如父类，同一类具有同样基本属性和方法的类事物的描述，事物的本质描述。<br><strong>接口</strong>：指具有同样基本属性和方法的能力，事物的能力描述。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;抽象类</span><br><span class="line">abstract class Human(var name:String) &#123;</span><br><span class="line">    abstract fun eat()</span><br><span class="line"></span><br><span class="line">    abstract fun pee()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;男人</span><br><span class="line">class Man(name: String) : Human(name) &#123;</span><br><span class="line">    override fun eat() &#123;</span><br><span class="line">        println(&quot;$&#123;name&#125;大口的吃饭,暴力&quot;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    override fun pee() &#123;</span><br><span class="line">        println(&quot;$&#123;name&#125;站着尿尿---&quot;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;女人</span><br><span class="line">class Woman(name: String) :Human(name) &#123;</span><br><span class="line">    override fun pee() &#123;</span><br><span class="line">        println(&quot;$&#123;name&#125;蹲着尿尿---&quot;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    override fun eat() &#123;</span><br><span class="line">        println(&quot;$&#123;name&#125;小口慢慢的吃饭，文雅&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;测试</span><br><span class="line">fun main(args: Array&lt;String&gt;) &#123;</span><br><span class="line">    var person1 &#x3D; Man(&quot;金三胖&quot;)</span><br><span class="line">    var person2 &#x3D; Woman(&quot;波多野结衣&quot;)</span><br><span class="line">    var person3 &#x3D; Woman(&quot;貂蝉&quot;)</span><br><span class="line">    var person4 &#x3D; Man(&quot;吕布&quot;)</span><br><span class="line"></span><br><span class="line">    var humanList &#x3D; listOf&lt;Human&gt;(person1,person2,person3,person4)</span><br><span class="line"></span><br><span class="line">    for (h in humanList)&#123;</span><br><span class="line">        h.name</span><br><span class="line">&#x2F;&#x2F;        h.eat()</span><br><span class="line">        h.pee()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="六、when的表达式："><a href="#六、when的表达式：" class="headerlink" title="六、when的表达式："></a>六、when的表达式：</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;考试成绩评级10分 9分A 8分B 7分C</span><br><span class="line"></span><br><span class="line">fun scoreMatch(score:Int):String&#123;</span><br><span class="line">	when(score)&#123;</span><br><span class="line">		10 -&gt; return &quot;恭喜你拿了满分S&quot;</span><br><span class="line">		9 -&gt; return &quot;恭喜你拿了A&quot;</span><br><span class="line">		8 -&gt; return &quot;恭喜你拿了B&quot;</span><br><span class="line">		7 -&gt; return &quot;你拿了C，还需更加努力&quot;</span><br><span class="line">		else -&gt; return &quot;对不起你被OUT啦！&quot;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun main(agrs:Array&lt;String&gt;)&#123;</span><br><span class="line">	println(scoreMatch(10))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="七、空值判断："><a href="#七、空值判断：" class="headerlink" title="七、空值判断："></a>七、空值判断：</h3><p>加上问好代表参数可以为空</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;接收一个参数，参数为非空的String类型   </span><br><span class="line">fun heat(str:String?):String&#123;</span><br><span class="line">	return &quot;热$&#123;str&#125;&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun main(agrs:Array&lt;String&gt;)&#123;</span><br><span class="line">	var result1 &#x3D; &quot;油&quot;</span><br><span class="line">	println(heat(result1))</span><br><span class="line">	</span><br><span class="line">	var result2 &#x3D; null</span><br><span class="line">	println(heat(result2))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="八、函数表达式"><a href="#八、函数表达式" class="headerlink" title="八、函数表达式"></a>八、函数表达式</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">fun main(args:Array&lt;String&gt;)&#123;</span><br><span class="line">	&#x2F;&#x2F;函数</span><br><span class="line">	var result &#x3D; add(3,4)</span><br><span class="line">	println(result)</span><br><span class="line">	</span><br><span class="line">	&#x2F;&#x2F;函数表达式</span><br><span class="line">	var i &#x3D; &#123;x:Int,y:Int -&gt; x+y&#125;</span><br><span class="line">	var result2 &#x3D; i(3,4)</span><br><span class="line">	var temp &#x3D; result2&#x3D;&#x3D;(7)</span><br><span class="line">	println(&quot;$&#123;temp&#125;&quot;)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun add(a:Int,b:Int):Int &#x3D; a+b</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="九、递归演示："><a href="#九、递归演示：" class="headerlink" title="九、递归演示："></a>九、递归演示：</h3><p><strong>BigInteger</strong>函数是Java数值运算大值时使用的属性，特殊的超级<strong>Int</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;演示一</span><br><span class="line">import java.math.BigInteger</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 递归演示</span><br><span class="line">&#x2F;&#x2F; 阶乘  5的阶乘：5*4*3*2*1</span><br><span class="line">fun main(args:Array&lt;String&gt;)&#123;</span><br><span class="line">	&#x2F;&#x2F;&#x2F;BigInteger是一个不可描述超大的数字</span><br><span class="line">	println(&quot;请输入数字：&quot;)</span><br><span class="line">	var a &#x3D; readLine()</span><br><span class="line">    try&#123;</span><br><span class="line">		var b:BigInteger &#x3D; a!!.toBigInteger()</span><br><span class="line">		&#x2F;&#x2F;阶乘</span><br><span class="line">		println(fact(b))</span><br><span class="line">	&#125;catch(e:Exception)&#123;</span><br><span class="line">		println(&quot;输入数字有误！！&quot;)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun fact(a:BigInteger):BigInteger&#123;</span><br><span class="line">	if(a&#x3D;&#x3D;BigInteger.ONE)</span><br><span class="line">	    return BigInteger.ONE</span><br><span class="line">	else</span><br><span class="line">		return a*fact(a-BigInteger.ONE)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>尾递归 <strong>tailrec</strong>修饰方法,譬如超过电脑运算周期范围的计算</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">fun main(args:Array&lt;String&gt;)&#123;</span><br><span class="line">	var a &#x3D; readLine()!!.toInt()</span><br><span class="line">	var num:Int &#x3D; 0</span><br><span class="line">	var result:Int &#x3D; 0</span><br><span class="line">	println(add(a,num,result))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;尾递归 tailrec修饰方法</span><br><span class="line">tailrec fun add(nuk:Int,nn:Int,result:Int):Int&#123;</span><br><span class="line">	var nns &#x3D; nn+1</span><br><span class="line">	var results &#x3D; result + nuk</span><br><span class="line">	println(&quot;计算机第$&#123;nns&#125;次运算,结果为：$&#123;results&#125;&quot;)</span><br><span class="line">	if(nuk&#x3D;&#x3D;1)</span><br><span class="line">		return results</span><br><span class="line">	else</span><br><span class="line">		</span><br><span class="line">		return add(nuk-1,nns,results)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="十、List和Map"><a href="#十、List和Map" class="headerlink" title="十、List和Map"></a>十、List和Map</h3><p>List演示：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> fun main(args:Array&lt;String&gt;)&#123;</span><br><span class="line">	 var lists &#x3D; listOf(&quot;买鸡蛋&quot;,&quot;买可乐&quot;,&quot;买猪肉&quot;,&quot;买大米&quot;)</span><br><span class="line">	 </span><br><span class="line">	 for(a in lists)&#123;</span><br><span class="line">		 println(a)</span><br><span class="line">		&#125;</span><br><span class="line">	 </span><br><span class="line">	 for((i,e) in lists.withIndex())</span><br><span class="line">		 println(&quot;$i,$e&quot;)</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Map演示：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import java.util.TreeMap</span><br><span class="line"></span><br><span class="line">fun main(args:Array&lt;String&gt;)&#123;</span><br><span class="line">	&#x2F;&#x2F;TreeMap 同一key的value不能重复存在</span><br><span class="line">	var map &#x3D; TreeMap&lt;String,String&gt;()</span><br><span class="line">	var list &#x3D; listOf(&quot;好&quot;,&quot;好&quot;,&quot;学习&quot;,&quot;天&quot;,&quot;天&quot;,&quot;向上&quot;)</span><br><span class="line">	</span><br><span class="line">	map[&quot;好&quot;] &#x3D; &quot;Good&quot;</span><br><span class="line">	map[&quot;学习&quot;] &#x3D; &quot;Study&quot;</span><br><span class="line">	map[&quot;天&quot;]  &#x3D; &quot;Day&quot;</span><br><span class="line">	map[&quot;向上&quot;]  &#x3D; &quot;Up&quot;</span><br><span class="line">	</span><br><span class="line">	for(a in list)&#123;</span><br><span class="line">		print(&quot;$&#123;map[a]&#125;  &quot;)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="十一、人机交互"><a href="#十一、人机交互" class="headerlink" title="十一、人机交互"></a>十一、人机交互</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">fun main(args:Array&lt;String&gt;)&#123;</span><br><span class="line">	println(&quot;请输入第一个数字：&quot;)</span><br><span class="line">	var c &#x3D; readLine()</span><br><span class="line">	println(&quot;请输入第二个数字：&quot;)</span><br><span class="line">	var d &#x3D; readLine()</span><br><span class="line">	</span><br><span class="line">	try&#123;</span><br><span class="line">		var a &#x3D; c!!.toInt()</span><br><span class="line">	    var b &#x3D; d!!.toInt()</span><br><span class="line">		println(&quot;$&#123;a&#125; + $&#123;b&#125; &#x3D; $&#123;a + b&#125;&quot;)</span><br><span class="line">	&#125;catch(e:Exception)&#123;</span><br><span class="line">		println(&quot;输入数据有误！，请重新输入&quot;)</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>**!!.**确保不为空<br>**?.**可为空</p>
 ]]></content>
       <categories>
         <category>Android</category>
       </categories>
       <tags>
-        <tag>消息通信</tag>
+        <tag>kotlin</tag>
       </tags>
   </entry>
   <entry>
@@ -1518,55 +1580,6 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
-    <title>Kotlin基础入门学习笔记</title>
-    <url>/2019/12/03/Kotlin%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>若不留下点啥笔记，感觉对不住自己一个星期半的学习加复习。</p>
-<h3 id="一、如何实现单列模式？"><a href="#一、如何实现单列模式？" class="headerlink" title="一、如何实现单列模式？"></a>一、如何实现单列模式？</h3><p>使用关键字 <strong>object</strong> 修饰的类,替换掉class关键字，便会在整套程序中生成一个且是唯一的对象实例。<br>譬如如下代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">object BigHeadSon:IWash &#123;</span><br><span class="line">    override fun wash() &#123;</span><br><span class="line">        println(&quot;大头儿子洗完收费1元钱&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>那样之后该类的实例变量整个项目中有且只有一个。</p>
-<span id="more"></span>
-<hr>
-<h3 id="二、如何实现枚举？"><a href="#二、如何实现枚举？" class="headerlink" title="二、如何实现枚举？"></a>二、如何实现枚举？</h3><p>实现枚举的代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">enum class Week &#123;</span><br><span class="line">    星期一, 星期二, 星期三, 星期四, 星期五, 星期六, 星期日</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun main(args: Array&lt;String&gt;) &#123;</span><br><span class="line">    println(Week.星期一.ordinal)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>使用关键字 enum 修饰类</p>
-<hr>
-<h3 id="三、如何实现印章类？"><a href="#三、如何实现印章类？" class="headerlink" title="三、如何实现印章类？"></a>三、如何实现印章类？</h3><p>举个例子一匹母驴、一屁公马和一匹公驴一碗酒后乱性，过了几天母驴怀孕了，不只是公马的还是公驴的。那么问题来了马和驴的后代是骡子，母驴和公驴的后代当然还是驴。<br>就像盖了章一样，使用<strong>sealed</strong>关键字修饰类,可以指定子类和个数。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 印章sealed类</span><br><span class="line">&#x2F;&#x2F;指定子类种类和个数</span><br><span class="line"></span><br><span class="line">sealed class Son &#123;</span><br><span class="line">    fun sayHello()&#123;</span><br><span class="line">        println(&quot;大家好！！！&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">    class smallBlackMule():Son()</span><br><span class="line"></span><br><span class="line">    class smallDonkey():Son()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun main(args: Array&lt;String&gt;) &#123;</span><br><span class="line">    var s1: Son &#x3D; Son.smallBlackMule()</span><br><span class="line"></span><br><span class="line">    var s2: Son &#x3D; Son.smallBlackMule()</span><br><span class="line"></span><br><span class="line">    var s3 &#x3D; Son.smallDonkey()</span><br><span class="line"></span><br><span class="line">    var list &#x3D; listOf&lt;Son&gt;( s1, s2, s3 )</span><br><span class="line"></span><br><span class="line">    for ( h in list)&#123;</span><br><span class="line">        if(h is Son.smallDonkey) &#123;</span><br><span class="line">            h.sayHello()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="四、如是实现委托和代理？"><a href="#四、如是实现委托和代理？" class="headerlink" title="四、如是实现委托和代理？"></a>四、如是实现委托和代理？</h3><p>利用关键字 <strong>by</strong> 实现，示例代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class SmallHeadFather : IWash by BigHeadSon() &#123;</span><br><span class="line">    override fun wash() &#123;</span><br><span class="line">        println(&quot;小头爸爸洗完收费10块钱！！！&quot;)</span><br><span class="line">        BigHeadSon().wash()</span><br><span class="line">        println(&quot;小头爸爸看见儿子把碗洗好了&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="五、如何实现多态和继承？"><a href="#五、如何实现多态和继承？" class="headerlink" title="五、如何实现多态和继承？"></a>五、如何实现多态和继承？</h3><p>kotlin是面向对象的语言，子类可以继承父类的方法和属性。<br><strong>抽象类</strong>：如父类，同一类具有同样基本属性和方法的类事物的描述，事物的本质描述。<br><strong>接口</strong>：指具有同样基本属性和方法的能力，事物的能力描述。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;抽象类</span><br><span class="line">abstract class Human(var name:String) &#123;</span><br><span class="line">    abstract fun eat()</span><br><span class="line"></span><br><span class="line">    abstract fun pee()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;男人</span><br><span class="line">class Man(name: String) : Human(name) &#123;</span><br><span class="line">    override fun eat() &#123;</span><br><span class="line">        println(&quot;$&#123;name&#125;大口的吃饭,暴力&quot;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    override fun pee() &#123;</span><br><span class="line">        println(&quot;$&#123;name&#125;站着尿尿---&quot;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;女人</span><br><span class="line">class Woman(name: String) :Human(name) &#123;</span><br><span class="line">    override fun pee() &#123;</span><br><span class="line">        println(&quot;$&#123;name&#125;蹲着尿尿---&quot;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    override fun eat() &#123;</span><br><span class="line">        println(&quot;$&#123;name&#125;小口慢慢的吃饭，文雅&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;测试</span><br><span class="line">fun main(args: Array&lt;String&gt;) &#123;</span><br><span class="line">    var person1 &#x3D; Man(&quot;金三胖&quot;)</span><br><span class="line">    var person2 &#x3D; Woman(&quot;波多野结衣&quot;)</span><br><span class="line">    var person3 &#x3D; Woman(&quot;貂蝉&quot;)</span><br><span class="line">    var person4 &#x3D; Man(&quot;吕布&quot;)</span><br><span class="line"></span><br><span class="line">    var humanList &#x3D; listOf&lt;Human&gt;(person1,person2,person3,person4)</span><br><span class="line"></span><br><span class="line">    for (h in humanList)&#123;</span><br><span class="line">        h.name</span><br><span class="line">&#x2F;&#x2F;        h.eat()</span><br><span class="line">        h.pee()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="六、when的表达式："><a href="#六、when的表达式：" class="headerlink" title="六、when的表达式："></a>六、when的表达式：</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;考试成绩评级10分 9分A 8分B 7分C</span><br><span class="line"></span><br><span class="line">fun scoreMatch(score:Int):String&#123;</span><br><span class="line">	when(score)&#123;</span><br><span class="line">		10 -&gt; return &quot;恭喜你拿了满分S&quot;</span><br><span class="line">		9 -&gt; return &quot;恭喜你拿了A&quot;</span><br><span class="line">		8 -&gt; return &quot;恭喜你拿了B&quot;</span><br><span class="line">		7 -&gt; return &quot;你拿了C，还需更加努力&quot;</span><br><span class="line">		else -&gt; return &quot;对不起你被OUT啦！&quot;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun main(agrs:Array&lt;String&gt;)&#123;</span><br><span class="line">	println(scoreMatch(10))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="七、空值判断："><a href="#七、空值判断：" class="headerlink" title="七、空值判断："></a>七、空值判断：</h3><p>加上问好代表参数可以为空</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;接收一个参数，参数为非空的String类型   </span><br><span class="line">fun heat(str:String?):String&#123;</span><br><span class="line">	return &quot;热$&#123;str&#125;&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun main(agrs:Array&lt;String&gt;)&#123;</span><br><span class="line">	var result1 &#x3D; &quot;油&quot;</span><br><span class="line">	println(heat(result1))</span><br><span class="line">	</span><br><span class="line">	var result2 &#x3D; null</span><br><span class="line">	println(heat(result2))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="八、函数表达式"><a href="#八、函数表达式" class="headerlink" title="八、函数表达式"></a>八、函数表达式</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">fun main(args:Array&lt;String&gt;)&#123;</span><br><span class="line">	&#x2F;&#x2F;函数</span><br><span class="line">	var result &#x3D; add(3,4)</span><br><span class="line">	println(result)</span><br><span class="line">	</span><br><span class="line">	&#x2F;&#x2F;函数表达式</span><br><span class="line">	var i &#x3D; &#123;x:Int,y:Int -&gt; x+y&#125;</span><br><span class="line">	var result2 &#x3D; i(3,4)</span><br><span class="line">	var temp &#x3D; result2&#x3D;&#x3D;(7)</span><br><span class="line">	println(&quot;$&#123;temp&#125;&quot;)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun add(a:Int,b:Int):Int &#x3D; a+b</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="九、递归演示："><a href="#九、递归演示：" class="headerlink" title="九、递归演示："></a>九、递归演示：</h3><p><strong>BigInteger</strong>函数是Java数值运算大值时使用的属性，特殊的超级<strong>Int</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;演示一</span><br><span class="line">import java.math.BigInteger</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 递归演示</span><br><span class="line">&#x2F;&#x2F; 阶乘  5的阶乘：5*4*3*2*1</span><br><span class="line">fun main(args:Array&lt;String&gt;)&#123;</span><br><span class="line">	&#x2F;&#x2F;&#x2F;BigInteger是一个不可描述超大的数字</span><br><span class="line">	println(&quot;请输入数字：&quot;)</span><br><span class="line">	var a &#x3D; readLine()</span><br><span class="line">    try&#123;</span><br><span class="line">		var b:BigInteger &#x3D; a!!.toBigInteger()</span><br><span class="line">		&#x2F;&#x2F;阶乘</span><br><span class="line">		println(fact(b))</span><br><span class="line">	&#125;catch(e:Exception)&#123;</span><br><span class="line">		println(&quot;输入数字有误！！&quot;)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun fact(a:BigInteger):BigInteger&#123;</span><br><span class="line">	if(a&#x3D;&#x3D;BigInteger.ONE)</span><br><span class="line">	    return BigInteger.ONE</span><br><span class="line">	else</span><br><span class="line">		return a*fact(a-BigInteger.ONE)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>尾递归 <strong>tailrec</strong>修饰方法,譬如超过电脑运算周期范围的计算</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">fun main(args:Array&lt;String&gt;)&#123;</span><br><span class="line">	var a &#x3D; readLine()!!.toInt()</span><br><span class="line">	var num:Int &#x3D; 0</span><br><span class="line">	var result:Int &#x3D; 0</span><br><span class="line">	println(add(a,num,result))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;尾递归 tailrec修饰方法</span><br><span class="line">tailrec fun add(nuk:Int,nn:Int,result:Int):Int&#123;</span><br><span class="line">	var nns &#x3D; nn+1</span><br><span class="line">	var results &#x3D; result + nuk</span><br><span class="line">	println(&quot;计算机第$&#123;nns&#125;次运算,结果为：$&#123;results&#125;&quot;)</span><br><span class="line">	if(nuk&#x3D;&#x3D;1)</span><br><span class="line">		return results</span><br><span class="line">	else</span><br><span class="line">		</span><br><span class="line">		return add(nuk-1,nns,results)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="十、List和Map"><a href="#十、List和Map" class="headerlink" title="十、List和Map"></a>十、List和Map</h3><p>List演示：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> fun main(args:Array&lt;String&gt;)&#123;</span><br><span class="line">	 var lists &#x3D; listOf(&quot;买鸡蛋&quot;,&quot;买可乐&quot;,&quot;买猪肉&quot;,&quot;买大米&quot;)</span><br><span class="line">	 </span><br><span class="line">	 for(a in lists)&#123;</span><br><span class="line">		 println(a)</span><br><span class="line">		&#125;</span><br><span class="line">	 </span><br><span class="line">	 for((i,e) in lists.withIndex())</span><br><span class="line">		 println(&quot;$i,$e&quot;)</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Map演示：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import java.util.TreeMap</span><br><span class="line"></span><br><span class="line">fun main(args:Array&lt;String&gt;)&#123;</span><br><span class="line">	&#x2F;&#x2F;TreeMap 同一key的value不能重复存在</span><br><span class="line">	var map &#x3D; TreeMap&lt;String,String&gt;()</span><br><span class="line">	var list &#x3D; listOf(&quot;好&quot;,&quot;好&quot;,&quot;学习&quot;,&quot;天&quot;,&quot;天&quot;,&quot;向上&quot;)</span><br><span class="line">	</span><br><span class="line">	map[&quot;好&quot;] &#x3D; &quot;Good&quot;</span><br><span class="line">	map[&quot;学习&quot;] &#x3D; &quot;Study&quot;</span><br><span class="line">	map[&quot;天&quot;]  &#x3D; &quot;Day&quot;</span><br><span class="line">	map[&quot;向上&quot;]  &#x3D; &quot;Up&quot;</span><br><span class="line">	</span><br><span class="line">	for(a in list)&#123;</span><br><span class="line">		print(&quot;$&#123;map[a]&#125;  &quot;)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="十一、人机交互"><a href="#十一、人机交互" class="headerlink" title="十一、人机交互"></a>十一、人机交互</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">fun main(args:Array&lt;String&gt;)&#123;</span><br><span class="line">	println(&quot;请输入第一个数字：&quot;)</span><br><span class="line">	var c &#x3D; readLine()</span><br><span class="line">	println(&quot;请输入第二个数字：&quot;)</span><br><span class="line">	var d &#x3D; readLine()</span><br><span class="line">	</span><br><span class="line">	try&#123;</span><br><span class="line">		var a &#x3D; c!!.toInt()</span><br><span class="line">	    var b &#x3D; d!!.toInt()</span><br><span class="line">		println(&quot;$&#123;a&#125; + $&#123;b&#125; &#x3D; $&#123;a + b&#125;&quot;)</span><br><span class="line">	&#125;catch(e:Exception)&#123;</span><br><span class="line">		println(&quot;输入数据有误！，请重新输入&quot;)</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>**!!.**确保不为空<br>**?.**可为空</p>
-]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>kotlin</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Log日志工具类(一)</title>
     <url>/2021/04/07/Log%E6%97%A5%E5%BF%97%E5%B7%A5%E5%85%B7%E7%B1%BB-%E4%B8%80/</url>
     <content><![CDATA[<p>实现的效果能将json字符串以格式化的方式显示</p>
@@ -1580,16 +1593,37 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
-    <title>Mac 每次都要执行source ~/.bash_profile 配置的环境变量才生效</title>
-    <url>/2020/07/28/Mac-%E6%AF%8F%E6%AC%A1%E9%83%BD%E8%A6%81%E6%89%A7%E8%A1%8Csource-bash-profile-%E9%85%8D%E7%BD%AE%E7%9A%84%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E6%89%8D%E7%94%9F%E6%95%88/</url>
-    <content><![CDATA[<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>遇到一个问题，前段时间由于系统升级之后，做了一下用户群组的改动，在开发的时候发现之前在<br><code>.bash_profile</code>中设置的环境变量都不见了，还只能在终端中执行一次<code>source .bash_profile</code>,环境变量才能生效。</p>
-<h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><p>在系统根目录下，在~/.zshrc文件最后，增加一行：<br>source ~/.bash_profile</p>
+    <title>MAC使用APKTool反编译apk修改版本号后重新打包</title>
+    <url>/2021/04/14/MAC%E4%BD%BF%E7%94%A8APKTool%E5%8F%8D%E7%BC%96%E8%AF%91apk%E4%BF%AE%E6%94%B9%E7%89%88%E6%9C%AC%E5%8F%B7%E5%90%8E%E9%87%8D%E6%96%B0%E6%89%93%E5%8C%85/</url>
+    <content><![CDATA[<p>现在业务上出现客户要求如若生产环境出现紧急事件，需要版本回退的情况下，我这边的代码又没做版本分之处理，那么只能更改之前的版本号来实现。<br><a href="https://blog.csdn.net/weixin_40998254/article/details/110474885">不敢夺他人之功，原文在此处</a></p>
+<p><a href="https://markchyl.cn/2020/12/14/android%E5%8F%8D%E7%BC%96%E8%AF%91apktool-dex2jar-jdgui/">我之前的文章：android反编译apktool—dex2jar—jdgui</a></p>
+<h3 id="一、反编译apk并修改版本号"><a href="#一、反编译apk并修改版本号" class="headerlink" title="一、反编译apk并修改版本号"></a>一、反编译apk并修改版本号</h3><p>在apk所在目录控制台输入下面指令，即可将文件名为source的apk反编译到outDir目录</p>
+<ul>
+<li>开始反编译apk<code>apktool d -o outDir source.apk</code><br>或者<br><code>apktool d source.apk -o outDir</code></li>
+</ul>
+<h3 id="二、修改版本号"><a href="#二、修改版本号" class="headerlink" title="二、修改版本号"></a>二、修改版本号</h3><p>打开输入目录outDir找到apktool.yml文件，编辑修改versionCode</p>
+<h3 id="三、重新打包"><a href="#三、重新打包" class="headerlink" title="三、重新打包"></a>三、重新打包</h3><p>通过以下命令就可以将目录outDir中的文件重新打包为no_sign_result.apk</p>
+<ul>
+<li><code>apktool b -o no_sign_result.apk outDir</code></li>
+</ul>
+<p>或者</p>
+<ul>
+<li><code>apktool b outDir -o  no_sign_result.apk </code></li>
+</ul>
+<h3 id="四、重新签名"><a href="#四、重新签名" class="headerlink" title="四、重新签名"></a>四、重新签名</h3><p>使用如下命令进行签名<br><code>jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore demostore.jks -signedjar result-signed.apk no_sign_result.apk yourkey</code><br>注：</p>
+<ul>
+<li>demostore.jks为签名文件</li>
+<li>no_sign_result.apk为要签名的源文件</li>
+<li>result-signed.apk为签名后的目标文件</li>
+<li>yourkey为签名的key</li>
+</ul>
 ]]></content>
       <categories>
-        <category>工具使用</category>
+        <category>Android</category>
       </categories>
       <tags>
-        <tag>系统</tag>
+        <tag>反编译</tag>
+        <tag>工具搭建</tag>
       </tags>
   </entry>
   <entry>
@@ -1631,37 +1665,31 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
-    <title>MAC使用APKTool反编译apk修改版本号后重新打包</title>
-    <url>/2021/04/14/MAC%E4%BD%BF%E7%94%A8APKTool%E5%8F%8D%E7%BC%96%E8%AF%91apk%E4%BF%AE%E6%94%B9%E7%89%88%E6%9C%AC%E5%8F%B7%E5%90%8E%E9%87%8D%E6%96%B0%E6%89%93%E5%8C%85/</url>
-    <content><![CDATA[<p>现在业务上出现客户要求如若生产环境出现紧急事件，需要版本回退的情况下，我这边的代码又没做版本分之处理，那么只能更改之前的版本号来实现。<br><a href="https://blog.csdn.net/weixin_40998254/article/details/110474885">不敢夺他人之功，原文在此处</a></p>
-<p><a href="https://markchyl.cn/2020/12/14/android%E5%8F%8D%E7%BC%96%E8%AF%91apktool-dex2jar-jdgui/">我之前的文章：android反编译apktool—dex2jar—jdgui</a></p>
-<h3 id="一、反编译apk并修改版本号"><a href="#一、反编译apk并修改版本号" class="headerlink" title="一、反编译apk并修改版本号"></a>一、反编译apk并修改版本号</h3><p>在apk所在目录控制台输入下面指令，即可将文件名为source的apk反编译到outDir目录</p>
-<ul>
-<li>开始反编译apk<code>apktool d -o outDir source.apk</code><br>或者<br><code>apktool d source.apk -o outDir</code></li>
-</ul>
-<h3 id="二、修改版本号"><a href="#二、修改版本号" class="headerlink" title="二、修改版本号"></a>二、修改版本号</h3><p>打开输入目录outDir找到apktool.yml文件，编辑修改versionCode</p>
-<h3 id="三、重新打包"><a href="#三、重新打包" class="headerlink" title="三、重新打包"></a>三、重新打包</h3><p>通过以下命令就可以将目录outDir中的文件重新打包为no_sign_result.apk</p>
-<ul>
-<li><code>apktool b -o no_sign_result.apk outDir</code></li>
-</ul>
-<p>或者</p>
-<ul>
-<li><code>apktool b outDir -o  no_sign_result.apk </code></li>
-</ul>
-<h3 id="四、重新签名"><a href="#四、重新签名" class="headerlink" title="四、重新签名"></a>四、重新签名</h3><p>使用如下命令进行签名<br><code>jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore demostore.jks -signedjar result-signed.apk no_sign_result.apk yourkey</code><br>注：</p>
-<ul>
-<li>demostore.jks为签名文件</li>
-<li>no_sign_result.apk为要签名的源文件</li>
-<li>result-signed.apk为签名后的目标文件</li>
-<li>yourkey为签名的key</li>
-</ul>
+    <title>Mac 每次都要执行source ~/.bash_profile 配置的环境变量才生效</title>
+    <url>/2020/07/28/Mac-%E6%AF%8F%E6%AC%A1%E9%83%BD%E8%A6%81%E6%89%A7%E8%A1%8Csource-bash-profile-%E9%85%8D%E7%BD%AE%E7%9A%84%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E6%89%8D%E7%94%9F%E6%95%88/</url>
+    <content><![CDATA[<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>遇到一个问题，前段时间由于系统升级之后，做了一下用户群组的改动，在开发的时候发现之前在<br><code>.bash_profile</code>中设置的环境变量都不见了，还只能在终端中执行一次<code>source .bash_profile</code>,环境变量才能生效。</p>
+<h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><p>在系统根目录下，在~/.zshrc文件最后，增加一行：<br>source ~/.bash_profile</p>
 ]]></content>
       <categories>
-        <category>Android</category>
+        <category>工具使用</category>
       </categories>
       <tags>
-        <tag>反编译</tag>
-        <tag>工具搭建</tag>
+        <tag>系统</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Mac 电脑如何卸载 node和npm</title>
+    <url>/2020/08/25/Mac-%E7%94%B5%E8%84%91%E5%A6%82%E4%BD%95%E5%8D%B8%E8%BD%BD-node%E5%92%8Cnpm/</url>
+    <content><![CDATA[<p>记录下我自己重新安装npm，因为npm是和node.js安装一起的，也就是说是重新弄<em>node</em></p>
+<span id="more"></span>
+<h3 id="一、在终端依次输入以下命令"><a href="#一、在终端依次输入以下命令" class="headerlink" title="一、在终端依次输入以下命令"></a>一、在终端依次输入以下命令</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo npm uninstall npm -g</span><br><span class="line">sudo rm -rf &#x2F;usr&#x2F;local&#x2F;lib&#x2F;node &#x2F;usr&#x2F;local&#x2F;lib&#x2F;node_modules &#x2F;var&#x2F;db&#x2F;receipts&#x2F;org.nodejs.*</span><br><span class="line">sudo rm -rf &#x2F;usr&#x2F;local&#x2F;include&#x2F;node &#x2F;Users&#x2F;$USER&#x2F;.npm</span><br><span class="line">sudo rm &#x2F;usr&#x2F;local&#x2F;bin&#x2F;node</span><br><span class="line">sudo rm &#x2F;usr&#x2F;local&#x2F;share&#x2F;man&#x2F;man1&#x2F;node.1</span><br></pre></td></tr></table></figure>
+<h3 id="二"><a href="#二" class="headerlink" title="二"></a>二</h3><p>输入 npm -v 和node -v 验证是否卸载成功。</p>
+]]></content>
+      <categories>
+        <category>工具使用</category>
+      </categories>
+      <tags>
+        <tag>系统</tag>
       </tags>
   </entry>
   <entry>
@@ -1710,18 +1738,108 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
-    <title>Mac 电脑如何卸载 node和npm</title>
-    <url>/2020/08/25/Mac-%E7%94%B5%E8%84%91%E5%A6%82%E4%BD%95%E5%8D%B8%E8%BD%BD-node%E5%92%8Cnpm/</url>
-    <content><![CDATA[<p>记录下我自己重新安装npm，因为npm是和node.js安装一起的，也就是说是重新弄<em>node</em></p>
+    <title>Mac用Docker安装Oracle11g并连接Navicat</title>
+    <url>/2020/12/01/Mac%E7%94%A8Docker%E5%AE%89%E8%A3%85Oracle11g%E5%B9%B6%E8%BF%9E%E6%8E%A5Navicat/</url>
+    <content><![CDATA[<p><a href="https://www.cnblogs.com/lihanqing/p/12329480.html">原文转载自大佬笑等茶凉</a></p>
+<h3 id="1-下载并安装Docker"><a href="#1-下载并安装Docker" class="headerlink" title="1.下载并安装Docker"></a>1.下载并安装Docker</h3><p>官方下载地址：<a href="https://download.docker.com/mac/stable/Docker.dmg">https://download.docker.com/mac/stable/Docker.dmg</a></p>
+<h3 id="2-用docker下载镜像，在终端输入："><a href="#2-用docker下载镜像，在终端输入：" class="headerlink" title="2.用docker下载镜像，在终端输入："></a>2.用docker下载镜像，在终端输入：</h3><blockquote>
+<p>docker pull registry.cn-hangzhou.aliyuncs.com/helowin/oracle_11g</p>
+</blockquote>
+<h3 id="3-启动oracle镜像作为容器："><a href="#3-启动oracle镜像作为容器：" class="headerlink" title="3.启动oracle镜像作为容器："></a>3.启动oracle镜像作为容器：</h3><blockquote>
+<p>docker run -d -p 1521:1521 –name oracle11g registry.cn-hangzhou.aliyuncs.com/helowin/oracle_11g</p>
+</blockquote>
+<h3 id="4-进入镜像配置"><a href="#4-进入镜像配置" class="headerlink" title="4.进入镜像配置"></a>4.进入镜像配置</h3><blockquote>
+<p>docker exec -it oracle11g bash</p>
+</blockquote>
 <span id="more"></span>
-<h3 id="一、在终端依次输入以下命令"><a href="#一、在终端依次输入以下命令" class="headerlink" title="一、在终端依次输入以下命令"></a>一、在终端依次输入以下命令</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo npm uninstall npm -g</span><br><span class="line">sudo rm -rf &#x2F;usr&#x2F;local&#x2F;lib&#x2F;node &#x2F;usr&#x2F;local&#x2F;lib&#x2F;node_modules &#x2F;var&#x2F;db&#x2F;receipts&#x2F;org.nodejs.*</span><br><span class="line">sudo rm -rf &#x2F;usr&#x2F;local&#x2F;include&#x2F;node &#x2F;Users&#x2F;$USER&#x2F;.npm</span><br><span class="line">sudo rm &#x2F;usr&#x2F;local&#x2F;bin&#x2F;node</span><br><span class="line">sudo rm &#x2F;usr&#x2F;local&#x2F;share&#x2F;man&#x2F;man1&#x2F;node.1</span><br></pre></td></tr></table></figure>
-<h3 id="二"><a href="#二" class="headerlink" title="二"></a>二</h3><p>输入 npm -v 和node -v 验证是否卸载成功。</p>
+
+<h3 id="5-配置环境变量"><a href="#5-配置环境变量" class="headerlink" title="5.配置环境变量"></a>5.配置环境变量</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export ORACLE_HOME&#x3D;&#x2F;home&#x2F;oracle&#x2F;app&#x2F;oracle&#x2F;product&#x2F;11.2.0&#x2F;dbhome_2</span><br><span class="line">export ORACLE_SID&#x3D;helowin</span><br><span class="line">export PATH&#x3D;$ORACLE_HOME&#x2F;bin:$PATH</span><br></pre></td></tr></table></figure>
+<h3 id="6-修改密码"><a href="#6-修改密码" class="headerlink" title="6.修改密码"></a>6.修改密码</h3><blockquote>
+<p>sqlplus /nolog</p>
+</blockquote>
+<blockquote>
+<p>SQL&gt; conn /as sysdba;<br>SQL&gt; alter user system identified by oracle;<br>SQL&gt; conn system/oracle;<br>那样便修改了账号为system密码为oracle的账号.</p>
+</blockquote>
+<p><strong>系统权限管理 :</strong></p>
+<ul>
+<li>系统权限分类：<br>DBA: 拥有全部特权，是系统最高权限，只有DBA才可以创建数据库结构。<br>RESOURCE:拥有Resource权限的用户只可以创建实体，不可以创建数据库结构。<br>CONNECT:拥有Connect权限的用户只可以登录Oracle，不可以创建实体，不可以创建数据库结构。<br>对于普通用户：授予connect, resource权限。<br>对于DBA管理用户：授予connect，resource, dba权限。</li>
+</ul>
+<hr>
+<ul>
+<li>系统权限授权命令：<br>系统权限只能由DBA用户授出：sys, system(最开始只能是这两个用户)<br>授权命令：SQL&gt; grant connect, resource, dba to 用户名1 [,用户名2]…;<br>注:普通用户通过授权可以具有与system相同的用户权限，但永远不能达到与sys用户相同的权限，system用户的权限也可以被回收。</li>
+</ul>
+<h3 id="7-创建用户"><a href="#7-创建用户" class="headerlink" title="7.创建用户"></a>7.创建用户</h3><blockquote>
+<p>SQL&gt; create user mark identified by chenyunlin;</p>
+</blockquote>
+<p>用sysdba赋予该用户所有权限：</p>
+<blockquote>
+<p>SQL&gt; grant all privileges to mark;</p>
+</blockquote>
+<p>连接新创建的用户：</p>
+<blockquote>
+<p>SQL&gt; conn mark/chenyunlin;</p>
+</blockquote>
+<p>创建表：</p>
+<blockquote>
+<p>SQL&gt; create table test2(name varchar2(20), city varchar2(20));</p>
+</blockquote>
+<p>比如在此你拥有自动化创建数据表的脚本的话<br><code>## 执行sql脚本文件 @/Users/mark/Desktop/iotek_oracle.sql;</code></p>
+<h3 id="8-使用Navicat连接oracle"><a href="#8-使用Navicat连接oracle" class="headerlink" title="8.使用Navicat连接oracle"></a>8.使用Navicat连接oracle</h3><p>图片借用哈<br><img src="https://img2018.cnblogs.com/blog/1384393/202002/1384393-20200219000941495-1048166820.png"></p>
+<p>注意：服务名helowin是镜像地址中的</p>
+<p><strong>常用的一些命令：</strong></p>
+<p><code>docker ps</code>是查看当前运行的容器</p>
+<p><code>docker ps -a </code>是查看所有容器（包括停止的）</p>
+<p><code>docker images</code>查看所有镜像</p>
+<p><code>docker run -h &quot;oracle&quot; --name &quot;oracle&quot; -d -p 49160:22 -p 49161:1521 -p 49162:8080 alexeiled/docker-oracle-xe-11g</code><br>​ -h “oracle”：指定容器的hostname为oracle</p>
+<p>　　–name “oracle”：将容器命名为oracle</p>
+<p>　　-d：在后台运行</p>
+<p>　　-p: 端口映射，格式为：主机(宿主)端口:容器端口</p>
+<p><strong>启动或停止oracle服务：</strong></p>
+<p><code>docker start oracle11g</code></p>
+<p><code>docker stop oracle11g</code></p>
+<h3 id="9-后续操作命令"><a href="#9-后续操作命令" class="headerlink" title="9.后续操作命令"></a>9.后续操作命令</h3><p>删除容器：</p>
+<blockquote>
+<p>docker rm [containerId]<br>删除镜像：<br>docker rmi [imageId]</p>
+</blockquote>
+<h3 id="10-使用终端打开sqlplus"><a href="#10-使用终端打开sqlplus" class="headerlink" title="10.使用终端打开sqlplus"></a>10.使用终端打开sqlplus</h3><p>由于本人电脑的配置原因，</p>
+<ul>
+<li> docker exec -it oracle11g bash<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export ORACLE_HOME&#x3D;&#x2F;home&#x2F;oracle&#x2F;app&#x2F;oracle&#x2F;product&#x2F;11.2.0&#x2F;dbhome_2</span><br><span class="line">export ORACLE_SID&#x3D;helowin</span><br><span class="line">export PATH&#x3D;$ORACLE_HOME&#x2F;bin:$PATH</span><br><span class="line">sqlplus &#x2F;nolog</span><br><span class="line"></span><br><span class="line">SQL*Plus: Release 11.2.0.1.0 Production on Fri Dec 4 15:03:36 2020</span><br><span class="line"></span><br><span class="line">Copyright (c) 1982, 2009, Oracle.  All rights reserved.</span><br><span class="line"></span><br><span class="line">SQL&gt; </span><br></pre></td></tr></table></figure></li>
+</ul>
 ]]></content>
       <categories>
-        <category>工具使用</category>
+        <category>数据库</category>
       </categories>
       <tags>
-        <tag>系统</tag>
+        <tag>环境搭建</tag>
+        <tag>Oracle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Mac电脑maven安装与配置</title>
+    <url>/2021/05/13/Mac%E7%94%B5%E8%84%91maven%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<p><a href="https://www.cnblogs.com/zdz8207/p/mac-java-maven.html">原文地址：大自然的流风</a></p>
+<hr>
+<h3 id="Mac电脑maven安装与配置"><a href="#Mac电脑maven安装与配置" class="headerlink" title="Mac电脑maven安装与配置"></a>Mac电脑maven安装与配置</h3><ol>
+<li><p>下载：<a href="http://maven.apache.org/download.cgi">http://maven.apache.org/download.cgi</a></p>
+</li>
+<li><p>安装：解压下载好的maven的文件，解压到你想要的文件夹下。</p>
+</li>
+<li><p>配置：打开终端输入命令 sudo vim ~/.bash_profile （编辑环境变量配置文件）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export MAVEN_HOME&#x3D;maven文件夹路径</span><br><span class="line">export PATH&#x3D;$PATH:$MAVEN_HOME&#x2F;bin</span><br></pre></td></tr></table></figure>
+<p><strong>小技巧</strong></p>
+<blockquote>
+<p>复制文件夹路径方法：点击文件夹，然后使用组合快捷键：command + option + c 就会把路径复制到粘贴板了。<br>或者把文件夹拖放到控制台也可以显示出来<br>让mac文件夹显示文件夹和文件路径，执行命令：defaults write com.apple.finder _FXShowPosixPathInTitle -bool YES</p>
+</blockquote>
+</li>
+<li><p><code>:wq</code>退出并保存当前文件,<code>source .bash_profile</code>，按下Enter键使bash_profile生效。<br><code>mvn -v</code>查看是否成功</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@Markxiansheng ~ % mvn -v</span><br><span class="line">Apache Maven 3.8.1 (05c21c65bdfed0f71a2f2ada8b84da59348c4c5d)</span><br><span class="line">Maven home: &#x2F;Users&#x2F;mark&#x2F;Library&#x2F;maven&#x2F;apache-maven-3.8.1</span><br><span class="line">Java version: 11.0.11, vendor: Amazon.com Inc., runtime: &#x2F;Users&#x2F;mark&#x2F;Library&#x2F;Java&#x2F;JavaVirtualMachines&#x2F;corretto-11.0.11&#x2F;Contents&#x2F;Home</span><br><span class="line">Default locale: zh_CN_#Hans, platform encoding: UTF-8</span><br><span class="line">OS name: &quot;mac os x&quot;, version: &quot;10.15.7&quot;, arch: &quot;x86_64&quot;, family: &quot;mac&quot;</span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+      <categories>
+        <category>环境配置</category>
+      </categories>
+      <tags>
+        <tag>Maven</tag>
       </tags>
   </entry>
   <entry>
@@ -1746,90 +1864,6 @@ Connection conn = null;
       </categories>
       <tags>
         <tag>工具搭建</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Mark的Retrofit学习第一篇</title>
-    <url>/2018/12/17/Mark%E7%9A%84Retrofit%E5%AD%A6%E4%B9%A0%E7%AC%AC%E4%B8%80%E7%AF%87/</url>
-    <content><![CDATA[<h2 id="Retrofit介绍"><a href="#Retrofit介绍" class="headerlink" title="Retrofit介绍 :"></a>Retrofit介绍 :</h2><p>改造将您的HTTP API变成一个Java界面。Square公司针对Android和Java的类型安全HTTP客户端<br>       Retrofit是Square公司开发的一款针对Android网络请求的框架，Retrofit2底层基于OkHttp实现的，OkHttp现在已经得到Google官方认可，大量的app都采用OkHttp做网络请求，其源码详见OkHttp Github。</p>
-<pre><code>   每个方法都必须有一个提供请求方法和相对URL的HTTP注释。有五个内置注释：GET，POST，PUT，DELETE，和HEAD。资源的相对URL在注释中指定。
-</code></pre>
-<span id="more"></span>
-<h2 id="一、声明接口"><a href="#一、声明接口" class="headerlink" title="一、声明接口"></a>一、声明接口</h2><p>public interface GitHubService {<br>  @GET(“users/{user}/repos”)<br>  Call&lt;List<Repo>&gt; listRepos(@Path(“user”) String user);<br>}</p>
-<p>///Retrofit turns your HTTP API into a Java interface.</p>
-<p>eg：例子：<br>如果链接是<a href="http://ip.taobao.com/service/getIpInfo.php?ip=202.202.33.33">http://ip.taobao.com/service/getIpInfo.php?ip=202.202.33.33</a><br> @GET(“<a href="http://ip.taobao.com/service/getIpInfo.php&quot;">http://ip.taobao.com/service/getIpInfo.php&quot;</a>)<br>    Call getWeather(@Query(“ip”) String ip);</p>
-<p>注意：这里强调一点：Call get();必须是这种形式,这是2.0之后的新形式</p>
-<ul>
-<li>如果不需要转换成Json数据,可以用了ResponseBody;</li>
-<li>你也可以使用Call get();这样的话,需要添加Gson转换器</li>
-</ul>
-<h2 id="二、接口调用"><a href="#二、接口调用" class="headerlink" title="二、接口调用"></a>二、接口调用</h2><p>Retrofit retrofit = new Retrofit.Builder()<br> //这里建议：- Base URL: 总是以/结尾；- @Url: 不要以/开头<br>    .baseUrl(“<a href="https://api.github.com/&quot;">https://api.github.com/&quot;</a>)<br>    .build();</p>
-<p>GitHubService service = retrofit.create(GitHubService.class);</p>
-<p>Call&lt;List<Repo>&gt; repos = service.listRepos(“octocat”);</p>
-<p>//The Retrofit class generates an implementation of the GitHubService interface.<br>强调一点：如果你的@GET后面的URL地址是全拼的地址，那么baseurl就会设置的没有必要，留意哦！！！</p>
-<h2 id="三、同步调用"><a href="#三、同步调用" class="headerlink" title="三、同步调用"></a>三、同步调用</h2><p>  try {<br>            Response bodyResponse = call.execute();<br>            String body = bodyResponse.body().string();//获取返回体的字符串<br>            Log.i(“wxl”, “body=” + body);<br>        } catch (IOException e) {<br>            e.printStackTrace();<br>注意：同步需要处理android.os.NetworkOnMainThreadException</p>
-<h2 id="四、异步调用"><a href="#四、异步调用" class="headerlink" title="四、异步调用"></a>四、异步调用</h2><p>call.enqueue(new Callback() {<br>            @Override<br>            public void onResponse(Response response) {<br>                try {<br>                    Log.i(“wxl”, “response=” + response.body().string());<br>                } catch (IOException e) {<br>                    e.printStackTrace();<br>            @Override<br>            public void onFailure(Throwable t) {<br>                Log.i(“wxl”, “onFailure=” + t.getMessage());<br>        });</p>
-<p>注意这里看不懂的可以参考我的GitHub代码地址：<a href="https://github.com/MarkCHYL/MarkRetrofitDemo">https://github.com/MarkCHYL/MarkRetrofitDemo</a><br>项目中添加了简单的使用方法，只做到如何获取网络接口的数据。</p>
-<h2 id="五、移除请求"><a href="#五、移除请求" class="headerlink" title="五、移除请求"></a>五、移除请求</h2><p>call.cancel();</p>
-<h2 id="六、添加gson依赖"><a href="#六、添加gson依赖" class="headerlink" title="六、添加gson依赖"></a>六、添加gson依赖</h2><p> implementation ‘com.squareup.retrofit2:converter-gson:2.3.0’<br>这里我选择的是与retrofit统一版本的，我怕报错</p>
-<p>后续我会进一步封装！！！</p>
-<h2 id="七、Retrofit2打印-网络请求日志"><a href="#七、Retrofit2打印-网络请求日志" class="headerlink" title="七、Retrofit2打印 网络请求日志"></a>七、Retrofit2打印 网络请求日志</h2><p>添加依赖：<br> implementation ‘com.squareup.okhttp3:logging-interceptor:3.8.1’</p>
-<h2 id="然后就是你初始化拦截器加配置；这个很简单我参考了以下两篇文章"><a href="#然后就是你初始化拦截器加配置；这个很简单我参考了以下两篇文章" class="headerlink" title="然后就是你初始化拦截器加配置；这个很简单我参考了以下两篇文章"></a>然后就是你初始化拦截器加配置；这个很简单我参考了以下两篇文章</h2><p><a href="https://blog.csdn.net/u011511368/article/details/51753315">https://blog.csdn.net/u011511368/article/details/51753315</a><br><a href="https://blog.csdn.net/Picasso_L/article/details/53200926">https://blog.csdn.net/Picasso_L/article/details/53200926</a></p>
-<h3 id="最后附上自己的Github的Demo"><a href="#最后附上自己的Github的Demo" class="headerlink" title="最后附上自己的Github的Demo"></a>最后附上自己的<a href="https://github.com/MarkCHYL/MarkRetrofitDemo">Github的Demo</a></h3>]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>网络框架</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Mark的架构学习笔记---Android_MVP</title>
-    <url>/2018/12/17/Mark%E7%9A%84%E6%9E%B6%E6%9E%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Android-MVP/</url>
-    <content><![CDATA[<h1 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h1><p>   我是名安卓程序员。当我第一次接触到架构这个概念时，说实话我一头雾水。我现实了解了MVC模式，当我开始接触MVP模式时，我啊真的彻底被搞懵了！怎么把一个activity拆成了四个或五者，如果分装过后会更多，想象下，一下子猛的看那么复杂的对我来说无益处。这边文章呢我实现只是一个加你简单单的Demo练习，参考代码和资料来源于网上（备注于文底部）。<br>   记录只是让自己加深理解。</p>
-<span id="more"></span>
-<p><img src="https://user-gold-cdn.xitu.io/2018/7/30/164e8dc7b3e27bb6?w=696&h=812&f=png&s=257193" alt="这是我的Demo代码架构" title="这是我的Demo代码架构"></p>
-<hr>
-<ul>
-<li><h2 id="跟着大佬学习下MVP模式："><a href="#跟着大佬学习下MVP模式：" class="headerlink" title="跟着大佬学习下MVP模式："></a>跟着大佬学习下MVP模式：</h2> MVP是模型（Model）、视图（View）、主持人（Presenter）的缩写，分别代表项目中3个不同的模块。</li>
-</ul>
-<p><img src="https://user-gold-cdn.xitu.io/2018/7/30/164e9021bf594592?w=728&h=618&f=png&s=38130" title="MVP模式示意图"><br>说明：</p>
-<ul>
-<li>  步骤1：UI实现View方法，引用Presenter</li>
-<li>  步骤2：Presenter调用Model，走Model具体逻辑</li>
-<li>  步骤3：Model逻辑实现，回调Presenter方法</li>
-<li>  步骤4：Presenter回调View，即回到UI，回调View方法</li>
-</ul>
-<hr>
-<h2 id="首先我们定义下View层"><a href="#首先我们定义下View层" class="headerlink" title="首先我们定义下View层"></a>首先我们定义下View层</h2><p>   定义接口 <strong>IUserView</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public interface IUserView &#123;</span><br><span class="line">    UserBean getUser();</span><br><span class="line">    void setUser(UserBean bean);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>  一个是拿到数据，一个是把数据给别人，<br>  我们需要让我们的Activity去实现这个接口里面的方法，<br>  然后去做一些数据的显示或者获取。 Presenter与View交互是通过接口。所以我们这里需要定义一个IUserView，<br>  难点就在于应该有哪些方法，我们看一眼效果图会发现一个是保存，一个是载入，<br>  所以我们就创建两个方法，分别是：getUser和setUser；<br>  然后再MainActivity中与实现这个View层的接口<br>  如图所示：<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  public class MainActivity extends AppCompatActivity implements IUserView &#123;</span><br><span class="line">    private UserPresenter presenter;</span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        presenter &#x3D; new UserPresenter(this);</span><br><span class="line">        initEvent();</span><br><span class="line">    &#125;</span><br><span class="line">    private void initEvent() &#123;</span><br><span class="line">        findViewById(R.id.btn_load).setOnClickListener(new View.OnClickListener() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onClick(View view) &#123;</span><br><span class="line">                presenter.loadUser();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        findViewById(R.id.btn_save).setOnClickListener(new View.OnClickListener() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onClick(View view) &#123;</span><br><span class="line">                presenter.saveUser();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    @Override</span><br><span class="line">    public UserBean getUser() &#123;</span><br><span class="line">        int id &#x3D; Integer.valueOf(et_id.getText().toString().trim());</span><br><span class="line">        String name &#x3D; et_name.getText().toString().trim();</span><br><span class="line">        if (name !&#x3D; null) &#123;</span><br><span class="line">            UserBean bean &#x3D; new UserBean();</span><br><span class="line">            bean.setId(id);</span><br><span class="line">            bean.setName(name);</span><br><span class="line">            return bean;</span><br><span class="line">        &#125;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line">    @Override</span><br><span class="line">    public void setUser(UserBean bean) &#123;</span><br><span class="line">        if (bean!&#x3D;null)&#123;</span><br><span class="line">            tv_data_show.setText(bean.toString());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;省略了部分控件的初始化代码</span><br></pre></td></tr></table></figure><br>  是不是觉得曾在某个文章中看见过，哈哈哈，自己敲一边你会得到自己的理解。</p>
-<hr>
-<h2 id="定义下Model层"><a href="#定义下Model层" class="headerlink" title="定义下Model层"></a>定义下Model层</h2><ul>
-<li>首先我们的更具接口或者你的业务代码去定义自己的实体类 <strong>UserBean</strong><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">   public class UserBean &#123;</span><br><span class="line">    private int id;</span><br><span class="line">    private String name;</span><br><span class="line">    </span><br><span class="line">    ...getter and setter 方法</span><br><span class="line">    </span><br><span class="line">    @Override</span><br><span class="line">    public String toString() &#123;</span><br><span class="line">        return &quot;UserBean&#123;&quot; +</span><br><span class="line">                &quot;id&#x3D;&quot; + id +</span><br><span class="line">                &quot;, name&#x3D;&#39;&quot; + name + &#39;\&#39;&#39; +</span><br><span class="line">                &#39;&#125;&#39;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>实体类的接口 IUser<blockquote>
-<p>这里大家要注意一下，IUser里面主要是接口，首先，我们要想好，在Presenter中要实现哪些逻辑，要用到哪些方法，然后就在这里定义哪些方法。User主要是IUser的实现，返回一些数据，具体返回那些数据，就有大家自己去根据实际情况而定。</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">   public interface IUser &#123;</span><br><span class="line">    void savaUserInfo(UserBean user);</span><br><span class="line">    UserBean loadUserInfo();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>实体类的业务实现类 <strong>User</strong><blockquote>
-<p>这里主要是实现<strong>IUser</strong>接口里面定义的业务实现方法，你想干啥干就可以在里面自己凿凿</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">   public class User implements IUser &#123;</span><br><span class="line">    private UserBean bean;</span><br><span class="line">    @Override</span><br><span class="line">    public void savaUserInfo(UserBean user) &#123;</span><br><span class="line">        this.bean &#x3D; user;</span><br><span class="line">    &#125;</span><br><span class="line">    @Override</span><br><span class="line">    public UserBean loadUserInfo() &#123;</span><br><span class="line">        if (bean !&#x3D; null) &#123;</span><br><span class="line">            return bean;</span><br><span class="line">        &#125;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="定义最重要的Presenter层"><a href="#定义最重要的Presenter层" class="headerlink" title="定义最重要的Presenter层"></a>定义最重要的Presenter层</h2><blockquote>
-<p>是连接Activity(在这可以理解为就是View层，因为Activity实现了 <strong>IUserView</strong> 接口)和Model的重要桥梁，所有的业务逻辑都在它里面完成：</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public class UserPresenter &#123;</span><br><span class="line">    private IUser user;</span><br><span class="line">    private IUserView userView;</span><br><span class="line">    public UserPresenter(IUserView userView) &#123;</span><br><span class="line">        this.userView &#x3D; userView;</span><br><span class="line">        user &#x3D; new User();</span><br><span class="line">    &#125;</span><br><span class="line">    public void saveUser()&#123;</span><br><span class="line">        user.savaUserInfo(userView.getUser());</span><br><span class="line">    &#125;</span><br><span class="line">    public void loadUser()&#123;</span><br><span class="line">        userView.setUser(user.loadUserInfo());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<a href="https://github.com/MarkCHYL/Mark_MVP_Sample" title="源码地址">源码地址</a></li>
-</ul>
-<p>下一篇我会结合自己封装的retrofit写一个网络请求的demo笔记，加油⛽️</p>
-]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>架构</tag>
       </tags>
   </entry>
   <entry>
@@ -1940,108 +1974,131 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
-    <title>Mac电脑maven安装与配置</title>
-    <url>/2021/05/13/Mac%E7%94%B5%E8%84%91maven%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<p><a href="https://www.cnblogs.com/zdz8207/p/mac-java-maven.html">原文地址：大自然的流风</a></p>
+    <title>Mark的Flutter的安装和环境配置</title>
+    <url>/2018/12/17/Mark%E7%9A%84Flutter%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><pre><code>    我是一名Android原生开发程序员，目前熟练掌握Java语言和kotlin语言去编写安卓。RN出来的时候我没去学习，现在我想赶上Flutter这列火车。
+</code></pre>
+<span id="more"></span>
 <hr>
-<h3 id="Mac电脑maven安装与配置"><a href="#Mac电脑maven安装与配置" class="headerlink" title="Mac电脑maven安装与配置"></a>Mac电脑maven安装与配置</h3><ol>
-<li><p>下载：<a href="http://maven.apache.org/download.cgi">http://maven.apache.org/download.cgi</a></p>
+<h3 id="我的配置："><a href="#我的配置：" class="headerlink" title="我的配置："></a>我的配置：</h3><ul>
+<li>   Mac笔记本</li>
+<li>   Android Studio 3.2.0 版本</li>
+<li>   准备了翻墙的软件，貌似没怎么用上</li>
+</ul>
+<hr>
+<h3 id="第一步：获取Flutter代码"><a href="#第一步：获取Flutter代码" class="headerlink" title="第一步：获取Flutter代码"></a>第一步：获取Flutter代码</h3><ol>
+<li><p>我先选择了一个存储Flutter的文件夹：</p>
+<p> <img src="evernotecid://3DE7A385-FFCA-4630-91A9-F88E73A63AF0/appyinxiangcom/22109192/ENResource/p1" alt="56a74cdc0cf7522961022dcd31a0f3ca.png"><br>名字跟随自己的命名习惯。</p>
 </li>
-<li><p>安装：解压下载好的maven的文件，解压到你想要的文件夹下。</p>
+<li><p>克隆Flutter代码到本地目录：<br>两种方式：自己在GitHub 上面把SDK下下来放到文件中，或者通过终端输入：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone  https:&#x2F;&#x2F;github.com&#x2F;flutter&#x2F;flutter.git</span><br></pre></td></tr></table></figure>
+<p> 最后就是一样的配置：open .bash_profile打开添加以下路径：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export PATH&#x3D;本地目录&#x2F;flutter&#x2F;bin:$PATH</span><br></pre></td></tr></table></figure>
+<pre><code> 配置完了后，应该可以运行Flutter命令了！可以使用下面命令flutter doctor来检查依赖环境是否正常。如果下载有问题的话，可能是网络受限，如果你没有翻墙软件的话，在终端输入如下两条命令：
+</code></pre>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export PUB_HOSTED_URL&#x3D;https:&#x2F;&#x2F;pub.flutter-io.cn</span><br><span class="line">export FLUTTER_STORAGE_BASE_URL&#x3D;https:&#x2F;&#x2F;storage.flutter-io.cn</span><br></pre></td></tr></table></figure>
+<p>官方也给出了方法，就是使用国内的镜像节点下载，在运行flutter doctor之前先运行下面两个命令即可。<br><img src="evernotecid://3DE7A385-FFCA-4630-91A9-F88E73A63AF0/appyinxiangcom/22109192/ENResource/p2" alt="a51a64a974501d1bf53d7f4cd5f82ab2.png"></p>
 </li>
-<li><p>配置：打开终端输入命令 sudo vim ~/.bash_profile （编辑环境变量配置文件）</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export MAVEN_HOME&#x3D;maven文件夹路径</span><br><span class="line">export PATH&#x3D;$PATH:$MAVEN_HOME&#x2F;bin</span><br></pre></td></tr></table></figure>
-<p><strong>小技巧</strong></p>
-<blockquote>
-<p>复制文件夹路径方法：点击文件夹，然后使用组合快捷键：command + option + c 就会把路径复制到粘贴板了。<br>或者把文件夹拖放到控制台也可以显示出来<br>让mac文件夹显示文件夹和文件路径，执行命令：defaults write com.apple.finder _FXShowPosixPathInTitle -bool YES</p>
-</blockquote>
-</li>
-<li><p><code>:wq</code>退出并保存当前文件,<code>source .bash_profile</code>，按下Enter键使bash_profile生效。<br><code>mvn -v</code>查看是否成功</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@Markxiansheng ~ % mvn -v</span><br><span class="line">Apache Maven 3.8.1 (05c21c65bdfed0f71a2f2ada8b84da59348c4c5d)</span><br><span class="line">Maven home: &#x2F;Users&#x2F;mark&#x2F;Library&#x2F;maven&#x2F;apache-maven-3.8.1</span><br><span class="line">Java version: 11.0.11, vendor: Amazon.com Inc., runtime: &#x2F;Users&#x2F;mark&#x2F;Library&#x2F;Java&#x2F;JavaVirtualMachines&#x2F;corretto-11.0.11&#x2F;Contents&#x2F;Home</span><br><span class="line">Default locale: zh_CN_#Hans, platform encoding: UTF-8</span><br><span class="line">OS name: &quot;mac os x&quot;, version: &quot;10.15.7&quot;, arch: &quot;x86_64&quot;, family: &quot;mac&quot;</span><br></pre></td></tr></table></figure></li>
 </ol>
+<hr>
+<h3 id="第二步：配置IOS环境"><a href="#第二步：配置IOS环境" class="headerlink" title="第二步：配置IOS环境"></a>第二步：配置IOS环境</h3><p>我在 App Store下载安装好了Xcode，然后自己安装了Homebrew：<br><a href="https://brew.sh/">Homebrew配置方法地址：</a><br>接下来我就是执行如下的命令：<br>open -a Simulator – 测试成功打开模拟器</p>
+<h6 id="安装用于将Flutter应用部署到iOS设备的工具"><a href="#安装用于将Flutter应用部署到iOS设备的工具" class="headerlink" title="安装用于将Flutter应用部署到iOS设备的工具"></a>安装用于将Flutter应用部署到iOS设备的工具</h6><p>$ brew update<br>$ brew install –HEAD libimobiledevice<br>$ brew install ideviceinstaller ios-deploy cocoapods<br>$ pod setup<br>此处我就是无耻的copy的别人的文章，那位大佬的文章地址：<a href="https://www.jianshu.com/p/0b73cc2af65f">Flutter轻松入门（一） – MAC环境搭建</a></p>
+<hr>
+<h3 id="第三步：在Android-Studio上配置Android开发环境"><a href="#第三步：在Android-Studio上配置Android开发环境" class="headerlink" title="第三步：在Android Studio上配置Android开发环境"></a>第三步：在Android Studio上配置Android开发环境</h3><p>插件怎么安装就不废话啦，直接截图，它会自动安装Flutter和Dart语言插件，Dart有时候可能会安装失败，请耐心点，也可以单独搜Dart进行安装。<br><img src="evernotecid://3DE7A385-FFCA-4630-91A9-F88E73A63AF0/appyinxiangcom/22109192/ENResource/p3" alt="cd5198371c3b49034b3de9a8c41ecf19.png"></p>
+<h3 id="最后终端运行-Flutter-Doctor"><a href="#最后终端运行-Flutter-Doctor" class="headerlink" title="最后终端运行 Flutter Doctor"></a>最后终端运行 Flutter Doctor</h3><p>检查Flutter开发环境是否配置完成，我的如下图：<br><img src="evernotecid://3DE7A385-FFCA-4630-91A9-F88E73A63AF0/appyinxiangcom/22109192/ENResource/p4" alt="586b6df21a8997dcfeb10164a1e39ec4.png"></p>
+<hr>
+<p>笔记收尾处我还得为微我参考的文章打个广告：<a href="https://www.jianshu.com/p/0b73cc2af65f">Flutter轻松入门（一） – MAC环境搭建</a></p>
 ]]></content>
       <categories>
-        <category>环境配置</category>
+        <category>Flutter</category>
       </categories>
       <tags>
-        <tag>Maven</tag>
+        <tag>Android</tag>
+        <tag>Flutter</tag>
       </tags>
   </entry>
   <entry>
-    <title>Mac用Docker安装Oracle11g并连接Navicat</title>
-    <url>/2020/12/01/Mac%E7%94%A8Docker%E5%AE%89%E8%A3%85Oracle11g%E5%B9%B6%E8%BF%9E%E6%8E%A5Navicat/</url>
-    <content><![CDATA[<p><a href="https://www.cnblogs.com/lihanqing/p/12329480.html">原文转载自大佬笑等茶凉</a></p>
-<h3 id="1-下载并安装Docker"><a href="#1-下载并安装Docker" class="headerlink" title="1.下载并安装Docker"></a>1.下载并安装Docker</h3><p>官方下载地址：<a href="https://download.docker.com/mac/stable/Docker.dmg">https://download.docker.com/mac/stable/Docker.dmg</a></p>
-<h3 id="2-用docker下载镜像，在终端输入："><a href="#2-用docker下载镜像，在终端输入：" class="headerlink" title="2.用docker下载镜像，在终端输入："></a>2.用docker下载镜像，在终端输入：</h3><blockquote>
-<p>docker pull registry.cn-hangzhou.aliyuncs.com/helowin/oracle_11g</p>
-</blockquote>
-<h3 id="3-启动oracle镜像作为容器："><a href="#3-启动oracle镜像作为容器：" class="headerlink" title="3.启动oracle镜像作为容器："></a>3.启动oracle镜像作为容器：</h3><blockquote>
-<p>docker run -d -p 1521:1521 –name oracle11g registry.cn-hangzhou.aliyuncs.com/helowin/oracle_11g</p>
-</blockquote>
-<h3 id="4-进入镜像配置"><a href="#4-进入镜像配置" class="headerlink" title="4.进入镜像配置"></a>4.进入镜像配置</h3><blockquote>
-<p>docker exec -it oracle11g bash</p>
-</blockquote>
+    <title>Mark的Retrofit学习第一篇</title>
+    <url>/2018/12/17/Mark%E7%9A%84Retrofit%E5%AD%A6%E4%B9%A0%E7%AC%AC%E4%B8%80%E7%AF%87/</url>
+    <content><![CDATA[<h2 id="Retrofit介绍"><a href="#Retrofit介绍" class="headerlink" title="Retrofit介绍 :"></a>Retrofit介绍 :</h2><p>改造将您的HTTP API变成一个Java界面。Square公司针对Android和Java的类型安全HTTP客户端<br>       Retrofit是Square公司开发的一款针对Android网络请求的框架，Retrofit2底层基于OkHttp实现的，OkHttp现在已经得到Google官方认可，大量的app都采用OkHttp做网络请求，其源码详见OkHttp Github。</p>
+<pre><code>   每个方法都必须有一个提供请求方法和相对URL的HTTP注释。有五个内置注释：GET，POST，PUT，DELETE，和HEAD。资源的相对URL在注释中指定。
+</code></pre>
 <span id="more"></span>
-
-<h3 id="5-配置环境变量"><a href="#5-配置环境变量" class="headerlink" title="5.配置环境变量"></a>5.配置环境变量</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export ORACLE_HOME&#x3D;&#x2F;home&#x2F;oracle&#x2F;app&#x2F;oracle&#x2F;product&#x2F;11.2.0&#x2F;dbhome_2</span><br><span class="line">export ORACLE_SID&#x3D;helowin</span><br><span class="line">export PATH&#x3D;$ORACLE_HOME&#x2F;bin:$PATH</span><br></pre></td></tr></table></figure>
-<h3 id="6-修改密码"><a href="#6-修改密码" class="headerlink" title="6.修改密码"></a>6.修改密码</h3><blockquote>
-<p>sqlplus /nolog</p>
-</blockquote>
-<blockquote>
-<p>SQL&gt; conn /as sysdba;<br>SQL&gt; alter user system identified by oracle;<br>SQL&gt; conn system/oracle;<br>那样便修改了账号为system密码为oracle的账号.</p>
-</blockquote>
-<p><strong>系统权限管理 :</strong></p>
+<h2 id="一、声明接口"><a href="#一、声明接口" class="headerlink" title="一、声明接口"></a>一、声明接口</h2><p>public interface GitHubService {<br>  @GET(“users/{user}/repos”)<br>  Call&lt;List<Repo>&gt; listRepos(@Path(“user”) String user);<br>}</p>
+<p>///Retrofit turns your HTTP API into a Java interface.</p>
+<p>eg：例子：<br>如果链接是<a href="http://ip.taobao.com/service/getIpInfo.php?ip=202.202.33.33">http://ip.taobao.com/service/getIpInfo.php?ip=202.202.33.33</a><br> @GET(“<a href="http://ip.taobao.com/service/getIpInfo.php&quot;">http://ip.taobao.com/service/getIpInfo.php&quot;</a>)<br>    Call getWeather(@Query(“ip”) String ip);</p>
+<p>注意：这里强调一点：Call get();必须是这种形式,这是2.0之后的新形式</p>
 <ul>
-<li>系统权限分类：<br>DBA: 拥有全部特权，是系统最高权限，只有DBA才可以创建数据库结构。<br>RESOURCE:拥有Resource权限的用户只可以创建实体，不可以创建数据库结构。<br>CONNECT:拥有Connect权限的用户只可以登录Oracle，不可以创建实体，不可以创建数据库结构。<br>对于普通用户：授予connect, resource权限。<br>对于DBA管理用户：授予connect，resource, dba权限。</li>
+<li>如果不需要转换成Json数据,可以用了ResponseBody;</li>
+<li>你也可以使用Call get();这样的话,需要添加Gson转换器</li>
 </ul>
-<hr>
-<ul>
-<li>系统权限授权命令：<br>系统权限只能由DBA用户授出：sys, system(最开始只能是这两个用户)<br>授权命令：SQL&gt; grant connect, resource, dba to 用户名1 [,用户名2]…;<br>注:普通用户通过授权可以具有与system相同的用户权限，但永远不能达到与sys用户相同的权限，system用户的权限也可以被回收。</li>
-</ul>
-<h3 id="7-创建用户"><a href="#7-创建用户" class="headerlink" title="7.创建用户"></a>7.创建用户</h3><blockquote>
-<p>SQL&gt; create user mark identified by chenyunlin;</p>
-</blockquote>
-<p>用sysdba赋予该用户所有权限：</p>
-<blockquote>
-<p>SQL&gt; grant all privileges to mark;</p>
-</blockquote>
-<p>连接新创建的用户：</p>
-<blockquote>
-<p>SQL&gt; conn mark/chenyunlin;</p>
-</blockquote>
-<p>创建表：</p>
-<blockquote>
-<p>SQL&gt; create table test2(name varchar2(20), city varchar2(20));</p>
-</blockquote>
-<p>比如在此你拥有自动化创建数据表的脚本的话<br><code>## 执行sql脚本文件 @/Users/mark/Desktop/iotek_oracle.sql;</code></p>
-<h3 id="8-使用Navicat连接oracle"><a href="#8-使用Navicat连接oracle" class="headerlink" title="8.使用Navicat连接oracle"></a>8.使用Navicat连接oracle</h3><p>图片借用哈<br><img src="https://img2018.cnblogs.com/blog/1384393/202002/1384393-20200219000941495-1048166820.png"></p>
-<p>注意：服务名helowin是镜像地址中的</p>
-<p><strong>常用的一些命令：</strong></p>
-<p><code>docker ps</code>是查看当前运行的容器</p>
-<p><code>docker ps -a </code>是查看所有容器（包括停止的）</p>
-<p><code>docker images</code>查看所有镜像</p>
-<p><code>docker run -h &quot;oracle&quot; --name &quot;oracle&quot; -d -p 49160:22 -p 49161:1521 -p 49162:8080 alexeiled/docker-oracle-xe-11g</code><br>​ -h “oracle”：指定容器的hostname为oracle</p>
-<p>　　–name “oracle”：将容器命名为oracle</p>
-<p>　　-d：在后台运行</p>
-<p>　　-p: 端口映射，格式为：主机(宿主)端口:容器端口</p>
-<p><strong>启动或停止oracle服务：</strong></p>
-<p><code>docker start oracle11g</code></p>
-<p><code>docker stop oracle11g</code></p>
-<h3 id="9-后续操作命令"><a href="#9-后续操作命令" class="headerlink" title="9.后续操作命令"></a>9.后续操作命令</h3><p>删除容器：</p>
-<blockquote>
-<p>docker rm [containerId]<br>删除镜像：<br>docker rmi [imageId]</p>
-</blockquote>
-<h3 id="10-使用终端打开sqlplus"><a href="#10-使用终端打开sqlplus" class="headerlink" title="10.使用终端打开sqlplus"></a>10.使用终端打开sqlplus</h3><p>由于本人电脑的配置原因，</p>
-<ul>
-<li> docker exec -it oracle11g bash<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export ORACLE_HOME&#x3D;&#x2F;home&#x2F;oracle&#x2F;app&#x2F;oracle&#x2F;product&#x2F;11.2.0&#x2F;dbhome_2</span><br><span class="line">export ORACLE_SID&#x3D;helowin</span><br><span class="line">export PATH&#x3D;$ORACLE_HOME&#x2F;bin:$PATH</span><br><span class="line">sqlplus &#x2F;nolog</span><br><span class="line"></span><br><span class="line">SQL*Plus: Release 11.2.0.1.0 Production on Fri Dec 4 15:03:36 2020</span><br><span class="line"></span><br><span class="line">Copyright (c) 1982, 2009, Oracle.  All rights reserved.</span><br><span class="line"></span><br><span class="line">SQL&gt; </span><br></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
+<h2 id="二、接口调用"><a href="#二、接口调用" class="headerlink" title="二、接口调用"></a>二、接口调用</h2><p>Retrofit retrofit = new Retrofit.Builder()<br> //这里建议：- Base URL: 总是以/结尾；- @Url: 不要以/开头<br>    .baseUrl(“<a href="https://api.github.com/&quot;">https://api.github.com/&quot;</a>)<br>    .build();</p>
+<p>GitHubService service = retrofit.create(GitHubService.class);</p>
+<p>Call&lt;List<Repo>&gt; repos = service.listRepos(“octocat”);</p>
+<p>//The Retrofit class generates an implementation of the GitHubService interface.<br>强调一点：如果你的@GET后面的URL地址是全拼的地址，那么baseurl就会设置的没有必要，留意哦！！！</p>
+<h2 id="三、同步调用"><a href="#三、同步调用" class="headerlink" title="三、同步调用"></a>三、同步调用</h2><p>  try {<br>            Response bodyResponse = call.execute();<br>            String body = bodyResponse.body().string();//获取返回体的字符串<br>            Log.i(“wxl”, “body=” + body);<br>        } catch (IOException e) {<br>            e.printStackTrace();<br>注意：同步需要处理android.os.NetworkOnMainThreadException</p>
+<h2 id="四、异步调用"><a href="#四、异步调用" class="headerlink" title="四、异步调用"></a>四、异步调用</h2><p>call.enqueue(new Callback() {<br>            @Override<br>            public void onResponse(Response response) {<br>                try {<br>                    Log.i(“wxl”, “response=” + response.body().string());<br>                } catch (IOException e) {<br>                    e.printStackTrace();<br>            @Override<br>            public void onFailure(Throwable t) {<br>                Log.i(“wxl”, “onFailure=” + t.getMessage());<br>        });</p>
+<p>注意这里看不懂的可以参考我的GitHub代码地址：<a href="https://github.com/MarkCHYL/MarkRetrofitDemo">https://github.com/MarkCHYL/MarkRetrofitDemo</a><br>项目中添加了简单的使用方法，只做到如何获取网络接口的数据。</p>
+<h2 id="五、移除请求"><a href="#五、移除请求" class="headerlink" title="五、移除请求"></a>五、移除请求</h2><p>call.cancel();</p>
+<h2 id="六、添加gson依赖"><a href="#六、添加gson依赖" class="headerlink" title="六、添加gson依赖"></a>六、添加gson依赖</h2><p> implementation ‘com.squareup.retrofit2:converter-gson:2.3.0’<br>这里我选择的是与retrofit统一版本的，我怕报错</p>
+<p>后续我会进一步封装！！！</p>
+<h2 id="七、Retrofit2打印-网络请求日志"><a href="#七、Retrofit2打印-网络请求日志" class="headerlink" title="七、Retrofit2打印 网络请求日志"></a>七、Retrofit2打印 网络请求日志</h2><p>添加依赖：<br> implementation ‘com.squareup.okhttp3:logging-interceptor:3.8.1’</p>
+<h2 id="然后就是你初始化拦截器加配置；这个很简单我参考了以下两篇文章"><a href="#然后就是你初始化拦截器加配置；这个很简单我参考了以下两篇文章" class="headerlink" title="然后就是你初始化拦截器加配置；这个很简单我参考了以下两篇文章"></a>然后就是你初始化拦截器加配置；这个很简单我参考了以下两篇文章</h2><p><a href="https://blog.csdn.net/u011511368/article/details/51753315">https://blog.csdn.net/u011511368/article/details/51753315</a><br><a href="https://blog.csdn.net/Picasso_L/article/details/53200926">https://blog.csdn.net/Picasso_L/article/details/53200926</a></p>
+<h3 id="最后附上自己的Github的Demo"><a href="#最后附上自己的Github的Demo" class="headerlink" title="最后附上自己的Github的Demo"></a>最后附上自己的<a href="https://github.com/MarkCHYL/MarkRetrofitDemo">Github的Demo</a></h3>]]></content>
       <categories>
-        <category>数据库</category>
+        <category>Android</category>
       </categories>
       <tags>
-        <tag>环境搭建</tag>
-        <tag>Oracle</tag>
+        <tag>Android</tag>
+        <tag>网络框架</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Mark的架构学习笔记---Android_MVP</title>
+    <url>/2018/12/17/Mark%E7%9A%84%E6%9E%B6%E6%9E%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Android-MVP/</url>
+    <content><![CDATA[<h1 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h1><p>   我是名安卓程序员。当我第一次接触到架构这个概念时，说实话我一头雾水。我现实了解了MVC模式，当我开始接触MVP模式时，我啊真的彻底被搞懵了！怎么把一个activity拆成了四个或五者，如果分装过后会更多，想象下，一下子猛的看那么复杂的对我来说无益处。这边文章呢我实现只是一个加你简单单的Demo练习，参考代码和资料来源于网上（备注于文底部）。<br>   记录只是让自己加深理解。</p>
+<span id="more"></span>
+<p><img src="https://user-gold-cdn.xitu.io/2018/7/30/164e8dc7b3e27bb6?w=696&h=812&f=png&s=257193" alt="这是我的Demo代码架构" title="这是我的Demo代码架构"></p>
+<hr>
+<ul>
+<li><h2 id="跟着大佬学习下MVP模式："><a href="#跟着大佬学习下MVP模式：" class="headerlink" title="跟着大佬学习下MVP模式："></a>跟着大佬学习下MVP模式：</h2> MVP是模型（Model）、视图（View）、主持人（Presenter）的缩写，分别代表项目中3个不同的模块。</li>
+</ul>
+<p><img src="https://user-gold-cdn.xitu.io/2018/7/30/164e9021bf594592?w=728&h=618&f=png&s=38130" title="MVP模式示意图"><br>说明：</p>
+<ul>
+<li>  步骤1：UI实现View方法，引用Presenter</li>
+<li>  步骤2：Presenter调用Model，走Model具体逻辑</li>
+<li>  步骤3：Model逻辑实现，回调Presenter方法</li>
+<li>  步骤4：Presenter回调View，即回到UI，回调View方法</li>
+</ul>
+<hr>
+<h2 id="首先我们定义下View层"><a href="#首先我们定义下View层" class="headerlink" title="首先我们定义下View层"></a>首先我们定义下View层</h2><p>   定义接口 <strong>IUserView</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public interface IUserView &#123;</span><br><span class="line">    UserBean getUser();</span><br><span class="line">    void setUser(UserBean bean);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  一个是拿到数据，一个是把数据给别人，<br>  我们需要让我们的Activity去实现这个接口里面的方法，<br>  然后去做一些数据的显示或者获取。 Presenter与View交互是通过接口。所以我们这里需要定义一个IUserView，<br>  难点就在于应该有哪些方法，我们看一眼效果图会发现一个是保存，一个是载入，<br>  所以我们就创建两个方法，分别是：getUser和setUser；<br>  然后再MainActivity中与实现这个View层的接口<br>  如图所示：<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  public class MainActivity extends AppCompatActivity implements IUserView &#123;</span><br><span class="line">    private UserPresenter presenter;</span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        presenter &#x3D; new UserPresenter(this);</span><br><span class="line">        initEvent();</span><br><span class="line">    &#125;</span><br><span class="line">    private void initEvent() &#123;</span><br><span class="line">        findViewById(R.id.btn_load).setOnClickListener(new View.OnClickListener() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onClick(View view) &#123;</span><br><span class="line">                presenter.loadUser();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        findViewById(R.id.btn_save).setOnClickListener(new View.OnClickListener() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onClick(View view) &#123;</span><br><span class="line">                presenter.saveUser();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    @Override</span><br><span class="line">    public UserBean getUser() &#123;</span><br><span class="line">        int id &#x3D; Integer.valueOf(et_id.getText().toString().trim());</span><br><span class="line">        String name &#x3D; et_name.getText().toString().trim();</span><br><span class="line">        if (name !&#x3D; null) &#123;</span><br><span class="line">            UserBean bean &#x3D; new UserBean();</span><br><span class="line">            bean.setId(id);</span><br><span class="line">            bean.setName(name);</span><br><span class="line">            return bean;</span><br><span class="line">        &#125;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line">    @Override</span><br><span class="line">    public void setUser(UserBean bean) &#123;</span><br><span class="line">        if (bean!&#x3D;null)&#123;</span><br><span class="line">            tv_data_show.setText(bean.toString());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;省略了部分控件的初始化代码</span><br></pre></td></tr></table></figure><br>  是不是觉得曾在某个文章中看见过，哈哈哈，自己敲一边你会得到自己的理解。</p>
+<hr>
+<h2 id="定义下Model层"><a href="#定义下Model层" class="headerlink" title="定义下Model层"></a>定义下Model层</h2><ul>
+<li>首先我们的更具接口或者你的业务代码去定义自己的实体类 <strong>UserBean</strong><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">   public class UserBean &#123;</span><br><span class="line">    private int id;</span><br><span class="line">    private String name;</span><br><span class="line">    </span><br><span class="line">    ...getter and setter 方法</span><br><span class="line">    </span><br><span class="line">    @Override</span><br><span class="line">    public String toString() &#123;</span><br><span class="line">        return &quot;UserBean&#123;&quot; +</span><br><span class="line">                &quot;id&#x3D;&quot; + id +</span><br><span class="line">                &quot;, name&#x3D;&#39;&quot; + name + &#39;\&#39;&#39; +</span><br><span class="line">                &#39;&#125;&#39;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>实体类的接口 IUser<blockquote>
+<p>这里大家要注意一下，IUser里面主要是接口，首先，我们要想好，在Presenter中要实现哪些逻辑，要用到哪些方法，然后就在这里定义哪些方法。User主要是IUser的实现，返回一些数据，具体返回那些数据，就有大家自己去根据实际情况而定。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">   public interface IUser &#123;</span><br><span class="line">    void savaUserInfo(UserBean user);</span><br><span class="line">    UserBean loadUserInfo();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>实体类的业务实现类 <strong>User</strong><blockquote>
+<p>这里主要是实现<strong>IUser</strong>接口里面定义的业务实现方法，你想干啥干就可以在里面自己凿凿</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">   public class User implements IUser &#123;</span><br><span class="line">    private UserBean bean;</span><br><span class="line">    @Override</span><br><span class="line">    public void savaUserInfo(UserBean user) &#123;</span><br><span class="line">        this.bean &#x3D; user;</span><br><span class="line">    &#125;</span><br><span class="line">    @Override</span><br><span class="line">    public UserBean loadUserInfo() &#123;</span><br><span class="line">        if (bean !&#x3D; null) &#123;</span><br><span class="line">            return bean;</span><br><span class="line">        &#125;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="定义最重要的Presenter层"><a href="#定义最重要的Presenter层" class="headerlink" title="定义最重要的Presenter层"></a>定义最重要的Presenter层</h2><blockquote>
+<p>是连接Activity(在这可以理解为就是View层，因为Activity实现了 <strong>IUserView</strong> 接口)和Model的重要桥梁，所有的业务逻辑都在它里面完成：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public class UserPresenter &#123;</span><br><span class="line">    private IUser user;</span><br><span class="line">    private IUserView userView;</span><br><span class="line">    public UserPresenter(IUserView userView) &#123;</span><br><span class="line">        this.userView &#x3D; userView;</span><br><span class="line">        user &#x3D; new User();</span><br><span class="line">    &#125;</span><br><span class="line">    public void saveUser()&#123;</span><br><span class="line">        user.savaUserInfo(userView.getUser());</span><br><span class="line">    &#125;</span><br><span class="line">    public void loadUser()&#123;</span><br><span class="line">        userView.setUser(user.loadUserInfo());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a href="https://github.com/MarkCHYL/Mark_MVP_Sample" title="源码地址">源码地址</a></li>
+</ul>
+<p>下一篇我会结合自己封装的retrofit写一个网络请求的demo笔记，加油⛽️</p>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>架构</tag>
       </tags>
   </entry>
   <entry>
@@ -2091,50 +2148,6 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
-    <title>Mark的Flutter的安装和环境配置</title>
-    <url>/2018/12/17/Mark%E7%9A%84Flutter%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><pre><code>    我是一名Android原生开发程序员，目前熟练掌握Java语言和kotlin语言去编写安卓。RN出来的时候我没去学习，现在我想赶上Flutter这列火车。
-</code></pre>
-<span id="more"></span>
-<hr>
-<h3 id="我的配置："><a href="#我的配置：" class="headerlink" title="我的配置："></a>我的配置：</h3><ul>
-<li>   Mac笔记本</li>
-<li>   Android Studio 3.2.0 版本</li>
-<li>   准备了翻墙的软件，貌似没怎么用上</li>
-</ul>
-<hr>
-<h3 id="第一步：获取Flutter代码"><a href="#第一步：获取Flutter代码" class="headerlink" title="第一步：获取Flutter代码"></a>第一步：获取Flutter代码</h3><ol>
-<li><p>我先选择了一个存储Flutter的文件夹：</p>
-<p> <img src="evernotecid://3DE7A385-FFCA-4630-91A9-F88E73A63AF0/appyinxiangcom/22109192/ENResource/p1" alt="56a74cdc0cf7522961022dcd31a0f3ca.png"><br>名字跟随自己的命名习惯。</p>
-</li>
-<li><p>克隆Flutter代码到本地目录：<br>两种方式：自己在GitHub 上面把SDK下下来放到文件中，或者通过终端输入：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone  https:&#x2F;&#x2F;github.com&#x2F;flutter&#x2F;flutter.git</span><br></pre></td></tr></table></figure>
-<p> 最后就是一样的配置：open .bash_profile打开添加以下路径：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export PATH&#x3D;本地目录&#x2F;flutter&#x2F;bin:$PATH</span><br></pre></td></tr></table></figure>
-<pre><code> 配置完了后，应该可以运行Flutter命令了！可以使用下面命令flutter doctor来检查依赖环境是否正常。如果下载有问题的话，可能是网络受限，如果你没有翻墙软件的话，在终端输入如下两条命令：
-</code></pre>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export PUB_HOSTED_URL&#x3D;https:&#x2F;&#x2F;pub.flutter-io.cn</span><br><span class="line">export FLUTTER_STORAGE_BASE_URL&#x3D;https:&#x2F;&#x2F;storage.flutter-io.cn</span><br></pre></td></tr></table></figure>
-<p>官方也给出了方法，就是使用国内的镜像节点下载，在运行flutter doctor之前先运行下面两个命令即可。<br><img src="evernotecid://3DE7A385-FFCA-4630-91A9-F88E73A63AF0/appyinxiangcom/22109192/ENResource/p2" alt="a51a64a974501d1bf53d7f4cd5f82ab2.png"></p>
-</li>
-</ol>
-<hr>
-<h3 id="第二步：配置IOS环境"><a href="#第二步：配置IOS环境" class="headerlink" title="第二步：配置IOS环境"></a>第二步：配置IOS环境</h3><p>我在 App Store下载安装好了Xcode，然后自己安装了Homebrew：<br><a href="https://brew.sh/">Homebrew配置方法地址：</a><br>接下来我就是执行如下的命令：<br>open -a Simulator – 测试成功打开模拟器</p>
-<h6 id="安装用于将Flutter应用部署到iOS设备的工具"><a href="#安装用于将Flutter应用部署到iOS设备的工具" class="headerlink" title="安装用于将Flutter应用部署到iOS设备的工具"></a>安装用于将Flutter应用部署到iOS设备的工具</h6><p>$ brew update<br>$ brew install –HEAD libimobiledevice<br>$ brew install ideviceinstaller ios-deploy cocoapods<br>$ pod setup<br>此处我就是无耻的copy的别人的文章，那位大佬的文章地址：<a href="https://www.jianshu.com/p/0b73cc2af65f">Flutter轻松入门（一） – MAC环境搭建</a></p>
-<hr>
-<h3 id="第三步：在Android-Studio上配置Android开发环境"><a href="#第三步：在Android-Studio上配置Android开发环境" class="headerlink" title="第三步：在Android Studio上配置Android开发环境"></a>第三步：在Android Studio上配置Android开发环境</h3><p>插件怎么安装就不废话啦，直接截图，它会自动安装Flutter和Dart语言插件，Dart有时候可能会安装失败，请耐心点，也可以单独搜Dart进行安装。<br><img src="evernotecid://3DE7A385-FFCA-4630-91A9-F88E73A63AF0/appyinxiangcom/22109192/ENResource/p3" alt="cd5198371c3b49034b3de9a8c41ecf19.png"></p>
-<h3 id="最后终端运行-Flutter-Doctor"><a href="#最后终端运行-Flutter-Doctor" class="headerlink" title="最后终端运行 Flutter Doctor"></a>最后终端运行 Flutter Doctor</h3><p>检查Flutter开发环境是否配置完成，我的如下图：<br><img src="evernotecid://3DE7A385-FFCA-4630-91A9-F88E73A63AF0/appyinxiangcom/22109192/ENResource/p4" alt="586b6df21a8997dcfeb10164a1e39ec4.png"></p>
-<hr>
-<p>笔记收尾处我还得为微我参考的文章打个广告：<a href="https://www.jianshu.com/p/0b73cc2af65f">Flutter轻松入门（一） – MAC环境搭建</a></p>
-]]></content>
-      <categories>
-        <category>Flutter</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>Flutter</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Mark的个人博客搭建</title>
     <url>/2018/12/14/Mark%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<hr>
@@ -2171,7 +2184,7 @@ Connection conn = null;
 <p>2.添加SSH Key到Github<br>进入github首页在设置洁面<br><img src="https://images2017.cnblogs.com/blog/1250458/201710/1250458-20171017153636849-294935886.png"></p>
 <hr>
 <h4 id="添加SSH-Key"><a href="#添加SSH-Key" class="headerlink" title="添加SSH Key"></a>添加SSH Key</h4><p><img src="https://images2017.cnblogs.com/blog/1250458/201710/1250458-20171017153642521-647884655.png"><br>找到系统当前用户目录下(开启查看隐藏文件) C:\Users\用户名\ .ssh id_rsa.pub文件以文本方式打开。打开之后全部复制到key中<br><img src="https://images2017.cnblogs.com/blog/1250458/201710/1250458-20171017153648631-441574444.png"><br>到了这就可以测试一下是否成功了:</p>
-<p>ssh -T <a href="mailto:&#103;&#x69;&#116;&#x40;&#x67;&#x69;&#116;&#104;&#x75;&#98;&#46;&#x63;&#x6f;&#109;">&#103;&#x69;&#116;&#x40;&#x67;&#x69;&#116;&#104;&#x75;&#98;&#46;&#x63;&#x6f;&#109;</a><br>#之后会要你输入yes/no,输入yes就好了。<br>设置你的账号信息:</p>
+<p>ssh -T <a href="mailto:&#103;&#105;&#116;&#64;&#x67;&#x69;&#x74;&#x68;&#x75;&#x62;&#x2e;&#x63;&#x6f;&#x6d;">&#103;&#105;&#116;&#64;&#x67;&#x69;&#x74;&#x68;&#x75;&#x62;&#x2e;&#x63;&#x6f;&#x6d;</a><br>#之后会要你输入yes/no,输入yes就好了。<br>设置你的账号信息:</p>
 <p>git config –global user.name “你的名字”     #真实名字不是github用户名<br>git config –global user.email “邮箱@邮箱.com”    #github邮箱<br>3.部署到github<br>hexo d<br>这时再刷新 username.github.io 就可以看到你的博客了。</p>
 <p>到了这你以为就结束了吗？没有，还有坑没有给你们填好。</p>
 <p>如果你的SSH配置的时候哪找的.ssh文件的化，可以参照<a href="https://www.cnblogs.com/ailiailan/p/8577411.html">mac 上传本地代码到 Github 教程</a>,我就是参照上面的步骤配置的。</p>
@@ -2354,6 +2367,24 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
+    <title>ScrollView与RecyclerView解决滑动冲突</title>
+    <url>/2019/09/02/ScrollView%E4%B8%8ERecyclerView%E8%A7%A3%E5%86%B3%E6%BB%91%E5%8A%A8%E5%86%B2%E7%AA%81/</url>
+    <content><![CDATA[<p><a href="https://www.jianshu.com/p/3e0ad704bee5">原文</a></p>
+<p><strong>RecyclerView 嵌套RecyclerView是不存在冲突的 因为内部已经解决，ScrollVIew嵌套RecyclerView会存在现实不全的问题，滑动的时候会导致不流畅，所以我换用的是NestedScrollView嵌套RecyclerView不会存在显示不完全的现象，但是还会有一点的滑动冲突</strong></p>
+ <span id="more"></span>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;android.support.v4.widget.NestedScrollView</span><br><span class="line">    xmlns:android&#x3D;&quot;http:&#x2F;&#x2F;schemas.android.com&#x2F;apk&#x2F;res&#x2F;android&quot;</span><br><span class="line">    android:layout_width&#x3D;&quot;match_parent&quot;</span><br><span class="line">    android:layout_height&#x3D;&quot;match_parent&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;LinearLayout</span><br><span class="line">        android:layout_width&#x3D;&quot;match_parent&quot;</span><br><span class="line">        android:layout_height&#x3D;&quot;wrap_content&quot;</span><br><span class="line">        android:orientation&#x3D;&quot;vertical&quot;&gt;</span><br><span class="line">        </span><br><span class="line">        &lt;TextView</span><br><span class="line">            android:layout_width&#x3D;&quot;match_parent&quot;</span><br><span class="line">            android:layout_height&#x3D;&quot;wrap_content&quot;</span><br><span class="line">            android:text&#x3D;&quot;标题党&quot;&#x2F;&gt;</span><br><span class="line"></span><br><span class="line">        &lt;android.support.v7.widget.RecyclerView</span><br><span class="line">            android:id&#x3D;&quot;@+id&#x2F;recyclerView&quot;</span><br><span class="line">            android:layout_width&#x3D;&quot;match_parent&quot;</span><br><span class="line">            android:layout_height&#x3D;&quot;wrap_content&quot;&#x2F;&gt;</span><br><span class="line">      </span><br><span class="line">    &lt;&#x2F;LinearLayout&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;android.support.v4.widget.NestedScrollView&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>上面只是布局代码而已，滑动冲突还是没有解决，我们只要在recyclerView 设置一下这个属性就可以了</strong><br>    <code>recyclerView.setNestedScrollingEnabled(false);</code></p>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>冲突</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>android:duplicateParentState属性解释</title>
     <url>/2019/12/31/android-duplicateParentState%E5%B1%9E%E6%80%A7%E8%A7%A3%E9%87%8A/</url>
     <content><![CDATA[<p><strong>android:duplicateParentState指的是当前控件是否跟随父控件的(点击、焦点等)状态</strong></p>
@@ -2370,24 +2401,6 @@ Connection conn = null;
       </categories>
       <tags>
         <tag>布局</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ScrollView与RecyclerView解决滑动冲突</title>
-    <url>/2019/09/02/ScrollView%E4%B8%8ERecyclerView%E8%A7%A3%E5%86%B3%E6%BB%91%E5%8A%A8%E5%86%B2%E7%AA%81/</url>
-    <content><![CDATA[<p><a href="https://www.jianshu.com/p/3e0ad704bee5">原文</a></p>
-<p><strong>RecyclerView 嵌套RecyclerView是不存在冲突的 因为内部已经解决，ScrollVIew嵌套RecyclerView会存在现实不全的问题，滑动的时候会导致不流畅，所以我换用的是NestedScrollView嵌套RecyclerView不会存在显示不完全的现象，但是还会有一点的滑动冲突</strong></p>
- <span id="more"></span>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;android.support.v4.widget.NestedScrollView</span><br><span class="line">    xmlns:android&#x3D;&quot;http:&#x2F;&#x2F;schemas.android.com&#x2F;apk&#x2F;res&#x2F;android&quot;</span><br><span class="line">    android:layout_width&#x3D;&quot;match_parent&quot;</span><br><span class="line">    android:layout_height&#x3D;&quot;match_parent&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;LinearLayout</span><br><span class="line">        android:layout_width&#x3D;&quot;match_parent&quot;</span><br><span class="line">        android:layout_height&#x3D;&quot;wrap_content&quot;</span><br><span class="line">        android:orientation&#x3D;&quot;vertical&quot;&gt;</span><br><span class="line">        </span><br><span class="line">        &lt;TextView</span><br><span class="line">            android:layout_width&#x3D;&quot;match_parent&quot;</span><br><span class="line">            android:layout_height&#x3D;&quot;wrap_content&quot;</span><br><span class="line">            android:text&#x3D;&quot;标题党&quot;&#x2F;&gt;</span><br><span class="line"></span><br><span class="line">        &lt;android.support.v7.widget.RecyclerView</span><br><span class="line">            android:id&#x3D;&quot;@+id&#x2F;recyclerView&quot;</span><br><span class="line">            android:layout_width&#x3D;&quot;match_parent&quot;</span><br><span class="line">            android:layout_height&#x3D;&quot;wrap_content&quot;&#x2F;&gt;</span><br><span class="line">      </span><br><span class="line">    &lt;&#x2F;LinearLayout&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;android.support.v4.widget.NestedScrollView&gt;</span><br></pre></td></tr></table></figure>
-
-<p><strong>上面只是布局代码而已，滑动冲突还是没有解决，我们只要在recyclerView 设置一下这个属性就可以了</strong><br>    <code>recyclerView.setNestedScrollingEnabled(false);</code></p>
-]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>冲突</tag>
       </tags>
   </entry>
   <entry>
@@ -2497,75 +2510,6 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
-    <title>dynamic、var、Object三者的区别</title>
-    <url>/2020/09/23/dynamic%E3%80%81var%E3%80%81Object%E4%B8%89%E8%80%85%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
-    <content><![CDATA[<h3 id="dynamic："><a href="#dynamic：" class="headerlink" title="dynamic："></a>dynamic：</h3><p>是所有Dart对象的基础类型， 在大多数情况下，通常不直接使用它，<br>通过它定义的变量会关闭类型检查，这意味着<br><code>dynamic x = &#39;hal&#39;;x.foo();</code><br>这段代码静态类型检查不会报错，但是运行时会crash，因为x并没有foo()方法，所以建议大家在编程时不要直接使用dynamic；</p>
-<h3 id="var："><a href="#var：" class="headerlink" title="var："></a>var：</h3><p>是一个关键字，意思是“我不关心这里的类型是什么。”，系统会自动推断类型runtimeType；</p>
-<h3 id="Object："><a href="#Object：" class="headerlink" title="Object："></a>Object：</h3><p>是Dart对象的基类，当你定义：Object o=xxx；时这时候系统会认为o是个对象，你可以调用o的toString()和hashCode()方法<br>因为Object提供了这些方法，但是如果你尝试调用o.foo()时，静态类型检查会进行报错；</p>
-<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><p>综上不难看出dynamic与Object的最大的区别是在静态类型检查上；</p>
-]]></content>
-      <categories>
-        <category>flutter</category>
-      </categories>
-      <tags>
-        <tag>dart</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Glide添加请求头</title>
-    <url>/2020/08/31/Glide%E6%B7%BB%E5%8A%A0%E8%AF%B7%E6%B1%82%E5%A4%B4/</url>
-    <content><![CDATA[<p><a href="https://www.jianshu.com/p/a425b5ca89dd">原文来自</a></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">GlideUrl glideUrl &#x3D; new GlideUrl(url, new Headers() &#123;</span><br><span class="line">           @Override</span><br><span class="line">           public Map&lt;String, String&gt; getHeaders() &#123;</span><br><span class="line">               Map&lt;String, String&gt; header &#x3D; new HashMap&lt;&gt;();</span><br><span class="line">               &#x2F;&#x2F;不一定都要添加，具体看原站的请求信息</span><br><span class="line">               header.put(&quot;Referer&quot;, &quot;http:&#x2F;&#x2F;www.baidu.com&quot;);</span><br><span class="line">               return header;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;);</span><br><span class="line"></span><br><span class="line">      Glide.with(context).load(url).into(imageView);</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>工具使用</tag>
-        <tag>Android</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>error: &lt;item&gt; inner element must either be a resource reference or empty.</title>
-    <url>/2019/12/25/error-item-inner-element-must-either-be-a-resource-reference-or-empty/</url>
-    <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">FAQ:</span><br><span class="line"></span><br><span class="line">Android resource compilation failed</span><br><span class="line">Output: &#x2F;home&#x2F;cmm&#x2F;code&#x2F;AndroidHttpCapture&#x2F;app&#x2F;build&#x2F;intermediates&#x2F;incremental&#x2F;mergeDebugResources&#x2F;merged.dir&#x2F;values&#x2F;values.xml:733: error: &lt;item&gt; inner element must either be a resource reference or empty.</span><br><span class="line"></span><br><span class="line">Command: &#x2F;home&#x2F;cmm&#x2F;.gradle&#x2F;caches&#x2F;transforms-1&#x2F;files-1.1&#x2F;aapt2-3.2.0-4818971-linux.jar&#x2F;8e0275d065e63c2601af4fb5800833ab&#x2F;aapt2-3.2.0-4818971-linux&#x2F;aapt2 compile --legacy \</span><br><span class="line">-o \</span><br><span class="line">&#x2F;home&#x2F;cmm&#x2F;code&#x2F;AndroidHttpCapture&#x2F;app&#x2F;build&#x2F;intermediates&#x2F;res&#x2F;merged&#x2F;debug \</span><br><span class="line">&#x2F;home&#x2F;cmm&#x2F;code&#x2F;AndroidHttpCapture&#x2F;app&#x2F;build&#x2F;intermediates&#x2F;incremental&#x2F;mergeDebugResources&#x2F;merged.dir&#x2F;values&#x2F;values.xml</span><br><span class="line">Daemon: AAPT2 aapt2-3.2.0-4818971-linux Daemon #1</span><br></pre></td></tr></table></figure>
-
-
-<p>如上错误原来是values.xm资源文件中，元素定义了id后，就不能在后面给值了</p>
-<p>发现 :<br><code>&lt;item name=&quot;split&quot; type=&quot;id&quot;&gt;false&lt;/item&gt;</code></p>
-<p>改为 :<br><code>&lt;item name=&quot;split&quot; type=&quot;id&quot;/&gt;</code><br>即可.</p>
-]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Error</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>flutter开发插件和包</title>
-    <url>/2019/07/02/flutter%E5%BC%80%E5%8F%91%E6%8F%92%E4%BB%B6%E5%92%8C%E5%8C%85/</url>
-    <content><![CDATA[<h2 id="cmd-命令创建开发插件包"><a href="#cmd-命令创建开发插件包" class="headerlink" title="cmd 命令创建开发插件包"></a>cmd 命令创建开发插件包</h2><p> <code>flutter create --org com.mark --template markplugin</code><br>  使用该–org选项以反向域名表示法指定您的组织。此值用于生成的Android和iOS代码中的各种包和包标识符。<br>  其中 com.mark 就是我的组织名，markplugin 就是我的插件项目名字<br>  生成如下：</p>
-<span id="more"></span>
-<p><img src="https://img-blog.csdnimg.cn/20190702095035265.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01hcmtfQ0hZTA==,size_16,color_FFFFFF,t_70" alt="&quot;插件包生成内容&quot;"></p>
-<p><em><strong>默认情况下，插件项目使用Objective-C for iOS代码和Java for Android代码。如果您更喜欢Swift或Kotlin，您可以使用-i和/或使用Android语言指定iOS语言-a.</strong></em></p>
-<p>例如：<br><code> flutter create --org com.mark --template=plugin -i swift -a kotlin markkotlinpugin</code></p>
-<p><img src="https://img-blog.csdnimg.cn/20190702101606454.png" alt="在这里插入图片描述"></p>
-<h2 id="如何通过命令创建Flutter包"><a href="#如何通过命令创建Flutter包" class="headerlink" title="如何通过命令创建Flutter包"></a>如何通过命令创建Flutter包</h2><p>要创建Dart包，请使用以下–template=package标志flutter create：<br> <code>flutter create --org com.mark --template=package hello</code></p>
-<p>这将在hello/文件夹中创建一个包项目，其中包含以下专门内容：</p>
-<p>`<br>lib/hello.dart：包的Dart代码。</p>
-<p>test/hello_test.dart：该单元测试包装。`</p>
-<p><img src="https://img-blog.csdnimg.cn/20190702102101747.png" alt="在这里插入图片描述"></p>
-<h2 id="配置好pubspec-paml上的信息-添加开源协议，编写使用说明"><a href="#配置好pubspec-paml上的信息-添加开源协议，编写使用说明" class="headerlink" title="配置好pubspec.paml上的信息,添加开源协议，编写使用说明"></a>配置好pubspec.paml上的信息,添加开源协议，编写使用说明</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">name: flutter_tools</span><br><span class="line">description: A new Flutter Tools package. it works on ios and android</span><br><span class="line">version: 0.0.1</span><br><span class="line">author: MarkCHYL &lt;2285581945@qq.com&gt;</span><br><span class="line">homepage: https:&#x2F;&#x2F;github.com&#x2F;MarkCHYL&#x2F;flutter_tools</span><br></pre></td></tr></table></figure>
-<h2 id="发布包"><a href="#发布包" class="headerlink" title="发布包"></a>发布包</h2><p><a href="https://flutter.dev/docs/development/packages-and-plugins/developing-packages">参考地址</a><br>首先我们执行：<br><code>flutter pub pub publish --dry-run</code><br>会检查发布包时是否准备好，是否有错误。<br><code>flutter packages pub publish</code>发布包，<br>但是我因网络原因，没上传成功过。首次大包上传需要登陆谷歌的网站，谷歌账号登陆便好。</p>
-]]></content>
-      <categories>
-        <category>Flutter</category>
-      </categories>
-      <tags>
-        <tag>Flutter</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>android反编译apktool---dex2jar---jdgui</title>
     <url>/2020/12/14/android%E5%8F%8D%E7%BC%96%E8%AF%91apktool-dex2jar-jdgui/</url>
     <content><![CDATA[<h2 id="反编译的工具（MAC环境下）"><a href="#反编译的工具（MAC环境下）" class="headerlink" title="反编译的工具（MAC环境下）"></a>反编译的工具（MAC环境下）</h2><p>下载地址：</p>
@@ -2604,6 +2548,38 @@ Connection conn = null;
       <tags>
         <tag>反编译</tag>
         <tag>工具搭建</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>dynamic、var、Object三者的区别</title>
+    <url>/2020/09/23/dynamic%E3%80%81var%E3%80%81Object%E4%B8%89%E8%80%85%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
+    <content><![CDATA[<h3 id="dynamic："><a href="#dynamic：" class="headerlink" title="dynamic："></a>dynamic：</h3><p>是所有Dart对象的基础类型， 在大多数情况下，通常不直接使用它，<br>通过它定义的变量会关闭类型检查，这意味着<br><code>dynamic x = &#39;hal&#39;;x.foo();</code><br>这段代码静态类型检查不会报错，但是运行时会crash，因为x并没有foo()方法，所以建议大家在编程时不要直接使用dynamic；</p>
+<h3 id="var："><a href="#var：" class="headerlink" title="var："></a>var：</h3><p>是一个关键字，意思是“我不关心这里的类型是什么。”，系统会自动推断类型runtimeType；</p>
+<h3 id="Object："><a href="#Object：" class="headerlink" title="Object："></a>Object：</h3><p>是Dart对象的基类，当你定义：Object o=xxx；时这时候系统会认为o是个对象，你可以调用o的toString()和hashCode()方法<br>因为Object提供了这些方法，但是如果你尝试调用o.foo()时，静态类型检查会进行报错；</p>
+<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><p>综上不难看出dynamic与Object的最大的区别是在静态类型检查上；</p>
+]]></content>
+      <categories>
+        <category>flutter</category>
+      </categories>
+      <tags>
+        <tag>dart</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>error: &lt;item&gt; inner element must either be a resource reference or empty.</title>
+    <url>/2019/12/25/error-item-inner-element-must-either-be-a-resource-reference-or-empty/</url>
+    <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">FAQ:</span><br><span class="line"></span><br><span class="line">Android resource compilation failed</span><br><span class="line">Output: &#x2F;home&#x2F;cmm&#x2F;code&#x2F;AndroidHttpCapture&#x2F;app&#x2F;build&#x2F;intermediates&#x2F;incremental&#x2F;mergeDebugResources&#x2F;merged.dir&#x2F;values&#x2F;values.xml:733: error: &lt;item&gt; inner element must either be a resource reference or empty.</span><br><span class="line"></span><br><span class="line">Command: &#x2F;home&#x2F;cmm&#x2F;.gradle&#x2F;caches&#x2F;transforms-1&#x2F;files-1.1&#x2F;aapt2-3.2.0-4818971-linux.jar&#x2F;8e0275d065e63c2601af4fb5800833ab&#x2F;aapt2-3.2.0-4818971-linux&#x2F;aapt2 compile --legacy \</span><br><span class="line">-o \</span><br><span class="line">&#x2F;home&#x2F;cmm&#x2F;code&#x2F;AndroidHttpCapture&#x2F;app&#x2F;build&#x2F;intermediates&#x2F;res&#x2F;merged&#x2F;debug \</span><br><span class="line">&#x2F;home&#x2F;cmm&#x2F;code&#x2F;AndroidHttpCapture&#x2F;app&#x2F;build&#x2F;intermediates&#x2F;incremental&#x2F;mergeDebugResources&#x2F;merged.dir&#x2F;values&#x2F;values.xml</span><br><span class="line">Daemon: AAPT2 aapt2-3.2.0-4818971-linux Daemon #1</span><br></pre></td></tr></table></figure>
+
+
+<p>如上错误原来是values.xm资源文件中，元素定义了id后，就不能在后面给值了</p>
+<p>发现 :<br><code>&lt;item name=&quot;split&quot; type=&quot;id&quot;&gt;false&lt;/item&gt;</code></p>
+<p>改为 :<br><code>&lt;item name=&quot;split&quot; type=&quot;id&quot;/&gt;</code><br>即可.</p>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Error</tag>
       </tags>
   </entry>
   <entry>
@@ -2720,6 +2696,30 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
+    <title>flutter开发插件和包</title>
+    <url>/2019/07/02/flutter%E5%BC%80%E5%8F%91%E6%8F%92%E4%BB%B6%E5%92%8C%E5%8C%85/</url>
+    <content><![CDATA[<h2 id="cmd-命令创建开发插件包"><a href="#cmd-命令创建开发插件包" class="headerlink" title="cmd 命令创建开发插件包"></a>cmd 命令创建开发插件包</h2><p> <code>flutter create --org com.mark --template markplugin</code><br>  使用该–org选项以反向域名表示法指定您的组织。此值用于生成的Android和iOS代码中的各种包和包标识符。<br>  其中 com.mark 就是我的组织名，markplugin 就是我的插件项目名字<br>  生成如下：</p>
+<span id="more"></span>
+<p><img src="https://img-blog.csdnimg.cn/20190702095035265.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01hcmtfQ0hZTA==,size_16,color_FFFFFF,t_70" alt="&quot;插件包生成内容&quot;"></p>
+<p><em><strong>默认情况下，插件项目使用Objective-C for iOS代码和Java for Android代码。如果您更喜欢Swift或Kotlin，您可以使用-i和/或使用Android语言指定iOS语言-a.</strong></em></p>
+<p>例如：<br><code> flutter create --org com.mark --template=plugin -i swift -a kotlin markkotlinpugin</code></p>
+<p><img src="https://img-blog.csdnimg.cn/20190702101606454.png" alt="在这里插入图片描述"></p>
+<h2 id="如何通过命令创建Flutter包"><a href="#如何通过命令创建Flutter包" class="headerlink" title="如何通过命令创建Flutter包"></a>如何通过命令创建Flutter包</h2><p>要创建Dart包，请使用以下–template=package标志flutter create：<br> <code>flutter create --org com.mark --template=package hello</code></p>
+<p>这将在hello/文件夹中创建一个包项目，其中包含以下专门内容：</p>
+<p>`<br>lib/hello.dart：包的Dart代码。</p>
+<p>test/hello_test.dart：该单元测试包装。`</p>
+<p><img src="https://img-blog.csdnimg.cn/20190702102101747.png" alt="在这里插入图片描述"></p>
+<h2 id="配置好pubspec-paml上的信息-添加开源协议，编写使用说明"><a href="#配置好pubspec-paml上的信息-添加开源协议，编写使用说明" class="headerlink" title="配置好pubspec.paml上的信息,添加开源协议，编写使用说明"></a>配置好pubspec.paml上的信息,添加开源协议，编写使用说明</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">name: flutter_tools</span><br><span class="line">description: A new Flutter Tools package. it works on ios and android</span><br><span class="line">version: 0.0.1</span><br><span class="line">author: MarkCHYL &lt;2285581945@qq.com&gt;</span><br><span class="line">homepage: https:&#x2F;&#x2F;github.com&#x2F;MarkCHYL&#x2F;flutter_tools</span><br></pre></td></tr></table></figure>
+<h2 id="发布包"><a href="#发布包" class="headerlink" title="发布包"></a>发布包</h2><p><a href="https://flutter.dev/docs/development/packages-and-plugins/developing-packages">参考地址</a><br>首先我们执行：<br><code>flutter pub pub publish --dry-run</code><br>会检查发布包时是否准备好，是否有错误。<br><code>flutter packages pub publish</code>发布包，<br>但是我因网络原因，没上传成功过。首次大包上传需要登陆谷歌的网站，谷歌账号登陆便好。</p>
+]]></content>
+      <categories>
+        <category>Flutter</category>
+      </categories>
+      <tags>
+        <tag>Flutter</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>kotlin学习笔记第一章</title>
     <url>/2019/11/19/kotlin%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%AC%AC%E4%B8%80%E7%AB%A0/</url>
     <content><![CDATA[<h2 id="第一章-搭建-Kotlin-开发环境"><a href="#第一章-搭建-Kotlin-开发环境" class="headerlink" title="第一章 搭建 Kotlin 开发环境"></a>第一章 搭建 Kotlin 开发环境</h2><hr>
@@ -2783,6 +2783,17 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
+    <title>vue基础使用-2</title>
+    <url>/2020/08/25/vue%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8-2/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>vue</category>
+      </categories>
+      <tags>
+        <tag>vue</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>vue基础使用-1</title>
     <url>/2020/08/25/vue%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8-1/</url>
     <content><![CDATA[<h3 id="安装vue"><a href="#安装vue" class="headerlink" title="安装vue"></a>安装vue</h3><hr>
@@ -2812,14 +2823,18 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
-    <title>vue基础使用-2</title>
-    <url>/2020/08/25/vue%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8-2/</url>
-    <content><![CDATA[]]></content>
+    <title>使用 Gradle 工具检查此项目的依赖</title>
+    <url>/2020/12/18/%E4%BD%BF%E7%94%A8-Gradle-%E5%B7%A5%E5%85%B7%E6%A3%80%E6%9F%A5%E6%AD%A4%E9%A1%B9%E7%9B%AE%E7%9A%84%E4%BE%9D%E8%B5%96/</url>
+    <content><![CDATA[<p>使用 Gradle 工具检查此项目的依赖，进入项目目录，执行如下指令进行依赖检查：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd app</span><br><span class="line">gradle dependencies</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>打印出如下图所示的依赖树，依赖树显示了你 build 脚本声明的顶级依赖和它们的传递依赖：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">+--- androidx.test.ext:junit:1.1.1</span><br><span class="line">|    +--- junit:junit:4.12</span><br><span class="line">|    |    \--- org.hamcrest:hamcrest-core:1.3</span><br><span class="line">|    +--- androidx.test:core:1.2.0</span><br><span class="line">|    |    +--- androidx.annotation:annotation:1.0.0 -&gt; 1.1.0</span><br><span class="line">|    |    +--- androidx.test:monitor:1.2.0</span><br><span class="line">|    |    |    \--- androidx.annotation:annotation:1.0.0 -&gt; 1.1.0</span><br><span class="line">|    |    \--- androidx.lifecycle:lifecycle-common:2.0.0 -&gt; 2.1.0</span><br><span class="line">|    |         \--- androidx.annotation:annotation:1.1.0</span><br><span class="line">|    +--- androidx.test:monitor:1.2.0 (*)</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
       <categories>
-        <category>vue</category>
+        <category>Android</category>
       </categories>
       <tags>
-        <tag>vue</tag>
+        <tag>Android</tag>
+        <tag>Gradle</tag>
       </tags>
   </entry>
   <entry>
@@ -2861,33 +2876,6 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
-    <title>占位符 Broccoli 的使用</title>
-    <url>/2019/01/18/%E5%8D%A0%E4%BD%8D%E7%AC%A6-Broccoli-%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<p><img src="https://github.com/samlss/Broccoli/raw/master/screenshots/Broccoli.png" alt="Broccoli"></p>
-<p>在预加载时显示view的占位符效果</p>
-<h3 id="截图"><a href="#截图" class="headerlink" title="截图"></a>截图</h3><h4 id="默认效果"><a href="#默认效果" class="headerlink" title="默认效果:"></a>默认效果:</h4><p><img src="https://github.com/samlss/Broccoli/raw/master/screenshots/screenshot1.gif" alt="Broccoli"></p>
- <span id="more"></span>
-<h4 id="自定义动画效果"><a href="#自定义动画效果" class="headerlink" title="自定义动画效果:"></a>自定义动画效果:</h4><p><img src="https://github.com/samlss/Broccoli/raw/master/screenshots/screenshot2.gif" alt="Broccoli"></p>
-<h4 id="在RecyclerView使用"><a href="#在RecyclerView使用" class="headerlink" title="在RecyclerView使用"></a>在RecyclerView使用</h4><p><img src="https://github.com/samlss/Broccoli/raw/master/screenshots/screenshot3.gif" alt="Broccoli"></p>
-<h4 id="钉钉考勤"><a href="#钉钉考勤" class="headerlink" title="钉钉考勤"></a>钉钉考勤</h4><p><img src="https://github.com/samlss/Broccoli/raw/master/screenshots/screenshot4.png" alt="Broccoli"> </p>
-<h2 id=""><a href="#" class="headerlink" title=""></a><img src="https://github.com/samlss/Broccoli/raw/master/screenshots/screenshot5.png" alt="Broccoli"></h2><h3 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h3><h4 id="Gradle"><a href="#Gradle" class="headerlink" title="Gradle"></a>Gradle</h4><p>将其添加到你的module的build.gradle中： </p>
-  <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    implementation <span class="string">&#x27;me.samlss:broccoli:1.0.0&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="Maven"><a href="#Maven" class="headerlink" title="Maven"></a>Maven</h4><figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">  &lt;groupId&gt;me.samlss&lt;/groupId&gt;</span><br><span class="line">  &lt;artifactId&gt;broccoli&lt;/artifactId&gt;</span><br><span class="line">  &lt;version&gt;1.0.0&lt;/version&gt;</span><br><span class="line">  &lt;type&gt;pom&lt;/type&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="代码使用"><a href="#代码使用" class="headerlink" title="代码使用"></a>代码使用</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Broccoli broccoli = <span class="keyword">new</span> Broccoli();</span><br><span class="line"></span><br><span class="line"><span class="comment">//添加默认的占位符</span></span><br><span class="line">broccoli.addPlaceholders(<span class="string">&#x27;activity&#x27;</span>, <span class="string">&#x27;view_id&#x27;</span>, <span class="string">&#x27;view_id&#x27;</span>); </span><br><span class="line"></span><br><span class="line">or </span><br><span class="line"><span class="comment">//添加默认的占位符</span></span><br><span class="line">broccoli.addPlaceholders(<span class="string">&#x27;view1&#x27;</span>, <span class="string">&#x27;view2&#x27;</span>, <span class="string">&#x27;view3&#x27;</span>); </span><br><span class="line"></span><br><span class="line">or </span><br><span class="line"></span><br><span class="line"><span class="comment">//添加自定义的占位符</span></span><br><span class="line">broccoli.addPlaceholder(<span class="keyword">new</span> PlaceholderParameter.Builder()</span><br><span class="line">                        .setView(<span class="string">&#x27;view&#x27;</span>)</span><br><span class="line">                        .setAnimation(<span class="string">&#x27;scaleAnimation&#x27;</span>);</span><br><span class="line">                        .setDrawable(DrawableUtils.createRectangleDrawable(placeHolderColor, <span class="number">0</span>))</span><br><span class="line">                        .build()); </span><br><span class="line"></span><br><span class="line">or</span><br><span class="line"><span class="comment">//添加带渐变动画的占位符</span></span><br><span class="line">broccoli.addPlaceholder(<span class="keyword">new</span> PlaceholderParameter.Builder()</span><br><span class="line">                        .setView(<span class="string">&#x27;view&#x27;</span>)</span><br><span class="line">                        .setDrawable(<span class="keyword">new</span> BroccoliGradientDrawable(Color.parseColor(<span class="string">&quot;#DDDDDD&quot;</span>),</span><br><span class="line">                            Color.parseColor(<span class="string">&quot;#CCCCCC&quot;</span>), <span class="number">0</span>, <span class="number">1000</span>, <span class="keyword">new</span> LinearInterpolator())</span><br><span class="line">                        .build()); </span><br><span class="line">broccoli.show();</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://github.com/MarkCHYL/Mark_Broccoli_demo">源码demo地址</a></p>
-]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>自定义控件</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>图片加水印</title>
     <url>/2019/03/05/%E5%9B%BE%E7%89%87%E5%8A%A0%E6%B0%B4%E5%8D%B0/</url>
     <content><![CDATA[<h1 id="我尝试了两种实现水印的方式"><a href="#我尝试了两种实现水印的方式" class="headerlink" title="我尝试了两种实现水印的方式"></a>我尝试了两种实现水印的方式</h1><h2 id="1、一个轻量级是我文字和图片水印框架"><a href="#1、一个轻量级是我文字和图片水印框架" class="headerlink" title="1、一个轻量级是我文字和图片水印框架"></a>1、<a href="https://github.com/MarkCHYL/MarkImage_Watermark">一个轻量级是我文字和图片水印框架</a></h2><h2 id="2、通过Canvas绘制水印"><a href="#2、通过Canvas绘制水印" class="headerlink" title="2、通过Canvas绘制水印"></a>2、<a href="https://github.com/MarkCHYL/MarkBingCheng">通过Canvas绘制水印</a></h2><h4 id="轻量级的我就不做笔记了，因为很简单就能实现你想要的水印，留意内存溢出就好。"><a href="#轻量级的我就不做笔记了，因为很简单就能实现你想要的水印，留意内存溢出就好。" class="headerlink" title="轻量级的我就不做笔记了，因为很简单就能实现你想要的水印，留意内存溢出就好。"></a>轻量级的我就不做笔记了，因为很简单就能实现你想要的水印，留意内存溢出就好。</h4> <span id="more"></span>
@@ -2919,12 +2907,88 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
+    <title>占位符 Broccoli 的使用</title>
+    <url>/2019/01/18/%E5%8D%A0%E4%BD%8D%E7%AC%A6-Broccoli-%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<p><img src="https://github.com/samlss/Broccoli/raw/master/screenshots/Broccoli.png" alt="Broccoli"></p>
+<p>在预加载时显示view的占位符效果</p>
+<h3 id="截图"><a href="#截图" class="headerlink" title="截图"></a>截图</h3><h4 id="默认效果"><a href="#默认效果" class="headerlink" title="默认效果:"></a>默认效果:</h4><p><img src="https://github.com/samlss/Broccoli/raw/master/screenshots/screenshot1.gif" alt="Broccoli"></p>
+ <span id="more"></span>
+<h4 id="自定义动画效果"><a href="#自定义动画效果" class="headerlink" title="自定义动画效果:"></a>自定义动画效果:</h4><p><img src="https://github.com/samlss/Broccoli/raw/master/screenshots/screenshot2.gif" alt="Broccoli"></p>
+<h4 id="在RecyclerView使用"><a href="#在RecyclerView使用" class="headerlink" title="在RecyclerView使用"></a>在RecyclerView使用</h4><p><img src="https://github.com/samlss/Broccoli/raw/master/screenshots/screenshot3.gif" alt="Broccoli"></p>
+<h4 id="钉钉考勤"><a href="#钉钉考勤" class="headerlink" title="钉钉考勤"></a>钉钉考勤</h4><p><img src="https://github.com/samlss/Broccoli/raw/master/screenshots/screenshot4.png" alt="Broccoli"> </p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><img src="https://github.com/samlss/Broccoli/raw/master/screenshots/screenshot5.png" alt="Broccoli"></h2><h3 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h3><h4 id="Gradle"><a href="#Gradle" class="headerlink" title="Gradle"></a>Gradle</h4><p>将其添加到你的module的build.gradle中： </p>
+  <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    implementation <span class="string">&#x27;me.samlss:broccoli:1.0.0&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Maven"><a href="#Maven" class="headerlink" title="Maven"></a>Maven</h4><figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">  &lt;groupId&gt;me.samlss&lt;/groupId&gt;</span><br><span class="line">  &lt;artifactId&gt;broccoli&lt;/artifactId&gt;</span><br><span class="line">  &lt;version&gt;1.0.0&lt;/version&gt;</span><br><span class="line">  &lt;type&gt;pom&lt;/type&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="代码使用"><a href="#代码使用" class="headerlink" title="代码使用"></a>代码使用</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Broccoli broccoli = <span class="keyword">new</span> Broccoli();</span><br><span class="line"></span><br><span class="line"><span class="comment">//添加默认的占位符</span></span><br><span class="line">broccoli.addPlaceholders(<span class="string">&#x27;activity&#x27;</span>, <span class="string">&#x27;view_id&#x27;</span>, <span class="string">&#x27;view_id&#x27;</span>); </span><br><span class="line"></span><br><span class="line">or </span><br><span class="line"><span class="comment">//添加默认的占位符</span></span><br><span class="line">broccoli.addPlaceholders(<span class="string">&#x27;view1&#x27;</span>, <span class="string">&#x27;view2&#x27;</span>, <span class="string">&#x27;view3&#x27;</span>); </span><br><span class="line"></span><br><span class="line">or </span><br><span class="line"></span><br><span class="line"><span class="comment">//添加自定义的占位符</span></span><br><span class="line">broccoli.addPlaceholder(<span class="keyword">new</span> PlaceholderParameter.Builder()</span><br><span class="line">                        .setView(<span class="string">&#x27;view&#x27;</span>)</span><br><span class="line">                        .setAnimation(<span class="string">&#x27;scaleAnimation&#x27;</span>);</span><br><span class="line">                        .setDrawable(DrawableUtils.createRectangleDrawable(placeHolderColor, <span class="number">0</span>))</span><br><span class="line">                        .build()); </span><br><span class="line"></span><br><span class="line">or</span><br><span class="line"><span class="comment">//添加带渐变动画的占位符</span></span><br><span class="line">broccoli.addPlaceholder(<span class="keyword">new</span> PlaceholderParameter.Builder()</span><br><span class="line">                        .setView(<span class="string">&#x27;view&#x27;</span>)</span><br><span class="line">                        .setDrawable(<span class="keyword">new</span> BroccoliGradientDrawable(Color.parseColor(<span class="string">&quot;#DDDDDD&quot;</span>),</span><br><span class="line">                            Color.parseColor(<span class="string">&quot;#CCCCCC&quot;</span>), <span class="number">0</span>, <span class="number">1000</span>, <span class="keyword">new</span> LinearInterpolator())</span><br><span class="line">                        .build()); </span><br><span class="line">broccoli.show();</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://github.com/MarkCHYL/Mark_Broccoli_demo">源码demo地址</a></p>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>自定义控件</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何修改表结构：ALERT语句</title>
+    <url>/2021/04/19/%E5%A6%82%E4%BD%95%E4%BF%AE%E6%94%B9%E8%A1%A8%E7%BB%93%E6%9E%84%EF%BC%9AALERT%E8%AF%AD%E5%8F%A5/</url>
+    <content><![CDATA[<p>应用场景：当我们的业务需要对已经存在的表进行表结构修改时，我们需要使用 ALERT 语句进行修改。</p>
+<h3 id="增加表列"><a href="#增加表列" class="headerlink" title="增加表列:"></a>增加表列:</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ALERT TABLE tablenamme ADD</span><br><span class="line">(</span><br><span class="line">    column dataType [DEFAULT expr][NOT NULL],</span><br><span class="line">    column dataType [DEFAULT expr][NOT NULL],</span><br><span class="line">    ....</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h3 id="修改表列"><a href="#修改表列" class="headerlink" title="修改表列:"></a>修改表列:</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ALERT TABLE tablenamme MODIFY</span><br><span class="line">(</span><br><span class="line">    column dataType [DEFAULT expr][NOT NULL],</span><br><span class="line">    column dataType [DEFAULT expr][NOT NULL],</span><br><span class="line">    ....</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p><strong>注意事项</strong>：</p>
+<ul>
+<li>修改表列时，可以增加 <code>NOT NULL</code>及默认值约束，不能增加其他约束</li>
+<li>增加的默认值只会影响到后来插入的值</li>
+<li>若是要缩小列的宽度时，只有表中该列为空后者表里没有记录</li>
+<li>如若这列有空值，则不能添加非空约束</li>
+<li>若是改变该列的类型，只有表中该列为空后者表里没有记录</li>
+</ul>
+<h3 id="删除表中的列"><a href="#删除表中的列" class="headerlink" title="删除表中的列"></a>删除表中的列</h3><p><code>ALERT TABLE tablenamme DROP column col_name;</code></p>
+<h3 id="增加约束"><a href="#增加约束" class="headerlink" title="增加约束"></a>增加约束</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ALERT TABLE tablenamme </span><br><span class="line">ADD [CONSTRAINT constraint] type (column);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>增加 <code>NOT NULL</code>约束只能在增加列和修改列的时候添加</li>
+</ul>
+]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>Oracle</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>如何打Jar工具包</title>
     <url>/2019/12/10/%E5%A6%82%E4%BD%95%E6%89%93Jar%E5%B7%A5%E5%85%B7%E5%8C%85/</url>
     <content><![CDATA[<p><strong>打开Moudle包的build文件添加如下代码</strong></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">task makeJar(type: Copy) &#123;</span><br><span class="line">    def filename &#x3D; projects.name + &#39;-V&#39;</span><br><span class="line">    delete &quot;build&#x2F;libs&#x2F;MarkZXing1.0.jar&quot;</span><br><span class="line">    from(&#39;build&#x2F;intermediates&#x2F;packaged-classes&#x2F;release&#39;)</span><br><span class="line">    into(&#39;build&#x2F;libs&#x2F;&#39;)</span><br><span class="line">    include(&#39;classes.jar&#39;)</span><br><span class="line">    rename(&#39;classes.jar&#39;, &#39;MarkZXing1.0.jar&#39;)</span><br><span class="line">&#125;</span><br><span class="line">makeJar.dependsOn(build)</span><br></pre></td></tr></table></figure>
 <p><strong>点开我们右侧的Gradle，找到项目下的第一步新建的模块Module名称 ，点开 Tasks/other 文件 找到 makeJar， 双击即可，等待出现BUILD SUCCESSFUL， Task execution finished ‘makeJar’.==》编译完成，此时去Module目录下的libs/下找到的test.jar，便是制作的jar包。</strong></p>
 ]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何防止重新启动</title>
+    <url>/2019/10/14/%E5%A6%82%E4%BD%95%E9%98%B2%E6%AD%A2%E9%87%8D%E6%96%B0%E5%90%AF%E5%8A%A8/</url>
+    <content><![CDATA[<p>我的问题描述：</p>
+<blockquote>
+<p>app需要登陆才能进入主页，每次退到后台或返回之后都会重新进入LoginActivity，我需要的效果是登陆后，每次都去跳MainActivity。</p>
+</blockquote>
+<span id="more"></span>
+<p>说做就做，方法有很多种，我这记录的主要是利用回退栈 *moveTaskToBack(false)*来实现：</p>
+<ul>
+<li>LoginActivity的onCreate()方法中添加： <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if (!isTaskRoot()) &#123;</span><br><span class="line">     finish();</span><br><span class="line">     return;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+  <em>注意添加再布局设置之前</em></li>
+<li>再MainActivity中重写<code>onKeyDown</code>   和<code>onBackPressed</code>方法：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@Override</span><br><span class="line"> public boolean onKeyDown(int keyCode, KeyEvent event) &#123;</span><br><span class="line">     if (keyCode &#x3D;&#x3D; KeyEvent.KEYCODE_BACK) &#123;</span><br><span class="line">         moveTaskToBack(false);</span><br><span class="line">         return true;</span><br><span class="line">     &#125;</span><br><span class="line">     return super.onKeyDown(keyCode, event);</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> @Override</span><br><span class="line"> public void onBackPressed() &#123;</span><br><span class="line">     moveTaskToBack(false);</span><br><span class="line">     super.onBackPressed();</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="moveTaskToBack-boolean-isToTask-这个方法的使用自己的理解就是不让Activity被系统主动回收。"><a href="#moveTaskToBack-boolean-isToTask-这个方法的使用自己的理解就是不让Activity被系统主动回收。" class="headerlink" title="moveTaskToBack(boolean  isToTask)这个方法的使用自己的理解就是不让Activity被系统主动回收。"></a>moveTaskToBack(boolean  isToTask)这个方法的使用自己的理解就是不让Activity被系统主动回收。</h3>]]></content>
       <categories>
         <category>Android</category>
       </categories>
@@ -2972,21 +3036,6 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
-    <title>使用 Gradle 工具检查此项目的依赖</title>
-    <url>/2020/12/18/%E4%BD%BF%E7%94%A8-Gradle-%E5%B7%A5%E5%85%B7%E6%A3%80%E6%9F%A5%E6%AD%A4%E9%A1%B9%E7%9B%AE%E7%9A%84%E4%BE%9D%E8%B5%96/</url>
-    <content><![CDATA[<p>使用 Gradle 工具检查此项目的依赖，进入项目目录，执行如下指令进行依赖检查：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd app</span><br><span class="line">gradle dependencies</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>打印出如下图所示的依赖树，依赖树显示了你 build 脚本声明的顶级依赖和它们的传递依赖：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">+--- androidx.test.ext:junit:1.1.1</span><br><span class="line">|    +--- junit:junit:4.12</span><br><span class="line">|    |    \--- org.hamcrest:hamcrest-core:1.3</span><br><span class="line">|    +--- androidx.test:core:1.2.0</span><br><span class="line">|    |    +--- androidx.annotation:annotation:1.0.0 -&gt; 1.1.0</span><br><span class="line">|    |    +--- androidx.test:monitor:1.2.0</span><br><span class="line">|    |    |    \--- androidx.annotation:annotation:1.0.0 -&gt; 1.1.0</span><br><span class="line">|    |    \--- androidx.lifecycle:lifecycle-common:2.0.0 -&gt; 2.1.0</span><br><span class="line">|    |         \--- androidx.annotation:annotation:1.1.0</span><br><span class="line">|    +--- androidx.test:monitor:1.2.0 (*)</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>Gradle</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>安全码SHA1如何获取</title>
     <url>/2020/01/15/%E5%AE%89%E5%85%A8%E7%A0%81SHA1%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96/</url>
     <content><![CDATA[<p>在高德地图集成的时候遇到那玩意。<br><a href="https://blog.csdn.net/qq_33704095/article/details/80861146">原文</a></p>
@@ -3022,55 +3071,6 @@ Connection conn = null;
       </categories>
       <tags>
         <tag>Android</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何防止重新启动</title>
-    <url>/2019/10/14/%E5%A6%82%E4%BD%95%E9%98%B2%E6%AD%A2%E9%87%8D%E6%96%B0%E5%90%AF%E5%8A%A8/</url>
-    <content><![CDATA[<p>我的问题描述：</p>
-<blockquote>
-<p>app需要登陆才能进入主页，每次退到后台或返回之后都会重新进入LoginActivity，我需要的效果是登陆后，每次都去跳MainActivity。</p>
-</blockquote>
-<span id="more"></span>
-<p>说做就做，方法有很多种，我这记录的主要是利用回退栈 *moveTaskToBack(false)*来实现：</p>
-<ul>
-<li>LoginActivity的onCreate()方法中添加： <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if (!isTaskRoot()) &#123;</span><br><span class="line">     finish();</span><br><span class="line">     return;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-  <em>注意添加再布局设置之前</em></li>
-<li>再MainActivity中重写<code>onKeyDown</code>   和<code>onBackPressed</code>方法：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@Override</span><br><span class="line"> public boolean onKeyDown(int keyCode, KeyEvent event) &#123;</span><br><span class="line">     if (keyCode &#x3D;&#x3D; KeyEvent.KEYCODE_BACK) &#123;</span><br><span class="line">         moveTaskToBack(false);</span><br><span class="line">         return true;</span><br><span class="line">     &#125;</span><br><span class="line">     return super.onKeyDown(keyCode, event);</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> @Override</span><br><span class="line"> public void onBackPressed() &#123;</span><br><span class="line">     moveTaskToBack(false);</span><br><span class="line">     super.onBackPressed();</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="moveTaskToBack-boolean-isToTask-这个方法的使用自己的理解就是不让Activity被系统主动回收。"><a href="#moveTaskToBack-boolean-isToTask-这个方法的使用自己的理解就是不让Activity被系统主动回收。" class="headerlink" title="moveTaskToBack(boolean  isToTask)这个方法的使用自己的理解就是不让Activity被系统主动回收。"></a>moveTaskToBack(boolean  isToTask)这个方法的使用自己的理解就是不让Activity被系统主动回收。</h3>]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何修改表结构：ALERT语句</title>
-    <url>/2021/04/19/%E5%A6%82%E4%BD%95%E4%BF%AE%E6%94%B9%E8%A1%A8%E7%BB%93%E6%9E%84%EF%BC%9AALERT%E8%AF%AD%E5%8F%A5/</url>
-    <content><![CDATA[<p>应用场景：当我们的业务需要对已经存在的表进行表结构修改时，我们需要使用 ALERT 语句进行修改。</p>
-<h3 id="增加表列"><a href="#增加表列" class="headerlink" title="增加表列:"></a>增加表列:</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ALERT TABLE tablenamme ADD</span><br><span class="line">(</span><br><span class="line">    column dataType [DEFAULT expr][NOT NULL],</span><br><span class="line">    column dataType [DEFAULT expr][NOT NULL],</span><br><span class="line">    ....</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<h3 id="修改表列"><a href="#修改表列" class="headerlink" title="修改表列:"></a>修改表列:</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ALERT TABLE tablenamme MODIFY</span><br><span class="line">(</span><br><span class="line">    column dataType [DEFAULT expr][NOT NULL],</span><br><span class="line">    column dataType [DEFAULT expr][NOT NULL],</span><br><span class="line">    ....</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<p><strong>注意事项</strong>：</p>
-<ul>
-<li>修改表列时，可以增加 <code>NOT NULL</code>及默认值约束，不能增加其他约束</li>
-<li>增加的默认值只会影响到后来插入的值</li>
-<li>若是要缩小列的宽度时，只有表中该列为空后者表里没有记录</li>
-<li>如若这列有空值，则不能添加非空约束</li>
-<li>若是改变该列的类型，只有表中该列为空后者表里没有记录</li>
-</ul>
-<h3 id="删除表中的列"><a href="#删除表中的列" class="headerlink" title="删除表中的列"></a>删除表中的列</h3><p><code>ALERT TABLE tablenamme DROP column col_name;</code></p>
-<h3 id="增加约束"><a href="#增加约束" class="headerlink" title="增加约束"></a>增加约束</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ALERT TABLE tablenamme </span><br><span class="line">ADD [CONSTRAINT constraint] type (column);</span><br></pre></td></tr></table></figure>
-<ul>
-<li>增加 <code>NOT NULL</code>约束只能在增加列和修改列的时候添加</li>
-</ul>
-]]></content>
-      <categories>
-        <category>数据库</category>
-      </categories>
-      <tags>
-        <tag>Oracle</tag>
       </tags>
   </entry>
   <entry>
@@ -3111,22 +3111,6 @@ Connection conn = null;
       </categories>
       <tags>
         <tag>Android</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>界面为ScrollView时打开界面会自动滚动到底部之解决方法</title>
-    <url>/2019/09/02/%E7%95%8C%E9%9D%A2%E4%B8%BAScrollView%E6%97%B6%E6%89%93%E5%BC%80%E7%95%8C%E9%9D%A2%E4%BC%9A%E8%87%AA%E5%8A%A8%E6%BB%9A%E5%8A%A8%E5%88%B0%E5%BA%95%E9%83%A8%E4%B9%8B%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</url>
-    <content><![CDATA[<p>版权声明：本文为博主原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接和本声明。<br>本文链接：<a href="https://blog.csdn.net/u014449096/article/details/72885947">https://blog.csdn.net/u014449096/article/details/72885947</a></p>
-<p><strong>开发中遇到了这样的一个问题，界面最外层是ScrollView，然后里面有嵌套了一个ListView还有其他可以获取焦点的View，然后每次打开界面都会自动滚动到最底部，经过一番折腾，发现了一个简单的方法,<br>获取ScrollView里面一个上层任意view，然后调用如下方法：</strong><br> <span id="more"></span><br><code>view.setFocusable(true);  view.setFocusableInTouchMode(true);  view.requestFocus();</code></p>
-<p>**或者将scrollview包裹的内容设置上以下两个属性 **<br><code>android:focusable=”true” android:focusableInTouchMode=”true”</code></p>
-<p>例如：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;ScrollView</span><br><span class="line">    android:layout_width&#x3D;&quot;match_parent&quot;</span><br><span class="line">    android:layout_height&#x3D;&quot;wrap_content&quot;</span><br><span class="line">    android:scrollbars&#x3D;&quot;none&quot;</span><br><span class="line">    &gt;</span><br><span class="line">    &lt;LinearLayout</span><br><span class="line">        android:layout_width&#x3D;&quot;wrap_content&quot;</span><br><span class="line">        android:layout_height&#x3D;&quot;match_parent&quot;</span><br><span class="line">        android:orientation&#x3D;&quot;vertical&quot;</span><br><span class="line">        android:focusable&#x3D;&quot;true&quot;</span><br><span class="line">        android:focusableInTouchMode&#x3D;&quot;true&quot; &#x2F;&gt;</span><br><span class="line">        </span><br><span class="line">&lt;&#x2F;ScrollView</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>冲突</tag>
       </tags>
   </entry>
   <entry>
@@ -3254,15 +3238,19 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
-    <title>自定义控件实现（二）</title>
-    <url>/2020/08/06/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6%E5%AE%9E%E7%8E%B0%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
-    <content><![CDATA[]]></content>
+    <title>界面为ScrollView时打开界面会自动滚动到底部之解决方法</title>
+    <url>/2019/09/02/%E7%95%8C%E9%9D%A2%E4%B8%BAScrollView%E6%97%B6%E6%89%93%E5%BC%80%E7%95%8C%E9%9D%A2%E4%BC%9A%E8%87%AA%E5%8A%A8%E6%BB%9A%E5%8A%A8%E5%88%B0%E5%BA%95%E9%83%A8%E4%B9%8B%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<p>版权声明：本文为博主原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接和本声明。<br>本文链接：<a href="https://blog.csdn.net/u014449096/article/details/72885947">https://blog.csdn.net/u014449096/article/details/72885947</a></p>
+<p><strong>开发中遇到了这样的一个问题，界面最外层是ScrollView，然后里面有嵌套了一个ListView还有其他可以获取焦点的View，然后每次打开界面都会自动滚动到最底部，经过一番折腾，发现了一个简单的方法,<br>获取ScrollView里面一个上层任意view，然后调用如下方法：</strong><br> <span id="more"></span><br><code>view.setFocusable(true);  view.setFocusableInTouchMode(true);  view.requestFocus();</code></p>
+<p>**或者将scrollview包裹的内容设置上以下两个属性 **<br><code>android:focusable=”true” android:focusableInTouchMode=”true”</code></p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;ScrollView</span><br><span class="line">    android:layout_width&#x3D;&quot;match_parent&quot;</span><br><span class="line">    android:layout_height&#x3D;&quot;wrap_content&quot;</span><br><span class="line">    android:scrollbars&#x3D;&quot;none&quot;</span><br><span class="line">    &gt;</span><br><span class="line">    &lt;LinearLayout</span><br><span class="line">        android:layout_width&#x3D;&quot;wrap_content&quot;</span><br><span class="line">        android:layout_height&#x3D;&quot;match_parent&quot;</span><br><span class="line">        android:orientation&#x3D;&quot;vertical&quot;</span><br><span class="line">        android:focusable&#x3D;&quot;true&quot;</span><br><span class="line">        android:focusableInTouchMode&#x3D;&quot;true&quot; &#x2F;&gt;</span><br><span class="line">        </span><br><span class="line">&lt;&#x2F;ScrollView</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>Android</category>
       </categories>
       <tags>
         <tag>Android</tag>
-        <tag>自定义控件</tag>
+        <tag>冲突</tag>
       </tags>
   </entry>
   <entry>
@@ -3274,6 +3262,18 @@ Connection conn = null;
 <h3 id="来实践一下组合自定义控件"><a href="#来实践一下组合自定义控件" class="headerlink" title="来实践一下组合自定义控件"></a>来实践一下组合自定义控件</h3><p>需要实现的效果如图：<br><img src="https://github.com/MarkCHYL/BLOG/blob/master/marksource/images/avr1u-cdm3a.jpg?raw=true"></p>
 <p><a href="../../public/2020/08/06/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6%E5%AE%9E%E7%8E%B0%EF%BC%88%E4%BA%8C%EF%BC%89/index.html">自定义控件实现（二）</a></p>
 ]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>自定义控件</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>自定义控件实现（二）</title>
+    <url>/2020/08/06/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6%E5%AE%9E%E7%8E%B0%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
+    <content><![CDATA[]]></content>
       <categories>
         <category>Android</category>
       </categories>
