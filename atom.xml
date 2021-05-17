@@ -409,9 +409,9 @@
     <category term="数据库" scheme="http://markchyl.cn/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
     
-    <category term="Oracle" scheme="http://markchyl.cn/tags/Oracle/"/>
-    
     <category term="环境搭建" scheme="http://markchyl.cn/tags/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
+    
+    <category term="Oracle" scheme="http://markchyl.cn/tags/Oracle/"/>
     
   </entry>
   
