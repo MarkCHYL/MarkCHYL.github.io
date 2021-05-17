@@ -117,15 +117,15 @@
           var data = res.list[j].arr;
           var liTmpl = "";
           for (var i = 0, len = data.link.length; i < len; i++) {
-            var minSrc = 'https://mark_chen.coding.net/p/blogpicture/d/BlogPicture/git/raw/master/min_photos/' + data.link[i];
-            var src = 'https://mark_chen.coding.net/p/blogpicture/d/BlogPicture/git/raw/master/photos/' + data.link[i];
+            var minSrc = 'https://raw.githubusercontent.com/MarkCHYL/BlogPicture/master/min_photos/' + data.link[i];
+            var src = 'hhttps://raw.githubusercontent.com/MarkCHYL/BlogPicture/master/photos/' + data.link[i];
             var type = data.type[i];
             var target = src + (type === 'video' ? '.mp4' : '.jpg');
             src += '';
   
             liTmpl += '<figure class="thumb" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject">\
-                  <a href="' + src + '" itemprop="contentUrl" data-size="1080x1080" data-type="' + type + '" data-target="' + target + '">\
-                    <img class="reward-img" data-type="' + type + '" src="' + minSrc + '" data-src="./assets/empty.jpeg" itemprop="thumbnail" onload="lzld(this)">\
+                  <a href="' + src + '" itemprop="contentUrl" data-size="1080x1080" data-type="' + type + '" data-target="' + src + '">\
+                    <img class="reward-img" data-type="' + type + '" data-src="' + minSrc + '" data-src="./assets/empty.jpeg" itemprop="thumbnail" onload="lzld(this)">\
                   </a>\
                   <figcaption style="display:none" itemprop="caption description">' + data.text[i] + '</figcaption>\
               </figure>';
