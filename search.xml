@@ -41,40 +41,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Android ANR发生的原因总结和解决办法</title>
-    <url>/2020/08/06/Android-ANR%E5%8F%91%E7%94%9F%E7%9A%84%E5%8E%9F%E5%9B%A0%E6%80%BB%E7%BB%93%E5%92%8C%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</url>
-    <content><![CDATA[<h3 id="什么是ANR？"><a href="#什么是ANR？" class="headerlink" title="什么是ANR？"></a>什么是ANR？</h3><blockquote>
-<p>ANR的全称是application not responding，是指应用程序未响应，Android系统对于一些事件需要在一定的时间范围内完成，如果超过预定时间能未能得到有效响应或者响应时间过长，都会造成ANR。一般地，这时往往会弹出一个提示框，告知用户当前xxx未响应，用户可选择继续等待或者Force Close。</p>
-</blockquote>
-<hr>
-<h3 id="官方指定的产生ANR一般有以下类型："><a href="#官方指定的产生ANR一般有以下类型：" class="headerlink" title="官方指定的产生ANR一般有以下类型："></a>官方指定的产生ANR一般有以下类型：</h3><p>1：KeyDispatchTimeout（5秒）–主要类型<br>按键或触摸事件在特定时间无响应</p>
-<p>2：BroadcastTimeout（10秒）<br>BroadcastReceiver在特定时间无法处理完成</p>
-<p>3：ServiceTimeout（ 20秒）–小概率类型<br>服务在特定的时间无法处理完成</p>
-<hr>
-<h3 id="导致ANR的根本原因"><a href="#导致ANR的根本原因" class="headerlink" title="导致ANR的根本原因"></a>导致ANR的根本原因</h3><p>1.主线程执行了耗时操作，比如数据库操作或网络编程,I/O操作</p>
-<p>2.其他进程（就是其他程序）占用CPU导致本进程得不到CPU时间片，比如其他进程的频繁读写操作可能会导致这个问题。</p>
-<p>细分的话，导致ANR的原因有如下几点：<br>   1.耗时的网络访问<br>   2.大量的数据读写<br>   3.数据库操作<br>   4.硬件操作（比如camera)<br>   5.调用thread的join()方法、sleep()方法、wait()方法或者等待线程锁的时候<br>   6.service binder的数量达到上限<br>   7.system server中发生WatchDog ANR<br>   8.service忙导致超时无响应<br>   9.其他线程持有锁，导致主线程等待超时<br>   10.其它线程终止或崩溃导致主线程一直等待</p>
-<hr>
-<h3 id="调查并解决ANR"><a href="#调查并解决ANR" class="headerlink" title="调查并解决ANR"></a>调查并解决ANR</h3><ul>
-<li>1、首先分析log</li>
-<li>2、从trace.txt文件查看调用堆栈。-$ adb拉取data / anr / traces.txt。</li>
-<li>3、看代码</li>
-<li>4、仔细查看ANR的成因（iowait？block？memoryleak？）</li>
-</ul>
-<hr>
-<h3 id="如何避免ANR的发生"><a href="#如何避免ANR的发生" class="headerlink" title="如何避免ANR的发生"></a>如何避免ANR的发生</h3><p>1.避免在主线程执行耗时操作，所有耗时操作应新开一个子线程完成，然后再在主线程更新UI。</p>
-<p>2.BroadcastReceiver要执行耗时操作时应启动一个service，将耗时操作交给service来完成。</p>
-<p>3.避免在Intent Receiver里启动一个Activity，因为它会创建一个新的画面，并从当前用户正在运行的程序上抢夺焦点。如果你的应用程序在响应Intent广 播时需要向用户展示什么，你应该使用Notification Manager来实现。</p>
-]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>基础理论</tag>
-        <tag>Error</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Android APK反编译 apktool使用教程</title>
     <url>/2019/09/26/Android-APK%E5%8F%8D%E7%BC%96%E8%AF%91-apktool%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</url>
     <content><![CDATA[<h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><p>时间久了之前在熟悉的东西也会渐疏，好记性不如乱笔头。</p>
@@ -111,6 +77,40 @@
       <tags>
         <tag>工具使用</tag>
         <tag>反编译</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Android ANR发生的原因总结和解决办法</title>
+    <url>/2020/08/06/Android-ANR%E5%8F%91%E7%94%9F%E7%9A%84%E5%8E%9F%E5%9B%A0%E6%80%BB%E7%BB%93%E5%92%8C%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</url>
+    <content><![CDATA[<h3 id="什么是ANR？"><a href="#什么是ANR？" class="headerlink" title="什么是ANR？"></a>什么是ANR？</h3><blockquote>
+<p>ANR的全称是application not responding，是指应用程序未响应，Android系统对于一些事件需要在一定的时间范围内完成，如果超过预定时间能未能得到有效响应或者响应时间过长，都会造成ANR。一般地，这时往往会弹出一个提示框，告知用户当前xxx未响应，用户可选择继续等待或者Force Close。</p>
+</blockquote>
+<hr>
+<h3 id="官方指定的产生ANR一般有以下类型："><a href="#官方指定的产生ANR一般有以下类型：" class="headerlink" title="官方指定的产生ANR一般有以下类型："></a>官方指定的产生ANR一般有以下类型：</h3><p>1：KeyDispatchTimeout（5秒）–主要类型<br>按键或触摸事件在特定时间无响应</p>
+<p>2：BroadcastTimeout（10秒）<br>BroadcastReceiver在特定时间无法处理完成</p>
+<p>3：ServiceTimeout（ 20秒）–小概率类型<br>服务在特定的时间无法处理完成</p>
+<hr>
+<h3 id="导致ANR的根本原因"><a href="#导致ANR的根本原因" class="headerlink" title="导致ANR的根本原因"></a>导致ANR的根本原因</h3><p>1.主线程执行了耗时操作，比如数据库操作或网络编程,I/O操作</p>
+<p>2.其他进程（就是其他程序）占用CPU导致本进程得不到CPU时间片，比如其他进程的频繁读写操作可能会导致这个问题。</p>
+<p>细分的话，导致ANR的原因有如下几点：<br>   1.耗时的网络访问<br>   2.大量的数据读写<br>   3.数据库操作<br>   4.硬件操作（比如camera)<br>   5.调用thread的join()方法、sleep()方法、wait()方法或者等待线程锁的时候<br>   6.service binder的数量达到上限<br>   7.system server中发生WatchDog ANR<br>   8.service忙导致超时无响应<br>   9.其他线程持有锁，导致主线程等待超时<br>   10.其它线程终止或崩溃导致主线程一直等待</p>
+<hr>
+<h3 id="调查并解决ANR"><a href="#调查并解决ANR" class="headerlink" title="调查并解决ANR"></a>调查并解决ANR</h3><ul>
+<li>1、首先分析log</li>
+<li>2、从trace.txt文件查看调用堆栈。-$ adb拉取data / anr / traces.txt。</li>
+<li>3、看代码</li>
+<li>4、仔细查看ANR的成因（iowait？block？memoryleak？）</li>
+</ul>
+<hr>
+<h3 id="如何避免ANR的发生"><a href="#如何避免ANR的发生" class="headerlink" title="如何避免ANR的发生"></a>如何避免ANR的发生</h3><p>1.避免在主线程执行耗时操作，所有耗时操作应新开一个子线程完成，然后再在主线程更新UI。</p>
+<p>2.BroadcastReceiver要执行耗时操作时应启动一个service，将耗时操作交给service来完成。</p>
+<p>3.避免在Intent Receiver里启动一个Activity，因为它会创建一个新的画面，并从当前用户正在运行的程序上抢夺焦点。如果你的应用程序在响应Intent广 播时需要向用户展示什么，你应该使用Notification Manager来实现。</p>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>基础理论</tag>
+        <tag>Error</tag>
       </tags>
   </entry>
   <entry>
@@ -1372,51 +1372,6 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
-    <title>JDBC学习--Statement</title>
-    <url>/2021/05/13/JDBC%E5%AD%A6%E4%B9%A0-Statement/</url>
-    <content><![CDATA[<h3 id="JDBC的API结构和使用流程"><a href="#JDBC的API结构和使用流程" class="headerlink" title="JDBC的API结构和使用流程"></a>JDBC的API结构和使用流程</h3><pre class="mermaid">graph TB
-    A0[DriverManager] --> B0[Driver]
-    A0[DriverManager] --> B1[Driver] 
-    B0[Driver] --> C0[Connection]
-    B1[Driver] -->C1[Connection]
-    B1[Driver] -->C2[Connection]
-    C0[Connection]-->D0[Statement]
-    C0[Connection]-->D1[Statement]-->E0[ResultSet]
-    C0[Connection]-->D2[Statement]-->E1[ResultSet]
-    C1[Connection]-->D3[Statement]-->E2[ResultSet]</pre>
-<span id="more"></span>
-<h3 id="创建Statement的方式"><a href="#创建Statement的方式" class="headerlink" title="创建Statement的方式"></a>创建Statement的方式</h3><ul>
-<li><p><code>Statement  stmt = Connection.createStatement(......);</code></p>
-<ul>
-<li>执行不带参数的简单SQL语句</li>
-</ul>
-</li>
-<li><p><code>PreparedStatement  pstmt = Connection.prepareStatement(......);</code></p>
-<ul>
-<li>执行带参数或不带参数的SQL语句</li>
-</ul>
-</li>
-<li><p><code>CallableStatement   cstmt  =  Connection.prepareCall(...);</code></p>
-<ul>
-<li>执行对数据库已存储的PL/SQL程序的调用</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h3 id="执行SQL语句"><a href="#执行SQL语句" class="headerlink" title="执行SQL语句"></a>执行SQL语句</h3><ul>
-<li><code>executeQuery()</code>：执行查询语句，返回查询结果集 <code>ResultSet</code><br>返回结果集 <code>rs.getFetchSize()</code>记录着当前返回数量的大小：<code>10</code></li>
-<li><code>executeUpdate()</code>: 执行DML和DDL 语句，返回int类型</li>
-<li><code>execute()</code>: 执行任何SQL语句，返回boolean类型，指示是否有ResultSet返回</li>
-</ul>
-]]></content>
-      <categories>
-        <category>JavaWeb</category>
-      </categories>
-      <tags>
-        <tag>JDBC</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Kotlin中可变参数</title>
     <url>/2021/04/26/Kotlin%E4%B8%AD%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0/</url>
     <content><![CDATA[<p><a href="https://www.jianshu.com/p/174c0e254713">原文简书</a></p>
@@ -1466,6 +1421,51 @@ Connection conn = null;
       </categories>
       <tags>
         <tag>Kotlin基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JDBC学习--Statement</title>
+    <url>/2021/05/13/JDBC%E5%AD%A6%E4%B9%A0-Statement/</url>
+    <content><![CDATA[<h3 id="JDBC的API结构和使用流程"><a href="#JDBC的API结构和使用流程" class="headerlink" title="JDBC的API结构和使用流程"></a>JDBC的API结构和使用流程</h3><pre class="mermaid">graph TB
+    A0[DriverManager] --> B0[Driver]
+    A0[DriverManager] --> B1[Driver] 
+    B0[Driver] --> C0[Connection]
+    B1[Driver] -->C1[Connection]
+    B1[Driver] -->C2[Connection]
+    C0[Connection]-->D0[Statement]
+    C0[Connection]-->D1[Statement]-->E0[ResultSet]
+    C0[Connection]-->D2[Statement]-->E1[ResultSet]
+    C1[Connection]-->D3[Statement]-->E2[ResultSet]</pre>
+<span id="more"></span>
+<h3 id="创建Statement的方式"><a href="#创建Statement的方式" class="headerlink" title="创建Statement的方式"></a>创建Statement的方式</h3><ul>
+<li><p><code>Statement  stmt = Connection.createStatement(......);</code></p>
+<ul>
+<li>执行不带参数的简单SQL语句</li>
+</ul>
+</li>
+<li><p><code>PreparedStatement  pstmt = Connection.prepareStatement(......);</code></p>
+<ul>
+<li>执行带参数或不带参数的SQL语句</li>
+</ul>
+</li>
+<li><p><code>CallableStatement   cstmt  =  Connection.prepareCall(...);</code></p>
+<ul>
+<li>执行对数据库已存储的PL/SQL程序的调用</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="执行SQL语句"><a href="#执行SQL语句" class="headerlink" title="执行SQL语句"></a>执行SQL语句</h3><ul>
+<li><code>executeQuery()</code>：执行查询语句，返回查询结果集 <code>ResultSet</code><br>返回结果集 <code>rs.getFetchSize()</code>记录着当前返回数量的大小：<code>10</code></li>
+<li><code>executeUpdate()</code>: 执行DML和DDL 语句，返回int类型</li>
+<li><code>execute()</code>: 执行任何SQL语句，返回boolean类型，指示是否有ResultSet返回</li>
+</ul>
+]]></content>
+      <categories>
+        <category>JavaWeb</category>
+      </categories>
+      <tags>
+        <tag>JDBC</tag>
       </tags>
   </entry>
   <entry>
@@ -1693,26 +1693,6 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
-    <title>Mac上搭建apktool反编译工具</title>
-    <url>/2019/06/13/Mac%E4%B8%8A%E6%90%AD%E5%BB%BAapktool%E5%8F%8D%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7/</url>
-    <content><![CDATA[<p>apktool下载地址：<br><code>https://ibotpeaches.github.io/Apktool/install/</code></p>
-<span id="more"></span>
-<h3 id="1-在Chrome中，打开网址，找到图中所示Mac相关部分"><a href="#1-在Chrome中，打开网址，找到图中所示Mac相关部分" class="headerlink" title="1.在Chrome中，打开网址，找到图中所示Mac相关部分"></a>1.在Chrome中，打开网址，找到图中所示Mac相关部分</h3><p><img data-src="https://img-blog.csdnimg.cn/20191226175801984.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d1YWlndWFpXzIwMTU=,size_16,color_FFFFFF,t_70"></p>
-<h3 id="2-在Chrome中，打开网址，在“-wrapper-script”上点击鼠标右键，选择“链接存储为”"><a href="#2-在Chrome中，打开网址，在“-wrapper-script”上点击鼠标右键，选择“链接存储为”" class="headerlink" title="2.在Chrome中，打开网址，在“ wrapper script”上点击鼠标右键，选择“链接存储为”"></a>2.在Chrome中，打开网址，在“ wrapper script”上点击鼠标右键，选择“链接存储为”</h3><p><img data-src="https://upload-images.jianshu.io/upload_images/13001414-fb0faffd01c74a08.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp"><br>存储时，必须选择格式为“所有文件”，文件名为“apktool”，没有后缀(貌似有些浏览器不能选择格式，我在Chrome浏览器可以选择文件格式)<br> <img data-src="https://upload-images.jianshu.io/upload_images/13001414-217bcc315f02b99f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp"></p>
-<h3 id="3-点击“find-newest-here”进入下载页面，选择合适的版本，下载-jar文件，下载后文件名要改为“apktool-jar”"><a href="#3-点击“find-newest-here”进入下载页面，选择合适的版本，下载-jar文件，下载后文件名要改为“apktool-jar”" class="headerlink" title="3.点击“find newest here”进入下载页面，选择合适的版本，下载.jar文件，下载后文件名要改为“apktool.jar”"></a>3.点击“find newest here”进入下载页面，选择合适的版本，下载.jar文件，下载后文件名要改为“apktool.jar”</h3><p> <img data-src="https://upload-images.jianshu.io/upload_images/13001414-16b2c8e8c0b1dc31.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp"><br> <img data-src="https://upload-images.jianshu.io/upload_images/13001414-ae3dbce397cce0b3.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp"></p>
-<h3 id="4-把apktool和apktool-jar文件移动到”-usr-local-bin”目录下，并使用终端命令为两个文件增加执行权限"><a href="#4-把apktool和apktool-jar文件移动到”-usr-local-bin”目录下，并使用终端命令为两个文件增加执行权限" class="headerlink" title="4.把apktool和apktool.jar文件移动到”/usr/local/bin”目录下，并使用终端命令为两个文件增加执行权限"></a>4.把apktool和apktool.jar文件移动到”/usr/local/bin”目录下，并使用终端命令为两个文件增加执行权限</h3><p>命令如下：<br><code>chmod +x apktool.jar apktool</code></p>
-<h3 id="5-验证是否安装成功"><a href="#5-验证是否安装成功" class="headerlink" title="5.验证是否安装成功"></a>5.验证是否安装成功</h3><p>在终端输入命令：apktool<br>打印如下信息：</p>
-<p><img data-src="https://img-blog.csdnimg.cn/20191226185747298.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d1YWlndWFpXzIwMTU=,size_16,color_FFFFFF,t_70" alt="&quot;安装成功的打印新信息&quot;" title="安装成功的打印新信息"></p>
-]]></content>
-      <categories>
-        <category>工具使用</category>
-      </categories>
-      <tags>
-        <tag>反编译</tag>
-        <tag>工具搭建</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Mac上实现SVN代码管理</title>
     <url>/2019/05/30/Mac%E4%B8%8A%E5%AE%9E%E7%8E%B0SVN%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86/</url>
     <content><![CDATA[<h3 id="参考地址："><a href="#参考地址：" class="headerlink" title="参考地址："></a>参考地址：</h3><ul>
@@ -1815,6 +1795,50 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
+    <title>Mac上搭建apktool反编译工具</title>
+    <url>/2019/06/13/Mac%E4%B8%8A%E6%90%AD%E5%BB%BAapktool%E5%8F%8D%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7/</url>
+    <content><![CDATA[<p>apktool下载地址：<br><code>https://ibotpeaches.github.io/Apktool/install/</code></p>
+<span id="more"></span>
+<h3 id="1-在Chrome中，打开网址，找到图中所示Mac相关部分"><a href="#1-在Chrome中，打开网址，找到图中所示Mac相关部分" class="headerlink" title="1.在Chrome中，打开网址，找到图中所示Mac相关部分"></a>1.在Chrome中，打开网址，找到图中所示Mac相关部分</h3><p><img data-src="https://img-blog.csdnimg.cn/20191226175801984.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d1YWlndWFpXzIwMTU=,size_16,color_FFFFFF,t_70"></p>
+<h3 id="2-在Chrome中，打开网址，在“-wrapper-script”上点击鼠标右键，选择“链接存储为”"><a href="#2-在Chrome中，打开网址，在“-wrapper-script”上点击鼠标右键，选择“链接存储为”" class="headerlink" title="2.在Chrome中，打开网址，在“ wrapper script”上点击鼠标右键，选择“链接存储为”"></a>2.在Chrome中，打开网址，在“ wrapper script”上点击鼠标右键，选择“链接存储为”</h3><p><img data-src="https://upload-images.jianshu.io/upload_images/13001414-fb0faffd01c74a08.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp"><br>存储时，必须选择格式为“所有文件”，文件名为“apktool”，没有后缀(貌似有些浏览器不能选择格式，我在Chrome浏览器可以选择文件格式)<br> <img data-src="https://upload-images.jianshu.io/upload_images/13001414-217bcc315f02b99f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp"></p>
+<h3 id="3-点击“find-newest-here”进入下载页面，选择合适的版本，下载-jar文件，下载后文件名要改为“apktool-jar”"><a href="#3-点击“find-newest-here”进入下载页面，选择合适的版本，下载-jar文件，下载后文件名要改为“apktool-jar”" class="headerlink" title="3.点击“find newest here”进入下载页面，选择合适的版本，下载.jar文件，下载后文件名要改为“apktool.jar”"></a>3.点击“find newest here”进入下载页面，选择合适的版本，下载.jar文件，下载后文件名要改为“apktool.jar”</h3><p> <img data-src="https://upload-images.jianshu.io/upload_images/13001414-16b2c8e8c0b1dc31.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp"><br> <img data-src="https://upload-images.jianshu.io/upload_images/13001414-ae3dbce397cce0b3.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp"></p>
+<h3 id="4-把apktool和apktool-jar文件移动到”-usr-local-bin”目录下，并使用终端命令为两个文件增加执行权限"><a href="#4-把apktool和apktool-jar文件移动到”-usr-local-bin”目录下，并使用终端命令为两个文件增加执行权限" class="headerlink" title="4.把apktool和apktool.jar文件移动到”/usr/local/bin”目录下，并使用终端命令为两个文件增加执行权限"></a>4.把apktool和apktool.jar文件移动到”/usr/local/bin”目录下，并使用终端命令为两个文件增加执行权限</h3><p>命令如下：<br><code>chmod +x apktool.jar apktool</code></p>
+<h3 id="5-验证是否安装成功"><a href="#5-验证是否安装成功" class="headerlink" title="5.验证是否安装成功"></a>5.验证是否安装成功</h3><p>在终端输入命令：apktool<br>打印如下信息：</p>
+<p><img data-src="https://img-blog.csdnimg.cn/20191226185747298.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d1YWlndWFpXzIwMTU=,size_16,color_FFFFFF,t_70" alt="&quot;安装成功的打印新信息&quot;" title="安装成功的打印新信息"></p>
+]]></content>
+      <categories>
+        <category>工具使用</category>
+      </categories>
+      <tags>
+        <tag>反编译</tag>
+        <tag>工具搭建</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Mac连接京瓷打印机Fs-1030MFP/DP</title>
+    <url>/2021/05/13/Mac%E8%BF%9E%E6%8E%A5%E4%BA%AC%E7%93%B7%E6%89%93%E5%8D%B0%E6%9C%BAFs-1030MFP-DP/</url>
+    <content><![CDATA[<pre class="mermaid">graph TB
+    A0[进入系统偏好设置] --> B0[打印机与扫描仪] --> C0[添加打印机] -->  D0[选择IP]
+    D0[选择IP]  --> E0[ 输入IP地址,协议选择行式打印机监控程序-LPD,使用那选择普通PCL打印机,然后系统会自动添加打印机驱动]  --> F0[OK开始打印吧]</pre>
+<ol>
+<li>进入系统偏好设置。</li>
+<li>打印机与扫描仪</li>
+<li>添加打印机</li>
+<li>选择IP</li>
+<li>输入IP地址，协议选择“行式打印机监控程序-LPD”，使用那选择“普通PCL打印机”，然后系统会自动添加打印机驱动。</li>
+<li>OK开始打印吧</li>
+</ol>
+<hr>
+<p>就是这么简单</p>
+]]></content>
+      <categories>
+        <category>工具使用</category>
+      </categories>
+      <tags>
+        <tag>工具搭建</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Mac电脑maven安装与配置</title>
     <url>/2021/05/13/Mac%E7%94%B5%E8%84%91maven%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</url>
     <content><![CDATA[<p><a href="https://www.cnblogs.com/zdz8207/p/mac-java-maven.html">原文地址：大自然的流风</a></p>
@@ -1840,30 +1864,6 @@ Connection conn = null;
       </categories>
       <tags>
         <tag>Maven</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Mac连接京瓷打印机Fs-1030MFP/DP</title>
-    <url>/2021/05/13/Mac%E8%BF%9E%E6%8E%A5%E4%BA%AC%E7%93%B7%E6%89%93%E5%8D%B0%E6%9C%BAFs-1030MFP-DP/</url>
-    <content><![CDATA[<pre class="mermaid">graph TB
-    A0[进入系统偏好设置] --> B0[打印机与扫描仪] --> C0[添加打印机] -->  D0[选择IP]
-    D0[选择IP]  --> E0[ 输入IP地址,协议选择行式打印机监控程序-LPD,使用那选择普通PCL打印机,然后系统会自动添加打印机驱动]  --> F0[OK开始打印吧]</pre>
-<ol>
-<li>进入系统偏好设置。</li>
-<li>打印机与扫描仪</li>
-<li>添加打印机</li>
-<li>选择IP</li>
-<li>输入IP地址，协议选择“行式打印机监控程序-LPD”，使用那选择“普通PCL打印机”，然后系统会自动添加打印机驱动。</li>
-<li>OK开始打印吧</li>
-</ol>
-<hr>
-<p>就是这么简单</p>
-]]></content>
-      <categories>
-        <category>工具使用</category>
-      </categories>
-      <tags>
-        <tag>工具搭建</tag>
       </tags>
   </entry>
   <entry>
@@ -2184,7 +2184,7 @@ Connection conn = null;
 <p>2.添加SSH Key到Github<br>进入github首页在设置洁面<br><img data-src="https://images2017.cnblogs.com/blog/1250458/201710/1250458-20171017153636849-294935886.png"></p>
 <hr>
 <h4 id="添加SSH-Key"><a href="#添加SSH-Key" class="headerlink" title="添加SSH Key"></a>添加SSH Key</h4><p><img data-src="https://images2017.cnblogs.com/blog/1250458/201710/1250458-20171017153642521-647884655.png"><br>找到系统当前用户目录下(开启查看隐藏文件) C:\Users\用户名\ .ssh id_rsa.pub文件以文本方式打开。打开之后全部复制到key中<br><img data-src="https://images2017.cnblogs.com/blog/1250458/201710/1250458-20171017153648631-441574444.png"><br>到了这就可以测试一下是否成功了:</p>
-<p>ssh -T <a href="mailto:&#x67;&#x69;&#x74;&#x40;&#x67;&#x69;&#116;&#x68;&#x75;&#98;&#x2e;&#x63;&#x6f;&#x6d;">&#x67;&#x69;&#x74;&#x40;&#x67;&#x69;&#116;&#x68;&#x75;&#98;&#x2e;&#x63;&#x6f;&#x6d;</a><br>#之后会要你输入yes/no,输入yes就好了。<br>设置你的账号信息:</p>
+<p>ssh -T <a href="mailto:&#103;&#x69;&#116;&#x40;&#x67;&#x69;&#116;&#x68;&#x75;&#98;&#46;&#99;&#111;&#109;">&#103;&#x69;&#116;&#x40;&#x67;&#x69;&#116;&#x68;&#x75;&#98;&#46;&#99;&#111;&#109;</a><br>#之后会要你输入yes/no,输入yes就好了。<br>设置你的账号信息:</p>
 <p>git config –global user.name “你的名字”     #真实名字不是github用户名<br>git config –global user.email “邮箱@邮箱.com”    #github邮箱<br>3.部署到github<br>hexo d<br>这时再刷新 username.github.io 就可以看到你的博客了。</p>
 <p>到了这你以为就结束了吗？没有，还有坑没有给你们填好。</p>
 <p>如果你的SSH配置的时候哪找的.ssh文件的化，可以参照<a href="https://www.cnblogs.com/ailiailan/p/8577411.html">mac 上传本地代码到 Github 教程</a>,我就是参照上面的步骤配置的。</p>
