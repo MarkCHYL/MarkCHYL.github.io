@@ -175,17 +175,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Android事件分发机制完全解,从源码的角度分析理解</title>
-    <url>/2020/12/30/Android%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E6%9C%BA%E5%88%B6%E5%AE%8C%E5%85%A8%E8%A7%A3-%E4%BB%8E%E6%BA%90%E7%A0%81%E7%9A%84%E8%A7%92%E5%BA%A6%E5%88%86%E6%9E%90%E7%90%86%E8%A7%A3/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>基础理论</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Android 通用流行框架大全</title>
     <url>/2020/08/07/Android-%E9%80%9A%E7%94%A8%E6%B5%81%E8%A1%8C%E6%A1%86%E6%9E%B6%E5%A4%A7%E5%85%A8/</url>
     <content><![CDATA[<blockquote>
@@ -589,6 +578,17 @@
       </tags>
   </entry>
   <entry>
+    <title>Android事件分发机制完全解,从源码的角度分析理解</title>
+    <url>/2020/12/30/Android%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E6%9C%BA%E5%88%B6%E5%AE%8C%E5%85%A8%E8%A7%A3-%E4%BB%8E%E6%BA%90%E7%A0%81%E7%9A%84%E8%A7%92%E5%BA%A6%E5%88%86%E6%9E%90%E7%90%86%E8%A7%A3/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>基础理论</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Android动态更换APP图标及名称</title>
     <url>/2020/01/13/Android%E5%8A%A8%E6%80%81%E6%9B%B4%E6%8D%A2APP%E5%9B%BE%E6%A0%87%E5%8F%8A%E5%90%8D%E7%A7%B0/</url>
     <content><![CDATA[<p>实现之前觉得万分难，我查阅了很多博客.<br>报错—–应用未安装<br>Stop，停下来我先抽支烟，喝杯茶，仔细看看别人的介绍。再次感谢这个博主的博客<a href="https://blog.csdn.net/ozhuimeng123/article/details/92734825">倚栏静望</a></p>
@@ -681,6 +681,77 @@
       </tags>
   </entry>
   <entry>
+    <title>Android根据字符串加载Activity和res目录下图片</title>
+    <url>/2021/01/15/Android%E6%A0%B9%E6%8D%AE%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8A%A0%E8%BD%BDActivity%E5%92%8Cres%E7%9B%AE%E5%BD%95%E4%B8%8B%E5%9B%BE%E7%89%87/</url>
+    <content><![CDATA[<h3 id="根据传入的字符串跳转Activity"><a href="#根据传入的字符串跳转Activity" class="headerlink" title="根据传入的字符串跳转Activity"></a>根据传入的字符串跳转Activity</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Intent intent &#x3D; new Intent(context,Class.forName(&quot;com.packname.Activity&quot;));</span><br><span class="line">startActivity(intent);</span><br></pre></td></tr></table></figure>
+<h3 id="根据传入的字符加载资源"><a href="#根据传入的字符加载资源" class="headerlink" title="根据传入的字符加载资源"></a>根据传入的字符加载资源</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int icon &#x3D; getResources().getIdentifier(“imageid”, &quot;drawable&quot;,getPackageName());</span><br></pre></td></tr></table></figure>
+<p>优化：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public static int getDrawableId(Context context, String var) &#123;</span><br><span class="line"></span><br><span class="line">        try &#123;</span><br><span class="line">            int imageId &#x3D; context.getResources().getIdentifier(var, &quot;drawable&quot;, context.getPackageName());</span><br><span class="line">            return imageId;</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            return 0;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>getIdentifier的函数签名如下：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public int getIdentifier (String name, String defType, String defPackage)</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Android消息传递机制总结(一)</title>
+    <url>/2020/10/09/Android%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6%E6%80%BB%E7%BB%93(%E4%B8%80%EF%BC%89/</url>
+    <content><![CDATA[<h4 id="安卓业务层的核心灵魂就是层层的消息传递，今天就来总结一下andorid的应用层的各种消息传递。"><a href="#安卓业务层的核心灵魂就是层层的消息传递，今天就来总结一下andorid的应用层的各种消息传递。" class="headerlink" title="安卓业务层的核心灵魂就是层层的消息传递，今天就来总结一下andorid的应用层的各种消息传递。"></a>安卓业务层的核心灵魂就是层层的消息传递，今天就来总结一下andorid的应用层的各种消息传递。</h4><p>1.线程间通讯 ——— Handler，HandlerThread等。<br>2.组件间通信 ——— BroadcastReceiver，接口回调等。<br>3. 第三方通信 ——— EventBus，rxBus<br>4.进程间通信 ——— Content Provider ，Broadcast ，AIDL等。<br>5.长连接推送 ——— WebSocket，XMPP等。</p>
+<h3 id="1-线程间通信"><a href="#1-线程间通信" class="headerlink" title="1.线程间通信"></a>1.线程间通信</h3><p>Android通过Handler消息机制来实现线程之间的通讯。</p>
+<span id="more"></span>
+
+<h4 id="Handler机制主要角色"><a href="#Handler机制主要角色" class="headerlink" title="Handler机制主要角色"></a>Handler机制主要角色</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Message：消息，其中包含了消息ID，消息处理对象以及处理的数据等，由MessageQueue统一列队，终由Handler处理。 </span><br><span class="line">Handler：处理者，负责Message的发送及处理。使用Handler时，需要实现handleMessage(Message msg)方法来对特定的Message进行处理，例如更新UI等。 </span><br><span class="line">MessageQueue：消息队列，用来存放Handler发送过来的消息，并按照FIFO规则执行。当然，存放Message并非实际意义的保存，而是将Message以链表的方式串联起来的，等待Looper的抽取。 </span><br><span class="line">Looper：消息泵，不断地从MessageQueue中抽取Message执行。因此，一个MessageQueue需要一个Looper。</span><br><span class="line">Thread：线程，负责调度整个消息循环，即消息循环的执行场所。</span><br></pre></td></tr></table></figure>
+<h4 id="Handler机制主要运用"><a href="#Handler机制主要运用" class="headerlink" title="Handler机制主要运用"></a>Handler机制主要运用</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sendEmptyMessage(int);&#x2F;&#x2F;发送一个空的消息</span><br><span class="line">sendMessage(Message);&#x2F;&#x2F;发送消息，消息中可以携带参数</span><br><span class="line">sendMessageAtTime(Message, long);&#x2F;&#x2F;未来某一时间点发送消息</span><br><span class="line">sendMessageDelayed(Message, long);&#x2F;&#x2F;延时Nms发送消息</span><br><span class="line"></span><br><span class="line">post(Runnable);&#x2F;&#x2F;提交计划任务马上执行</span><br><span class="line">postAtTime(Runnable, long);&#x2F;&#x2F;提交计划任务在未来的时间点执行</span><br><span class="line">postDelayed(Runnable, long);&#x2F;&#x2F;提交计划任务延时Nms执行</span><br></pre></td></tr></table></figure>
+<h4 id="主进程定义Handler"><a href="#主进程定义Handler" class="headerlink" title="主进程定义Handler"></a>主进程定义Handler</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">private Handler mHandler &#x3D; new Handler() &#123;</span><br><span class="line"></span><br><span class="line">       @Override</span><br><span class="line">       public void handleMessage(@NonNull Message msg) &#123;</span><br><span class="line">           super.handleMessage(msg);</span><br><span class="line">           switch (msg.what) &#123;</span><br><span class="line">               case 0:</span><br><span class="line">                   &#x2F;&#x2F;完成主界面更新,拿到数据</span><br><span class="line">                   String data &#x3D; (String) msg.obj;</span><br><span class="line">                   tvTest.setText(data);</span><br><span class="line">                   break;</span><br><span class="line">               default:</span><br><span class="line">                   break;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="子线程执行耗时操作然后发消息，通知Handler完成UI更新"><a href="#子线程执行耗时操作然后发消息，通知Handler完成UI更新" class="headerlink" title="子线程执行耗时操作然后发消息，通知Handler完成UI更新"></a>子线程执行耗时操作然后发消息，通知Handler完成UI更新</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">private void getDataFromNet() &#123;</span><br><span class="line">        new Thread(new Runnable() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void run() &#123;</span><br><span class="line">              &#x2F;&#x2F;需要数据传递，用下面方法；</span><br><span class="line">                Message msg &#x3D; new Message();</span><br><span class="line">                msg.obj &#x3D; &quot;网络数据&quot;;&#x2F;&#x2F;可以是基本类型，可以是对象，可以是List、map等；</span><br><span class="line">                mHandler.sendMessage(msg);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;).start();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>Handler机制扩展：</p>
+<p>Activity.runOnUiThread(Runnable)<br>View.post(Runnable)<br>以上也可以从子线程切换到主线程。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">runOnUiThread(new Runnable() &#123;</span><br><span class="line">           @Override</span><br><span class="line">           public void run() &#123;</span><br><span class="line">               tvTest2.setText(&quot;runOnUiThread&quot;);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="HandlerThread："><a href="#HandlerThread：" class="headerlink" title="HandlerThread："></a>HandlerThread：</h4><p>HandlerThread本质上就是一个普通Thread,只不过内部建立了Looper.<br>HandlerThread用法实例</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;创建一个线程,线程名字：handler-thread</span><br><span class="line">       mHThread &#x3D; new HandlerThread(&quot;handler-thread&quot;);</span><br><span class="line">       &#x2F;&#x2F;开启一个线程</span><br><span class="line">       mHThread.start();</span><br><span class="line">       &#x2F;&#x2F;在这个线程中创建一个handler对象 主要这个handler是在子线程中循环接受消息的</span><br><span class="line">       handler &#x3D; new Handler(mHThread.getLooper()) &#123;</span><br><span class="line">           @Override</span><br><span class="line">           public void handleMessage(@NonNull Message msg) &#123;</span><br><span class="line">               super.handleMessage(msg);</span><br><span class="line">               &#x2F;&#x2F;这个方法是运行在 handler-thread 线程中的 ，可以执行耗时操作</span><br><span class="line">               Log.d(&quot;handler &quot;, &quot;消息： &quot; + msg.what + &quot;  线程： &quot; + Thread.currentThread().getName());</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;;</span><br><span class="line"></span><br><span class="line">       &#x2F;&#x2F;在主线程给handler发送消息</span><br><span class="line">       handler.sendEmptyMessage(1);</span><br><span class="line"></span><br><span class="line">       new Thread(new Runnable() &#123;</span><br><span class="line">           @Override</span><br><span class="line">           public void run() &#123;</span><br><span class="line">               &#x2F;&#x2F;在子线程给handler发送数据</span><br><span class="line">               handler.sendEmptyMessage(2);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;).start();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">       @Override</span><br><span class="line">   protected void onDestroy() &#123;</span><br><span class="line">       super.onDestroy();</span><br><span class="line">       &#x2F;&#x2F;释放资源</span><br><span class="line">       mHThread.quit();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Looper的quit方法或quitSafely方法"><a href="#Looper的quit方法或quitSafely方法" class="headerlink" title="Looper的quit方法或quitSafely方法"></a>Looper的quit方法或quitSafely方法</h4><p>相同点：<br>将不在接受新的事件加入消息队列。</p>
+<p>不同点<br>当我们调用Looper的quit方法时，实际上执行了MessageQueue中的removeAllMessagesLocked方法，该方法的作用是把MessageQueue消息池中所有的消息全部清空，无论是延迟消息（延迟消息是指通过sendMessageDelayed或通过postDelayed等方法发送的需要延迟执行的消息）还是非延迟消息。</p>
+<p>当我们调用Looper的quitSafely方法时，实际上执行了MessageQueue中的removeAllFutureMessagesLocked方法，通过名字就可以看出，该方法只会清空MessageQueue消息池中所有的延迟消息，并将消息池中所有的非延迟消息派发出去让Handler去处理，quitSafely相比于quit方法安全之处在于清空消息之前会派发所有的非延迟消息。</p>
+<p>无论是调用了quit方法还是quitSafely方法只会，Looper就不再接收新的消息。即在调用了Looper的quit或quitSafely方法之后，消息循环就终结了，这时候再通过Handler调用sendMessage或post等方法发送消息时均返回false，表示消息没有成功放入消息队列MessageQueue中，因为消息队列已经退出了。</p>
+<p>需要注意的是Looper的quit方法从API Level 1就存在了，但是Looper的quitSafely方法从API Level 18才添加进来。</p>
+<p>我在直播推流中应用了HandlerThread，每编码组装出来一帧视频就发送一个handler消息，然后HandlerThread线程接收消息数据并用libRtmp推倒服务器。此时可以监控队列中有多少消息在循环，可以监听进出队列的比例，如果超出一定的范围说明网络不好，需要执行丢帧策略。</p>
+<p><a href="http://markchyl.cn/2020/10/10/Android%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6%E6%80%BB%E7%BB%93%E4%BA%8C/">下一章组件间通信</a></p>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>消息通信</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Android消息传递机制总结(五)</title>
+    <url>/2020/10/19/Android%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6%E6%80%BB%E7%BB%93-%E4%BA%94/</url>
+    <content><![CDATA[<p>长连接推送 ——— WebSocket，XMPP等。</p>
+<h3 id="5-长连接推送"><a href="#5-长连接推送" class="headerlink" title="5.长连接推送"></a>5.长连接推送</h3><p>Websocket<br>支持客户端和服务器端的双向通信，而且协议的头部又没有HTTP的Header那么大，于是，Websocket就诞生了！</p>
+<span id="more"></span>
+
+<p>Websocket是应用层第七层上的一个应用层协议，它必须依赖 HTTP 协议进行一次握手 ，握手成功后，数据就直接从 TCP 通道传输，与 HTTP 无关了。</p>
+<p>Websocket的数据传输是frame形式传输的，比如会将一条消息分为几个frame，按照先后顺序传输出去。这样做会有几个好处：</p>
+<p>1 大数据的传输可以分片传输，不用考虑到数据大小导致的长度标志位不足够的情况。</p>
+<p>2 和http的chunk一样，可以边生成数据边传递消息，即提高传输效率。</p>
+<p>XMPP中定义了三个角色，客户端，服务器，网关。通信能够在这三者的任意两个之间双向发生。服务器同时承担了客户端信息记录，连接管理和信息的路由功能。网关承担着与异构即时通信系统的互联互通，异构系统可以包括SMS（短信），MSN，ICQ等。基本的网络形式是单客户端通过TCP/IP连接到单服务器，然后在之上传输XML。</p>
+<p>QQ是使用类似XMPP协议的UDP协议进行发送和接收消息的。当你的机器安装了QQ以后，实际上，你既是服务端（Server），又是客户端（Client）。当你登录QQ时，你的QQ作为Client连接到腾讯公司的主服务器上，当你看谁在线时，你的QQ又一次作为Client从QQ Server上读取在线网友名单。当你和你的QQ伙伴进行聊天时，如果你和对方的连接比较稳定，你和他的聊天内容都是以UDP的形式，在计算机之间传 送。如果你和对方的连接不是很稳定，QQ服务器将为你们的聊天内容进行中转。其他的即时通信软件原理与此大同小异。</p>
+<p>所以基于WebSocke和XMPP都可以开发出IM社交聊天类的app</p>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>消息通信</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Android消息传递机制总结(四)</title>
     <url>/2020/10/12/Android%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6%E6%80%BB%E7%BB%93-%E5%9B%9B/</url>
     <content><![CDATA[<p>进程间通信 ——— Content Provider ，Broadcast ，AIDL等。</p>
@@ -753,52 +824,138 @@
       </tags>
   </entry>
   <entry>
-    <title>Android根据字符串加载Activity和res目录下图片</title>
-    <url>/2021/01/15/Android%E6%A0%B9%E6%8D%AE%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8A%A0%E8%BD%BDActivity%E5%92%8Cres%E7%9B%AE%E5%BD%95%E4%B8%8B%E5%9B%BE%E7%89%87/</url>
-    <content><![CDATA[<h3 id="根据传入的字符串跳转Activity"><a href="#根据传入的字符串跳转Activity" class="headerlink" title="根据传入的字符串跳转Activity"></a>根据传入的字符串跳转Activity</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Intent intent &#x3D; new Intent(context,Class.forName(&quot;com.packname.Activity&quot;));</span><br><span class="line">startActivity(intent);</span><br></pre></td></tr></table></figure>
-<h3 id="根据传入的字符加载资源"><a href="#根据传入的字符加载资源" class="headerlink" title="根据传入的字符加载资源"></a>根据传入的字符加载资源</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int icon &#x3D; getResources().getIdentifier(“imageid”, &quot;drawable&quot;,getPackageName());</span><br></pre></td></tr></table></figure>
-<p>优化：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public static int getDrawableId(Context context, String var) &#123;</span><br><span class="line"></span><br><span class="line">        try &#123;</span><br><span class="line">            int imageId &#x3D; context.getResources().getIdentifier(var, &quot;drawable&quot;, context.getPackageName());</span><br><span class="line">            return imageId;</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            return 0;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p><strong>getIdentifier的函数签名如下：</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public int getIdentifier (String name, String defType, String defPackage)</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Android消息传递机制总结(一)</title>
-    <url>/2020/10/09/Android%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6%E6%80%BB%E7%BB%93(%E4%B8%80%EF%BC%89/</url>
-    <content><![CDATA[<h4 id="安卓业务层的核心灵魂就是层层的消息传递，今天就来总结一下andorid的应用层的各种消息传递。"><a href="#安卓业务层的核心灵魂就是层层的消息传递，今天就来总结一下andorid的应用层的各种消息传递。" class="headerlink" title="安卓业务层的核心灵魂就是层层的消息传递，今天就来总结一下andorid的应用层的各种消息传递。"></a>安卓业务层的核心灵魂就是层层的消息传递，今天就来总结一下andorid的应用层的各种消息传递。</h4><p>1.线程间通讯 ——— Handler，HandlerThread等。<br>2.组件间通信 ——— BroadcastReceiver，接口回调等。<br>3. 第三方通信 ——— EventBus，rxBus<br>4.进程间通信 ——— Content Provider ，Broadcast ，AIDL等。<br>5.长连接推送 ——— WebSocket，XMPP等。</p>
-<h3 id="1-线程间通信"><a href="#1-线程间通信" class="headerlink" title="1.线程间通信"></a>1.线程间通信</h3><p>Android通过Handler消息机制来实现线程之间的通讯。</p>
+    <title>Android消息传递机制总结(二)</title>
+    <url>/2020/10/10/Android%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6%E6%80%BB%E7%BB%93%E4%BA%8C/</url>
+    <content><![CDATA[<p>组件间通信 ——— BroadcastReceiver，接口回调等。</p>
+<h3 id="2-组件间通信"><a href="#2-组件间通信" class="headerlink" title="2.组件间通信"></a>2.组件间通信</h3><p>BroadcastReceiver广播就不再介绍， 广播传递本身是有安全隐患的，需要设置权限，每一个Activity都要定义、注册，解注册广播无形中加大了工作量和维护成本。已经不适应用在组件间通信。</p>
 <span id="more"></span>
-
-<h4 id="Handler机制主要角色"><a href="#Handler机制主要角色" class="headerlink" title="Handler机制主要角色"></a>Handler机制主要角色</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Message：消息，其中包含了消息ID，消息处理对象以及处理的数据等，由MessageQueue统一列队，终由Handler处理。 </span><br><span class="line">Handler：处理者，负责Message的发送及处理。使用Handler时，需要实现handleMessage(Message msg)方法来对特定的Message进行处理，例如更新UI等。 </span><br><span class="line">MessageQueue：消息队列，用来存放Handler发送过来的消息，并按照FIFO规则执行。当然，存放Message并非实际意义的保存，而是将Message以链表的方式串联起来的，等待Looper的抽取。 </span><br><span class="line">Looper：消息泵，不断地从MessageQueue中抽取Message执行。因此，一个MessageQueue需要一个Looper。</span><br><span class="line">Thread：线程，负责调度整个消息循环，即消息循环的执行场所。</span><br></pre></td></tr></table></figure>
-<h4 id="Handler机制主要运用"><a href="#Handler机制主要运用" class="headerlink" title="Handler机制主要运用"></a>Handler机制主要运用</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sendEmptyMessage(int);&#x2F;&#x2F;发送一个空的消息</span><br><span class="line">sendMessage(Message);&#x2F;&#x2F;发送消息，消息中可以携带参数</span><br><span class="line">sendMessageAtTime(Message, long);&#x2F;&#x2F;未来某一时间点发送消息</span><br><span class="line">sendMessageDelayed(Message, long);&#x2F;&#x2F;延时Nms发送消息</span><br><span class="line"></span><br><span class="line">post(Runnable);&#x2F;&#x2F;提交计划任务马上执行</span><br><span class="line">postAtTime(Runnable, long);&#x2F;&#x2F;提交计划任务在未来的时间点执行</span><br><span class="line">postDelayed(Runnable, long);&#x2F;&#x2F;提交计划任务延时Nms执行</span><br></pre></td></tr></table></figure>
-<h4 id="主进程定义Handler"><a href="#主进程定义Handler" class="headerlink" title="主进程定义Handler"></a>主进程定义Handler</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">private Handler mHandler &#x3D; new Handler() &#123;</span><br><span class="line"></span><br><span class="line">       @Override</span><br><span class="line">       public void handleMessage(@NonNull Message msg) &#123;</span><br><span class="line">           super.handleMessage(msg);</span><br><span class="line">           switch (msg.what) &#123;</span><br><span class="line">               case 0:</span><br><span class="line">                   &#x2F;&#x2F;完成主界面更新,拿到数据</span><br><span class="line">                   String data &#x3D; (String) msg.obj;</span><br><span class="line">                   tvTest.setText(data);</span><br><span class="line">                   break;</span><br><span class="line">               default:</span><br><span class="line">                   break;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;;</span><br></pre></td></tr></table></figure>
-<h4 id="子线程执行耗时操作然后发消息，通知Handler完成UI更新"><a href="#子线程执行耗时操作然后发消息，通知Handler完成UI更新" class="headerlink" title="子线程执行耗时操作然后发消息，通知Handler完成UI更新"></a>子线程执行耗时操作然后发消息，通知Handler完成UI更新</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">private void getDataFromNet() &#123;</span><br><span class="line">        new Thread(new Runnable() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void run() &#123;</span><br><span class="line">              &#x2F;&#x2F;需要数据传递，用下面方法；</span><br><span class="line">                Message msg &#x3D; new Message();</span><br><span class="line">                msg.obj &#x3D; &quot;网络数据&quot;;&#x2F;&#x2F;可以是基本类型，可以是对象，可以是List、map等；</span><br><span class="line">                mHandler.sendMessage(msg);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;).start();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>Handler机制扩展：</p>
-<p>Activity.runOnUiThread(Runnable)<br>View.post(Runnable)<br>以上也可以从子线程切换到主线程。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">runOnUiThread(new Runnable() &#123;</span><br><span class="line">           @Override</span><br><span class="line">           public void run() &#123;</span><br><span class="line">               tvTest2.setText(&quot;runOnUiThread&quot;);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;);</span><br></pre></td></tr></table></figure>
-
-<h4 id="HandlerThread："><a href="#HandlerThread：" class="headerlink" title="HandlerThread："></a>HandlerThread：</h4><p>HandlerThread本质上就是一个普通Thread,只不过内部建立了Looper.<br>HandlerThread用法实例</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;创建一个线程,线程名字：handler-thread</span><br><span class="line">       mHThread &#x3D; new HandlerThread(&quot;handler-thread&quot;);</span><br><span class="line">       &#x2F;&#x2F;开启一个线程</span><br><span class="line">       mHThread.start();</span><br><span class="line">       &#x2F;&#x2F;在这个线程中创建一个handler对象 主要这个handler是在子线程中循环接受消息的</span><br><span class="line">       handler &#x3D; new Handler(mHThread.getLooper()) &#123;</span><br><span class="line">           @Override</span><br><span class="line">           public void handleMessage(@NonNull Message msg) &#123;</span><br><span class="line">               super.handleMessage(msg);</span><br><span class="line">               &#x2F;&#x2F;这个方法是运行在 handler-thread 线程中的 ，可以执行耗时操作</span><br><span class="line">               Log.d(&quot;handler &quot;, &quot;消息： &quot; + msg.what + &quot;  线程： &quot; + Thread.currentThread().getName());</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;;</span><br><span class="line"></span><br><span class="line">       &#x2F;&#x2F;在主线程给handler发送消息</span><br><span class="line">       handler.sendEmptyMessage(1);</span><br><span class="line"></span><br><span class="line">       new Thread(new Runnable() &#123;</span><br><span class="line">           @Override</span><br><span class="line">           public void run() &#123;</span><br><span class="line">               &#x2F;&#x2F;在子线程给handler发送数据</span><br><span class="line">               handler.sendEmptyMessage(2);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;).start();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">       @Override</span><br><span class="line">   protected void onDestroy() &#123;</span><br><span class="line">       super.onDestroy();</span><br><span class="line">       &#x2F;&#x2F;释放资源</span><br><span class="line">       mHThread.quit();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="Looper的quit方法或quitSafely方法"><a href="#Looper的quit方法或quitSafely方法" class="headerlink" title="Looper的quit方法或quitSafely方法"></a>Looper的quit方法或quitSafely方法</h4><p>相同点：<br>将不在接受新的事件加入消息队列。</p>
-<p>不同点<br>当我们调用Looper的quit方法时，实际上执行了MessageQueue中的removeAllMessagesLocked方法，该方法的作用是把MessageQueue消息池中所有的消息全部清空，无论是延迟消息（延迟消息是指通过sendMessageDelayed或通过postDelayed等方法发送的需要延迟执行的消息）还是非延迟消息。</p>
-<p>当我们调用Looper的quitSafely方法时，实际上执行了MessageQueue中的removeAllFutureMessagesLocked方法，通过名字就可以看出，该方法只会清空MessageQueue消息池中所有的延迟消息，并将消息池中所有的非延迟消息派发出去让Handler去处理，quitSafely相比于quit方法安全之处在于清空消息之前会派发所有的非延迟消息。</p>
-<p>无论是调用了quit方法还是quitSafely方法只会，Looper就不再接收新的消息。即在调用了Looper的quit或quitSafely方法之后，消息循环就终结了，这时候再通过Handler调用sendMessage或post等方法发送消息时均返回false，表示消息没有成功放入消息队列MessageQueue中，因为消息队列已经退出了。</p>
-<p>需要注意的是Looper的quit方法从API Level 1就存在了，但是Looper的quitSafely方法从API Level 18才添加进来。</p>
-<p>我在直播推流中应用了HandlerThread，每编码组装出来一帧视频就发送一个handler消息，然后HandlerThread线程接收消息数据并用libRtmp推倒服务器。此时可以监控队列中有多少消息在循环，可以监听进出队列的比例，如果超出一定的范围说明网络不好，需要执行丢帧策略。</p>
-<p><a href="http://markchyl.cn/2020/10/10/Android%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6%E6%80%BB%E7%BB%93%E4%BA%8C/">下一章组件间通信</a></p>
+<p>接口回调： 和观察者模式大致一样。<br>实例：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">public class DataSynManager &#123;</span><br><span class="line">    &#x2F;&#x2F;监听集合</span><br><span class="line">    private LinkedList&lt;IDataSynListener&gt; autoListeners &#x3D; new LinkedList&lt;&gt;();</span><br><span class="line">    &#x2F;&#x2F;单例引用</span><br><span class="line">    private static DataSynManager mInstance;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 获取单例引用</span><br><span class="line">     *</span><br><span class="line">     * @return</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public static DataSynManager getInstance() &#123;</span><br><span class="line">        if (mInstance &#x3D;&#x3D; null) &#123;</span><br><span class="line">            synchronized (DataSynManager.class) &#123;</span><br><span class="line">                if (mInstance &#x3D;&#x3D; null) &#123;</span><br><span class="line">                    mInstance &#x3D; new DataSynManager();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return mInstance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 添加同步数据监听</span><br><span class="line">     *</span><br><span class="line">     * @param listener</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public void registerDataSynListener(IDataSynListener listener) &#123;</span><br><span class="line">        if (autoListeners &#x3D;&#x3D; null) &#123;</span><br><span class="line">            autoListeners &#x3D; new LinkedList&lt;&gt;();</span><br><span class="line">        &#125;</span><br><span class="line">        if (!autoListeners.contains(listener)) &#123;</span><br><span class="line">            autoListeners.add(listener);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 移除同步数据监听</span><br><span class="line">     *</span><br><span class="line">     * @param listener</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public void unRegisterSynListener(IDataSynListener listener) &#123;</span><br><span class="line">        if (autoListeners &#x3D;&#x3D; null) &#123;</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        if (autoListeners.contains(listener)) &#123;</span><br><span class="line">            autoListeners.remove(listener);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 执行数据同步</span><br><span class="line">     *</span><br><span class="line">     * @param count</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public void doDataSyn(final int count) &#123;</span><br><span class="line">        if (autoListeners &#x3D;&#x3D; null) &#123;</span><br><span class="line">            autoListeners &#x3D; new LinkedList&lt;&gt;();</span><br><span class="line">        &#125;</span><br><span class="line">        new Handler().post(new Runnable() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void run() &#123;</span><br><span class="line">                for (IDataSynListener dataSynListener :</span><br><span class="line">                        autoListeners) &#123;</span><br><span class="line">                    dataSynListener.onDataSyn(count);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 清除所有监听者</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public void release() &#123;</span><br><span class="line">        if (autoListeners !&#x3D; null) &#123;</span><br><span class="line">            autoListeners.clear();</span><br><span class="line">            autoListeners &#x3D; null;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public interface IDataSynListener &#123;</span><br><span class="line">        void onDataSyn(int count);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>使用：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;添加监听</span><br><span class="line">DataSynManager.getInstance().registerDataSynListener(dataSynListener);</span><br><span class="line">&#x2F;&#x2F;移除监听</span><br><span class="line">DataSynManager.getInstance().unRegisterDataSynListener(dataSynListener&#x2F;&#x2F;个监听);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">DataSynManager.IDataSynListener dataSynListener&#x3D;new DataSynManager.IDataSynListener() &#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void onDataSyn(int count) &#123;</span><br><span class="line">            &#x2F;&#x2F;接下来执行同步操作</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">   &#125;;</span><br><span class="line">&#x2F;&#x2F;发送事件</span><br><span class="line">DataSynManager.getInstance().doDa(5);</span><br></pre></td></tr></table></figure>
+<p><a href="http://markchyl.cn/2020/10/10/Android%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6%E6%80%BB%E7%BB%93%E4%B8%89/">3. 第三方通信 ——— EventBus，rxBus</a></p>
 ]]></content>
       <categories>
         <category>Android</category>
       </categories>
       <tags>
         <tag>消息通信</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Android混淆</title>
+    <url>/2020/11/07/Android%E6%B7%B7%E6%B7%86/</url>
+    <content><![CDATA[<blockquote>
+<p>代码混淆（Obfuscated code）亦称花指令，是将计算机程序的代码，转换成一种功能上等价，但是难于阅读和理解的形式的行为。</p>
+</blockquote>
+<blockquote>
+<p>为什么要加代码混淆?<br>不想开源应用，为了加大反编译的成本,但是并不能彻底防止反编译</p>
+</blockquote>
+<h3 id="开启混淆"><a href="#开启混淆" class="headerlink" title="开启混淆"></a>开启混淆</h3><ul>
+<li>通常我们需要找到项目路径下app目录下的build.gradle文件</li>
+<li>找到minifyEnabled这个配置,然后设置为true即可.<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">release&#123;</span><br><span class="line">           minifyEnabled true&#x2F;&#x2F;是否启动混淆 ture:打开   false:关闭</span><br><span class="line">           proguardFiles getDefaultProguardFile(&#39;proguard-android.txt&#39;), &#39;proguard-rules.pro&#39;</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
+proguard-rules.pro文件的作用</li>
+<li>只要在工程应用目录的gradle文件中设置minifyEnabled:true即可。然后我们就可以到proguard-rules.pro文件中加入我们的混淆规则了<span id="more"></span>
+<h3 id="proguard是什么"><a href="#proguard是什么" class="headerlink" title="proguard是什么?"></a>proguard是什么?</h3></li>
+<li>Proguard是一个集文件压缩,优化,混淆和校验等功能的工具</li>
+<li>它检测并删除无用的类,变量,方法和属性</li>
+<li>它优化字节码并删除无用的指令.</li>
+<li>它通过将类名,变量名和方法名重命名为无意义的名称实现混淆效果.</li>
+<li>最后它还校验处理后的代码</li>
+</ul>
+<h3 id="混淆的常见配置"><a href="#混淆的常见配置" class="headerlink" title="混淆的常见配置"></a>混淆的常见配置</h3><ul>
+<li>Proguard关键字</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Proguard关键字</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>dontwarn</td>
+<td>dontwarn是一个和keep可以说是形影不离,尤其是处理引入的library时.</td>
+</tr>
+<tr>
+<td>keep</td>
+<td>保留类和类中的成员，防止被混淆或移除</td>
+</tr>
+<tr>
+<td>keepnames</td>
+<td>保留类和类中的成员，防止被混淆，成员没有被引用会被移除</td>
+</tr>
+<tr>
+<td>keepclassmembers</td>
+<td>只保留类中的成员，防止被混淆或移除</td>
+</tr>
+<tr>
+<td>keepclassmembernames</td>
+<td>只保留类中的成员，防止被混淆，成员没有引用会被移除</td>
+</tr>
+<tr>
+<td>keepclasseswithmembers</td>
+<td>保留类和类中的成员，防止被混淆或移除，保留指明的成员</td>
+</tr>
+<tr>
+<td>keepclasseswithmembernames</td>
+<td>保留类和类中的成员，防止被混淆，保留指明的成员，成员没有引用会被移除</td>
+</tr>
+</tbody></table>
+<p>如：<br>(1)保留某个包下面的类以及子包<br><code>-keep public class com.droidyue.com.widget.**</code></p>
+<p>(2)保留所有类中使用otto的public方法</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Otto</span><br><span class="line">-keepclassmembers class ** &#123;</span><br><span class="line">    @com.squareup.otto.Subscribe public *;</span><br><span class="line">    @com.squareup.otto.Produce public *;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>(3)保留Contants类的BOOK_NAME属性</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-keepclassmembers class com.example.admin.proguardsample.Constants &#123;</span><br><span class="line">     public static java.lang.String BOOK_NAME;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>(4)dontwarn：<br>引入的library可能存在一些无法找到的引用和其他问题,在build时可能会发出警告,如果我们不进行处理,通常会导致build中止.因此为了保证build继续,我们需要使用dontwarn处理这些我们无法解决的library的警告.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#比如关闭Twitter sdk的警告,我们可以这样做</span><br><span class="line">-dontwarn com.twitter.sdk.**</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Proguard通配符</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Proguard通配符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;field&gt;</code></td>
+<td>匹配类中的所有字段</td>
+</tr>
+<tr>
+<td><code>&lt;method&gt;</code></td>
+<td>匹配类中所有的方法</td>
+</tr>
+<tr>
+<td><code>&lt;init&gt;</code></td>
+<td>匹配类中所有的构造函数</td>
+</tr>
+<tr>
+<td>*</td>
+<td>匹配任意长度字符，不包含包名分隔符(.)</td>
+</tr>
+<tr>
+<td>**</td>
+<td>匹配任意长度字符，包含包名分隔符(.)</td>
+</tr>
+<tr>
+<td>***</td>
+<td>匹配任意参数类型</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>混淆</tag>
       </tags>
   </entry>
   <entry>
@@ -829,20 +986,6 @@
       </tags>
   </entry>
   <entry>
-    <title> Description : Could not find the specified file.  Suggestion : Check that the path you have specified is correct.</title>
-    <url>/2019/12/27/Description-Could-not-find-the-specified-file-Suggestion-Check-that-the-path-you-have-specified-is-correct/</url>
-    <content><![CDATA[<p>记录下我使用 CornerStone 利用SVN 进行版本代码管理。我已经快两个月没提交代码啦，今天一提交发现好多问题，各种报错。<br>譬如这类错误：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Description : Could not find the specified file.  Suggestion : Check that the path you have specified is correct.   Technical Information &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;        Error : V4FileNotFoundError   Exception : ZSVNNoSuchEntryException  Causal Information </span><br></pre></td></tr></table></figure>
-<p> 解决办法：<br> 我在missing选项中删除错误的就OK了，提交前全选 =&gt;删除，重新手动编辑提交，重新提交前执行一下  clean。</p>
-]]></content>
-      <categories>
-        <category>svn</category>
-      </categories>
-      <tags>
-        <tag>Error</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Dart的基础知识学习</title>
     <url>/2018/12/17/Dart%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%AD%A6%E4%B9%A0/</url>
     <content><![CDATA[<h3 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h3><pre><code>    Google和其他地方的开发人员使用Dart为iOS，Android和网络创建高质量，关键任务的应用程序。Dart具有针对客户端开发的功能，非常适合移动和Web应用程序。
@@ -864,6 +1007,20 @@
       </categories>
       <tags>
         <tag>Flutter</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title> Description : Could not find the specified file.  Suggestion : Check that the path you have specified is correct.</title>
+    <url>/2019/12/27/Description-Could-not-find-the-specified-file-Suggestion-Check-that-the-path-you-have-specified-is-correct/</url>
+    <content><![CDATA[<p>记录下我使用 CornerStone 利用SVN 进行版本代码管理。我已经快两个月没提交代码啦，今天一提交发现好多问题，各种报错。<br>譬如这类错误：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Description : Could not find the specified file.  Suggestion : Check that the path you have specified is correct.   Technical Information &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;        Error : V4FileNotFoundError   Exception : ZSVNNoSuchEntryException  Causal Information </span><br></pre></td></tr></table></figure>
+<p> 解决办法：<br> 我在missing选项中删除错误的就OK了，提交前全选 =&gt;删除，重新手动编辑提交，重新提交前执行一下  clean。</p>
+]]></content>
+      <categories>
+        <category>svn</category>
+      </categories>
+      <tags>
+        <tag>Error</tag>
       </tags>
   </entry>
   <entry>
@@ -1073,6 +1230,50 @@
       </tags>
   </entry>
   <entry>
+    <title>GreenDao数据库框架的基础学习</title>
+    <url>/2018/12/17/GreenDao%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A1%86%E6%9E%B6%E7%9A%84%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<p>GreenDao很早就想看看了，最近由于业务需求的变化，我就开始学习下简单的增、删、改、查。</p>
+<hr>
+<h2 id="资料参考："><a href="#资料参考：" class="headerlink" title="资料参考："></a>资料参考：</h2><ul>
+<li>首先这是官网地址：<a href="https://github.com/greenrobot/greendao">https://github.com/greenrobot/greendao</a></li>
+<li>参考博客为：<a href="https://www.cnblogs.com/wjtaigwh/p/6394288.html">https://www.cnblogs.com/wjtaigwh/p/6394288.html</a></li>
+<li>慕课网上的视频教程（有点老了，个人觉得）</li>
+</ul>
+<hr>
+<span id="more"></span>
+<h3 id="一、咱们先来学习下GreenDao的Api属性："><a href="#一、咱们先来学习下GreenDao的Api属性：" class="headerlink" title="一、咱们先来学习下GreenDao的Api属性："></a>一、咱们先来学习下GreenDao的Api属性：</h3><blockquote>
+<p><strong>GreenDao是使用ORM（Object RelationShop Mapping）对象关系映射，就是通过GreenDao将数据库和Bean关联起来有以下优点：</strong></p>
+</blockquote>
+<ul>
+<li>存取速度快</li>
+<li>支持数据库加密</li>
+<li>轻量级</li>
+<li>激活实体</li>
+<li>支持缓存</li>
+<li>代码自动生成<h3 id="二、代码的接入配置"><a href="#二、代码的接入配置" class="headerlink" title="二、代码的接入配置"></a>二、代码的接入配置</h3></li>
+<li> app项目目录下build文件中添加<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apply plugin: &#39;org.greenrobot.greendao&#39;</span><br><span class="line">Android&#123;</span><br><span class="line">   &#x2F;&#x2F;greendao配置</span><br><span class="line">    greendao&#123;</span><br><span class="line">       &#x2F;&#x2F;版本号，升级时可配置</span><br><span class="line">       schemaVersion 1</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">    implementation &#39;org.greenrobot:greendao:3.2.2&#39; &#x2F;&#x2F; add library</span><br><span class="line">    implementation &#39;org.greenrobot:greendao-generator:3.2.2&#39;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li>在更目录中build文件中需要添加<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">   classpath &#39;org.greenrobot:greendao-gradle-plugin:3.2.2&#39;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="预览效果："><a href="#预览效果：" class="headerlink" title="预览效果："></a>预览效果：</h4></li>
+</ul>
+<p><img data-src="https://user-gold-cdn.xitu.io/2018/8/9/1651c88d14c0e067?w=1036&h=1598&f=png&s=492342" title="是不是很丑"></p>
+<ul>
+<li><h3 id="Bean-对象注释的解释"><a href="#Bean-对象注释的解释" class="headerlink" title="Bean 对象注释的解释"></a>Bean 对象注释的解释</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@Entity：告诉GreenDao该对象为实体，只有被@Entity注释的Bean类才能被dao类操作</span><br><span class="line">@Id：对象的Id，使用Long类型作为EntityId，否则会报错。(autoincrement &#x3D; true)表示主键会自增，如果false就会使用旧值</span><br><span class="line">@Property：可以自定义字段名，注意外键不能使用该属性</span><br><span class="line">@NotNull：属性不能为空</span><br><span class="line">@Transient：使用该注释的属性不会被存入数据库的字段中</span><br><span class="line">@Unique：该属性值必须在数据库中是唯一值</span><br><span class="line">@Generated：编译后自动生成的构造函数、方法等的注释，提示构造函数、方法等不能被修改</span><br></pre></td></tr></table></figure></li>
+<li><h3 id="在Application中初始化自己的数据库"><a href="#在Application中初始化自己的数据库" class="headerlink" title="在Application中初始化自己的数据库"></a>在Application中初始化自己的数据库</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * 配置数据库</span><br><span class="line"> *&#x2F;</span><br><span class="line">private void setupDatabase() &#123;</span><br><span class="line">    &#x2F;&#x2F;创建数据库shop.db</span><br><span class="line">    DaoMaster.DevOpenHelper helper &#x3D; new DaoMaster.DevOpenHelper(this,&quot;shop.db&quot;,null);</span><br><span class="line">    &#x2F;&#x2F;获取可写数据库</span><br><span class="line">    SQLiteDatabase db &#x3D; helper.getWritableDatabase();</span><br><span class="line">    &#x2F;&#x2F;获取数据库对象</span><br><span class="line">    DaoMaster daoMaster &#x3D; new DaoMaster(db);</span><br><span class="line">    &#x2F;&#x2F;获取dao对象管理者</span><br><span class="line">    daoSession &#x3D; daoMaster.newSession();</span><br><span class="line">&#125;</span><br><span class="line">public static DaoSession getDaoInstant()&#123;</span><br><span class="line">    return daoSession;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><h3 id="在使用前我们海的封装一个数据库的操作类，提供简单的Shop对象的增删该查的简单方法"><a href="#在使用前我们海的封装一个数据库的操作类，提供简单的Shop对象的增删该查的简单方法" class="headerlink" title="在使用前我们海的封装一个数据库的操作类，提供简单的Shop对象的增删该查的简单方法"></a>在使用前我们海的封装一个数据库的操作类，提供简单的Shop对象的增删该查的简单方法</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 使用GreenDao 实现简单的增删改查，下面是基本方法</span><br><span class="line">  * 增加单个数据</span><br><span class="line">* getShopDao().insert(shop);</span><br><span class="line">* getShopDao().insertOrReplace(shop);</span><br><span class="line">* 增加多个数据</span><br><span class="line">* getShopDao().insertInTx(shopList);</span><br><span class="line">* getShopDao().insertOrReplaceInTx(shopList);</span><br><span class="line">* 查询全部</span><br><span class="line">* List&lt; Shop&gt; list &#x3D; getShopDao().loadAll();</span><br><span class="line">* List&lt; Shop&gt; list &#x3D; getShopDao().queryBuilder().list();</span><br><span class="line">* 查询附加单个条件</span><br><span class="line">* .where()</span><br><span class="line">* .whereOr()</span><br><span class="line">* 查询附加多个条件</span><br><span class="line">* .where(, , ,)</span><br><span class="line">* .whereOr(, , ,)</span><br><span class="line">* 查询附加排序</span><br><span class="line">* .orderDesc()</span><br><span class="line">* .orderAsc()</span><br><span class="line">* 查询限制当页个数</span><br><span class="line">* .limit()</span><br><span class="line">* 查询总个数</span><br><span class="line">* .count()</span><br><span class="line">* 修改单个数据</span><br><span class="line">* getShopDao().update(shop);</span><br><span class="line">* 修改多个数据</span><br><span class="line">* getShopDao().updateInTx(shopList);</span><br><span class="line">* 删除单个数据</span><br><span class="line">* getTABUserDao().delete(user);</span><br><span class="line">* 删除多个数据</span><br><span class="line">* getUserDao().deleteInTx(userList);</span><br><span class="line">* 删除数据ByKey</span><br><span class="line">* getTABUserDao().deleteByKey();</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><em><strong><strong>我的代码和网上大佬的一样，其实就是自己平时封装的工具类！累。。。。。<br>那么那么久</strong></strong></em></p>
+<p>最后附上自己的练习代码：<a href="https://coding.net/u/Mark_Chen/p/MarkGreenDaoDemo/git">Coding</a><br>在大佬的基础上学习就是快！！！</p>
+<p>大佬的博客为：<a href="http://www.cnblogs.com/wjtaigwh/">http://www.cnblogs.com/wjtaigwh/</a></p>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>数据库</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hexo yilia 主题添加 widgetpack 评论系统</title>
     <url>/2019/07/21/Hexo-yilia-%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0-widgetpack-%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/</url>
     <content><![CDATA[<h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><hr>
@@ -1124,88 +1325,147 @@
       </tags>
   </entry>
   <entry>
-    <title>GreenDao数据库框架的基础学习</title>
-    <url>/2018/12/17/GreenDao%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A1%86%E6%9E%B6%E7%9A%84%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/</url>
-    <content><![CDATA[<p>GreenDao很早就想看看了，最近由于业务需求的变化，我就开始学习下简单的增、删、改、查。</p>
-<hr>
-<h2 id="资料参考："><a href="#资料参考：" class="headerlink" title="资料参考："></a>资料参考：</h2><ul>
-<li>首先这是官网地址：<a href="https://github.com/greenrobot/greendao">https://github.com/greenrobot/greendao</a></li>
-<li>参考博客为：<a href="https://www.cnblogs.com/wjtaigwh/p/6394288.html">https://www.cnblogs.com/wjtaigwh/p/6394288.html</a></li>
-<li>慕课网上的视频教程（有点老了，个人觉得）</li>
+    <title>JDBC学习--ConnectinnFactory</title>
+    <url>/2021/05/13/JDBC%E5%AD%A6%E4%B9%A0-ConnectinnFactory/</url>
+    <content><![CDATA[<p>[toc]</p>
+<h3 id="ConnectionFactory的作用"><a href="#ConnectionFactory的作用" class="headerlink" title="ConnectionFactory的作用"></a>ConnectionFactory的作用</h3><ul>
+<li>利用工厂模式提升代码的额重要性</li>
+<li>封装注册数据库的驱动和获得数据库的连接</li>
+<li>利用配置文件减少硬编码，便于维护</li>
 </ul>
-<hr>
-<span id="more"></span>
-<h3 id="一、咱们先来学习下GreenDao的Api属性："><a href="#一、咱们先来学习下GreenDao的Api属性：" class="headerlink" title="一、咱们先来学习下GreenDao的Api属性："></a>一、咱们先来学习下GreenDao的Api属性：</h3><blockquote>
-<p><strong>GreenDao是使用ORM（Object RelationShop Mapping）对象关系映射，就是通过GreenDao将数据库和Bean关联起来有以下优点：</strong></p>
-</blockquote>
+<h3 id="ConnectionFactory的开发"><a href="#ConnectionFactory的开发" class="headerlink" title="ConnectionFactory的开发"></a>ConnectionFactory的开发</h3><ul>
+<li><p>配置文件 <code>jdbcinfo.properties</code></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">oracle.driver=oracle.jdbc.driver.OracleDriver  <span class="comment">//数据库驱动</span></span><br><span class="line">oracle.url=jdbc:oracle:thin:<span class="meta">@localhost</span>:<span class="number">1521</span>:helowin <span class="comment">//数据库地址 helowin:数据库的名字</span></span><br><span class="line">oracle.user=mark  <span class="comment">//管理账户</span></span><br><span class="line">oracle.password=chenyunlin  <span class="comment">//密码</span></span><br></pre></td></tr></table></figure>
+<span id="more"></span></li>
+</ul>
 <ul>
-<li>存取速度快</li>
-<li>支持数据库加密</li>
-<li>轻量级</li>
-<li>激活实体</li>
-<li>支持缓存</li>
-<li>代码自动生成<h3 id="二、代码的接入配置"><a href="#二、代码的接入配置" class="headerlink" title="二、代码的接入配置"></a>二、代码的接入配置</h3></li>
-<li> app项目目录下build文件中添加<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apply plugin: &#39;org.greenrobot.greendao&#39;</span><br><span class="line">Android&#123;</span><br><span class="line">   &#x2F;&#x2F;greendao配置</span><br><span class="line">    greendao&#123;</span><br><span class="line">       &#x2F;&#x2F;版本号，升级时可配置</span><br><span class="line">       schemaVersion 1</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">    implementation &#39;org.greenrobot:greendao:3.2.2&#39; &#x2F;&#x2F; add library</span><br><span class="line">    implementation &#39;org.greenrobot:greendao-generator:3.2.2&#39;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-<li>在更目录中build文件中需要添加<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">   classpath &#39;org.greenrobot:greendao-gradle-plugin:3.2.2&#39;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="预览效果："><a href="#预览效果：" class="headerlink" title="预览效果："></a>预览效果：</h4></li>
-</ul>
-<p><img data-src="https://user-gold-cdn.xitu.io/2018/8/9/1651c88d14c0e067?w=1036&h=1598&f=png&s=492342" title="是不是很丑"></p>
+<li><p>配置文件信息的获取</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">static</span> &#123;</span><br><span class="line">        Properties props = <span class="keyword">new</span> Properties();</span><br><span class="line">        <span class="comment">// 加载配置文件中的数据</span></span><br><span class="line">        InputStream is =</span><br><span class="line">                ConnectionFactory.class.getClassLoader().getResourceAsStream(&quot;jdbcinfo.properties&quot;);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            props.load(is);</span><br><span class="line">            DRIVER = props.getProperty(<span class="string">&quot;oracle.driver&quot;</span>);</span><br><span class="line">            URL = props.getProperty(<span class="string">&quot;oracle.url&quot;</span>);</span><br><span class="line">            USER = props.getProperty(<span class="string">&quot;oracle.user&quot;</span>);</span><br><span class="line">            PASSWORD = props.getProperty(<span class="string">&quot;oracle.password&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>数据库连接Connection的获取</p>
 <ul>
-<li><h3 id="Bean-对象注释的解释"><a href="#Bean-对象注释的解释" class="headerlink" title="Bean 对象注释的解释"></a>Bean 对象注释的解释</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@Entity：告诉GreenDao该对象为实体，只有被@Entity注释的Bean类才能被dao类操作</span><br><span class="line">@Id：对象的Id，使用Long类型作为EntityId，否则会报错。(autoincrement &#x3D; true)表示主键会自增，如果false就会使用旧值</span><br><span class="line">@Property：可以自定义字段名，注意外键不能使用该属性</span><br><span class="line">@NotNull：属性不能为空</span><br><span class="line">@Transient：使用该注释的属性不会被存入数据库的字段中</span><br><span class="line">@Unique：该属性值必须在数据库中是唯一值</span><br><span class="line">@Generated：编译后自动生成的构造函数、方法等的注释，提示构造函数、方法等不能被修改</span><br></pre></td></tr></table></figure></li>
-<li><h3 id="在Application中初始化自己的数据库"><a href="#在Application中初始化自己的数据库" class="headerlink" title="在Application中初始化自己的数据库"></a>在Application中初始化自己的数据库</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * 配置数据库</span><br><span class="line"> *&#x2F;</span><br><span class="line">private void setupDatabase() &#123;</span><br><span class="line">    &#x2F;&#x2F;创建数据库shop.db</span><br><span class="line">    DaoMaster.DevOpenHelper helper &#x3D; new DaoMaster.DevOpenHelper(this,&quot;shop.db&quot;,null);</span><br><span class="line">    &#x2F;&#x2F;获取可写数据库</span><br><span class="line">    SQLiteDatabase db &#x3D; helper.getWritableDatabase();</span><br><span class="line">    &#x2F;&#x2F;获取数据库对象</span><br><span class="line">    DaoMaster daoMaster &#x3D; new DaoMaster(db);</span><br><span class="line">    &#x2F;&#x2F;获取dao对象管理者</span><br><span class="line">    daoSession &#x3D; daoMaster.newSession();</span><br><span class="line">&#125;</span><br><span class="line">public static DaoSession getDaoInstant()&#123;</span><br><span class="line">    return daoSession;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><h3 id="在使用前我们海的封装一个数据库的操作类，提供简单的Shop对象的增删该查的简单方法"><a href="#在使用前我们海的封装一个数据库的操作类，提供简单的Shop对象的增删该查的简单方法" class="headerlink" title="在使用前我们海的封装一个数据库的操作类，提供简单的Shop对象的增删该查的简单方法"></a>在使用前我们海的封装一个数据库的操作类，提供简单的Shop对象的增删该查的简单方法</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* 使用GreenDao 实现简单的增删改查，下面是基本方法</span><br><span class="line">  * 增加单个数据</span><br><span class="line">* getShopDao().insert(shop);</span><br><span class="line">* getShopDao().insertOrReplace(shop);</span><br><span class="line">* 增加多个数据</span><br><span class="line">* getShopDao().insertInTx(shopList);</span><br><span class="line">* getShopDao().insertOrReplaceInTx(shopList);</span><br><span class="line">* 查询全部</span><br><span class="line">* List&lt; Shop&gt; list &#x3D; getShopDao().loadAll();</span><br><span class="line">* List&lt; Shop&gt; list &#x3D; getShopDao().queryBuilder().list();</span><br><span class="line">* 查询附加单个条件</span><br><span class="line">* .where()</span><br><span class="line">* .whereOr()</span><br><span class="line">* 查询附加多个条件</span><br><span class="line">* .where(, , ,)</span><br><span class="line">* .whereOr(, , ,)</span><br><span class="line">* 查询附加排序</span><br><span class="line">* .orderDesc()</span><br><span class="line">* .orderAsc()</span><br><span class="line">* 查询限制当页个数</span><br><span class="line">* .limit()</span><br><span class="line">* 查询总个数</span><br><span class="line">* .count()</span><br><span class="line">* 修改单个数据</span><br><span class="line">* getShopDao().update(shop);</span><br><span class="line">* 修改多个数据</span><br><span class="line">* getShopDao().updateInTx(shopList);</span><br><span class="line">* 删除单个数据</span><br><span class="line">* getTABUserDao().delete(user);</span><br><span class="line">* 删除多个数据</span><br><span class="line">* getUserDao().deleteInTx(userList);</span><br><span class="line">* 删除数据ByKey</span><br><span class="line">* getTABUserDao().deleteByKey();</span><br></pre></td></tr></table></figure></li>
-</ul>
-<p><em><strong><strong>我的代码和网上大佬的一样，其实就是自己平时封装的工具类！累。。。。。<br>那么那么久</strong></strong></em></p>
-<p>最后附上自己的练习代码：<a href="https://coding.net/u/Mark_Chen/p/MarkGreenDaoDemo/git">Coding</a><br>在大佬的基础上学习就是快！！！</p>
-<p>大佬的博客为：<a href="http://www.cnblogs.com/wjtaigwh/">http://www.cnblogs.com/wjtaigwh/</a></p>
-]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>数据库</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Android消息传递机制总结(五)</title>
-    <url>/2020/10/19/Android%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6%E6%80%BB%E7%BB%93-%E4%BA%94/</url>
-    <content><![CDATA[<p>长连接推送 ——— WebSocket，XMPP等。</p>
-<h3 id="5-长连接推送"><a href="#5-长连接推送" class="headerlink" title="5.长连接推送"></a>5.长连接推送</h3><p>Websocket<br>支持客户端和服务器端的双向通信，而且协议的头部又没有HTTP的Header那么大，于是，Websocket就诞生了！</p>
-<span id="more"></span>
+<li><pre><code class="java">public static connection getConnection()&#123;
 
-<p>Websocket是应用层第七层上的一个应用层协议，它必须依赖 HTTP 协议进行一次握手 ，握手成功后，数据就直接从 TCP 通道传输，与 HTTP 无关了。</p>
-<p>Websocket的数据传输是frame形式传输的，比如会将一条消息分为几个frame，按照先后顺序传输出去。这样做会有几个好处：</p>
-<p>1 大数据的传输可以分片传输，不用考虑到数据大小导致的长度标志位不足够的情况。</p>
-<p>2 和http的chunk一样，可以边生成数据边传递消息，即提高传输效率。</p>
-<p>XMPP中定义了三个角色，客户端，服务器，网关。通信能够在这三者的任意两个之间双向发生。服务器同时承担了客户端信息记录，连接管理和信息的路由功能。网关承担着与异构即时通信系统的互联互通，异构系统可以包括SMS（短信），MSN，ICQ等。基本的网络形式是单客户端通过TCP/IP连接到单服务器，然后在之上传输XML。</p>
-<p>QQ是使用类似XMPP协议的UDP协议进行发送和接收消息的。当你的机器安装了QQ以后，实际上，你既是服务端（Server），又是客户端（Client）。当你登录QQ时，你的QQ作为Client连接到腾讯公司的主服务器上，当你看谁在线时，你的QQ又一次作为Client从QQ Server上读取在线网友名单。当你和你的QQ伙伴进行聊天时，如果你和对方的连接比较稳定，你和他的聊天内容都是以UDP的形式，在计算机之间传 送。如果你和对方的连接不是很稳定，QQ服务器将为你们的聊天内容进行中转。其他的即时通信软件原理与此大同小异。</p>
-<p>所以基于WebSocke和XMPP都可以开发出IM社交聊天类的app</p>
+Connection conn = null;
+        try &#123;
+            Class.forName(DRIVER);
+            conn = DriverManager.getConnection(URL, USER, PASSWORD);
+        &#125; catch (ClassNotFoundException | SQLException e) &#123;
+            e.printStackTrace();
+        &#125;
+        return conn;
+
+&#125;
+</code></pre>
+<blockquote>
+<p>调用getConnection()方法后，<br>Console输出：<code>oracle.jdbc.driver.T4CConnection@f8c1ddd</code>  表示数据连接成功</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
 ]]></content>
       <categories>
-        <category>Android</category>
+        <category>JavaWeb</category>
       </categories>
       <tags>
-        <tag>消息通信</tag>
+        <tag>JDBC</tag>
       </tags>
   </entry>
   <entry>
-    <title>Android消息传递机制总结(二)</title>
-    <url>/2020/10/10/Android%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6%E6%80%BB%E7%BB%93%E4%BA%8C/</url>
-    <content><![CDATA[<p>组件间通信 ——— BroadcastReceiver，接口回调等。</p>
-<h3 id="2-组件间通信"><a href="#2-组件间通信" class="headerlink" title="2.组件间通信"></a>2.组件间通信</h3><p>BroadcastReceiver广播就不再介绍， 广播传递本身是有安全隐患的，需要设置权限，每一个Activity都要定义、注册，解注册广播无形中加大了工作量和维护成本。已经不适应用在组件间通信。</p>
+    <title>JDBC学习--Statement</title>
+    <url>/2021/05/13/JDBC%E5%AD%A6%E4%B9%A0-Statement/</url>
+    <content><![CDATA[<h3 id="JDBC的API结构和使用流程"><a href="#JDBC的API结构和使用流程" class="headerlink" title="JDBC的API结构和使用流程"></a>JDBC的API结构和使用流程</h3><pre class="mermaid">graph TB
+    A0[DriverManager] --> B0[Driver]
+    A0[DriverManager] --> B1[Driver] 
+    B0[Driver] --> C0[Connection]
+    B1[Driver] -->C1[Connection]
+    B1[Driver] -->C2[Connection]
+    C0[Connection]-->D0[Statement]
+    C0[Connection]-->D1[Statement]-->E0[ResultSet]
+    C0[Connection]-->D2[Statement]-->E1[ResultSet]
+    C1[Connection]-->D3[Statement]-->E2[ResultSet]</pre>
 <span id="more"></span>
-<p>接口回调： 和观察者模式大致一样。<br>实例：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">public class DataSynManager &#123;</span><br><span class="line">    &#x2F;&#x2F;监听集合</span><br><span class="line">    private LinkedList&lt;IDataSynListener&gt; autoListeners &#x3D; new LinkedList&lt;&gt;();</span><br><span class="line">    &#x2F;&#x2F;单例引用</span><br><span class="line">    private static DataSynManager mInstance;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 获取单例引用</span><br><span class="line">     *</span><br><span class="line">     * @return</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public static DataSynManager getInstance() &#123;</span><br><span class="line">        if (mInstance &#x3D;&#x3D; null) &#123;</span><br><span class="line">            synchronized (DataSynManager.class) &#123;</span><br><span class="line">                if (mInstance &#x3D;&#x3D; null) &#123;</span><br><span class="line">                    mInstance &#x3D; new DataSynManager();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return mInstance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 添加同步数据监听</span><br><span class="line">     *</span><br><span class="line">     * @param listener</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public void registerDataSynListener(IDataSynListener listener) &#123;</span><br><span class="line">        if (autoListeners &#x3D;&#x3D; null) &#123;</span><br><span class="line">            autoListeners &#x3D; new LinkedList&lt;&gt;();</span><br><span class="line">        &#125;</span><br><span class="line">        if (!autoListeners.contains(listener)) &#123;</span><br><span class="line">            autoListeners.add(listener);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 移除同步数据监听</span><br><span class="line">     *</span><br><span class="line">     * @param listener</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public void unRegisterSynListener(IDataSynListener listener) &#123;</span><br><span class="line">        if (autoListeners &#x3D;&#x3D; null) &#123;</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        if (autoListeners.contains(listener)) &#123;</span><br><span class="line">            autoListeners.remove(listener);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 执行数据同步</span><br><span class="line">     *</span><br><span class="line">     * @param count</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public void doDataSyn(final int count) &#123;</span><br><span class="line">        if (autoListeners &#x3D;&#x3D; null) &#123;</span><br><span class="line">            autoListeners &#x3D; new LinkedList&lt;&gt;();</span><br><span class="line">        &#125;</span><br><span class="line">        new Handler().post(new Runnable() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void run() &#123;</span><br><span class="line">                for (IDataSynListener dataSynListener :</span><br><span class="line">                        autoListeners) &#123;</span><br><span class="line">                    dataSynListener.onDataSyn(count);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 清除所有监听者</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public void release() &#123;</span><br><span class="line">        if (autoListeners !&#x3D; null) &#123;</span><br><span class="line">            autoListeners.clear();</span><br><span class="line">            autoListeners &#x3D; null;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public interface IDataSynListener &#123;</span><br><span class="line">        void onDataSyn(int count);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>使用：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;添加监听</span><br><span class="line">DataSynManager.getInstance().registerDataSynListener(dataSynListener);</span><br><span class="line">&#x2F;&#x2F;移除监听</span><br><span class="line">DataSynManager.getInstance().unRegisterDataSynListener(dataSynListener&#x2F;&#x2F;个监听);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">DataSynManager.IDataSynListener dataSynListener&#x3D;new DataSynManager.IDataSynListener() &#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void onDataSyn(int count) &#123;</span><br><span class="line">            &#x2F;&#x2F;接下来执行同步操作</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">   &#125;;</span><br><span class="line">&#x2F;&#x2F;发送事件</span><br><span class="line">DataSynManager.getInstance().doDa(5);</span><br></pre></td></tr></table></figure>
-<p><a href="http://markchyl.cn/2020/10/10/Android%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6%E6%80%BB%E7%BB%93%E4%B8%89/">3. 第三方通信 ——— EventBus，rxBus</a></p>
+<h3 id="创建Statement的方式"><a href="#创建Statement的方式" class="headerlink" title="创建Statement的方式"></a>创建Statement的方式</h3><ul>
+<li><p><code>Statement  stmt = Connection.createStatement(......);</code></p>
+<ul>
+<li>执行不带参数的简单SQL语句</li>
+</ul>
+</li>
+<li><p><code>PreparedStatement  pstmt = Connection.prepareStatement(......);</code></p>
+<ul>
+<li>执行带参数或不带参数的SQL语句</li>
+</ul>
+</li>
+<li><p><code>CallableStatement   cstmt  =  Connection.prepareCall(...);</code></p>
+<ul>
+<li>执行对数据库已存储的PL/SQL程序的调用</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="执行SQL语句"><a href="#执行SQL语句" class="headerlink" title="执行SQL语句"></a>执行SQL语句</h3><ul>
+<li><code>executeQuery()</code>：执行查询语句，返回查询结果集 <code>ResultSet</code><br>返回结果集 <code>rs.getFetchSize()</code>记录着当前返回数量的大小：<code>10</code></li>
+<li><code>executeUpdate()</code>: 执行DML和DDL 语句，返回int类型</li>
+<li><code>execute()</code>: 执行任何SQL语句，返回boolean类型，指示是否有ResultSet返回</li>
+</ul>
 ]]></content>
       <categories>
-        <category>Android</category>
+        <category>JavaWeb</category>
       </categories>
       <tags>
-        <tag>消息通信</tag>
+        <tag>JDBC</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Kotlin中可变参数</title>
+    <url>/2021/04/26/Kotlin%E4%B8%AD%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0/</url>
+    <content><![CDATA[<p><a href="https://www.jianshu.com/p/174c0e254713">原文简书</a></p>
+<hr>
+<h3 id="对比-Java-中的可变参数"><a href="#对比-Java-中的可变参数" class="headerlink" title="对比 Java 中的可变参数"></a>对比 Java 中的可变参数</h3><p>先看下 Java 的可变参数，用我们最熟悉的 main 函数</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String... args)</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>从 Java5 开始引入了可变参数（varargs）<br>对应的 Kotlin 的代码，参数为可变参数：</p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">(<span class="keyword">vararg</span> args: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<p>Java代码中参数应该是数组：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对应的 Kotlin 的代码，也是两种方式，参数为数组：</p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">String</span>&gt;)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="可变参数的本质"><a href="#可变参数的本质" class="headerlink" title="可变参数的本质"></a>可变参数的本质</h3><figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    foo(<span class="string">&quot;1&quot;</span>, <span class="string">&quot;2&quot;</span>, <span class="string">&quot;3&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">foo</span><span class="params">(<span class="keyword">vararg</span> args: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">    println(args::<span class="class"><span class="keyword">class</span>)</span></span><br><span class="line">    println(args.contentToString())</span><br><span class="line">    <span class="keyword">for</span> (i <span class="keyword">in</span> args.indices) &#123;</span><br><span class="line">        println(args[i])</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>打印：</p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">kotlin</span>.<span class="title">Array</span></span></span><br><span class="line"><span class="keyword">val</span> kotlin.reflect.KClass&lt;T&gt;.java: java.lang.Class&lt;T&gt;</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
+<p>我们可以清晰的看到 args 的类型为数组类型，并且可以直接调用数组的方法。</p>
+<blockquote>
+<p>如果你的第一行打印结果是：</p>
+<p>class [Ljava.lang.String; (Kotlin reflection is not available)</p>
+<p>需要在 build.gradle 中添加依赖：</p>
+<p>implementation “org.jetbrains.kotlin:kotlin-reflect:$kotlin_version”</p>
+</blockquote>
+<hr>
+<p><strong><strong>准确的说 args 的类型是 Array<out String> 类型:</strong></strong></p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    foo(<span class="string">&quot;1&quot;</span>, <span class="string">&quot;2&quot;</span>, <span class="string">&quot;3&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">foo</span><span class="params">(<span class="keyword">vararg</span> args: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">    bar(args)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">bar</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">out</span> <span class="type">String</span>&gt;)</span></span> &#123;</span><br><span class="line">    println(args.contentToString())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="可变参数的传参"><a href="#可变参数的传参" class="headerlink" title="可变参数的传参"></a>可变参数的传参</h3><p>我们再来改造一下 bar 函数的参数类型，看下可变参数的传参：</p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    foo(<span class="string">&quot;1&quot;</span>, <span class="string">&quot;2&quot;</span>, <span class="string">&quot;3&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">foo</span><span class="params">(<span class="keyword">vararg</span> args: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">    bar(args)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">bar</span><span class="params">(<span class="keyword">vararg</span> args: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">    println(args.contentToString())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>编译器提示类型不匹配，需要一个 String 类型的参数，而传入了数组类型。<br>然而在 Java 中可变参数是可以直接传递，并且可以和数组相互转换传递：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    foo(<span class="string">&quot;1&quot;</span>, <span class="string">&quot;2&quot;</span>, <span class="string">&quot;3&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">foo</span><span class="params">(String... args)</span> </span>&#123;</span><br><span class="line">    bar1(args);</span><br><span class="line">    bar2(args);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">bar1</span><span class="params">(String... args)</span> </span>&#123;</span><br><span class="line">    System.out.println(Arrays.toString(args));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">bar2</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    bar1(args);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在 Kotlin 中如果想将数组类型传入到可变参数，就需要使用一个特定的符号 <code>* </code>：</p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    foo(<span class="string">&quot;1&quot;</span>, <span class="string">&quot;2&quot;</span>, <span class="string">&quot;3&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">foo</span><span class="params">(<span class="keyword">vararg</span> args: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">    bar1(*args)</span><br><span class="line">    bar2(args)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">bar1</span><span class="params">(<span class="keyword">vararg</span> args: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">    println(args.contentToString())</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">bar2</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">out</span> <span class="type">String</span>&gt;)</span></span> &#123;</span><br><span class="line">    bar1(*args)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>我对 Kotlin 中d可变参数的理解是：</p>
+<ol>
+<li>可变参数会在函数体中，自动转变为数组类型</li>
+<li>数组类型不能作为参数，直接传递给可变参数</li>
+<li>在数组类型前面添加 * ，可以传递给可变参数</li>
+</ol>
+<p>最后，我们可以反编译看下 Kotlin 中的 foo 函数，看看 * 到底做了什么：</p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> static <span class="keyword">final</span> void foo(<span class="meta">@NotNull</span> String... args) &#123;</span><br><span class="line">    bar1((String[]) Arrays.copyOf(args, args.length));</span><br><span class="line">    bar2(args);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>就是一个复制数组的操作，相比 Kotlin 还是 Java 做的更便捷，可以在数组和可变参数之间直接自由转换。</p>
+]]></content>
+      <categories>
+        <category>Kotlin</category>
+      </categories>
+      <tags>
+        <tag>Kotlin基础</tag>
       </tags>
   </entry>
   <entry>
@@ -1317,58 +1577,6 @@
       </categories>
       <tags>
         <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Kotlin中可变参数</title>
-    <url>/2021/04/26/Kotlin%E4%B8%AD%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0/</url>
-    <content><![CDATA[<p><a href="https://www.jianshu.com/p/174c0e254713">原文简书</a></p>
-<hr>
-<h3 id="对比-Java-中的可变参数"><a href="#对比-Java-中的可变参数" class="headerlink" title="对比 Java 中的可变参数"></a>对比 Java 中的可变参数</h3><p>先看下 Java 的可变参数，用我们最熟悉的 main 函数</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String... args)</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>从 Java5 开始引入了可变参数（varargs）<br>对应的 Kotlin 的代码，参数为可变参数：</p>
-<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">(<span class="keyword">vararg</span> args: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<p>Java代码中参数应该是数组：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>对应的 Kotlin 的代码，也是两种方式，参数为数组：</p>
-<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">String</span>&gt;)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="可变参数的本质"><a href="#可变参数的本质" class="headerlink" title="可变参数的本质"></a>可变参数的本质</h3><figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    foo(<span class="string">&quot;1&quot;</span>, <span class="string">&quot;2&quot;</span>, <span class="string">&quot;3&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">foo</span><span class="params">(<span class="keyword">vararg</span> args: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">    println(args::<span class="class"><span class="keyword">class</span>)</span></span><br><span class="line">    println(args.contentToString())</span><br><span class="line">    <span class="keyword">for</span> (i <span class="keyword">in</span> args.indices) &#123;</span><br><span class="line">        println(args[i])</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>打印：</p>
-<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">kotlin</span>.<span class="title">Array</span></span></span><br><span class="line"><span class="keyword">val</span> kotlin.reflect.KClass&lt;T&gt;.java: java.lang.Class&lt;T&gt;</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
-<p>我们可以清晰的看到 args 的类型为数组类型，并且可以直接调用数组的方法。</p>
-<blockquote>
-<p>如果你的第一行打印结果是：</p>
-<p>class [Ljava.lang.String; (Kotlin reflection is not available)</p>
-<p>需要在 build.gradle 中添加依赖：</p>
-<p>implementation “org.jetbrains.kotlin:kotlin-reflect:$kotlin_version”</p>
-</blockquote>
-<hr>
-<p><strong><strong>准确的说 args 的类型是 Array<out String> 类型:</strong></strong></p>
-<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    foo(<span class="string">&quot;1&quot;</span>, <span class="string">&quot;2&quot;</span>, <span class="string">&quot;3&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">foo</span><span class="params">(<span class="keyword">vararg</span> args: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">    bar(args)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">bar</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">out</span> <span class="type">String</span>&gt;)</span></span> &#123;</span><br><span class="line">    println(args.contentToString())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="可变参数的传参"><a href="#可变参数的传参" class="headerlink" title="可变参数的传参"></a>可变参数的传参</h3><p>我们再来改造一下 bar 函数的参数类型，看下可变参数的传参：</p>
-<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    foo(<span class="string">&quot;1&quot;</span>, <span class="string">&quot;2&quot;</span>, <span class="string">&quot;3&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">foo</span><span class="params">(<span class="keyword">vararg</span> args: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">    bar(args)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">bar</span><span class="params">(<span class="keyword">vararg</span> args: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">    println(args.contentToString())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>编译器提示类型不匹配，需要一个 String 类型的参数，而传入了数组类型。<br>然而在 Java 中可变参数是可以直接传递，并且可以和数组相互转换传递：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    foo(<span class="string">&quot;1&quot;</span>, <span class="string">&quot;2&quot;</span>, <span class="string">&quot;3&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">foo</span><span class="params">(String... args)</span> </span>&#123;</span><br><span class="line">    bar1(args);</span><br><span class="line">    bar2(args);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">bar1</span><span class="params">(String... args)</span> </span>&#123;</span><br><span class="line">    System.out.println(Arrays.toString(args));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">bar2</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    bar1(args);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在 Kotlin 中如果想将数组类型传入到可变参数，就需要使用一个特定的符号 <code>* </code>：</p>
-<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    foo(<span class="string">&quot;1&quot;</span>, <span class="string">&quot;2&quot;</span>, <span class="string">&quot;3&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">foo</span><span class="params">(<span class="keyword">vararg</span> args: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">    bar1(*args)</span><br><span class="line">    bar2(args)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">bar1</span><span class="params">(<span class="keyword">vararg</span> args: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">    println(args.contentToString())</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">bar2</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">out</span> <span class="type">String</span>&gt;)</span></span> &#123;</span><br><span class="line">    bar1(*args)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>我对 Kotlin 中d可变参数的理解是：</p>
-<ol>
-<li>可变参数会在函数体中，自动转变为数组类型</li>
-<li>数组类型不能作为参数，直接传递给可变参数</li>
-<li>在数组类型前面添加 * ，可以传递给可变参数</li>
-</ol>
-<p>最后，我们可以反编译看下 Kotlin 中的 foo 函数，看看 * 到底做了什么：</p>
-<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> static <span class="keyword">final</span> void foo(<span class="meta">@NotNull</span> String... args) &#123;</span><br><span class="line">    bar1((String[]) Arrays.copyOf(args, args.length));</span><br><span class="line">    bar2(args);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>就是一个复制数组的操作，相比 Kotlin 还是 Java 做的更便捷，可以在数组和可变参数之间直接自由转换。</p>
-]]></content>
-      <categories>
-        <category>Kotlin</category>
-      </categories>
-      <tags>
-        <tag>Kotlin基础</tag>
       </tags>
   </entry>
   <entry>
@@ -1485,6 +1693,26 @@
       </tags>
   </entry>
   <entry>
+    <title>Mac上搭建apktool反编译工具</title>
+    <url>/2019/06/13/Mac%E4%B8%8A%E6%90%AD%E5%BB%BAapktool%E5%8F%8D%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7/</url>
+    <content><![CDATA[<p>apktool下载地址：<br><code>https://ibotpeaches.github.io/Apktool/install/</code></p>
+<span id="more"></span>
+<h3 id="1-在Chrome中，打开网址，找到图中所示Mac相关部分"><a href="#1-在Chrome中，打开网址，找到图中所示Mac相关部分" class="headerlink" title="1.在Chrome中，打开网址，找到图中所示Mac相关部分"></a>1.在Chrome中，打开网址，找到图中所示Mac相关部分</h3><p><img data-src="https://img-blog.csdnimg.cn/20191226175801984.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d1YWlndWFpXzIwMTU=,size_16,color_FFFFFF,t_70"></p>
+<h3 id="2-在Chrome中，打开网址，在“-wrapper-script”上点击鼠标右键，选择“链接存储为”"><a href="#2-在Chrome中，打开网址，在“-wrapper-script”上点击鼠标右键，选择“链接存储为”" class="headerlink" title="2.在Chrome中，打开网址，在“ wrapper script”上点击鼠标右键，选择“链接存储为”"></a>2.在Chrome中，打开网址，在“ wrapper script”上点击鼠标右键，选择“链接存储为”</h3><p><img data-src="https://upload-images.jianshu.io/upload_images/13001414-fb0faffd01c74a08.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp"><br>存储时，必须选择格式为“所有文件”，文件名为“apktool”，没有后缀(貌似有些浏览器不能选择格式，我在Chrome浏览器可以选择文件格式)<br> <img data-src="https://upload-images.jianshu.io/upload_images/13001414-217bcc315f02b99f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp"></p>
+<h3 id="3-点击“find-newest-here”进入下载页面，选择合适的版本，下载-jar文件，下载后文件名要改为“apktool-jar”"><a href="#3-点击“find-newest-here”进入下载页面，选择合适的版本，下载-jar文件，下载后文件名要改为“apktool-jar”" class="headerlink" title="3.点击“find newest here”进入下载页面，选择合适的版本，下载.jar文件，下载后文件名要改为“apktool.jar”"></a>3.点击“find newest here”进入下载页面，选择合适的版本，下载.jar文件，下载后文件名要改为“apktool.jar”</h3><p> <img data-src="https://upload-images.jianshu.io/upload_images/13001414-16b2c8e8c0b1dc31.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp"><br> <img data-src="https://upload-images.jianshu.io/upload_images/13001414-ae3dbce397cce0b3.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp"></p>
+<h3 id="4-把apktool和apktool-jar文件移动到”-usr-local-bin”目录下，并使用终端命令为两个文件增加执行权限"><a href="#4-把apktool和apktool-jar文件移动到”-usr-local-bin”目录下，并使用终端命令为两个文件增加执行权限" class="headerlink" title="4.把apktool和apktool.jar文件移动到”/usr/local/bin”目录下，并使用终端命令为两个文件增加执行权限"></a>4.把apktool和apktool.jar文件移动到”/usr/local/bin”目录下，并使用终端命令为两个文件增加执行权限</h3><p>命令如下：<br><code>chmod +x apktool.jar apktool</code></p>
+<h3 id="5-验证是否安装成功"><a href="#5-验证是否安装成功" class="headerlink" title="5.验证是否安装成功"></a>5.验证是否安装成功</h3><p>在终端输入命令：apktool<br>打印如下信息：</p>
+<p><img data-src="https://img-blog.csdnimg.cn/20191226185747298.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d1YWlndWFpXzIwMTU=,size_16,color_FFFFFF,t_70" alt="&quot;安装成功的打印新信息&quot;" title="安装成功的打印新信息"></p>
+]]></content>
+      <categories>
+        <category>工具使用</category>
+      </categories>
+      <tags>
+        <tag>反编译</tag>
+        <tag>工具搭建</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Mac上实现SVN代码管理</title>
     <url>/2019/05/30/Mac%E4%B8%8A%E5%AE%9E%E7%8E%B0SVN%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86/</url>
     <content><![CDATA[<h3 id="参考地址："><a href="#参考地址：" class="headerlink" title="参考地址："></a>参考地址：</h3><ul>
@@ -1507,26 +1735,6 @@
       </categories>
       <tags>
         <tag>工具使用</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Mac上搭建apktool反编译工具</title>
-    <url>/2019/06/13/Mac%E4%B8%8A%E6%90%AD%E5%BB%BAapktool%E5%8F%8D%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7/</url>
-    <content><![CDATA[<p>apktool下载地址：<br><code>https://ibotpeaches.github.io/Apktool/install/</code></p>
-<span id="more"></span>
-<h3 id="1-在Chrome中，打开网址，找到图中所示Mac相关部分"><a href="#1-在Chrome中，打开网址，找到图中所示Mac相关部分" class="headerlink" title="1.在Chrome中，打开网址，找到图中所示Mac相关部分"></a>1.在Chrome中，打开网址，找到图中所示Mac相关部分</h3><p><img data-src="https://img-blog.csdnimg.cn/20191226175801984.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d1YWlndWFpXzIwMTU=,size_16,color_FFFFFF,t_70"></p>
-<h3 id="2-在Chrome中，打开网址，在“-wrapper-script”上点击鼠标右键，选择“链接存储为”"><a href="#2-在Chrome中，打开网址，在“-wrapper-script”上点击鼠标右键，选择“链接存储为”" class="headerlink" title="2.在Chrome中，打开网址，在“ wrapper script”上点击鼠标右键，选择“链接存储为”"></a>2.在Chrome中，打开网址，在“ wrapper script”上点击鼠标右键，选择“链接存储为”</h3><p><img data-src="https://upload-images.jianshu.io/upload_images/13001414-fb0faffd01c74a08.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp"><br>存储时，必须选择格式为“所有文件”，文件名为“apktool”，没有后缀(貌似有些浏览器不能选择格式，我在Chrome浏览器可以选择文件格式)<br> <img data-src="https://upload-images.jianshu.io/upload_images/13001414-217bcc315f02b99f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp"></p>
-<h3 id="3-点击“find-newest-here”进入下载页面，选择合适的版本，下载-jar文件，下载后文件名要改为“apktool-jar”"><a href="#3-点击“find-newest-here”进入下载页面，选择合适的版本，下载-jar文件，下载后文件名要改为“apktool-jar”" class="headerlink" title="3.点击“find newest here”进入下载页面，选择合适的版本，下载.jar文件，下载后文件名要改为“apktool.jar”"></a>3.点击“find newest here”进入下载页面，选择合适的版本，下载.jar文件，下载后文件名要改为“apktool.jar”</h3><p> <img data-src="https://upload-images.jianshu.io/upload_images/13001414-16b2c8e8c0b1dc31.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp"><br> <img data-src="https://upload-images.jianshu.io/upload_images/13001414-ae3dbce397cce0b3.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp"></p>
-<h3 id="4-把apktool和apktool-jar文件移动到”-usr-local-bin”目录下，并使用终端命令为两个文件增加执行权限"><a href="#4-把apktool和apktool-jar文件移动到”-usr-local-bin”目录下，并使用终端命令为两个文件增加执行权限" class="headerlink" title="4.把apktool和apktool.jar文件移动到”/usr/local/bin”目录下，并使用终端命令为两个文件增加执行权限"></a>4.把apktool和apktool.jar文件移动到”/usr/local/bin”目录下，并使用终端命令为两个文件增加执行权限</h3><p>命令如下：<br><code>chmod +x apktool.jar apktool</code></p>
-<h3 id="5-验证是否安装成功"><a href="#5-验证是否安装成功" class="headerlink" title="5.验证是否安装成功"></a>5.验证是否安装成功</h3><p>在终端输入命令：apktool<br>打印如下信息：</p>
-<p><img data-src="https://img-blog.csdnimg.cn/20191226185747298.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d1YWlndWFpXzIwMTU=,size_16,color_FFFFFF,t_70" alt="&quot;安装成功的打印新信息&quot;" title="安装成功的打印新信息"></p>
-]]></content>
-      <categories>
-        <category>工具使用</category>
-      </categories>
-      <tags>
-        <tag>反编译</tag>
-        <tag>工具搭建</tag>
       </tags>
   </entry>
   <entry>
@@ -1607,50 +1815,31 @@
       </tags>
   </entry>
   <entry>
-    <title>JDBC学习--ConnectinnFactory</title>
-    <url>/2021/05/13/JDBC%E5%AD%A6%E4%B9%A0-ConnectinnFactory/</url>
-    <content><![CDATA[<p>[toc]</p>
-<h3 id="ConnectionFactory的作用"><a href="#ConnectionFactory的作用" class="headerlink" title="ConnectionFactory的作用"></a>ConnectionFactory的作用</h3><ul>
-<li>利用工厂模式提升代码的额重要性</li>
-<li>封装注册数据库的驱动和获得数据库的连接</li>
-<li>利用配置文件减少硬编码，便于维护</li>
-</ul>
-<h3 id="ConnectionFactory的开发"><a href="#ConnectionFactory的开发" class="headerlink" title="ConnectionFactory的开发"></a>ConnectionFactory的开发</h3><ul>
-<li><p>配置文件 <code>jdbcinfo.properties</code></p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">oracle.driver=oracle.jdbc.driver.OracleDriver  <span class="comment">//数据库驱动</span></span><br><span class="line">oracle.url=jdbc:oracle:thin:<span class="meta">@localhost</span>:<span class="number">1521</span>:helowin <span class="comment">//数据库地址 helowin:数据库的名字</span></span><br><span class="line">oracle.user=mark  <span class="comment">//管理账户</span></span><br><span class="line">oracle.password=chenyunlin  <span class="comment">//密码</span></span><br></pre></td></tr></table></figure>
-<span id="more"></span></li>
-</ul>
-<ul>
-<li><p>配置文件信息的获取</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">static</span> &#123;</span><br><span class="line">        Properties props = <span class="keyword">new</span> Properties();</span><br><span class="line">        <span class="comment">// 加载配置文件中的数据</span></span><br><span class="line">        InputStream is =</span><br><span class="line">                ConnectionFactory.class.getClassLoader().getResourceAsStream(&quot;jdbcinfo.properties&quot;);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            props.load(is);</span><br><span class="line">            DRIVER = props.getProperty(<span class="string">&quot;oracle.driver&quot;</span>);</span><br><span class="line">            URL = props.getProperty(<span class="string">&quot;oracle.url&quot;</span>);</span><br><span class="line">            USER = props.getProperty(<span class="string">&quot;oracle.user&quot;</span>);</span><br><span class="line">            PASSWORD = props.getProperty(<span class="string">&quot;oracle.password&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>数据库连接Connection的获取</p>
-<ul>
-<li><pre><code class="java">public static connection getConnection()&#123;
-
-Connection conn = null;
-        try &#123;
-            Class.forName(DRIVER);
-            conn = DriverManager.getConnection(URL, USER, PASSWORD);
-        &#125; catch (ClassNotFoundException | SQLException e) &#123;
-            e.printStackTrace();
-        &#125;
-        return conn;
-
-&#125;
-</code></pre>
+    <title>Mac电脑maven安装与配置</title>
+    <url>/2021/05/13/Mac%E7%94%B5%E8%84%91maven%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<p><a href="https://www.cnblogs.com/zdz8207/p/mac-java-maven.html">原文地址：大自然的流风</a></p>
+<hr>
+<h3 id="Mac电脑maven安装与配置"><a href="#Mac电脑maven安装与配置" class="headerlink" title="Mac电脑maven安装与配置"></a>Mac电脑maven安装与配置</h3><ol>
+<li><p>下载：<a href="http://maven.apache.org/download.cgi">http://maven.apache.org/download.cgi</a></p>
+</li>
+<li><p>安装：解压下载好的maven的文件，解压到你想要的文件夹下。</p>
+</li>
+<li><p>配置：打开终端输入命令 sudo vim ~/.bash_profile （编辑环境变量配置文件）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export MAVEN_HOME&#x3D;maven文件夹路径</span><br><span class="line">export PATH&#x3D;$PATH:$MAVEN_HOME&#x2F;bin</span><br></pre></td></tr></table></figure>
+<p><strong>小技巧</strong></p>
 <blockquote>
-<p>调用getConnection()方法后，<br>Console输出：<code>oracle.jdbc.driver.T4CConnection@f8c1ddd</code>  表示数据连接成功</p>
+<p>复制文件夹路径方法：点击文件夹，然后使用组合快捷键：command + option + c 就会把路径复制到粘贴板了。<br>或者把文件夹拖放到控制台也可以显示出来<br>让mac文件夹显示文件夹和文件路径，执行命令：defaults write com.apple.finder _FXShowPosixPathInTitle -bool YES</p>
 </blockquote>
 </li>
-</ul>
-</li>
-</ul>
+<li><p><code>:wq</code>退出并保存当前文件,<code>source .bash_profile</code>，按下Enter键使bash_profile生效。<br><code>mvn -v</code>查看是否成功</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@Markxiansheng ~ % mvn -v</span><br><span class="line">Apache Maven 3.8.1 (05c21c65bdfed0f71a2f2ada8b84da59348c4c5d)</span><br><span class="line">Maven home: &#x2F;Users&#x2F;mark&#x2F;Library&#x2F;maven&#x2F;apache-maven-3.8.1</span><br><span class="line">Java version: 11.0.11, vendor: Amazon.com Inc., runtime: &#x2F;Users&#x2F;mark&#x2F;Library&#x2F;Java&#x2F;JavaVirtualMachines&#x2F;corretto-11.0.11&#x2F;Contents&#x2F;Home</span><br><span class="line">Default locale: zh_CN_#Hans, platform encoding: UTF-8</span><br><span class="line">OS name: &quot;mac os x&quot;, version: &quot;10.15.7&quot;, arch: &quot;x86_64&quot;, family: &quot;mac&quot;</span><br></pre></td></tr></table></figure></li>
+</ol>
 ]]></content>
       <categories>
-        <category>JavaWeb</category>
+        <category>环境配置</category>
       </categories>
       <tags>
-        <tag>JDBC</tag>
+        <tag>Maven</tag>
       </tags>
   </entry>
   <entry>
@@ -1675,51 +1864,6 @@ Connection conn = null;
       </categories>
       <tags>
         <tag>工具搭建</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JDBC学习--Statement</title>
-    <url>/2021/05/13/JDBC%E5%AD%A6%E4%B9%A0-Statement/</url>
-    <content><![CDATA[<h3 id="JDBC的API结构和使用流程"><a href="#JDBC的API结构和使用流程" class="headerlink" title="JDBC的API结构和使用流程"></a>JDBC的API结构和使用流程</h3><pre class="mermaid">graph TB
-    A0[DriverManager] --> B0[Driver]
-    A0[DriverManager] --> B1[Driver] 
-    B0[Driver] --> C0[Connection]
-    B1[Driver] -->C1[Connection]
-    B1[Driver] -->C2[Connection]
-    C0[Connection]-->D0[Statement]
-    C0[Connection]-->D1[Statement]-->E0[ResultSet]
-    C0[Connection]-->D2[Statement]-->E1[ResultSet]
-    C1[Connection]-->D3[Statement]-->E2[ResultSet]</pre>
-<span id="more"></span>
-<h3 id="创建Statement的方式"><a href="#创建Statement的方式" class="headerlink" title="创建Statement的方式"></a>创建Statement的方式</h3><ul>
-<li><p><code>Statement  stmt = Connection.createStatement(......);</code></p>
-<ul>
-<li>执行不带参数的简单SQL语句</li>
-</ul>
-</li>
-<li><p><code>PreparedStatement  pstmt = Connection.prepareStatement(......);</code></p>
-<ul>
-<li>执行带参数或不带参数的SQL语句</li>
-</ul>
-</li>
-<li><p><code>CallableStatement   cstmt  =  Connection.prepareCall(...);</code></p>
-<ul>
-<li>执行对数据库已存储的PL/SQL程序的调用</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h3 id="执行SQL语句"><a href="#执行SQL语句" class="headerlink" title="执行SQL语句"></a>执行SQL语句</h3><ul>
-<li><code>executeQuery()</code>：执行查询语句，返回查询结果集 <code>ResultSet</code><br>返回结果集 <code>rs.getFetchSize()</code>记录着当前返回数量的大小：<code>10</code></li>
-<li><code>executeUpdate()</code>: 执行DML和DDL 语句，返回int类型</li>
-<li><code>execute()</code>: 执行任何SQL语句，返回boolean类型，指示是否有ResultSet返回</li>
-</ul>
-]]></content>
-      <categories>
-        <category>JavaWeb</category>
-      </categories>
-      <tags>
-        <tag>JDBC</tag>
       </tags>
   </entry>
   <entry>
@@ -2040,7 +2184,7 @@ Connection conn = null;
 <p>2.添加SSH Key到Github<br>进入github首页在设置洁面<br><img data-src="https://images2017.cnblogs.com/blog/1250458/201710/1250458-20171017153636849-294935886.png"></p>
 <hr>
 <h4 id="添加SSH-Key"><a href="#添加SSH-Key" class="headerlink" title="添加SSH Key"></a>添加SSH Key</h4><p><img data-src="https://images2017.cnblogs.com/blog/1250458/201710/1250458-20171017153642521-647884655.png"><br>找到系统当前用户目录下(开启查看隐藏文件) C:\Users\用户名\ .ssh id_rsa.pub文件以文本方式打开。打开之后全部复制到key中<br><img data-src="https://images2017.cnblogs.com/blog/1250458/201710/1250458-20171017153648631-441574444.png"><br>到了这就可以测试一下是否成功了:</p>
-<p>ssh -T <a href="mailto:&#x67;&#x69;&#116;&#x40;&#x67;&#105;&#116;&#x68;&#x75;&#98;&#x2e;&#x63;&#x6f;&#x6d;">&#x67;&#x69;&#116;&#x40;&#x67;&#105;&#116;&#x68;&#x75;&#98;&#x2e;&#x63;&#x6f;&#x6d;</a><br>#之后会要你输入yes/no,输入yes就好了。<br>设置你的账号信息:</p>
+<p>ssh -T <a href="mailto:&#x67;&#x69;&#x74;&#x40;&#x67;&#x69;&#116;&#x68;&#x75;&#98;&#x2e;&#x63;&#x6f;&#x6d;">&#x67;&#x69;&#x74;&#x40;&#x67;&#x69;&#116;&#x68;&#x75;&#98;&#x2e;&#x63;&#x6f;&#x6d;</a><br>#之后会要你输入yes/no,输入yes就好了。<br>设置你的账号信息:</p>
 <p>git config –global user.name “你的名字”     #真实名字不是github用户名<br>git config –global user.email “邮箱@邮箱.com”    #github邮箱<br>3.部署到github<br>hexo d<br>这时再刷新 username.github.io 就可以看到你的博客了。</p>
 <p>到了这你以为就结束了吗？没有，还有坑没有给你们填好。</p>
 <p>如果你的SSH配置的时候哪找的.ssh文件的化，可以参照<a href="https://www.cnblogs.com/ailiailan/p/8577411.html">mac 上传本地代码到 Github 教程</a>,我就是参照上面的步骤配置的。</p>
@@ -2193,147 +2337,33 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
-    <title>Android混淆</title>
-    <url>/2020/11/07/Android%E6%B7%B7%E6%B7%86/</url>
-    <content><![CDATA[<blockquote>
-<p>代码混淆（Obfuscated code）亦称花指令，是将计算机程序的代码，转换成一种功能上等价，但是难于阅读和理解的形式的行为。</p>
-</blockquote>
+    <title>RxJava学习笔记一</title>
+    <url>/2020/10/19/RxJava%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%80/</url>
+    <content><![CDATA[<h3 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World!"></a>Hello World!</h3><ul>
+<li>RxJava1.1.7.jar<br>代码演示：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">		&#x2F;&#x2F;第一步、创建被观察者</span><br><span class="line">		Observable&lt;String&gt; mObservable &#x3D; Observable.create(new OnSubscribe&lt;String&gt;()&#123;</span><br><span class="line">			@Override</span><br><span class="line">			public void call(Subscriber&lt;? super String&gt; subscriber) &#123;</span><br><span class="line">				subscriber.onNext(&quot;Hello World!&quot;);</span><br><span class="line">				subscriber.onCompleted();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;第二步、创建观察者</span><br><span class="line">		Subscriber&lt;String&gt; mSubscriber &#x3D; new Subscriber&lt;String&gt;() &#123;</span><br><span class="line"></span><br><span class="line">			@Override</span><br><span class="line">			public void onCompleted() &#123;</span><br><span class="line">				&#x2F;&#x2F; TODO Auto-generated method stub</span><br><span class="line">				System.out.println(&quot;onCompleted&quot;);</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			@Override</span><br><span class="line">			public void onError(Throwable arg0) &#123;</span><br><span class="line">				&#x2F;&#x2F; TODO Auto-generated method stub</span><br><span class="line">				System.out.println(&quot;onError&quot;);</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			@Override</span><br><span class="line">			public void onNext(String arg0) &#123;</span><br><span class="line">				&#x2F;&#x2F; TODO Auto-generated method stub</span><br><span class="line">				System.out.println(&quot;OnNext:&quot;+arg0);</span><br><span class="line">				</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;;</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;第三步、订阅事件</span><br><span class="line">		mObservable.subscribe(mSubscriber);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>为什么要加代码混淆?<br>不想开源应用，为了加大反编译的成本,但是并不能彻底防止反编译</p>
+<p>例如代码中所演示的，RxJava的使用就是那么简单，通过订阅事件将被观察者和观察者进行绑定。</p>
 </blockquote>
-<h3 id="开启混淆"><a href="#开启混淆" class="headerlink" title="开启混淆"></a>开启混淆</h3><ul>
-<li>通常我们需要找到项目路径下app目录下的build.gradle文件</li>
-<li>找到minifyEnabled这个配置,然后设置为true即可.<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">release&#123;</span><br><span class="line">           minifyEnabled true&#x2F;&#x2F;是否启动混淆 ture:打开   false:关闭</span><br><span class="line">           proguardFiles getDefaultProguardFile(&#39;proguard-android.txt&#39;), &#39;proguard-rules.pro&#39;</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
-proguard-rules.pro文件的作用</li>
-<li>只要在工程应用目录的gradle文件中设置minifyEnabled:true即可。然后我们就可以到proguard-rules.pro文件中加入我们的混淆规则了<span id="more"></span>
-<h3 id="proguard是什么"><a href="#proguard是什么" class="headerlink" title="proguard是什么?"></a>proguard是什么?</h3></li>
-<li>Proguard是一个集文件压缩,优化,混淆和校验等功能的工具</li>
-<li>它检测并删除无用的类,变量,方法和属性</li>
-<li>它优化字节码并删除无用的指令.</li>
-<li>它通过将类名,变量名和方法名重命名为无意义的名称实现混淆效果.</li>
-<li>最后它还校验处理后的代码</li>
+<span id="more"></span>
+<h3 id="响应式编程："><a href="#响应式编程：" class="headerlink" title="响应式编程："></a>响应式编程：</h3>在介绍RxJava前，我们先聊聊响应式编程。那么什么是响应式编程呢？响应式编程是一种基于异步数据流概念的编程模式。数据流就像一条河：它可以被观测，被过滤，被操作，或者为新的消费者与另外一条流合并为一条新的流。</li>
 </ul>
-<h3 id="混淆的常见配置"><a href="#混淆的常见配置" class="headerlink" title="混淆的常见配置"></a>混淆的常见配置</h3><ul>
-<li>Proguard关键字</li>
+<p>响应式编程的一个关键概念是事件。事件可以被等待，可以触发过程，也可以触发其它事件。事件是唯一的以合适的方式将我们的现实世界映射到我们的软件中：如果屋里太热了我们就打开一扇窗户。同样的，当我们的天气app从服务端获取到新的天气数据后，我们需要更新app上展示天气信息的UI；汽车上的车道偏移系统探测到车辆偏移了正常路线就会提醒驾驶者纠正，就是是响应事件。</p>
+<p>今天，响应式编程最通用的一个场景是UI：我们的移动App必须做出对网络调用、用户触摸输入和系统弹框的响应。在这个世界上，软件之所以是事件驱动并响应的是因为现实生活也是如此。</p>
+<blockquote>
+<p>本章节中部分概念摘自《RxJava Essentials》一书</p>
+</blockquote>
+<h3 id="RxJava简介："><a href="#RxJava简介：" class="headerlink" title="RxJava简介："></a>RxJava简介：</h3><p>RxJava本质上是一个异步操作库，是一个能让你用极其简洁的逻辑去处理繁琐复杂任务的异步事件库。</p>
+<p>Rx是微软.Net的一个响应式扩展，Rx借助可观测的序列提供一种简单的方式来创建异步的，基于事件驱动的程序。2012年Netflix为了应对不断增长的业务需求开始将.NET Rx迁移到JVM上面。并于13年二月份正式向外展示了RxJava。<br>从语义的角度来看，RxJava就是.NET Rx。从语法的角度来看，Netflix考虑到了对应每个Rx方法,保留了Java代码规范和基本的模式。<br><img data-src="https://pic1.zhimg.com/80/ca736fe59de94c221875cb428d7eaff0_1440w.png"></p>
+<h3 id="RxJava好在哪"><a href="#RxJava好在哪" class="headerlink" title="RxJava好在哪"></a>RxJava好在哪</h3><ul>
+<li>供了AsyncTask,Handler等用来做异步操作的类库了AsyncTask,Handler等用来做异步操作的类库</li>
+<li>非常简洁的代码逻辑来解决复杂问题</li>
 </ul>
-<table>
-<thead>
-<tr>
-<th>Proguard关键字</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>dontwarn</td>
-<td>dontwarn是一个和keep可以说是形影不离,尤其是处理引入的library时.</td>
-</tr>
-<tr>
-<td>keep</td>
-<td>保留类和类中的成员，防止被混淆或移除</td>
-</tr>
-<tr>
-<td>keepnames</td>
-<td>保留类和类中的成员，防止被混淆，成员没有被引用会被移除</td>
-</tr>
-<tr>
-<td>keepclassmembers</td>
-<td>只保留类中的成员，防止被混淆或移除</td>
-</tr>
-<tr>
-<td>keepclassmembernames</td>
-<td>只保留类中的成员，防止被混淆，成员没有引用会被移除</td>
-</tr>
-<tr>
-<td>keepclasseswithmembers</td>
-<td>保留类和类中的成员，防止被混淆或移除，保留指明的成员</td>
-</tr>
-<tr>
-<td>keepclasseswithmembernames</td>
-<td>保留类和类中的成员，防止被混淆，保留指明的成员，成员没有引用会被移除</td>
-</tr>
-</tbody></table>
-<p>如：<br>(1)保留某个包下面的类以及子包<br><code>-keep public class com.droidyue.com.widget.**</code></p>
-<p>(2)保留所有类中使用otto的public方法</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Otto</span><br><span class="line">-keepclassmembers class ** &#123;</span><br><span class="line">    @com.squareup.otto.Subscribe public *;</span><br><span class="line">    @com.squareup.otto.Produce public *;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>(3)保留Contants类的BOOK_NAME属性</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-keepclassmembers class com.example.admin.proguardsample.Constants &#123;</span><br><span class="line">     public static java.lang.String BOOK_NAME;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>(4)dontwarn：<br>引入的library可能存在一些无法找到的引用和其他问题,在build时可能会发出警告,如果我们不进行处理,通常会导致build中止.因此为了保证build继续,我们需要使用dontwarn处理这些我们无法解决的library的警告.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#比如关闭Twitter sdk的警告,我们可以这样做</span><br><span class="line">-dontwarn com.twitter.sdk.**</span><br></pre></td></tr></table></figure>
-<ul>
-<li>Proguard通配符</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>Proguard通配符</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>&lt;field&gt;</code></td>
-<td>匹配类中的所有字段</td>
-</tr>
-<tr>
-<td><code>&lt;method&gt;</code></td>
-<td>匹配类中所有的方法</td>
-</tr>
-<tr>
-<td><code>&lt;init&gt;</code></td>
-<td>匹配类中所有的构造函数</td>
-</tr>
-<tr>
-<td>*</td>
-<td>匹配任意长度字符，不包含包名分隔符(.)</td>
-</tr>
-<tr>
-<td>**</td>
-<td>匹配任意长度字符，包含包名分隔符(.)</td>
-</tr>
-<tr>
-<td>***</td>
-<td>匹配任意参数类型</td>
-</tr>
-<tr>
-<td>…</td>
-<td>…</td>
-</tr>
-</tbody></table>
 ]]></content>
       <categories>
-        <category>Android</category>
+        <category>RxJava</category>
       </categories>
       <tags>
-        <tag>混淆</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Mac电脑maven安装与配置</title>
-    <url>/2021/05/13/Mac%E7%94%B5%E8%84%91maven%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<p><a href="https://www.cnblogs.com/zdz8207/p/mac-java-maven.html">原文地址：大自然的流风</a></p>
-<hr>
-<h3 id="Mac电脑maven安装与配置"><a href="#Mac电脑maven安装与配置" class="headerlink" title="Mac电脑maven安装与配置"></a>Mac电脑maven安装与配置</h3><ol>
-<li><p>下载：<a href="http://maven.apache.org/download.cgi">http://maven.apache.org/download.cgi</a></p>
-</li>
-<li><p>安装：解压下载好的maven的文件，解压到你想要的文件夹下。</p>
-</li>
-<li><p>配置：打开终端输入命令 sudo vim ~/.bash_profile （编辑环境变量配置文件）</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export MAVEN_HOME&#x3D;maven文件夹路径</span><br><span class="line">export PATH&#x3D;$PATH:$MAVEN_HOME&#x2F;bin</span><br></pre></td></tr></table></figure>
-<p><strong>小技巧</strong></p>
-<blockquote>
-<p>复制文件夹路径方法：点击文件夹，然后使用组合快捷键：command + option + c 就会把路径复制到粘贴板了。<br>或者把文件夹拖放到控制台也可以显示出来<br>让mac文件夹显示文件夹和文件路径，执行命令：defaults write com.apple.finder _FXShowPosixPathInTitle -bool YES</p>
-</blockquote>
-</li>
-<li><p><code>:wq</code>退出并保存当前文件,<code>source .bash_profile</code>，按下Enter键使bash_profile生效。<br><code>mvn -v</code>查看是否成功</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@Markxiansheng ~ % mvn -v</span><br><span class="line">Apache Maven 3.8.1 (05c21c65bdfed0f71a2f2ada8b84da59348c4c5d)</span><br><span class="line">Maven home: &#x2F;Users&#x2F;mark&#x2F;Library&#x2F;maven&#x2F;apache-maven-3.8.1</span><br><span class="line">Java version: 11.0.11, vendor: Amazon.com Inc., runtime: &#x2F;Users&#x2F;mark&#x2F;Library&#x2F;Java&#x2F;JavaVirtualMachines&#x2F;corretto-11.0.11&#x2F;Contents&#x2F;Home</span><br><span class="line">Default locale: zh_CN_#Hans, platform encoding: UTF-8</span><br><span class="line">OS name: &quot;mac os x&quot;, version: &quot;10.15.7&quot;, arch: &quot;x86_64&quot;, family: &quot;mac&quot;</span><br></pre></td></tr></table></figure></li>
-</ol>
-]]></content>
-      <categories>
-        <category>环境配置</category>
-      </categories>
-      <tags>
-        <tag>Maven</tag>
+        <tag>RxJava</tag>
       </tags>
   </entry>
   <entry>
@@ -2352,6 +2382,58 @@ proguard-rules.pro文件的作用</li>
       <tags>
         <tag>Android</tag>
         <tag>冲突</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>android:duplicateParentState属性解释</title>
+    <url>/2019/12/31/android-duplicateParentState%E5%B1%9E%E6%80%A7%E8%A7%A3%E9%87%8A/</url>
+    <content><![CDATA[<p><strong>android:duplicateParentState指的是当前控件是否跟随父控件的(点击、焦点等)状态</strong></p>
+<blockquote>
+<p>例：假设一Layout有两子View，对Layout进行监听点击事件；子ViewA一个设置duplicateParentState为true，子ViewB设置为false，当点击Layout后，子ViewA的点击态背景变色成功，子ViewB背景态变色无效，因为点击事件被Layout捕获。</p>
+</blockquote>
+<span id="more"></span>
+
+<p>————————————————</p>
+<p>原文链接：<a href="https://blog.csdn.net/fancylovejava/article/details/38039847">https://blog.csdn.net/fancylovejava/article/details/38039847</a></p>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>布局</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>android retrofit End of input at line 1 column 1 path</title>
+    <url>/2020/09/03/android-retrofit-End-of-input-at-line-1-column-1-path/</url>
+    <content><![CDATA[<p>在使用retrofit作为项目的网络请求库时，接口定义如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@GET(ACT_GET_NEW_STAFF)</span><br><span class="line">Call&lt;TaskEn&gt; reqGetNewStaff();</span><br></pre></td></tr></table></figure>
+<p>接口从服务端获取了数据，通过GsonConverterFactory将服务端相应内容解析成对应的实体类。在接口正常响应时（有数据返回），并没有什么异常发生，但当接口请求的数据为空，我们的服务端人员并不是返回理论意义上的空，null或者[]（数据集合空），而是返回没有响应体body，只有响应头header，content-length为0的Response</p>
+<p>这时候GsonConverterFactory就解析异常了，并抛出如下异常：</p>
+<span id="more"></span>
+<blockquote>
+<p>java.io.EOFException:End of input at line 1 column 1 path </p>
+</blockquote>
+<p>一般来说，如果接口本身就是不需要处理body的，那么我们通常定义接口为</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Call&lt;Void&gt;</span><br></pre></td></tr></table></figure>
+<p> 这和上面的那两个接口是不一样的。</p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><ul>
+<li>请服务端人员吃顿饭，让他们规范接口，当数据为空时，返回null或者[]</li>
+<li>自己动手丰衣足食</li>
+</ul>
+<p>  自定义一个ConverterFactory</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public class NullOnEmptyConverterFactory extends Converter.Factory &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public Converter&lt;ResponseBody, ?&gt; responseBodyConverter(Type type, Annotation[] annotations, Retrofit retrofit) &#123;</span><br><span class="line">        final Converter&lt;ResponseBody, ?&gt; delegate &#x3D; retrofit.nextResponseBodyConverter(this, type, annotations);</span><br><span class="line">        return new Converter&lt;ResponseBody,Object&gt;() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public Object convert(ResponseBody body) throws IOException &#123;</span><br><span class="line">                if (body.contentLength() &#x3D;&#x3D; 0) return null;</span><br><span class="line">                return delegate.convert(body);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后设置到retrofit</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Retrofit retrofit &#x3D; new Retrofit.Builder()</span><br><span class="line">    ....</span><br><span class="line">    .addConverterFactory(new NullOnEmptyConverterFactory())</span><br><span class="line">    .addConverterFactory(GsonConverterFactory.create())</span><br><span class="line">    .build();</span><br></pre></td></tr></table></figure>
+
+<p>需要注意的是，NullOnEmptyConverterFactory必需在GsonConverterFactory之前addConverterFactory</p>
+<p><a href="http://www.voidcn.com/article/p-xoiqdiuz-re.html">原文连接</a></p>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Error，retrofit</tag>
       </tags>
   </entry>
   <entry>
@@ -2428,55 +2510,59 @@ proguard-rules.pro文件的作用</li>
       </tags>
   </entry>
   <entry>
-    <title>android retrofit End of input at line 1 column 1 path</title>
-    <url>/2020/09/03/android-retrofit-End-of-input-at-line-1-column-1-path/</url>
-    <content><![CDATA[<p>在使用retrofit作为项目的网络请求库时，接口定义如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@GET(ACT_GET_NEW_STAFF)</span><br><span class="line">Call&lt;TaskEn&gt; reqGetNewStaff();</span><br></pre></td></tr></table></figure>
-<p>接口从服务端获取了数据，通过GsonConverterFactory将服务端相应内容解析成对应的实体类。在接口正常响应时（有数据返回），并没有什么异常发生，但当接口请求的数据为空，我们的服务端人员并不是返回理论意义上的空，null或者[]（数据集合空），而是返回没有响应体body，只有响应头header，content-length为0的Response</p>
-<p>这时候GsonConverterFactory就解析异常了，并抛出如下异常：</p>
-<span id="more"></span>
-<blockquote>
-<p>java.io.EOFException:End of input at line 1 column 1 path </p>
-</blockquote>
-<p>一般来说，如果接口本身就是不需要处理body的，那么我们通常定义接口为</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Call&lt;Void&gt;</span><br></pre></td></tr></table></figure>
-<p> 这和上面的那两个接口是不一样的。</p>
-<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><ul>
-<li>请服务端人员吃顿饭，让他们规范接口，当数据为空时，返回null或者[]</li>
-<li>自己动手丰衣足食</li>
+    <title>android反编译apktool---dex2jar---jdgui</title>
+    <url>/2020/12/14/android%E5%8F%8D%E7%BC%96%E8%AF%91apktool-dex2jar-jdgui/</url>
+    <content><![CDATA[<h2 id="反编译的工具（MAC环境下）"><a href="#反编译的工具（MAC环境下）" class="headerlink" title="反编译的工具（MAC环境下）"></a>反编译的工具（MAC环境下）</h2><p>下载地址：</p>
+<ul>
+<li><a href="https://ibotpeaches.github.io/Apktool/install/">apkTool：一款用于反编译apk资源文件</a></li>
+<li><a href="https://sourceforge.net/projects/dex2jar/files/">dex2jar：是用于将class.dex 转换成classes-dex2jar.jar的工具</a></li>
+<li><a href="http://java-decompiler.github.io/">jdgui：这个用于查看classes-dex2jar.jar 源码工具</a></li>
 </ul>
-<p>  自定义一个ConverterFactory</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public class NullOnEmptyConverterFactory extends Converter.Factory &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public Converter&lt;ResponseBody, ?&gt; responseBodyConverter(Type type, Annotation[] annotations, Retrofit retrofit) &#123;</span><br><span class="line">        final Converter&lt;ResponseBody, ?&gt; delegate &#x3D; retrofit.nextResponseBodyConverter(this, type, annotations);</span><br><span class="line">        return new Converter&lt;ResponseBody,Object&gt;() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public Object convert(ResponseBody body) throws IOException &#123;</span><br><span class="line">                if (body.contentLength() &#x3D;&#x3D; 0) return null;</span><br><span class="line">                return delegate.convert(body);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>然后设置到retrofit</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Retrofit retrofit &#x3D; new Retrofit.Builder()</span><br><span class="line">    ....</span><br><span class="line">    .addConverterFactory(new NullOnEmptyConverterFactory())</span><br><span class="line">    .addConverterFactory(GsonConverterFactory.create())</span><br><span class="line">    .build();</span><br></pre></td></tr></table></figure>
+  <span id="more"></span>
 
-<p>需要注意的是，NullOnEmptyConverterFactory必需在GsonConverterFactory之前addConverterFactory</p>
-<p><a href="http://www.voidcn.com/article/p-xoiqdiuz-re.html">原文连接</a></p>
+<h2 id="apktool下载安装使用"><a href="#apktool下载安装使用" class="headerlink" title="apktool下载安装使用"></a>apktool下载安装使用</h2><p>1、下载</p>
+<p><img data-src="https://img-blog.csdnimg.cn/20191226175801984.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d1YWlndWFpXzIwMTU=,size_16,color_FFFFFF,t_70"></p>
+<ul>
+<li>将你下载的apkttool工具放到/usr/local/bin<br><img data-src="https://img-blog.csdnimg.cn/20191226185054248.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d1YWlndWFpXzIwMTU=,size_16,color_FFFFFF,t_70"></li>
+<li>指向对应的文件夹cd /usr/local/bin<br><img data-src="https://img-blog.csdnimg.cn/20191226185223643.png"></li>
+<li>给apktool权限：输入以下两个命令行给予这两个文件夹权限<ul>
+<li>chmod a+x apktool.jar</li>
+<li>chmod a+x apktool</li>
+</ul>
+</li>
+<li>验证是否成功<br>终端输入<code>apktool -version</code></li>
+</ul>
+<p>2、使用反编译命令行 apktool d xxxx.apk<br>反编译之后的文件夹中的文件介绍<br><img data-src="https://img-blog.csdnimg.cn/20191226190211334.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d1YWlndWFpXzIwMTU=,size_16,color_FFFFFF,t_70"><br><img data-src="https://img-blog.csdnimg.cn/20191226190234935.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d1YWlndWFpXzIwMTU=,size_16,color_FFFFFF,t_70"><br>假如只需要获取app的xml或者图片资源，则到这一步则完成啦！</p>
+<p>如果要获取到java的代码，那么我们还要进行回编译，这样，我们就能获取到classex.dex文件了</p>
+<p>在终端执行命令 <code>apktool b app反编译的文件夹名称</code> ，执行完毕后，我们就可以在刚刚的文件夹里面多了一个<code>build</code>文件夹了，里面的 <code>classess.dex </code>则是我们想要获取到的源码文件</p>
+<h2 id="dex2jar操作流程"><a href="#dex2jar操作流程" class="headerlink" title="dex2jar操作流程"></a>dex2jar操作流程</h2><p>下载<br><img data-src="https://img-blog.csdnimg.cn/20191226190424255.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d1YWlndWFpXzIwMTU=,size_16,color_FFFFFF,t_70"><br>下载完成解压文件后，再终端执行 <code>chmod +x d2j-dex2jar.sh </code>和 <code>chmod +x d2j_invoke.sh</code> 添加运行权限：</p>
+<ul>
+<li>拿出里面的<code>classe.dex</code>，放入到<code>dex2jar</code>文件夹中</li>
+<li>使用命令行 <code>sh d2j-dex2jar.sh classes.dex</code>,就可以转换成<code>classes-dex2jar.jar </code><br><img data-src="https://img-blog.csdnimg.cn/20191226190907884.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d1YWlndWFpXzIwMTU=,size_16,color_FFFFFF,t_70"></li>
+</ul>
+<h2 id="jd-gui反编译class文件查看java代码"><a href="#jd-gui反编译class文件查看java代码" class="headerlink" title="jd-gui反编译class文件查看java代码"></a>jd-gui反编译class文件查看java代码</h2><p>下载文件放入自己的安装目录，解压即可使用<br>然后把刚刚我们获取到的<code>classes-dex2jar.jar</code>拖进去打开文件即可。</p>
 ]]></content>
       <categories>
         <category>Android</category>
       </categories>
       <tags>
-        <tag>Error，retrofit</tag>
+        <tag>反编译</tag>
+        <tag>工具搭建</tag>
       </tags>
   </entry>
   <entry>
-    <title>android:duplicateParentState属性解释</title>
-    <url>/2019/12/31/android-duplicateParentState%E5%B1%9E%E6%80%A7%E8%A7%A3%E9%87%8A/</url>
-    <content><![CDATA[<p><strong>android:duplicateParentState指的是当前控件是否跟随父控件的(点击、焦点等)状态</strong></p>
-<blockquote>
-<p>例：假设一Layout有两子View，对Layout进行监听点击事件；子ViewA一个设置duplicateParentState为true，子ViewB设置为false，当点击Layout后，子ViewA的点击态背景变色成功，子ViewB背景态变色无效，因为点击事件被Layout捕获。</p>
-</blockquote>
-<span id="more"></span>
-
-<p>————————————————</p>
-<p>原文链接：<a href="https://blog.csdn.net/fancylovejava/article/details/38039847">https://blog.csdn.net/fancylovejava/article/details/38039847</a></p>
+    <title>dynamic、var、Object三者的区别</title>
+    <url>/2020/09/23/dynamic%E3%80%81var%E3%80%81Object%E4%B8%89%E8%80%85%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
+    <content><![CDATA[<h3 id="dynamic："><a href="#dynamic：" class="headerlink" title="dynamic："></a>dynamic：</h3><p>是所有Dart对象的基础类型， 在大多数情况下，通常不直接使用它，<br>通过它定义的变量会关闭类型检查，这意味着<br><code>dynamic x = &#39;hal&#39;;x.foo();</code><br>这段代码静态类型检查不会报错，但是运行时会crash，因为x并没有foo()方法，所以建议大家在编程时不要直接使用dynamic；</p>
+<h3 id="var："><a href="#var：" class="headerlink" title="var："></a>var：</h3><p>是一个关键字，意思是“我不关心这里的类型是什么。”，系统会自动推断类型runtimeType；</p>
+<h3 id="Object："><a href="#Object：" class="headerlink" title="Object："></a>Object：</h3><p>是Dart对象的基类，当你定义：Object o=xxx；时这时候系统会认为o是个对象，你可以调用o的toString()和hashCode()方法<br>因为Object提供了这些方法，但是如果你尝试调用o.foo()时，静态类型检查会进行报错；</p>
+<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><p>综上不难看出dynamic与Object的最大的区别是在静态类型检查上；</p>
 ]]></content>
       <categories>
-        <category>Android</category>
+        <category>flutter</category>
       </categories>
       <tags>
-        <tag>布局</tag>
+        <tag>dart</tag>
       </tags>
   </entry>
   <entry>
@@ -2775,18 +2861,18 @@ proguard-rules.pro文件的作用</li>
       </tags>
   </entry>
   <entry>
-    <title>dynamic、var、Object三者的区别</title>
-    <url>/2020/09/23/dynamic%E3%80%81var%E3%80%81Object%E4%B8%89%E8%80%85%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
-    <content><![CDATA[<h3 id="dynamic："><a href="#dynamic：" class="headerlink" title="dynamic："></a>dynamic：</h3><p>是所有Dart对象的基础类型， 在大多数情况下，通常不直接使用它，<br>通过它定义的变量会关闭类型检查，这意味着<br><code>dynamic x = &#39;hal&#39;;x.foo();</code><br>这段代码静态类型检查不会报错，但是运行时会crash，因为x并没有foo()方法，所以建议大家在编程时不要直接使用dynamic；</p>
-<h3 id="var："><a href="#var：" class="headerlink" title="var："></a>var：</h3><p>是一个关键字，意思是“我不关心这里的类型是什么。”，系统会自动推断类型runtimeType；</p>
-<h3 id="Object："><a href="#Object：" class="headerlink" title="Object："></a>Object：</h3><p>是Dart对象的基类，当你定义：Object o=xxx；时这时候系统会认为o是个对象，你可以调用o的toString()和hashCode()方法<br>因为Object提供了这些方法，但是如果你尝试调用o.foo()时，静态类型检查会进行报错；</p>
-<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><p>综上不难看出dynamic与Object的最大的区别是在静态类型检查上；</p>
-]]></content>
+    <title>使用 Gradle 工具检查此项目的依赖</title>
+    <url>/2020/12/18/%E4%BD%BF%E7%94%A8-Gradle-%E5%B7%A5%E5%85%B7%E6%A3%80%E6%9F%A5%E6%AD%A4%E9%A1%B9%E7%9B%AE%E7%9A%84%E4%BE%9D%E8%B5%96/</url>
+    <content><![CDATA[<p>使用 Gradle 工具检查此项目的依赖，进入项目目录，执行如下指令进行依赖检查：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd app</span><br><span class="line">gradle dependencies</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>打印出如下图所示的依赖树，依赖树显示了你 build 脚本声明的顶级依赖和它们的传递依赖：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">+--- androidx.test.ext:junit:1.1.1</span><br><span class="line">|    +--- junit:junit:4.12</span><br><span class="line">|    |    \--- org.hamcrest:hamcrest-core:1.3</span><br><span class="line">|    +--- androidx.test:core:1.2.0</span><br><span class="line">|    |    +--- androidx.annotation:annotation:1.0.0 -&gt; 1.1.0</span><br><span class="line">|    |    +--- androidx.test:monitor:1.2.0</span><br><span class="line">|    |    |    \--- androidx.annotation:annotation:1.0.0 -&gt; 1.1.0</span><br><span class="line">|    |    \--- androidx.lifecycle:lifecycle-common:2.0.0 -&gt; 2.1.0</span><br><span class="line">|    |         \--- androidx.annotation:annotation:1.1.0</span><br><span class="line">|    +--- androidx.test:monitor:1.2.0 (*)</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
       <categories>
-        <category>flutter</category>
+        <category>Android</category>
       </categories>
       <tags>
-        <tag>dart</tag>
+        <tag>Android</tag>
+        <tag>Gradle</tag>
       </tags>
   </entry>
   <entry>
@@ -2848,113 +2934,6 @@ proguard-rules.pro文件的作用</li>
       </tags>
   </entry>
   <entry>
-    <title>RxJava学习笔记一</title>
-    <url>/2020/10/19/RxJava%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%80/</url>
-    <content><![CDATA[<h3 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World!"></a>Hello World!</h3><ul>
-<li>RxJava1.1.7.jar<br>代码演示：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">		&#x2F;&#x2F;第一步、创建被观察者</span><br><span class="line">		Observable&lt;String&gt; mObservable &#x3D; Observable.create(new OnSubscribe&lt;String&gt;()&#123;</span><br><span class="line">			@Override</span><br><span class="line">			public void call(Subscriber&lt;? super String&gt; subscriber) &#123;</span><br><span class="line">				subscriber.onNext(&quot;Hello World!&quot;);</span><br><span class="line">				subscriber.onCompleted();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;第二步、创建观察者</span><br><span class="line">		Subscriber&lt;String&gt; mSubscriber &#x3D; new Subscriber&lt;String&gt;() &#123;</span><br><span class="line"></span><br><span class="line">			@Override</span><br><span class="line">			public void onCompleted() &#123;</span><br><span class="line">				&#x2F;&#x2F; TODO Auto-generated method stub</span><br><span class="line">				System.out.println(&quot;onCompleted&quot;);</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			@Override</span><br><span class="line">			public void onError(Throwable arg0) &#123;</span><br><span class="line">				&#x2F;&#x2F; TODO Auto-generated method stub</span><br><span class="line">				System.out.println(&quot;onError&quot;);</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			@Override</span><br><span class="line">			public void onNext(String arg0) &#123;</span><br><span class="line">				&#x2F;&#x2F; TODO Auto-generated method stub</span><br><span class="line">				System.out.println(&quot;OnNext:&quot;+arg0);</span><br><span class="line">				</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;;</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;第三步、订阅事件</span><br><span class="line">		mObservable.subscribe(mSubscriber);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>例如代码中所演示的，RxJava的使用就是那么简单，通过订阅事件将被观察者和观察者进行绑定。</p>
-</blockquote>
-<span id="more"></span>
-<h3 id="响应式编程："><a href="#响应式编程：" class="headerlink" title="响应式编程："></a>响应式编程：</h3>在介绍RxJava前，我们先聊聊响应式编程。那么什么是响应式编程呢？响应式编程是一种基于异步数据流概念的编程模式。数据流就像一条河：它可以被观测，被过滤，被操作，或者为新的消费者与另外一条流合并为一条新的流。</li>
-</ul>
-<p>响应式编程的一个关键概念是事件。事件可以被等待，可以触发过程，也可以触发其它事件。事件是唯一的以合适的方式将我们的现实世界映射到我们的软件中：如果屋里太热了我们就打开一扇窗户。同样的，当我们的天气app从服务端获取到新的天气数据后，我们需要更新app上展示天气信息的UI；汽车上的车道偏移系统探测到车辆偏移了正常路线就会提醒驾驶者纠正，就是是响应事件。</p>
-<p>今天，响应式编程最通用的一个场景是UI：我们的移动App必须做出对网络调用、用户触摸输入和系统弹框的响应。在这个世界上，软件之所以是事件驱动并响应的是因为现实生活也是如此。</p>
-<blockquote>
-<p>本章节中部分概念摘自《RxJava Essentials》一书</p>
-</blockquote>
-<h3 id="RxJava简介："><a href="#RxJava简介：" class="headerlink" title="RxJava简介："></a>RxJava简介：</h3><p>RxJava本质上是一个异步操作库，是一个能让你用极其简洁的逻辑去处理繁琐复杂任务的异步事件库。</p>
-<p>Rx是微软.Net的一个响应式扩展，Rx借助可观测的序列提供一种简单的方式来创建异步的，基于事件驱动的程序。2012年Netflix为了应对不断增长的业务需求开始将.NET Rx迁移到JVM上面。并于13年二月份正式向外展示了RxJava。<br>从语义的角度来看，RxJava就是.NET Rx。从语法的角度来看，Netflix考虑到了对应每个Rx方法,保留了Java代码规范和基本的模式。<br><img data-src="https://pic1.zhimg.com/80/ca736fe59de94c221875cb428d7eaff0_1440w.png"></p>
-<h3 id="RxJava好在哪"><a href="#RxJava好在哪" class="headerlink" title="RxJava好在哪"></a>RxJava好在哪</h3><ul>
-<li>供了AsyncTask,Handler等用来做异步操作的类库了AsyncTask,Handler等用来做异步操作的类库</li>
-<li>非常简洁的代码逻辑来解决复杂问题</li>
-</ul>
-]]></content>
-      <categories>
-        <category>RxJava</category>
-      </categories>
-      <tags>
-        <tag>RxJava</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何打Jar工具包</title>
-    <url>/2019/12/10/%E5%A6%82%E4%BD%95%E6%89%93Jar%E5%B7%A5%E5%85%B7%E5%8C%85/</url>
-    <content><![CDATA[<p><strong>打开Moudle包的build文件添加如下代码</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">task makeJar(type: Copy) &#123;</span><br><span class="line">    def filename &#x3D; projects.name + &#39;-V&#39;</span><br><span class="line">    delete &quot;build&#x2F;libs&#x2F;MarkZXing1.0.jar&quot;</span><br><span class="line">    from(&#39;build&#x2F;intermediates&#x2F;packaged-classes&#x2F;release&#39;)</span><br><span class="line">    into(&#39;build&#x2F;libs&#x2F;&#39;)</span><br><span class="line">    include(&#39;classes.jar&#39;)</span><br><span class="line">    rename(&#39;classes.jar&#39;, &#39;MarkZXing1.0.jar&#39;)</span><br><span class="line">&#125;</span><br><span class="line">makeJar.dependsOn(build)</span><br></pre></td></tr></table></figure>
-<p><strong>点开我们右侧的Gradle，找到项目下的第一步新建的模块Module名称 ，点开 Tasks/other 文件 找到 makeJar， 双击即可，等待出现BUILD SUCCESSFUL， Task execution finished ‘makeJar’.==》编译完成，此时去Module目录下的libs/下找到的test.jar，便是制作的jar包。</strong></p>
-]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>android反编译apktool---dex2jar---jdgui</title>
-    <url>/2020/12/14/android%E5%8F%8D%E7%BC%96%E8%AF%91apktool-dex2jar-jdgui/</url>
-    <content><![CDATA[<h2 id="反编译的工具（MAC环境下）"><a href="#反编译的工具（MAC环境下）" class="headerlink" title="反编译的工具（MAC环境下）"></a>反编译的工具（MAC环境下）</h2><p>下载地址：</p>
-<ul>
-<li><a href="https://ibotpeaches.github.io/Apktool/install/">apkTool：一款用于反编译apk资源文件</a></li>
-<li><a href="https://sourceforge.net/projects/dex2jar/files/">dex2jar：是用于将class.dex 转换成classes-dex2jar.jar的工具</a></li>
-<li><a href="http://java-decompiler.github.io/">jdgui：这个用于查看classes-dex2jar.jar 源码工具</a></li>
-</ul>
-  <span id="more"></span>
-
-<h2 id="apktool下载安装使用"><a href="#apktool下载安装使用" class="headerlink" title="apktool下载安装使用"></a>apktool下载安装使用</h2><p>1、下载</p>
-<p><img data-src="https://img-blog.csdnimg.cn/20191226175801984.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d1YWlndWFpXzIwMTU=,size_16,color_FFFFFF,t_70"></p>
-<ul>
-<li>将你下载的apkttool工具放到/usr/local/bin<br><img data-src="https://img-blog.csdnimg.cn/20191226185054248.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d1YWlndWFpXzIwMTU=,size_16,color_FFFFFF,t_70"></li>
-<li>指向对应的文件夹cd /usr/local/bin<br><img data-src="https://img-blog.csdnimg.cn/20191226185223643.png"></li>
-<li>给apktool权限：输入以下两个命令行给予这两个文件夹权限<ul>
-<li>chmod a+x apktool.jar</li>
-<li>chmod a+x apktool</li>
-</ul>
-</li>
-<li>验证是否成功<br>终端输入<code>apktool -version</code></li>
-</ul>
-<p>2、使用反编译命令行 apktool d xxxx.apk<br>反编译之后的文件夹中的文件介绍<br><img data-src="https://img-blog.csdnimg.cn/20191226190211334.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d1YWlndWFpXzIwMTU=,size_16,color_FFFFFF,t_70"><br><img data-src="https://img-blog.csdnimg.cn/20191226190234935.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d1YWlndWFpXzIwMTU=,size_16,color_FFFFFF,t_70"><br>假如只需要获取app的xml或者图片资源，则到这一步则完成啦！</p>
-<p>如果要获取到java的代码，那么我们还要进行回编译，这样，我们就能获取到classex.dex文件了</p>
-<p>在终端执行命令 <code>apktool b app反编译的文件夹名称</code> ，执行完毕后，我们就可以在刚刚的文件夹里面多了一个<code>build</code>文件夹了，里面的 <code>classess.dex </code>则是我们想要获取到的源码文件</p>
-<h2 id="dex2jar操作流程"><a href="#dex2jar操作流程" class="headerlink" title="dex2jar操作流程"></a>dex2jar操作流程</h2><p>下载<br><img data-src="https://img-blog.csdnimg.cn/20191226190424255.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d1YWlndWFpXzIwMTU=,size_16,color_FFFFFF,t_70"><br>下载完成解压文件后，再终端执行 <code>chmod +x d2j-dex2jar.sh </code>和 <code>chmod +x d2j_invoke.sh</code> 添加运行权限：</p>
-<ul>
-<li>拿出里面的<code>classe.dex</code>，放入到<code>dex2jar</code>文件夹中</li>
-<li>使用命令行 <code>sh d2j-dex2jar.sh classes.dex</code>,就可以转换成<code>classes-dex2jar.jar </code><br><img data-src="https://img-blog.csdnimg.cn/20191226190907884.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d1YWlndWFpXzIwMTU=,size_16,color_FFFFFF,t_70"></li>
-</ul>
-<h2 id="jd-gui反编译class文件查看java代码"><a href="#jd-gui反编译class文件查看java代码" class="headerlink" title="jd-gui反编译class文件查看java代码"></a>jd-gui反编译class文件查看java代码</h2><p>下载文件放入自己的安装目录，解压即可使用<br>然后把刚刚我们获取到的<code>classes-dex2jar.jar</code>拖进去打开文件即可。</p>
-]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>反编译</tag>
-        <tag>工具搭建</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何防止重新启动</title>
-    <url>/2019/10/14/%E5%A6%82%E4%BD%95%E9%98%B2%E6%AD%A2%E9%87%8D%E6%96%B0%E5%90%AF%E5%8A%A8/</url>
-    <content><![CDATA[<p>我的问题描述：</p>
-<blockquote>
-<p>app需要登陆才能进入主页，每次退到后台或返回之后都会重新进入LoginActivity，我需要的效果是登陆后，每次都去跳MainActivity。</p>
-</blockquote>
-<span id="more"></span>
-<p>说做就做，方法有很多种，我这记录的主要是利用回退栈 *moveTaskToBack(false)*来实现：</p>
-<ul>
-<li>LoginActivity的onCreate()方法中添加： <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if (!isTaskRoot()) &#123;</span><br><span class="line">     finish();</span><br><span class="line">     return;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-  <em>注意添加再布局设置之前</em></li>
-<li>再MainActivity中重写<code>onKeyDown</code>   和<code>onBackPressed</code>方法：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@Override</span><br><span class="line"> public boolean onKeyDown(int keyCode, KeyEvent event) &#123;</span><br><span class="line">     if (keyCode &#x3D;&#x3D; KeyEvent.KEYCODE_BACK) &#123;</span><br><span class="line">         moveTaskToBack(false);</span><br><span class="line">         return true;</span><br><span class="line">     &#125;</span><br><span class="line">     return super.onKeyDown(keyCode, event);</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> @Override</span><br><span class="line"> public void onBackPressed() &#123;</span><br><span class="line">     moveTaskToBack(false);</span><br><span class="line">     super.onBackPressed();</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="moveTaskToBack-boolean-isToTask-这个方法的使用自己的理解就是不让Activity被系统主动回收。"><a href="#moveTaskToBack-boolean-isToTask-这个方法的使用自己的理解就是不让Activity被系统主动回收。" class="headerlink" title="moveTaskToBack(boolean  isToTask)这个方法的使用自己的理解就是不让Activity被系统主动回收。"></a>moveTaskToBack(boolean  isToTask)这个方法的使用自己的理解就是不让Activity被系统主动回收。</h3>]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>如何修改表结构：ALERT语句</title>
     <url>/2021/04/19/%E5%A6%82%E4%BD%95%E4%BF%AE%E6%94%B9%E8%A1%A8%E7%BB%93%E6%9E%84%EF%BC%9AALERT%E8%AF%AD%E5%8F%A5/</url>
     <content><![CDATA[<p>应用场景：当我们的业务需要对已经存在的表进行表结构修改时，我们需要使用 ALERT 语句进行修改。</p>
@@ -2979,6 +2958,81 @@ proguard-rules.pro文件的作用</li>
       </categories>
       <tags>
         <tag>Oracle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何打Jar工具包</title>
+    <url>/2019/12/10/%E5%A6%82%E4%BD%95%E6%89%93Jar%E5%B7%A5%E5%85%B7%E5%8C%85/</url>
+    <content><![CDATA[<p><strong>打开Moudle包的build文件添加如下代码</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">task makeJar(type: Copy) &#123;</span><br><span class="line">    def filename &#x3D; projects.name + &#39;-V&#39;</span><br><span class="line">    delete &quot;build&#x2F;libs&#x2F;MarkZXing1.0.jar&quot;</span><br><span class="line">    from(&#39;build&#x2F;intermediates&#x2F;packaged-classes&#x2F;release&#39;)</span><br><span class="line">    into(&#39;build&#x2F;libs&#x2F;&#39;)</span><br><span class="line">    include(&#39;classes.jar&#39;)</span><br><span class="line">    rename(&#39;classes.jar&#39;, &#39;MarkZXing1.0.jar&#39;)</span><br><span class="line">&#125;</span><br><span class="line">makeJar.dependsOn(build)</span><br></pre></td></tr></table></figure>
+<p><strong>点开我们右侧的Gradle，找到项目下的第一步新建的模块Module名称 ，点开 Tasks/other 文件 找到 makeJar， 双击即可，等待出现BUILD SUCCESSFUL， Task execution finished ‘makeJar’.==》编译完成，此时去Module目录下的libs/下找到的test.jar，便是制作的jar包。</strong></p>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何爬取一个网站的图片分组到指定的文件夹</title>
+    <url>/2020/12/09/%E5%A6%82%E4%BD%95%E7%88%AC%E5%8F%96%E4%B8%80%E4%B8%AA%E7%BD%91%E7%AB%99%E7%9A%84%E5%9B%BE%E7%89%87%E5%88%86%E7%BB%84%E5%88%B0%E6%8C%87%E5%AE%9A%E7%9A%84%E6%96%87%E4%BB%B6%E5%A4%B9/</url>
+    <content><![CDATA[<h3 id="开发工具："><a href="#开发工具：" class="headerlink" title="开发工具："></a>开发工具：</h3><ul>
+<li><p>Mac电脑    </p>
+</li>
+<li><p>PyCharm</p>
+</li>
+<li><p>Python3.7</p>
+</li>
+<li><p>工具包 <strong>bs4、os、requests</strong></p>
+</li>
+</ul>
+<h4 id="网页信息"><a href="#网页信息" class="headerlink" title="网页信息"></a>网页信息</h4><p><img data-src="https://mmbiz.qpic.cn/mmbiz_png/WGyNiboAjLV7cHtVA3p3bYOrDpxiaSCGicr8QmibfJePDfkanj24gu7Qjka5LEicltPQbZIKt7XSb94t43vG22UJxtw/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
+<span id="more"></span>
+
+<p><em>从上面这张图我们可以看出，一页有多套图，这个时候我们就要想怎么把每一套图分开存放（后边具体解释）</em><br>通过分析，所有信息在页面中都可以拿到，我们就不考虑异步加载，那么要考虑的就是分页问题了，通过点击不同的页面，很容易看清楚分页规则</p>
+<p><img data-src="https://mmbiz.qpic.cn/mmbiz_png/WGyNiboAjLV7cHtVA3p3bYOrDpxiaSCGicroN6T3CN0vmAKkOdPIZ6GsL2LxAicSXDROH4NGvlssb2iaV7vT3I9PZgQ/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
+<p><em>很容易明白分页URL的构造，图片链接都在源码中，就不做具体说明了明白了这个之后就可以去写代码抓图片了</em></p>
+<h4 id="存图片的思路"><a href="#存图片的思路" class="headerlink" title="存图片的思路"></a>存图片的思路</h4><p>因为要把每一套图存入一个文件夹中（os模块），文件夹的命名我就以每一套图的URL的最后的几位数字命名，然后文件从文件路径分隔出最后一个字段命名,具体看下边的截图。</p>
+<p><img data-src="https://mmbiz.qpic.cn/mmbiz_png/WGyNiboAjLV7cHtVA3p3bYOrDpxiaSCGicrs1YO4cw4sWDegXqZ54ujz7VZ1fZds5TRIlUicRZqpJ0OzzPceeW71ng/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
+<p><img data-src="https://mmbiz.qpic.cn/mmbiz_png/WGyNiboAjLV7cHtVA3p3bYOrDpxiaSCGicrR89T7BTesr71ibH0iaYWZU7XnXEpcu4FdzmamOPib0ZefkEsUv8Ykx9pg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
+<p>这些搞明白之后，接下来就是代码了（可以参考我的解析思路，只获取了30页作为测试）<strong>全部源码</strong>,下面的源码有原文中的有点不一样。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">doutuSpider</span>(<span class="params">object</span>):</span></span><br><span class="line">    headers = &#123;</span><br><span class="line">        <span class="string">&quot;user-agent&quot;</span>: <span class="string">&quot;Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36&quot;</span>&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_url</span>(<span class="params">self, url</span>):</span></span><br><span class="line">        data = requests.get(url, headers=self.headers)</span><br><span class="line">        soup = BeautifulSoup(data.content, <span class="string">&#x27;lxml&#x27;</span>)</span><br><span class="line">        totals = soup.findAll(<span class="string">&quot;a&quot;</span>, &#123;<span class="string">&quot;class&quot;</span>: <span class="string">&quot;list-group-item&quot;</span>&#125;)</span><br><span class="line">        <span class="keyword">for</span> one <span class="keyword">in</span> totals:</span><br><span class="line">            sub_url = one.get(<span class="string">&#x27;href&#x27;</span>)</span><br><span class="line">            <span class="keyword">global</span> path</span><br><span class="line">            path = <span class="string">&quot;/Users/mark/Desktop/Mark/doutu/&quot;</span> + sub_url.split(<span class="string">&#x27;/&#x27;</span>)[<span class="number">-1</span>]</span><br><span class="line">            os.makedirs(path, exist_ok=<span class="literal">True</span>)</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                self.get_img_url(sub_url)</span><br><span class="line">            <span class="keyword">except</span>:</span><br><span class="line">                <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_img_url</span>(<span class="params">self, url</span>):</span></span><br><span class="line">        data = requests.get(url, headers=self.headers)</span><br><span class="line">        soup = BeautifulSoup(data.content, <span class="string">&#x27;lxml&#x27;</span>)</span><br><span class="line">        totals = soup.find_all(<span class="string">&#x27;div&#x27;</span>, &#123;<span class="string">&#x27;class&#x27;</span>: <span class="string">&#x27;artile_des&#x27;</span>&#125;)</span><br><span class="line">        <span class="keyword">for</span> one <span class="keyword">in</span> totals:</span><br><span class="line">            img = one.find(<span class="string">&#x27;img&#x27;</span>)</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                sub_url = img.get(<span class="string">&#x27;src&#x27;</span>)</span><br><span class="line">            <span class="keyword">except</span>:</span><br><span class="line">                <span class="keyword">pass</span></span><br><span class="line">            <span class="keyword">finally</span>:</span><br><span class="line">                <span class="comment"># http://ww1.sinaimg.cn/large/9150e4e5gy1g59ef4u9edg206o06ogni.gif</span></span><br><span class="line">                print(sub_url)</span><br><span class="line">                <span class="keyword">try</span>:</span><br><span class="line">                    self.get_img(sub_url)</span><br><span class="line">                <span class="keyword">except</span>:</span><br><span class="line">                    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_img</span>(<span class="params">self, url</span>):</span></span><br><span class="line">        filename = url.split(<span class="string">&#x27;/&#x27;</span>)[<span class="number">-1</span>]</span><br><span class="line">        <span class="keyword">global</span> path</span><br><span class="line">        img_path = path + <span class="string">&#x27;/&#x27;</span> + filename</span><br><span class="line">        print(<span class="string">&#x27;正在下载----&#x27;</span>, url)</span><br><span class="line">        print(<span class="string">&#x27;存储地址为----&#x27;</span>, img_path)</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            img = requests.get(url, headers=self.headers)</span><br><span class="line">            <span class="keyword">with</span> open(img_path, <span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">                f.write(img.content)</span><br><span class="line">                f.close()</span><br><span class="line">        <span class="keyword">except</span> requests.RequestException:</span><br><span class="line">            print(<span class="string">&#x27;请求图片出错&#x27;</span>, url)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">create</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">for</span> count <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">2</span>):</span><br><span class="line">            url = <span class="string">&#x27;https://www.doutula.com/article/list/?page=&#123;&#125;&#x27;</span>.format(count)</span><br><span class="line">            print(<span class="string">&#x27;开始下载第&#123;&#125;页&#x27;</span>.format(count))</span><br><span class="line">            self.get_url(url)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    doutu = doutuSpider()</span><br><span class="line">    doutu.create()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h4><p><img data-src="https://mmbiz.qpic.cn/mmbiz_png/WGyNiboAjLV7cHtVA3p3bYOrDpxiaSCGicrTamKCbHGDr8Z4sGGZbnLOUGMOGickw2Raa1HVowjrgKDib0wwXmqKQmw/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
+<p><img data-src="https://mmbiz.qpic.cn/mmbiz_png/WGyNiboAjLV7cHtVA3p3bYOrDpxiaSCGicrhzHDdct4Y6FZ4melwBj3NdY5lKUicvrk9ib5ZNFdN140PicmQiaSBxRMwQ/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
+<p><img data-src="https://mmbiz.qpic.cn/mmbiz_png/WGyNiboAjLV7cHtVA3p3bYOrDpxiaSCGicrMWzicYkDdR1nC7viaw97CTmzynWs7JJexuF297FWdChrJNNAn25lNSAg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>总的来说，这个网站结构相对来说不是很复杂，大家可以参考一下，爬一些有趣的</p>
+<p>原创作者：loading_miracle，原文链接:<br><a href="https://www.jianshu.com/p/88098728aafd">https://www.jianshu.com/p/88098728aafd</a></p>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>爬虫</tag>
+        <tag>Python3.7</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何防止重新启动</title>
+    <url>/2019/10/14/%E5%A6%82%E4%BD%95%E9%98%B2%E6%AD%A2%E9%87%8D%E6%96%B0%E5%90%AF%E5%8A%A8/</url>
+    <content><![CDATA[<p>我的问题描述：</p>
+<blockquote>
+<p>app需要登陆才能进入主页，每次退到后台或返回之后都会重新进入LoginActivity，我需要的效果是登陆后，每次都去跳MainActivity。</p>
+</blockquote>
+<span id="more"></span>
+<p>说做就做，方法有很多种，我这记录的主要是利用回退栈 *moveTaskToBack(false)*来实现：</p>
+<ul>
+<li>LoginActivity的onCreate()方法中添加： <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if (!isTaskRoot()) &#123;</span><br><span class="line">     finish();</span><br><span class="line">     return;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+  <em>注意添加再布局设置之前</em></li>
+<li>再MainActivity中重写<code>onKeyDown</code>   和<code>onBackPressed</code>方法：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@Override</span><br><span class="line"> public boolean onKeyDown(int keyCode, KeyEvent event) &#123;</span><br><span class="line">     if (keyCode &#x3D;&#x3D; KeyEvent.KEYCODE_BACK) &#123;</span><br><span class="line">         moveTaskToBack(false);</span><br><span class="line">         return true;</span><br><span class="line">     &#125;</span><br><span class="line">     return super.onKeyDown(keyCode, event);</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> @Override</span><br><span class="line"> public void onBackPressed() &#123;</span><br><span class="line">     moveTaskToBack(false);</span><br><span class="line">     super.onBackPressed();</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="moveTaskToBack-boolean-isToTask-这个方法的使用自己的理解就是不让Activity被系统主动回收。"><a href="#moveTaskToBack-boolean-isToTask-这个方法的使用自己的理解就是不让Activity被系统主动回收。" class="headerlink" title="moveTaskToBack(boolean  isToTask)这个方法的使用自己的理解就是不让Activity被系统主动回收。"></a>moveTaskToBack(boolean  isToTask)这个方法的使用自己的理解就是不让Activity被系统主动回收。</h3>]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
       </tags>
   </entry>
   <entry>
@@ -3012,6 +3066,23 @@ proguard-rules.pro文件的作用</li>
 </li>
 </ul>
 ]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>安卓的启动模式详解</title>
+    <url>/2018/12/16/%E5%AE%89%E5%8D%93%E7%9A%84%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3/</url>
+    <content><![CDATA[<h4 id="安卓开发者基本都知道Activity的四大启动模式，但是一到被问到之间区别的时候，再问深一点的时候，往往都会回答的不是很让面试官满意，鄙人就是，嘴皮子笨不懂得如何表达清楚。"><a href="#安卓开发者基本都知道Activity的四大启动模式，但是一到被问到之间区别的时候，再问深一点的时候，往往都会回答的不是很让面试官满意，鄙人就是，嘴皮子笨不懂得如何表达清楚。" class="headerlink" title="安卓开发者基本都知道Activity的四大启动模式，但是一到被问到之间区别的时候，再问深一点的时候，往往都会回答的不是很让面试官满意，鄙人就是，嘴皮子笨不懂得如何表达清楚。"></a>安卓开发者基本都知道Activity的四大启动模式，但是一到被问到之间区别的时候，再问深一点的时候，往往都会回答的不是很让面试官满意，鄙人就是，嘴皮子笨不懂得如何表达清楚。</h4><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a><strong>简介</strong></h2><h4 id="我们在创建一个Activity后，都知道要在清单文件中去注册，在程序员创建该Activity实例时，系统会按照先进先出的原则，创建一个任务栈将其实例放入其中，然后按back键时或finish时，系统就会将栈顶的Activity移除栈，我们可以在清单文件中指明该Activity的启动模式，系统默认的Activity的启动模式是standard模式。"><a href="#我们在创建一个Activity后，都知道要在清单文件中去注册，在程序员创建该Activity实例时，系统会按照先进先出的原则，创建一个任务栈将其实例放入其中，然后按back键时或finish时，系统就会将栈顶的Activity移除栈，我们可以在清单文件中指明该Activity的启动模式，系统默认的Activity的启动模式是standard模式。" class="headerlink" title="我们在创建一个Activity后，都知道要在清单文件中去注册，在程序员创建该Activity实例时，系统会按照先进先出的原则，创建一个任务栈将其实例放入其中，然后按back键时或finish时，系统就会将栈顶的Activity移除栈，我们可以在清单文件中指明该Activity的启动模式，系统默认的Activity的启动模式是standard模式。"></a>我们在创建一个Activity后，都知道要在清单文件中去注册，在程序员创建该Activity实例时，系统会按照先进先出的原则，创建一个任务栈将其实例放入其中，然后按back键时或finish时，系统就会将栈顶的Activity移除栈，我们可以在清单文件中指明该Activity的启动模式，系统默认的Activity的启动模式是standard模式。</h4><hr>
+<span id="more"></span>
+<h3 id="Activity的启动模式："><a href="#Activity的启动模式：" class="headerlink" title="Activity的启动模式："></a>Activity的启动模式：</h3><h4 id="standard、singleTask、singleTop、singleInstance"><a href="#standard、singleTask、singleTop、singleInstance" class="headerlink" title="standard、singleTask、singleTop、singleInstance"></a><em><strong>standard、singleTask、singleTop、singleInstance</strong></em></h4><h4 id="1-standard-标准模式"><a href="#1-standard-标准模式" class="headerlink" title="1. standard(标准模式)"></a>1. standard(标准模式)</h4><p><em><strong>不管这个Activity的实例是否存在于任务栈中或者和启动它的Activity是否在相同的任务栈中，每次启动Activity都会创建一个新的实例。谁启动了它，它就属于启动它的Activity的任务栈中，</strong></em></p>
+<h3 id="无论核实启动哪个Activity，都会重新创建页面实例并收入栈尾"><a href="#无论核实启动哪个Activity，都会重新创建页面实例并收入栈尾" class="headerlink" title="无论核实启动哪个Activity，都会重新创建页面实例并收入栈尾"></a><em><strong>无论核实启动哪个Activity，都会重新创建页面实例并收入栈尾</strong></em></h3><h4 id="2-singleTask-栈内复用模式"><a href="#2-singleTask-栈内复用模式" class="headerlink" title="2. singleTask(栈内复用模式)"></a>2. singleTask(栈内复用模式)</h4><p><em><strong>在这个模式下，如果栈内存在该Activity的实例，不管是否存在于栈顶都不会再创建实例，而是会将该实例前的Activity清出栈顶（cleanTop），并且会回调onNewIntent方法。其实在这个过程中，首先是会进行任务栈的匹配，这个任务栈就是通过taskAffinity属性指定，如果不存在这个任务栈，就会创建一个任务栈，并将该Activity放入栈中。流程图比较清晰，如下所见：</strong></em><br><img data-src="https://user-gold-cdn.xitu.io/2017/5/17/490fd5b297a2a07d60d1ffdad58e6cc3" alt="image"></p>
+<h3 id="启动activity时，判断栈中存在activity的实例，就重新利用，并清除位于该实例上面的所有实例，否则情况和standard一样"><a href="#启动activity时，判断栈中存在activity的实例，就重新利用，并清除位于该实例上面的所有实例，否则情况和standard一样" class="headerlink" title="启动activity时，判断栈中存在activity的实例，就重新利用，并清除位于该实例上面的所有实例，否则情况和standard一样"></a><em><strong>启动activity时，判断栈中存在activity的实例，就重新利用，并清除位于该实例上面的所有实例，否则情况和standard一样</strong></em></h3><h4 id="3-singleTop-栈顶复用模式"><a href="#3-singleTop-栈顶复用模式" class="headerlink" title="3. singleTop(栈顶复用模式)"></a>3. singleTop(栈顶复用模式)</h4><p><em><strong>这个模式下，如果Activity的实例已经存在在栈顶，启动它就不会再创建新的实例，而是会调用onNewIntent，通过此方法的参数我们可以去除当前请求的信息。随后会调用onResume方法，不再调用onCreate、onStart方法，因为它没有变化。如果没有存在的话，就会如同standard模式一样。这种模式可以用来防止多次打开同一个Activity。</strong></em></p>
+<h3 id="启动activity时，判断栈顶正好时该activity的实例，就重新使用，否则就会创建新的实例放入栈顶，否则的情况和standard类似"><a href="#启动activity时，判断栈顶正好时该activity的实例，就重新使用，否则就会创建新的实例放入栈顶，否则的情况和standard类似" class="headerlink" title="启动activity时，判断栈顶正好时该activity的实例，就重新使用，否则就会创建新的实例放入栈顶，否则的情况和standard类似"></a><em><strong>启动activity时，判断栈顶正好时该activity的实例，就重新使用，否则就会创建新的实例放入栈顶，否则的情况和standard类似</strong></em></h3><h4 id="4、singleInstance（全局唯一模式）"><a href="#4、singleInstance（全局唯一模式）" class="headerlink" title="4、singleInstance（全局唯一模式）"></a>4、singleInstance（全局唯一模式）</h4><p><em><strong>该模式具备singleTask模式的所有特性外，与它的区别就是，这种模式下的Activity会单独占用一个Task栈，具有全局唯一性，即整个系统中就这么一个实例，由于栈内复用的特性，后续的请求均不会创建新的Activity实例，除非这个特殊的任务栈被销毁了。以singleInstance模式启动的Activity在整个系统中是单例的，如果在启动这样的Activiyt时，已经存在了一个实例，那么会把它所在的任务调度到前台，重用这个实例。</strong></em></p>
+<h3 id="启动activity时，将该Activity的实例放入一个新的栈中，原栈中的实例保持不变"><a href="#启动activity时，将该Activity的实例放入一个新的栈中，原栈中的实例保持不变" class="headerlink" title="启动activity时，将该Activity的实例放入一个新的栈中，原栈中的实例保持不变"></a><em><strong>启动activity时，将该Activity的实例放入一个新的栈中，原栈中的实例保持不变</strong></em></h3><h4 id="ps：-adb-shell-dumpsys-activity-查看adb运行日志"><a href="#ps：-adb-shell-dumpsys-activity-查看adb运行日志" class="headerlink" title="ps：[adb shell dumpsys activity],查看adb运行日志"></a>ps：[adb shell dumpsys activity],查看adb运行日志</h4>]]></content>
       <categories>
         <category>Android</category>
       </categories>
@@ -3152,23 +3223,6 @@ proguard-rules.pro文件的作用</li>
       </tags>
   </entry>
   <entry>
-    <title>安卓的启动模式详解</title>
-    <url>/2018/12/16/%E5%AE%89%E5%8D%93%E7%9A%84%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3/</url>
-    <content><![CDATA[<h4 id="安卓开发者基本都知道Activity的四大启动模式，但是一到被问到之间区别的时候，再问深一点的时候，往往都会回答的不是很让面试官满意，鄙人就是，嘴皮子笨不懂得如何表达清楚。"><a href="#安卓开发者基本都知道Activity的四大启动模式，但是一到被问到之间区别的时候，再问深一点的时候，往往都会回答的不是很让面试官满意，鄙人就是，嘴皮子笨不懂得如何表达清楚。" class="headerlink" title="安卓开发者基本都知道Activity的四大启动模式，但是一到被问到之间区别的时候，再问深一点的时候，往往都会回答的不是很让面试官满意，鄙人就是，嘴皮子笨不懂得如何表达清楚。"></a>安卓开发者基本都知道Activity的四大启动模式，但是一到被问到之间区别的时候，再问深一点的时候，往往都会回答的不是很让面试官满意，鄙人就是，嘴皮子笨不懂得如何表达清楚。</h4><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a><strong>简介</strong></h2><h4 id="我们在创建一个Activity后，都知道要在清单文件中去注册，在程序员创建该Activity实例时，系统会按照先进先出的原则，创建一个任务栈将其实例放入其中，然后按back键时或finish时，系统就会将栈顶的Activity移除栈，我们可以在清单文件中指明该Activity的启动模式，系统默认的Activity的启动模式是standard模式。"><a href="#我们在创建一个Activity后，都知道要在清单文件中去注册，在程序员创建该Activity实例时，系统会按照先进先出的原则，创建一个任务栈将其实例放入其中，然后按back键时或finish时，系统就会将栈顶的Activity移除栈，我们可以在清单文件中指明该Activity的启动模式，系统默认的Activity的启动模式是standard模式。" class="headerlink" title="我们在创建一个Activity后，都知道要在清单文件中去注册，在程序员创建该Activity实例时，系统会按照先进先出的原则，创建一个任务栈将其实例放入其中，然后按back键时或finish时，系统就会将栈顶的Activity移除栈，我们可以在清单文件中指明该Activity的启动模式，系统默认的Activity的启动模式是standard模式。"></a>我们在创建一个Activity后，都知道要在清单文件中去注册，在程序员创建该Activity实例时，系统会按照先进先出的原则，创建一个任务栈将其实例放入其中，然后按back键时或finish时，系统就会将栈顶的Activity移除栈，我们可以在清单文件中指明该Activity的启动模式，系统默认的Activity的启动模式是standard模式。</h4><hr>
-<span id="more"></span>
-<h3 id="Activity的启动模式："><a href="#Activity的启动模式：" class="headerlink" title="Activity的启动模式："></a>Activity的启动模式：</h3><h4 id="standard、singleTask、singleTop、singleInstance"><a href="#standard、singleTask、singleTop、singleInstance" class="headerlink" title="standard、singleTask、singleTop、singleInstance"></a><em><strong>standard、singleTask、singleTop、singleInstance</strong></em></h4><h4 id="1-standard-标准模式"><a href="#1-standard-标准模式" class="headerlink" title="1. standard(标准模式)"></a>1. standard(标准模式)</h4><p><em><strong>不管这个Activity的实例是否存在于任务栈中或者和启动它的Activity是否在相同的任务栈中，每次启动Activity都会创建一个新的实例。谁启动了它，它就属于启动它的Activity的任务栈中，</strong></em></p>
-<h3 id="无论核实启动哪个Activity，都会重新创建页面实例并收入栈尾"><a href="#无论核实启动哪个Activity，都会重新创建页面实例并收入栈尾" class="headerlink" title="无论核实启动哪个Activity，都会重新创建页面实例并收入栈尾"></a><em><strong>无论核实启动哪个Activity，都会重新创建页面实例并收入栈尾</strong></em></h3><h4 id="2-singleTask-栈内复用模式"><a href="#2-singleTask-栈内复用模式" class="headerlink" title="2. singleTask(栈内复用模式)"></a>2. singleTask(栈内复用模式)</h4><p><em><strong>在这个模式下，如果栈内存在该Activity的实例，不管是否存在于栈顶都不会再创建实例，而是会将该实例前的Activity清出栈顶（cleanTop），并且会回调onNewIntent方法。其实在这个过程中，首先是会进行任务栈的匹配，这个任务栈就是通过taskAffinity属性指定，如果不存在这个任务栈，就会创建一个任务栈，并将该Activity放入栈中。流程图比较清晰，如下所见：</strong></em><br><img data-src="https://user-gold-cdn.xitu.io/2017/5/17/490fd5b297a2a07d60d1ffdad58e6cc3" alt="image"></p>
-<h3 id="启动activity时，判断栈中存在activity的实例，就重新利用，并清除位于该实例上面的所有实例，否则情况和standard一样"><a href="#启动activity时，判断栈中存在activity的实例，就重新利用，并清除位于该实例上面的所有实例，否则情况和standard一样" class="headerlink" title="启动activity时，判断栈中存在activity的实例，就重新利用，并清除位于该实例上面的所有实例，否则情况和standard一样"></a><em><strong>启动activity时，判断栈中存在activity的实例，就重新利用，并清除位于该实例上面的所有实例，否则情况和standard一样</strong></em></h3><h4 id="3-singleTop-栈顶复用模式"><a href="#3-singleTop-栈顶复用模式" class="headerlink" title="3. singleTop(栈顶复用模式)"></a>3. singleTop(栈顶复用模式)</h4><p><em><strong>这个模式下，如果Activity的实例已经存在在栈顶，启动它就不会再创建新的实例，而是会调用onNewIntent，通过此方法的参数我们可以去除当前请求的信息。随后会调用onResume方法，不再调用onCreate、onStart方法，因为它没有变化。如果没有存在的话，就会如同standard模式一样。这种模式可以用来防止多次打开同一个Activity。</strong></em></p>
-<h3 id="启动activity时，判断栈顶正好时该activity的实例，就重新使用，否则就会创建新的实例放入栈顶，否则的情况和standard类似"><a href="#启动activity时，判断栈顶正好时该activity的实例，就重新使用，否则就会创建新的实例放入栈顶，否则的情况和standard类似" class="headerlink" title="启动activity时，判断栈顶正好时该activity的实例，就重新使用，否则就会创建新的实例放入栈顶，否则的情况和standard类似"></a><em><strong>启动activity时，判断栈顶正好时该activity的实例，就重新使用，否则就会创建新的实例放入栈顶，否则的情况和standard类似</strong></em></h3><h4 id="4、singleInstance（全局唯一模式）"><a href="#4、singleInstance（全局唯一模式）" class="headerlink" title="4、singleInstance（全局唯一模式）"></a>4、singleInstance（全局唯一模式）</h4><p><em><strong>该模式具备singleTask模式的所有特性外，与它的区别就是，这种模式下的Activity会单独占用一个Task栈，具有全局唯一性，即整个系统中就这么一个实例，由于栈内复用的特性，后续的请求均不会创建新的Activity实例，除非这个特殊的任务栈被销毁了。以singleInstance模式启动的Activity在整个系统中是单例的，如果在启动这样的Activiyt时，已经存在了一个实例，那么会把它所在的任务调度到前台，重用这个实例。</strong></em></p>
-<h3 id="启动activity时，将该Activity的实例放入一个新的栈中，原栈中的实例保持不变"><a href="#启动activity时，将该Activity的实例放入一个新的栈中，原栈中的实例保持不变" class="headerlink" title="启动activity时，将该Activity的实例放入一个新的栈中，原栈中的实例保持不变"></a><em><strong>启动activity时，将该Activity的实例放入一个新的栈中，原栈中的实例保持不变</strong></em></h3><h4 id="ps：-adb-shell-dumpsys-activity-查看adb运行日志"><a href="#ps：-adb-shell-dumpsys-activity-查看adb运行日志" class="headerlink" title="ps：[adb shell dumpsys activity],查看adb运行日志"></a>ps：[adb shell dumpsys activity],查看adb运行日志</h4>]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>界面为ScrollView时打开界面会自动滚动到底部之解决方法</title>
     <url>/2019/09/02/%E7%95%8C%E9%9D%A2%E4%B8%BAScrollView%E6%97%B6%E6%89%93%E5%BC%80%E7%95%8C%E9%9D%A2%E4%BC%9A%E8%87%AA%E5%8A%A8%E6%BB%9A%E5%8A%A8%E5%88%B0%E5%BA%95%E9%83%A8%E4%B9%8B%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</url>
     <content><![CDATA[<p>版权声明：本文为博主原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接和本声明。<br>本文链接：<a href="https://blog.csdn.net/u014449096/article/details/72885947">https://blog.csdn.net/u014449096/article/details/72885947</a></p>
@@ -3182,6 +3236,21 @@ proguard-rules.pro文件的作用</li>
       <tags>
         <tag>Android</tag>
         <tag>冲突</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>自定义Toat及其弹出时间控制</title>
+    <url>/2020/07/21/%E8%87%AA%E5%AE%9A%E4%B9%89Toat%E5%8F%8A%E5%85%B6%E5%BC%B9%E5%87%BA%E6%97%B6%E9%97%B4%E6%8E%A7%E5%88%B6/</url>
+    <content><![CDATA[<p>效果就是实现Toast布局自定义，弹出的事件进行控制</p>
+<h3 id="一、先自定义布局"><a href="#一、先自定义布局" class="headerlink" title="一、先自定义布局"></a>一、先自定义布局</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Toast toast &#x3D; Toast.makeText(mContext, str, Toast.   LENGTH_SHORT);</span><br><span class="line">View view &#x3D; LayoutInflater.from(mContext).inflate(R.layout.item_toast, null);</span><br><span class="line">TextView textView &#x3D; view.findViewById(R.id.str_toast);</span><br><span class="line">      textView.setText(str);</span><br><span class="line">      toast.setView(view);</span><br><span class="line">      toast.setGravity(Gravity.CENTER, 0, 0);</span><br><span class="line">Utils.showTimeToast(toast,500);</span><br></pre></td></tr></table></figure>
+<h3 id="二、自定义弹出时间"><a href="#二、自定义弹出时间" class="headerlink" title="二、自定义弹出时间"></a>二、自定义弹出时间</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line">    * Toast自定义时间</span><br><span class="line">    * Toast对象时间需要为Toast.LENGH_LONG</span><br><span class="line">    *&#x2F;</span><br><span class="line">   public static void showTimeToast(final Toast toast, final int time) &#123;</span><br><span class="line">       final Timer timer &#x3D; new Timer();</span><br><span class="line">       timer.schedule(new TimerTask() &#123;</span><br><span class="line">           @Override</span><br><span class="line">           public void run() &#123;</span><br><span class="line">               toast.show();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;, 0, 3000);</span><br><span class="line">       new Timer().schedule(new TimerTask() &#123;</span><br><span class="line">           @Override</span><br><span class="line">           public void run() &#123;</span><br><span class="line">               toast.cancel();</span><br><span class="line">               timer.cancel();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;, time);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>就是那么简单，利用Timer和schedule实现事件监听，控制toast的弹出时间。</p>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
       </tags>
   </entry>
   <entry>
@@ -3211,21 +3280,6 @@ proguard-rules.pro文件的作用</li>
       <tags>
         <tag>Android</tag>
         <tag>自定义控件</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>自定义Toat及其弹出时间控制</title>
-    <url>/2020/07/21/%E8%87%AA%E5%AE%9A%E4%B9%89Toat%E5%8F%8A%E5%85%B6%E5%BC%B9%E5%87%BA%E6%97%B6%E9%97%B4%E6%8E%A7%E5%88%B6/</url>
-    <content><![CDATA[<p>效果就是实现Toast布局自定义，弹出的事件进行控制</p>
-<h3 id="一、先自定义布局"><a href="#一、先自定义布局" class="headerlink" title="一、先自定义布局"></a>一、先自定义布局</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Toast toast &#x3D; Toast.makeText(mContext, str, Toast.   LENGTH_SHORT);</span><br><span class="line">View view &#x3D; LayoutInflater.from(mContext).inflate(R.layout.item_toast, null);</span><br><span class="line">TextView textView &#x3D; view.findViewById(R.id.str_toast);</span><br><span class="line">      textView.setText(str);</span><br><span class="line">      toast.setView(view);</span><br><span class="line">      toast.setGravity(Gravity.CENTER, 0, 0);</span><br><span class="line">Utils.showTimeToast(toast,500);</span><br></pre></td></tr></table></figure>
-<h3 id="二、自定义弹出时间"><a href="#二、自定义弹出时间" class="headerlink" title="二、自定义弹出时间"></a>二、自定义弹出时间</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line">    * Toast自定义时间</span><br><span class="line">    * Toast对象时间需要为Toast.LENGH_LONG</span><br><span class="line">    *&#x2F;</span><br><span class="line">   public static void showTimeToast(final Toast toast, final int time) &#123;</span><br><span class="line">       final Timer timer &#x3D; new Timer();</span><br><span class="line">       timer.schedule(new TimerTask() &#123;</span><br><span class="line">           @Override</span><br><span class="line">           public void run() &#123;</span><br><span class="line">               toast.show();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;, 0, 3000);</span><br><span class="line">       new Timer().schedule(new TimerTask() &#123;</span><br><span class="line">           @Override</span><br><span class="line">           public void run() &#123;</span><br><span class="line">               toast.cancel();</span><br><span class="line">               timer.cancel();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;, time);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<p>就是那么简单，利用Timer和schedule实现事件监听，控制toast的弹出时间。</p>
-]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
       </tags>
   </entry>
   <entry>
@@ -3270,60 +3324,6 @@ proguard-rules.pro文件的作用</li>
       <tags>
         <tag>Flutter</tag>
         <tag>Flutter问题</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何爬取一个网站的图片分组到指定的文件夹</title>
-    <url>/2020/12/09/%E5%A6%82%E4%BD%95%E7%88%AC%E5%8F%96%E4%B8%80%E4%B8%AA%E7%BD%91%E7%AB%99%E7%9A%84%E5%9B%BE%E7%89%87%E5%88%86%E7%BB%84%E5%88%B0%E6%8C%87%E5%AE%9A%E7%9A%84%E6%96%87%E4%BB%B6%E5%A4%B9/</url>
-    <content><![CDATA[<h3 id="开发工具："><a href="#开发工具：" class="headerlink" title="开发工具："></a>开发工具：</h3><ul>
-<li><p>Mac电脑    </p>
-</li>
-<li><p>PyCharm</p>
-</li>
-<li><p>Python3.7</p>
-</li>
-<li><p>工具包 <strong>bs4、os、requests</strong></p>
-</li>
-</ul>
-<h4 id="网页信息"><a href="#网页信息" class="headerlink" title="网页信息"></a>网页信息</h4><p><img data-src="https://mmbiz.qpic.cn/mmbiz_png/WGyNiboAjLV7cHtVA3p3bYOrDpxiaSCGicr8QmibfJePDfkanj24gu7Qjka5LEicltPQbZIKt7XSb94t43vG22UJxtw/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
-<span id="more"></span>
-
-<p><em>从上面这张图我们可以看出，一页有多套图，这个时候我们就要想怎么把每一套图分开存放（后边具体解释）</em><br>通过分析，所有信息在页面中都可以拿到，我们就不考虑异步加载，那么要考虑的就是分页问题了，通过点击不同的页面，很容易看清楚分页规则</p>
-<p><img data-src="https://mmbiz.qpic.cn/mmbiz_png/WGyNiboAjLV7cHtVA3p3bYOrDpxiaSCGicroN6T3CN0vmAKkOdPIZ6GsL2LxAicSXDROH4NGvlssb2iaV7vT3I9PZgQ/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
-<p><em>很容易明白分页URL的构造，图片链接都在源码中，就不做具体说明了明白了这个之后就可以去写代码抓图片了</em></p>
-<h4 id="存图片的思路"><a href="#存图片的思路" class="headerlink" title="存图片的思路"></a>存图片的思路</h4><p>因为要把每一套图存入一个文件夹中（os模块），文件夹的命名我就以每一套图的URL的最后的几位数字命名，然后文件从文件路径分隔出最后一个字段命名,具体看下边的截图。</p>
-<p><img data-src="https://mmbiz.qpic.cn/mmbiz_png/WGyNiboAjLV7cHtVA3p3bYOrDpxiaSCGicrs1YO4cw4sWDegXqZ54ujz7VZ1fZds5TRIlUicRZqpJ0OzzPceeW71ng/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
-<p><img data-src="https://mmbiz.qpic.cn/mmbiz_png/WGyNiboAjLV7cHtVA3p3bYOrDpxiaSCGicrR89T7BTesr71ibH0iaYWZU7XnXEpcu4FdzmamOPib0ZefkEsUv8Ykx9pg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
-<p>这些搞明白之后，接下来就是代码了（可以参考我的解析思路，只获取了30页作为测试）<strong>全部源码</strong>,下面的源码有原文中的有点不一样。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">doutuSpider</span>(<span class="params">object</span>):</span></span><br><span class="line">    headers = &#123;</span><br><span class="line">        <span class="string">&quot;user-agent&quot;</span>: <span class="string">&quot;Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36&quot;</span>&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_url</span>(<span class="params">self, url</span>):</span></span><br><span class="line">        data = requests.get(url, headers=self.headers)</span><br><span class="line">        soup = BeautifulSoup(data.content, <span class="string">&#x27;lxml&#x27;</span>)</span><br><span class="line">        totals = soup.findAll(<span class="string">&quot;a&quot;</span>, &#123;<span class="string">&quot;class&quot;</span>: <span class="string">&quot;list-group-item&quot;</span>&#125;)</span><br><span class="line">        <span class="keyword">for</span> one <span class="keyword">in</span> totals:</span><br><span class="line">            sub_url = one.get(<span class="string">&#x27;href&#x27;</span>)</span><br><span class="line">            <span class="keyword">global</span> path</span><br><span class="line">            path = <span class="string">&quot;/Users/mark/Desktop/Mark/doutu/&quot;</span> + sub_url.split(<span class="string">&#x27;/&#x27;</span>)[<span class="number">-1</span>]</span><br><span class="line">            os.makedirs(path, exist_ok=<span class="literal">True</span>)</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                self.get_img_url(sub_url)</span><br><span class="line">            <span class="keyword">except</span>:</span><br><span class="line">                <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_img_url</span>(<span class="params">self, url</span>):</span></span><br><span class="line">        data = requests.get(url, headers=self.headers)</span><br><span class="line">        soup = BeautifulSoup(data.content, <span class="string">&#x27;lxml&#x27;</span>)</span><br><span class="line">        totals = soup.find_all(<span class="string">&#x27;div&#x27;</span>, &#123;<span class="string">&#x27;class&#x27;</span>: <span class="string">&#x27;artile_des&#x27;</span>&#125;)</span><br><span class="line">        <span class="keyword">for</span> one <span class="keyword">in</span> totals:</span><br><span class="line">            img = one.find(<span class="string">&#x27;img&#x27;</span>)</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                sub_url = img.get(<span class="string">&#x27;src&#x27;</span>)</span><br><span class="line">            <span class="keyword">except</span>:</span><br><span class="line">                <span class="keyword">pass</span></span><br><span class="line">            <span class="keyword">finally</span>:</span><br><span class="line">                <span class="comment"># http://ww1.sinaimg.cn/large/9150e4e5gy1g59ef4u9edg206o06ogni.gif</span></span><br><span class="line">                print(sub_url)</span><br><span class="line">                <span class="keyword">try</span>:</span><br><span class="line">                    self.get_img(sub_url)</span><br><span class="line">                <span class="keyword">except</span>:</span><br><span class="line">                    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_img</span>(<span class="params">self, url</span>):</span></span><br><span class="line">        filename = url.split(<span class="string">&#x27;/&#x27;</span>)[<span class="number">-1</span>]</span><br><span class="line">        <span class="keyword">global</span> path</span><br><span class="line">        img_path = path + <span class="string">&#x27;/&#x27;</span> + filename</span><br><span class="line">        print(<span class="string">&#x27;正在下载----&#x27;</span>, url)</span><br><span class="line">        print(<span class="string">&#x27;存储地址为----&#x27;</span>, img_path)</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            img = requests.get(url, headers=self.headers)</span><br><span class="line">            <span class="keyword">with</span> open(img_path, <span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">                f.write(img.content)</span><br><span class="line">                f.close()</span><br><span class="line">        <span class="keyword">except</span> requests.RequestException:</span><br><span class="line">            print(<span class="string">&#x27;请求图片出错&#x27;</span>, url)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">create</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">for</span> count <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">2</span>):</span><br><span class="line">            url = <span class="string">&#x27;https://www.doutula.com/article/list/?page=&#123;&#125;&#x27;</span>.format(count)</span><br><span class="line">            print(<span class="string">&#x27;开始下载第&#123;&#125;页&#x27;</span>.format(count))</span><br><span class="line">            self.get_url(url)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    doutu = doutuSpider()</span><br><span class="line">    doutu.create()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h4 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h4><p><img data-src="https://mmbiz.qpic.cn/mmbiz_png/WGyNiboAjLV7cHtVA3p3bYOrDpxiaSCGicrTamKCbHGDr8Z4sGGZbnLOUGMOGickw2Raa1HVowjrgKDib0wwXmqKQmw/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
-<p><img data-src="https://mmbiz.qpic.cn/mmbiz_png/WGyNiboAjLV7cHtVA3p3bYOrDpxiaSCGicrhzHDdct4Y6FZ4melwBj3NdY5lKUicvrk9ib5ZNFdN140PicmQiaSBxRMwQ/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
-<p><img data-src="https://mmbiz.qpic.cn/mmbiz_png/WGyNiboAjLV7cHtVA3p3bYOrDpxiaSCGicrMWzicYkDdR1nC7viaw97CTmzynWs7JJexuF297FWdChrJNNAn25lNSAg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>总的来说，这个网站结构相对来说不是很复杂，大家可以参考一下，爬一些有趣的</p>
-<p>原创作者：loading_miracle，原文链接:<br><a href="https://www.jianshu.com/p/88098728aafd">https://www.jianshu.com/p/88098728aafd</a></p>
-]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
-        <tag>爬虫</tag>
-        <tag>Python3.7</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用 Gradle 工具检查此项目的依赖</title>
-    <url>/2020/12/18/%E4%BD%BF%E7%94%A8-Gradle-%E5%B7%A5%E5%85%B7%E6%A3%80%E6%9F%A5%E6%AD%A4%E9%A1%B9%E7%9B%AE%E7%9A%84%E4%BE%9D%E8%B5%96/</url>
-    <content><![CDATA[<p>使用 Gradle 工具检查此项目的依赖，进入项目目录，执行如下指令进行依赖检查：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd app</span><br><span class="line">gradle dependencies</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>打印出如下图所示的依赖树，依赖树显示了你 build 脚本声明的顶级依赖和它们的传递依赖：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">+--- androidx.test.ext:junit:1.1.1</span><br><span class="line">|    +--- junit:junit:4.12</span><br><span class="line">|    |    \--- org.hamcrest:hamcrest-core:1.3</span><br><span class="line">|    +--- androidx.test:core:1.2.0</span><br><span class="line">|    |    +--- androidx.annotation:annotation:1.0.0 -&gt; 1.1.0</span><br><span class="line">|    |    +--- androidx.test:monitor:1.2.0</span><br><span class="line">|    |    |    \--- androidx.annotation:annotation:1.0.0 -&gt; 1.1.0</span><br><span class="line">|    |    \--- androidx.lifecycle:lifecycle-common:2.0.0 -&gt; 2.1.0</span><br><span class="line">|    |         \--- androidx.annotation:annotation:1.1.0</span><br><span class="line">|    +--- androidx.test:monitor:1.2.0 (*)</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>Gradle</tag>
       </tags>
   </entry>
   <entry>
