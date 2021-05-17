@@ -19,7 +19,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"markchyl.cn","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","Pisces | Gemini":240,"display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"markchyl.cn","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","Pisces | Gemini":240,"display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":true,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
@@ -50,7 +50,7 @@
   
 
 
-  <script>
+  <script data-pjax>
     var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
@@ -766,12 +766,12 @@
 </ul>
 <hr>
 <h3 id="第一、电脑上安装Charles"><a href="#第一、电脑上安装Charles" class="headerlink" title="第一、电脑上安装Charles"></a>第一、电脑上安装Charles</h3><p>官网下载安装：<a target="_blank" rel="noopener" href="https://www.charlesproxy.com/download/">官网地址</a><br>下载后安装</p>
-<h3 id="第二、设置charles代理"><a href="#第二、设置charles代理" class="headerlink" title="第二、设置charles代理"></a>第二、设置charles代理</h3><p>打开charles/proxy/proxy-settings，设置一个端口号，默认的8888就可以。<br><img src="https://github.com/MarkCHYL/BLOG/blob/master/marksource/images/accxv-s218u.jpg?raw=true" alt="网图盗用下"></p>
+<h3 id="第二、设置charles代理"><a href="#第二、设置charles代理" class="headerlink" title="第二、设置charles代理"></a>第二、设置charles代理</h3><p>打开charles/proxy/proxy-settings，设置一个端口号，默认的8888就可以。<br><img data-src="https://github.com/MarkCHYL/BLOG/blob/master/marksource/images/accxv-s218u.jpg?raw=true" alt="网图盗用下"></p>
 <h3 id="第三、手机安装charles证书"><a href="#第三、手机安装charles证书" class="headerlink" title="第三、手机安装charles证书"></a>第三、手机安装charles证书</h3><p>需要安装charles的证书。点击help/SSL proxying</p>
-<p><img src="https://github.com/MarkCHYL/BLOG/blob/master/marksource/images/aa1g5-ewu90.jpg?raw=true"><br>查询macbook的ip地址，并在手机连接的wifi上手动设置代理，代理主机名为ip地址，代理端口号为8888，会弹出一个框，显示的意思是手机上的wify需要设置代理。</p>
+<p><img data-src="https://github.com/MarkCHYL/BLOG/blob/master/marksource/images/aa1g5-ewu90.jpg?raw=true"><br>查询macbook的ip地址，并在手机连接的wifi上手动设置代理，代理主机名为ip地址，代理端口号为8888，会弹出一个框，显示的意思是手机上的wify需要设置代理。</p>
 <h3 id="第三、手机设置代理"><a href="#第三、手机设置代理" class="headerlink" title="第三、手机设置代理"></a>第三、手机设置代理</h3><p>查询macbook的ip地址，并在手机连接的wifi上手动设置代理，代理主机名为ip地址，代理端口号为8888，这时候用手机访问网页，charles会弹出下列框，说明charles已经开始对手机抓包了，点击允许。</p>
-<p><img src="https://github.com/MarkCHYL/BLOG/blob/master/marksource/images/a1evd-z9c3a.jpg?raw=true"></p>
-<p>然后在手机浏览器中访问手机<a target="_blank" rel="noopener" href="http://charlesproxy.com/getssl%EF%BC%8C%E5%AE%89%E8%A3%85%E5%8D%B3%E5%8F%AF%EF%BC%8C">http://charlesproxy.com/getssl，安装即可，</a><br><img src="https://github.com/MarkCHYL/BLOG/blob/master/marksource/images/a921v-hyhye.jpg?raw=true"></p>
+<p><img data-src="https://github.com/MarkCHYL/BLOG/blob/master/marksource/images/a1evd-z9c3a.jpg?raw=true"></p>
+<p>然后在手机浏览器中访问手机<a target="_blank" rel="noopener" href="http://charlesproxy.com/getssl%EF%BC%8C%E5%AE%89%E8%A3%85%E5%8D%B3%E5%8F%AF%EF%BC%8C">http://charlesproxy.com/getssl，安装即可，</a><br><img data-src="https://github.com/MarkCHYL/BLOG/blob/master/marksource/images/a921v-hyhye.jpg?raw=true"></p>
 <p>好了，现在就可以流畅的抓取手机上的各种http/https请求了，想要学习更多charles工具方法.</p>
 <p>本人不做推广，只是供自己即好友参考做的笔记<br>感谢开发员：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/50f844c9beaf">小小的开发人员</a></p>
 
@@ -1332,6 +1332,8 @@
 
   
   <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 
@@ -1346,6 +1348,65 @@
 <script src="/js/next-boot.js"></script>
 
 <script src="/js/bookmark.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
 
 
 
@@ -1366,7 +1427,7 @@
 
 
 
-<script>
+<script data-pjax>
 document.querySelectorAll('.pdfobject-container').forEach(element => {
   let url = element.dataset.target;
   let pdfOpenParams = {
@@ -1388,7 +1449,7 @@ document.querySelectorAll('.pdfobject-container').forEach(element => {
 </script>
 
 
-<script>
+<script data-pjax>
 if (document.querySelectorAll('pre.mermaid').length) {
   NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
     mermaid.initialize({
@@ -1403,6 +1464,7 @@ if (document.querySelectorAll('pre.mermaid').length) {
 </script>
 
 
+    <div id="pjax">
   
 
   
@@ -1446,5 +1508,6 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
 });
 </script>
 
+    </div>
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"superSample":2,"width":75,"height":150,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false});</script></body>
 </html>

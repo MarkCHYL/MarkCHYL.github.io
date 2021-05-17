@@ -19,7 +19,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"markchyl.cn","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","Pisces | Gemini":240,"display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"markchyl.cn","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","Pisces | Gemini":240,"display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":true,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="反编译的工具（MAC环境下）下载地址：  apkTool：一款用于反编译apk资源文件 dex2jar：是用于将class.dex 转换成classes-dex2jar.jar的工具 jdgui：这个用于查看classes-dex2jar.jar 源码工具">
@@ -61,7 +61,7 @@
   
 
 
-  <script>
+  <script data-pjax>
     var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
@@ -307,10 +307,10 @@
   <span id="more"></span>
 
 <h2 id="apktool下载安装使用"><a href="#apktool下载安装使用" class="headerlink" title="apktool下载安装使用"></a>apktool下载安装使用</h2><p>1、下载</p>
-<p><img src="https://img-blog.csdnimg.cn/20191226175801984.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d1YWlndWFpXzIwMTU=,size_16,color_FFFFFF,t_70"></p>
+<p><img data-src="https://img-blog.csdnimg.cn/20191226175801984.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d1YWlndWFpXzIwMTU=,size_16,color_FFFFFF,t_70"></p>
 <ul>
-<li>将你下载的apkttool工具放到/usr/local/bin<br><img src="https://img-blog.csdnimg.cn/20191226185054248.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d1YWlndWFpXzIwMTU=,size_16,color_FFFFFF,t_70"></li>
-<li>指向对应的文件夹cd /usr/local/bin<br><img src="https://img-blog.csdnimg.cn/20191226185223643.png"></li>
+<li>将你下载的apkttool工具放到/usr/local/bin<br><img data-src="https://img-blog.csdnimg.cn/20191226185054248.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d1YWlndWFpXzIwMTU=,size_16,color_FFFFFF,t_70"></li>
+<li>指向对应的文件夹cd /usr/local/bin<br><img data-src="https://img-blog.csdnimg.cn/20191226185223643.png"></li>
 <li>给apktool权限：输入以下两个命令行给予这两个文件夹权限<ul>
 <li>chmod a+x apktool.jar</li>
 <li>chmod a+x apktool</li>
@@ -318,13 +318,13 @@
 </li>
 <li>验证是否成功<br>终端输入<code>apktool -version</code></li>
 </ul>
-<p>2、使用反编译命令行 apktool d xxxx.apk<br>反编译之后的文件夹中的文件介绍<br><img src="https://img-blog.csdnimg.cn/20191226190211334.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d1YWlndWFpXzIwMTU=,size_16,color_FFFFFF,t_70"><br><img src="https://img-blog.csdnimg.cn/20191226190234935.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d1YWlndWFpXzIwMTU=,size_16,color_FFFFFF,t_70"><br>假如只需要获取app的xml或者图片资源，则到这一步则完成啦！</p>
+<p>2、使用反编译命令行 apktool d xxxx.apk<br>反编译之后的文件夹中的文件介绍<br><img data-src="https://img-blog.csdnimg.cn/20191226190211334.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d1YWlndWFpXzIwMTU=,size_16,color_FFFFFF,t_70"><br><img data-src="https://img-blog.csdnimg.cn/20191226190234935.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d1YWlndWFpXzIwMTU=,size_16,color_FFFFFF,t_70"><br>假如只需要获取app的xml或者图片资源，则到这一步则完成啦！</p>
 <p>如果要获取到java的代码，那么我们还要进行回编译，这样，我们就能获取到classex.dex文件了</p>
 <p>在终端执行命令 <code>apktool b app反编译的文件夹名称</code> ，执行完毕后，我们就可以在刚刚的文件夹里面多了一个<code>build</code>文件夹了，里面的 <code>classess.dex </code>则是我们想要获取到的源码文件</p>
-<h2 id="dex2jar操作流程"><a href="#dex2jar操作流程" class="headerlink" title="dex2jar操作流程"></a>dex2jar操作流程</h2><p>下载<br><img src="https://img-blog.csdnimg.cn/20191226190424255.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d1YWlndWFpXzIwMTU=,size_16,color_FFFFFF,t_70"><br>下载完成解压文件后，再终端执行 <code>chmod +x d2j-dex2jar.sh </code>和 <code>chmod +x d2j_invoke.sh</code> 添加运行权限：</p>
+<h2 id="dex2jar操作流程"><a href="#dex2jar操作流程" class="headerlink" title="dex2jar操作流程"></a>dex2jar操作流程</h2><p>下载<br><img data-src="https://img-blog.csdnimg.cn/20191226190424255.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d1YWlndWFpXzIwMTU=,size_16,color_FFFFFF,t_70"><br>下载完成解压文件后，再终端执行 <code>chmod +x d2j-dex2jar.sh </code>和 <code>chmod +x d2j_invoke.sh</code> 添加运行权限：</p>
 <ul>
 <li>拿出里面的<code>classe.dex</code>，放入到<code>dex2jar</code>文件夹中</li>
-<li>使用命令行 <code>sh d2j-dex2jar.sh classes.dex</code>,就可以转换成<code>classes-dex2jar.jar </code><br><img src="https://img-blog.csdnimg.cn/20191226190907884.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d1YWlndWFpXzIwMTU=,size_16,color_FFFFFF,t_70"></li>
+<li>使用命令行 <code>sh d2j-dex2jar.sh classes.dex</code>,就可以转换成<code>classes-dex2jar.jar </code><br><img data-src="https://img-blog.csdnimg.cn/20191226190907884.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d1YWlndWFpXzIwMTU=,size_16,color_FFFFFF,t_70"></li>
 </ul>
 <h2 id="jd-gui反编译class文件查看java代码"><a href="#jd-gui反编译class文件查看java代码" class="headerlink" title="jd-gui反编译class文件查看java代码"></a>jd-gui反编译class文件查看java代码</h2><p>下载文件放入自己的安装目录，解压即可使用<br>然后把刚刚我们获取到的<code>classes-dex2jar.jar</code>拖进去打开文件即可。</p>
 
@@ -574,6 +574,8 @@
 
   
   <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 
@@ -588,6 +590,65 @@
 <script src="/js/next-boot.js"></script>
 
 <script src="/js/bookmark.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
 
 
 
@@ -608,7 +669,7 @@
 
 
 
-<script>
+<script data-pjax>
 document.querySelectorAll('.pdfobject-container').forEach(element => {
   let url = element.dataset.target;
   let pdfOpenParams = {
@@ -630,7 +691,7 @@ document.querySelectorAll('.pdfobject-container').forEach(element => {
 </script>
 
 
-<script>
+<script data-pjax>
 if (document.querySelectorAll('pre.mermaid').length) {
   NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
     mermaid.initialize({
@@ -645,6 +706,7 @@ if (document.querySelectorAll('pre.mermaid').length) {
 </script>
 
 
+    <div id="pjax">
   
 
   
@@ -688,5 +750,6 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
 });
 </script>
 
+    </div>
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"superSample":2,"width":75,"height":150,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false});</script></body>
 </html>

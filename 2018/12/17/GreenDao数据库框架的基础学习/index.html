@@ -19,7 +19,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"markchyl.cn","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","Pisces | Gemini":240,"display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"markchyl.cn","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","Pisces | Gemini":240,"display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":true,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="GreenDao很早就想看看了，最近由于业务需求的变化，我就开始学习下简单的增、删、改、查。  资料参考： 首先这是官网地址：https:&#x2F;&#x2F;github.com&#x2F;greenrobot&#x2F;greendao 参考博客为：https:&#x2F;&#x2F;www.cnblogs.com&#x2F;wjtaigwh&#x2F;p&#x2F;6394288.html 慕课网上的视频教程（有点老了，个人觉得）">
@@ -55,7 +55,7 @@
   
 
 
-  <script>
+  <script data-pjax>
     var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
@@ -315,7 +315,7 @@
 <li>在更目录中build文件中需要添加<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">   classpath &#39;org.greenrobot:greendao-gradle-plugin:3.2.2&#39;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="预览效果："><a href="#预览效果：" class="headerlink" title="预览效果："></a>预览效果：</h4></li>
 </ul>
-<p><img src="https://user-gold-cdn.xitu.io/2018/8/9/1651c88d14c0e067?w=1036&h=1598&f=png&s=492342" title="是不是很丑"></p>
+<p><img data-src="https://user-gold-cdn.xitu.io/2018/8/9/1651c88d14c0e067?w=1036&h=1598&f=png&s=492342" title="是不是很丑"></p>
 <ul>
 <li><h3 id="Bean-对象注释的解释"><a href="#Bean-对象注释的解释" class="headerlink" title="Bean 对象注释的解释"></a>Bean 对象注释的解释</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@Entity：告诉GreenDao该对象为实体，只有被@Entity注释的Bean类才能被dao类操作</span><br><span class="line">@Id：对象的Id，使用Long类型作为EntityId，否则会报错。(autoincrement &#x3D; true)表示主键会自增，如果false就会使用旧值</span><br><span class="line">@Property：可以自定义字段名，注意外键不能使用该属性</span><br><span class="line">@NotNull：属性不能为空</span><br><span class="line">@Transient：使用该注释的属性不会被存入数据库的字段中</span><br><span class="line">@Unique：该属性值必须在数据库中是唯一值</span><br><span class="line">@Generated：编译后自动生成的构造函数、方法等的注释，提示构造函数、方法等不能被修改</span><br></pre></td></tr></table></figure></li>
 <li><h3 id="在Application中初始化自己的数据库"><a href="#在Application中初始化自己的数据库" class="headerlink" title="在Application中初始化自己的数据库"></a>在Application中初始化自己的数据库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * 配置数据库</span><br><span class="line"> *&#x2F;</span><br><span class="line">private void setupDatabase() &#123;</span><br><span class="line">    &#x2F;&#x2F;创建数据库shop.db</span><br><span class="line">    DaoMaster.DevOpenHelper helper &#x3D; new DaoMaster.DevOpenHelper(this,&quot;shop.db&quot;,null);</span><br><span class="line">    &#x2F;&#x2F;获取可写数据库</span><br><span class="line">    SQLiteDatabase db &#x3D; helper.getWritableDatabase();</span><br><span class="line">    &#x2F;&#x2F;获取数据库对象</span><br><span class="line">    DaoMaster daoMaster &#x3D; new DaoMaster(db);</span><br><span class="line">    &#x2F;&#x2F;获取dao对象管理者</span><br><span class="line">    daoSession &#x3D; daoMaster.newSession();</span><br><span class="line">&#125;</span><br><span class="line">public static DaoSession getDaoInstant()&#123;</span><br><span class="line">    return daoSession;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
@@ -571,6 +571,8 @@
 
   
   <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 
@@ -585,6 +587,65 @@
 <script src="/js/next-boot.js"></script>
 
 <script src="/js/bookmark.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
 
 
 
@@ -605,7 +666,7 @@
 
 
 
-<script>
+<script data-pjax>
 document.querySelectorAll('.pdfobject-container').forEach(element => {
   let url = element.dataset.target;
   let pdfOpenParams = {
@@ -627,7 +688,7 @@ document.querySelectorAll('.pdfobject-container').forEach(element => {
 </script>
 
 
-<script>
+<script data-pjax>
 if (document.querySelectorAll('pre.mermaid').length) {
   NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
     mermaid.initialize({
@@ -642,6 +703,7 @@ if (document.querySelectorAll('pre.mermaid').length) {
 </script>
 
 
+    <div id="pjax">
   
 
   
@@ -685,5 +747,6 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
 });
 </script>
 
+    </div>
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"superSample":2,"width":75,"height":150,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false});</script></body>
 </html>
