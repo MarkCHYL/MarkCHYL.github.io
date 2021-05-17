@@ -578,17 +578,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Android事件分发机制完全解,从源码的角度分析理解</title>
-    <url>/2020/12/30/Android%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E6%9C%BA%E5%88%B6%E5%AE%8C%E5%85%A8%E8%A7%A3-%E4%BB%8E%E6%BA%90%E7%A0%81%E7%9A%84%E8%A7%92%E5%BA%A6%E5%88%86%E6%9E%90%E7%90%86%E8%A7%A3/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>基础理论</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Android动态更换APP图标及名称</title>
     <url>/2020/01/13/Android%E5%8A%A8%E6%80%81%E6%9B%B4%E6%8D%A2APP%E5%9B%BE%E6%A0%87%E5%8F%8A%E5%90%8D%E7%A7%B0/</url>
     <content><![CDATA[<p>实现之前觉得万分难，我查阅了很多博客.<br>报错—–应用未安装<br>Stop，停下来我先抽支烟，喝杯茶，仔细看看别人的介绍。再次感谢这个博主的博客<a href="https://blog.csdn.net/ozhuimeng123/article/details/92734825">倚栏静望</a></p>
@@ -681,22 +670,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Android根据字符串加载Activity和res目录下图片</title>
-    <url>/2021/01/15/Android%E6%A0%B9%E6%8D%AE%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8A%A0%E8%BD%BDActivity%E5%92%8Cres%E7%9B%AE%E5%BD%95%E4%B8%8B%E5%9B%BE%E7%89%87/</url>
-    <content><![CDATA[<h3 id="根据传入的字符串跳转Activity"><a href="#根据传入的字符串跳转Activity" class="headerlink" title="根据传入的字符串跳转Activity"></a>根据传入的字符串跳转Activity</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Intent intent &#x3D; new Intent(context,Class.forName(&quot;com.packname.Activity&quot;));</span><br><span class="line">startActivity(intent);</span><br></pre></td></tr></table></figure>
-<h3 id="根据传入的字符加载资源"><a href="#根据传入的字符加载资源" class="headerlink" title="根据传入的字符加载资源"></a>根据传入的字符加载资源</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int icon &#x3D; getResources().getIdentifier(“imageid”, &quot;drawable&quot;,getPackageName());</span><br></pre></td></tr></table></figure>
-<p>优化：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public static int getDrawableId(Context context, String var) &#123;</span><br><span class="line"></span><br><span class="line">        try &#123;</span><br><span class="line">            int imageId &#x3D; context.getResources().getIdentifier(var, &quot;drawable&quot;, context.getPackageName());</span><br><span class="line">            return imageId;</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            return 0;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p><strong>getIdentifier的函数签名如下：</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public int getIdentifier (String name, String defType, String defPackage)</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Android消息传递机制总结(一)</title>
     <url>/2020/10/09/Android%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6%E6%80%BB%E7%BB%93(%E4%B8%80%EF%BC%89/</url>
     <content><![CDATA[<h4 id="安卓业务层的核心灵魂就是层层的消息传递，今天就来总结一下andorid的应用层的各种消息传递。"><a href="#安卓业务层的核心灵魂就是层层的消息传递，今天就来总结一下andorid的应用层的各种消息传递。" class="headerlink" title="安卓业务层的核心灵魂就是层层的消息传递，今天就来总结一下andorid的应用层的各种消息传递。"></a>安卓业务层的核心灵魂就是层层的消息传递，今天就来总结一下andorid的应用层的各种消息传递。</h4><p>1.线程间通讯 ——— Handler，HandlerThread等。<br>2.组件间通信 ——— BroadcastReceiver，接口回调等。<br>3. 第三方通信 ——— EventBus，rxBus<br>4.进程间通信 ——— Content Provider ，Broadcast ，AIDL等。<br>5.长连接推送 ——— WebSocket，XMPP等。</p>
@@ -730,6 +703,33 @@
       </tags>
   </entry>
   <entry>
+    <title>Android事件分发机制完全解,从源码的角度分析理解</title>
+    <url>/2020/12/30/Android%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E6%9C%BA%E5%88%B6%E5%AE%8C%E5%85%A8%E8%A7%A3-%E4%BB%8E%E6%BA%90%E7%A0%81%E7%9A%84%E8%A7%92%E5%BA%A6%E5%88%86%E6%9E%90%E7%90%86%E8%A7%A3/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>基础理论</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Android根据字符串加载Activity和res目录下图片</title>
+    <url>/2021/01/15/Android%E6%A0%B9%E6%8D%AE%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8A%A0%E8%BD%BDActivity%E5%92%8Cres%E7%9B%AE%E5%BD%95%E4%B8%8B%E5%9B%BE%E7%89%87/</url>
+    <content><![CDATA[<h3 id="根据传入的字符串跳转Activity"><a href="#根据传入的字符串跳转Activity" class="headerlink" title="根据传入的字符串跳转Activity"></a>根据传入的字符串跳转Activity</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Intent intent &#x3D; new Intent(context,Class.forName(&quot;com.packname.Activity&quot;));</span><br><span class="line">startActivity(intent);</span><br></pre></td></tr></table></figure>
+<h3 id="根据传入的字符加载资源"><a href="#根据传入的字符加载资源" class="headerlink" title="根据传入的字符加载资源"></a>根据传入的字符加载资源</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int icon &#x3D; getResources().getIdentifier(“imageid”, &quot;drawable&quot;,getPackageName());</span><br></pre></td></tr></table></figure>
+<p>优化：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public static int getDrawableId(Context context, String var) &#123;</span><br><span class="line"></span><br><span class="line">        try &#123;</span><br><span class="line">            int imageId &#x3D; context.getResources().getIdentifier(var, &quot;drawable&quot;, context.getPackageName());</span><br><span class="line">            return imageId;</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            return 0;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>getIdentifier的函数签名如下：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public int getIdentifier (String name, String defType, String defPackage)</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Android消息传递机制总结(五)</title>
     <url>/2020/10/19/Android%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6%E6%80%BB%E7%BB%93-%E4%BA%94/</url>
     <content><![CDATA[<p>长连接推送 ——— WebSocket，XMPP等。</p>
@@ -749,49 +749,6 @@
       </categories>
       <tags>
         <tag>消息通信</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Android消息传递机制总结(四)</title>
-    <url>/2020/10/12/Android%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6%E6%80%BB%E7%BB%93-%E5%9B%9B/</url>
-    <content><![CDATA[<p>进程间通信 ——— Content Provider ，Broadcast ，AIDL等。</p>
-<h3 id="4-进程间通信"><a href="#4-进程间通信" class="headerlink" title="4.进程间通信"></a>4.进程间通信</h3><h4 id="Content-Provider"><a href="#Content-Provider" class="headerlink" title="Content Provider"></a>Content Provider</h4><p>Android应用程序可以使用文件或SqlLite数据库来存储数据。Content Provider提供了一种在多个应用程序之间数据共享的方式（跨进程共享数据）。应用程序可以利用Content Provider完成下面的工作</p>
-<ol>
-<li>查询数据</li>
-<li>修改数据</li>
-<li>添加数据</li>
-<li>删除数据<span id="more"></span>
-虽然Content Provider也可以在同一个应用程序中被访问，但这么做并没有什么意义。Content Provider存在的目的向其他应用程序共享数据和允许其他应用程序对数据进行增、删、改操作。<br>Android系统本身提供了很多Content Provider，例如，音频、视频、联系人信息等等。我们可以通过这些Content Provider获得相关信息的列表。这些列表数据将以Cursor对象返回。因此，从Content Provider返回的数据是二维表的形式。<h4 id="广播（Broadcast）"><a href="#广播（Broadcast）" class="headerlink" title="广播（Broadcast）"></a>广播（Broadcast）</h4>广播是一种被动跨进程通讯的方式。当某个程序向系统发送广播时，其他的应用程序只能被动地接收广播数据。这就象电台进行广播一样，听众只能被动地收听，而不能主动与电台进行沟通。<br>在应用程序中发送广播比较简单。只需要调用sendBroadcast方法即可。该方法需要一个Intent对象。通过Intent对象可以发送需要广播的数据。<h4 id="AIDL-Service"><a href="#AIDL-Service" class="headerlink" title="AIDL Service"></a>AIDL Service</h4>这是我个人比较推崇的方式，因为它相比Broadcast而言，虽然实现上稍微麻烦了一点，但是它的优势就是不会像广播那样在手机中的广播较多时会有明显的时延，甚至有广播发送不成功的情况出现。<br>注意普通的Service并不能实现跨进程操作，实际上普通的Service和它所在的应用处于同一个进程中，而且它也不会专门开一条新的线程，因此如果在普通的Service中实现在耗时的任务，需要新开线程。<br>要实现跨进程通信，需要借助AIDL(Android Interface Definition Language)。Android中的跨进程服务其实是采用C/S的架构，因而AIDL的目的就是实现通信接口。<br><a href="http://www.jianshu.com/p/d1fac6ccee98">AIDL具体使用可参考</a></li>
-</ol>
-<h3 id="什么是AIDL？"><a href="#什么是AIDL？" class="headerlink" title="什么是AIDL？"></a>什么是AIDL？</h3><p>AIDL:Android Interface Definition Language,即Android接口定义语言。</p>
-<p>Android系统中的进程之间不能共享内存，因此，需要提供一些机制在不同进程之间进行数据通信。为了使其他的应用程序也可以访问本应用程序提供的服务，Android系统采用了远程过程调用（Remote Procedure Call，RPC）方式来实现。与很多其他的基于RPC的解决方案一样，Android使用一种接口定义语言（Interface Definition Language，IDL）来公开服务的接口。我们知道4个Android应用程序组件中的3个（Activity、BroadcastReceiver和ContentProvider）都可以进行跨进程访问，另外一个Android应用程序组件Service同样可以。因此，可以将这种可以跨进程访问的服务称为AIDL（Android Interface Definition Language）服务。</p>
-<h3 id="AIDL的使用"><a href="#AIDL的使用" class="headerlink" title="AIDL的使用"></a>AIDL的使用</h3><p>因为是两个APP交互么，所以当然要两个APP啦，我们在第一个工程目录右键<br><img src="https://upload-images.jianshu.io/upload_images/2099385-d68440c5786c6047.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/659/format/webp"><br>输入名称后，sutido就帮我们创建了一个AIDL文件。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; IMyAidlInterface.aidl</span><br><span class="line">package cc.abto.demo;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Declare any non-default types here with import statements</span><br><span class="line"></span><br><span class="line">interface IMyAidlInterface &#123;</span><br><span class="line">    &#x2F;**</span><br><span class="line">     * Demonstrates some basic types that you can use as parameters</span><br><span class="line">     * and return values in AIDL.</span><br><span class="line">     *&#x2F;</span><br><span class="line">    void basicTypes(int anInt, long aLong, boolean aBoolean, float aFloat,</span><br><span class="line">            double aDouble, String aString);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>上面就是studio帮我生成的aidl文件。basicTypes这个方法可以无视，看注解知道这个方法只是告诉你在AIDL中你可以使用的基本类型（int, long, boolean, float, double, String），因为这里是要跨进程通讯的，所以不是随便你自己定义的一个类型就可以在AIDL使用的，这些后面会说。我们在AIDL文件中定义一个我们要提供给第二个APP使用的接口。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">interface IMyAidlInterface &#123;</span><br><span class="line">   String getName();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>定义好之后，就可以sycn project一下，然后新建一个service。在service里面创建一个内部类，继承你刚才创建的AIDL的名称里的Stub类,并实现接口方法,在onBind返回内部类的实例。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public class MyService extends Service</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    public MyService()</span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public IBinder onBind(Intent intent)</span><br><span class="line">    &#123;</span><br><span class="line">        return new MyBinder();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    class MyBinder extends IMyAidlInterface.Stub</span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        public String getName() throws RemoteException</span><br><span class="line">        &#123;</span><br><span class="line">            return &quot;test&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>接下来，将我们的AIDL文件拷贝到第二个项目，然后sycn project一下工程。<br><img src="https://upload-images.jianshu.io/upload_images/2099385-585fbc5fb15906e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/314/format/webp"><br><strong>这边的包名要跟第一个项目的一样哦，这之后在Activity中绑定服务。</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">public class MainActivity extends AppCompatActivity &#123;</span><br><span class="line"></span><br><span class="line">    private IMyAidlInterface iMyAidlInterface;</span><br><span class="line">    ServiceConnection conn;</span><br><span class="line">    private static final String TAG &#x3D; &quot;MainActivity&quot;;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        Intent intent &#x3D; new Intent();</span><br><span class="line">        intent.setAction(&quot;com.mark.aidldemo1&quot;);</span><br><span class="line">        intent.setPackage(&quot;com.mark.aidldemo1&quot;);</span><br><span class="line"></span><br><span class="line">        conn &#x3D; new ServiceConnection() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onServiceConnected(ComponentName name, IBinder service) &#123;</span><br><span class="line">                iMyAidlInterface &#x3D; IMyAidlInterface.Stub.asInterface(service);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public void onServiceDisconnected(ComponentName name) &#123;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        bindService(intent, conn, BIND_AUTO_CREATE);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onStop() &#123;</span><br><span class="line">        unbindService(conn);</span><br><span class="line">        super.onStop();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void doTest(View view) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            if (iMyAidlInterface!&#x3D;null) &#123;</span><br><span class="line">                Toast.makeText(this, iMyAidlInterface.getName(), Toast.LENGTH_SHORT).show();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; catch (RemoteException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这边我们通过隐式意图来绑定service，在onServiceConnected方法中通过IMyAidlInterface.Stub.asInterface(service)获取iMyAidlInterface对象，然后在onClick中调用iMyAidlInterface.getName()。<br><img src="https://upload-images.jianshu.io/upload_images/2099385-0bc46eaf6923f712.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/564/format/webp"></p>
-<h3 id="自定义类型"><a href="#自定义类型" class="headerlink" title="自定义类型"></a>自定义类型</h3><p>如果我要在AIDL中使用自定义的类型，要怎么做呢。首先我们的自定义类型要实现Parcelable接口，下面的代码中创建了一个User类并实现Parcelable接口。这边就不对Parcelable进行介绍了，不熟悉的童鞋自行查找资料，总之我们这边可以借助studio的Show Intention Action（也就是Eclipse中的Quick Fix，默认是alt+enter键）帮我们快速实现Parcelable接口。<br><img src="https://upload-images.jianshu.io/upload_images/2099385-575c252bdc2790f1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/615/format/webp"></p>
-<p>接下新建一个aidl文件，名称为我们自定义类型的名称，这边是User.aidl。在User.aidl申明我们的自定义类型和它的完整包名，注意这边parcelable是小写的，不是Parcelable接口，一个自定类型需要一个这样同名的AIDL文件。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">package com.mark.aidldemo1;</span><br><span class="line">parcelable User;</span><br></pre></td></tr></table></figure>
-<p>然后再在我们的AIDL接口中导入我们的AIDL类型。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import com.mark.aidldemo1.User;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Declare any non-default types here with import statements</span><br><span class="line"></span><br><span class="line">interface IMyAidlInterface &#123;</span><br><span class="line">   String getName();</span><br><span class="line">   User getUserName();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>然后定义接口方法，sycn project后就可以在service中做具体实现了。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class MyBinder extends IMyAidlInterface.Stub</span><br><span class="line">  &#123;</span><br><span class="line"></span><br><span class="line">     ........</span><br><span class="line"></span><br><span class="line">      @Override</span><br><span class="line">      public User getUserName() throws RemoteException &#123;</span><br><span class="line">          return new User(&quot;Mark&quot;);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<p>最后将我们的AIDL文件和自定义类型的java一并拷贝到第二个项目，注意包名都要一样哦</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/2099385-63e992963f1bd552.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/246/format/webp"><br>然后就可以在Activity中使用该自定义类型的AIDL接口了</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public class MainActivity extends AppCompatActivity</span><br><span class="line">&#123;</span><br><span class="line">    &#x2F;&#x2F;...</span><br><span class="line">    public void onClick(View view)</span><br><span class="line">    &#123;</span><br><span class="line">        try</span><br><span class="line">        &#123;</span><br><span class="line">            Toast.makeText(MainActivity.this, iMyAidlInterface.getUserName().getName(), Toast.LENGTH_SHORT).show();</span><br><span class="line">        &#125;</span><br><span class="line">        catch (RemoteException e)</span><br><span class="line">        &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>AIDL只是Android中众多进程间通讯方式中的一种方式,<a href="https://gitee.com/markshow/msg-ipc">我的代码</a></p>
-<h3 id="下一章长链接推送"><a href="#下一章长链接推送" class="headerlink" title="下一章长链接推送"></a><a href="http://markchyl.cn/2020/10/19/Android%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6%E6%80%BB%E7%BB%93-%E4%BA%94/">下一章长链接推送</a></h3>]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>消息通信</tag>
-        <tag>AIDL</tag>
       </tags>
   </entry>
   <entry>
@@ -821,141 +778,6 @@
       </categories>
       <tags>
         <tag>消息通信</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Android消息传递机制总结(二)</title>
-    <url>/2020/10/10/Android%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6%E6%80%BB%E7%BB%93%E4%BA%8C/</url>
-    <content><![CDATA[<p>组件间通信 ——— BroadcastReceiver，接口回调等。</p>
-<h3 id="2-组件间通信"><a href="#2-组件间通信" class="headerlink" title="2.组件间通信"></a>2.组件间通信</h3><p>BroadcastReceiver广播就不再介绍， 广播传递本身是有安全隐患的，需要设置权限，每一个Activity都要定义、注册，解注册广播无形中加大了工作量和维护成本。已经不适应用在组件间通信。</p>
-<span id="more"></span>
-<p>接口回调： 和观察者模式大致一样。<br>实例：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">public class DataSynManager &#123;</span><br><span class="line">    &#x2F;&#x2F;监听集合</span><br><span class="line">    private LinkedList&lt;IDataSynListener&gt; autoListeners &#x3D; new LinkedList&lt;&gt;();</span><br><span class="line">    &#x2F;&#x2F;单例引用</span><br><span class="line">    private static DataSynManager mInstance;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 获取单例引用</span><br><span class="line">     *</span><br><span class="line">     * @return</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public static DataSynManager getInstance() &#123;</span><br><span class="line">        if (mInstance &#x3D;&#x3D; null) &#123;</span><br><span class="line">            synchronized (DataSynManager.class) &#123;</span><br><span class="line">                if (mInstance &#x3D;&#x3D; null) &#123;</span><br><span class="line">                    mInstance &#x3D; new DataSynManager();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return mInstance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 添加同步数据监听</span><br><span class="line">     *</span><br><span class="line">     * @param listener</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public void registerDataSynListener(IDataSynListener listener) &#123;</span><br><span class="line">        if (autoListeners &#x3D;&#x3D; null) &#123;</span><br><span class="line">            autoListeners &#x3D; new LinkedList&lt;&gt;();</span><br><span class="line">        &#125;</span><br><span class="line">        if (!autoListeners.contains(listener)) &#123;</span><br><span class="line">            autoListeners.add(listener);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 移除同步数据监听</span><br><span class="line">     *</span><br><span class="line">     * @param listener</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public void unRegisterSynListener(IDataSynListener listener) &#123;</span><br><span class="line">        if (autoListeners &#x3D;&#x3D; null) &#123;</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        if (autoListeners.contains(listener)) &#123;</span><br><span class="line">            autoListeners.remove(listener);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 执行数据同步</span><br><span class="line">     *</span><br><span class="line">     * @param count</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public void doDataSyn(final int count) &#123;</span><br><span class="line">        if (autoListeners &#x3D;&#x3D; null) &#123;</span><br><span class="line">            autoListeners &#x3D; new LinkedList&lt;&gt;();</span><br><span class="line">        &#125;</span><br><span class="line">        new Handler().post(new Runnable() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void run() &#123;</span><br><span class="line">                for (IDataSynListener dataSynListener :</span><br><span class="line">                        autoListeners) &#123;</span><br><span class="line">                    dataSynListener.onDataSyn(count);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 清除所有监听者</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public void release() &#123;</span><br><span class="line">        if (autoListeners !&#x3D; null) &#123;</span><br><span class="line">            autoListeners.clear();</span><br><span class="line">            autoListeners &#x3D; null;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public interface IDataSynListener &#123;</span><br><span class="line">        void onDataSyn(int count);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>使用：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;添加监听</span><br><span class="line">DataSynManager.getInstance().registerDataSynListener(dataSynListener);</span><br><span class="line">&#x2F;&#x2F;移除监听</span><br><span class="line">DataSynManager.getInstance().unRegisterDataSynListener(dataSynListener&#x2F;&#x2F;个监听);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">DataSynManager.IDataSynListener dataSynListener&#x3D;new DataSynManager.IDataSynListener() &#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void onDataSyn(int count) &#123;</span><br><span class="line">            &#x2F;&#x2F;接下来执行同步操作</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">   &#125;;</span><br><span class="line">&#x2F;&#x2F;发送事件</span><br><span class="line">DataSynManager.getInstance().doDa(5);</span><br></pre></td></tr></table></figure>
-<p><a href="http://markchyl.cn/2020/10/10/Android%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6%E6%80%BB%E7%BB%93%E4%B8%89/">3. 第三方通信 ——— EventBus，rxBus</a></p>
-]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>消息通信</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Android混淆</title>
-    <url>/2020/11/07/Android%E6%B7%B7%E6%B7%86/</url>
-    <content><![CDATA[<blockquote>
-<p>代码混淆（Obfuscated code）亦称花指令，是将计算机程序的代码，转换成一种功能上等价，但是难于阅读和理解的形式的行为。</p>
-</blockquote>
-<blockquote>
-<p>为什么要加代码混淆?<br>不想开源应用，为了加大反编译的成本,但是并不能彻底防止反编译</p>
-</blockquote>
-<h3 id="开启混淆"><a href="#开启混淆" class="headerlink" title="开启混淆"></a>开启混淆</h3><ul>
-<li>通常我们需要找到项目路径下app目录下的build.gradle文件</li>
-<li>找到minifyEnabled这个配置,然后设置为true即可.<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">release&#123;</span><br><span class="line">           minifyEnabled true&#x2F;&#x2F;是否启动混淆 ture:打开   false:关闭</span><br><span class="line">           proguardFiles getDefaultProguardFile(&#39;proguard-android.txt&#39;), &#39;proguard-rules.pro&#39;</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
-proguard-rules.pro文件的作用</li>
-<li>只要在工程应用目录的gradle文件中设置minifyEnabled:true即可。然后我们就可以到proguard-rules.pro文件中加入我们的混淆规则了<span id="more"></span>
-<h3 id="proguard是什么"><a href="#proguard是什么" class="headerlink" title="proguard是什么?"></a>proguard是什么?</h3></li>
-<li>Proguard是一个集文件压缩,优化,混淆和校验等功能的工具</li>
-<li>它检测并删除无用的类,变量,方法和属性</li>
-<li>它优化字节码并删除无用的指令.</li>
-<li>它通过将类名,变量名和方法名重命名为无意义的名称实现混淆效果.</li>
-<li>最后它还校验处理后的代码</li>
-</ul>
-<h3 id="混淆的常见配置"><a href="#混淆的常见配置" class="headerlink" title="混淆的常见配置"></a>混淆的常见配置</h3><ul>
-<li>Proguard关键字</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>Proguard关键字</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>dontwarn</td>
-<td>dontwarn是一个和keep可以说是形影不离,尤其是处理引入的library时.</td>
-</tr>
-<tr>
-<td>keep</td>
-<td>保留类和类中的成员，防止被混淆或移除</td>
-</tr>
-<tr>
-<td>keepnames</td>
-<td>保留类和类中的成员，防止被混淆，成员没有被引用会被移除</td>
-</tr>
-<tr>
-<td>keepclassmembers</td>
-<td>只保留类中的成员，防止被混淆或移除</td>
-</tr>
-<tr>
-<td>keepclassmembernames</td>
-<td>只保留类中的成员，防止被混淆，成员没有引用会被移除</td>
-</tr>
-<tr>
-<td>keepclasseswithmembers</td>
-<td>保留类和类中的成员，防止被混淆或移除，保留指明的成员</td>
-</tr>
-<tr>
-<td>keepclasseswithmembernames</td>
-<td>保留类和类中的成员，防止被混淆，保留指明的成员，成员没有引用会被移除</td>
-</tr>
-</tbody></table>
-<p>如：<br>(1)保留某个包下面的类以及子包<br><code>-keep public class com.droidyue.com.widget.**</code></p>
-<p>(2)保留所有类中使用otto的public方法</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Otto</span><br><span class="line">-keepclassmembers class ** &#123;</span><br><span class="line">    @com.squareup.otto.Subscribe public *;</span><br><span class="line">    @com.squareup.otto.Produce public *;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>(3)保留Contants类的BOOK_NAME属性</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-keepclassmembers class com.example.admin.proguardsample.Constants &#123;</span><br><span class="line">     public static java.lang.String BOOK_NAME;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>(4)dontwarn：<br>引入的library可能存在一些无法找到的引用和其他问题,在build时可能会发出警告,如果我们不进行处理,通常会导致build中止.因此为了保证build继续,我们需要使用dontwarn处理这些我们无法解决的library的警告.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#比如关闭Twitter sdk的警告,我们可以这样做</span><br><span class="line">-dontwarn com.twitter.sdk.**</span><br></pre></td></tr></table></figure>
-<ul>
-<li>Proguard通配符</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>Proguard通配符</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>&lt;field&gt;</code></td>
-<td>匹配类中的所有字段</td>
-</tr>
-<tr>
-<td><code>&lt;method&gt;</code></td>
-<td>匹配类中所有的方法</td>
-</tr>
-<tr>
-<td><code>&lt;init&gt;</code></td>
-<td>匹配类中所有的构造函数</td>
-</tr>
-<tr>
-<td>*</td>
-<td>匹配任意长度字符，不包含包名分隔符(.)</td>
-</tr>
-<tr>
-<td>**</td>
-<td>匹配任意长度字符，包含包名分隔符(.)</td>
-</tr>
-<tr>
-<td>***</td>
-<td>匹配任意参数类型</td>
-</tr>
-<tr>
-<td>…</td>
-<td>…</td>
-</tr>
-</tbody></table>
-]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>混淆</tag>
       </tags>
   </entry>
   <entry>
@@ -1325,6 +1147,68 @@ proguard-rules.pro文件的作用</li>
       </tags>
   </entry>
   <entry>
+    <title>Android消息传递机制总结(四)</title>
+    <url>/2020/10/12/Android%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6%E6%80%BB%E7%BB%93-%E5%9B%9B/</url>
+    <content><![CDATA[<p>进程间通信 ——— Content Provider ，Broadcast ，AIDL等。</p>
+<h3 id="4-进程间通信"><a href="#4-进程间通信" class="headerlink" title="4.进程间通信"></a>4.进程间通信</h3><h4 id="Content-Provider"><a href="#Content-Provider" class="headerlink" title="Content Provider"></a>Content Provider</h4><p>Android应用程序可以使用文件或SqlLite数据库来存储数据。Content Provider提供了一种在多个应用程序之间数据共享的方式（跨进程共享数据）。应用程序可以利用Content Provider完成下面的工作</p>
+<ol>
+<li>查询数据</li>
+<li>修改数据</li>
+<li>添加数据</li>
+<li>删除数据<span id="more"></span>
+虽然Content Provider也可以在同一个应用程序中被访问，但这么做并没有什么意义。Content Provider存在的目的向其他应用程序共享数据和允许其他应用程序对数据进行增、删、改操作。<br>Android系统本身提供了很多Content Provider，例如，音频、视频、联系人信息等等。我们可以通过这些Content Provider获得相关信息的列表。这些列表数据将以Cursor对象返回。因此，从Content Provider返回的数据是二维表的形式。<h4 id="广播（Broadcast）"><a href="#广播（Broadcast）" class="headerlink" title="广播（Broadcast）"></a>广播（Broadcast）</h4>广播是一种被动跨进程通讯的方式。当某个程序向系统发送广播时，其他的应用程序只能被动地接收广播数据。这就象电台进行广播一样，听众只能被动地收听，而不能主动与电台进行沟通。<br>在应用程序中发送广播比较简单。只需要调用sendBroadcast方法即可。该方法需要一个Intent对象。通过Intent对象可以发送需要广播的数据。<h4 id="AIDL-Service"><a href="#AIDL-Service" class="headerlink" title="AIDL Service"></a>AIDL Service</h4>这是我个人比较推崇的方式，因为它相比Broadcast而言，虽然实现上稍微麻烦了一点，但是它的优势就是不会像广播那样在手机中的广播较多时会有明显的时延，甚至有广播发送不成功的情况出现。<br>注意普通的Service并不能实现跨进程操作，实际上普通的Service和它所在的应用处于同一个进程中，而且它也不会专门开一条新的线程，因此如果在普通的Service中实现在耗时的任务，需要新开线程。<br>要实现跨进程通信，需要借助AIDL(Android Interface Definition Language)。Android中的跨进程服务其实是采用C/S的架构，因而AIDL的目的就是实现通信接口。<br><a href="http://www.jianshu.com/p/d1fac6ccee98">AIDL具体使用可参考</a></li>
+</ol>
+<h3 id="什么是AIDL？"><a href="#什么是AIDL？" class="headerlink" title="什么是AIDL？"></a>什么是AIDL？</h3><p>AIDL:Android Interface Definition Language,即Android接口定义语言。</p>
+<p>Android系统中的进程之间不能共享内存，因此，需要提供一些机制在不同进程之间进行数据通信。为了使其他的应用程序也可以访问本应用程序提供的服务，Android系统采用了远程过程调用（Remote Procedure Call，RPC）方式来实现。与很多其他的基于RPC的解决方案一样，Android使用一种接口定义语言（Interface Definition Language，IDL）来公开服务的接口。我们知道4个Android应用程序组件中的3个（Activity、BroadcastReceiver和ContentProvider）都可以进行跨进程访问，另外一个Android应用程序组件Service同样可以。因此，可以将这种可以跨进程访问的服务称为AIDL（Android Interface Definition Language）服务。</p>
+<h3 id="AIDL的使用"><a href="#AIDL的使用" class="headerlink" title="AIDL的使用"></a>AIDL的使用</h3><p>因为是两个APP交互么，所以当然要两个APP啦，我们在第一个工程目录右键<br><img src="https://upload-images.jianshu.io/upload_images/2099385-d68440c5786c6047.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/659/format/webp"><br>输入名称后，sutido就帮我们创建了一个AIDL文件。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; IMyAidlInterface.aidl</span><br><span class="line">package cc.abto.demo;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Declare any non-default types here with import statements</span><br><span class="line"></span><br><span class="line">interface IMyAidlInterface &#123;</span><br><span class="line">    &#x2F;**</span><br><span class="line">     * Demonstrates some basic types that you can use as parameters</span><br><span class="line">     * and return values in AIDL.</span><br><span class="line">     *&#x2F;</span><br><span class="line">    void basicTypes(int anInt, long aLong, boolean aBoolean, float aFloat,</span><br><span class="line">            double aDouble, String aString);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面就是studio帮我生成的aidl文件。basicTypes这个方法可以无视，看注解知道这个方法只是告诉你在AIDL中你可以使用的基本类型（int, long, boolean, float, double, String），因为这里是要跨进程通讯的，所以不是随便你自己定义的一个类型就可以在AIDL使用的，这些后面会说。我们在AIDL文件中定义一个我们要提供给第二个APP使用的接口。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">interface IMyAidlInterface &#123;</span><br><span class="line">   String getName();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>定义好之后，就可以sycn project一下，然后新建一个service。在service里面创建一个内部类，继承你刚才创建的AIDL的名称里的Stub类,并实现接口方法,在onBind返回内部类的实例。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public class MyService extends Service</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    public MyService()</span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public IBinder onBind(Intent intent)</span><br><span class="line">    &#123;</span><br><span class="line">        return new MyBinder();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    class MyBinder extends IMyAidlInterface.Stub</span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        public String getName() throws RemoteException</span><br><span class="line">        &#123;</span><br><span class="line">            return &quot;test&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>接下来，将我们的AIDL文件拷贝到第二个项目，然后sycn project一下工程。<br><img src="https://upload-images.jianshu.io/upload_images/2099385-585fbc5fb15906e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/314/format/webp"><br><strong>这边的包名要跟第一个项目的一样哦，这之后在Activity中绑定服务。</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">public class MainActivity extends AppCompatActivity &#123;</span><br><span class="line"></span><br><span class="line">    private IMyAidlInterface iMyAidlInterface;</span><br><span class="line">    ServiceConnection conn;</span><br><span class="line">    private static final String TAG &#x3D; &quot;MainActivity&quot;;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        Intent intent &#x3D; new Intent();</span><br><span class="line">        intent.setAction(&quot;com.mark.aidldemo1&quot;);</span><br><span class="line">        intent.setPackage(&quot;com.mark.aidldemo1&quot;);</span><br><span class="line"></span><br><span class="line">        conn &#x3D; new ServiceConnection() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onServiceConnected(ComponentName name, IBinder service) &#123;</span><br><span class="line">                iMyAidlInterface &#x3D; IMyAidlInterface.Stub.asInterface(service);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public void onServiceDisconnected(ComponentName name) &#123;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        bindService(intent, conn, BIND_AUTO_CREATE);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onStop() &#123;</span><br><span class="line">        unbindService(conn);</span><br><span class="line">        super.onStop();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void doTest(View view) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            if (iMyAidlInterface!&#x3D;null) &#123;</span><br><span class="line">                Toast.makeText(this, iMyAidlInterface.getName(), Toast.LENGTH_SHORT).show();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; catch (RemoteException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这边我们通过隐式意图来绑定service，在onServiceConnected方法中通过IMyAidlInterface.Stub.asInterface(service)获取iMyAidlInterface对象，然后在onClick中调用iMyAidlInterface.getName()。<br><img src="https://upload-images.jianshu.io/upload_images/2099385-0bc46eaf6923f712.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/564/format/webp"></p>
+<h3 id="自定义类型"><a href="#自定义类型" class="headerlink" title="自定义类型"></a>自定义类型</h3><p>如果我要在AIDL中使用自定义的类型，要怎么做呢。首先我们的自定义类型要实现Parcelable接口，下面的代码中创建了一个User类并实现Parcelable接口。这边就不对Parcelable进行介绍了，不熟悉的童鞋自行查找资料，总之我们这边可以借助studio的Show Intention Action（也就是Eclipse中的Quick Fix，默认是alt+enter键）帮我们快速实现Parcelable接口。<br><img src="https://upload-images.jianshu.io/upload_images/2099385-575c252bdc2790f1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/615/format/webp"></p>
+<p>接下新建一个aidl文件，名称为我们自定义类型的名称，这边是User.aidl。在User.aidl申明我们的自定义类型和它的完整包名，注意这边parcelable是小写的，不是Parcelable接口，一个自定类型需要一个这样同名的AIDL文件。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">package com.mark.aidldemo1;</span><br><span class="line">parcelable User;</span><br></pre></td></tr></table></figure>
+<p>然后再在我们的AIDL接口中导入我们的AIDL类型。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import com.mark.aidldemo1.User;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Declare any non-default types here with import statements</span><br><span class="line"></span><br><span class="line">interface IMyAidlInterface &#123;</span><br><span class="line">   String getName();</span><br><span class="line">   User getUserName();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后定义接口方法，sycn project后就可以在service中做具体实现了。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class MyBinder extends IMyAidlInterface.Stub</span><br><span class="line">  &#123;</span><br><span class="line"></span><br><span class="line">     ........</span><br><span class="line"></span><br><span class="line">      @Override</span><br><span class="line">      public User getUserName() throws RemoteException &#123;</span><br><span class="line">          return new User(&quot;Mark&quot;);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>最后将我们的AIDL文件和自定义类型的java一并拷贝到第二个项目，注意包名都要一样哦</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2099385-63e992963f1bd552.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/246/format/webp"><br>然后就可以在Activity中使用该自定义类型的AIDL接口了</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public class MainActivity extends AppCompatActivity</span><br><span class="line">&#123;</span><br><span class="line">    &#x2F;&#x2F;...</span><br><span class="line">    public void onClick(View view)</span><br><span class="line">    &#123;</span><br><span class="line">        try</span><br><span class="line">        &#123;</span><br><span class="line">            Toast.makeText(MainActivity.this, iMyAidlInterface.getUserName().getName(), Toast.LENGTH_SHORT).show();</span><br><span class="line">        &#125;</span><br><span class="line">        catch (RemoteException e)</span><br><span class="line">        &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>AIDL只是Android中众多进程间通讯方式中的一种方式,<a href="https://gitee.com/markshow/msg-ipc">我的代码</a></p>
+<h3 id="下一章长链接推送"><a href="#下一章长链接推送" class="headerlink" title="下一章长链接推送"></a><a href="http://markchyl.cn/2020/10/19/Android%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6%E6%80%BB%E7%BB%93-%E4%BA%94/">下一章长链接推送</a></h3>]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>消息通信</tag>
+        <tag>AIDL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Android消息传递机制总结(二)</title>
+    <url>/2020/10/10/Android%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6%E6%80%BB%E7%BB%93%E4%BA%8C/</url>
+    <content><![CDATA[<p>组件间通信 ——— BroadcastReceiver，接口回调等。</p>
+<h3 id="2-组件间通信"><a href="#2-组件间通信" class="headerlink" title="2.组件间通信"></a>2.组件间通信</h3><p>BroadcastReceiver广播就不再介绍， 广播传递本身是有安全隐患的，需要设置权限，每一个Activity都要定义、注册，解注册广播无形中加大了工作量和维护成本。已经不适应用在组件间通信。</p>
+<span id="more"></span>
+<p>接口回调： 和观察者模式大致一样。<br>实例：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">public class DataSynManager &#123;</span><br><span class="line">    &#x2F;&#x2F;监听集合</span><br><span class="line">    private LinkedList&lt;IDataSynListener&gt; autoListeners &#x3D; new LinkedList&lt;&gt;();</span><br><span class="line">    &#x2F;&#x2F;单例引用</span><br><span class="line">    private static DataSynManager mInstance;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 获取单例引用</span><br><span class="line">     *</span><br><span class="line">     * @return</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public static DataSynManager getInstance() &#123;</span><br><span class="line">        if (mInstance &#x3D;&#x3D; null) &#123;</span><br><span class="line">            synchronized (DataSynManager.class) &#123;</span><br><span class="line">                if (mInstance &#x3D;&#x3D; null) &#123;</span><br><span class="line">                    mInstance &#x3D; new DataSynManager();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return mInstance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 添加同步数据监听</span><br><span class="line">     *</span><br><span class="line">     * @param listener</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public void registerDataSynListener(IDataSynListener listener) &#123;</span><br><span class="line">        if (autoListeners &#x3D;&#x3D; null) &#123;</span><br><span class="line">            autoListeners &#x3D; new LinkedList&lt;&gt;();</span><br><span class="line">        &#125;</span><br><span class="line">        if (!autoListeners.contains(listener)) &#123;</span><br><span class="line">            autoListeners.add(listener);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 移除同步数据监听</span><br><span class="line">     *</span><br><span class="line">     * @param listener</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public void unRegisterSynListener(IDataSynListener listener) &#123;</span><br><span class="line">        if (autoListeners &#x3D;&#x3D; null) &#123;</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        if (autoListeners.contains(listener)) &#123;</span><br><span class="line">            autoListeners.remove(listener);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 执行数据同步</span><br><span class="line">     *</span><br><span class="line">     * @param count</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public void doDataSyn(final int count) &#123;</span><br><span class="line">        if (autoListeners &#x3D;&#x3D; null) &#123;</span><br><span class="line">            autoListeners &#x3D; new LinkedList&lt;&gt;();</span><br><span class="line">        &#125;</span><br><span class="line">        new Handler().post(new Runnable() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void run() &#123;</span><br><span class="line">                for (IDataSynListener dataSynListener :</span><br><span class="line">                        autoListeners) &#123;</span><br><span class="line">                    dataSynListener.onDataSyn(count);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 清除所有监听者</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public void release() &#123;</span><br><span class="line">        if (autoListeners !&#x3D; null) &#123;</span><br><span class="line">            autoListeners.clear();</span><br><span class="line">            autoListeners &#x3D; null;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public interface IDataSynListener &#123;</span><br><span class="line">        void onDataSyn(int count);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>使用：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;添加监听</span><br><span class="line">DataSynManager.getInstance().registerDataSynListener(dataSynListener);</span><br><span class="line">&#x2F;&#x2F;移除监听</span><br><span class="line">DataSynManager.getInstance().unRegisterDataSynListener(dataSynListener&#x2F;&#x2F;个监听);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">DataSynManager.IDataSynListener dataSynListener&#x3D;new DataSynManager.IDataSynListener() &#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void onDataSyn(int count) &#123;</span><br><span class="line">            &#x2F;&#x2F;接下来执行同步操作</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">   &#125;;</span><br><span class="line">&#x2F;&#x2F;发送事件</span><br><span class="line">DataSynManager.getInstance().doDa(5);</span><br></pre></td></tr></table></figure>
+<p><a href="http://markchyl.cn/2020/10/10/Android%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6%E6%80%BB%E7%BB%93%E4%B8%89/">3. 第三方通信 ——— EventBus，rxBus</a></p>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>消息通信</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JDBC学习--ConnectinnFactory</title>
     <url>/2021/05/13/JDBC%E5%AD%A6%E4%B9%A0-ConnectinnFactory/</url>
     <content><![CDATA[<p>[toc]</p>
@@ -1369,103 +1253,6 @@ Connection conn = null;
       </categories>
       <tags>
         <tag>JDBC</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JDBC学习--Statement</title>
-    <url>/2021/05/13/JDBC%E5%AD%A6%E4%B9%A0-Statement/</url>
-    <content><![CDATA[<h3 id="JDBC的API结构和使用流程"><a href="#JDBC的API结构和使用流程" class="headerlink" title="JDBC的API结构和使用流程"></a>JDBC的API结构和使用流程</h3><pre class="mermaid">graph TB
-    A0[DriverManager] --> B0[Driver]
-    A0[DriverManager] --> B1[Driver] 
-    B0[Driver] --> C0[Connection]
-    B1[Driver] -->C1[Connection]
-    B1[Driver] -->C2[Connection]
-    C0[Connection]-->D0[Statement]
-    C0[Connection]-->D1[Statement]-->E0[ResultSet]
-    C0[Connection]-->D2[Statement]-->E1[ResultSet]
-    C1[Connection]-->D3[Statement]-->E2[ResultSet]</pre>
-<span id="more"></span>
-<h3 id="创建Statement的方式"><a href="#创建Statement的方式" class="headerlink" title="创建Statement的方式"></a>创建Statement的方式</h3><ul>
-<li><p><code>Statement  stmt = Connection.createStatement(......);</code></p>
-<ul>
-<li>执行不带参数的简单SQL语句</li>
-</ul>
-</li>
-<li><p><code>PreparedStatement  pstmt = Connection.prepareStatement(......);</code></p>
-<ul>
-<li>执行带参数或不带参数的SQL语句</li>
-</ul>
-</li>
-<li><p><code>CallableStatement   cstmt  =  Connection.prepareCall(...);</code></p>
-<ul>
-<li>执行对数据库已存储的PL/SQL程序的调用</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h3 id="执行SQL语句"><a href="#执行SQL语句" class="headerlink" title="执行SQL语句"></a>执行SQL语句</h3><ul>
-<li><code>executeQuery()</code>：执行查询语句，返回查询结果集 <code>ResultSet</code><br>返回结果集 <code>rs.getFetchSize()</code>记录着当前返回数量的大小：<code>10</code></li>
-<li><code>executeUpdate()</code>: 执行DML和DDL 语句，返回int类型</li>
-<li><code>execute()</code>: 执行任何SQL语句，返回boolean类型，指示是否有ResultSet返回</li>
-</ul>
-]]></content>
-      <categories>
-        <category>JavaWeb</category>
-      </categories>
-      <tags>
-        <tag>JDBC</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Kotlin中可变参数</title>
-    <url>/2021/04/26/Kotlin%E4%B8%AD%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0/</url>
-    <content><![CDATA[<p><a href="https://www.jianshu.com/p/174c0e254713">原文简书</a></p>
-<hr>
-<h3 id="对比-Java-中的可变参数"><a href="#对比-Java-中的可变参数" class="headerlink" title="对比 Java 中的可变参数"></a>对比 Java 中的可变参数</h3><p>先看下 Java 的可变参数，用我们最熟悉的 main 函数</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String... args)</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>从 Java5 开始引入了可变参数（varargs）<br>对应的 Kotlin 的代码，参数为可变参数：</p>
-<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">(<span class="keyword">vararg</span> args: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<p>Java代码中参数应该是数组：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>对应的 Kotlin 的代码，也是两种方式，参数为数组：</p>
-<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">String</span>&gt;)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="可变参数的本质"><a href="#可变参数的本质" class="headerlink" title="可变参数的本质"></a>可变参数的本质</h3><figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    foo(<span class="string">&quot;1&quot;</span>, <span class="string">&quot;2&quot;</span>, <span class="string">&quot;3&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">foo</span><span class="params">(<span class="keyword">vararg</span> args: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">    println(args::<span class="class"><span class="keyword">class</span>)</span></span><br><span class="line">    println(args.contentToString())</span><br><span class="line">    <span class="keyword">for</span> (i <span class="keyword">in</span> args.indices) &#123;</span><br><span class="line">        println(args[i])</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>打印：</p>
-<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">kotlin</span>.<span class="title">Array</span></span></span><br><span class="line"><span class="keyword">val</span> kotlin.reflect.KClass&lt;T&gt;.java: java.lang.Class&lt;T&gt;</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
-<p>我们可以清晰的看到 args 的类型为数组类型，并且可以直接调用数组的方法。</p>
-<blockquote>
-<p>如果你的第一行打印结果是：</p>
-<p>class [Ljava.lang.String; (Kotlin reflection is not available)</p>
-<p>需要在 build.gradle 中添加依赖：</p>
-<p>implementation “org.jetbrains.kotlin:kotlin-reflect:$kotlin_version”</p>
-</blockquote>
-<hr>
-<p><strong><strong>准确的说 args 的类型是 Array<out String> 类型:</strong></strong></p>
-<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    foo(<span class="string">&quot;1&quot;</span>, <span class="string">&quot;2&quot;</span>, <span class="string">&quot;3&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">foo</span><span class="params">(<span class="keyword">vararg</span> args: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">    bar(args)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">bar</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">out</span> <span class="type">String</span>&gt;)</span></span> &#123;</span><br><span class="line">    println(args.contentToString())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="可变参数的传参"><a href="#可变参数的传参" class="headerlink" title="可变参数的传参"></a>可变参数的传参</h3><p>我们再来改造一下 bar 函数的参数类型，看下可变参数的传参：</p>
-<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    foo(<span class="string">&quot;1&quot;</span>, <span class="string">&quot;2&quot;</span>, <span class="string">&quot;3&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">foo</span><span class="params">(<span class="keyword">vararg</span> args: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">    bar(args)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">bar</span><span class="params">(<span class="keyword">vararg</span> args: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">    println(args.contentToString())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>编译器提示类型不匹配，需要一个 String 类型的参数，而传入了数组类型。<br>然而在 Java 中可变参数是可以直接传递，并且可以和数组相互转换传递：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    foo(<span class="string">&quot;1&quot;</span>, <span class="string">&quot;2&quot;</span>, <span class="string">&quot;3&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">foo</span><span class="params">(String... args)</span> </span>&#123;</span><br><span class="line">    bar1(args);</span><br><span class="line">    bar2(args);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">bar1</span><span class="params">(String... args)</span> </span>&#123;</span><br><span class="line">    System.out.println(Arrays.toString(args));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">bar2</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    bar1(args);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在 Kotlin 中如果想将数组类型传入到可变参数，就需要使用一个特定的符号 <code>* </code>：</p>
-<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    foo(<span class="string">&quot;1&quot;</span>, <span class="string">&quot;2&quot;</span>, <span class="string">&quot;3&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">foo</span><span class="params">(<span class="keyword">vararg</span> args: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">    bar1(*args)</span><br><span class="line">    bar2(args)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">bar1</span><span class="params">(<span class="keyword">vararg</span> args: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">    println(args.contentToString())</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">bar2</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">out</span> <span class="type">String</span>&gt;)</span></span> &#123;</span><br><span class="line">    bar1(*args)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>我对 Kotlin 中d可变参数的理解是：</p>
-<ol>
-<li>可变参数会在函数体中，自动转变为数组类型</li>
-<li>数组类型不能作为参数，直接传递给可变参数</li>
-<li>在数组类型前面添加 * ，可以传递给可变参数</li>
-</ol>
-<p>最后，我们可以反编译看下 Kotlin 中的 foo 函数，看看 * 到底做了什么：</p>
-<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> static <span class="keyword">final</span> void foo(<span class="meta">@NotNull</span> String... args) &#123;</span><br><span class="line">    bar1((String[]) Arrays.copyOf(args, args.length));</span><br><span class="line">    bar2(args);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>就是一个复制数组的操作，相比 Kotlin 还是 Java 做的更便捷，可以在数组和可变参数之间直接自由转换。</p>
-]]></content>
-      <categories>
-        <category>Kotlin</category>
-      </categories>
-      <tags>
-        <tag>Kotlin基础</tag>
       </tags>
   </entry>
   <entry>
@@ -1515,19 +1302,6 @@ Connection conn = null;
       </categories>
       <tags>
         <tag>kotlin</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Log日志工具类(一)</title>
-    <url>/2021/04/07/Log%E6%97%A5%E5%BF%97%E5%B7%A5%E5%85%B7%E7%B1%BB-%E4%B8%80/</url>
-    <content><![CDATA[<p>实现的效果能将json字符串以格式化的方式显示</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * $desc$ Log日志工具类</span><br><span class="line"> *</span><br><span class="line"> * @Author mark</span><br><span class="line"> * @Date 2018&#x2F;11&#x2F;26</span><br><span class="line"> *&#x2F;</span><br><span class="line">public class LogUtils &#123;</span><br><span class="line">    &#x2F;&#x2F;是否Debug</span><br><span class="line">    public static final boolean isMarkDebug &#x3D; true;</span><br><span class="line"></span><br><span class="line">    public static final String LINE_SEPARATOR &#x3D; System.getProperty(&quot;line.separator&quot;);</span><br><span class="line">    public static void printLog(String name,String strContent)&#123;</span><br><span class="line">        if (isMarkDebug)&#123;</span><br><span class="line">            Log.d(name,strContent);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public static void printLine(String tag, boolean isTop) &#123;</span><br><span class="line">        if (isTop) &#123;</span><br><span class="line">            Log.d(tag, &quot;╔═══════════════════════════════════════════════════════════════════════════════════════&quot;);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            Log.d(tag, &quot;╚═══════════════════════════════════════════════════════════════════════════════════════&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public static void printJson(String tag, String msg, String headString) &#123;</span><br><span class="line"></span><br><span class="line">        String message;</span><br><span class="line"></span><br><span class="line">        try &#123;</span><br><span class="line">            if (msg.startsWith(&quot;&#123;&quot;)) &#123;</span><br><span class="line">                JSONObject jsonObject &#x3D; new JSONObject(msg);</span><br><span class="line">                message &#x3D; jsonObject.toString(4);&#x2F;&#x2F;最重要的方法，就一行，返回格式化的json字符串，其中的数字4是缩进字符数</span><br><span class="line">            &#125; else if (msg.startsWith(&quot;[&quot;)) &#123;</span><br><span class="line">                JSONArray jsonArray &#x3D; new JSONArray(msg);</span><br><span class="line">                message &#x3D; jsonArray.toString(4);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                message &#x3D; msg;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; catch (JSONException e) &#123;</span><br><span class="line">            message &#x3D; msg;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        printLine(tag, true);</span><br><span class="line">        message &#x3D; headString + LINE_SEPARATOR + message;</span><br><span class="line">        String[] lines &#x3D; message.split(LINE_SEPARATOR);</span><br><span class="line">        for (String line : lines) &#123;</span><br><span class="line">            Log.d(tag, &quot;║ &quot; + line);</span><br><span class="line">        &#125;</span><br><span class="line">        printLine(tag, false);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Utils</tag>
       </tags>
   </entry>
   <entry>
@@ -1590,6 +1364,58 @@ Connection conn = null;
       </categories>
       <tags>
         <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Kotlin中可变参数</title>
+    <url>/2021/04/26/Kotlin%E4%B8%AD%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0/</url>
+    <content><![CDATA[<p><a href="https://www.jianshu.com/p/174c0e254713">原文简书</a></p>
+<hr>
+<h3 id="对比-Java-中的可变参数"><a href="#对比-Java-中的可变参数" class="headerlink" title="对比 Java 中的可变参数"></a>对比 Java 中的可变参数</h3><p>先看下 Java 的可变参数，用我们最熟悉的 main 函数</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String... args)</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>从 Java5 开始引入了可变参数（varargs）<br>对应的 Kotlin 的代码，参数为可变参数：</p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">(<span class="keyword">vararg</span> args: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<p>Java代码中参数应该是数组：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对应的 Kotlin 的代码，也是两种方式，参数为数组：</p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">String</span>&gt;)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="可变参数的本质"><a href="#可变参数的本质" class="headerlink" title="可变参数的本质"></a>可变参数的本质</h3><figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    foo(<span class="string">&quot;1&quot;</span>, <span class="string">&quot;2&quot;</span>, <span class="string">&quot;3&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">foo</span><span class="params">(<span class="keyword">vararg</span> args: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">    println(args::<span class="class"><span class="keyword">class</span>)</span></span><br><span class="line">    println(args.contentToString())</span><br><span class="line">    <span class="keyword">for</span> (i <span class="keyword">in</span> args.indices) &#123;</span><br><span class="line">        println(args[i])</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>打印：</p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">kotlin</span>.<span class="title">Array</span></span></span><br><span class="line"><span class="keyword">val</span> kotlin.reflect.KClass&lt;T&gt;.java: java.lang.Class&lt;T&gt;</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
+<p>我们可以清晰的看到 args 的类型为数组类型，并且可以直接调用数组的方法。</p>
+<blockquote>
+<p>如果你的第一行打印结果是：</p>
+<p>class [Ljava.lang.String; (Kotlin reflection is not available)</p>
+<p>需要在 build.gradle 中添加依赖：</p>
+<p>implementation “org.jetbrains.kotlin:kotlin-reflect:$kotlin_version”</p>
+</blockquote>
+<hr>
+<p><strong><strong>准确的说 args 的类型是 Array<out String> 类型:</strong></strong></p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    foo(<span class="string">&quot;1&quot;</span>, <span class="string">&quot;2&quot;</span>, <span class="string">&quot;3&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">foo</span><span class="params">(<span class="keyword">vararg</span> args: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">    bar(args)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">bar</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">out</span> <span class="type">String</span>&gt;)</span></span> &#123;</span><br><span class="line">    println(args.contentToString())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="可变参数的传参"><a href="#可变参数的传参" class="headerlink" title="可变参数的传参"></a>可变参数的传参</h3><p>我们再来改造一下 bar 函数的参数类型，看下可变参数的传参：</p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    foo(<span class="string">&quot;1&quot;</span>, <span class="string">&quot;2&quot;</span>, <span class="string">&quot;3&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">foo</span><span class="params">(<span class="keyword">vararg</span> args: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">    bar(args)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">bar</span><span class="params">(<span class="keyword">vararg</span> args: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">    println(args.contentToString())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>编译器提示类型不匹配，需要一个 String 类型的参数，而传入了数组类型。<br>然而在 Java 中可变参数是可以直接传递，并且可以和数组相互转换传递：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    foo(<span class="string">&quot;1&quot;</span>, <span class="string">&quot;2&quot;</span>, <span class="string">&quot;3&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">foo</span><span class="params">(String... args)</span> </span>&#123;</span><br><span class="line">    bar1(args);</span><br><span class="line">    bar2(args);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">bar1</span><span class="params">(String... args)</span> </span>&#123;</span><br><span class="line">    System.out.println(Arrays.toString(args));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">bar2</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    bar1(args);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在 Kotlin 中如果想将数组类型传入到可变参数，就需要使用一个特定的符号 <code>* </code>：</p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    foo(<span class="string">&quot;1&quot;</span>, <span class="string">&quot;2&quot;</span>, <span class="string">&quot;3&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">foo</span><span class="params">(<span class="keyword">vararg</span> args: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">    bar1(*args)</span><br><span class="line">    bar2(args)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">bar1</span><span class="params">(<span class="keyword">vararg</span> args: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">    println(args.contentToString())</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">bar2</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">out</span> <span class="type">String</span>&gt;)</span></span> &#123;</span><br><span class="line">    bar1(*args)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>我对 Kotlin 中d可变参数的理解是：</p>
+<ol>
+<li>可变参数会在函数体中，自动转变为数组类型</li>
+<li>数组类型不能作为参数，直接传递给可变参数</li>
+<li>在数组类型前面添加 * ，可以传递给可变参数</li>
+</ol>
+<p>最后，我们可以反编译看下 Kotlin 中的 foo 函数，看看 * 到底做了什么：</p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> static <span class="keyword">final</span> void foo(<span class="meta">@NotNull</span> String... args) &#123;</span><br><span class="line">    bar1((String[]) Arrays.copyOf(args, args.length));</span><br><span class="line">    bar2(args);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>就是一个复制数组的操作，相比 Kotlin 还是 Java 做的更便捷，可以在数组和可变参数之间直接自由转换。</p>
+]]></content>
+      <categories>
+        <category>Kotlin</category>
+      </categories>
+      <tags>
+        <tag>Kotlin基础</tag>
       </tags>
   </entry>
   <entry>
@@ -1738,80 +1564,48 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
-    <title>Mac用Docker安装Oracle11g并连接Navicat</title>
-    <url>/2020/12/01/Mac%E7%94%A8Docker%E5%AE%89%E8%A3%85Oracle11g%E5%B9%B6%E8%BF%9E%E6%8E%A5Navicat/</url>
-    <content><![CDATA[<p><a href="https://www.cnblogs.com/lihanqing/p/12329480.html">原文转载自大佬笑等茶凉</a></p>
-<h3 id="1-下载并安装Docker"><a href="#1-下载并安装Docker" class="headerlink" title="1.下载并安装Docker"></a>1.下载并安装Docker</h3><p>官方下载地址：<a href="https://download.docker.com/mac/stable/Docker.dmg">https://download.docker.com/mac/stable/Docker.dmg</a></p>
-<h3 id="2-用docker下载镜像，在终端输入："><a href="#2-用docker下载镜像，在终端输入：" class="headerlink" title="2.用docker下载镜像，在终端输入："></a>2.用docker下载镜像，在终端输入：</h3><blockquote>
-<p>docker pull registry.cn-hangzhou.aliyuncs.com/helowin/oracle_11g</p>
-</blockquote>
-<h3 id="3-启动oracle镜像作为容器："><a href="#3-启动oracle镜像作为容器：" class="headerlink" title="3.启动oracle镜像作为容器："></a>3.启动oracle镜像作为容器：</h3><blockquote>
-<p>docker run -d -p 1521:1521 –name oracle11g registry.cn-hangzhou.aliyuncs.com/helowin/oracle_11g</p>
-</blockquote>
-<h3 id="4-进入镜像配置"><a href="#4-进入镜像配置" class="headerlink" title="4.进入镜像配置"></a>4.进入镜像配置</h3><blockquote>
-<p>docker exec -it oracle11g bash</p>
-</blockquote>
+    <title>JDBC学习--Statement</title>
+    <url>/2021/05/13/JDBC%E5%AD%A6%E4%B9%A0-Statement/</url>
+    <content><![CDATA[<h3 id="JDBC的API结构和使用流程"><a href="#JDBC的API结构和使用流程" class="headerlink" title="JDBC的API结构和使用流程"></a>JDBC的API结构和使用流程</h3><pre class="mermaid">graph TB
+    A0[DriverManager] --> B0[Driver]
+    A0[DriverManager] --> B1[Driver] 
+    B0[Driver] --> C0[Connection]
+    B1[Driver] -->C1[Connection]
+    B1[Driver] -->C2[Connection]
+    C0[Connection]-->D0[Statement]
+    C0[Connection]-->D1[Statement]-->E0[ResultSet]
+    C0[Connection]-->D2[Statement]-->E1[ResultSet]
+    C1[Connection]-->D3[Statement]-->E2[ResultSet]</pre>
 <span id="more"></span>
-
-<h3 id="5-配置环境变量"><a href="#5-配置环境变量" class="headerlink" title="5.配置环境变量"></a>5.配置环境变量</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export ORACLE_HOME&#x3D;&#x2F;home&#x2F;oracle&#x2F;app&#x2F;oracle&#x2F;product&#x2F;11.2.0&#x2F;dbhome_2</span><br><span class="line">export ORACLE_SID&#x3D;helowin</span><br><span class="line">export PATH&#x3D;$ORACLE_HOME&#x2F;bin:$PATH</span><br></pre></td></tr></table></figure>
-<h3 id="6-修改密码"><a href="#6-修改密码" class="headerlink" title="6.修改密码"></a>6.修改密码</h3><blockquote>
-<p>sqlplus /nolog</p>
-</blockquote>
-<blockquote>
-<p>SQL&gt; conn /as sysdba;<br>SQL&gt; alter user system identified by oracle;<br>SQL&gt; conn system/oracle;<br>那样便修改了账号为system密码为oracle的账号.</p>
-</blockquote>
-<p><strong>系统权限管理 :</strong></p>
+<h3 id="创建Statement的方式"><a href="#创建Statement的方式" class="headerlink" title="创建Statement的方式"></a>创建Statement的方式</h3><ul>
+<li><p><code>Statement  stmt = Connection.createStatement(......);</code></p>
 <ul>
-<li>系统权限分类：<br>DBA: 拥有全部特权，是系统最高权限，只有DBA才可以创建数据库结构。<br>RESOURCE:拥有Resource权限的用户只可以创建实体，不可以创建数据库结构。<br>CONNECT:拥有Connect权限的用户只可以登录Oracle，不可以创建实体，不可以创建数据库结构。<br>对于普通用户：授予connect, resource权限。<br>对于DBA管理用户：授予connect，resource, dba权限。</li>
+<li>执行不带参数的简单SQL语句</li>
+</ul>
+</li>
+<li><p><code>PreparedStatement  pstmt = Connection.prepareStatement(......);</code></p>
+<ul>
+<li>执行带参数或不带参数的SQL语句</li>
+</ul>
+</li>
+<li><p><code>CallableStatement   cstmt  =  Connection.prepareCall(...);</code></p>
+<ul>
+<li>执行对数据库已存储的PL/SQL程序的调用</li>
+</ul>
+</li>
 </ul>
 <hr>
-<ul>
-<li>系统权限授权命令：<br>系统权限只能由DBA用户授出：sys, system(最开始只能是这两个用户)<br>授权命令：SQL&gt; grant connect, resource, dba to 用户名1 [,用户名2]…;<br>注:普通用户通过授权可以具有与system相同的用户权限，但永远不能达到与sys用户相同的权限，system用户的权限也可以被回收。</li>
-</ul>
-<h3 id="7-创建用户"><a href="#7-创建用户" class="headerlink" title="7.创建用户"></a>7.创建用户</h3><blockquote>
-<p>SQL&gt; create user mark identified by chenyunlin;</p>
-</blockquote>
-<p>用sysdba赋予该用户所有权限：</p>
-<blockquote>
-<p>SQL&gt; grant all privileges to mark;</p>
-</blockquote>
-<p>连接新创建的用户：</p>
-<blockquote>
-<p>SQL&gt; conn mark/chenyunlin;</p>
-</blockquote>
-<p>创建表：</p>
-<blockquote>
-<p>SQL&gt; create table test2(name varchar2(20), city varchar2(20));</p>
-</blockquote>
-<p>比如在此你拥有自动化创建数据表的脚本的话<br><code>## 执行sql脚本文件 @/Users/mark/Desktop/iotek_oracle.sql;</code></p>
-<h3 id="8-使用Navicat连接oracle"><a href="#8-使用Navicat连接oracle" class="headerlink" title="8.使用Navicat连接oracle"></a>8.使用Navicat连接oracle</h3><p>图片借用哈<br><img src="https://img2018.cnblogs.com/blog/1384393/202002/1384393-20200219000941495-1048166820.png"></p>
-<p>注意：服务名helowin是镜像地址中的</p>
-<p><strong>常用的一些命令：</strong></p>
-<p><code>docker ps</code>是查看当前运行的容器</p>
-<p><code>docker ps -a </code>是查看所有容器（包括停止的）</p>
-<p><code>docker images</code>查看所有镜像</p>
-<p><code>docker run -h &quot;oracle&quot; --name &quot;oracle&quot; -d -p 49160:22 -p 49161:1521 -p 49162:8080 alexeiled/docker-oracle-xe-11g</code><br>​ -h “oracle”：指定容器的hostname为oracle</p>
-<p>　　–name “oracle”：将容器命名为oracle</p>
-<p>　　-d：在后台运行</p>
-<p>　　-p: 端口映射，格式为：主机(宿主)端口:容器端口</p>
-<p><strong>启动或停止oracle服务：</strong></p>
-<p><code>docker start oracle11g</code></p>
-<p><code>docker stop oracle11g</code></p>
-<h3 id="9-后续操作命令"><a href="#9-后续操作命令" class="headerlink" title="9.后续操作命令"></a>9.后续操作命令</h3><p>删除容器：</p>
-<blockquote>
-<p>docker rm [containerId]<br>删除镜像：<br>docker rmi [imageId]</p>
-</blockquote>
-<h3 id="10-使用终端打开sqlplus"><a href="#10-使用终端打开sqlplus" class="headerlink" title="10.使用终端打开sqlplus"></a>10.使用终端打开sqlplus</h3><p>由于本人电脑的配置原因，</p>
-<ul>
-<li> docker exec -it oracle11g bash<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export ORACLE_HOME&#x3D;&#x2F;home&#x2F;oracle&#x2F;app&#x2F;oracle&#x2F;product&#x2F;11.2.0&#x2F;dbhome_2</span><br><span class="line">export ORACLE_SID&#x3D;helowin</span><br><span class="line">export PATH&#x3D;$ORACLE_HOME&#x2F;bin:$PATH</span><br><span class="line">sqlplus &#x2F;nolog</span><br><span class="line"></span><br><span class="line">SQL*Plus: Release 11.2.0.1.0 Production on Fri Dec 4 15:03:36 2020</span><br><span class="line"></span><br><span class="line">Copyright (c) 1982, 2009, Oracle.  All rights reserved.</span><br><span class="line"></span><br><span class="line">SQL&gt; </span><br></pre></td></tr></table></figure></li>
+<h3 id="执行SQL语句"><a href="#执行SQL语句" class="headerlink" title="执行SQL语句"></a>执行SQL语句</h3><ul>
+<li><code>executeQuery()</code>：执行查询语句，返回查询结果集 <code>ResultSet</code><br>返回结果集 <code>rs.getFetchSize()</code>记录着当前返回数量的大小：<code>10</code></li>
+<li><code>executeUpdate()</code>: 执行DML和DDL 语句，返回int类型</li>
+<li><code>execute()</code>: 执行任何SQL语句，返回boolean类型，指示是否有ResultSet返回</li>
 </ul>
 ]]></content>
       <categories>
-        <category>数据库</category>
+        <category>JavaWeb</category>
       </categories>
       <tags>
-        <tag>环境搭建</tag>
-        <tag>Oracle</tag>
+        <tag>JDBC</tag>
       </tags>
   </entry>
   <entry>
@@ -1867,110 +1661,16 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
-    <title>Markdown 入门指南一</title>
-    <url>/2019/01/04/Markdown-%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97%E4%B8%80/</url>
-    <content><![CDATA[<h3 id="一、Markdown-是什么？"><a href="#一、Markdown-是什么？" class="headerlink" title="一、Markdown 是什么？"></a><strong>一、Markdown 是什么？</strong></h3><hr>
-<p>Markdown 是一种轻量级的「标记语言」，创始人为约翰·格鲁伯，用简洁的语法代替排版，目前被越来越多的知识工作者、写作爱好者、程序员或研究员广泛使用。其常用的标记符号不超过十个，相对于更为复杂的 HTML 标记语言来说，Markdown 十分的轻量，学习成本也不需要太多，且一旦熟悉这种语法规则，会有沉浸式编辑的效果。</p>
-<span id="more"></span>
-<p>另外，印象笔记 Markdown 支持 CommonMark 和 GFM (GitHub Flavored Markdown) 标准。</p>
-<h3 id="二、印象笔记里-Markdown-有什么特点？"><a href="#二、印象笔记里-Markdown-有什么特点？" class="headerlink" title="二、印象笔记里 Markdown 有什么特点？"></a><strong>二、印象笔记里 Markdown 有什么特点？</strong></h3><hr>
-<ul>
-<li><strong>一键创建</strong>：支持 Markdown 独立的一键新建入口，为深度 Markdown 用户提供更好的效率体验；</li>
-<li><strong>支持丰富的主流 Markdown 语法</strong>：支持文字相关样式、序号列表、任务列表、表格、TOC 目录、多种图表、数学公式、流程图、时序图、甘特图等；</li>
-<li><strong>支持插入图片</strong>：可插入网络图片 或 直接拖动本地图片、复制剪贴板中的图片到 Markdown 笔记中；</li>
-<li><strong>支持多种模式切换</strong>：编辑与预览模式、纯编辑模式以及纯预览模式；</li>
-<li><strong>支持多种编辑主题</strong>：预置了白色、黑色、深空灰和印象绿主题，默认为印象绿，未来会有更多主题提供；</li>
-<li><strong>跨平台同步</strong>：创建的 Markdown 笔记可在登录了印象笔记帐户的各端查看，未来更多端会支持创建和编辑 Markdown 笔记；<br>演示模式：Markdown 笔记支持演示模式查看；</li>
-<li><strong>支持其他印象笔记特点功能</strong>：笔记标注、导出 PDF、设置提醒、工作群聊共享-查看&amp;编辑笔记等。<br><img src="https://list.yinxiang.com/media/images/6f6fbdf5d5880bba878cccdb6fde7dc2.png"><h3 id="三、如何创建-Markdown-笔记？"><a href="#三、如何创建-Markdown-笔记？" class="headerlink" title="三、如何创建 Markdown 笔记？"></a><strong>三、如何创建 Markdown 笔记？</strong></h3></li>
-</ul>
-<hr>
-<ol>
-<li>点击左上角「新建 Markdown 笔记」来创建新的 Markdown 笔记，另外，也支持配置隐藏「新建 Markdown 笔记」按钮，Windows 用户直接右单击「新建 Markdown 笔记」按钮，即可隐藏，Mac 用户可以右单击左侧边栏空白处，取消勾选「新建 Markdown 笔记」来完成隐藏此按钮</li>
-<li>点击菜单栏-文件-新建笔记-新建 Markdown 笔记（Mac 上为顶部菜单栏-文件-新建 Markdown笔记）</li>
-<li>使用快捷键 Ctrl+alt+D（Mac 上 CMD+D）来快速创建 Markdown 笔记<h3 id="四、印象笔记-Markdown-笔记支持哪些语法？"><a href="#四、印象笔记-Markdown-笔记支持哪些语法？" class="headerlink" title="四、印象笔记 Markdown 笔记支持哪些语法？"></a><strong>四、印象笔记 Markdown 笔记支持哪些语法？</strong></h3></li>
-</ol>
-<hr>
-<p>—— 以下语法均支持在编辑工具栏直接操作 —— </p>
-<h4 id="1-设置分级标题语法示例："><a href="#1-设置分级标题语法示例：" class="headerlink" title="1. 设置分级标题语法示例："></a>1. 设置分级标题语法示例：</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 一级标题</span><br><span class="line">## 二级标题</span><br><span class="line">### 三级标题</span><br><span class="line">#### 四级标题</span><br><span class="line">##### 五级标题</span><br><span class="line">###### 六级标题</span><br></pre></td></tr></table></figure>
-<p><img src="https://list.yinxiang.com/media/images/4d01db13595e47a605bdcee58863bcc9.png"></p>
-<hr>
-<h4 id="2-加粗文本"><a href="#2-加粗文本" class="headerlink" title="2. 加粗文本"></a>2. 加粗文本</h4><p>语法示例：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">**印象笔记**</span><br></pre></td></tr></table></figure>
-<p><img src="https://list.yinxiang.com/media/images/c6bdf4f7243a65e9d265f8354a985133.png"></p>
-<hr>
-<h4 id="3-斜体"><a href="#3-斜体" class="headerlink" title="3. 斜体"></a>3. 斜体</h4><p>语法示例：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">*印象笔记*</span><br></pre></td></tr></table></figure>
-<p><img src="https://list.yinxiang.com/media/images/013f1b9f886759dd2881a90594505be7.png"></p>
-<hr>
-<h4 id="4-下划线"><a href="#4-下划线" class="headerlink" title="4. 下划线"></a>4. 下划线</h4><p>语法示例：</p>
-<p>&lt;u&gt;印象笔记&lt;/u&gt;</p>
-<p><img src="https://list.yinxiang.com/media/images/e9dfb2393770d6b3f9797251828fc64a.png"></p>
-<hr>
-<h4 id="5-删除线"><a href="#5-删除线" class="headerlink" title="5. 删除线"></a>5. 删除线</h4><p>语法示例：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~~印象笔记不支持Markdown~~</span><br></pre></td></tr></table></figure>
-<p><img src="https://list.yinxiang.com/media/images/801daebf96b7c608324f653b8919d20b.png"></p>
-<hr>
-<h4 id="6-添加分隔线"><a href="#6-添加分隔线" class="headerlink" title="6. 添加分隔线"></a>6. 添加分隔线</h4><p>语法示例：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* * *</span><br></pre></td></tr></table></figure>
-<p><img src="https://list.yinxiang.com/media/images/17e2f842833974e024ddbfe8601db88a.png"></p>
-<hr>
-<h4 id="7-引用文本语法示例："><a href="#7-引用文本语法示例：" class="headerlink" title="7. 引用文本语法示例："></a>7. 引用文本语法示例：</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;近日，印象笔记宣布完成重组。作为Evernote已在中国独立运营近6年的品牌，印象笔记将成为由中方控股的中美合资独立运营实体，并获得红杉宽带跨境数字产业基金首轮数亿元人民币投资。</span><br></pre></td></tr></table></figure>
-<p><img src="https://list.yinxiang.com/media/images/5e7bc153735b23aa620131c3b53c4bbe.png"></p>
-<hr>
-<h4 id="8-添加符号列表或者数字列表"><a href="#8-添加符号列表或者数字列表" class="headerlink" title="8. 添加符号列表或者数字列表"></a>8. 添加符号列表或者数字列表</h4><p>语法示例：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">使用 iOS 版本印象笔记如何快速保存内容？</span><br><span class="line">1. 启用印象笔记 Widget ——印象笔记·剪贴板</span><br><span class="line">2. 复制粘贴任意内容     </span><br><span class="line">      * 微信</span><br><span class="line">3. 滑动到 Widget 插件区域即可完成保存</span><br><span class="line">印象笔记·剪贴板有什么特点？</span><br><span class="line">* 快：开启自动模式，可以自动保存剪贴板的任意内容</span><br><span class="line">* 一切：只要可以复制粘贴就可以保存</span><br><span class="line">* 有序：全部保存在「我的剪贴板」笔记本并以时间来命名</span><br></pre></td></tr></table></figure>
-<p><img src="https://list.yinxiang.com/media/images/50ffb8685cde14d6f94ba56d048eb484.png"></p>
-<hr>
-<h4 id="9-添加待办事项"><a href="#9-添加待办事项" class="headerlink" title="9. 添加待办事项"></a>9. 添加待办事项</h4><p>语法示例：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">三只青蛙</span><br><span class="line">* [x] 第一只青蛙</span><br><span class="line">* [ ] 第二只青蛙</span><br><span class="line">* [ ] 第三只青蛙</span><br></pre></td></tr></table></figure>
-<p><img src="https://list.yinxiang.com/media/images/aeec9223706ba3fc5ff64649a1026b4a.png"></p>
-<hr>
-<h4 id="10-插入链接"><a href="#10-插入链接" class="headerlink" title="10. 插入链接"></a>10. 插入链接</h4><p>语法示例：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[印象笔记官网](https:&#x2F;&#x2F;www.yinxiang.com&#x2F;)</span><br></pre></td></tr></table></figure>
-<p><img src="https://list.yinxiang.com/media/images/262a54f32549f26feb2a8ca094ebd7e2.png"></p>
-<hr>
-<h4 id="11-插入图片"><a href="#11-插入图片" class="headerlink" title="11. 插入图片"></a>11. 插入图片</h4><p>印象笔记支持嵌入网络图片或者直接拖入本地图片，其中本地图片格式支持 jpg、png 和 gif。<br>语法示例：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">![image](https:&#x2F;&#x2F;www.yinxiang.com&#x2F;blog&#x2F;wp-content&#x2F;uploads&#x2F;2018&#x2F;07&#x2F;%E5%94%AE%E7%A5%A8%E5%BE%AE%E4%BF%A1%E5%B0%81%E9%9D%A22.png)</span><br></pre></td></tr></table></figure>
-<p><img src="https://www.yinxiang.com/blog/wp-content/uploads/2018/07/%E5%94%AE%E7%A5%A8%E5%BE%AE%E4%BF%A1%E5%B0%81%E9%9D%A22.png" alt="image"></p>
-<p>另外，针对插入的本地图片可以控制图片大小，在拖拽、拷贝或者点击插入本地图片之后，直接在图片名称后面（无需空格）添加以下语法均可以按照以下要求控制图片大小：<br>@w=300<br>@h=150<br>@w=200h=100<br>@h=100w=200<br>示例笔记<br>782d277a1dbc7dea8480267cf5f87ebd.png@w=300<br><img src="https://list.yinxiang.com/media/images/fb2dde021cec7c807b177af6956664b6.png"></p>
-<hr>
-<h4 id="12-插入表格"><a href="#12-插入表格" class="headerlink" title="12. 插入表格"></a>12. 插入表格</h4><p>语法示例：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">| 帐户类型 | 免费帐户 | 标准帐户 | 高级帐户 |</span><br><span class="line">| --- | --- | --- | --- |</span><br><span class="line">| 帐户流量 | 60M | 1GB | 10GB |</span><br><span class="line">| 设备数目 | 2台 | 无限制 | 无限制 |</span><br><span class="line">| 当前价格 | 免费 | ￥8.17&#x2F;月 | ￥12.33&#x2F;月| </span><br></pre></td></tr></table></figure>
-<p><img src="https://list.yinxiang.com/media/images/42bec0bb39317b0a5d7cbf799a079c11.png"></p>
-<hr>
-<h4 id="13-插入图表"><a href="#13-插入图表" class="headerlink" title="13. 插入图表"></a>13. 插入图表</h4><p>目前支持饼状图、折线图、柱状图和条形图，只需将 type 改为对应的pie、line、column 和 bar。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#96;&#96;&#96;chart</span><br><span class="line">,预算,收入,花费,债务</span><br><span class="line">June,5000,8000,4000,6000</span><br><span class="line">July,3000,1000,4000,3000</span><br><span class="line">Aug,5000,7000,6000,3000</span><br><span class="line">Sep,7000,2000,3000,1000</span><br><span class="line">Oct,6000,5000,4000,2000</span><br><span class="line">Nov,4000,3000,5000,</span><br><span class="line"></span><br><span class="line">type: pie</span><br><span class="line">title: 每月收益</span><br><span class="line">x.title: Amount</span><br><span class="line">y.title: Month</span><br><span class="line">y.suffix: $&#96;&#96;&#96;</span><br></pre></td></tr></table></figure>
-<p><img src="https://list.yinxiang.com/media/images/8e02032f85f6612a4c2bb85797251f23.png"></p>
-<hr>
-<h4 id="14-插入行内代码或代码块"><a href="#14-插入行内代码或代码块" class="headerlink" title="14. 插入行内代码或代码块"></a>14. 插入行内代码或代码块</h4><p>印象笔记 Markdown 语法支持几十种编程语言的高亮的显示。<br>语法示例：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">python</span><br><span class="line">#!&#x2F;usr&#x2F;bin&#x2F;python</span><br><span class="line">import re</span><br><span class="line"></span><br><span class="line">line &#x3D; &quot;Cats are smarter than dogs&quot;</span><br><span class="line"></span><br><span class="line">matchObj &#x3D; re.match( r&#39;(.*) are (.*?) .*&#39;, line, re.M|re.I)</span><br><span class="line"></span><br><span class="line">if matchObj:   </span><br><span class="line">    print &quot;matchObj.group() : &quot;, matchObj.group()    </span><br><span class="line">    print &quot;matchObj.group(1) : &quot;, matchObj.group(1)    </span><br><span class="line">    print &quot;matchObj.group(2) : &quot;, matchObj.group(2)</span><br><span class="line">else:    </span><br><span class="line">    print &quot;No match!!&quot;</span><br></pre></td></tr></table></figure>
-<hr>
-<h4 id="15-插入数学公式印象笔记-Markdown-支持绝大多数的-LaTeX-数学公式"><a href="#15-插入数学公式印象笔记-Markdown-支持绝大多数的-LaTeX-数学公式" class="headerlink" title="15. 插入数学公式印象笔记 Markdown 支持绝大多数的 LaTeX 数学公式"></a>15. 插入数学公式印象笔记 Markdown 支持绝大多数的 LaTeX 数学公式</h4><p>语法示例：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mathe^&#123;i\pi&#125; + 1 &#x3D; 0</span><br></pre></td></tr></table></figure>
-<p>更多数学公式的输入可以参考：<a href="https://khan.github.io/KaTeX/docs/supported.html">https://khan.github.io/KaTeX/docs/supported.html</a><br><img src="https://list.yinxiang.com/media/images/c93e418911efa9fef085f5cf5fef5ccb.png"></p>
-<hr>
-<h4 id="16-插入流程图"><a href="#16-插入流程图" class="headerlink" title="16. 插入流程图"></a>16. 插入流程图</h4><p>语法示例：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mermaid</span><br><span class="line">graph TD</span><br><span class="line">A[模块A] --&gt;;|A1| B(模块B)</span><br><span class="line">B --&gt;; C&#123;判断条件C&#125;</span><br><span class="line">C --&gt;;|条件C1|D[模块D]</span><br><span class="line">C --&gt;;|条件C2|E[模块E]</span><br><span class="line">C --&gt;;|条件C3|F[模块F]</span><br></pre></td></tr></table></figure>
-<p><img src="https://list.yinxiang.com/media/images/3f18e5911a3342af4871115ba519f544.png"></p>
-<hr>
-<h4 id="17-插入时序图"><a href="#17-插入时序图" class="headerlink" title="17.  插入时序图"></a>17.  插入时序图</h4><p>语法示例：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mermaid</span><br><span class="line">sequenceDiagram</span><br><span class="line">A-&gt;&gt;B: 是否已收到消息？B--&gt;&gt;A: 已收到消息</span><br></pre></td></tr></table></figure>
-<p><img src="https://list.yinxiang.com/media/images/c54a131fbcbc0167c0a2ffa6e1c53a9b.png"></p>
-<hr>
-<h4 id="18-插入甘特图语法示例："><a href="#18-插入甘特图语法示例：" class="headerlink" title="18. 插入甘特图语法示例："></a>18. 插入甘特图语法示例：</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mermaid</span><br><span class="line">gantt</span><br><span class="line">title甘特图</span><br><span class="line">dateFormat YYYY-MM-DD</span><br><span class="line">section 项目A</span><br><span class="line">任务1 :a1, 2018-06-06, 30d</span><br><span class="line">任务2 :after a1 , 20d</span><br><span class="line">section 项目B</span><br><span class="line">任务3 :2018-06-12 , 12d</span><br><span class="line">任务4 : 24d</span><br></pre></td></tr></table></figure>
-<p><img src="https://list.yinxiang.com/media/images/cb24dc3b1004d6f07119e60fcb86f5a8.png"></p>
-<hr>
-<h4 id="19-设置目录"><a href="#19-设置目录" class="headerlink" title="19. 设置目录"></a>19. 设置目录</h4><p>设置之后可以自动根据设置的分级标题来自动生成目录。<br>语法示例[TOC]：</p>
-<hr>
-<p>[[TOC]]</p>
-<p><img src="https://list.yinxiang.com/media/images/3caad079bbafbb2f7ba3dbd59fbdc057.png">
- </p>
+    <title>Log日志工具类(一)</title>
+    <url>/2021/04/07/Log%E6%97%A5%E5%BF%97%E5%B7%A5%E5%85%B7%E7%B1%BB-%E4%B8%80/</url>
+    <content><![CDATA[<p>实现的效果能将json字符串以格式化的方式显示</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * $desc$ Log日志工具类</span><br><span class="line"> *</span><br><span class="line"> * @Author mark</span><br><span class="line"> * @Date 2018&#x2F;11&#x2F;26</span><br><span class="line"> *&#x2F;</span><br><span class="line">public class LogUtils &#123;</span><br><span class="line">    &#x2F;&#x2F;是否Debug</span><br><span class="line">    public static final boolean isMarkDebug &#x3D; true;</span><br><span class="line"></span><br><span class="line">    public static final String LINE_SEPARATOR &#x3D; System.getProperty(&quot;line.separator&quot;);</span><br><span class="line">    public static void printLog(String name,String strContent)&#123;</span><br><span class="line">        if (isMarkDebug)&#123;</span><br><span class="line">            Log.d(name,strContent);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public static void printLine(String tag, boolean isTop) &#123;</span><br><span class="line">        if (isTop) &#123;</span><br><span class="line">            Log.d(tag, &quot;╔═══════════════════════════════════════════════════════════════════════════════════════&quot;);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            Log.d(tag, &quot;╚═══════════════════════════════════════════════════════════════════════════════════════&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public static void printJson(String tag, String msg, String headString) &#123;</span><br><span class="line"></span><br><span class="line">        String message;</span><br><span class="line"></span><br><span class="line">        try &#123;</span><br><span class="line">            if (msg.startsWith(&quot;&#123;&quot;)) &#123;</span><br><span class="line">                JSONObject jsonObject &#x3D; new JSONObject(msg);</span><br><span class="line">                message &#x3D; jsonObject.toString(4);&#x2F;&#x2F;最重要的方法，就一行，返回格式化的json字符串，其中的数字4是缩进字符数</span><br><span class="line">            &#125; else if (msg.startsWith(&quot;[&quot;)) &#123;</span><br><span class="line">                JSONArray jsonArray &#x3D; new JSONArray(msg);</span><br><span class="line">                message &#x3D; jsonArray.toString(4);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                message &#x3D; msg;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; catch (JSONException e) &#123;</span><br><span class="line">            message &#x3D; msg;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        printLine(tag, true);</span><br><span class="line">        message &#x3D; headString + LINE_SEPARATOR + message;</span><br><span class="line">        String[] lines &#x3D; message.split(LINE_SEPARATOR);</span><br><span class="line">        for (String line : lines) &#123;</span><br><span class="line">            Log.d(tag, &quot;║ &quot; + line);</span><br><span class="line">        &#125;</span><br><span class="line">        printLine(tag, false);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>工具使用</category>
+        <category>Android</category>
       </categories>
       <tags>
-        <tag>工具使用</tag>
+        <tag>Utils</tag>
       </tags>
   </entry>
   <entry>
@@ -2184,7 +1884,7 @@ Connection conn = null;
 <p>2.添加SSH Key到Github<br>进入github首页在设置洁面<br><img src="https://images2017.cnblogs.com/blog/1250458/201710/1250458-20171017153636849-294935886.png"></p>
 <hr>
 <h4 id="添加SSH-Key"><a href="#添加SSH-Key" class="headerlink" title="添加SSH Key"></a>添加SSH Key</h4><p><img src="https://images2017.cnblogs.com/blog/1250458/201710/1250458-20171017153642521-647884655.png"><br>找到系统当前用户目录下(开启查看隐藏文件) C:\Users\用户名\ .ssh id_rsa.pub文件以文本方式打开。打开之后全部复制到key中<br><img src="https://images2017.cnblogs.com/blog/1250458/201710/1250458-20171017153648631-441574444.png"><br>到了这就可以测试一下是否成功了:</p>
-<p>ssh -T <a href="mailto:&#x67;&#105;&#x74;&#64;&#x67;&#105;&#x74;&#104;&#117;&#x62;&#x2e;&#99;&#111;&#109;">&#x67;&#105;&#x74;&#64;&#x67;&#105;&#x74;&#104;&#117;&#x62;&#x2e;&#99;&#111;&#109;</a><br>#之后会要你输入yes/no,输入yes就好了。<br>设置你的账号信息:</p>
+<p>ssh -T <a href="mailto:&#x67;&#105;&#x74;&#64;&#103;&#x69;&#116;&#x68;&#117;&#98;&#x2e;&#x63;&#111;&#109;">&#x67;&#105;&#x74;&#64;&#103;&#x69;&#116;&#x68;&#117;&#98;&#x2e;&#x63;&#111;&#109;</a><br>#之后会要你输入yes/no,输入yes就好了。<br>设置你的账号信息:</p>
 <p>git config –global user.name “你的名字”     #真实名字不是github用户名<br>git config –global user.email “邮箱@邮箱.com”    #github邮箱<br>3.部署到github<br>hexo d<br>这时再刷新 username.github.io 就可以看到你的博客了。</p>
 <p>到了这你以为就结束了吗？没有，还有坑没有给你们填好。</p>
 <p>如果你的SSH配置的时候哪找的.ssh文件的化，可以参照<a href="https://www.cnblogs.com/ailiailan/p/8577411.html">mac 上传本地代码到 Github 教程</a>,我就是参照上面的步骤配置的。</p>
@@ -2337,6 +2037,122 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
+    <title>Android混淆</title>
+    <url>/2020/11/07/Android%E6%B7%B7%E6%B7%86/</url>
+    <content><![CDATA[<blockquote>
+<p>代码混淆（Obfuscated code）亦称花指令，是将计算机程序的代码，转换成一种功能上等价，但是难于阅读和理解的形式的行为。</p>
+</blockquote>
+<blockquote>
+<p>为什么要加代码混淆?<br>不想开源应用，为了加大反编译的成本,但是并不能彻底防止反编译</p>
+</blockquote>
+<h3 id="开启混淆"><a href="#开启混淆" class="headerlink" title="开启混淆"></a>开启混淆</h3><ul>
+<li>通常我们需要找到项目路径下app目录下的build.gradle文件</li>
+<li>找到minifyEnabled这个配置,然后设置为true即可.<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">release&#123;</span><br><span class="line">           minifyEnabled true&#x2F;&#x2F;是否启动混淆 ture:打开   false:关闭</span><br><span class="line">           proguardFiles getDefaultProguardFile(&#39;proguard-android.txt&#39;), &#39;proguard-rules.pro&#39;</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
+proguard-rules.pro文件的作用</li>
+<li>只要在工程应用目录的gradle文件中设置minifyEnabled:true即可。然后我们就可以到proguard-rules.pro文件中加入我们的混淆规则了<span id="more"></span>
+<h3 id="proguard是什么"><a href="#proguard是什么" class="headerlink" title="proguard是什么?"></a>proguard是什么?</h3></li>
+<li>Proguard是一个集文件压缩,优化,混淆和校验等功能的工具</li>
+<li>它检测并删除无用的类,变量,方法和属性</li>
+<li>它优化字节码并删除无用的指令.</li>
+<li>它通过将类名,变量名和方法名重命名为无意义的名称实现混淆效果.</li>
+<li>最后它还校验处理后的代码</li>
+</ul>
+<h3 id="混淆的常见配置"><a href="#混淆的常见配置" class="headerlink" title="混淆的常见配置"></a>混淆的常见配置</h3><ul>
+<li>Proguard关键字</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Proguard关键字</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>dontwarn</td>
+<td>dontwarn是一个和keep可以说是形影不离,尤其是处理引入的library时.</td>
+</tr>
+<tr>
+<td>keep</td>
+<td>保留类和类中的成员，防止被混淆或移除</td>
+</tr>
+<tr>
+<td>keepnames</td>
+<td>保留类和类中的成员，防止被混淆，成员没有被引用会被移除</td>
+</tr>
+<tr>
+<td>keepclassmembers</td>
+<td>只保留类中的成员，防止被混淆或移除</td>
+</tr>
+<tr>
+<td>keepclassmembernames</td>
+<td>只保留类中的成员，防止被混淆，成员没有引用会被移除</td>
+</tr>
+<tr>
+<td>keepclasseswithmembers</td>
+<td>保留类和类中的成员，防止被混淆或移除，保留指明的成员</td>
+</tr>
+<tr>
+<td>keepclasseswithmembernames</td>
+<td>保留类和类中的成员，防止被混淆，保留指明的成员，成员没有引用会被移除</td>
+</tr>
+</tbody></table>
+<p>如：<br>(1)保留某个包下面的类以及子包<br><code>-keep public class com.droidyue.com.widget.**</code></p>
+<p>(2)保留所有类中使用otto的public方法</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Otto</span><br><span class="line">-keepclassmembers class ** &#123;</span><br><span class="line">    @com.squareup.otto.Subscribe public *;</span><br><span class="line">    @com.squareup.otto.Produce public *;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>(3)保留Contants类的BOOK_NAME属性</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-keepclassmembers class com.example.admin.proguardsample.Constants &#123;</span><br><span class="line">     public static java.lang.String BOOK_NAME;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>(4)dontwarn：<br>引入的library可能存在一些无法找到的引用和其他问题,在build时可能会发出警告,如果我们不进行处理,通常会导致build中止.因此为了保证build继续,我们需要使用dontwarn处理这些我们无法解决的library的警告.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#比如关闭Twitter sdk的警告,我们可以这样做</span><br><span class="line">-dontwarn com.twitter.sdk.**</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Proguard通配符</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Proguard通配符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;field&gt;</code></td>
+<td>匹配类中的所有字段</td>
+</tr>
+<tr>
+<td><code>&lt;method&gt;</code></td>
+<td>匹配类中所有的方法</td>
+</tr>
+<tr>
+<td><code>&lt;init&gt;</code></td>
+<td>匹配类中所有的构造函数</td>
+</tr>
+<tr>
+<td>*</td>
+<td>匹配任意长度字符，不包含包名分隔符(.)</td>
+</tr>
+<tr>
+<td>**</td>
+<td>匹配任意长度字符，包含包名分隔符(.)</td>
+</tr>
+<tr>
+<td>***</td>
+<td>匹配任意参数类型</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>混淆</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ScrollView与RecyclerView解决滑动冲突</title>
     <url>/2019/09/02/ScrollView%E4%B8%8ERecyclerView%E8%A7%A3%E5%86%B3%E6%BB%91%E5%8A%A8%E5%86%B2%E7%AA%81/</url>
     <content><![CDATA[<p><a href="https://www.jianshu.com/p/3e0ad704bee5">原文</a></p>
@@ -2355,33 +2171,80 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
-    <title>RxJava学习笔记一</title>
-    <url>/2020/10/19/RxJava%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%80/</url>
-    <content><![CDATA[<h3 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World!"></a>Hello World!</h3><ul>
-<li>RxJava1.1.7.jar<br>代码演示：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">		&#x2F;&#x2F;第一步、创建被观察者</span><br><span class="line">		Observable&lt;String&gt; mObservable &#x3D; Observable.create(new OnSubscribe&lt;String&gt;()&#123;</span><br><span class="line">			@Override</span><br><span class="line">			public void call(Subscriber&lt;? super String&gt; subscriber) &#123;</span><br><span class="line">				subscriber.onNext(&quot;Hello World!&quot;);</span><br><span class="line">				subscriber.onCompleted();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;第二步、创建观察者</span><br><span class="line">		Subscriber&lt;String&gt; mSubscriber &#x3D; new Subscriber&lt;String&gt;() &#123;</span><br><span class="line"></span><br><span class="line">			@Override</span><br><span class="line">			public void onCompleted() &#123;</span><br><span class="line">				&#x2F;&#x2F; TODO Auto-generated method stub</span><br><span class="line">				System.out.println(&quot;onCompleted&quot;);</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			@Override</span><br><span class="line">			public void onError(Throwable arg0) &#123;</span><br><span class="line">				&#x2F;&#x2F; TODO Auto-generated method stub</span><br><span class="line">				System.out.println(&quot;onError&quot;);</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			@Override</span><br><span class="line">			public void onNext(String arg0) &#123;</span><br><span class="line">				&#x2F;&#x2F; TODO Auto-generated method stub</span><br><span class="line">				System.out.println(&quot;OnNext:&quot;+arg0);</span><br><span class="line">				</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;;</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;第三步、订阅事件</span><br><span class="line">		mObservable.subscribe(mSubscriber);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>例如代码中所演示的，RxJava的使用就是那么简单，通过订阅事件将被观察者和观察者进行绑定。</p>
+    <title>Mac用Docker安装Oracle11g并连接Navicat</title>
+    <url>/2020/12/01/Mac%E7%94%A8Docker%E5%AE%89%E8%A3%85Oracle11g%E5%B9%B6%E8%BF%9E%E6%8E%A5Navicat/</url>
+    <content><![CDATA[<p><a href="https://www.cnblogs.com/lihanqing/p/12329480.html">原文转载自大佬笑等茶凉</a></p>
+<h3 id="1-下载并安装Docker"><a href="#1-下载并安装Docker" class="headerlink" title="1.下载并安装Docker"></a>1.下载并安装Docker</h3><p>官方下载地址：<a href="https://download.docker.com/mac/stable/Docker.dmg">https://download.docker.com/mac/stable/Docker.dmg</a></p>
+<h3 id="2-用docker下载镜像，在终端输入："><a href="#2-用docker下载镜像，在终端输入：" class="headerlink" title="2.用docker下载镜像，在终端输入："></a>2.用docker下载镜像，在终端输入：</h3><blockquote>
+<p>docker pull registry.cn-hangzhou.aliyuncs.com/helowin/oracle_11g</p>
+</blockquote>
+<h3 id="3-启动oracle镜像作为容器："><a href="#3-启动oracle镜像作为容器：" class="headerlink" title="3.启动oracle镜像作为容器："></a>3.启动oracle镜像作为容器：</h3><blockquote>
+<p>docker run -d -p 1521:1521 –name oracle11g registry.cn-hangzhou.aliyuncs.com/helowin/oracle_11g</p>
+</blockquote>
+<h3 id="4-进入镜像配置"><a href="#4-进入镜像配置" class="headerlink" title="4.进入镜像配置"></a>4.进入镜像配置</h3><blockquote>
+<p>docker exec -it oracle11g bash</p>
 </blockquote>
 <span id="more"></span>
-<h3 id="响应式编程："><a href="#响应式编程：" class="headerlink" title="响应式编程："></a>响应式编程：</h3>在介绍RxJava前，我们先聊聊响应式编程。那么什么是响应式编程呢？响应式编程是一种基于异步数据流概念的编程模式。数据流就像一条河：它可以被观测，被过滤，被操作，或者为新的消费者与另外一条流合并为一条新的流。</li>
-</ul>
-<p>响应式编程的一个关键概念是事件。事件可以被等待，可以触发过程，也可以触发其它事件。事件是唯一的以合适的方式将我们的现实世界映射到我们的软件中：如果屋里太热了我们就打开一扇窗户。同样的，当我们的天气app从服务端获取到新的天气数据后，我们需要更新app上展示天气信息的UI；汽车上的车道偏移系统探测到车辆偏移了正常路线就会提醒驾驶者纠正，就是是响应事件。</p>
-<p>今天，响应式编程最通用的一个场景是UI：我们的移动App必须做出对网络调用、用户触摸输入和系统弹框的响应。在这个世界上，软件之所以是事件驱动并响应的是因为现实生活也是如此。</p>
-<blockquote>
-<p>本章节中部分概念摘自《RxJava Essentials》一书</p>
+
+<h3 id="5-配置环境变量"><a href="#5-配置环境变量" class="headerlink" title="5.配置环境变量"></a>5.配置环境变量</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export ORACLE_HOME&#x3D;&#x2F;home&#x2F;oracle&#x2F;app&#x2F;oracle&#x2F;product&#x2F;11.2.0&#x2F;dbhome_2</span><br><span class="line">export ORACLE_SID&#x3D;helowin</span><br><span class="line">export PATH&#x3D;$ORACLE_HOME&#x2F;bin:$PATH</span><br></pre></td></tr></table></figure>
+<h3 id="6-修改密码"><a href="#6-修改密码" class="headerlink" title="6.修改密码"></a>6.修改密码</h3><blockquote>
+<p>sqlplus /nolog</p>
 </blockquote>
-<h3 id="RxJava简介："><a href="#RxJava简介：" class="headerlink" title="RxJava简介："></a>RxJava简介：</h3><p>RxJava本质上是一个异步操作库，是一个能让你用极其简洁的逻辑去处理繁琐复杂任务的异步事件库。</p>
-<p>Rx是微软.Net的一个响应式扩展，Rx借助可观测的序列提供一种简单的方式来创建异步的，基于事件驱动的程序。2012年Netflix为了应对不断增长的业务需求开始将.NET Rx迁移到JVM上面。并于13年二月份正式向外展示了RxJava。<br>从语义的角度来看，RxJava就是.NET Rx。从语法的角度来看，Netflix考虑到了对应每个Rx方法,保留了Java代码规范和基本的模式。<br><img src="https://pic1.zhimg.com/80/ca736fe59de94c221875cb428d7eaff0_1440w.png"></p>
-<h3 id="RxJava好在哪"><a href="#RxJava好在哪" class="headerlink" title="RxJava好在哪"></a>RxJava好在哪</h3><ul>
-<li>供了AsyncTask,Handler等用来做异步操作的类库了AsyncTask,Handler等用来做异步操作的类库</li>
-<li>非常简洁的代码逻辑来解决复杂问题</li>
+<blockquote>
+<p>SQL&gt; conn /as sysdba;<br>SQL&gt; alter user system identified by oracle;<br>SQL&gt; conn system/oracle;<br>那样便修改了账号为system密码为oracle的账号.</p>
+</blockquote>
+<p><strong>系统权限管理 :</strong></p>
+<ul>
+<li>系统权限分类：<br>DBA: 拥有全部特权，是系统最高权限，只有DBA才可以创建数据库结构。<br>RESOURCE:拥有Resource权限的用户只可以创建实体，不可以创建数据库结构。<br>CONNECT:拥有Connect权限的用户只可以登录Oracle，不可以创建实体，不可以创建数据库结构。<br>对于普通用户：授予connect, resource权限。<br>对于DBA管理用户：授予connect，resource, dba权限。</li>
+</ul>
+<hr>
+<ul>
+<li>系统权限授权命令：<br>系统权限只能由DBA用户授出：sys, system(最开始只能是这两个用户)<br>授权命令：SQL&gt; grant connect, resource, dba to 用户名1 [,用户名2]…;<br>注:普通用户通过授权可以具有与system相同的用户权限，但永远不能达到与sys用户相同的权限，system用户的权限也可以被回收。</li>
+</ul>
+<h3 id="7-创建用户"><a href="#7-创建用户" class="headerlink" title="7.创建用户"></a>7.创建用户</h3><blockquote>
+<p>SQL&gt; create user mark identified by chenyunlin;</p>
+</blockquote>
+<p>用sysdba赋予该用户所有权限：</p>
+<blockquote>
+<p>SQL&gt; grant all privileges to mark;</p>
+</blockquote>
+<p>连接新创建的用户：</p>
+<blockquote>
+<p>SQL&gt; conn mark/chenyunlin;</p>
+</blockquote>
+<p>创建表：</p>
+<blockquote>
+<p>SQL&gt; create table test2(name varchar2(20), city varchar2(20));</p>
+</blockquote>
+<p>比如在此你拥有自动化创建数据表的脚本的话<br><code>## 执行sql脚本文件 @/Users/mark/Desktop/iotek_oracle.sql;</code></p>
+<h3 id="8-使用Navicat连接oracle"><a href="#8-使用Navicat连接oracle" class="headerlink" title="8.使用Navicat连接oracle"></a>8.使用Navicat连接oracle</h3><p>图片借用哈<br><img src="https://img2018.cnblogs.com/blog/1384393/202002/1384393-20200219000941495-1048166820.png"></p>
+<p>注意：服务名helowin是镜像地址中的</p>
+<p><strong>常用的一些命令：</strong></p>
+<p><code>docker ps</code>是查看当前运行的容器</p>
+<p><code>docker ps -a </code>是查看所有容器（包括停止的）</p>
+<p><code>docker images</code>查看所有镜像</p>
+<p><code>docker run -h &quot;oracle&quot; --name &quot;oracle&quot; -d -p 49160:22 -p 49161:1521 -p 49162:8080 alexeiled/docker-oracle-xe-11g</code><br>​ -h “oracle”：指定容器的hostname为oracle</p>
+<p>　　–name “oracle”：将容器命名为oracle</p>
+<p>　　-d：在后台运行</p>
+<p>　　-p: 端口映射，格式为：主机(宿主)端口:容器端口</p>
+<p><strong>启动或停止oracle服务：</strong></p>
+<p><code>docker start oracle11g</code></p>
+<p><code>docker stop oracle11g</code></p>
+<h3 id="9-后续操作命令"><a href="#9-后续操作命令" class="headerlink" title="9.后续操作命令"></a>9.后续操作命令</h3><p>删除容器：</p>
+<blockquote>
+<p>docker rm [containerId]<br>删除镜像：<br>docker rmi [imageId]</p>
+</blockquote>
+<h3 id="10-使用终端打开sqlplus"><a href="#10-使用终端打开sqlplus" class="headerlink" title="10.使用终端打开sqlplus"></a>10.使用终端打开sqlplus</h3><p>由于本人电脑的配置原因，</p>
+<ul>
+<li> docker exec -it oracle11g bash<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export ORACLE_HOME&#x3D;&#x2F;home&#x2F;oracle&#x2F;app&#x2F;oracle&#x2F;product&#x2F;11.2.0&#x2F;dbhome_2</span><br><span class="line">export ORACLE_SID&#x3D;helowin</span><br><span class="line">export PATH&#x3D;$ORACLE_HOME&#x2F;bin:$PATH</span><br><span class="line">sqlplus &#x2F;nolog</span><br><span class="line"></span><br><span class="line">SQL*Plus: Release 11.2.0.1.0 Production on Fri Dec 4 15:03:36 2020</span><br><span class="line"></span><br><span class="line">Copyright (c) 1982, 2009, Oracle.  All rights reserved.</span><br><span class="line"></span><br><span class="line">SQL&gt; </span><br></pre></td></tr></table></figure></li>
 </ul>
 ]]></content>
       <categories>
-        <category>RxJava</category>
+        <category>数据库</category>
       </categories>
       <tags>
-        <tag>RxJava</tag>
+        <tag>Oracle</tag>
+        <tag>环境搭建</tag>
       </tags>
   </entry>
   <entry>
@@ -2401,39 +2264,6 @@ Connection conn = null;
       </categories>
       <tags>
         <tag>布局</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>android retrofit End of input at line 1 column 1 path</title>
-    <url>/2020/09/03/android-retrofit-End-of-input-at-line-1-column-1-path/</url>
-    <content><![CDATA[<p>在使用retrofit作为项目的网络请求库时，接口定义如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@GET(ACT_GET_NEW_STAFF)</span><br><span class="line">Call&lt;TaskEn&gt; reqGetNewStaff();</span><br></pre></td></tr></table></figure>
-<p>接口从服务端获取了数据，通过GsonConverterFactory将服务端相应内容解析成对应的实体类。在接口正常响应时（有数据返回），并没有什么异常发生，但当接口请求的数据为空，我们的服务端人员并不是返回理论意义上的空，null或者[]（数据集合空），而是返回没有响应体body，只有响应头header，content-length为0的Response</p>
-<p>这时候GsonConverterFactory就解析异常了，并抛出如下异常：</p>
-<span id="more"></span>
-<blockquote>
-<p>java.io.EOFException:End of input at line 1 column 1 path </p>
-</blockquote>
-<p>一般来说，如果接口本身就是不需要处理body的，那么我们通常定义接口为</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Call&lt;Void&gt;</span><br></pre></td></tr></table></figure>
-<p> 这和上面的那两个接口是不一样的。</p>
-<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><ul>
-<li>请服务端人员吃顿饭，让他们规范接口，当数据为空时，返回null或者[]</li>
-<li>自己动手丰衣足食</li>
-</ul>
-<p>  自定义一个ConverterFactory</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public class NullOnEmptyConverterFactory extends Converter.Factory &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public Converter&lt;ResponseBody, ?&gt; responseBodyConverter(Type type, Annotation[] annotations, Retrofit retrofit) &#123;</span><br><span class="line">        final Converter&lt;ResponseBody, ?&gt; delegate &#x3D; retrofit.nextResponseBodyConverter(this, type, annotations);</span><br><span class="line">        return new Converter&lt;ResponseBody,Object&gt;() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public Object convert(ResponseBody body) throws IOException &#123;</span><br><span class="line">                if (body.contentLength() &#x3D;&#x3D; 0) return null;</span><br><span class="line">                return delegate.convert(body);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>然后设置到retrofit</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Retrofit retrofit &#x3D; new Retrofit.Builder()</span><br><span class="line">    ....</span><br><span class="line">    .addConverterFactory(new NullOnEmptyConverterFactory())</span><br><span class="line">    .addConverterFactory(GsonConverterFactory.create())</span><br><span class="line">    .build();</span><br></pre></td></tr></table></figure>
-
-<p>需要注意的是，NullOnEmptyConverterFactory必需在GsonConverterFactory之前addConverterFactory</p>
-<p><a href="http://www.voidcn.com/article/p-xoiqdiuz-re.html">原文连接</a></p>
-]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Error，retrofit</tag>
       </tags>
   </entry>
   <entry>
@@ -2510,59 +2340,143 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
-    <title>android反编译apktool---dex2jar---jdgui</title>
-    <url>/2020/12/14/android%E5%8F%8D%E7%BC%96%E8%AF%91apktool-dex2jar-jdgui/</url>
-    <content><![CDATA[<h2 id="反编译的工具（MAC环境下）"><a href="#反编译的工具（MAC环境下）" class="headerlink" title="反编译的工具（MAC环境下）"></a>反编译的工具（MAC环境下）</h2><p>下载地址：</p>
-<ul>
-<li><a href="https://ibotpeaches.github.io/Apktool/install/">apkTool：一款用于反编译apk资源文件</a></li>
-<li><a href="https://sourceforge.net/projects/dex2jar/files/">dex2jar：是用于将class.dex 转换成classes-dex2jar.jar的工具</a></li>
-<li><a href="http://java-decompiler.github.io/">jdgui：这个用于查看classes-dex2jar.jar 源码工具</a></li>
+    <title>android retrofit End of input at line 1 column 1 path</title>
+    <url>/2020/09/03/android-retrofit-End-of-input-at-line-1-column-1-path/</url>
+    <content><![CDATA[<p>在使用retrofit作为项目的网络请求库时，接口定义如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@GET(ACT_GET_NEW_STAFF)</span><br><span class="line">Call&lt;TaskEn&gt; reqGetNewStaff();</span><br></pre></td></tr></table></figure>
+<p>接口从服务端获取了数据，通过GsonConverterFactory将服务端相应内容解析成对应的实体类。在接口正常响应时（有数据返回），并没有什么异常发生，但当接口请求的数据为空，我们的服务端人员并不是返回理论意义上的空，null或者[]（数据集合空），而是返回没有响应体body，只有响应头header，content-length为0的Response</p>
+<p>这时候GsonConverterFactory就解析异常了，并抛出如下异常：</p>
+<span id="more"></span>
+<blockquote>
+<p>java.io.EOFException:End of input at line 1 column 1 path </p>
+</blockquote>
+<p>一般来说，如果接口本身就是不需要处理body的，那么我们通常定义接口为</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Call&lt;Void&gt;</span><br></pre></td></tr></table></figure>
+<p> 这和上面的那两个接口是不一样的。</p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><ul>
+<li>请服务端人员吃顿饭，让他们规范接口，当数据为空时，返回null或者[]</li>
+<li>自己动手丰衣足食</li>
 </ul>
-  <span id="more"></span>
+<p>  自定义一个ConverterFactory</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public class NullOnEmptyConverterFactory extends Converter.Factory &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public Converter&lt;ResponseBody, ?&gt; responseBodyConverter(Type type, Annotation[] annotations, Retrofit retrofit) &#123;</span><br><span class="line">        final Converter&lt;ResponseBody, ?&gt; delegate &#x3D; retrofit.nextResponseBodyConverter(this, type, annotations);</span><br><span class="line">        return new Converter&lt;ResponseBody,Object&gt;() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public Object convert(ResponseBody body) throws IOException &#123;</span><br><span class="line">                if (body.contentLength() &#x3D;&#x3D; 0) return null;</span><br><span class="line">                return delegate.convert(body);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后设置到retrofit</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Retrofit retrofit &#x3D; new Retrofit.Builder()</span><br><span class="line">    ....</span><br><span class="line">    .addConverterFactory(new NullOnEmptyConverterFactory())</span><br><span class="line">    .addConverterFactory(GsonConverterFactory.create())</span><br><span class="line">    .build();</span><br></pre></td></tr></table></figure>
 
-<h2 id="apktool下载安装使用"><a href="#apktool下载安装使用" class="headerlink" title="apktool下载安装使用"></a>apktool下载安装使用</h2><p>1、下载</p>
-<p><img src="https://img-blog.csdnimg.cn/20191226175801984.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d1YWlndWFpXzIwMTU=,size_16,color_FFFFFF,t_70"></p>
-<ul>
-<li>将你下载的apkttool工具放到/usr/local/bin<br><img src="https://img-blog.csdnimg.cn/20191226185054248.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d1YWlndWFpXzIwMTU=,size_16,color_FFFFFF,t_70"></li>
-<li>指向对应的文件夹cd /usr/local/bin<br><img src="https://img-blog.csdnimg.cn/20191226185223643.png"></li>
-<li>给apktool权限：输入以下两个命令行给予这两个文件夹权限<ul>
-<li>chmod a+x apktool.jar</li>
-<li>chmod a+x apktool</li>
-</ul>
-</li>
-<li>验证是否成功<br>终端输入<code>apktool -version</code></li>
-</ul>
-<p>2、使用反编译命令行 apktool d xxxx.apk<br>反编译之后的文件夹中的文件介绍<br><img src="https://img-blog.csdnimg.cn/20191226190211334.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d1YWlndWFpXzIwMTU=,size_16,color_FFFFFF,t_70"><br><img src="https://img-blog.csdnimg.cn/20191226190234935.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d1YWlndWFpXzIwMTU=,size_16,color_FFFFFF,t_70"><br>假如只需要获取app的xml或者图片资源，则到这一步则完成啦！</p>
-<p>如果要获取到java的代码，那么我们还要进行回编译，这样，我们就能获取到classex.dex文件了</p>
-<p>在终端执行命令 <code>apktool b app反编译的文件夹名称</code> ，执行完毕后，我们就可以在刚刚的文件夹里面多了一个<code>build</code>文件夹了，里面的 <code>classess.dex </code>则是我们想要获取到的源码文件</p>
-<h2 id="dex2jar操作流程"><a href="#dex2jar操作流程" class="headerlink" title="dex2jar操作流程"></a>dex2jar操作流程</h2><p>下载<br><img src="https://img-blog.csdnimg.cn/20191226190424255.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d1YWlndWFpXzIwMTU=,size_16,color_FFFFFF,t_70"><br>下载完成解压文件后，再终端执行 <code>chmod +x d2j-dex2jar.sh </code>和 <code>chmod +x d2j_invoke.sh</code> 添加运行权限：</p>
-<ul>
-<li>拿出里面的<code>classe.dex</code>，放入到<code>dex2jar</code>文件夹中</li>
-<li>使用命令行 <code>sh d2j-dex2jar.sh classes.dex</code>,就可以转换成<code>classes-dex2jar.jar </code><br><img src="https://img-blog.csdnimg.cn/20191226190907884.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d1YWlndWFpXzIwMTU=,size_16,color_FFFFFF,t_70"></li>
-</ul>
-<h2 id="jd-gui反编译class文件查看java代码"><a href="#jd-gui反编译class文件查看java代码" class="headerlink" title="jd-gui反编译class文件查看java代码"></a>jd-gui反编译class文件查看java代码</h2><p>下载文件放入自己的安装目录，解压即可使用<br>然后把刚刚我们获取到的<code>classes-dex2jar.jar</code>拖进去打开文件即可。</p>
+<p>需要注意的是，NullOnEmptyConverterFactory必需在GsonConverterFactory之前addConverterFactory</p>
+<p><a href="http://www.voidcn.com/article/p-xoiqdiuz-re.html">原文连接</a></p>
 ]]></content>
       <categories>
         <category>Android</category>
       </categories>
       <tags>
-        <tag>反编译</tag>
-        <tag>工具搭建</tag>
+        <tag>Error，retrofit</tag>
       </tags>
   </entry>
   <entry>
-    <title>dynamic、var、Object三者的区别</title>
-    <url>/2020/09/23/dynamic%E3%80%81var%E3%80%81Object%E4%B8%89%E8%80%85%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
-    <content><![CDATA[<h3 id="dynamic："><a href="#dynamic：" class="headerlink" title="dynamic："></a>dynamic：</h3><p>是所有Dart对象的基础类型， 在大多数情况下，通常不直接使用它，<br>通过它定义的变量会关闭类型检查，这意味着<br><code>dynamic x = &#39;hal&#39;;x.foo();</code><br>这段代码静态类型检查不会报错，但是运行时会crash，因为x并没有foo()方法，所以建议大家在编程时不要直接使用dynamic；</p>
-<h3 id="var："><a href="#var：" class="headerlink" title="var："></a>var：</h3><p>是一个关键字，意思是“我不关心这里的类型是什么。”，系统会自动推断类型runtimeType；</p>
-<h3 id="Object："><a href="#Object：" class="headerlink" title="Object："></a>Object：</h3><p>是Dart对象的基类，当你定义：Object o=xxx；时这时候系统会认为o是个对象，你可以调用o的toString()和hashCode()方法<br>因为Object提供了这些方法，但是如果你尝试调用o.foo()时，静态类型检查会进行报错；</p>
-<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><p>综上不难看出dynamic与Object的最大的区别是在静态类型检查上；</p>
+    <title>Markdown 入门指南一</title>
+    <url>/2019/01/04/Markdown-%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97%E4%B8%80/</url>
+    <content><![CDATA[<h3 id="一、Markdown-是什么？"><a href="#一、Markdown-是什么？" class="headerlink" title="一、Markdown 是什么？"></a><strong>一、Markdown 是什么？</strong></h3><hr>
+<p>Markdown 是一种轻量级的「标记语言」，创始人为约翰·格鲁伯，用简洁的语法代替排版，目前被越来越多的知识工作者、写作爱好者、程序员或研究员广泛使用。其常用的标记符号不超过十个，相对于更为复杂的 HTML 标记语言来说，Markdown 十分的轻量，学习成本也不需要太多，且一旦熟悉这种语法规则，会有沉浸式编辑的效果。</p>
+<span id="more"></span>
+<p>另外，印象笔记 Markdown 支持 CommonMark 和 GFM (GitHub Flavored Markdown) 标准。</p>
+<h3 id="二、印象笔记里-Markdown-有什么特点？"><a href="#二、印象笔记里-Markdown-有什么特点？" class="headerlink" title="二、印象笔记里 Markdown 有什么特点？"></a><strong>二、印象笔记里 Markdown 有什么特点？</strong></h3><hr>
+<ul>
+<li><strong>一键创建</strong>：支持 Markdown 独立的一键新建入口，为深度 Markdown 用户提供更好的效率体验；</li>
+<li><strong>支持丰富的主流 Markdown 语法</strong>：支持文字相关样式、序号列表、任务列表、表格、TOC 目录、多种图表、数学公式、流程图、时序图、甘特图等；</li>
+<li><strong>支持插入图片</strong>：可插入网络图片 或 直接拖动本地图片、复制剪贴板中的图片到 Markdown 笔记中；</li>
+<li><strong>支持多种模式切换</strong>：编辑与预览模式、纯编辑模式以及纯预览模式；</li>
+<li><strong>支持多种编辑主题</strong>：预置了白色、黑色、深空灰和印象绿主题，默认为印象绿，未来会有更多主题提供；</li>
+<li><strong>跨平台同步</strong>：创建的 Markdown 笔记可在登录了印象笔记帐户的各端查看，未来更多端会支持创建和编辑 Markdown 笔记；<br>演示模式：Markdown 笔记支持演示模式查看；</li>
+<li><strong>支持其他印象笔记特点功能</strong>：笔记标注、导出 PDF、设置提醒、工作群聊共享-查看&amp;编辑笔记等。<br><img src="https://list.yinxiang.com/media/images/6f6fbdf5d5880bba878cccdb6fde7dc2.png"><h3 id="三、如何创建-Markdown-笔记？"><a href="#三、如何创建-Markdown-笔记？" class="headerlink" title="三、如何创建 Markdown 笔记？"></a><strong>三、如何创建 Markdown 笔记？</strong></h3></li>
+</ul>
+<hr>
+<ol>
+<li>点击左上角「新建 Markdown 笔记」来创建新的 Markdown 笔记，另外，也支持配置隐藏「新建 Markdown 笔记」按钮，Windows 用户直接右单击「新建 Markdown 笔记」按钮，即可隐藏，Mac 用户可以右单击左侧边栏空白处，取消勾选「新建 Markdown 笔记」来完成隐藏此按钮</li>
+<li>点击菜单栏-文件-新建笔记-新建 Markdown 笔记（Mac 上为顶部菜单栏-文件-新建 Markdown笔记）</li>
+<li>使用快捷键 Ctrl+alt+D（Mac 上 CMD+D）来快速创建 Markdown 笔记<h3 id="四、印象笔记-Markdown-笔记支持哪些语法？"><a href="#四、印象笔记-Markdown-笔记支持哪些语法？" class="headerlink" title="四、印象笔记 Markdown 笔记支持哪些语法？"></a><strong>四、印象笔记 Markdown 笔记支持哪些语法？</strong></h3></li>
+</ol>
+<hr>
+<p>—— 以下语法均支持在编辑工具栏直接操作 —— </p>
+<h4 id="1-设置分级标题语法示例："><a href="#1-设置分级标题语法示例：" class="headerlink" title="1. 设置分级标题语法示例："></a>1. 设置分级标题语法示例：</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 一级标题</span><br><span class="line">## 二级标题</span><br><span class="line">### 三级标题</span><br><span class="line">#### 四级标题</span><br><span class="line">##### 五级标题</span><br><span class="line">###### 六级标题</span><br></pre></td></tr></table></figure>
+<p><img src="https://list.yinxiang.com/media/images/4d01db13595e47a605bdcee58863bcc9.png"></p>
+<hr>
+<h4 id="2-加粗文本"><a href="#2-加粗文本" class="headerlink" title="2. 加粗文本"></a>2. 加粗文本</h4><p>语法示例：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">**印象笔记**</span><br></pre></td></tr></table></figure>
+<p><img src="https://list.yinxiang.com/media/images/c6bdf4f7243a65e9d265f8354a985133.png"></p>
+<hr>
+<h4 id="3-斜体"><a href="#3-斜体" class="headerlink" title="3. 斜体"></a>3. 斜体</h4><p>语法示例：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">*印象笔记*</span><br></pre></td></tr></table></figure>
+<p><img src="https://list.yinxiang.com/media/images/013f1b9f886759dd2881a90594505be7.png"></p>
+<hr>
+<h4 id="4-下划线"><a href="#4-下划线" class="headerlink" title="4. 下划线"></a>4. 下划线</h4><p>语法示例：</p>
+<p>&lt;u&gt;印象笔记&lt;/u&gt;</p>
+<p><img src="https://list.yinxiang.com/media/images/e9dfb2393770d6b3f9797251828fc64a.png"></p>
+<hr>
+<h4 id="5-删除线"><a href="#5-删除线" class="headerlink" title="5. 删除线"></a>5. 删除线</h4><p>语法示例：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~~印象笔记不支持Markdown~~</span><br></pre></td></tr></table></figure>
+<p><img src="https://list.yinxiang.com/media/images/801daebf96b7c608324f653b8919d20b.png"></p>
+<hr>
+<h4 id="6-添加分隔线"><a href="#6-添加分隔线" class="headerlink" title="6. 添加分隔线"></a>6. 添加分隔线</h4><p>语法示例：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* * *</span><br></pre></td></tr></table></figure>
+<p><img src="https://list.yinxiang.com/media/images/17e2f842833974e024ddbfe8601db88a.png"></p>
+<hr>
+<h4 id="7-引用文本语法示例："><a href="#7-引用文本语法示例：" class="headerlink" title="7. 引用文本语法示例："></a>7. 引用文本语法示例：</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;近日，印象笔记宣布完成重组。作为Evernote已在中国独立运营近6年的品牌，印象笔记将成为由中方控股的中美合资独立运营实体，并获得红杉宽带跨境数字产业基金首轮数亿元人民币投资。</span><br></pre></td></tr></table></figure>
+<p><img src="https://list.yinxiang.com/media/images/5e7bc153735b23aa620131c3b53c4bbe.png"></p>
+<hr>
+<h4 id="8-添加符号列表或者数字列表"><a href="#8-添加符号列表或者数字列表" class="headerlink" title="8. 添加符号列表或者数字列表"></a>8. 添加符号列表或者数字列表</h4><p>语法示例：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">使用 iOS 版本印象笔记如何快速保存内容？</span><br><span class="line">1. 启用印象笔记 Widget ——印象笔记·剪贴板</span><br><span class="line">2. 复制粘贴任意内容     </span><br><span class="line">      * 微信</span><br><span class="line">3. 滑动到 Widget 插件区域即可完成保存</span><br><span class="line">印象笔记·剪贴板有什么特点？</span><br><span class="line">* 快：开启自动模式，可以自动保存剪贴板的任意内容</span><br><span class="line">* 一切：只要可以复制粘贴就可以保存</span><br><span class="line">* 有序：全部保存在「我的剪贴板」笔记本并以时间来命名</span><br></pre></td></tr></table></figure>
+<p><img src="https://list.yinxiang.com/media/images/50ffb8685cde14d6f94ba56d048eb484.png"></p>
+<hr>
+<h4 id="9-添加待办事项"><a href="#9-添加待办事项" class="headerlink" title="9. 添加待办事项"></a>9. 添加待办事项</h4><p>语法示例：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">三只青蛙</span><br><span class="line">* [x] 第一只青蛙</span><br><span class="line">* [ ] 第二只青蛙</span><br><span class="line">* [ ] 第三只青蛙</span><br></pre></td></tr></table></figure>
+<p><img src="https://list.yinxiang.com/media/images/aeec9223706ba3fc5ff64649a1026b4a.png"></p>
+<hr>
+<h4 id="10-插入链接"><a href="#10-插入链接" class="headerlink" title="10. 插入链接"></a>10. 插入链接</h4><p>语法示例：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[印象笔记官网](https:&#x2F;&#x2F;www.yinxiang.com&#x2F;)</span><br></pre></td></tr></table></figure>
+<p><img src="https://list.yinxiang.com/media/images/262a54f32549f26feb2a8ca094ebd7e2.png"></p>
+<hr>
+<h4 id="11-插入图片"><a href="#11-插入图片" class="headerlink" title="11. 插入图片"></a>11. 插入图片</h4><p>印象笔记支持嵌入网络图片或者直接拖入本地图片，其中本地图片格式支持 jpg、png 和 gif。<br>语法示例：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">![image](https:&#x2F;&#x2F;www.yinxiang.com&#x2F;blog&#x2F;wp-content&#x2F;uploads&#x2F;2018&#x2F;07&#x2F;%E5%94%AE%E7%A5%A8%E5%BE%AE%E4%BF%A1%E5%B0%81%E9%9D%A22.png)</span><br></pre></td></tr></table></figure>
+<p><img src="https://www.yinxiang.com/blog/wp-content/uploads/2018/07/%E5%94%AE%E7%A5%A8%E5%BE%AE%E4%BF%A1%E5%B0%81%E9%9D%A22.png" alt="image"></p>
+<p>另外，针对插入的本地图片可以控制图片大小，在拖拽、拷贝或者点击插入本地图片之后，直接在图片名称后面（无需空格）添加以下语法均可以按照以下要求控制图片大小：<br>@w=300<br>@h=150<br>@w=200h=100<br>@h=100w=200<br>示例笔记<br>782d277a1dbc7dea8480267cf5f87ebd.png@w=300<br><img src="https://list.yinxiang.com/media/images/fb2dde021cec7c807b177af6956664b6.png"></p>
+<hr>
+<h4 id="12-插入表格"><a href="#12-插入表格" class="headerlink" title="12. 插入表格"></a>12. 插入表格</h4><p>语法示例：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">| 帐户类型 | 免费帐户 | 标准帐户 | 高级帐户 |</span><br><span class="line">| --- | --- | --- | --- |</span><br><span class="line">| 帐户流量 | 60M | 1GB | 10GB |</span><br><span class="line">| 设备数目 | 2台 | 无限制 | 无限制 |</span><br><span class="line">| 当前价格 | 免费 | ￥8.17&#x2F;月 | ￥12.33&#x2F;月| </span><br></pre></td></tr></table></figure>
+<p><img src="https://list.yinxiang.com/media/images/42bec0bb39317b0a5d7cbf799a079c11.png"></p>
+<hr>
+<h4 id="13-插入图表"><a href="#13-插入图表" class="headerlink" title="13. 插入图表"></a>13. 插入图表</h4><p>目前支持饼状图、折线图、柱状图和条形图，只需将 type 改为对应的pie、line、column 和 bar。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#96;&#96;&#96;chart</span><br><span class="line">,预算,收入,花费,债务</span><br><span class="line">June,5000,8000,4000,6000</span><br><span class="line">July,3000,1000,4000,3000</span><br><span class="line">Aug,5000,7000,6000,3000</span><br><span class="line">Sep,7000,2000,3000,1000</span><br><span class="line">Oct,6000,5000,4000,2000</span><br><span class="line">Nov,4000,3000,5000,</span><br><span class="line"></span><br><span class="line">type: pie</span><br><span class="line">title: 每月收益</span><br><span class="line">x.title: Amount</span><br><span class="line">y.title: Month</span><br><span class="line">y.suffix: $&#96;&#96;&#96;</span><br></pre></td></tr></table></figure>
+<p><img src="https://list.yinxiang.com/media/images/8e02032f85f6612a4c2bb85797251f23.png"></p>
+<hr>
+<h4 id="14-插入行内代码或代码块"><a href="#14-插入行内代码或代码块" class="headerlink" title="14. 插入行内代码或代码块"></a>14. 插入行内代码或代码块</h4><p>印象笔记 Markdown 语法支持几十种编程语言的高亮的显示。<br>语法示例：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">python</span><br><span class="line">#!&#x2F;usr&#x2F;bin&#x2F;python</span><br><span class="line">import re</span><br><span class="line"></span><br><span class="line">line &#x3D; &quot;Cats are smarter than dogs&quot;</span><br><span class="line"></span><br><span class="line">matchObj &#x3D; re.match( r&#39;(.*) are (.*?) .*&#39;, line, re.M|re.I)</span><br><span class="line"></span><br><span class="line">if matchObj:   </span><br><span class="line">    print &quot;matchObj.group() : &quot;, matchObj.group()    </span><br><span class="line">    print &quot;matchObj.group(1) : &quot;, matchObj.group(1)    </span><br><span class="line">    print &quot;matchObj.group(2) : &quot;, matchObj.group(2)</span><br><span class="line">else:    </span><br><span class="line">    print &quot;No match!!&quot;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="15-插入数学公式印象笔记-Markdown-支持绝大多数的-LaTeX-数学公式"><a href="#15-插入数学公式印象笔记-Markdown-支持绝大多数的-LaTeX-数学公式" class="headerlink" title="15. 插入数学公式印象笔记 Markdown 支持绝大多数的 LaTeX 数学公式"></a>15. 插入数学公式印象笔记 Markdown 支持绝大多数的 LaTeX 数学公式</h4><p>语法示例：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mathe^&#123;i\pi&#125; + 1 &#x3D; 0</span><br></pre></td></tr></table></figure>
+<p>更多数学公式的输入可以参考：<a href="https://khan.github.io/KaTeX/docs/supported.html">https://khan.github.io/KaTeX/docs/supported.html</a><br><img src="https://list.yinxiang.com/media/images/c93e418911efa9fef085f5cf5fef5ccb.png"></p>
+<hr>
+<h4 id="16-插入流程图"><a href="#16-插入流程图" class="headerlink" title="16. 插入流程图"></a>16. 插入流程图</h4><p>语法示例：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mermaid</span><br><span class="line">graph TD</span><br><span class="line">A[模块A] --&gt;;|A1| B(模块B)</span><br><span class="line">B --&gt;; C&#123;判断条件C&#125;</span><br><span class="line">C --&gt;;|条件C1|D[模块D]</span><br><span class="line">C --&gt;;|条件C2|E[模块E]</span><br><span class="line">C --&gt;;|条件C3|F[模块F]</span><br></pre></td></tr></table></figure>
+<p><img src="https://list.yinxiang.com/media/images/3f18e5911a3342af4871115ba519f544.png"></p>
+<hr>
+<h4 id="17-插入时序图"><a href="#17-插入时序图" class="headerlink" title="17.  插入时序图"></a>17.  插入时序图</h4><p>语法示例：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mermaid</span><br><span class="line">sequenceDiagram</span><br><span class="line">A-&gt;&gt;B: 是否已收到消息？B--&gt;&gt;A: 已收到消息</span><br></pre></td></tr></table></figure>
+<p><img src="https://list.yinxiang.com/media/images/c54a131fbcbc0167c0a2ffa6e1c53a9b.png"></p>
+<hr>
+<h4 id="18-插入甘特图语法示例："><a href="#18-插入甘特图语法示例：" class="headerlink" title="18. 插入甘特图语法示例："></a>18. 插入甘特图语法示例：</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mermaid</span><br><span class="line">gantt</span><br><span class="line">title甘特图</span><br><span class="line">dateFormat YYYY-MM-DD</span><br><span class="line">section 项目A</span><br><span class="line">任务1 :a1, 2018-06-06, 30d</span><br><span class="line">任务2 :after a1 , 20d</span><br><span class="line">section 项目B</span><br><span class="line">任务3 :2018-06-12 , 12d</span><br><span class="line">任务4 : 24d</span><br></pre></td></tr></table></figure>
+<p><img src="https://list.yinxiang.com/media/images/cb24dc3b1004d6f07119e60fcb86f5a8.png"></p>
+<hr>
+<h4 id="19-设置目录"><a href="#19-设置目录" class="headerlink" title="19. 设置目录"></a>19. 设置目录</h4><p>设置之后可以自动根据设置的分级标题来自动生成目录。<br>语法示例[TOC]：</p>
+<hr>
+<p>[[TOC]]</p>
+<p><img src="https://list.yinxiang.com/media/images/3caad079bbafbb2f7ba3dbd59fbdc057.png">
+ </p>
 ]]></content>
       <categories>
-        <category>flutter</category>
+        <category>工具使用</category>
       </categories>
       <tags>
-        <tag>dart</tag>
+        <tag>工具使用</tag>
       </tags>
   </entry>
   <entry>
@@ -2812,6 +2726,36 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
+    <title>RxJava学习笔记一</title>
+    <url>/2020/10/19/RxJava%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%80/</url>
+    <content><![CDATA[<h3 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World!"></a>Hello World!</h3><ul>
+<li>RxJava1.1.7.jar<br>代码演示：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">		&#x2F;&#x2F;第一步、创建被观察者</span><br><span class="line">		Observable&lt;String&gt; mObservable &#x3D; Observable.create(new OnSubscribe&lt;String&gt;()&#123;</span><br><span class="line">			@Override</span><br><span class="line">			public void call(Subscriber&lt;? super String&gt; subscriber) &#123;</span><br><span class="line">				subscriber.onNext(&quot;Hello World!&quot;);</span><br><span class="line">				subscriber.onCompleted();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;第二步、创建观察者</span><br><span class="line">		Subscriber&lt;String&gt; mSubscriber &#x3D; new Subscriber&lt;String&gt;() &#123;</span><br><span class="line"></span><br><span class="line">			@Override</span><br><span class="line">			public void onCompleted() &#123;</span><br><span class="line">				&#x2F;&#x2F; TODO Auto-generated method stub</span><br><span class="line">				System.out.println(&quot;onCompleted&quot;);</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			@Override</span><br><span class="line">			public void onError(Throwable arg0) &#123;</span><br><span class="line">				&#x2F;&#x2F; TODO Auto-generated method stub</span><br><span class="line">				System.out.println(&quot;onError&quot;);</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			@Override</span><br><span class="line">			public void onNext(String arg0) &#123;</span><br><span class="line">				&#x2F;&#x2F; TODO Auto-generated method stub</span><br><span class="line">				System.out.println(&quot;OnNext:&quot;+arg0);</span><br><span class="line">				</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;;</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;第三步、订阅事件</span><br><span class="line">		mObservable.subscribe(mSubscriber);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>例如代码中所演示的，RxJava的使用就是那么简单，通过订阅事件将被观察者和观察者进行绑定。</p>
+</blockquote>
+<span id="more"></span>
+<h3 id="响应式编程："><a href="#响应式编程：" class="headerlink" title="响应式编程："></a>响应式编程：</h3>在介绍RxJava前，我们先聊聊响应式编程。那么什么是响应式编程呢？响应式编程是一种基于异步数据流概念的编程模式。数据流就像一条河：它可以被观测，被过滤，被操作，或者为新的消费者与另外一条流合并为一条新的流。</li>
+</ul>
+<p>响应式编程的一个关键概念是事件。事件可以被等待，可以触发过程，也可以触发其它事件。事件是唯一的以合适的方式将我们的现实世界映射到我们的软件中：如果屋里太热了我们就打开一扇窗户。同样的，当我们的天气app从服务端获取到新的天气数据后，我们需要更新app上展示天气信息的UI；汽车上的车道偏移系统探测到车辆偏移了正常路线就会提醒驾驶者纠正，就是是响应事件。</p>
+<p>今天，响应式编程最通用的一个场景是UI：我们的移动App必须做出对网络调用、用户触摸输入和系统弹框的响应。在这个世界上，软件之所以是事件驱动并响应的是因为现实生活也是如此。</p>
+<blockquote>
+<p>本章节中部分概念摘自《RxJava Essentials》一书</p>
+</blockquote>
+<h3 id="RxJava简介："><a href="#RxJava简介：" class="headerlink" title="RxJava简介："></a>RxJava简介：</h3><p>RxJava本质上是一个异步操作库，是一个能让你用极其简洁的逻辑去处理繁琐复杂任务的异步事件库。</p>
+<p>Rx是微软.Net的一个响应式扩展，Rx借助可观测的序列提供一种简单的方式来创建异步的，基于事件驱动的程序。2012年Netflix为了应对不断增长的业务需求开始将.NET Rx迁移到JVM上面。并于13年二月份正式向外展示了RxJava。<br>从语义的角度来看，RxJava就是.NET Rx。从语法的角度来看，Netflix考虑到了对应每个Rx方法,保留了Java代码规范和基本的模式。<br><img src="https://pic1.zhimg.com/80/ca736fe59de94c221875cb428d7eaff0_1440w.png"></p>
+<h3 id="RxJava好在哪"><a href="#RxJava好在哪" class="headerlink" title="RxJava好在哪"></a>RxJava好在哪</h3><ul>
+<li>供了AsyncTask,Handler等用来做异步操作的类库了AsyncTask,Handler等用来做异步操作的类库</li>
+<li>非常简洁的代码逻辑来解决复杂问题</li>
+</ul>
+]]></content>
+      <categories>
+        <category>RxJava</category>
+      </categories>
+      <tags>
+        <tag>RxJava</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>vue基础使用-2</title>
     <url>/2020/08/25/vue%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8-2/</url>
     <content><![CDATA[]]></content>
@@ -2903,6 +2847,33 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
+    <title>如何修改表结构：ALERT语句</title>
+    <url>/2021/04/19/%E5%A6%82%E4%BD%95%E4%BF%AE%E6%94%B9%E8%A1%A8%E7%BB%93%E6%9E%84%EF%BC%9AALERT%E8%AF%AD%E5%8F%A5/</url>
+    <content><![CDATA[<p>应用场景：当我们的业务需要对已经存在的表进行表结构修改时，我们需要使用 ALERT 语句进行修改。</p>
+<h3 id="增加表列"><a href="#增加表列" class="headerlink" title="增加表列:"></a>增加表列:</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ALERT TABLE tablenamme ADD</span><br><span class="line">(</span><br><span class="line">    column dataType [DEFAULT expr][NOT NULL],</span><br><span class="line">    column dataType [DEFAULT expr][NOT NULL],</span><br><span class="line">    ....</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h3 id="修改表列"><a href="#修改表列" class="headerlink" title="修改表列:"></a>修改表列:</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ALERT TABLE tablenamme MODIFY</span><br><span class="line">(</span><br><span class="line">    column dataType [DEFAULT expr][NOT NULL],</span><br><span class="line">    column dataType [DEFAULT expr][NOT NULL],</span><br><span class="line">    ....</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p><strong>注意事项</strong>：</p>
+<ul>
+<li>修改表列时，可以增加 <code>NOT NULL</code>及默认值约束，不能增加其他约束</li>
+<li>增加的默认值只会影响到后来插入的值</li>
+<li>若是要缩小列的宽度时，只有表中该列为空后者表里没有记录</li>
+<li>如若这列有空值，则不能添加非空约束</li>
+<li>若是改变该列的类型，只有表中该列为空后者表里没有记录</li>
+</ul>
+<h3 id="删除表中的列"><a href="#删除表中的列" class="headerlink" title="删除表中的列"></a>删除表中的列</h3><p><code>ALERT TABLE tablenamme DROP column col_name;</code></p>
+<h3 id="增加约束"><a href="#增加约束" class="headerlink" title="增加约束"></a>增加约束</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ALERT TABLE tablenamme </span><br><span class="line">ADD [CONSTRAINT constraint] type (column);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>增加 <code>NOT NULL</code>约束只能在增加列和修改列的时候添加</li>
+</ul>
+]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>Oracle</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>图片加水印</title>
     <url>/2019/03/05/%E5%9B%BE%E7%89%87%E5%8A%A0%E6%B0%B4%E5%8D%B0/</url>
     <content><![CDATA[<h1 id="我尝试了两种实现水印的方式"><a href="#我尝试了两种实现水印的方式" class="headerlink" title="我尝试了两种实现水印的方式"></a>我尝试了两种实现水印的方式</h1><h2 id="1、一个轻量级是我文字和图片水印框架"><a href="#1、一个轻量级是我文字和图片水印框架" class="headerlink" title="1、一个轻量级是我文字和图片水印框架"></a>1、<a href="https://github.com/MarkCHYL/MarkImage_Watermark">一个轻量级是我文字和图片水印框架</a></h2><h2 id="2、通过Canvas绘制水印"><a href="#2、通过Canvas绘制水印" class="headerlink" title="2、通过Canvas绘制水印"></a>2、<a href="https://github.com/MarkCHYL/MarkBingCheng">通过Canvas绘制水印</a></h2><h4 id="轻量级的我就不做笔记了，因为很简单就能实现你想要的水印，留意内存溢出就好。"><a href="#轻量级的我就不做笔记了，因为很简单就能实现你想要的水印，留意内存溢出就好。" class="headerlink" title="轻量级的我就不做笔记了，因为很简单就能实现你想要的水印，留意内存溢出就好。"></a>轻量级的我就不做笔记了，因为很简单就能实现你想要的水印，留意内存溢出就好。</h4> <span id="more"></span>
@@ -2931,33 +2902,6 @@ Connection conn = null;
       </categories>
       <tags>
         <tag>Android</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何修改表结构：ALERT语句</title>
-    <url>/2021/04/19/%E5%A6%82%E4%BD%95%E4%BF%AE%E6%94%B9%E8%A1%A8%E7%BB%93%E6%9E%84%EF%BC%9AALERT%E8%AF%AD%E5%8F%A5/</url>
-    <content><![CDATA[<p>应用场景：当我们的业务需要对已经存在的表进行表结构修改时，我们需要使用 ALERT 语句进行修改。</p>
-<h3 id="增加表列"><a href="#增加表列" class="headerlink" title="增加表列:"></a>增加表列:</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ALERT TABLE tablenamme ADD</span><br><span class="line">(</span><br><span class="line">    column dataType [DEFAULT expr][NOT NULL],</span><br><span class="line">    column dataType [DEFAULT expr][NOT NULL],</span><br><span class="line">    ....</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<h3 id="修改表列"><a href="#修改表列" class="headerlink" title="修改表列:"></a>修改表列:</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ALERT TABLE tablenamme MODIFY</span><br><span class="line">(</span><br><span class="line">    column dataType [DEFAULT expr][NOT NULL],</span><br><span class="line">    column dataType [DEFAULT expr][NOT NULL],</span><br><span class="line">    ....</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<p><strong>注意事项</strong>：</p>
-<ul>
-<li>修改表列时，可以增加 <code>NOT NULL</code>及默认值约束，不能增加其他约束</li>
-<li>增加的默认值只会影响到后来插入的值</li>
-<li>若是要缩小列的宽度时，只有表中该列为空后者表里没有记录</li>
-<li>如若这列有空值，则不能添加非空约束</li>
-<li>若是改变该列的类型，只有表中该列为空后者表里没有记录</li>
-</ul>
-<h3 id="删除表中的列"><a href="#删除表中的列" class="headerlink" title="删除表中的列"></a>删除表中的列</h3><p><code>ALERT TABLE tablenamme DROP column col_name;</code></p>
-<h3 id="增加约束"><a href="#增加约束" class="headerlink" title="增加约束"></a>增加约束</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ALERT TABLE tablenamme </span><br><span class="line">ADD [CONSTRAINT constraint] type (column);</span><br></pre></td></tr></table></figure>
-<ul>
-<li>增加 <code>NOT NULL</code>约束只能在增加列和修改列的时候添加</li>
-</ul>
-]]></content>
-      <categories>
-        <category>数据库</category>
-      </categories>
-      <tags>
-        <tag>Oracle</tag>
       </tags>
   </entry>
   <entry>
@@ -3036,6 +2980,23 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
+    <title>安卓的启动模式详解</title>
+    <url>/2018/12/16/%E5%AE%89%E5%8D%93%E7%9A%84%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3/</url>
+    <content><![CDATA[<h4 id="安卓开发者基本都知道Activity的四大启动模式，但是一到被问到之间区别的时候，再问深一点的时候，往往都会回答的不是很让面试官满意，鄙人就是，嘴皮子笨不懂得如何表达清楚。"><a href="#安卓开发者基本都知道Activity的四大启动模式，但是一到被问到之间区别的时候，再问深一点的时候，往往都会回答的不是很让面试官满意，鄙人就是，嘴皮子笨不懂得如何表达清楚。" class="headerlink" title="安卓开发者基本都知道Activity的四大启动模式，但是一到被问到之间区别的时候，再问深一点的时候，往往都会回答的不是很让面试官满意，鄙人就是，嘴皮子笨不懂得如何表达清楚。"></a>安卓开发者基本都知道Activity的四大启动模式，但是一到被问到之间区别的时候，再问深一点的时候，往往都会回答的不是很让面试官满意，鄙人就是，嘴皮子笨不懂得如何表达清楚。</h4><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a><strong>简介</strong></h2><h4 id="我们在创建一个Activity后，都知道要在清单文件中去注册，在程序员创建该Activity实例时，系统会按照先进先出的原则，创建一个任务栈将其实例放入其中，然后按back键时或finish时，系统就会将栈顶的Activity移除栈，我们可以在清单文件中指明该Activity的启动模式，系统默认的Activity的启动模式是standard模式。"><a href="#我们在创建一个Activity后，都知道要在清单文件中去注册，在程序员创建该Activity实例时，系统会按照先进先出的原则，创建一个任务栈将其实例放入其中，然后按back键时或finish时，系统就会将栈顶的Activity移除栈，我们可以在清单文件中指明该Activity的启动模式，系统默认的Activity的启动模式是standard模式。" class="headerlink" title="我们在创建一个Activity后，都知道要在清单文件中去注册，在程序员创建该Activity实例时，系统会按照先进先出的原则，创建一个任务栈将其实例放入其中，然后按back键时或finish时，系统就会将栈顶的Activity移除栈，我们可以在清单文件中指明该Activity的启动模式，系统默认的Activity的启动模式是standard模式。"></a>我们在创建一个Activity后，都知道要在清单文件中去注册，在程序员创建该Activity实例时，系统会按照先进先出的原则，创建一个任务栈将其实例放入其中，然后按back键时或finish时，系统就会将栈顶的Activity移除栈，我们可以在清单文件中指明该Activity的启动模式，系统默认的Activity的启动模式是standard模式。</h4><hr>
+<span id="more"></span>
+<h3 id="Activity的启动模式："><a href="#Activity的启动模式：" class="headerlink" title="Activity的启动模式："></a>Activity的启动模式：</h3><h4 id="standard、singleTask、singleTop、singleInstance"><a href="#standard、singleTask、singleTop、singleInstance" class="headerlink" title="standard、singleTask、singleTop、singleInstance"></a><em><strong>standard、singleTask、singleTop、singleInstance</strong></em></h4><h4 id="1-standard-标准模式"><a href="#1-standard-标准模式" class="headerlink" title="1. standard(标准模式)"></a>1. standard(标准模式)</h4><p><em><strong>不管这个Activity的实例是否存在于任务栈中或者和启动它的Activity是否在相同的任务栈中，每次启动Activity都会创建一个新的实例。谁启动了它，它就属于启动它的Activity的任务栈中，</strong></em></p>
+<h3 id="无论核实启动哪个Activity，都会重新创建页面实例并收入栈尾"><a href="#无论核实启动哪个Activity，都会重新创建页面实例并收入栈尾" class="headerlink" title="无论核实启动哪个Activity，都会重新创建页面实例并收入栈尾"></a><em><strong>无论核实启动哪个Activity，都会重新创建页面实例并收入栈尾</strong></em></h3><h4 id="2-singleTask-栈内复用模式"><a href="#2-singleTask-栈内复用模式" class="headerlink" title="2. singleTask(栈内复用模式)"></a>2. singleTask(栈内复用模式)</h4><p><em><strong>在这个模式下，如果栈内存在该Activity的实例，不管是否存在于栈顶都不会再创建实例，而是会将该实例前的Activity清出栈顶（cleanTop），并且会回调onNewIntent方法。其实在这个过程中，首先是会进行任务栈的匹配，这个任务栈就是通过taskAffinity属性指定，如果不存在这个任务栈，就会创建一个任务栈，并将该Activity放入栈中。流程图比较清晰，如下所见：</strong></em><br><img src="https://user-gold-cdn.xitu.io/2017/5/17/490fd5b297a2a07d60d1ffdad58e6cc3" alt="image"></p>
+<h3 id="启动activity时，判断栈中存在activity的实例，就重新利用，并清除位于该实例上面的所有实例，否则情况和standard一样"><a href="#启动activity时，判断栈中存在activity的实例，就重新利用，并清除位于该实例上面的所有实例，否则情况和standard一样" class="headerlink" title="启动activity时，判断栈中存在activity的实例，就重新利用，并清除位于该实例上面的所有实例，否则情况和standard一样"></a><em><strong>启动activity时，判断栈中存在activity的实例，就重新利用，并清除位于该实例上面的所有实例，否则情况和standard一样</strong></em></h3><h4 id="3-singleTop-栈顶复用模式"><a href="#3-singleTop-栈顶复用模式" class="headerlink" title="3. singleTop(栈顶复用模式)"></a>3. singleTop(栈顶复用模式)</h4><p><em><strong>这个模式下，如果Activity的实例已经存在在栈顶，启动它就不会再创建新的实例，而是会调用onNewIntent，通过此方法的参数我们可以去除当前请求的信息。随后会调用onResume方法，不再调用onCreate、onStart方法，因为它没有变化。如果没有存在的话，就会如同standard模式一样。这种模式可以用来防止多次打开同一个Activity。</strong></em></p>
+<h3 id="启动activity时，判断栈顶正好时该activity的实例，就重新使用，否则就会创建新的实例放入栈顶，否则的情况和standard类似"><a href="#启动activity时，判断栈顶正好时该activity的实例，就重新使用，否则就会创建新的实例放入栈顶，否则的情况和standard类似" class="headerlink" title="启动activity时，判断栈顶正好时该activity的实例，就重新使用，否则就会创建新的实例放入栈顶，否则的情况和standard类似"></a><em><strong>启动activity时，判断栈顶正好时该activity的实例，就重新使用，否则就会创建新的实例放入栈顶，否则的情况和standard类似</strong></em></h3><h4 id="4、singleInstance（全局唯一模式）"><a href="#4、singleInstance（全局唯一模式）" class="headerlink" title="4、singleInstance（全局唯一模式）"></a>4、singleInstance（全局唯一模式）</h4><p><em><strong>该模式具备singleTask模式的所有特性外，与它的区别就是，这种模式下的Activity会单独占用一个Task栈，具有全局唯一性，即整个系统中就这么一个实例，由于栈内复用的特性，后续的请求均不会创建新的Activity实例，除非这个特殊的任务栈被销毁了。以singleInstance模式启动的Activity在整个系统中是单例的，如果在启动这样的Activiyt时，已经存在了一个实例，那么会把它所在的任务调度到前台，重用这个实例。</strong></em></p>
+<h3 id="启动activity时，将该Activity的实例放入一个新的栈中，原栈中的实例保持不变"><a href="#启动activity时，将该Activity的实例放入一个新的栈中，原栈中的实例保持不变" class="headerlink" title="启动activity时，将该Activity的实例放入一个新的栈中，原栈中的实例保持不变"></a><em><strong>启动activity时，将该Activity的实例放入一个新的栈中，原栈中的实例保持不变</strong></em></h3><h4 id="ps：-adb-shell-dumpsys-activity-查看adb运行日志"><a href="#ps：-adb-shell-dumpsys-activity-查看adb运行日志" class="headerlink" title="ps：[adb shell dumpsys activity],查看adb运行日志"></a>ps：[adb shell dumpsys activity],查看adb运行日志</h4>]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>安全码SHA1如何获取</title>
     <url>/2020/01/15/%E5%AE%89%E5%85%A8%E7%A0%81SHA1%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96/</url>
     <content><![CDATA[<p>在高德地图集成的时候遇到那玩意。<br><a href="https://blog.csdn.net/qq_33704095/article/details/80861146">原文</a></p>
@@ -3074,23 +3035,6 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
-    <title>安卓的启动模式详解</title>
-    <url>/2018/12/16/%E5%AE%89%E5%8D%93%E7%9A%84%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3/</url>
-    <content><![CDATA[<h4 id="安卓开发者基本都知道Activity的四大启动模式，但是一到被问到之间区别的时候，再问深一点的时候，往往都会回答的不是很让面试官满意，鄙人就是，嘴皮子笨不懂得如何表达清楚。"><a href="#安卓开发者基本都知道Activity的四大启动模式，但是一到被问到之间区别的时候，再问深一点的时候，往往都会回答的不是很让面试官满意，鄙人就是，嘴皮子笨不懂得如何表达清楚。" class="headerlink" title="安卓开发者基本都知道Activity的四大启动模式，但是一到被问到之间区别的时候，再问深一点的时候，往往都会回答的不是很让面试官满意，鄙人就是，嘴皮子笨不懂得如何表达清楚。"></a>安卓开发者基本都知道Activity的四大启动模式，但是一到被问到之间区别的时候，再问深一点的时候，往往都会回答的不是很让面试官满意，鄙人就是，嘴皮子笨不懂得如何表达清楚。</h4><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a><strong>简介</strong></h2><h4 id="我们在创建一个Activity后，都知道要在清单文件中去注册，在程序员创建该Activity实例时，系统会按照先进先出的原则，创建一个任务栈将其实例放入其中，然后按back键时或finish时，系统就会将栈顶的Activity移除栈，我们可以在清单文件中指明该Activity的启动模式，系统默认的Activity的启动模式是standard模式。"><a href="#我们在创建一个Activity后，都知道要在清单文件中去注册，在程序员创建该Activity实例时，系统会按照先进先出的原则，创建一个任务栈将其实例放入其中，然后按back键时或finish时，系统就会将栈顶的Activity移除栈，我们可以在清单文件中指明该Activity的启动模式，系统默认的Activity的启动模式是standard模式。" class="headerlink" title="我们在创建一个Activity后，都知道要在清单文件中去注册，在程序员创建该Activity实例时，系统会按照先进先出的原则，创建一个任务栈将其实例放入其中，然后按back键时或finish时，系统就会将栈顶的Activity移除栈，我们可以在清单文件中指明该Activity的启动模式，系统默认的Activity的启动模式是standard模式。"></a>我们在创建一个Activity后，都知道要在清单文件中去注册，在程序员创建该Activity实例时，系统会按照先进先出的原则，创建一个任务栈将其实例放入其中，然后按back键时或finish时，系统就会将栈顶的Activity移除栈，我们可以在清单文件中指明该Activity的启动模式，系统默认的Activity的启动模式是standard模式。</h4><hr>
-<span id="more"></span>
-<h3 id="Activity的启动模式："><a href="#Activity的启动模式：" class="headerlink" title="Activity的启动模式："></a>Activity的启动模式：</h3><h4 id="standard、singleTask、singleTop、singleInstance"><a href="#standard、singleTask、singleTop、singleInstance" class="headerlink" title="standard、singleTask、singleTop、singleInstance"></a><em><strong>standard、singleTask、singleTop、singleInstance</strong></em></h4><h4 id="1-standard-标准模式"><a href="#1-standard-标准模式" class="headerlink" title="1. standard(标准模式)"></a>1. standard(标准模式)</h4><p><em><strong>不管这个Activity的实例是否存在于任务栈中或者和启动它的Activity是否在相同的任务栈中，每次启动Activity都会创建一个新的实例。谁启动了它，它就属于启动它的Activity的任务栈中，</strong></em></p>
-<h3 id="无论核实启动哪个Activity，都会重新创建页面实例并收入栈尾"><a href="#无论核实启动哪个Activity，都会重新创建页面实例并收入栈尾" class="headerlink" title="无论核实启动哪个Activity，都会重新创建页面实例并收入栈尾"></a><em><strong>无论核实启动哪个Activity，都会重新创建页面实例并收入栈尾</strong></em></h3><h4 id="2-singleTask-栈内复用模式"><a href="#2-singleTask-栈内复用模式" class="headerlink" title="2. singleTask(栈内复用模式)"></a>2. singleTask(栈内复用模式)</h4><p><em><strong>在这个模式下，如果栈内存在该Activity的实例，不管是否存在于栈顶都不会再创建实例，而是会将该实例前的Activity清出栈顶（cleanTop），并且会回调onNewIntent方法。其实在这个过程中，首先是会进行任务栈的匹配，这个任务栈就是通过taskAffinity属性指定，如果不存在这个任务栈，就会创建一个任务栈，并将该Activity放入栈中。流程图比较清晰，如下所见：</strong></em><br><img src="https://user-gold-cdn.xitu.io/2017/5/17/490fd5b297a2a07d60d1ffdad58e6cc3" alt="image"></p>
-<h3 id="启动activity时，判断栈中存在activity的实例，就重新利用，并清除位于该实例上面的所有实例，否则情况和standard一样"><a href="#启动activity时，判断栈中存在activity的实例，就重新利用，并清除位于该实例上面的所有实例，否则情况和standard一样" class="headerlink" title="启动activity时，判断栈中存在activity的实例，就重新利用，并清除位于该实例上面的所有实例，否则情况和standard一样"></a><em><strong>启动activity时，判断栈中存在activity的实例，就重新利用，并清除位于该实例上面的所有实例，否则情况和standard一样</strong></em></h3><h4 id="3-singleTop-栈顶复用模式"><a href="#3-singleTop-栈顶复用模式" class="headerlink" title="3. singleTop(栈顶复用模式)"></a>3. singleTop(栈顶复用模式)</h4><p><em><strong>这个模式下，如果Activity的实例已经存在在栈顶，启动它就不会再创建新的实例，而是会调用onNewIntent，通过此方法的参数我们可以去除当前请求的信息。随后会调用onResume方法，不再调用onCreate、onStart方法，因为它没有变化。如果没有存在的话，就会如同standard模式一样。这种模式可以用来防止多次打开同一个Activity。</strong></em></p>
-<h3 id="启动activity时，判断栈顶正好时该activity的实例，就重新使用，否则就会创建新的实例放入栈顶，否则的情况和standard类似"><a href="#启动activity时，判断栈顶正好时该activity的实例，就重新使用，否则就会创建新的实例放入栈顶，否则的情况和standard类似" class="headerlink" title="启动activity时，判断栈顶正好时该activity的实例，就重新使用，否则就会创建新的实例放入栈顶，否则的情况和standard类似"></a><em><strong>启动activity时，判断栈顶正好时该activity的实例，就重新使用，否则就会创建新的实例放入栈顶，否则的情况和standard类似</strong></em></h3><h4 id="4、singleInstance（全局唯一模式）"><a href="#4、singleInstance（全局唯一模式）" class="headerlink" title="4、singleInstance（全局唯一模式）"></a>4、singleInstance（全局唯一模式）</h4><p><em><strong>该模式具备singleTask模式的所有特性外，与它的区别就是，这种模式下的Activity会单独占用一个Task栈，具有全局唯一性，即整个系统中就这么一个实例，由于栈内复用的特性，后续的请求均不会创建新的Activity实例，除非这个特殊的任务栈被销毁了。以singleInstance模式启动的Activity在整个系统中是单例的，如果在启动这样的Activiyt时，已经存在了一个实例，那么会把它所在的任务调度到前台，重用这个实例。</strong></em></p>
-<h3 id="启动activity时，将该Activity的实例放入一个新的栈中，原栈中的实例保持不变"><a href="#启动activity时，将该Activity的实例放入一个新的栈中，原栈中的实例保持不变" class="headerlink" title="启动activity时，将该Activity的实例放入一个新的栈中，原栈中的实例保持不变"></a><em><strong>启动activity时，将该Activity的实例放入一个新的栈中，原栈中的实例保持不变</strong></em></h3><h4 id="ps：-adb-shell-dumpsys-activity-查看adb运行日志"><a href="#ps：-adb-shell-dumpsys-activity-查看adb运行日志" class="headerlink" title="ps：[adb shell dumpsys activity],查看adb运行日志"></a>ps：[adb shell dumpsys activity],查看adb运行日志</h4>]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>将项目迁移至androidx</title>
     <url>/2019/10/14/%E5%B0%86%E9%A1%B9%E7%9B%AE%E8%BF%81%E7%A7%BB%E8%87%B3androidx/</url>
     <content><![CDATA[<h2 id="自己的工具："><a href="#自己的工具：" class="headerlink" title="自己的工具："></a>自己的工具：</h2><ul>
@@ -3106,6 +3050,37 @@ Connection conn = null;
 <p><img src="https://img-blog.csdnimg.cn/2019071109224159.png"></p>
 <p>然后手动检查项目的并修改，先 build会报很多的错，慢慢改。</p>
 <h3 id="没有或不能适配AndroidX的插件包，建议能删掉的就删掉"><a href="#没有或不能适配AndroidX的插件包，建议能删掉的就删掉" class="headerlink" title="没有或不能适配AndroidX的插件包，建议能删掉的就删掉"></a><em>没有或不能适配AndroidX的插件包，建议能删掉的就删掉</em></h3>]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>界面为ScrollView时打开界面会自动滚动到底部之解决方法</title>
+    <url>/2019/09/02/%E7%95%8C%E9%9D%A2%E4%B8%BAScrollView%E6%97%B6%E6%89%93%E5%BC%80%E7%95%8C%E9%9D%A2%E4%BC%9A%E8%87%AA%E5%8A%A8%E6%BB%9A%E5%8A%A8%E5%88%B0%E5%BA%95%E9%83%A8%E4%B9%8B%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<p>版权声明：本文为博主原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接和本声明。<br>本文链接：<a href="https://blog.csdn.net/u014449096/article/details/72885947">https://blog.csdn.net/u014449096/article/details/72885947</a></p>
+<p><strong>开发中遇到了这样的一个问题，界面最外层是ScrollView，然后里面有嵌套了一个ListView还有其他可以获取焦点的View，然后每次打开界面都会自动滚动到最底部，经过一番折腾，发现了一个简单的方法,<br>获取ScrollView里面一个上层任意view，然后调用如下方法：</strong><br> <span id="more"></span><br><code>view.setFocusable(true);  view.setFocusableInTouchMode(true);  view.requestFocus();</code></p>
+<p>**或者将scrollview包裹的内容设置上以下两个属性 **<br><code>android:focusable=”true” android:focusableInTouchMode=”true”</code></p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;ScrollView</span><br><span class="line">    android:layout_width&#x3D;&quot;match_parent&quot;</span><br><span class="line">    android:layout_height&#x3D;&quot;wrap_content&quot;</span><br><span class="line">    android:scrollbars&#x3D;&quot;none&quot;</span><br><span class="line">    &gt;</span><br><span class="line">    &lt;LinearLayout</span><br><span class="line">        android:layout_width&#x3D;&quot;wrap_content&quot;</span><br><span class="line">        android:layout_height&#x3D;&quot;match_parent&quot;</span><br><span class="line">        android:orientation&#x3D;&quot;vertical&quot;</span><br><span class="line">        android:focusable&#x3D;&quot;true&quot;</span><br><span class="line">        android:focusableInTouchMode&#x3D;&quot;true&quot; &#x2F;&gt;</span><br><span class="line">        </span><br><span class="line">&lt;&#x2F;ScrollView</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>冲突</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>自定义Toat及其弹出时间控制</title>
+    <url>/2020/07/21/%E8%87%AA%E5%AE%9A%E4%B9%89Toat%E5%8F%8A%E5%85%B6%E5%BC%B9%E5%87%BA%E6%97%B6%E9%97%B4%E6%8E%A7%E5%88%B6/</url>
+    <content><![CDATA[<p>效果就是实现Toast布局自定义，弹出的事件进行控制</p>
+<h3 id="一、先自定义布局"><a href="#一、先自定义布局" class="headerlink" title="一、先自定义布局"></a>一、先自定义布局</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Toast toast &#x3D; Toast.makeText(mContext, str, Toast.   LENGTH_SHORT);</span><br><span class="line">View view &#x3D; LayoutInflater.from(mContext).inflate(R.layout.item_toast, null);</span><br><span class="line">TextView textView &#x3D; view.findViewById(R.id.str_toast);</span><br><span class="line">      textView.setText(str);</span><br><span class="line">      toast.setView(view);</span><br><span class="line">      toast.setGravity(Gravity.CENTER, 0, 0);</span><br><span class="line">Utils.showTimeToast(toast,500);</span><br></pre></td></tr></table></figure>
+<h3 id="二、自定义弹出时间"><a href="#二、自定义弹出时间" class="headerlink" title="二、自定义弹出时间"></a>二、自定义弹出时间</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line">    * Toast自定义时间</span><br><span class="line">    * Toast对象时间需要为Toast.LENGH_LONG</span><br><span class="line">    *&#x2F;</span><br><span class="line">   public static void showTimeToast(final Toast toast, final int time) &#123;</span><br><span class="line">       final Timer timer &#x3D; new Timer();</span><br><span class="line">       timer.schedule(new TimerTask() &#123;</span><br><span class="line">           @Override</span><br><span class="line">           public void run() &#123;</span><br><span class="line">               toast.show();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;, 0, 3000);</span><br><span class="line">       new Timer().schedule(new TimerTask() &#123;</span><br><span class="line">           @Override</span><br><span class="line">           public void run() &#123;</span><br><span class="line">               toast.cancel();</span><br><span class="line">               timer.cancel();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;, time);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>就是那么简单，利用Timer和schedule实现事件监听，控制toast的弹出时间。</p>
+]]></content>
       <categories>
         <category>Android</category>
       </categories>
@@ -3223,37 +3198,6 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
-    <title>界面为ScrollView时打开界面会自动滚动到底部之解决方法</title>
-    <url>/2019/09/02/%E7%95%8C%E9%9D%A2%E4%B8%BAScrollView%E6%97%B6%E6%89%93%E5%BC%80%E7%95%8C%E9%9D%A2%E4%BC%9A%E8%87%AA%E5%8A%A8%E6%BB%9A%E5%8A%A8%E5%88%B0%E5%BA%95%E9%83%A8%E4%B9%8B%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</url>
-    <content><![CDATA[<p>版权声明：本文为博主原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接和本声明。<br>本文链接：<a href="https://blog.csdn.net/u014449096/article/details/72885947">https://blog.csdn.net/u014449096/article/details/72885947</a></p>
-<p><strong>开发中遇到了这样的一个问题，界面最外层是ScrollView，然后里面有嵌套了一个ListView还有其他可以获取焦点的View，然后每次打开界面都会自动滚动到最底部，经过一番折腾，发现了一个简单的方法,<br>获取ScrollView里面一个上层任意view，然后调用如下方法：</strong><br> <span id="more"></span><br><code>view.setFocusable(true);  view.setFocusableInTouchMode(true);  view.requestFocus();</code></p>
-<p>**或者将scrollview包裹的内容设置上以下两个属性 **<br><code>android:focusable=”true” android:focusableInTouchMode=”true”</code></p>
-<p>例如：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;ScrollView</span><br><span class="line">    android:layout_width&#x3D;&quot;match_parent&quot;</span><br><span class="line">    android:layout_height&#x3D;&quot;wrap_content&quot;</span><br><span class="line">    android:scrollbars&#x3D;&quot;none&quot;</span><br><span class="line">    &gt;</span><br><span class="line">    &lt;LinearLayout</span><br><span class="line">        android:layout_width&#x3D;&quot;wrap_content&quot;</span><br><span class="line">        android:layout_height&#x3D;&quot;match_parent&quot;</span><br><span class="line">        android:orientation&#x3D;&quot;vertical&quot;</span><br><span class="line">        android:focusable&#x3D;&quot;true&quot;</span><br><span class="line">        android:focusableInTouchMode&#x3D;&quot;true&quot; &#x2F;&gt;</span><br><span class="line">        </span><br><span class="line">&lt;&#x2F;ScrollView</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>冲突</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>自定义Toat及其弹出时间控制</title>
-    <url>/2020/07/21/%E8%87%AA%E5%AE%9A%E4%B9%89Toat%E5%8F%8A%E5%85%B6%E5%BC%B9%E5%87%BA%E6%97%B6%E9%97%B4%E6%8E%A7%E5%88%B6/</url>
-    <content><![CDATA[<p>效果就是实现Toast布局自定义，弹出的事件进行控制</p>
-<h3 id="一、先自定义布局"><a href="#一、先自定义布局" class="headerlink" title="一、先自定义布局"></a>一、先自定义布局</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Toast toast &#x3D; Toast.makeText(mContext, str, Toast.   LENGTH_SHORT);</span><br><span class="line">View view &#x3D; LayoutInflater.from(mContext).inflate(R.layout.item_toast, null);</span><br><span class="line">TextView textView &#x3D; view.findViewById(R.id.str_toast);</span><br><span class="line">      textView.setText(str);</span><br><span class="line">      toast.setView(view);</span><br><span class="line">      toast.setGravity(Gravity.CENTER, 0, 0);</span><br><span class="line">Utils.showTimeToast(toast,500);</span><br></pre></td></tr></table></figure>
-<h3 id="二、自定义弹出时间"><a href="#二、自定义弹出时间" class="headerlink" title="二、自定义弹出时间"></a>二、自定义弹出时间</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line">    * Toast自定义时间</span><br><span class="line">    * Toast对象时间需要为Toast.LENGH_LONG</span><br><span class="line">    *&#x2F;</span><br><span class="line">   public static void showTimeToast(final Toast toast, final int time) &#123;</span><br><span class="line">       final Timer timer &#x3D; new Timer();</span><br><span class="line">       timer.schedule(new TimerTask() &#123;</span><br><span class="line">           @Override</span><br><span class="line">           public void run() &#123;</span><br><span class="line">               toast.show();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;, 0, 3000);</span><br><span class="line">       new Timer().schedule(new TimerTask() &#123;</span><br><span class="line">           @Override</span><br><span class="line">           public void run() &#123;</span><br><span class="line">               toast.cancel();</span><br><span class="line">               timer.cancel();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;, time);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<p>就是那么简单，利用Timer和schedule实现事件监听，控制toast的弹出时间。</p>
-]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>自定义控件实现（一）</title>
     <url>/2020/08/05/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6%E5%AE%9E%E7%8E%B0%EF%BC%88%E4%B8%80%EF%BC%89/</url>
     <content><![CDATA[<p><strong>被别人问题一愣一愣，骄傲的自己准备好好复习哈！</strong><br><a href="https://www.jianshu.com/p/6572ebed0d99">几乎完全使用这位大佬的</a></p>
@@ -3324,6 +3268,62 @@ Connection conn = null;
       <tags>
         <tag>Flutter</tag>
         <tag>Flutter问题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>dynamic、var、Object三者的区别</title>
+    <url>/2020/09/23/dynamic%E3%80%81var%E3%80%81Object%E4%B8%89%E8%80%85%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
+    <content><![CDATA[<h3 id="dynamic："><a href="#dynamic：" class="headerlink" title="dynamic："></a>dynamic：</h3><p>是所有Dart对象的基础类型， 在大多数情况下，通常不直接使用它，<br>通过它定义的变量会关闭类型检查，这意味着<br><code>dynamic x = &#39;hal&#39;;x.foo();</code><br>这段代码静态类型检查不会报错，但是运行时会crash，因为x并没有foo()方法，所以建议大家在编程时不要直接使用dynamic；</p>
+<h3 id="var："><a href="#var：" class="headerlink" title="var："></a>var：</h3><p>是一个关键字，意思是“我不关心这里的类型是什么。”，系统会自动推断类型runtimeType；</p>
+<h3 id="Object："><a href="#Object：" class="headerlink" title="Object："></a>Object：</h3><p>是Dart对象的基类，当你定义：Object o=xxx；时这时候系统会认为o是个对象，你可以调用o的toString()和hashCode()方法<br>因为Object提供了这些方法，但是如果你尝试调用o.foo()时，静态类型检查会进行报错；</p>
+<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><p>综上不难看出dynamic与Object的最大的区别是在静态类型检查上；</p>
+]]></content>
+      <categories>
+        <category>flutter</category>
+      </categories>
+      <tags>
+        <tag>dart</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>android反编译apktool---dex2jar---jdgui</title>
+    <url>/2020/12/14/android%E5%8F%8D%E7%BC%96%E8%AF%91apktool-dex2jar-jdgui/</url>
+    <content><![CDATA[<h2 id="反编译的工具（MAC环境下）"><a href="#反编译的工具（MAC环境下）" class="headerlink" title="反编译的工具（MAC环境下）"></a>反编译的工具（MAC环境下）</h2><p>下载地址：</p>
+<ul>
+<li><a href="https://ibotpeaches.github.io/Apktool/install/">apkTool：一款用于反编译apk资源文件</a></li>
+<li><a href="https://sourceforge.net/projects/dex2jar/files/">dex2jar：是用于将class.dex 转换成classes-dex2jar.jar的工具</a></li>
+<li><a href="http://java-decompiler.github.io/">jdgui：这个用于查看classes-dex2jar.jar 源码工具</a></li>
+</ul>
+  <span id="more"></span>
+
+<h2 id="apktool下载安装使用"><a href="#apktool下载安装使用" class="headerlink" title="apktool下载安装使用"></a>apktool下载安装使用</h2><p>1、下载</p>
+<p><img src="https://img-blog.csdnimg.cn/20191226175801984.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d1YWlndWFpXzIwMTU=,size_16,color_FFFFFF,t_70"></p>
+<ul>
+<li>将你下载的apkttool工具放到/usr/local/bin<br><img src="https://img-blog.csdnimg.cn/20191226185054248.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d1YWlndWFpXzIwMTU=,size_16,color_FFFFFF,t_70"></li>
+<li>指向对应的文件夹cd /usr/local/bin<br><img src="https://img-blog.csdnimg.cn/20191226185223643.png"></li>
+<li>给apktool权限：输入以下两个命令行给予这两个文件夹权限<ul>
+<li>chmod a+x apktool.jar</li>
+<li>chmod a+x apktool</li>
+</ul>
+</li>
+<li>验证是否成功<br>终端输入<code>apktool -version</code></li>
+</ul>
+<p>2、使用反编译命令行 apktool d xxxx.apk<br>反编译之后的文件夹中的文件介绍<br><img src="https://img-blog.csdnimg.cn/20191226190211334.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d1YWlndWFpXzIwMTU=,size_16,color_FFFFFF,t_70"><br><img src="https://img-blog.csdnimg.cn/20191226190234935.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d1YWlndWFpXzIwMTU=,size_16,color_FFFFFF,t_70"><br>假如只需要获取app的xml或者图片资源，则到这一步则完成啦！</p>
+<p>如果要获取到java的代码，那么我们还要进行回编译，这样，我们就能获取到classex.dex文件了</p>
+<p>在终端执行命令 <code>apktool b app反编译的文件夹名称</code> ，执行完毕后，我们就可以在刚刚的文件夹里面多了一个<code>build</code>文件夹了，里面的 <code>classess.dex </code>则是我们想要获取到的源码文件</p>
+<h2 id="dex2jar操作流程"><a href="#dex2jar操作流程" class="headerlink" title="dex2jar操作流程"></a>dex2jar操作流程</h2><p>下载<br><img src="https://img-blog.csdnimg.cn/20191226190424255.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d1YWlndWFpXzIwMTU=,size_16,color_FFFFFF,t_70"><br>下载完成解压文件后，再终端执行 <code>chmod +x d2j-dex2jar.sh </code>和 <code>chmod +x d2j_invoke.sh</code> 添加运行权限：</p>
+<ul>
+<li>拿出里面的<code>classe.dex</code>，放入到<code>dex2jar</code>文件夹中</li>
+<li>使用命令行 <code>sh d2j-dex2jar.sh classes.dex</code>,就可以转换成<code>classes-dex2jar.jar </code><br><img src="https://img-blog.csdnimg.cn/20191226190907884.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d1YWlndWFpXzIwMTU=,size_16,color_FFFFFF,t_70"></li>
+</ul>
+<h2 id="jd-gui反编译class文件查看java代码"><a href="#jd-gui反编译class文件查看java代码" class="headerlink" title="jd-gui反编译class文件查看java代码"></a>jd-gui反编译class文件查看java代码</h2><p>下载文件放入自己的安装目录，解压即可使用<br>然后把刚刚我们获取到的<code>classes-dex2jar.jar</code>拖进去打开文件即可。</p>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>反编译</tag>
+        <tag>工具搭建</tag>
       </tags>
   </entry>
   <entry>
