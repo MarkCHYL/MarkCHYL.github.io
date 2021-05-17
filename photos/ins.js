@@ -120,7 +120,6 @@
             var minSrc = 'https://mark_chen.coding.net/p/blogpicture/d/BlogPicture/git/raw/master/min_photos/' + data.link[i];
             var src = 'https://mark_chen.coding.net/p/blogpicture/d/BlogPicture/git/raw/master/photos/' + data.link[i];
             var type = data.type[i];
-            var target = src + (type === 'video' ? '.mp4' : '.jpg');
             src += '';
   
             liTmpl += '<figure class="thumb" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject">\
