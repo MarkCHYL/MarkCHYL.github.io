@@ -41,40 +41,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Android ANR发生的原因总结和解决办法</title>
-    <url>/2020/08/06/Android-ANR%E5%8F%91%E7%94%9F%E7%9A%84%E5%8E%9F%E5%9B%A0%E6%80%BB%E7%BB%93%E5%92%8C%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</url>
-    <content><![CDATA[<h3 id="什么是ANR？"><a href="#什么是ANR？" class="headerlink" title="什么是ANR？"></a>什么是ANR？</h3><blockquote>
-<p>ANR的全称是application not responding，是指应用程序未响应，Android系统对于一些事件需要在一定的时间范围内完成，如果超过预定时间能未能得到有效响应或者响应时间过长，都会造成ANR。一般地，这时往往会弹出一个提示框，告知用户当前xxx未响应，用户可选择继续等待或者Force Close。</p>
-</blockquote>
-<hr>
-<h3 id="官方指定的产生ANR一般有以下类型："><a href="#官方指定的产生ANR一般有以下类型：" class="headerlink" title="官方指定的产生ANR一般有以下类型："></a>官方指定的产生ANR一般有以下类型：</h3><p>1：KeyDispatchTimeout（5秒）–主要类型<br>按键或触摸事件在特定时间无响应</p>
-<p>2：BroadcastTimeout（10秒）<br>BroadcastReceiver在特定时间无法处理完成</p>
-<p>3：ServiceTimeout（ 20秒）–小概率类型<br>服务在特定的时间无法处理完成</p>
-<hr>
-<h3 id="导致ANR的根本原因"><a href="#导致ANR的根本原因" class="headerlink" title="导致ANR的根本原因"></a>导致ANR的根本原因</h3><p>1.主线程执行了耗时操作，比如数据库操作或网络编程,I/O操作</p>
-<p>2.其他进程（就是其他程序）占用CPU导致本进程得不到CPU时间片，比如其他进程的频繁读写操作可能会导致这个问题。</p>
-<p>细分的话，导致ANR的原因有如下几点：<br>   1.耗时的网络访问<br>   2.大量的数据读写<br>   3.数据库操作<br>   4.硬件操作（比如camera)<br>   5.调用thread的join()方法、sleep()方法、wait()方法或者等待线程锁的时候<br>   6.service binder的数量达到上限<br>   7.system server中发生WatchDog ANR<br>   8.service忙导致超时无响应<br>   9.其他线程持有锁，导致主线程等待超时<br>   10.其它线程终止或崩溃导致主线程一直等待</p>
-<hr>
-<h3 id="调查并解决ANR"><a href="#调查并解决ANR" class="headerlink" title="调查并解决ANR"></a>调查并解决ANR</h3><ul>
-<li>1、首先分析log</li>
-<li>2、从trace.txt文件查看调用堆栈。-$ adb拉取data / anr / traces.txt。</li>
-<li>3、看代码</li>
-<li>4、仔细查看ANR的成因（iowait？block？memoryleak？）</li>
-</ul>
-<hr>
-<h3 id="如何避免ANR的发生"><a href="#如何避免ANR的发生" class="headerlink" title="如何避免ANR的发生"></a>如何避免ANR的发生</h3><p>1.避免在主线程执行耗时操作，所有耗时操作应新开一个子线程完成，然后再在主线程更新UI。</p>
-<p>2.BroadcastReceiver要执行耗时操作时应启动一个service，将耗时操作交给service来完成。</p>
-<p>3.避免在Intent Receiver里启动一个Activity，因为它会创建一个新的画面，并从当前用户正在运行的程序上抢夺焦点。如果你的应用程序在响应Intent广 播时需要向用户展示什么，你应该使用Notification Manager来实现。</p>
-]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>基础理论</tag>
-        <tag>Error</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Android APK反编译 apktool使用教程</title>
     <url>/2019/09/26/Android-APK%E5%8F%8D%E7%BC%96%E8%AF%91-apktool%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</url>
     <content><![CDATA[<h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><p>时间久了之前在熟悉的东西也会渐疏，好记性不如乱笔头。</p>
@@ -114,6 +80,58 @@
       </tags>
   </entry>
   <entry>
+    <title>Android ANR发生的原因总结和解决办法</title>
+    <url>/2020/08/06/Android-ANR%E5%8F%91%E7%94%9F%E7%9A%84%E5%8E%9F%E5%9B%A0%E6%80%BB%E7%BB%93%E5%92%8C%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</url>
+    <content><![CDATA[<h3 id="什么是ANR？"><a href="#什么是ANR？" class="headerlink" title="什么是ANR？"></a>什么是ANR？</h3><blockquote>
+<p>ANR的全称是application not responding，是指应用程序未响应，Android系统对于一些事件需要在一定的时间范围内完成，如果超过预定时间能未能得到有效响应或者响应时间过长，都会造成ANR。一般地，这时往往会弹出一个提示框，告知用户当前xxx未响应，用户可选择继续等待或者Force Close。</p>
+</blockquote>
+<hr>
+<h3 id="官方指定的产生ANR一般有以下类型："><a href="#官方指定的产生ANR一般有以下类型：" class="headerlink" title="官方指定的产生ANR一般有以下类型："></a>官方指定的产生ANR一般有以下类型：</h3><p>1：KeyDispatchTimeout（5秒）–主要类型<br>按键或触摸事件在特定时间无响应</p>
+<p>2：BroadcastTimeout（10秒）<br>BroadcastReceiver在特定时间无法处理完成</p>
+<p>3：ServiceTimeout（ 20秒）–小概率类型<br>服务在特定的时间无法处理完成</p>
+<hr>
+<h3 id="导致ANR的根本原因"><a href="#导致ANR的根本原因" class="headerlink" title="导致ANR的根本原因"></a>导致ANR的根本原因</h3><p>1.主线程执行了耗时操作，比如数据库操作或网络编程,I/O操作</p>
+<p>2.其他进程（就是其他程序）占用CPU导致本进程得不到CPU时间片，比如其他进程的频繁读写操作可能会导致这个问题。</p>
+<p>细分的话，导致ANR的原因有如下几点：<br>   1.耗时的网络访问<br>   2.大量的数据读写<br>   3.数据库操作<br>   4.硬件操作（比如camera)<br>   5.调用thread的join()方法、sleep()方法、wait()方法或者等待线程锁的时候<br>   6.service binder的数量达到上限<br>   7.system server中发生WatchDog ANR<br>   8.service忙导致超时无响应<br>   9.其他线程持有锁，导致主线程等待超时<br>   10.其它线程终止或崩溃导致主线程一直等待</p>
+<hr>
+<h3 id="调查并解决ANR"><a href="#调查并解决ANR" class="headerlink" title="调查并解决ANR"></a>调查并解决ANR</h3><ul>
+<li>1、首先分析log</li>
+<li>2、从trace.txt文件查看调用堆栈。-$ adb拉取data / anr / traces.txt。</li>
+<li>3、看代码</li>
+<li>4、仔细查看ANR的成因（iowait？block？memoryleak？）</li>
+</ul>
+<hr>
+<h3 id="如何避免ANR的发生"><a href="#如何避免ANR的发生" class="headerlink" title="如何避免ANR的发生"></a>如何避免ANR的发生</h3><p>1.避免在主线程执行耗时操作，所有耗时操作应新开一个子线程完成，然后再在主线程更新UI。</p>
+<p>2.BroadcastReceiver要执行耗时操作时应启动一个service，将耗时操作交给service来完成。</p>
+<p>3.避免在Intent Receiver里启动一个Activity，因为它会创建一个新的画面，并从当前用户正在运行的程序上抢夺焦点。如果你的应用程序在响应Intent广 播时需要向用户展示什么，你应该使用Notification Manager来实现。</p>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>基础理论</tag>
+        <tag>Error</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Android 安装APP 失败 INSTALL_FAILED_TEST_ONLY</title>
+    <url>/2020/08/07/Android-%E5%AE%89%E8%A3%85APP-%E5%A4%B1%E8%B4%A5-INSTALL-FAILED-TEST-ONLY/</url>
+    <content><![CDATA[<h3 id="android-studio-进行真机安装时失败，报错："><a href="#android-studio-进行真机安装时失败，报错：" class="headerlink" title="android studio 进行真机安装时失败，报错："></a>android studio 进行真机安装时失败，报错：</h3><blockquote>
+<p>Installation did not succeed.<br>The application could not be installed: INSTALL_FAILED_TEST_ONLY<br>Installation failed due to: ‘null’</p>
+</blockquote>
+<h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><p>在<code>gradle.properties 文件中</code>添加</p>
+<blockquote>
+<p>android.injected.testOnly=false</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Error</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Android 搜索 把软键盘上的回车键改为搜索</title>
     <url>/2019/09/25/Android-%E6%90%9C%E7%B4%A2-%E6%8A%8A%E8%BD%AF%E9%94%AE%E7%9B%98%E4%B8%8A%E7%9A%84%E5%9B%9E%E8%BD%A6%E9%94%AE%E6%94%B9%E4%B8%BA%E6%90%9C%E7%B4%A2/</url>
     <content><![CDATA[<h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><blockquote>
@@ -139,21 +157,21 @@
       </tags>
   </entry>
   <entry>
-    <title>Android 安装APP 失败 INSTALL_FAILED_TEST_ONLY</title>
-    <url>/2020/08/07/Android-%E5%AE%89%E8%A3%85APP-%E5%A4%B1%E8%B4%A5-INSTALL-FAILED-TEST-ONLY/</url>
-    <content><![CDATA[<h3 id="android-studio-进行真机安装时失败，报错："><a href="#android-studio-进行真机安装时失败，报错：" class="headerlink" title="android studio 进行真机安装时失败，报错："></a>android studio 进行真机安装时失败，报错：</h3><blockquote>
-<p>Installation did not succeed.<br>The application could not be installed: INSTALL_FAILED_TEST_ONLY<br>Installation failed due to: ‘null’</p>
-</blockquote>
-<h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><p>在<code>gradle.properties 文件中</code>添加</p>
-<blockquote>
-<p>android.injected.testOnly=false</p>
-</blockquote>
+    <title>Android 的事件分发机制</title>
+    <url>/2020/12/30/Android-%E7%9A%84%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E6%9C%BA%E5%88%B6/</url>
+    <content><![CDATA[<p>一般情况下，事件列都是从用户按下（ACTION_DOWN）的那一刻产生的，<br>负责对事件进行分发的方法主要有三个，分别是：</p>
+<ul>
+<li>dispatchTouchEvent()</li>
+<li>onTouchEvent()</li>
+<li>onInterceptTouchEvent()</li>
+</ul>
+<p>它们并不存在于所有负责分发的组件中，其具体情况总结于下面的表格中：<br>dispatchTouchEvent,onTouchEvent方法存在于上文的三个组件中。而onInterceptTouchEvent为ViewGroup独有。<br>ViewGroup类中，实际是没有onTouchEvent方法的，但是由于ViewGroup继承自View，而View拥有onTouchEvent方法，故ViewGroup的对象也是可以调用onTouchEvent方法的。</p>
 ]]></content>
       <categories>
         <category>Android</category>
       </categories>
       <tags>
-        <tag>Error</tag>
+        <tag>基础理论</tag>
       </tags>
   </entry>
   <entry>
@@ -539,24 +557,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Android 的事件分发机制</title>
-    <url>/2020/12/30/Android-%E7%9A%84%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E6%9C%BA%E5%88%B6/</url>
-    <content><![CDATA[<p>一般情况下，事件列都是从用户按下（ACTION_DOWN）的那一刻产生的，<br>负责对事件进行分发的方法主要有三个，分别是：</p>
-<ul>
-<li>dispatchTouchEvent()</li>
-<li>onTouchEvent()</li>
-<li>onInterceptTouchEvent()</li>
-</ul>
-<p>它们并不存在于所有负责分发的组件中，其具体情况总结于下面的表格中：<br>dispatchTouchEvent,onTouchEvent方法存在于上文的三个组件中。而onInterceptTouchEvent为ViewGroup独有。<br>ViewGroup类中，实际是没有onTouchEvent方法的，但是由于ViewGroup继承自View，而View拥有onTouchEvent方法，故ViewGroup的对象也是可以调用onTouchEvent方法的。</p>
-]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>基础理论</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Android7.0至Android8.0适配记录</title>
     <url>/2018/12/17/Android7-0%E8%87%B3Android8-0%E9%80%82%E9%85%8D%E8%AE%B0%E5%BD%95/</url>
     <content><![CDATA[<h2 id="Android7-0至Android8-0适配记录"><a href="#Android7-0至Android8-0适配记录" class="headerlink" title="Android7.0至Android8.0适配记录"></a>Android7.0至Android8.0适配记录</h2><h4 id="一五年的老项目，里面存在过时的API众多，导致高版本的编译时运行时报错，而我这次做的适配遇到的困难重要有三个"><a href="#一五年的老项目，里面存在过时的API众多，导致高版本的编译时运行时报错，而我这次做的适配遇到的困难重要有三个" class="headerlink" title="一五年的老项目，里面存在过时的API众多，导致高版本的编译时运行时报错，而我这次做的适配遇到的困难重要有三个"></a>一五年的老项目，里面存在过时的API众多，导致高版本的编译时运行时报错，而我这次做的适配遇到的困难重要有三个</h4><h3 id=""><a href="#" class="headerlink" title=""></a></h3><span id="more"></span>
@@ -721,6 +721,28 @@
 <p>需要注意的是Looper的quit方法从API Level 1就存在了，但是Looper的quitSafely方法从API Level 18才添加进来。</p>
 <p>我在直播推流中应用了HandlerThread，每编码组装出来一帧视频就发送一个handler消息，然后HandlerThread线程接收消息数据并用libRtmp推倒服务器。此时可以监控队列中有多少消息在循环，可以监听进出队列的比例，如果超出一定的范围说明网络不好，需要执行丢帧策略。</p>
 <p><a href="http://markchyl.cn/2020/10/10/Android%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6%E6%80%BB%E7%BB%93%E4%BA%8C/">下一章组件间通信</a></p>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>消息通信</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Android消息传递机制总结(五)</title>
+    <url>/2020/10/19/Android%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6%E6%80%BB%E7%BB%93-%E4%BA%94/</url>
+    <content><![CDATA[<p>长连接推送 ——— WebSocket，XMPP等。</p>
+<h3 id="5-长连接推送"><a href="#5-长连接推送" class="headerlink" title="5.长连接推送"></a>5.长连接推送</h3><p>Websocket<br>支持客户端和服务器端的双向通信，而且协议的头部又没有HTTP的Header那么大，于是，Websocket就诞生了！</p>
+<span id="more"></span>
+
+<p>Websocket是应用层第七层上的一个应用层协议，它必须依赖 HTTP 协议进行一次握手 ，握手成功后，数据就直接从 TCP 通道传输，与 HTTP 无关了。</p>
+<p>Websocket的数据传输是frame形式传输的，比如会将一条消息分为几个frame，按照先后顺序传输出去。这样做会有几个好处：</p>
+<p>1 大数据的传输可以分片传输，不用考虑到数据大小导致的长度标志位不足够的情况。</p>
+<p>2 和http的chunk一样，可以边生成数据边传递消息，即提高传输效率。</p>
+<p>XMPP中定义了三个角色，客户端，服务器，网关。通信能够在这三者的任意两个之间双向发生。服务器同时承担了客户端信息记录，连接管理和信息的路由功能。网关承担着与异构即时通信系统的互联互通，异构系统可以包括SMS（短信），MSN，ICQ等。基本的网络形式是单客户端通过TCP/IP连接到单服务器，然后在之上传输XML。</p>
+<p>QQ是使用类似XMPP协议的UDP协议进行发送和接收消息的。当你的机器安装了QQ以后，实际上，你既是服务端（Server），又是客户端（Client）。当你登录QQ时，你的QQ作为Client连接到腾讯公司的主服务器上，当你看谁在线时，你的QQ又一次作为Client从QQ Server上读取在线网友名单。当你和你的QQ伙伴进行聊天时，如果你和对方的连接比较稳定，你和他的聊天内容都是以UDP的形式，在计算机之间传 送。如果你和对方的连接不是很稳定，QQ服务器将为你们的聊天内容进行中转。其他的即时通信软件原理与此大同小异。</p>
+<p>所以基于WebSocke和XMPP都可以开发出IM社交聊天类的app</p>
 ]]></content>
       <categories>
         <category>Android</category>
@@ -1081,28 +1103,6 @@ proguard-rules.pro文件的作用</li>
       </tags>
   </entry>
   <entry>
-    <title>Android消息传递机制总结(五)</title>
-    <url>/2020/10/19/Android%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6%E6%80%BB%E7%BB%93-%E4%BA%94/</url>
-    <content><![CDATA[<p>长连接推送 ——— WebSocket，XMPP等。</p>
-<h3 id="5-长连接推送"><a href="#5-长连接推送" class="headerlink" title="5.长连接推送"></a>5.长连接推送</h3><p>Websocket<br>支持客户端和服务器端的双向通信，而且协议的头部又没有HTTP的Header那么大，于是，Websocket就诞生了！</p>
-<span id="more"></span>
-
-<p>Websocket是应用层第七层上的一个应用层协议，它必须依赖 HTTP 协议进行一次握手 ，握手成功后，数据就直接从 TCP 通道传输，与 HTTP 无关了。</p>
-<p>Websocket的数据传输是frame形式传输的，比如会将一条消息分为几个frame，按照先后顺序传输出去。这样做会有几个好处：</p>
-<p>1 大数据的传输可以分片传输，不用考虑到数据大小导致的长度标志位不足够的情况。</p>
-<p>2 和http的chunk一样，可以边生成数据边传递消息，即提高传输效率。</p>
-<p>XMPP中定义了三个角色，客户端，服务器，网关。通信能够在这三者的任意两个之间双向发生。服务器同时承担了客户端信息记录，连接管理和信息的路由功能。网关承担着与异构即时通信系统的互联互通，异构系统可以包括SMS（短信），MSN，ICQ等。基本的网络形式是单客户端通过TCP/IP连接到单服务器，然后在之上传输XML。</p>
-<p>QQ是使用类似XMPP协议的UDP协议进行发送和接收消息的。当你的机器安装了QQ以后，实际上，你既是服务端（Server），又是客户端（Client）。当你登录QQ时，你的QQ作为Client连接到腾讯公司的主服务器上，当你看谁在线时，你的QQ又一次作为Client从QQ Server上读取在线网友名单。当你和你的QQ伙伴进行聊天时，如果你和对方的连接比较稳定，你和他的聊天内容都是以UDP的形式，在计算机之间传 送。如果你和对方的连接不是很稳定，QQ服务器将为你们的聊天内容进行中转。其他的即时通信软件原理与此大同小异。</p>
-<p>所以基于WebSocke和XMPP都可以开发出IM社交聊天类的app</p>
-]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>消息通信</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Flutter项目实战目录</title>
     <url>/2019/07/29/Flutter%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%E7%9B%AE%E5%BD%95/</url>
     <content><![CDATA[<h1 id="Flutter-实战项目源码目录"><a href="#Flutter-实战项目源码目录" class="headerlink" title="Flutter 实战项目源码目录"></a>Flutter 实战项目源码目录</h1><ul>
@@ -1114,6 +1114,32 @@ proguard-rules.pro文件的作用</li>
       </categories>
       <tags>
         <tag>Flutter实战</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Git之使用GitHub搭建远程仓库</title>
+    <url>/2020/08/18/Git%E4%B9%8B%E4%BD%BF%E7%94%A8GitHub%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93/</url>
+    <content><![CDATA[<h3 id="1-账号注册-amp-仓库创建："><a href="#1-账号注册-amp-仓库创建：" class="headerlink" title="1.账号注册&amp;仓库创建："></a>1.账号注册&amp;仓库创建：</h3><p>不做记录，简单</p>
+<h3 id="2-Clone代码库到本地"><a href="#2-Clone代码库到本地" class="headerlink" title="2.Clone代码库到本地"></a>2.Clone代码库到本地</h3><span id="more"></span>
+<p><code>git clone https://github.com/ZPJay/Garbage.git</code></p>
+<h3 id="3-分支管理"><a href="#3-分支管理" class="headerlink" title="3.分支管理"></a>3.分支管理</h3><p>①创建分支(后者创建同时会切换分支):</p>
+<blockquote>
+<p>git branch v1.0.3 或 git checkout -b v1.0.4<br>②查看版本库中所有分支：<br>git branch -a<br>③切换到某一分支：<br>git checkout v1.0.3<br>④删除某一分支：<br>git branch -D v1.0.4<br>⑤合并分支<br>git merge v1.0.3</p>
+</blockquote>
+<h3 id="4-本地仓库与远程仓库同步问题"><a href="#4-本地仓库与远程仓库同步问题" class="headerlink" title="4.本地仓库与远程仓库同步问题"></a>4.本地仓库与远程仓库同步问题</h3><p>先对我们的本地仓库做一点点修改，接着git add和git commit本地准备后，然后：</p>
+<blockquote>
+<p>git push origin master 或者直接 git push</p>
+</blockquote>
+<p>有同步到服务器，肯定有服务器同步到本地是吧，很简单，就一个</p>
+<blockquote>
+<p>git pull</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>工具使用</category>
+      </categories>
+      <tags>
+        <tag>工具使用</tag>
       </tags>
   </entry>
   <entry>
@@ -1201,32 +1227,6 @@ proguard-rules.pro文件的作用</li>
       <tags>
         <tag>工具使用</tag>
         <tag>Android</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Git之使用GitHub搭建远程仓库</title>
-    <url>/2020/08/18/Git%E4%B9%8B%E4%BD%BF%E7%94%A8GitHub%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93/</url>
-    <content><![CDATA[<h3 id="1-账号注册-amp-仓库创建："><a href="#1-账号注册-amp-仓库创建：" class="headerlink" title="1.账号注册&amp;仓库创建："></a>1.账号注册&amp;仓库创建：</h3><p>不做记录，简单</p>
-<h3 id="2-Clone代码库到本地"><a href="#2-Clone代码库到本地" class="headerlink" title="2.Clone代码库到本地"></a>2.Clone代码库到本地</h3><span id="more"></span>
-<p><code>git clone https://github.com/ZPJay/Garbage.git</code></p>
-<h3 id="3-分支管理"><a href="#3-分支管理" class="headerlink" title="3.分支管理"></a>3.分支管理</h3><p>①创建分支(后者创建同时会切换分支):</p>
-<blockquote>
-<p>git branch v1.0.3 或 git checkout -b v1.0.4<br>②查看版本库中所有分支：<br>git branch -a<br>③切换到某一分支：<br>git checkout v1.0.3<br>④删除某一分支：<br>git branch -D v1.0.4<br>⑤合并分支<br>git merge v1.0.3</p>
-</blockquote>
-<h3 id="4-本地仓库与远程仓库同步问题"><a href="#4-本地仓库与远程仓库同步问题" class="headerlink" title="4.本地仓库与远程仓库同步问题"></a>4.本地仓库与远程仓库同步问题</h3><p>先对我们的本地仓库做一点点修改，接着git add和git commit本地准备后，然后：</p>
-<blockquote>
-<p>git push origin master 或者直接 git push</p>
-</blockquote>
-<p>有同步到服务器，肯定有服务器同步到本地是吧，很简单，就一个</p>
-<blockquote>
-<p>git pull</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>工具使用</category>
-      </categories>
-      <tags>
-        <tag>工具使用</tag>
       </tags>
   </entry>
   <entry>
@@ -1372,6 +1372,51 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
+    <title>JDBC学习--Statement</title>
+    <url>/2021/05/13/JDBC%E5%AD%A6%E4%B9%A0-Statement/</url>
+    <content><![CDATA[<h3 id="JDBC的API结构和使用流程"><a href="#JDBC的API结构和使用流程" class="headerlink" title="JDBC的API结构和使用流程"></a>JDBC的API结构和使用流程</h3><pre class="mermaid">graph TB
+    A0[DriverManager] --> B0[Driver]
+    A0[DriverManager] --> B1[Driver] 
+    B0[Driver] --> C0[Connection]
+    B1[Driver] -->C1[Connection]
+    B1[Driver] -->C2[Connection]
+    C0[Connection]-->D0[Statement]
+    C0[Connection]-->D1[Statement]-->E0[ResultSet]
+    C0[Connection]-->D2[Statement]-->E1[ResultSet]
+    C1[Connection]-->D3[Statement]-->E2[ResultSet]</pre>
+<span id="more"></span>
+<h3 id="创建Statement的方式"><a href="#创建Statement的方式" class="headerlink" title="创建Statement的方式"></a>创建Statement的方式</h3><ul>
+<li><p><code>Statement  stmt = Connection.createStatement(......);</code></p>
+<ul>
+<li>执行不带参数的简单SQL语句</li>
+</ul>
+</li>
+<li><p><code>PreparedStatement  pstmt = Connection.prepareStatement(......);</code></p>
+<ul>
+<li>执行带参数或不带参数的SQL语句</li>
+</ul>
+</li>
+<li><p><code>CallableStatement   cstmt  =  Connection.prepareCall(...);</code></p>
+<ul>
+<li>执行对数据库已存储的PL/SQL程序的调用</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="执行SQL语句"><a href="#执行SQL语句" class="headerlink" title="执行SQL语句"></a>执行SQL语句</h3><ul>
+<li><code>executeQuery()</code>：执行查询语句，返回查询结果集 <code>ResultSet</code><br>返回结果集 <code>rs.getFetchSize()</code>记录着当前返回数量的大小：<code>10</code></li>
+<li><code>executeUpdate()</code>: 执行DML和DDL 语句，返回int类型</li>
+<li><code>execute()</code>: 执行任何SQL语句，返回boolean类型，指示是否有ResultSet返回</li>
+</ul>
+]]></content>
+      <categories>
+        <category>JavaWeb</category>
+      </categories>
+      <tags>
+        <tag>JDBC</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Kotlin中可变参数</title>
     <url>/2021/04/26/Kotlin%E4%B8%AD%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0/</url>
     <content><![CDATA[<p><a href="https://www.jianshu.com/p/174c0e254713">原文简书</a></p>
@@ -1421,100 +1466,6 @@ Connection conn = null;
       </categories>
       <tags>
         <tag>Kotlin基础</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JDBC学习--Statement</title>
-    <url>/2021/05/13/JDBC%E5%AD%A6%E4%B9%A0-Statement/</url>
-    <content><![CDATA[<h3 id="JDBC的API结构和使用流程"><a href="#JDBC的API结构和使用流程" class="headerlink" title="JDBC的API结构和使用流程"></a>JDBC的API结构和使用流程</h3><pre class="mermaid">graph TB
-    A0[DriverManager] --> B0[Driver]
-    A0[DriverManager] --> B1[Driver] 
-    B0[Driver] --> C0[Connection]
-    B1[Driver] -->C1[Connection]
-    B1[Driver] -->C2[Connection]
-    C0[Connection]-->D0[Statement]
-    C0[Connection]-->D1[Statement]-->E0[ResultSet]
-    C0[Connection]-->D2[Statement]-->E1[ResultSet]
-    C1[Connection]-->D3[Statement]-->E2[ResultSet]</pre>
-<span id="more"></span>
-<h3 id="创建Statement的方式"><a href="#创建Statement的方式" class="headerlink" title="创建Statement的方式"></a>创建Statement的方式</h3><ul>
-<li><p><code>Statement  stmt = Connection.createStatement(......);</code></p>
-<ul>
-<li>执行不带参数的简单SQL语句</li>
-</ul>
-</li>
-<li><p><code>PreparedStatement  pstmt = Connection.prepareStatement(......);</code></p>
-<ul>
-<li>执行带参数或不带参数的SQL语句</li>
-</ul>
-</li>
-<li><p><code>CallableStatement   cstmt  =  Connection.prepareCall(...);</code></p>
-<ul>
-<li>执行对数据库已存储的PL/SQL程序的调用</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h3 id="执行SQL语句"><a href="#执行SQL语句" class="headerlink" title="执行SQL语句"></a>执行SQL语句</h3><ul>
-<li><code>executeQuery()</code>：执行查询语句，返回查询结果集 <code>ResultSet</code><br>返回结果集 <code>rs.getFetchSize()</code>记录着当前返回数量的大小：<code>10</code></li>
-<li><code>executeUpdate()</code>: 执行DML和DDL 语句，返回int类型</li>
-<li><code>execute()</code>: 执行任何SQL语句，返回boolean类型，指示是否有ResultSet返回</li>
-</ul>
-]]></content>
-      <categories>
-        <category>JavaWeb</category>
-      </categories>
-      <tags>
-        <tag>JDBC</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Kotlin基础入门学习笔记</title>
-    <url>/2019/12/03/Kotlin%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>若不留下点啥笔记，感觉对不住自己一个星期半的学习加复习。</p>
-<h3 id="一、如何实现单列模式？"><a href="#一、如何实现单列模式？" class="headerlink" title="一、如何实现单列模式？"></a>一、如何实现单列模式？</h3><p>使用关键字 <strong>object</strong> 修饰的类,替换掉class关键字，便会在整套程序中生成一个且是唯一的对象实例。<br>譬如如下代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">object BigHeadSon:IWash &#123;</span><br><span class="line">    override fun wash() &#123;</span><br><span class="line">        println(&quot;大头儿子洗完收费1元钱&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>那样之后该类的实例变量整个项目中有且只有一个。</p>
-<span id="more"></span>
-<hr>
-<h3 id="二、如何实现枚举？"><a href="#二、如何实现枚举？" class="headerlink" title="二、如何实现枚举？"></a>二、如何实现枚举？</h3><p>实现枚举的代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">enum class Week &#123;</span><br><span class="line">    星期一, 星期二, 星期三, 星期四, 星期五, 星期六, 星期日</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun main(args: Array&lt;String&gt;) &#123;</span><br><span class="line">    println(Week.星期一.ordinal)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>使用关键字 enum 修饰类</p>
-<hr>
-<h3 id="三、如何实现印章类？"><a href="#三、如何实现印章类？" class="headerlink" title="三、如何实现印章类？"></a>三、如何实现印章类？</h3><p>举个例子一匹母驴、一屁公马和一匹公驴一碗酒后乱性，过了几天母驴怀孕了，不只是公马的还是公驴的。那么问题来了马和驴的后代是骡子，母驴和公驴的后代当然还是驴。<br>就像盖了章一样，使用<strong>sealed</strong>关键字修饰类,可以指定子类和个数。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 印章sealed类</span><br><span class="line">&#x2F;&#x2F;指定子类种类和个数</span><br><span class="line"></span><br><span class="line">sealed class Son &#123;</span><br><span class="line">    fun sayHello()&#123;</span><br><span class="line">        println(&quot;大家好！！！&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">    class smallBlackMule():Son()</span><br><span class="line"></span><br><span class="line">    class smallDonkey():Son()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun main(args: Array&lt;String&gt;) &#123;</span><br><span class="line">    var s1: Son &#x3D; Son.smallBlackMule()</span><br><span class="line"></span><br><span class="line">    var s2: Son &#x3D; Son.smallBlackMule()</span><br><span class="line"></span><br><span class="line">    var s3 &#x3D; Son.smallDonkey()</span><br><span class="line"></span><br><span class="line">    var list &#x3D; listOf&lt;Son&gt;( s1, s2, s3 )</span><br><span class="line"></span><br><span class="line">    for ( h in list)&#123;</span><br><span class="line">        if(h is Son.smallDonkey) &#123;</span><br><span class="line">            h.sayHello()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="四、如是实现委托和代理？"><a href="#四、如是实现委托和代理？" class="headerlink" title="四、如是实现委托和代理？"></a>四、如是实现委托和代理？</h3><p>利用关键字 <strong>by</strong> 实现，示例代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class SmallHeadFather : IWash by BigHeadSon() &#123;</span><br><span class="line">    override fun wash() &#123;</span><br><span class="line">        println(&quot;小头爸爸洗完收费10块钱！！！&quot;)</span><br><span class="line">        BigHeadSon().wash()</span><br><span class="line">        println(&quot;小头爸爸看见儿子把碗洗好了&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="五、如何实现多态和继承？"><a href="#五、如何实现多态和继承？" class="headerlink" title="五、如何实现多态和继承？"></a>五、如何实现多态和继承？</h3><p>kotlin是面向对象的语言，子类可以继承父类的方法和属性。<br><strong>抽象类</strong>：如父类，同一类具有同样基本属性和方法的类事物的描述，事物的本质描述。<br><strong>接口</strong>：指具有同样基本属性和方法的能力，事物的能力描述。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;抽象类</span><br><span class="line">abstract class Human(var name:String) &#123;</span><br><span class="line">    abstract fun eat()</span><br><span class="line"></span><br><span class="line">    abstract fun pee()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;男人</span><br><span class="line">class Man(name: String) : Human(name) &#123;</span><br><span class="line">    override fun eat() &#123;</span><br><span class="line">        println(&quot;$&#123;name&#125;大口的吃饭,暴力&quot;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    override fun pee() &#123;</span><br><span class="line">        println(&quot;$&#123;name&#125;站着尿尿---&quot;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;女人</span><br><span class="line">class Woman(name: String) :Human(name) &#123;</span><br><span class="line">    override fun pee() &#123;</span><br><span class="line">        println(&quot;$&#123;name&#125;蹲着尿尿---&quot;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    override fun eat() &#123;</span><br><span class="line">        println(&quot;$&#123;name&#125;小口慢慢的吃饭，文雅&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;测试</span><br><span class="line">fun main(args: Array&lt;String&gt;) &#123;</span><br><span class="line">    var person1 &#x3D; Man(&quot;金三胖&quot;)</span><br><span class="line">    var person2 &#x3D; Woman(&quot;波多野结衣&quot;)</span><br><span class="line">    var person3 &#x3D; Woman(&quot;貂蝉&quot;)</span><br><span class="line">    var person4 &#x3D; Man(&quot;吕布&quot;)</span><br><span class="line"></span><br><span class="line">    var humanList &#x3D; listOf&lt;Human&gt;(person1,person2,person3,person4)</span><br><span class="line"></span><br><span class="line">    for (h in humanList)&#123;</span><br><span class="line">        h.name</span><br><span class="line">&#x2F;&#x2F;        h.eat()</span><br><span class="line">        h.pee()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="六、when的表达式："><a href="#六、when的表达式：" class="headerlink" title="六、when的表达式："></a>六、when的表达式：</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;考试成绩评级10分 9分A 8分B 7分C</span><br><span class="line"></span><br><span class="line">fun scoreMatch(score:Int):String&#123;</span><br><span class="line">	when(score)&#123;</span><br><span class="line">		10 -&gt; return &quot;恭喜你拿了满分S&quot;</span><br><span class="line">		9 -&gt; return &quot;恭喜你拿了A&quot;</span><br><span class="line">		8 -&gt; return &quot;恭喜你拿了B&quot;</span><br><span class="line">		7 -&gt; return &quot;你拿了C，还需更加努力&quot;</span><br><span class="line">		else -&gt; return &quot;对不起你被OUT啦！&quot;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun main(agrs:Array&lt;String&gt;)&#123;</span><br><span class="line">	println(scoreMatch(10))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="七、空值判断："><a href="#七、空值判断：" class="headerlink" title="七、空值判断："></a>七、空值判断：</h3><p>加上问好代表参数可以为空</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;接收一个参数，参数为非空的String类型   </span><br><span class="line">fun heat(str:String?):String&#123;</span><br><span class="line">	return &quot;热$&#123;str&#125;&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun main(agrs:Array&lt;String&gt;)&#123;</span><br><span class="line">	var result1 &#x3D; &quot;油&quot;</span><br><span class="line">	println(heat(result1))</span><br><span class="line">	</span><br><span class="line">	var result2 &#x3D; null</span><br><span class="line">	println(heat(result2))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="八、函数表达式"><a href="#八、函数表达式" class="headerlink" title="八、函数表达式"></a>八、函数表达式</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">fun main(args:Array&lt;String&gt;)&#123;</span><br><span class="line">	&#x2F;&#x2F;函数</span><br><span class="line">	var result &#x3D; add(3,4)</span><br><span class="line">	println(result)</span><br><span class="line">	</span><br><span class="line">	&#x2F;&#x2F;函数表达式</span><br><span class="line">	var i &#x3D; &#123;x:Int,y:Int -&gt; x+y&#125;</span><br><span class="line">	var result2 &#x3D; i(3,4)</span><br><span class="line">	var temp &#x3D; result2&#x3D;&#x3D;(7)</span><br><span class="line">	println(&quot;$&#123;temp&#125;&quot;)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun add(a:Int,b:Int):Int &#x3D; a+b</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="九、递归演示："><a href="#九、递归演示：" class="headerlink" title="九、递归演示："></a>九、递归演示：</h3><p><strong>BigInteger</strong>函数是Java数值运算大值时使用的属性，特殊的超级<strong>Int</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;演示一</span><br><span class="line">import java.math.BigInteger</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 递归演示</span><br><span class="line">&#x2F;&#x2F; 阶乘  5的阶乘：5*4*3*2*1</span><br><span class="line">fun main(args:Array&lt;String&gt;)&#123;</span><br><span class="line">	&#x2F;&#x2F;&#x2F;BigInteger是一个不可描述超大的数字</span><br><span class="line">	println(&quot;请输入数字：&quot;)</span><br><span class="line">	var a &#x3D; readLine()</span><br><span class="line">    try&#123;</span><br><span class="line">		var b:BigInteger &#x3D; a!!.toBigInteger()</span><br><span class="line">		&#x2F;&#x2F;阶乘</span><br><span class="line">		println(fact(b))</span><br><span class="line">	&#125;catch(e:Exception)&#123;</span><br><span class="line">		println(&quot;输入数字有误！！&quot;)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun fact(a:BigInteger):BigInteger&#123;</span><br><span class="line">	if(a&#x3D;&#x3D;BigInteger.ONE)</span><br><span class="line">	    return BigInteger.ONE</span><br><span class="line">	else</span><br><span class="line">		return a*fact(a-BigInteger.ONE)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>尾递归 <strong>tailrec</strong>修饰方法,譬如超过电脑运算周期范围的计算</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">fun main(args:Array&lt;String&gt;)&#123;</span><br><span class="line">	var a &#x3D; readLine()!!.toInt()</span><br><span class="line">	var num:Int &#x3D; 0</span><br><span class="line">	var result:Int &#x3D; 0</span><br><span class="line">	println(add(a,num,result))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;尾递归 tailrec修饰方法</span><br><span class="line">tailrec fun add(nuk:Int,nn:Int,result:Int):Int&#123;</span><br><span class="line">	var nns &#x3D; nn+1</span><br><span class="line">	var results &#x3D; result + nuk</span><br><span class="line">	println(&quot;计算机第$&#123;nns&#125;次运算,结果为：$&#123;results&#125;&quot;)</span><br><span class="line">	if(nuk&#x3D;&#x3D;1)</span><br><span class="line">		return results</span><br><span class="line">	else</span><br><span class="line">		</span><br><span class="line">		return add(nuk-1,nns,results)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="十、List和Map"><a href="#十、List和Map" class="headerlink" title="十、List和Map"></a>十、List和Map</h3><p>List演示：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> fun main(args:Array&lt;String&gt;)&#123;</span><br><span class="line">	 var lists &#x3D; listOf(&quot;买鸡蛋&quot;,&quot;买可乐&quot;,&quot;买猪肉&quot;,&quot;买大米&quot;)</span><br><span class="line">	 </span><br><span class="line">	 for(a in lists)&#123;</span><br><span class="line">		 println(a)</span><br><span class="line">		&#125;</span><br><span class="line">	 </span><br><span class="line">	 for((i,e) in lists.withIndex())</span><br><span class="line">		 println(&quot;$i,$e&quot;)</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Map演示：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import java.util.TreeMap</span><br><span class="line"></span><br><span class="line">fun main(args:Array&lt;String&gt;)&#123;</span><br><span class="line">	&#x2F;&#x2F;TreeMap 同一key的value不能重复存在</span><br><span class="line">	var map &#x3D; TreeMap&lt;String,String&gt;()</span><br><span class="line">	var list &#x3D; listOf(&quot;好&quot;,&quot;好&quot;,&quot;学习&quot;,&quot;天&quot;,&quot;天&quot;,&quot;向上&quot;)</span><br><span class="line">	</span><br><span class="line">	map[&quot;好&quot;] &#x3D; &quot;Good&quot;</span><br><span class="line">	map[&quot;学习&quot;] &#x3D; &quot;Study&quot;</span><br><span class="line">	map[&quot;天&quot;]  &#x3D; &quot;Day&quot;</span><br><span class="line">	map[&quot;向上&quot;]  &#x3D; &quot;Up&quot;</span><br><span class="line">	</span><br><span class="line">	for(a in list)&#123;</span><br><span class="line">		print(&quot;$&#123;map[a]&#125;  &quot;)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="十一、人机交互"><a href="#十一、人机交互" class="headerlink" title="十一、人机交互"></a>十一、人机交互</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">fun main(args:Array&lt;String&gt;)&#123;</span><br><span class="line">	println(&quot;请输入第一个数字：&quot;)</span><br><span class="line">	var c &#x3D; readLine()</span><br><span class="line">	println(&quot;请输入第二个数字：&quot;)</span><br><span class="line">	var d &#x3D; readLine()</span><br><span class="line">	</span><br><span class="line">	try&#123;</span><br><span class="line">		var a &#x3D; c!!.toInt()</span><br><span class="line">	    var b &#x3D; d!!.toInt()</span><br><span class="line">		println(&quot;$&#123;a&#125; + $&#123;b&#125; &#x3D; $&#123;a + b&#125;&quot;)</span><br><span class="line">	&#125;catch(e:Exception)&#123;</span><br><span class="line">		println(&quot;输入数据有误！，请重新输入&quot;)</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>**!!.**确保不为空<br>**?.**可为空</p>
-]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>kotlin</tag>
       </tags>
   </entry>
   <entry>
@@ -1678,6 +1629,21 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
+    <title>Mac 电脑如何卸载 node和npm</title>
+    <url>/2020/08/25/Mac-%E7%94%B5%E8%84%91%E5%A6%82%E4%BD%95%E5%8D%B8%E8%BD%BD-node%E5%92%8Cnpm/</url>
+    <content><![CDATA[<p>记录下我自己重新安装npm，因为npm是和node.js安装一起的，也就是说是重新弄<em>node</em></p>
+<span id="more"></span>
+<h3 id="一、在终端依次输入以下命令"><a href="#一、在终端依次输入以下命令" class="headerlink" title="一、在终端依次输入以下命令"></a>一、在终端依次输入以下命令</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo npm uninstall npm -g</span><br><span class="line">sudo rm -rf &#x2F;usr&#x2F;local&#x2F;lib&#x2F;node &#x2F;usr&#x2F;local&#x2F;lib&#x2F;node_modules &#x2F;var&#x2F;db&#x2F;receipts&#x2F;org.nodejs.*</span><br><span class="line">sudo rm -rf &#x2F;usr&#x2F;local&#x2F;include&#x2F;node &#x2F;Users&#x2F;$USER&#x2F;.npm</span><br><span class="line">sudo rm &#x2F;usr&#x2F;local&#x2F;bin&#x2F;node</span><br><span class="line">sudo rm &#x2F;usr&#x2F;local&#x2F;share&#x2F;man&#x2F;man1&#x2F;node.1</span><br></pre></td></tr></table></figure>
+<h3 id="二"><a href="#二" class="headerlink" title="二"></a>二</h3><p>输入 npm -v 和node -v 验证是否卸载成功。</p>
+]]></content>
+      <categories>
+        <category>工具使用</category>
+      </categories>
+      <tags>
+        <tag>系统</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Mac上实现SVN代码管理</title>
     <url>/2019/05/30/Mac%E4%B8%8A%E5%AE%9E%E7%8E%B0SVN%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86/</url>
     <content><![CDATA[<h3 id="参考地址："><a href="#参考地址：" class="headerlink" title="参考地址："></a>参考地址：</h3><ul>
@@ -1700,21 +1666,6 @@ Connection conn = null;
       </categories>
       <tags>
         <tag>工具使用</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Mac 电脑如何卸载 node和npm</title>
-    <url>/2020/08/25/Mac-%E7%94%B5%E8%84%91%E5%A6%82%E4%BD%95%E5%8D%B8%E8%BD%BD-node%E5%92%8Cnpm/</url>
-    <content><![CDATA[<p>记录下我自己重新安装npm，因为npm是和node.js安装一起的，也就是说是重新弄<em>node</em></p>
-<span id="more"></span>
-<h3 id="一、在终端依次输入以下命令"><a href="#一、在终端依次输入以下命令" class="headerlink" title="一、在终端依次输入以下命令"></a>一、在终端依次输入以下命令</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo npm uninstall npm -g</span><br><span class="line">sudo rm -rf &#x2F;usr&#x2F;local&#x2F;lib&#x2F;node &#x2F;usr&#x2F;local&#x2F;lib&#x2F;node_modules &#x2F;var&#x2F;db&#x2F;receipts&#x2F;org.nodejs.*</span><br><span class="line">sudo rm -rf &#x2F;usr&#x2F;local&#x2F;include&#x2F;node &#x2F;Users&#x2F;$USER&#x2F;.npm</span><br><span class="line">sudo rm &#x2F;usr&#x2F;local&#x2F;bin&#x2F;node</span><br><span class="line">sudo rm &#x2F;usr&#x2F;local&#x2F;share&#x2F;man&#x2F;man1&#x2F;node.1</span><br></pre></td></tr></table></figure>
-<h3 id="二"><a href="#二" class="headerlink" title="二"></a>二</h3><p>输入 npm -v 和node -v 验证是否卸载成功。</p>
-]]></content>
-      <categories>
-        <category>工具使用</category>
-      </categories>
-      <tags>
-        <tag>系统</tag>
       </tags>
   </entry>
   <entry>
@@ -1815,30 +1766,6 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
-    <title>Mac连接京瓷打印机Fs-1030MFP/DP</title>
-    <url>/2021/05/13/Mac%E8%BF%9E%E6%8E%A5%E4%BA%AC%E7%93%B7%E6%89%93%E5%8D%B0%E6%9C%BAFs-1030MFP-DP/</url>
-    <content><![CDATA[<pre class="mermaid">graph TB
-    A0[进入系统偏好设置] --> B0[打印机与扫描仪] --> C0[添加打印机] -->  D0[选择IP]
-    D0[选择IP]  --> E0[ 输入IP地址,协议选择行式打印机监控程序-LPD,使用那选择普通PCL打印机,然后系统会自动添加打印机驱动]  --> F0[OK开始打印吧]</pre>
-<ol>
-<li>进入系统偏好设置。</li>
-<li>打印机与扫描仪</li>
-<li>添加打印机</li>
-<li>选择IP</li>
-<li>输入IP地址，协议选择“行式打印机监控程序-LPD”，使用那选择“普通PCL打印机”，然后系统会自动添加打印机驱动。</li>
-<li>OK开始打印吧</li>
-</ol>
-<hr>
-<p>就是这么简单</p>
-]]></content>
-      <categories>
-        <category>工具使用</category>
-      </categories>
-      <tags>
-        <tag>工具搭建</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Mac电脑maven安装与配置</title>
     <url>/2021/05/13/Mac%E7%94%B5%E8%84%91maven%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</url>
     <content><![CDATA[<p><a href="https://www.cnblogs.com/zdz8207/p/mac-java-maven.html">原文地址：大自然的流风</a></p>
@@ -1864,6 +1791,30 @@ Connection conn = null;
       </categories>
       <tags>
         <tag>Maven</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Mac连接京瓷打印机Fs-1030MFP/DP</title>
+    <url>/2021/05/13/Mac%E8%BF%9E%E6%8E%A5%E4%BA%AC%E7%93%B7%E6%89%93%E5%8D%B0%E6%9C%BAFs-1030MFP-DP/</url>
+    <content><![CDATA[<pre class="mermaid">graph TB
+    A0[进入系统偏好设置] --> B0[打印机与扫描仪] --> C0[添加打印机] -->  D0[选择IP]
+    D0[选择IP]  --> E0[ 输入IP地址,协议选择行式打印机监控程序-LPD,使用那选择普通PCL打印机,然后系统会自动添加打印机驱动]  --> F0[OK开始打印吧]</pre>
+<ol>
+<li>进入系统偏好设置。</li>
+<li>打印机与扫描仪</li>
+<li>添加打印机</li>
+<li>选择IP</li>
+<li>输入IP地址，协议选择“行式打印机监控程序-LPD”，使用那选择“普通PCL打印机”，然后系统会自动添加打印机驱动。</li>
+<li>OK开始打印吧</li>
+</ol>
+<hr>
+<p>就是这么简单</p>
+]]></content>
+      <categories>
+        <category>工具使用</category>
+      </categories>
+      <tags>
+        <tag>工具搭建</tag>
       </tags>
   </entry>
   <entry>
@@ -2010,52 +1961,6 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
-    <title>Mark的架构学习笔记— Android_MVP(二)</title>
-    <url>/2019/01/25/Mark%E7%9A%84%E6%9E%B6%E6%9E%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94-Android-MVP-%E4%BA%8C/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>之前我写的一个笔记，没有结合网络请求，现在我想记录下我这次结合网络请求Retrofit的MVP编程。<br>我上一篇的笔记：<a href="https://markchyl.github.io/2018/12/17/Mark%E7%9A%84%E6%9E%B6%E6%9E%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Android-MVP/">马克的架构学习笔记— Android_MVP</a>,代码笔记中有链接。</p>
-<p>根据慕课网上的学习的代码链接：<a href="https://github.com/MarkCHYL/MarkTellNumInfo_mvp">根据手机号查询号码信息</a></p>
-<p>这篇笔记我不贴代码，制作个笔记记录，项目代码不能外泄。</p>
-<span id="more"></span>
-<h3 id="老话重提，啥事MVP模式？"><a href="#老话重提，啥事MVP模式？" class="headerlink" title="老话重提，啥事MVP模式？"></a>老话重提，啥事MVP模式？</h3><p>这个问题是真的很重要，MVP就是一个编程思想，让代码具有层次感，逻辑鲜明。</p>
-<p>在MVP里，Presenter完全把Model和View进行了分离，主要的程序逻辑在Presenter里实现。而且，Presenter与具体的View是没有直接关联的，而是通过定义好的接口进行交互，从而使得在变更View时候可以保持Presenter的不变，即重用！ 不仅如此，我们还可以编写测试用的View，模拟用户的各种操作，从而实现对Presenter的测试–而不需要使用自动化的测试工具。</p>
-<ul>
-<li><h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul>
-<li><p>模型与视图完全分离，我们可以修改视图而不影响模型</p>
-</li>
-<li><p>可以更高效地使用模型，因为所有的交互都发生在一个地方——Presenter内部</p>
-</li>
-<li><p>我们可以将一个Presenter用于多个视图，而不需要改变Presenter的逻辑。这个特性非常的有用，因为视图的变化总是比模型的变化频繁。</p>
-</li>
-<li><p>如果我们把逻辑放在Presenter中，那么我们就可以脱离用户接口来测试这些逻辑（单元测试）</p>
-</li>
-<li><p>(1)降低耦合度</p>
-<p> (2)模块职责划分明显</p>
-<p> (3)利于测试驱动开发</p>
-<p> (4)代码复用</p>
-<p> (5)隐藏数据</p>
-<p> (6)代码灵活性</p>
-</li>
-</ul>
-</li>
-<li><h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><p>由于对视图的渲染放在了Presenter中,所以视图和Presenter的交互会过于频繁。还有一点需要明白,如果Presenter过多地渲染了视图,往往会使得它与特定的视图的联系过于紧密。一旦视图需要变更,那么Presenter也需要变更了</p>
-</li>
-</ul>
-<h3 id="大白话"><a href="#大白话" class="headerlink" title="大白话"></a>大白话</h3><ul>
-<li>View层就是用于自己显示的，你需要什么样的显示接口，就可以在View层中定义。</li>
-<li>Presenter层就是协调View和Model层的，可以将网络请求和接 main 显示的方法调用放在P层，然后调用model层的方法，我这一般就是保存数据和获取数据。</li>
-<li>model其实就是数据管理类</li>
-</ul>
-<p><img data-src="https://note.youdao.com/yws/api/personal/file/WEB3a6a0577e5958e93f8a25e14eade5b77?method=download&shareKey=f7d60e8b528af13a443d9b56d1d4a6ab" alt="image"></p>
-]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>架构</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Mark的架构学习笔记---Android_MVP</title>
     <url>/2018/12/17/Mark%E7%9A%84%E6%9E%B6%E6%9E%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Android-MVP/</url>
     <content><![CDATA[<h1 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h1><p>   我是名安卓程序员。当我第一次接触到架构这个概念时，说实话我一头雾水。我现实了解了MVC模式，当我开始接触MVP模式时，我啊真的彻底被搞懵了！怎么把一个activity拆成了四个或五者，如果分装过后会更多，想象下，一下子猛的看那么复杂的对我来说无益处。这边文章呢我实现只是一个加你简单单的Demo练习，参考代码和资料来源于网上（备注于文底部）。<br>   记录只是让自己加深理解。</p>
@@ -2104,6 +2009,52 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
+    <title>Mark的架构学习笔记— Android_MVP(二)</title>
+    <url>/2019/01/25/Mark%E7%9A%84%E6%9E%B6%E6%9E%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94-Android-MVP-%E4%BA%8C/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>之前我写的一个笔记，没有结合网络请求，现在我想记录下我这次结合网络请求Retrofit的MVP编程。<br>我上一篇的笔记：<a href="https://markchyl.github.io/2018/12/17/Mark%E7%9A%84%E6%9E%B6%E6%9E%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Android-MVP/">马克的架构学习笔记— Android_MVP</a>,代码笔记中有链接。</p>
+<p>根据慕课网上的学习的代码链接：<a href="https://github.com/MarkCHYL/MarkTellNumInfo_mvp">根据手机号查询号码信息</a></p>
+<p>这篇笔记我不贴代码，制作个笔记记录，项目代码不能外泄。</p>
+<span id="more"></span>
+<h3 id="老话重提，啥事MVP模式？"><a href="#老话重提，啥事MVP模式？" class="headerlink" title="老话重提，啥事MVP模式？"></a>老话重提，啥事MVP模式？</h3><p>这个问题是真的很重要，MVP就是一个编程思想，让代码具有层次感，逻辑鲜明。</p>
+<p>在MVP里，Presenter完全把Model和View进行了分离，主要的程序逻辑在Presenter里实现。而且，Presenter与具体的View是没有直接关联的，而是通过定义好的接口进行交互，从而使得在变更View时候可以保持Presenter的不变，即重用！ 不仅如此，我们还可以编写测试用的View，模拟用户的各种操作，从而实现对Presenter的测试–而不需要使用自动化的测试工具。</p>
+<ul>
+<li><h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul>
+<li><p>模型与视图完全分离，我们可以修改视图而不影响模型</p>
+</li>
+<li><p>可以更高效地使用模型，因为所有的交互都发生在一个地方——Presenter内部</p>
+</li>
+<li><p>我们可以将一个Presenter用于多个视图，而不需要改变Presenter的逻辑。这个特性非常的有用，因为视图的变化总是比模型的变化频繁。</p>
+</li>
+<li><p>如果我们把逻辑放在Presenter中，那么我们就可以脱离用户接口来测试这些逻辑（单元测试）</p>
+</li>
+<li><p>(1)降低耦合度</p>
+<p> (2)模块职责划分明显</p>
+<p> (3)利于测试驱动开发</p>
+<p> (4)代码复用</p>
+<p> (5)隐藏数据</p>
+<p> (6)代码灵活性</p>
+</li>
+</ul>
+</li>
+<li><h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><p>由于对视图的渲染放在了Presenter中,所以视图和Presenter的交互会过于频繁。还有一点需要明白,如果Presenter过多地渲染了视图,往往会使得它与特定的视图的联系过于紧密。一旦视图需要变更,那么Presenter也需要变更了</p>
+</li>
+</ul>
+<h3 id="大白话"><a href="#大白话" class="headerlink" title="大白话"></a>大白话</h3><ul>
+<li>View层就是用于自己显示的，你需要什么样的显示接口，就可以在View层中定义。</li>
+<li>Presenter层就是协调View和Model层的，可以将网络请求和接 main 显示的方法调用放在P层，然后调用model层的方法，我这一般就是保存数据和获取数据。</li>
+<li>model其实就是数据管理类</li>
+</ul>
+<p><img data-src="https://note.youdao.com/yws/api/personal/file/WEB3a6a0577e5958e93f8a25e14eade5b77?method=download&shareKey=f7d60e8b528af13a443d9b56d1d4a6ab" alt="image"></p>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>架构</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Mark的个人博客搭建</title>
     <url>/2018/12/14/Mark%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<hr>
@@ -2140,7 +2091,7 @@ Connection conn = null;
 <p>2.添加SSH Key到Github<br>进入github首页在设置洁面<br><img data-src="https://images2017.cnblogs.com/blog/1250458/201710/1250458-20171017153636849-294935886.png"></p>
 <hr>
 <h4 id="添加SSH-Key"><a href="#添加SSH-Key" class="headerlink" title="添加SSH Key"></a>添加SSH Key</h4><p><img data-src="https://images2017.cnblogs.com/blog/1250458/201710/1250458-20171017153642521-647884655.png"><br>找到系统当前用户目录下(开启查看隐藏文件) C:\Users\用户名\ .ssh id_rsa.pub文件以文本方式打开。打开之后全部复制到key中<br><img data-src="https://images2017.cnblogs.com/blog/1250458/201710/1250458-20171017153648631-441574444.png"><br>到了这就可以测试一下是否成功了:</p>
-<p>ssh -T <a href="mailto:&#x67;&#x69;&#x74;&#64;&#x67;&#x69;&#x74;&#104;&#117;&#98;&#46;&#99;&#x6f;&#109;">&#x67;&#x69;&#x74;&#64;&#x67;&#x69;&#x74;&#104;&#117;&#98;&#46;&#99;&#x6f;&#109;</a><br>#之后会要你输入yes/no,输入yes就好了。<br>设置你的账号信息:</p>
+<p>ssh -T <a href="mailto:&#103;&#105;&#x74;&#64;&#x67;&#x69;&#116;&#104;&#x75;&#98;&#x2e;&#99;&#x6f;&#109;">&#103;&#105;&#x74;&#64;&#x67;&#x69;&#116;&#104;&#x75;&#98;&#x2e;&#99;&#x6f;&#109;</a><br>#之后会要你输入yes/no,输入yes就好了。<br>设置你的账号信息:</p>
 <p>git config –global user.name “你的名字”     #真实名字不是github用户名<br>git config –global user.email “邮箱@邮箱.com”    #github邮箱<br>3.部署到github<br>hexo d<br>这时再刷新 username.github.io 就可以看到你的博客了。</p>
 <p>到了这你以为就结束了吗？没有，还有坑没有给你们填好。</p>
 <p>如果你的SSH配置的时候哪找的.ssh文件的化，可以参照<a href="https://www.cnblogs.com/ailiailan/p/8577411.html">mac 上传本地代码到 Github 教程</a>,我就是参照上面的步骤配置的。</p>
@@ -2522,6 +2473,23 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
+    <title>error: &lt;item&gt; inner element must either be a resource reference or empty.</title>
+    <url>/2019/12/25/error-item-inner-element-must-either-be-a-resource-reference-or-empty/</url>
+    <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">FAQ:</span><br><span class="line"></span><br><span class="line">Android resource compilation failed</span><br><span class="line">Output: &#x2F;home&#x2F;cmm&#x2F;code&#x2F;AndroidHttpCapture&#x2F;app&#x2F;build&#x2F;intermediates&#x2F;incremental&#x2F;mergeDebugResources&#x2F;merged.dir&#x2F;values&#x2F;values.xml:733: error: &lt;item&gt; inner element must either be a resource reference or empty.</span><br><span class="line"></span><br><span class="line">Command: &#x2F;home&#x2F;cmm&#x2F;.gradle&#x2F;caches&#x2F;transforms-1&#x2F;files-1.1&#x2F;aapt2-3.2.0-4818971-linux.jar&#x2F;8e0275d065e63c2601af4fb5800833ab&#x2F;aapt2-3.2.0-4818971-linux&#x2F;aapt2 compile --legacy \</span><br><span class="line">-o \</span><br><span class="line">&#x2F;home&#x2F;cmm&#x2F;code&#x2F;AndroidHttpCapture&#x2F;app&#x2F;build&#x2F;intermediates&#x2F;res&#x2F;merged&#x2F;debug \</span><br><span class="line">&#x2F;home&#x2F;cmm&#x2F;code&#x2F;AndroidHttpCapture&#x2F;app&#x2F;build&#x2F;intermediates&#x2F;incremental&#x2F;mergeDebugResources&#x2F;merged.dir&#x2F;values&#x2F;values.xml</span><br><span class="line">Daemon: AAPT2 aapt2-3.2.0-4818971-linux Daemon #1</span><br></pre></td></tr></table></figure>
+
+
+<p>如上错误原来是values.xm资源文件中，元素定义了id后，就不能在后面给值了</p>
+<p>发现 :<br><code>&lt;item name=&quot;split&quot; type=&quot;id&quot;&gt;false&lt;/item&gt;</code></p>
+<p>改为 :<br><code>&lt;item name=&quot;split&quot; type=&quot;id&quot;/&gt;</code><br>即可.</p>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Error</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>flutter入门之常见的flutter问题汇总</title>
     <url>/2019/07/11/flutter%E5%85%A5%E9%97%A8%E4%B9%8B%E5%B8%B8%E8%A7%81%E7%9A%84flutter%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/</url>
     <content><![CDATA[<p><a href="https://blog.csdn.net/email_jade/article/details/85317859###">csdn上原博文</a></p>
@@ -2635,23 +2603,6 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
-    <title>error: &lt;item&gt; inner element must either be a resource reference or empty.</title>
-    <url>/2019/12/25/error-item-inner-element-must-either-be-a-resource-reference-or-empty/</url>
-    <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">FAQ:</span><br><span class="line"></span><br><span class="line">Android resource compilation failed</span><br><span class="line">Output: &#x2F;home&#x2F;cmm&#x2F;code&#x2F;AndroidHttpCapture&#x2F;app&#x2F;build&#x2F;intermediates&#x2F;incremental&#x2F;mergeDebugResources&#x2F;merged.dir&#x2F;values&#x2F;values.xml:733: error: &lt;item&gt; inner element must either be a resource reference or empty.</span><br><span class="line"></span><br><span class="line">Command: &#x2F;home&#x2F;cmm&#x2F;.gradle&#x2F;caches&#x2F;transforms-1&#x2F;files-1.1&#x2F;aapt2-3.2.0-4818971-linux.jar&#x2F;8e0275d065e63c2601af4fb5800833ab&#x2F;aapt2-3.2.0-4818971-linux&#x2F;aapt2 compile --legacy \</span><br><span class="line">-o \</span><br><span class="line">&#x2F;home&#x2F;cmm&#x2F;code&#x2F;AndroidHttpCapture&#x2F;app&#x2F;build&#x2F;intermediates&#x2F;res&#x2F;merged&#x2F;debug \</span><br><span class="line">&#x2F;home&#x2F;cmm&#x2F;code&#x2F;AndroidHttpCapture&#x2F;app&#x2F;build&#x2F;intermediates&#x2F;incremental&#x2F;mergeDebugResources&#x2F;merged.dir&#x2F;values&#x2F;values.xml</span><br><span class="line">Daemon: AAPT2 aapt2-3.2.0-4818971-linux Daemon #1</span><br></pre></td></tr></table></figure>
-
-
-<p>如上错误原来是values.xm资源文件中，元素定义了id后，就不能在后面给值了</p>
-<p>发现 :<br><code>&lt;item name=&quot;split&quot; type=&quot;id&quot;&gt;false&lt;/item&gt;</code></p>
-<p>改为 :<br><code>&lt;item name=&quot;split&quot; type=&quot;id&quot;/&gt;</code><br>即可.</p>
-]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Error</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>flutter开发插件和包</title>
     <url>/2019/07/02/flutter%E5%BC%80%E5%8F%91%E6%8F%92%E4%BB%B6%E5%92%8C%E5%8C%85/</url>
     <content><![CDATA[<h2 id="cmd-命令创建开发插件包"><a href="#cmd-命令创建开发插件包" class="headerlink" title="cmd 命令创建开发插件包"></a>cmd 命令创建开发插件包</h2><p> <code>flutter create --org com.mark --template markplugin</code><br>  使用该–org选项以反向域名表示法指定您的组织。此值用于生成的Android和iOS代码中的各种包和包标识符。<br>  其中 com.mark 就是我的组织名，markplugin 就是我的插件项目名字<br>  生成如下：</p>
@@ -2739,17 +2690,6 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
-    <title>vue基础使用-2</title>
-    <url>/2020/08/25/vue%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8-2/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>vue</category>
-      </categories>
-      <tags>
-        <tag>vue</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>vue基础使用-1</title>
     <url>/2020/08/25/vue%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8-1/</url>
     <content><![CDATA[<h3 id="安装vue"><a href="#安装vue" class="headerlink" title="安装vue"></a>安装vue</h3><hr>
@@ -2771,6 +2711,17 @@ Connection conn = null;
 <p><a href="https://github.com/MarkCHYL/BLOG/blob/master/marksource/01_vue%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8.html">本节练习代码</a></p>
 <p>下一章<a href="http://markchyl.cn/2020/08/25/vue%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8-2/">vue基础使用-2</a></p>
 ]]></content>
+      <categories>
+        <category>vue</category>
+      </categories>
+      <tags>
+        <tag>vue</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>vue基础使用-2</title>
+    <url>/2020/08/25/vue%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8-2/</url>
+    <content><![CDATA[]]></content>
       <categories>
         <category>vue</category>
       </categories>
@@ -2931,28 +2882,6 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
-    <title>如何防止重新启动</title>
-    <url>/2019/10/14/%E5%A6%82%E4%BD%95%E9%98%B2%E6%AD%A2%E9%87%8D%E6%96%B0%E5%90%AF%E5%8A%A8/</url>
-    <content><![CDATA[<p>我的问题描述：</p>
-<blockquote>
-<p>app需要登陆才能进入主页，每次退到后台或返回之后都会重新进入LoginActivity，我需要的效果是登陆后，每次都去跳MainActivity。</p>
-</blockquote>
-<span id="more"></span>
-<p>说做就做，方法有很多种，我这记录的主要是利用回退栈 *moveTaskToBack(false)*来实现：</p>
-<ul>
-<li>LoginActivity的onCreate()方法中添加： <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if (!isTaskRoot()) &#123;</span><br><span class="line">     finish();</span><br><span class="line">     return;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-  <em>注意添加再布局设置之前</em></li>
-<li>再MainActivity中重写<code>onKeyDown</code>   和<code>onBackPressed</code>方法：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@Override</span><br><span class="line"> public boolean onKeyDown(int keyCode, KeyEvent event) &#123;</span><br><span class="line">     if (keyCode &#x3D;&#x3D; KeyEvent.KEYCODE_BACK) &#123;</span><br><span class="line">         moveTaskToBack(false);</span><br><span class="line">         return true;</span><br><span class="line">     &#125;</span><br><span class="line">     return super.onKeyDown(keyCode, event);</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> @Override</span><br><span class="line"> public void onBackPressed() &#123;</span><br><span class="line">     moveTaskToBack(false);</span><br><span class="line">     super.onBackPressed();</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="moveTaskToBack-boolean-isToTask-这个方法的使用自己的理解就是不让Activity被系统主动回收。"><a href="#moveTaskToBack-boolean-isToTask-这个方法的使用自己的理解就是不让Activity被系统主动回收。" class="headerlink" title="moveTaskToBack(boolean  isToTask)这个方法的使用自己的理解就是不让Activity被系统主动回收。"></a>moveTaskToBack(boolean  isToTask)这个方法的使用自己的理解就是不让Activity被系统主动回收。</h3>]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>如何爬取一个网站的图片分组到指定的文件夹</title>
     <url>/2020/12/09/%E5%A6%82%E4%BD%95%E7%88%AC%E5%8F%96%E4%B8%80%E4%B8%AA%E7%BD%91%E7%AB%99%E7%9A%84%E5%9B%BE%E7%89%87%E5%88%86%E7%BB%84%E5%88%B0%E6%8C%87%E5%AE%9A%E7%9A%84%E6%96%87%E4%BB%B6%E5%A4%B9/</url>
     <content><![CDATA[<h3 id="开发工具："><a href="#开发工具：" class="headerlink" title="开发工具："></a>开发工具：</h3><ul>
@@ -2989,6 +2918,28 @@ Connection conn = null;
       <tags>
         <tag>爬虫</tag>
         <tag>Python3.7</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何防止重新启动</title>
+    <url>/2019/10/14/%E5%A6%82%E4%BD%95%E9%98%B2%E6%AD%A2%E9%87%8D%E6%96%B0%E5%90%AF%E5%8A%A8/</url>
+    <content><![CDATA[<p>我的问题描述：</p>
+<blockquote>
+<p>app需要登陆才能进入主页，每次退到后台或返回之后都会重新进入LoginActivity，我需要的效果是登陆后，每次都去跳MainActivity。</p>
+</blockquote>
+<span id="more"></span>
+<p>说做就做，方法有很多种，我这记录的主要是利用回退栈 *moveTaskToBack(false)*来实现：</p>
+<ul>
+<li>LoginActivity的onCreate()方法中添加： <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if (!isTaskRoot()) &#123;</span><br><span class="line">     finish();</span><br><span class="line">     return;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+  <em>注意添加再布局设置之前</em></li>
+<li>再MainActivity中重写<code>onKeyDown</code>   和<code>onBackPressed</code>方法：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@Override</span><br><span class="line"> public boolean onKeyDown(int keyCode, KeyEvent event) &#123;</span><br><span class="line">     if (keyCode &#x3D;&#x3D; KeyEvent.KEYCODE_BACK) &#123;</span><br><span class="line">         moveTaskToBack(false);</span><br><span class="line">         return true;</span><br><span class="line">     &#125;</span><br><span class="line">     return super.onKeyDown(keyCode, event);</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> @Override</span><br><span class="line"> public void onBackPressed() &#123;</span><br><span class="line">     moveTaskToBack(false);</span><br><span class="line">     super.onBackPressed();</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="moveTaskToBack-boolean-isToTask-这个方法的使用自己的理解就是不让Activity被系统主动回收。"><a href="#moveTaskToBack-boolean-isToTask-这个方法的使用自己的理解就是不让Activity被系统主动回收。" class="headerlink" title="moveTaskToBack(boolean  isToTask)这个方法的使用自己的理解就是不让Activity被系统主动回收。"></a>moveTaskToBack(boolean  isToTask)这个方法的使用自己的理解就是不让Activity被系统主动回收。</h3>]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
       </tags>
   </entry>
   <entry>
@@ -3195,6 +3146,21 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
+    <title>自定义Toat及其弹出时间控制</title>
+    <url>/2020/07/21/%E8%87%AA%E5%AE%9A%E4%B9%89Toat%E5%8F%8A%E5%85%B6%E5%BC%B9%E5%87%BA%E6%97%B6%E9%97%B4%E6%8E%A7%E5%88%B6/</url>
+    <content><![CDATA[<p>效果就是实现Toast布局自定义，弹出的事件进行控制</p>
+<h3 id="一、先自定义布局"><a href="#一、先自定义布局" class="headerlink" title="一、先自定义布局"></a>一、先自定义布局</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Toast toast &#x3D; Toast.makeText(mContext, str, Toast.   LENGTH_SHORT);</span><br><span class="line">View view &#x3D; LayoutInflater.from(mContext).inflate(R.layout.item_toast, null);</span><br><span class="line">TextView textView &#x3D; view.findViewById(R.id.str_toast);</span><br><span class="line">      textView.setText(str);</span><br><span class="line">      toast.setView(view);</span><br><span class="line">      toast.setGravity(Gravity.CENTER, 0, 0);</span><br><span class="line">Utils.showTimeToast(toast,500);</span><br></pre></td></tr></table></figure>
+<h3 id="二、自定义弹出时间"><a href="#二、自定义弹出时间" class="headerlink" title="二、自定义弹出时间"></a>二、自定义弹出时间</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line">    * Toast自定义时间</span><br><span class="line">    * Toast对象时间需要为Toast.LENGH_LONG</span><br><span class="line">    *&#x2F;</span><br><span class="line">   public static void showTimeToast(final Toast toast, final int time) &#123;</span><br><span class="line">       final Timer timer &#x3D; new Timer();</span><br><span class="line">       timer.schedule(new TimerTask() &#123;</span><br><span class="line">           @Override</span><br><span class="line">           public void run() &#123;</span><br><span class="line">               toast.show();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;, 0, 3000);</span><br><span class="line">       new Timer().schedule(new TimerTask() &#123;</span><br><span class="line">           @Override</span><br><span class="line">           public void run() &#123;</span><br><span class="line">               toast.cancel();</span><br><span class="line">               timer.cancel();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;, time);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>就是那么简单，利用Timer和schedule实现事件监听，控制toast的弹出时间。</p>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>自定义控件实现（一）</title>
     <url>/2020/08/05/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6%E5%AE%9E%E7%8E%B0%EF%BC%88%E4%B8%80%EF%BC%89/</url>
     <content><![CDATA[<p><strong>被别人问题一愣一愣，骄傲的自己准备好好复习哈！</strong><br><a href="https://www.jianshu.com/p/6572ebed0d99">几乎完全使用这位大佬的</a></p>
@@ -3268,6 +3234,55 @@ Connection conn = null;
       </tags>
   </entry>
   <entry>
+    <title>Kotlin基础入门学习笔记</title>
+    <url>/2019/12/03/Kotlin%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>若不留下点啥笔记，感觉对不住自己一个星期半的学习加复习。</p>
+<h3 id="一、如何实现单列模式？"><a href="#一、如何实现单列模式？" class="headerlink" title="一、如何实现单列模式？"></a>一、如何实现单列模式？</h3><p>使用关键字 <strong>object</strong> 修饰的类,替换掉class关键字，便会在整套程序中生成一个且是唯一的对象实例。<br>譬如如下代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">object BigHeadSon:IWash &#123;</span><br><span class="line">    override fun wash() &#123;</span><br><span class="line">        println(&quot;大头儿子洗完收费1元钱&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>那样之后该类的实例变量整个项目中有且只有一个。</p>
+<span id="more"></span>
+<hr>
+<h3 id="二、如何实现枚举？"><a href="#二、如何实现枚举？" class="headerlink" title="二、如何实现枚举？"></a>二、如何实现枚举？</h3><p>实现枚举的代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">enum class Week &#123;</span><br><span class="line">    星期一, 星期二, 星期三, 星期四, 星期五, 星期六, 星期日</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun main(args: Array&lt;String&gt;) &#123;</span><br><span class="line">    println(Week.星期一.ordinal)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用关键字 enum 修饰类</p>
+<hr>
+<h3 id="三、如何实现印章类？"><a href="#三、如何实现印章类？" class="headerlink" title="三、如何实现印章类？"></a>三、如何实现印章类？</h3><p>举个例子一匹母驴、一屁公马和一匹公驴一碗酒后乱性，过了几天母驴怀孕了，不只是公马的还是公驴的。那么问题来了马和驴的后代是骡子，母驴和公驴的后代当然还是驴。<br>就像盖了章一样，使用<strong>sealed</strong>关键字修饰类,可以指定子类和个数。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 印章sealed类</span><br><span class="line">&#x2F;&#x2F;指定子类种类和个数</span><br><span class="line"></span><br><span class="line">sealed class Son &#123;</span><br><span class="line">    fun sayHello()&#123;</span><br><span class="line">        println(&quot;大家好！！！&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">    class smallBlackMule():Son()</span><br><span class="line"></span><br><span class="line">    class smallDonkey():Son()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun main(args: Array&lt;String&gt;) &#123;</span><br><span class="line">    var s1: Son &#x3D; Son.smallBlackMule()</span><br><span class="line"></span><br><span class="line">    var s2: Son &#x3D; Son.smallBlackMule()</span><br><span class="line"></span><br><span class="line">    var s3 &#x3D; Son.smallDonkey()</span><br><span class="line"></span><br><span class="line">    var list &#x3D; listOf&lt;Son&gt;( s1, s2, s3 )</span><br><span class="line"></span><br><span class="line">    for ( h in list)&#123;</span><br><span class="line">        if(h is Son.smallDonkey) &#123;</span><br><span class="line">            h.sayHello()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="四、如是实现委托和代理？"><a href="#四、如是实现委托和代理？" class="headerlink" title="四、如是实现委托和代理？"></a>四、如是实现委托和代理？</h3><p>利用关键字 <strong>by</strong> 实现，示例代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class SmallHeadFather : IWash by BigHeadSon() &#123;</span><br><span class="line">    override fun wash() &#123;</span><br><span class="line">        println(&quot;小头爸爸洗完收费10块钱！！！&quot;)</span><br><span class="line">        BigHeadSon().wash()</span><br><span class="line">        println(&quot;小头爸爸看见儿子把碗洗好了&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="五、如何实现多态和继承？"><a href="#五、如何实现多态和继承？" class="headerlink" title="五、如何实现多态和继承？"></a>五、如何实现多态和继承？</h3><p>kotlin是面向对象的语言，子类可以继承父类的方法和属性。<br><strong>抽象类</strong>：如父类，同一类具有同样基本属性和方法的类事物的描述，事物的本质描述。<br><strong>接口</strong>：指具有同样基本属性和方法的能力，事物的能力描述。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;抽象类</span><br><span class="line">abstract class Human(var name:String) &#123;</span><br><span class="line">    abstract fun eat()</span><br><span class="line"></span><br><span class="line">    abstract fun pee()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;男人</span><br><span class="line">class Man(name: String) : Human(name) &#123;</span><br><span class="line">    override fun eat() &#123;</span><br><span class="line">        println(&quot;$&#123;name&#125;大口的吃饭,暴力&quot;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    override fun pee() &#123;</span><br><span class="line">        println(&quot;$&#123;name&#125;站着尿尿---&quot;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;女人</span><br><span class="line">class Woman(name: String) :Human(name) &#123;</span><br><span class="line">    override fun pee() &#123;</span><br><span class="line">        println(&quot;$&#123;name&#125;蹲着尿尿---&quot;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    override fun eat() &#123;</span><br><span class="line">        println(&quot;$&#123;name&#125;小口慢慢的吃饭，文雅&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;测试</span><br><span class="line">fun main(args: Array&lt;String&gt;) &#123;</span><br><span class="line">    var person1 &#x3D; Man(&quot;金三胖&quot;)</span><br><span class="line">    var person2 &#x3D; Woman(&quot;波多野结衣&quot;)</span><br><span class="line">    var person3 &#x3D; Woman(&quot;貂蝉&quot;)</span><br><span class="line">    var person4 &#x3D; Man(&quot;吕布&quot;)</span><br><span class="line"></span><br><span class="line">    var humanList &#x3D; listOf&lt;Human&gt;(person1,person2,person3,person4)</span><br><span class="line"></span><br><span class="line">    for (h in humanList)&#123;</span><br><span class="line">        h.name</span><br><span class="line">&#x2F;&#x2F;        h.eat()</span><br><span class="line">        h.pee()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="六、when的表达式："><a href="#六、when的表达式：" class="headerlink" title="六、when的表达式："></a>六、when的表达式：</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;考试成绩评级10分 9分A 8分B 7分C</span><br><span class="line"></span><br><span class="line">fun scoreMatch(score:Int):String&#123;</span><br><span class="line">	when(score)&#123;</span><br><span class="line">		10 -&gt; return &quot;恭喜你拿了满分S&quot;</span><br><span class="line">		9 -&gt; return &quot;恭喜你拿了A&quot;</span><br><span class="line">		8 -&gt; return &quot;恭喜你拿了B&quot;</span><br><span class="line">		7 -&gt; return &quot;你拿了C，还需更加努力&quot;</span><br><span class="line">		else -&gt; return &quot;对不起你被OUT啦！&quot;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun main(agrs:Array&lt;String&gt;)&#123;</span><br><span class="line">	println(scoreMatch(10))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="七、空值判断："><a href="#七、空值判断：" class="headerlink" title="七、空值判断："></a>七、空值判断：</h3><p>加上问好代表参数可以为空</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;接收一个参数，参数为非空的String类型   </span><br><span class="line">fun heat(str:String?):String&#123;</span><br><span class="line">	return &quot;热$&#123;str&#125;&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun main(agrs:Array&lt;String&gt;)&#123;</span><br><span class="line">	var result1 &#x3D; &quot;油&quot;</span><br><span class="line">	println(heat(result1))</span><br><span class="line">	</span><br><span class="line">	var result2 &#x3D; null</span><br><span class="line">	println(heat(result2))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="八、函数表达式"><a href="#八、函数表达式" class="headerlink" title="八、函数表达式"></a>八、函数表达式</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">fun main(args:Array&lt;String&gt;)&#123;</span><br><span class="line">	&#x2F;&#x2F;函数</span><br><span class="line">	var result &#x3D; add(3,4)</span><br><span class="line">	println(result)</span><br><span class="line">	</span><br><span class="line">	&#x2F;&#x2F;函数表达式</span><br><span class="line">	var i &#x3D; &#123;x:Int,y:Int -&gt; x+y&#125;</span><br><span class="line">	var result2 &#x3D; i(3,4)</span><br><span class="line">	var temp &#x3D; result2&#x3D;&#x3D;(7)</span><br><span class="line">	println(&quot;$&#123;temp&#125;&quot;)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun add(a:Int,b:Int):Int &#x3D; a+b</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="九、递归演示："><a href="#九、递归演示：" class="headerlink" title="九、递归演示："></a>九、递归演示：</h3><p><strong>BigInteger</strong>函数是Java数值运算大值时使用的属性，特殊的超级<strong>Int</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;演示一</span><br><span class="line">import java.math.BigInteger</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 递归演示</span><br><span class="line">&#x2F;&#x2F; 阶乘  5的阶乘：5*4*3*2*1</span><br><span class="line">fun main(args:Array&lt;String&gt;)&#123;</span><br><span class="line">	&#x2F;&#x2F;&#x2F;BigInteger是一个不可描述超大的数字</span><br><span class="line">	println(&quot;请输入数字：&quot;)</span><br><span class="line">	var a &#x3D; readLine()</span><br><span class="line">    try&#123;</span><br><span class="line">		var b:BigInteger &#x3D; a!!.toBigInteger()</span><br><span class="line">		&#x2F;&#x2F;阶乘</span><br><span class="line">		println(fact(b))</span><br><span class="line">	&#125;catch(e:Exception)&#123;</span><br><span class="line">		println(&quot;输入数字有误！！&quot;)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun fact(a:BigInteger):BigInteger&#123;</span><br><span class="line">	if(a&#x3D;&#x3D;BigInteger.ONE)</span><br><span class="line">	    return BigInteger.ONE</span><br><span class="line">	else</span><br><span class="line">		return a*fact(a-BigInteger.ONE)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>尾递归 <strong>tailrec</strong>修饰方法,譬如超过电脑运算周期范围的计算</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">fun main(args:Array&lt;String&gt;)&#123;</span><br><span class="line">	var a &#x3D; readLine()!!.toInt()</span><br><span class="line">	var num:Int &#x3D; 0</span><br><span class="line">	var result:Int &#x3D; 0</span><br><span class="line">	println(add(a,num,result))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;尾递归 tailrec修饰方法</span><br><span class="line">tailrec fun add(nuk:Int,nn:Int,result:Int):Int&#123;</span><br><span class="line">	var nns &#x3D; nn+1</span><br><span class="line">	var results &#x3D; result + nuk</span><br><span class="line">	println(&quot;计算机第$&#123;nns&#125;次运算,结果为：$&#123;results&#125;&quot;)</span><br><span class="line">	if(nuk&#x3D;&#x3D;1)</span><br><span class="line">		return results</span><br><span class="line">	else</span><br><span class="line">		</span><br><span class="line">		return add(nuk-1,nns,results)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="十、List和Map"><a href="#十、List和Map" class="headerlink" title="十、List和Map"></a>十、List和Map</h3><p>List演示：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> fun main(args:Array&lt;String&gt;)&#123;</span><br><span class="line">	 var lists &#x3D; listOf(&quot;买鸡蛋&quot;,&quot;买可乐&quot;,&quot;买猪肉&quot;,&quot;买大米&quot;)</span><br><span class="line">	 </span><br><span class="line">	 for(a in lists)&#123;</span><br><span class="line">		 println(a)</span><br><span class="line">		&#125;</span><br><span class="line">	 </span><br><span class="line">	 for((i,e) in lists.withIndex())</span><br><span class="line">		 println(&quot;$i,$e&quot;)</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Map演示：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import java.util.TreeMap</span><br><span class="line"></span><br><span class="line">fun main(args:Array&lt;String&gt;)&#123;</span><br><span class="line">	&#x2F;&#x2F;TreeMap 同一key的value不能重复存在</span><br><span class="line">	var map &#x3D; TreeMap&lt;String,String&gt;()</span><br><span class="line">	var list &#x3D; listOf(&quot;好&quot;,&quot;好&quot;,&quot;学习&quot;,&quot;天&quot;,&quot;天&quot;,&quot;向上&quot;)</span><br><span class="line">	</span><br><span class="line">	map[&quot;好&quot;] &#x3D; &quot;Good&quot;</span><br><span class="line">	map[&quot;学习&quot;] &#x3D; &quot;Study&quot;</span><br><span class="line">	map[&quot;天&quot;]  &#x3D; &quot;Day&quot;</span><br><span class="line">	map[&quot;向上&quot;]  &#x3D; &quot;Up&quot;</span><br><span class="line">	</span><br><span class="line">	for(a in list)&#123;</span><br><span class="line">		print(&quot;$&#123;map[a]&#125;  &quot;)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="十一、人机交互"><a href="#十一、人机交互" class="headerlink" title="十一、人机交互"></a>十一、人机交互</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">fun main(args:Array&lt;String&gt;)&#123;</span><br><span class="line">	println(&quot;请输入第一个数字：&quot;)</span><br><span class="line">	var c &#x3D; readLine()</span><br><span class="line">	println(&quot;请输入第二个数字：&quot;)</span><br><span class="line">	var d &#x3D; readLine()</span><br><span class="line">	</span><br><span class="line">	try&#123;</span><br><span class="line">		var a &#x3D; c!!.toInt()</span><br><span class="line">	    var b &#x3D; d!!.toInt()</span><br><span class="line">		println(&quot;$&#123;a&#125; + $&#123;b&#125; &#x3D; $&#123;a + b&#125;&quot;)</span><br><span class="line">	&#125;catch(e:Exception)&#123;</span><br><span class="line">		println(&quot;输入数据有误！，请重新输入&quot;)</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>**!!.**确保不为空<br>**?.**可为空</p>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>kotlin</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Mark的Flutter的安装和环境配置</title>
     <url>/2018/12/17/Mark%E7%9A%84Flutter%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</url>
     <content><![CDATA[<h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><pre><code>    我是一名Android原生开发程序员，目前熟练掌握Java语言和kotlin语言去编写安卓。RN出来的时候我没去学习，现在我想赶上Flutter这列火车。
@@ -3309,21 +3324,6 @@ Connection conn = null;
       <tags>
         <tag>Android</tag>
         <tag>Flutter</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>自定义Toat及其弹出时间控制</title>
-    <url>/2020/07/21/%E8%87%AA%E5%AE%9A%E4%B9%89Toat%E5%8F%8A%E5%85%B6%E5%BC%B9%E5%87%BA%E6%97%B6%E9%97%B4%E6%8E%A7%E5%88%B6/</url>
-    <content><![CDATA[<p>效果就是实现Toast布局自定义，弹出的事件进行控制</p>
-<h3 id="一、先自定义布局"><a href="#一、先自定义布局" class="headerlink" title="一、先自定义布局"></a>一、先自定义布局</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Toast toast &#x3D; Toast.makeText(mContext, str, Toast.   LENGTH_SHORT);</span><br><span class="line">View view &#x3D; LayoutInflater.from(mContext).inflate(R.layout.item_toast, null);</span><br><span class="line">TextView textView &#x3D; view.findViewById(R.id.str_toast);</span><br><span class="line">      textView.setText(str);</span><br><span class="line">      toast.setView(view);</span><br><span class="line">      toast.setGravity(Gravity.CENTER, 0, 0);</span><br><span class="line">Utils.showTimeToast(toast,500);</span><br></pre></td></tr></table></figure>
-<h3 id="二、自定义弹出时间"><a href="#二、自定义弹出时间" class="headerlink" title="二、自定义弹出时间"></a>二、自定义弹出时间</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line">    * Toast自定义时间</span><br><span class="line">    * Toast对象时间需要为Toast.LENGH_LONG</span><br><span class="line">    *&#x2F;</span><br><span class="line">   public static void showTimeToast(final Toast toast, final int time) &#123;</span><br><span class="line">       final Timer timer &#x3D; new Timer();</span><br><span class="line">       timer.schedule(new TimerTask() &#123;</span><br><span class="line">           @Override</span><br><span class="line">           public void run() &#123;</span><br><span class="line">               toast.show();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;, 0, 3000);</span><br><span class="line">       new Timer().schedule(new TimerTask() &#123;</span><br><span class="line">           @Override</span><br><span class="line">           public void run() &#123;</span><br><span class="line">               toast.cancel();</span><br><span class="line">               timer.cancel();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;, time);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<p>就是那么简单，利用Timer和schedule实现事件监听，控制toast的弹出时间。</p>
-]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
       </tags>
   </entry>
   <entry>
