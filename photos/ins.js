@@ -214,7 +214,7 @@
         'use strict';
   
         var inViewport = __webpack_require__(3);
-        var lazyAttrs = ['data-src'];
+        var lazyAttrs = ['src'];
   
         global.lzld = lazyload();
   
@@ -233,7 +233,7 @@
             console.log("lazyload")
           opts = merge({
             'offset': 333,
-            'src': 'data-src',
+            'src': 'src',
             'container': false
           }, opts || {});
   
