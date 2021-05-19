@@ -1,4 +1,3 @@
-
 /******/
 (function(modules) { // webpackBootstrap
     /******/ // The module cache
@@ -82,7 +81,7 @@
   
       /**
        * @name impush-client 
-       * @description 这个项目让我发家致富…
+       * @description 
        * @date 2016-12-1
        */
   
@@ -125,12 +124,12 @@
   
             liTmpl += '<figure class="thumb" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject">\
                   <a href="' + src + '" itemprop="contentUrl" data-size="1080x1080" data-type="' + type + '" data-target="' + target + '">\
-                    <img class="reward-img" data-type="' + type + '" data-src="' + minSrc + '" data-src="./assets/empty.jpeg" itemprop="thumbnail" onload="lzld(this)">\
+                    <img class="reward-img" data-type="' + type + '" data-src="' + src + '" data-src="'+ minSrc +'" itemprop="thumbnail" onload="lzld(this)">\
                   </a>\
                   <figcaption style="display:none" itemprop="caption description">' + data.text[i] + '</figcaption>\
               </figure>';
           }
-          ulTmpl = ulTmpl + '<section class="archives album"><h1 class="year">' + data.year + '年<em>' + data.month + '月</em></h1>\
+          ulTmpl = ulTmpl + '<section class="archives album"><h1 class="year">' + data.year + ' 年 <em>' + data.month + ' 月 </em></h1>\
           <ul class="img-box-ul">' + liTmpl + '</ul>\
           </section>';
         }
@@ -334,7 +333,6 @@
     function(module, exports) {
   
       'use strict';
-  
       var initPhotoSwipeFromDOM = function initPhotoSwipeFromDOM(gallerySelector) {
   
         // parse slide data (url, title, size ...) from DOM elements 
