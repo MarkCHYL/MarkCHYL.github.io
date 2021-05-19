@@ -123,7 +123,7 @@
             src += '';
   
             liTmpl += '<figure class="thumb" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject">\
-                  <a href="' + src + '" itemprop="contentUrl" data-size="1080x1080" data-type="' + type + '" data-target="' + target + '">\
+                  <a href="' + src + '" itemprop="contentUrl"  data-type="' + type + '" data-target="' + target + '">\
                     <img class="reward-img" data-type="' + type + '"src="' + src + '" itemprop="thumbnail" onload="lzld(this)">\
                   </a>\
                   <figcaption style="display:none" itemprop="caption description">' + data.text[i] + '</figcaption>\
@@ -361,14 +361,11 @@
   
             linkEl = figureEl.children[0]; // 
   
-            size = linkEl.getAttribute('data-size').split('x');
             type = linkEl.getAttribute('data-type');
             target = linkEl.getAttribute('data-target');
             // create slide object
             item = {
               src: linkEl.getAttribute('href'),
-              w: parseInt(size[0], 10),
-              h: parseInt(size[1], 10)
             };
   
             if (figureEl.children.length > 1) {
@@ -438,6 +435,7 @@
   
           if (index >= 0) {
             // open PhotoSwipe if valid index found
+            console.log("--------"+index+"\n-------"+nodeIndex);
             openPhotoSwipe(index, clickedGallery);
           }
           return false;

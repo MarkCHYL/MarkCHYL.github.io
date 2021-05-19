@@ -54,8 +54,7 @@
 </script>
 
   <script src="../../../../js/src/photoswipe.min.js?v="></script>
-<script src="../../../../js/src/photoswipe-ui-default.min.js?v="></script>
-<script src="../../../../js/src/photoswipe-ui-default.js?v="></script>
+  <script src="../../../../js/src/photoswipe-ui-default.min.js?v="></script>
   <title>Mark的个人博客搭建 | Mark的私人博客</title>
   
 
@@ -96,8 +95,10 @@
   </style>
 </noscript>
 
+
+
+<!-- PhotoSwipe插件需要的元素， 一定要有类名 pswp -->
  
-   
 
 <link rel="alternate" href="atom.xml" title="Mark的私人博客" type="application/atom+xml">
 </head>
@@ -324,7 +325,7 @@
 <p>2.添加SSH Key到Github<br>进入github首页在设置洁面<br><img data-src="https://images2017.cnblogs.com/blog/1250458/201710/1250458-20171017153636849-294935886.png"></p>
 <hr>
 <h4 id="添加SSH-Key"><a href="#添加SSH-Key" class="headerlink" title="添加SSH Key"></a>添加SSH Key</h4><p><img data-src="https://images2017.cnblogs.com/blog/1250458/201710/1250458-20171017153642521-647884655.png"><br>找到系统当前用户目录下(开启查看隐藏文件) C:\Users\用户名\ .ssh id_rsa.pub文件以文本方式打开。打开之后全部复制到key中<br><img data-src="https://images2017.cnblogs.com/blog/1250458/201710/1250458-20171017153648631-441574444.png"><br>到了这就可以测试一下是否成功了:</p>
-<p>ssh -T <span class="exturl" data-url="bWFpbHRvOiYjeDY3OyYjMTA1OyYjMTE2OyYjeDQwOyYjMTAzOyYjMTA1OyYjeDc0OyYjMTA0OyYjMTE3OyYjOTg7JiM0NjsmI3g2MzsmIzExMTsmIzEwOTs=">&#x67;&#105;&#116;&#x40;&#103;&#105;&#x74;&#104;&#117;&#98;&#46;&#x63;&#111;&#109;<i class="fa fa-external-link-alt"></i></span><br>#之后会要你输入yes/no,输入yes就好了。<br>设置你的账号信息:</p>
+<p>ssh -T <span class="exturl" data-url="bWFpbHRvOiYjeDY3OyYjMTA1OyYjeDc0OyYjeDQwOyYjMTAzOyYjMTA1OyYjMTE2OyYjeDY4OyYjMTE3OyYjOTg7JiN4MmU7JiM5OTsmI3g2ZjsmIzEwOTs=">&#x67;&#105;&#x74;&#x40;&#103;&#105;&#116;&#x68;&#117;&#98;&#x2e;&#99;&#x6f;&#109;<i class="fa fa-external-link-alt"></i></span><br>#之后会要你输入yes/no,输入yes就好了。<br>设置你的账号信息:</p>
 <p>git config –global user.name “你的名字”     #真实名字不是github用户名<br>git config –global user.email “邮箱@邮箱.com”    #github邮箱<br>3.部署到github<br>hexo d<br>这时再刷新 username.github.io 就可以看到你的博客了。</p>
 <p>到了这你以为就结束了吗？没有，还有坑没有给你们填好。</p>
 <p>如果你的SSH配置的时候哪找的.ssh文件的化，可以参照<span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vYWlsaWFpbGFuL3AvODU3NzQxMS5odG1s">mac 上传本地代码到 Github 教程<i class="fa fa-external-link-alt"></i></span>,我就是参照上面的步骤配置的。</p>
