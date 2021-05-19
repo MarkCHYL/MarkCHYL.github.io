@@ -1,4 +1,3 @@
-
 /******/
 (function(modules) { // webpackBootstrap
     /******/ // The module cache
@@ -82,7 +81,7 @@
   
       /**
        * @name impush-client 
-       * @description 这个项目让我发家致富…
+       * @description 
        * @date 2016-12-1
        */
   
@@ -117,19 +116,20 @@
           var data = res.list[j].arr;
           var liTmpl = "";
           for (var i = 0, len = data.link.length; i < len; i++) {
-            var minSrc = 'https://mark_chen.coding.net/p/blogpicture/d/BlogPicture/git/raw/master/min_photos/' + data.link[i];
-            var src = 'https://mark_chen.coding.net/p/blogpicture/d/BlogPicture/git/raw/master/photos/' + data.link[i];
+            var minSrc = 'https://gitee.com/markshow/BlogPicture/raw/master/min_photos/' + data.link[i];
+            var src = 'https://gitee.com/markshow/BlogPicture/raw/master/photos/' + data.link[i];
             var type = data.type[i];
+            var target = src + (type === 'video' ? '.mp4' : '.jpg');
             src += '';
   
             liTmpl += '<figure class="thumb" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject">\
-                  <a href="' + src + '" itemprop="contentUrl" data-size="1080x1080" data-type="' + type + '" data-target="' + src + '">\
-                    <img class="reward-img" data-type="' + type + '" data-src="' + minSrc + '" data-src="./assets/empty.jpeg" itemprop="thumbnail" onload="lzld(this)">\
+                  <a href="' + src + '" itemprop="contentUrl" data-size="1080x1080" data-type="' + type + '" data-target="' + target + '">\
+                    <img class="reward-img" data-type="' + type + '" data-src="' + src + '" data-src="'+ minSrc +'" itemprop="thumbnail" onload="lzld(this)">\
                   </a>\
                   <figcaption style="display:none" itemprop="caption description">' + data.text[i] + '</figcaption>\
               </figure>';
           }
-          ulTmpl = ulTmpl + '<section class="archives album"><h1 class="year">' + data.year + '年<em>' + data.month + '月</em></h1>\
+          ulTmpl = ulTmpl + '<section class="archives album"><h1 class="year">' + data.year + ' 年 <em>' + data.month + ' 月 </em></h1>\
           <ul class="img-box-ul">' + liTmpl + '</ul>\
           </section>';
         }
@@ -333,7 +333,6 @@
     function(module, exports) {
   
       'use strict';
-  
       var initPhotoSwipeFromDOM = function initPhotoSwipeFromDOM(gallerySelector) {
   
         // parse slide data (url, title, size ...) from DOM elements 

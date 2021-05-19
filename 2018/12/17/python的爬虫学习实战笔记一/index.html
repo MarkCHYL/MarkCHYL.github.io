@@ -14,12 +14,12 @@
 
 <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1/themes/blue/pace-theme-minimal.css">
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1/pace.min.js"></script>
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"markchyl.cn","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","Pisces | Gemini":240,"display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":true,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"markchyl.cn","root":"/","scheme":"Pisces","version":"7.8.0","exturl":true,"sidebar":{"position":"right","Pisces | Gemini":240,"display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":true,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="前言：Python3的爬虫基础学习，编写URL管理器、网页下载器、网页分析器、数据输出器、如何连接到MySQL。网上能搜到许多的库，在这我只是开始我的基础学起，瞎猫死猫能运行就可以。">
@@ -90,7 +90,8 @@
 </noscript>
 
  
-  
+   
+
 <link rel="alternate" href="/atom.xml" title="Mark的私人博客" type="application/atom+xml">
 </head>
 
@@ -200,7 +201,7 @@
   <div class="reading-progress-bar"></div>
   <a role="button" class="book-mark-link book-mark-link-fixed"></a>
 
-  <a href="https://github.com/MarkCHYL" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+  <span class="exturl github-corner" data-url="aHR0cHM6Ly9naXRodWIuY29tL01hcmtDSFlM" title="Follow me on GitHub" aria-label="Follow me on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></span>
 
 
     <main class="main">
@@ -262,13 +263,6 @@
               <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
-            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">Views: </span>
-              <span id="busuanzi_value_page_pv"></span>
-            </span>
   
   <span class="post-meta-item">
     
@@ -296,11 +290,11 @@
         <h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><h4 id="Python3的爬虫基础学习，编写URL管理器、网页下载器、网页分析器、数据输出器、如何连接到MySQL。网上能搜到许多的库，在这我只是开始我的基础学起，瞎猫死猫能运行就可以。"><a href="#Python3的爬虫基础学习，编写URL管理器、网页下载器、网页分析器、数据输出器、如何连接到MySQL。网上能搜到许多的库，在这我只是开始我的基础学起，瞎猫死猫能运行就可以。" class="headerlink" title="Python3的爬虫基础学习，编写URL管理器、网页下载器、网页分析器、数据输出器、如何连接到MySQL。网上能搜到许多的库，在这我只是开始我的基础学起，瞎猫死猫能运行就可以。"></a>Python3的爬虫基础学习，编写URL管理器、网页下载器、网页分析器、数据输出器、如何连接到MySQL。网上能搜到许多的库，在这我只是开始我的基础学起，瞎猫死猫能运行就可以。</h4><hr>
 <span id="more"></span>
 <h4 id="编写的环境："><a href="#编写的环境：" class="headerlink" title="编写的环境："></a>编写的环境：</h4><p>Mac电脑、MySQL数据库、pymysql库、urllib库、bs4库、Python3、PyCharm编辑器</p>
-<p><a target="_blank" rel="noopener" href="http://www.runoob.com/python3/python3-dictionary.html">学习网址</a></p>
+<p><span class="exturl" data-url="aHR0cDovL3d3dy5ydW5vb2IuY29tL3B5dGhvbjMvcHl0aG9uMy1kaWN0aW9uYXJ5Lmh0bWw=">学习网址<i class="fa fa-external-link-alt"></i></span></p>
 <h3 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h3><p>网络爬虫（Web Spider），又被称为网页蜘蛛，是一种按照一定的规则，自动地抓取网站信息的程序或者脚本。</p>
 <h3 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h3><p>网络蜘蛛是一个很形象的名字。如果把互联网比喻成一个蜘蛛网，那么Spider就是在网上爬来爬去的蜘蛛。网络蜘蛛是通过网页的链接地址来寻找网页，从 网站某一个页面开始，读取网页的内容，找到在网页中的其它链接地址，然后通过这些链接地址寻找下一个网页，这样一直循环下去，直到把这个网站所有的网页都抓取完为止</p>
 <h3 id="爬虫流程："><a href="#爬虫流程：" class="headerlink" title="爬虫流程："></a>爬虫流程：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">①先由urllib的request打开Url得到网页html文档</span><br><span class="line">——②浏览器打开网页源代码分析元素节点</span><br><span class="line">——③通过BeautifulSoup或则正则表达式提取想要的数据</span><br><span class="line">——④存储数据到本地磁盘或数据库（抓取，分析，存储）</span><br></pre></td></tr></table></figure>
-<h2 id="上代码"><a href="#上代码" class="headerlink" title="上代码"></a>上代码</h2><p>爬虫程序入口：Spider_Main<br>爬虫目标URL：<a target="_blank" rel="noopener" href="http://www.hbooker.com/book/10007188">http://www.hbooker.com/book/10007188</a></p>
+<h2 id="上代码"><a href="#上代码" class="headerlink" title="上代码"></a>上代码</h2><p>爬虫程序入口：Spider_Main<br>爬虫目标URL：<span class="exturl" data-url="aHR0cDovL3d3dy5oYm9va2VyLmNvbS9ib29rLzEwMDA3MTg4">http://www.hbooker.com/book/10007188<i class="fa fa-external-link-alt"></i></span></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">from hbooker_spider import html_downloader</span><br><span class="line">from hbooker_spider import html_outputer</span><br><span class="line">from hbooker_spider import html_parser</span><br><span class="line">from hbooker_spider import url_manager</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class SpiderMain(object):</span><br><span class="line">    def __init__(self):</span><br><span class="line">        # 初始化 URL 管理器</span><br><span class="line">        self.urls &#x3D; url_manager.UrlManager()</span><br><span class="line">        # 初始化 html 下载器</span><br><span class="line">        self.downloader &#x3D; html_downloader.HtmlDownLoader()</span><br><span class="line">        # 初始化 html 解析器</span><br><span class="line">        self.parser &#x3D; html_parser.HtmlParser()</span><br><span class="line">        # 初始化 数据 输出管理器</span><br><span class="line">        self.outputer &#x3D; html_outputer.HtmlOutputer()</span><br><span class="line"></span><br><span class="line">    def craw(self, root_url):</span><br><span class="line">        count &#x3D; 1</span><br><span class="line">        self.urls.add_new_url(root_url)</span><br><span class="line">        while self.urls.has_new_url():</span><br><span class="line">            try:</span><br><span class="line">                new_url &#x3D; self.urls.get_new_url()</span><br><span class="line">                html_cont &#x3D; self.downloader.downloader(new_url)</span><br><span class="line">                new_urls, new_datas &#x3D; self.parser.parse(new_url, html_cont)</span><br><span class="line">                self.urls.add_new_urls(new_urls)</span><br><span class="line">                print(&#39;craw %d : %s&#39; % (count, new_datas))</span><br><span class="line">                self.outputer.collect_data(new_datas)</span><br><span class="line"></span><br><span class="line">                if count &#x3D;&#x3D; 100:</span><br><span class="line">                    break</span><br><span class="line">                count +&#x3D; 1</span><br><span class="line">            except:</span><br><span class="line">                print(&#39;craw failed&#39;)</span><br><span class="line">        self.outputer.output_html()</span><br><span class="line">        self.outputer.output_mysql()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    root_url &#x3D; &#39;http:&#x2F;&#x2F;www.hbooker.com&#x2F;book&#x2F;100071888&#39;</span><br><span class="line">    obj_spider &#x3D; SpiderMain()</span><br><span class="line">    obj_spider.craw(root_url)</span><br></pre></td></tr></table></figure>
 
 <h3 id="网页下载器-html-downloader"><a href="#网页下载器-html-downloader" class="headerlink" title="网页下载器 html_downloader"></a>网页下载器 html_downloader</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># URL下载器</span><br><span class="line">from urllib import request</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class HtmlDownLoader(object):</span><br><span class="line">    def downloader(self, new_url):</span><br><span class="line">        if new_url is None:</span><br><span class="line">            return</span><br><span class="line"></span><br><span class="line">        response &#x3D; request.urlopen(new_url)</span><br><span class="line">        if response.getcode() !&#x3D; 200:</span><br><span class="line">            return None</span><br><span class="line">        return response.read()</span><br></pre></td></tr></table></figure>
@@ -469,10 +463,10 @@
 </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://github.com/MarkCHYL" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;MarkCHYL" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL01hcmtDSFlM" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;MarkCHYL"><i class="fab fa-github fa-fw"></i></span>
       </span>
       <span class="links-of-author-item">
-        <a href="mailto:2285581945@qq.com" title="E-Mail → mailto:2285581945@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+        <span class="exturl" data-url="bWFpbHRvOjIyODU1ODE5NDVAcXEuY29t" title="E-Mail → mailto:2285581945@qq.com"><i class="fa fa-envelope fa-fw"></i></span>
       </span>
   </div>
 
@@ -483,7 +477,7 @@
     </div>
     <ul class="links-of-blogroll-list">
         <li class="links-of-blogroll-item">
-          <a href="https://blog.csdn.net/fuxiaoyuandroid/article/details/90140409" title="https:&#x2F;&#x2F;blog.csdn.net&#x2F;fuxiaoyuandroid&#x2F;article&#x2F;details&#x2F;90140409" rel="noopener" target="_blank">付工(来自济南的朋友)</a>
+          <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Z1eGlhb3l1YW5kcm9pZC9hcnRpY2xlL2RldGFpbHMvOTAxNDA0MDk=" title="https:&#x2F;&#x2F;blog.csdn.net&#x2F;fuxiaoyuandroid&#x2F;article&#x2F;details&#x2F;90140409">付工(来自济南的朋友)</span>
         </li>
     </ul>
   </div>
@@ -520,27 +514,6 @@
 
 
         
-<div class="busuanzi-count">
- <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-</script>
-    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-user"></i>
-      </span>
-      <span class="site-uv" title="Total Visitors">
-        <span id="busuanzi_value_site_uv"></span>
-      </span>
-    </span>
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-eye"></i>
-      </span>
-      <span class="site-pv" title="Total Views">
-        <span id="busuanzi_value_site_pv"></span>
-      </span>
-    </span>
-</div>
 
 
 
@@ -554,8 +527,9 @@
   </div>
 
   
+  <script size="300" alpha="0.6" zIndex="-1" src="//cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-ribbon@1/canvas-ribbon.js"></script>
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
@@ -632,6 +606,10 @@ window.addEventListener('pjax:success', () => {
 </script>
 
 
+  <script defer src="//cdn.jsdelivr.net/gh/theme-next/theme-next-three@1/three.min.js"></script>
+    <script defer src="//cdn.jsdelivr.net/gh/theme-next/theme-next-three@latest/three-waves.min.js"></script>
+    <script defer src="//cdn.jsdelivr.net/gh/theme-next/theme-next-three@latest/canvas_lines.min.js"></script>
+    <script defer src="//cdn.jsdelivr.net/gh/theme-next/theme-next-three@latest/canvas_sphere.min.js"></script>
 
 
   

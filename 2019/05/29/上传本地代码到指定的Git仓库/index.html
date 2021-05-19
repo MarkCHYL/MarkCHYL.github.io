@@ -14,12 +14,12 @@
 
 <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1/themes/blue/pace-theme-minimal.css">
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1/pace.min.js"></script>
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"markchyl.cn","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","Pisces | Gemini":240,"display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":true,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"markchyl.cn","root":"/","scheme":"Pisces","version":"7.8.0","exturl":true,"sidebar":{"position":"right","Pisces | Gemini":240,"display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":true,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="1、本地安装git环境下载安装包安装即可，在这里不加记录。  2、初始化git项目，生成 .git 配置目录进入项目根目录,右键 git bash here打开控制台 ，输入git init即可完成。">
@@ -89,7 +89,8 @@
 </noscript>
 
  
-  
+   
+
 <link rel="alternate" href="/atom.xml" title="Mark的私人博客" type="application/atom+xml">
 </head>
 
@@ -199,7 +200,7 @@
   <div class="reading-progress-bar"></div>
   <a role="button" class="book-mark-link book-mark-link-fixed"></a>
 
-  <a href="https://github.com/MarkCHYL" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+  <span class="exturl github-corner" data-url="aHR0cHM6Ly9naXRodWIuY29tL01hcmtDSFlM" title="Follow me on GitHub" aria-label="Follow me on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></span>
 
 
     <main class="main">
@@ -257,13 +258,6 @@
               <span class="post-meta-item-text">Views: </span>
               <span class="leancloud-visitors-count"></span>
             </span>
-            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">Views: </span>
-              <span id="busuanzi_value_page_pv"></span>
-            </span>
   
   <span class="post-meta-item">
     
@@ -296,7 +290,7 @@
 <hr>
 <h3 id="4、在git、码云建好云端项目，生成git-url"><a href="#4、在git、码云建好云端项目，生成git-url" class="headerlink" title="4、在git、码云建好云端项目，生成git url"></a>4、在git、码云建好云端项目，生成git url</h3><p>建好项目，在项目的克隆下载处复制url即可</p>
 <hr>
-<h3 id="5、连接云端仓库-将本地仓库代码提交到云端仓库"><a href="#5、连接云端仓库-将本地仓库代码提交到云端仓库" class="headerlink" title="5、连接云端仓库,将本地仓库代码提交到云端仓库"></a>5、连接云端仓库,将本地仓库代码提交到云端仓库</h3><p>连接云端仓库<br>*git remote add origin <a target="_blank" rel="noopener" href="https://gitee.com/xxx/xxx.git">https://gitee.com/xxx/xxx.git</a><br><em>git push origin master<br>为解决本地与云端版本冲突，加上-f参数，push文件<br>git push –set-upstream origin master -f<br>之后会提示输入云端仓库的用户名，密码，验证成功开始上传并完成，实测码云可通过。</em></p>
+<h3 id="5、连接云端仓库-将本地仓库代码提交到云端仓库"><a href="#5、连接云端仓库-将本地仓库代码提交到云端仓库" class="headerlink" title="5、连接云端仓库,将本地仓库代码提交到云端仓库"></a>5、连接云端仓库,将本地仓库代码提交到云端仓库</h3><p>连接云端仓库<br>*git remote add origin <span class="exturl" data-url="aHR0cHM6Ly9naXRlZS5jb20veHh4L3h4eC5naXQ=">https://gitee.com/xxx/xxx.git<i class="fa fa-external-link-alt"></i></span><br><em>git push origin master<br>为解决本地与云端版本冲突，加上-f参数，push文件<br>git push –set-upstream origin master -f<br>之后会提示输入云端仓库的用户名，密码，验证成功开始上传并完成，实测码云可通过。</em></p>
 <hr>
 <p>不加f会提示错误：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">! [rejected] master -&gt; master (non-fast-forward)</span><br><span class="line">error: failed to push some refs to &#39;https:&#x2F;&#x2F;gitee.com&#x2F;xxx&#x2F;xxx.git&#39;</span><br><span class="line">hint: Updates were rejected because the tip of your current branch is behind</span><br><span class="line">hint: its remote counterpart. Integrate the remote changes (e.g.</span><br><span class="line">hint: &#39;git pull ...&#39;) before pushing again.</span><br><span class="line">hint: See the &#39;Note about fast-forwards&#39; in &#39;git push --help&#39; for details.</span><br></pre></td></tr></table></figure>
@@ -313,7 +307,7 @@
 <h3 id="6、git-删除-项目remote"><a href="#6、git-删除-项目remote" class="headerlink" title="6、git 删除 项目remote"></a>6、<code>git</code> 删除 项目<code>remote</code></h3><p>终端执行<code>git remote remove origin</code>,origin为项目<code>remote</code>的名字</p>
 <p>添加远程仓库(远程仓库引用)命令：</p>
 <blockquote>
-<p>使用命令：<strong>git remove add 远程仓库到本地的名称  远程仓库的路径</strong><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44703358/article/details/100514085">更多指令学习参考</a></p>
+<p>使用命令：<strong>git remove add 远程仓库到本地的名称  远程仓库的路径</strong><br><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDcwMzM1OC9hcnRpY2xlL2RldGFpbHMvMTAwNTE0MDg1">更多指令学习参考<i class="fa fa-external-link-alt"></i></span></p>
 </blockquote>
 
     </div>
@@ -475,10 +469,10 @@
 </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://github.com/MarkCHYL" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;MarkCHYL" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL01hcmtDSFlM" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;MarkCHYL"><i class="fab fa-github fa-fw"></i></span>
       </span>
       <span class="links-of-author-item">
-        <a href="mailto:2285581945@qq.com" title="E-Mail → mailto:2285581945@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+        <span class="exturl" data-url="bWFpbHRvOjIyODU1ODE5NDVAcXEuY29t" title="E-Mail → mailto:2285581945@qq.com"><i class="fa fa-envelope fa-fw"></i></span>
       </span>
   </div>
 
@@ -489,7 +483,7 @@
     </div>
     <ul class="links-of-blogroll-list">
         <li class="links-of-blogroll-item">
-          <a href="https://blog.csdn.net/fuxiaoyuandroid/article/details/90140409" title="https:&#x2F;&#x2F;blog.csdn.net&#x2F;fuxiaoyuandroid&#x2F;article&#x2F;details&#x2F;90140409" rel="noopener" target="_blank">付工(来自济南的朋友)</a>
+          <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Z1eGlhb3l1YW5kcm9pZC9hcnRpY2xlL2RldGFpbHMvOTAxNDA0MDk=" title="https:&#x2F;&#x2F;blog.csdn.net&#x2F;fuxiaoyuandroid&#x2F;article&#x2F;details&#x2F;90140409">付工(来自济南的朋友)</span>
         </li>
     </ul>
   </div>
@@ -526,27 +520,6 @@
 
 
         
-<div class="busuanzi-count">
- <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-</script>
-    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-user"></i>
-      </span>
-      <span class="site-uv" title="Total Visitors">
-        <span id="busuanzi_value_site_uv"></span>
-      </span>
-    </span>
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-eye"></i>
-      </span>
-      <span class="site-pv" title="Total Views">
-        <span id="busuanzi_value_site_pv"></span>
-      </span>
-    </span>
-</div>
 
 
 
@@ -560,8 +533,9 @@
   </div>
 
   
+  <script size="300" alpha="0.6" zIndex="-1" src="//cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-ribbon@1/canvas-ribbon.js"></script>
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
@@ -638,6 +612,10 @@ window.addEventListener('pjax:success', () => {
 </script>
 
 
+  <script defer src="//cdn.jsdelivr.net/gh/theme-next/theme-next-three@1/three.min.js"></script>
+    <script defer src="//cdn.jsdelivr.net/gh/theme-next/theme-next-three@latest/three-waves.min.js"></script>
+    <script defer src="//cdn.jsdelivr.net/gh/theme-next/theme-next-three@latest/canvas_lines.min.js"></script>
+    <script defer src="//cdn.jsdelivr.net/gh/theme-next/theme-next-three@latest/canvas_sphere.min.js"></script>
 
 
   
