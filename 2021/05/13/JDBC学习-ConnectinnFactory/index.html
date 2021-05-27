@@ -19,7 +19,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"markchyl.cn","root":"/","scheme":"Pisces","version":"7.8.0","exturl":true,"sidebar":{"position":"right","Pisces | Gemini":240,"display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":true,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":true,"preload":true},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"markchyl.cn","root":"/","scheme":"Pisces","version":"7.8.0","exturl":true,"sidebar":{"position":"right","Pisces | Gemini":240,"display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":true,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
   <meta name="description" content="[toc] ConnectionFactory的作用 利用工厂模式提升代码的额重要性 封装注册数据库的驱动和获得数据库的连接 利用配置文件减少硬编码，便于维护  ConnectionFactory的开发 配置文件 jdbcinfo.properties 1234oracle.driver&#x3D;oracle.jdbc.driver.OracleDriver  &#x2F;&#x2F;数据库驱动oracle.url&#x3D;jdbc">
@@ -156,7 +156,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="../../../../archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">90</span></a>
+    <a href="../../../../archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">91</span></a>
 
   </li>
         <li class="menu-item menu-item-photos">
@@ -379,7 +379,10 @@ Connection conn = null;
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="../../21/JDBC%E5%AD%A6%E4%B9%A0-%E4%BA%8B%E7%89%A9%E6%8F%90%E4%BA%A4%E6%A8%A1%E5%BC%8F%E5%92%8C%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/" rel="prev" title="JDBC学习-事物提交模式和隔离级别">
+      <i class="fa fa-chevron-left"></i> JDBC学习-事物提交模式和隔离级别
+    </a></div>
       <div class="post-nav-item">
     <a href="../JDBC%E5%AD%A6%E4%B9%A0-Statement/" rel="next" title="JDBC学习--Statement">
       JDBC学习--Statement <i class="fa fa-chevron-right"></i>
@@ -459,7 +462,7 @@ Connection conn = null;
       <div class="site-state-item site-state-posts">
           <a href="../../../../archives/">
         
-          <span class="site-state-item-count">90</span>
+          <span class="site-state-item-count">91</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

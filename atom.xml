@@ -6,7 +6,7 @@
   <link href="http://markchyl.cn/atom.xml" rel="self"/>
   
   <link href="http://markchyl.cn/"/>
-  <updated>2021-05-13T06:42:47.000Z</updated>
+  <updated>2021-05-21T04:13:13.000Z</updated>
   <id>http://markchyl.cn/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JDBC学习-事物提交模式和隔离级别</title>
+    <link href="http://markchyl.cn/2021/05/21/JDBC%E5%AD%A6%E4%B9%A0-%E4%BA%8B%E7%89%A9%E6%8F%90%E4%BA%A4%E6%A8%A1%E5%BC%8F%E5%92%8C%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/"/>
+    <id>http://markchyl.cn/2021/05/21/JDBC%E5%AD%A6%E4%B9%A0-%E4%BA%8B%E7%89%A9%E6%8F%90%E4%BA%A4%E6%A8%A1%E5%BC%8F%E5%92%8C%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/</id>
+    <published>2021-05-21T04:13:13.000Z</published>
+    <updated>2021-05-21T04:13:13.000Z</updated>
+    
+    
+    <summary type="html">Mark的JDBC的学习</summary>
+    
+    
+    
+    <category term="JavaWeb" scheme="http://markchyl.cn/categories/JavaWeb/"/>
+    
+    
+    <category term="JDBC" scheme="http://markchyl.cn/tags/JDBC/"/>
+    
+  </entry>
   
   <entry>
     <title>JDBC学习--ConnectinnFactory</title>
@@ -509,29 +528,6 @@ proguard-rules.pro文件的作用&lt;/li&gt;
     <category term="消息通信" scheme="http://markchyl.cn/tags/%E6%B6%88%E6%81%AF%E9%80%9A%E4%BF%A1/"/>
     
     <category term="AIDL" scheme="http://markchyl.cn/tags/AIDL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android消息传递机制总结(三)</title>
-    <link href="http://markchyl.cn/2020/10/10/Android%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6%E6%80%BB%E7%BB%93%E4%B8%89/"/>
-    <id>http://markchyl.cn/2020/10/10/Android%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6%E6%80%BB%E7%BB%93%E4%B8%89/</id>
-    <published>2020-10-10T07:25:12.000Z</published>
-    <updated>2020-10-10T07:25:12.000Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;第三方通信 ——— EventBus，rxBus&lt;/p&gt;
-&lt;h3 id=&quot;3-第三方通信&quot;&gt;&lt;a href=&quot;#3-第三方通信&quot; class=&quot;headerlink&quot; title=&quot;3. 第三方通信&quot;&gt;&lt;/a&gt;3. 第三方通信&lt;/h3&gt;&lt;p&gt;EventBus主要角色:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Event 传递的事件对象&lt;br&gt; Subscriber  事件的订阅者&lt;br&gt; Publisher  事件的发布者&lt;br&gt; ThreadMode 定义函数在何种线程中执行&lt;/p&gt;
-&lt;/blockquote&gt;</summary>
-    
-    
-    
-    <category term="Android" scheme="http://markchyl.cn/categories/Android/"/>
-    
-    
-    <category term="消息通信" scheme="http://markchyl.cn/tags/%E6%B6%88%E6%81%AF%E9%80%9A%E4%BF%A1/"/>
     
   </entry>
   
