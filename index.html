@@ -144,7 +144,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">44</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">45</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -154,7 +154,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">91</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">92</span></a>
 
   </li>
         <li class="menu-item menu-item-photos">
@@ -212,6 +212,102 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://markchyl.cn/2021/06/04/%E5%AE%89%E5%8D%93%E9%A1%B5%E9%9D%A2%E8%B7%B3%E8%BD%AC%EF%BC%8C%E5%A4%9A%E6%AC%A1%E7%82%B9%E5%87%BB%E4%BC%9A%E9%87%8D%E5%A4%8D%E9%A1%B5%E9%9D%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/img/mark_avatar.jpeg">
+      <meta itemprop="name" content="Mark先生">
+      <meta itemprop="description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mark的私人博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="2021/06/04/%E5%AE%89%E5%8D%93%E9%A1%B5%E9%9D%A2%E8%B7%B3%E8%BD%AC%EF%BC%8C%E5%A4%9A%E6%AC%A1%E7%82%B9%E5%87%BB%E4%BC%9A%E9%87%8D%E5%A4%8D%E9%A1%B5%E9%9D%A2/" class="post-title-link" itemprop="url">安卓页面跳转，多次点击会重复页面</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-06-04 09:44:09" itemprop="dateCreated datePublished" datetime="2021-06-04T09:44:09+08:00">2021-06-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+                </span>
+            </span>
+
+          
+            <span id="2021/06/04/%E5%AE%89%E5%8D%93%E9%A1%B5%E9%9D%A2%E8%B7%B3%E8%BD%AC%EF%BC%8C%E5%A4%9A%E6%AC%A1%E7%82%B9%E5%87%BB%E4%BC%9A%E9%87%8D%E5%A4%8D%E9%A1%B5%E9%9D%A2/" class="post-meta-item leancloud_visitors" data-flag-title="安卓页面跳转，多次点击会重复页面" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="2021/06/04/%E5%AE%89%E5%8D%93%E9%A1%B5%E9%9D%A2%E8%B7%B3%E8%BD%AC%EF%BC%8C%E5%A4%9A%E6%AC%A1%E7%82%B9%E5%87%BB%E4%BC%9A%E9%87%8D%E5%A4%8D%E9%A1%B5%E9%9D%A2/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="2021/06/04/%E5%AE%89%E5%8D%93%E9%A1%B5%E9%9D%A2%E8%B7%B3%E8%BD%AC%EF%BC%8C%E5%A4%9A%E6%AC%A1%E7%82%B9%E5%87%BB%E4%BC%9A%E9%87%8D%E5%A4%8D%E9%A1%B5%E9%9D%A2/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>场景描述：产品故意整事，狂点一个页面跳转按钮，然而那个页面的展示时需要初始化一个第三方的SDK，导致一个启动模式为 <code> android:launchMode=&quot;singleTop&quot;</code>的页面Activity重复新建了多次。</p>
+<h3 id="1、解决思路查看源码：-startActivity-intent"><a href="#1、解决思路查看源码：-startActivity-intent" class="headerlink" title="1、解决思路查看源码： startActivity(intent);"></a>1、解决思路查看源码：<code> startActivity(intent);</code></h3>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="2021/06/04/%E5%AE%89%E5%8D%93%E9%A1%B5%E9%9D%A2%E8%B7%B3%E8%BD%AC%EF%BC%8C%E5%A4%9A%E6%AC%A1%E7%82%B9%E5%87%BB%E4%BC%9A%E9%87%8D%E5%A4%8D%E9%A1%B5%E9%9D%A2/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -1119,98 +1215,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://markchyl.cn/2021/01/15/Android%E6%A0%B9%E6%8D%AE%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8A%A0%E8%BD%BDActivity%E5%92%8Cres%E7%9B%AE%E5%BD%95%E4%B8%8B%E5%9B%BE%E7%89%87/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/img/mark_avatar.jpeg">
-      <meta itemprop="name" content="Mark先生">
-      <meta itemprop="description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Mark的私人博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="2021/01/15/Android%E6%A0%B9%E6%8D%AE%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8A%A0%E8%BD%BDActivity%E5%92%8Cres%E7%9B%AE%E5%BD%95%E4%B8%8B%E5%9B%BE%E7%89%87/" class="post-title-link" itemprop="url">Android根据字符串加载Activity和res目录下图片</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-01-15 16:51:12" itemprop="dateCreated datePublished" datetime="2021-01-15T16:51:12+08:00">2021-01-15</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
-                </span>
-            </span>
-
-          
-            <span id="2021/01/15/Android%E6%A0%B9%E6%8D%AE%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8A%A0%E8%BD%BDActivity%E5%92%8Cres%E7%9B%AE%E5%BD%95%E4%B8%8B%E5%9B%BE%E7%89%87/" class="post-meta-item leancloud_visitors" data-flag-title="Android根据字符串加载Activity和res目录下图片" title="Views">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">Views: </span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="2021/01/15/Android%E6%A0%B9%E6%8D%AE%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8A%A0%E8%BD%BDActivity%E5%92%8Cres%E7%9B%AE%E5%BD%95%E4%B8%8B%E5%9B%BE%E7%89%87/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="2021/01/15/Android%E6%A0%B9%E6%8D%AE%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8A%A0%E8%BD%BDActivity%E5%92%8Cres%E7%9B%AE%E5%BD%95%E4%B8%8B%E5%9B%BE%E7%89%87/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="根据传入的字符串跳转Activity"><a href="#根据传入的字符串跳转Activity" class="headerlink" title="根据传入的字符串跳转Activity"></a>根据传入的字符串跳转Activity</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Intent intent &#x3D; new Intent(context,Class.forName(&quot;com.packname.Activity&quot;));</span><br><span class="line">startActivity(intent);</span><br></pre></td></tr></table></figure>
-<h3 id="根据传入的字符加载资源"><a href="#根据传入的字符加载资源" class="headerlink" title="根据传入的字符加载资源"></a>根据传入的字符加载资源</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int icon &#x3D; getResources().getIdentifier(“imageid”, &quot;drawable&quot;,getPackageName());</span><br></pre></td></tr></table></figure>
-<p>优化：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public static int getDrawableId(Context context, String var) &#123;</span><br><span class="line"></span><br><span class="line">        try &#123;</span><br><span class="line">            int imageId &#x3D; context.getResources().getIdentifier(var, &quot;drawable&quot;, context.getPackageName());</span><br><span class="line">            return imageId;</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            return 0;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p><strong>getIdentifier的函数签名如下：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public int getIdentifier (String name, String defType, String defPackage)</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1282,7 +1286,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">91</span>
+          <span class="site-state-item-count">92</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1295,7 +1299,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">44</span>
+        <span class="site-state-item-count">45</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

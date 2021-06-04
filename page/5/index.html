@@ -144,7 +144,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="../../tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">44</span></a>
+    <a href="../../tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">45</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -154,7 +154,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="../../archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">91</span></a>
+    <a href="../../archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">92</span></a>
 
   </li>
         <li class="menu-item menu-item-photos">
@@ -212,6 +212,107 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://markchyl.cn/2020/06/22/Monkey%E8%87%AA%E5%8A%A8%E5%8C%96%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="../../img/mark_avatar.jpeg">
+      <meta itemprop="name" content="Mark先生">
+      <meta itemprop="description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mark的私人博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="../../2020/06/22/Monkey%E8%87%AA%E5%8A%A8%E5%8C%96%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/" class="post-title-link" itemprop="url">Monkey自动化压力测试</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-06-22 10:53:50" itemprop="dateCreated datePublished" datetime="2020-06-22T10:53:50+08:00">2020-06-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="../../categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+                </span>
+            </span>
+
+          
+            <span id="../../2020/06/22/Monkey%E8%87%AA%E5%8A%A8%E5%8C%96%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/" class="post-meta-item leancloud_visitors" data-flag-title="Monkey自动化压力测试" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="../../2020/06/22/Monkey%E8%87%AA%E5%8A%A8%E5%8C%96%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="../../2020/06/22/Monkey%E8%87%AA%E5%8A%A8%E5%8C%96%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="第一部分-背景"><a href="#第一部分-背景" class="headerlink" title="第一部分 背景"></a>第一部分 背景</h2><h3 id="1、为什么要开展压力测试？"><a href="#1、为什么要开展压力测试？" class="headerlink" title="1、为什么要开展压力测试？"></a>1、为什么要开展压力测试？</h3><ul>
+<li>提高产品的稳定性</li>
+<li>提高产品的留存率<h3 id="2、什么时候开展压力测试？"><a href="#2、什么时候开展压力测试？" class="headerlink" title="2、什么时候开展压力测试？"></a>2、什么时候开展压力测试？</h3></li>
+<li>首轮功能测试通过后开始</li>
+<li>下班后的夜间进行<h2 id="第二部分-场景"><a href="#第二部分-场景" class="headerlink" title="第二部分 场景"></a>第二部分 场景</h2><h3 id="手工测试场景"><a href="#手工测试场景" class="headerlink" title="手工测试场景"></a>手工测试场景</h3><h3 id="自动化测试场景"><a href="#自动化测试场景" class="headerlink" title="自动化测试场景"></a>自动化测试场景</h3>1、 Monkey<br>Monkey 就在手机里，安卓系统再带的</li>
+</ul>
+<p>2、 什么事ADB？<br>Android Debug Bridge 安卓调试桥</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="../../2020/06/22/Monkey%E8%87%AA%E5%8A%A8%E5%8C%96%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -1110,104 +1211,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://markchyl.cn/2019/12/03/Kotlin%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="../../img/mark_avatar.jpeg">
-      <meta itemprop="name" content="Mark先生">
-      <meta itemprop="description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Mark的私人博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="../../2019/12/03/Kotlin%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">Kotlin基础入门学习笔记</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-12-03 09:51:56" itemprop="dateCreated datePublished" datetime="2019-12-03T09:51:56+08:00">2019-12-03</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="../../categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
-                </span>
-            </span>
-
-          
-            <span id="../../2019/12/03/Kotlin%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-meta-item leancloud_visitors" data-flag-title="Kotlin基础入门学习笔记" title="Views">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">Views: </span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="../../2019/12/03/Kotlin%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="../../2019/12/03/Kotlin%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>若不留下点啥笔记，感觉对不住自己一个星期半的学习加复习。</p>
-<h3 id="一、如何实现单列模式？"><a href="#一、如何实现单列模式？" class="headerlink" title="一、如何实现单列模式？"></a>一、如何实现单列模式？</h3><p>使用关键字 <strong>object</strong> 修饰的类,替换掉class关键字，便会在整套程序中生成一个且是唯一的对象实例。<br>譬如如下代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">object BigHeadSon:IWash &#123;</span><br><span class="line">    override fun wash() &#123;</span><br><span class="line">        println(&quot;大头儿子洗完收费1元钱&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>那样之后该类的实例变量整个项目中有且只有一个。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="../../2019/12/03/Kotlin%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1279,7 +1282,7 @@
       <div class="site-state-item site-state-posts">
           <a href="../../archives/">
         
-          <span class="site-state-item-count">91</span>
+          <span class="site-state-item-count">92</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1292,7 +1295,7 @@
       <div class="site-state-item site-state-tags">
             <a href="../../tags/">
           
-        <span class="site-state-item-count">44</span>
+        <span class="site-state-item-count">45</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
