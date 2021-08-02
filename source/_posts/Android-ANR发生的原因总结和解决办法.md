@@ -4,7 +4,7 @@ title: Android ANR发生的原因总结和解决办法
 toc: true
 reward: true
 date: 2020-08-06 10:10:16
-tags: [Android]
+tags: [Error,基础理论]
 categories: [Android]
 ---
 ### 什么是ANR？

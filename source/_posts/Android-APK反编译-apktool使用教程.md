@@ -4,8 +4,8 @@ title: Android APK反编译 apktool使用教程
 toc: true
 reward: true
 date: 2019-09-26 09:48:57
-tags: [工具使用]
-categories: [工具使用]
+tags: [工具使用,反编译]
+categories: [Android]
 ---
 ## 前言：
 
@@ -32,19 +32,26 @@ categories: [工具使用]
 
 https://ibotpeaches.github.io/Apktool/install/
 
-![](https://thumbnail0.baidupcs.com/thumbnail/38e813d52e3dfc10234ae12835819ff7?fid=3761439320-250528-346821393816278&time=1569459600&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-Z3HFxH7YdDPEq0mUN8y6UzOnddE%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=460436671360346953&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video)
+![](https://img-blog.csdnimg.cn/20200326094455532.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2RpcmtzbWFsbGVy,size_16,color_FFFFFF,t_70)
+
+**需要注意的是**
+步骤一种的脚步，另存为apktool后，一定要把下载的apktool_xxxx.jar重命名为apktool.jar ，并且要和apktool脚本放在同一级目录下。
 
 2、使用方法
 
 https://ibotpeaches.github.io/Apktool/documentation/
 
-![](https://thumbnail0.baidupcs.com/thumbnail/b2f82f60dfcffa6927c2d670daa72d38?fid=3761439320-250528-558451696215383&time=1569459600&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-CsFMBIHt1kd3a8Va1ABYkxhUg9I%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=460411839476402063&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video)
+`apktool d -f xxxx.apk`
 
 3、反编译开始
 
-Mark获得结果只有res文件的是可读性的：
+反编译：
 
-![](https://thumbnail0.baidupcs.com/thumbnail/f9ced22da6e5c604c33ff6227c86ddb6?fid=3761439320-250528-1034439241785614&time=1569459600&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-nRulMxiMtqZORfZtt33jt7cyZPo%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=460498225017852308&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video)
+```apktool d test.apk -o test```
+
+回编译
+
+```apktool b test -o new_test.apk```
 
 
 

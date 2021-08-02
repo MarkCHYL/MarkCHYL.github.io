@@ -4,7 +4,7 @@ title: android retrofit End of input at line 1 column 1 path
 toc: true
 reward: true
 date: 2020-09-03 09:14:59
-tags: [Error]
+tags: [Error，retrofit]
 categories: [Android]
 ---
 在使用retrofit作为项目的网络请求库时，接口定义如下：
@@ -53,6 +53,7 @@ Retrofit retrofit = new Retrofit.Builder()
     .addConverterFactory(GsonConverterFactory.create())
     .build();
 ```
+
 需要注意的是，NullOnEmptyConverterFactory必需在GsonConverterFactory之前addConverterFactory
 
 [原文连接](http://www.voidcn.com/article/p-xoiqdiuz-re.html)

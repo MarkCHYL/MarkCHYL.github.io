@@ -20,10 +20,39 @@ categories: [Flutter]
 导包总是报错，先手敲代码，再导包。支持自定义启动布局。
 安卓的配置步骤多点。
 **下面是我安卓配置：**
+```
+import org.devio.flutter.splashscreen.SplashScreen;
 
-![](https://github.com/MarkCHYL/BLOG/blob/master/marksource/images/WechatIMG308.png?raw=true)
+
+public class MainActivity extends FlutterActivity {
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    SplashScreen.show(this, true);// here
+    super.onCreate(savedInstanceState);
+    GeneratedPluginRegistrant.registerWith(this);
+
+    ///注册自己的 Plugin 插件
+    resisterSelfPlugin();
+  }
+```
 至于额为什么字体显示红色，别紧张，运行没得问题的。
 其他的配置看官方文档。
+添加
+`launch_screen.xml`
+```
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/screen_full" />
+</RelativeLayout>
+```
 
 **下面是我 IOS 配置：**
 * 导入启动图片

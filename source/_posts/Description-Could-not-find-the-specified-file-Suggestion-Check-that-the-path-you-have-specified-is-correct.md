@@ -5,6 +5,7 @@ toc: true
 reward: true
 date: 2019-12-27 10:08:06
 tags: [Error]
+categories: [svn]
 ---
 记录下我使用 CornerStone 利用SVN 进行版本代码管理。我已经快两个月没提交代码啦，今天一提交发现好多问题，各种报错。
 譬如这类错误：

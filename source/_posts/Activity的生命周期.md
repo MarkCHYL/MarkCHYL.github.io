@@ -4,7 +4,7 @@ title: Activity的生命周期
 date: 2018-12-17 09:31:39
 toc: true
 reward: true
-tags: [Android]
+tags: [基础理论]
 categories: [Android]
 ---
 ![image](http://hi.csdn.net/attachment/201109/1/0_1314838777He6C.gif)

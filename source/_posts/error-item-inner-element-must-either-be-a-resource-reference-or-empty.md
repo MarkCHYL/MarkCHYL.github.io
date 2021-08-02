@@ -5,6 +5,7 @@ toc: false
 reward: false
 date: 2019-12-25 15:47:08
 tags: [Error]
+categories: [Android]
 ---
 ```
 FAQ:

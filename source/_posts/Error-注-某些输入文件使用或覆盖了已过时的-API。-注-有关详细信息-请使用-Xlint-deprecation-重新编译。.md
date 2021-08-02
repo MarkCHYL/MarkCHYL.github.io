@@ -5,6 +5,7 @@ toc: true
 reward: true
 date: 2019-12-12 16:33:40
 tags: [Error]
+categories: [Android]
 ---
 [原文](https://blog.csdn.net/dong19900415/article/details/52882529?utm_source=blogxgwz3)
 

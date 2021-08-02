@@ -4,7 +4,7 @@ title: Android7.0至Android8.0适配记录
 date: 2018-12-17 10:55:42
 toc: true
 reward: true
-tags: [Android]
+tags: [适配]
 categories: [Android]
 ---
 ## Android7.0至Android8.0适配记录

@@ -69,3 +69,9 @@ git config user.email 邮箱;
 git config  --global user.name 用户名；
 git config  --global user.email 邮箱名;
 ```
+### 6、`git` 删除 项目`remote`
+终端执行`git remote remove origin`,origin为项目`remote`的名字
+
+添加远程仓库(远程仓库引用)命令：
+> 使用命令：**git remove add 远程仓库到本地的名称  远程仓库的路径**
+[更多指令学习参考](https://blog.csdn.net/weixin_44703358/article/details/100514085)
