@@ -4,7 +4,7 @@ title: android retrofit End of input at line 1 column 1 path
 toc: true
 reward: true
 date: 2020-09-03 09:14:59
-tags: [Error，retrofit]
+tags: [Error,Retrofit]
 categories: [Android]
 ---
 在使用retrofit作为项目的网络请求库时，接口定义如下：
