@@ -137,4 +137,40 @@ HandlerThread用法实例
 
 我在直播推流中应用了HandlerThread，每编码组装出来一帧视频就发送一个handler消息，然后HandlerThread线程接收消息数据并用libRtmp推倒服务器。此时可以监控队列中有多少消息在循环，可以监听进出队列的比例，如果超出一定的范围说明网络不好，需要执行丢帧策略。
 
-[下一章组件间通信](http://markchyl.cn/2020/10/10/Android%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6%E6%80%BB%E7%BB%93%E4%BA%8C/)
+### Handler 面试八问
+* 为什么主线程不会因为 `Looper.loop()` 里的循环卡死？
+    >主线程确实是通过`Looper.loop()` 进入了循环状态，因为这样主线程才不会像我们一般创建的线程一样，当可执行代码执行完后，线程生命周期就终止了。
+    在主线程的`MessageQueue` 没有消息时，便阻塞在`MeqsageQueue.next()` 中的`nativePollOnce()`方法里，此时主线程会释放 `CPU`资源进入休眠状态，直到新消息达到。所以主线程大多数时候都是处于休眠状态，并不会消耗大量`CPU`资源。
+    这里采用的`linux`的`epoll` 机制，是一种 `IO` 多路复用机制，可以同时监控多个文件描述符，当某个文件描述符就绪(读或写就绪)，则立刻通知相应程序进行读或写操作拿到最新的消息，进而唤醒等待的线程。
+
+* `post`和`sendMessage`两类发送消息的方法有什么区别?
+    >`post`一类的方法发送的是 `Runnable`对象，但是其最后还是会被封装成`Message` 对象，将`Runnable` 对象赋值给 `Message` 对象中的`callback`变量，然后交由 `sendMessageAtTime() `方法发送出去。在处理消息时，会在`dispatchMessage()`方法里首先被`handleCallback(msg)`方法执行，实际上就是执行 `Message` 对象里面的 `Runnable` 对象的run 方法。
+    而`sendMessage` 一类的方法发送的直接是`Message`对象，处理消息时，在 `dispatchMessage`里优先级会低于`handleCallback(msg)`方法，是通过自己重写的`handleMessage(msg)` 方法执行。
+
+* 为什么要通过 `Message.obtain()` 方法获取 Message 对象?
+    >`obtain `方法可以从全局消息池中得到一个空的` Message`对象，这样可以有效节省系统资源。同时，通过各种`obtain`重载方法还可以得到一些`Message`的拷贝，或对`Message`对象进行一些初始化。
+
+* Handler实现发送延迟消息的原理是什么?
+    > 我们常用`postDelayed()`与`sendMessageDelayed()` 来发送延迟消息，其实最终都是将延迟时间转为确定时间，然后通过`sendMessageAtTime()` -> `enqueueMessage` ->
+    `queue.enqueueMessage`这一系列方法将消息插入到`MessageQueue`中。所以并不是先延迟再发送消息，而是直接发送消息，再借助`MessageQueue`的设计来实现消息的延迟处理。
+    消息延迟处理的原理涉及`MessageQueue`的两个静态方法 `MessageQueue.next()`和
+    `MessageQueue.enqueueMessage()`。通过`Native`方法阻塞线程一定时间，等到消息的执行时间到后再取出消息执行。
+
+* 同步屏障 `SyncBarrier`是什么?有什么作用?
+    >在一般情况下，同步和异步消息处理起来没有什么不同。只有在设置了同步屏障后才会有差异。同步屏障从代码层面上看是一个`Message` 对象，但是其`target`属性为`null`，用以区分普通消息。在`MessageQueue.next()`中如果当前消息是一个同步屏障，则跳过后面所有的同步消息，找到第一个异步消息来处理。
+    但是开发者调用不了。在`ViewRootlmpl`的UI测绘流程有体现
+
+* `IdleHandler` 是什么?有什么作用?
+    >当消息队列没有消息时调用或者如果队列中仍有待处理的消息，但都未到执行时间时，也会调用此方法。用以监听主线程空闲状态。
+
+* 为什么非静态类的`Handler`导致内存泄漏?如何解决?
+    > 首先，非静态的内部类、匿名内部类、局部内部类都会隐式的持有其外部类的引用。也就是说在 `Activity`中创建的,Handler会因此持有`Activity`的引用。
+    当我们在主线程使用`Handler`的时候，Handler会默认绑定这个线程的`Looper`对象，并关联其`MessageQueue，Handler`发出的所有消息都会加入到这个`MessageQueue`中。`Looper`对象的生命周期贯穿整个主线程的生命周期，所以当Looper对象中的MessageQueue里还有未处理完的` Message`时，因为每个`Message`都持有`Handler`的引用，所以`Handler`无法被回收，自然其持有引用的外部类` Activity `也无法回收，造成泄漏。
+    **使用静态内部类+弱引用的方式**
+
+* 如何让在子线程中弹出toast
+    >调用`Looper.prepare`以及`Looperloop()`，但是切记线程任务执行完，需要手动调用`Looper.quitSafely()`否则线程不会结束。
+
+
+
+[下一章: 组件间通信](http://markchyl.cn/2020/10/10/Android%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6%E6%80%BB%E7%BB%93%E4%BA%8C/)

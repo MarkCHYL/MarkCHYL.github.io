@@ -24,5 +24,21 @@
     "hexo-renderer-stylus": "^2.0.0",
     "hexo-server": "^2.0.0",
     "hexo-tag-cloud": "^2.1.2"
-  }
+  },
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarkCHYL/BLOG.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MarkCHYL/BLOG/issues"
+  },
+  "homepage": "https://github.com/MarkCHYL/BLOG#readme",
+  "description": ""
 }
