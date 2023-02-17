@@ -1,0 +1,559 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Mark的私人博客</title>
+  <icon>http://markchyl.cn/icon.png</icon>
+  <subtitle>数风流人物，还看今朝</subtitle>
+  <link href="http://markchyl.cn/atom.xml" rel="self"/>
+  
+  <link href="http://markchyl.cn/"/>
+  <updated>2022-10-30T15:44:12.000Z</updated>
+  <id>http://markchyl.cn/</id>
+  
+  <author>
+    <name>Mark先生</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>LinuxDeploy下ping命令无法运行,提示socket:权限不足</title>
+    <link href="http://markchyl.cn/2022/10/30/LinuxDeploy%E4%B8%8Bping%E5%91%BD%E4%BB%A4%E6%97%A0%E6%B3%95%E8%BF%90%E8%A1%8C-%E6%8F%90%E7%A4%BAsocket-%E6%9D%83%E9%99%90%E4%B8%8D%E8%B6%B3/"/>
+    <id>http://markchyl.cn/2022/10/30/LinuxDeploy%E4%B8%8Bping%E5%91%BD%E4%BB%A4%E6%97%A0%E6%B3%95%E8%BF%90%E8%A1%8C-%E6%8F%90%E7%A4%BAsocket-%E6%9D%83%E9%99%90%E4%B8%8D%E8%B6%B3/</id>
+    <published>2022-10-30T15:44:12.000Z</published>
+    <updated>2022-10-30T15:44:12.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span</summary>
+        
+      
+    
+    
+    
+    <category term="网络" scheme="http://markchyl.cn/categories/%E7%BD%91%E7%BB%9C/"/>
+    
+    
+    <category term="命令" scheme="http://markchyl.cn/tags/%E5%91%BD%E4%BB%A4/"/>
+    
+    <category term="Linux" scheme="http://markchyl.cn/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python资料地址收集</title>
+    <link href="http://markchyl.cn/2022/10/23/Python%E8%B5%84%E6%96%99%E5%9C%B0%E5%9D%80%E6%94%B6%E9%9B%86/"/>
+    <id>http://markchyl.cn/2022/10/23/Python%E8%B5%84%E6%96%99%E5%9C%B0%E5%9D%80%E6%94%B6%E9%9B%86/</id>
+    <published>2022-10-23T07:31:26.000Z</published>
+    <updated>2022-10-23T07:31:26.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;基础&quot;&gt;&lt;a href=&quot;#基础&quot; class=&quot;headerlink&quot; title=&quot;基础&quot;&gt;&lt;/a&gt;基础&lt;/h3&gt;&lt;h4 id=&quot;基础学习地址&quot;&gt;&lt;a href=&quot;#基础学习地址&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Python" scheme="http://markchyl.cn/categories/Python/"/>
+    
+    
+    <category term="基础" scheme="http://markchyl.cn/tags/%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>OkHttp和retrofit网络框架实现架构基础原理</title>
+    <link href="http://markchyl.cn/2022/09/26/OkHttp%E5%92%8Cretrofit%E7%BD%91%E7%BB%9C%E6%A1%86%E6%9E%B6%E5%AE%9E%E7%8E%B0%E6%9E%B6%E6%9E%84%E5%9F%BA%E7%A1%80%E5%8E%9F%E7%90%86/"/>
+    <id>http://markchyl.cn/2022/09/26/OkHttp%E5%92%8Cretrofit%E7%BD%91%E7%BB%9C%E6%A1%86%E6%9E%B6%E5%AE%9E%E7%8E%B0%E6%9E%B6%E6%9E%84%E5%9F%BA%E7%A1%80%E5%8E%9F%E7%90%86/</id>
+    <published>2022-09-26T02:03:00.000Z</published>
+    <updated>2022-09-26T02:03:00.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="Android" scheme="http://markchyl.cn/categories/Android/"/>
+    
+    
+    <category term="网络编程" scheme="http://markchyl.cn/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>线程与线程池开发核心技术</title>
+    <link href="http://markchyl.cn/2022/09/16/%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%BC%80%E5%8F%91%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/"/>
+    <id>http://markchyl.cn/2022/09/16/%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%BC%80%E5%8F%91%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/</id>
+    <published>2022-09-16T15:06:06.000Z</published>
+    <updated>2022-09-16T15:06:06.000Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;线程与线程池开发核心技术&quot;&gt;&lt;a href=&quot;#线程与线程池开发核心技术&quot; class=&quot;headerlink&quot; title=&quot;线程与线程池开发核心技术&quot;&gt;&lt;/a&gt;线程与线程池开发核心技术&lt;/h2&gt;&lt;p&gt;[TOC]&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://app.yinxiang.com/shard/s50/nl/22109192/3ae4db9a-df06-457f-966f-da2bd19bdeed/&quot;&gt;印象笔记链接&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;线程与进程&quot;&gt;&lt;a href=&quot;#线程与进程&quot; class=&quot;headerlink&quot; title=&quot;线程与进程&quot;&gt;&lt;/a&gt;线程与进程&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;一个进程至少一个线程 &lt;/li&gt;
+&lt;li&gt;进程可以包含多个线程 &lt;/li&gt;
+&lt;li&gt;进程在执行过程中拥有独立的内存空间，而线程运行在进程内&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="Android" scheme="http://markchyl.cn/categories/Android/"/>
+    
+    
+    <category term="Android" scheme="http://markchyl.cn/tags/Android/"/>
+    
+    <category term="线程" scheme="http://markchyl.cn/tags/%E7%BA%BF%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android如何进行技术选型（案列：Navigation组件和ARouter为例）</title>
+    <link href="http://markchyl.cn/2022/09/16/Android%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8C%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B%EF%BC%88%E6%A1%88%E5%88%97%EF%BC%9ANavigation%E7%BB%84%E4%BB%B6%E5%92%8CARouter%E4%B8%BA%E4%BE%8B%EF%BC%89/"/>
+    <id>http://markchyl.cn/2022/09/16/Android%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8C%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B%EF%BC%88%E6%A1%88%E5%88%97%EF%BC%9ANavigation%E7%BB%84%E4%BB%B6%E5%92%8CARouter%E4%B8%BA%E4%BE%8B%EF%BC%89/</id>
+    <published>2022-09-16T15:01:01.000Z</published>
+    <updated>2022-09-16T15:01:01.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;案列：Navigation组件和ARouter为例&quot;&gt;&lt;a href=&quot;#案列：Navigation组件和ARouter为例&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Android" scheme="http://markchyl.cn/categories/Android/"/>
+    
+    
+    <category term="Android" scheme="http://markchyl.cn/tags/Android/"/>
+    
+    <category term="架构师" scheme="http://markchyl.cn/tags/%E6%9E%B6%E6%9E%84%E5%B8%88/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android中APT技术介绍</title>
+    <link href="http://markchyl.cn/2022/09/16/Android%E4%B8%ADAPT%E6%8A%80%E6%9C%AF%E4%BB%8B%E7%BB%8D/"/>
+    <id>http://markchyl.cn/2022/09/16/Android%E4%B8%ADAPT%E6%8A%80%E6%9C%AF%E4%BB%8B%E7%BB%8D/</id>
+    <published>2022-09-16T14:59:58.000Z</published>
+    <updated>2022-09-16T14:59:58.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;Android中APT技术介绍&quot;&gt;&lt;a href=&quot;#Android中APT技术介绍&quot; class=&quot;headerlink&quot; title=&quot;Android中APT技术介绍&quot;&gt;&lt;/a&gt;Android中APT技术介绍&lt;/h2&gt;&lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h3</summary>
+        
+      
+    
+    
+    
+    <category term="Android" scheme="http://markchyl.cn/categories/Android/"/>
+    
+    
+    <category term="Android" scheme="http://markchyl.cn/tags/Android/"/>
+    
+    <category term="APT" scheme="http://markchyl.cn/tags/APT/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>实战：基于ARouter实现登陆拦截&amp;全局降级策略</title>
+    <link href="http://markchyl.cn/2022/09/16/%E5%AE%9E%E6%88%98%EF%BC%9A%E5%9F%BA%E4%BA%8EARouter%E5%AE%9E%E7%8E%B0%E7%99%BB%E9%99%86%E6%8B%A6%E6%88%AA-%E5%85%A8%E5%B1%80%E9%99%8D%E7%BA%A7%E7%AD%96%E7%95%A5/"/>
+    <id>http://markchyl.cn/2022/09/16/%E5%AE%9E%E6%88%98%EF%BC%9A%E5%9F%BA%E4%BA%8EARouter%E5%AE%9E%E7%8E%B0%E7%99%BB%E9%99%86%E6%8B%A6%E6%88%AA-%E5%85%A8%E5%B1%80%E9%99%8D%E7%BA%A7%E7%AD%96%E7%95%A5/</id>
+    <published>2022-09-16T14:58:36.000Z</published>
+    <updated>2022-09-16T14:58:36.000Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;实战：基于ARouter实现登陆拦截-amp-全局降级策略&quot;&gt;&lt;a href=&quot;#实战：基于ARouter实现登陆拦截-amp-全局降级策略&quot; class=&quot;headerlink&quot; title=&quot;实战：基于ARouter实现登陆拦截&amp;amp;全局降级策略&quot;&gt;&lt;/a&gt;实战：基于ARouter实现登陆拦截&amp;amp;全局降级策略&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;需求分析&lt;/li&gt;
+&lt;li&gt;成果展示&lt;/li&gt;
+&lt;li&gt;疑难点分析&lt;/li&gt;
+&lt;li&gt;Coding实现&lt;h3 id=&quot;需求分析&quot;&gt;&lt;a href=&quot;#需求分析&quot; class=&quot;headerlink&quot; title=&quot;需求分析&quot;&gt;&lt;/a&gt;需求分析&lt;/h3&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;利用ARouter拦截页面跳转，实现全局页面降级</summary>
+    
+    
+    
+    <category term="Android" scheme="http://markchyl.cn/categories/Android/"/>
+    
+    
+    <category term="Android" scheme="http://markchyl.cn/tags/Android/"/>
+    
+    <category term="实战" scheme="http://markchyl.cn/tags/%E5%AE%9E%E6%88%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>implementation、api、compileOnly区别</title>
+    <link href="http://markchyl.cn/2022/09/16/implementation%E3%80%81api%E3%80%81compileOnly%E5%8C%BA%E5%88%AB/"/>
+    <id>http://markchyl.cn/2022/09/16/implementation%E3%80%81api%E3%80%81compileOnly%E5%8C%BA%E5%88%AB/</id>
+    <published>2022-09-16T14:51:03.000Z</published>
+    <updated>2022-09-16T14:51:03.000Z</updated>
+    
+    
+    <summary type="html">&lt;h3 id=&quot;2-x和3-x版本依赖方式比较&quot;&gt;&lt;a href=&quot;#2-x和3-x版本依赖方式比较&quot; class=&quot;headerlink&quot; title=&quot;2.x和3.x版本依赖方式比较&quot;&gt;&lt;/a&gt;2.x和3.x版本依赖方式比较&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;2.x&lt;/th&gt;
+&lt;th&gt;3.x&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td&gt;compile&lt;/td&gt;
+&lt;td&gt;implementation、api&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;provided&lt;/td&gt;
+&lt;td&gt;compile only&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;apk&lt;/td&gt;
+&lt;td&gt;runtime only&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;api&lt;/td&gt;
+&lt;td&gt;api&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;h3 id=&quot;替代关系：&quot;&gt;&lt;a href=&quot;#替代关系：&quot; class=&quot;headerlink&quot; title=&quot;替代关系：&quot;&gt;&lt;/a&gt;替代关系：&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;compile依赖关系已被弃⽤，被implementation和api替代;&lt;/li&gt;
+&lt;li&gt;provided被compile only替代;&lt;/li&gt;
+&lt;li&gt;apk被runtime only替代;&lt;/li&gt;
+&lt;li&gt;api：跟2.x版本的 compile完全相同。&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="Android" scheme="http://markchyl.cn/categories/Android/"/>
+    
+    
+    <category term="Android" scheme="http://markchyl.cn/tags/Android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android studio开启阿里巴巴资源仓库代理</title>
+    <link href="http://markchyl.cn/2022/09/16/Android-studio%E5%BC%80%E5%90%AF%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4%E8%B5%84%E6%BA%90%E4%BB%93%E5%BA%93%E4%BB%A3%E7%90%86/"/>
+    <id>http://markchyl.cn/2022/09/16/Android-studio%E5%BC%80%E5%90%AF%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4%E8%B5%84%E6%BA%90%E4%BB%93%E5%BA%93%E4%BB%A3%E7%90%86/</id>
+    <published>2022-09-16T14:49:30.000Z</published>
+    <updated>2022-09-16T14:49:30.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span</summary>
+        
+      
+    
+    
+    
+    <category term="Android" scheme="http://markchyl.cn/categories/Android/"/>
+    
+    
+    <category term="Android" scheme="http://markchyl.cn/tags/Android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>实现本地资源包统一管理nexus</title>
+    <link href="http://markchyl.cn/2022/09/16/%E5%AE%9E%E7%8E%B0%E6%9C%AC%E5%9C%B0%E8%B5%84%E6%BA%90%E5%8C%85%E7%BB%9F%E4%B8%80%E7%AE%A1%E7%90%86nexus/"/>
+    <id>http://markchyl.cn/2022/09/16/%E5%AE%9E%E7%8E%B0%E6%9C%AC%E5%9C%B0%E8%B5%84%E6%BA%90%E5%8C%85%E7%BB%9F%E4%B8%80%E7%AE%A1%E7%90%86nexus/</id>
+    <published>2022-09-16T01:54:42.000Z</published>
+    <updated>2022-09-16T01:54:42.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;通过终端命令 cd /Users/xxx/Downloads/nexus-3.14.0-04-mac/nexus-3.14.0-04/bin进入bin目录下，执行&lt;br&gt;./nexus start&lt;br&gt;./nexus</summary>
+        
+      
+    
+    
+    
+    <category term="Android" scheme="http://markchyl.cn/categories/Android/"/>
+    
+    
+    <category term="Android" scheme="http://markchyl.cn/tags/Android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java 面试题</title>
+    <link href="http://markchyl.cn/2022/07/23/Java-%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    <id>http://markchyl.cn/2022/07/23/Java-%E9%9D%A2%E8%AF%95%E9%A2%98/</id>
+    <published>2022-07-23T15:44:54.000Z</published>
+    <updated>2022-07-23T15:44:54.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h3 id=&quot;2、List和Set的区别&quot;&gt;&lt;a href=&quot;#2、List和Set的区别&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Java" scheme="http://markchyl.cn/categories/Java/"/>
+    
+    
+    <category term="基础，面试题" scheme="http://markchyl.cn/tags/%E5%9F%BA%E7%A1%80%EF%BC%8C%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mac安装mysql-8.0.27</title>
+    <link href="http://markchyl.cn/2021/11/03/Mac%E5%AE%89%E8%A3%85mysql-8-0-27/"/>
+    <id>http://markchyl.cn/2021/11/03/Mac%E5%AE%89%E8%A3%85mysql-8-0-27/</id>
+    <published>2021-11-03T02:33:36.000Z</published>
+    <updated>2021-11-03T02:33:36.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;我的环境：&quot;&gt;&lt;a href=&quot;#我的环境：&quot; class=&quot;headerlink&quot; title=&quot;我的环境：&quot;&gt;&lt;/a&gt;我的环境：&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;MacOs Big Sur</summary>
+        
+      
+    
+    
+    
+    <category term="数据库" scheme="http://markchyl.cn/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+    <category term="mysql" scheme="http://markchyl.cn/tags/mysql/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>从Mac系统中卸载MySql</title>
+    <link href="http://markchyl.cn/2021/11/03/%E4%BB%8EMac%E7%B3%BB%E7%BB%9F%E4%B8%AD%E5%8D%B8%E8%BD%BDMySql/"/>
+    <id>http://markchyl.cn/2021/11/03/%E4%BB%8EMac%E7%B3%BB%E7%BB%9F%E4%B8%AD%E5%8D%B8%E8%BD%BDMySql/</id>
+    <published>2021-11-03T02:26:24.000Z</published>
+    <updated>2021-11-03T02:26:24.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/lancegentry/article/details/79144131&quot;&gt;原文&lt;/a&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td</summary>
+        
+      
+    
+    
+    
+    <category term="数据库" scheme="http://markchyl.cn/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+    <category term="mysql" scheme="http://markchyl.cn/tags/mysql/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mac安装和配置Tomcat的教程</title>
+    <link href="http://markchyl.cn/2021/11/02/Mac%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AETomcat%E7%9A%84%E6%95%99%E7%A8%8B/"/>
+    <id>http://markchyl.cn/2021/11/02/Mac%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AETomcat%E7%9A%84%E6%95%99%E7%A8%8B/</id>
+    <published>2021-11-02T05:11:06.000Z</published>
+    <updated>2021-11-02T05:11:06.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/dongzhensong/article/details/87807378&quot;&gt;原文&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;我的配置&quot;&gt;&lt;a href=&quot;#我的配置&quot; class=&quot;headerlink&quot; title=&quot;我的配置&quot;&gt;&lt;/a&gt;我的配置&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;MacBook Pro&lt;/li&gt;
+&lt;li&gt;jdk1.8&lt;h3 id=&quot;1-下载&quot;&gt;&lt;a href=&quot;#1-下载&quot; class=&quot;headerlink&quot; title=&quot;1.下载&quot;&gt;&lt;/a&gt;1.下载&lt;/h3&gt;前往&lt;a href=&quot;https://tomcat.apache.org/download-80.cgi&quot;&gt;ApacheTomcat&lt;/a&gt;官网下载Tomcat：&lt;br&gt;&lt;img src=&quot;https://img-blog.csdnimg.cn/20190220165426253.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Rvbmd6aGVuc29uZw==,size_16,color_FFFFFF,t_70&quot;&gt;&lt;br&gt;首先选择相应的版本（以Tomcat 8为例）：&lt;br&gt;下载右边Core下的第一个资源zip。&lt;br&gt;下载后解压下来重名名为ApacheTomcat，并放到磁盘的/usr/local下&lt;br&gt;&lt;img src=&quot;https://img-blog.csdnimg.cn/20190220165752464.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Rvbmd6aGVuc29uZw==,size_16,color_FFFFFF,t_70&quot;&gt;</summary>
+    
+    
+    
+    <category term="JavaWeb" scheme="http://markchyl.cn/categories/JavaWeb/"/>
+    
+    
+    <category term="Tomcat" scheme="http://markchyl.cn/tags/Tomcat/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mac中终端关机命令</title>
+    <link href="http://markchyl.cn/2021/11/02/Mac%E4%B8%AD%E7%BB%88%E7%AB%AF%E5%85%B3%E6%9C%BA%E5%91%BD%E4%BB%A4/"/>
+    <id>http://markchyl.cn/2021/11/02/Mac%E4%B8%AD%E7%BB%88%E7%AB%AF%E5%85%B3%E6%9C%BA%E5%91%BD%E4%BB%A4/</id>
+    <published>2021-11-02T02:10:25.000Z</published>
+    <updated>2021-11-02T02:10:25.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://blog.51cto.com/59465168/1837538&quot;&gt;原文来自&lt;/a&gt;&lt;br&gt;1.立即关机命令&lt;br&gt;        sudo halt&lt;br&gt;    或者&lt;br&gt;        sudo shutdown -h now</summary>
+        
+      
+    
+    
+    
+    <category term="Mac" scheme="http://markchyl.cn/categories/Mac/"/>
+    
+    
+    <category term="运维" scheme="http://markchyl.cn/tags/%E8%BF%90%E7%BB%B4/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>mac上使用svn(subversion)</title>
+    <link href="http://markchyl.cn/2021/10/09/mac%E4%B8%8A%E4%BD%BF%E7%94%A8svn-subversion/"/>
+    <id>http://markchyl.cn/2021/10/09/mac%E4%B8%8A%E4%BD%BF%E7%94%A8svn-subversion/</id>
+    <published>2021-10-09T02:21:15.000Z</published>
+    <updated>2021-10-09T02:21:15.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://www.jianshu.com/p/79116c6f8f72&quot;&gt;原文：Wanna_1314&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="工具使用" scheme="http://markchyl.cn/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/"/>
+    
+    
+    <category term="工具使用" scheme="http://markchyl.cn/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>mac 安装homebrew</title>
+    <link href="http://markchyl.cn/2021/10/09/mac-%E5%AE%89%E8%A3%85homebrew/"/>
+    <id>http://markchyl.cn/2021/10/09/mac-%E5%AE%89%E8%A3%85homebrew/</id>
+    <published>2021-10-09T01:57:26.000Z</published>
+    <updated>2021-10-09T01:57:26.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;问题：macOS安装Homebrew时总是报错（Failed to connect to raw.githubusercontent.com port 443: Connection</summary>
+        
+      
+    
+    
+    
+    <category term="工具使用" scheme="http://markchyl.cn/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/"/>
+    
+    
+    <category term="工具使用" scheme="http://markchyl.cn/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Centos7 配置ssh免密登陆以及遇到的问题</title>
+    <link href="http://markchyl.cn/2021/09/17/Centos7-%E9%85%8D%E7%BD%AEssh%E5%85%8D%E5%AF%86%E7%99%BB%E9%99%86%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+    <id>http://markchyl.cn/2021/09/17/Centos7-%E9%85%8D%E7%BD%AEssh%E5%85%8D%E5%AF%86%E7%99%BB%E9%99%86%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</id>
+    <published>2021-09-17T08:28:39.000Z</published>
+    <updated>2021-09-17T08:28:39.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;假设用户名为&lt;strong&gt;u&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;1.确认已经连接上互联网，然后输入命令：&lt;br&gt;&lt;code&gt;sudo apt-get install</summary>
+        
+      
+    
+    
+    
+    <category term="Linux" scheme="http://markchyl.cn/categories/Linux/"/>
+    
+    
+    <category term="网络配置" scheme="http://markchyl.cn/tags/%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>mac下安装rz sz</title>
+    <link href="http://markchyl.cn/2021/09/17/mac%E4%B8%8B%E5%AE%89%E8%A3%85rz-sz/"/>
+    <id>http://markchyl.cn/2021/09/17/mac%E4%B8%8B%E5%AE%89%E8%A3%85rz-sz/</id>
+    <published>2021-09-17T07:57:47.000Z</published>
+    <updated>2021-09-17T07:57:47.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;我们在linux上部署代码的时候经常需要上传文件到linux，有时候也需要从linux上下载文件到本地，大部分人都直接借助于ftp工具，&lt;br&gt;然而其实我们可以直接通过rz和sz上传下载文件，但是rz和sz命令不是linux默认自带的命令，需要我们自己安装，那么如何安装呢&lt;</summary>
+        
+      
+    
+    
+    
+    <category term="Linux" scheme="http://markchyl.cn/categories/Linux/"/>
+    
+    
+    <category term="工具" scheme="http://markchyl.cn/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux下删除文件名带有空格的文件</title>
+    <link href="http://markchyl.cn/2021/09/16/Linux%E4%B8%8B%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E5%90%8D%E5%B8%A6%E6%9C%89%E7%A9%BA%E6%A0%BC%E7%9A%84%E6%96%87%E4%BB%B6/"/>
+    <id>http://markchyl.cn/2021/09/16/Linux%E4%B8%8B%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E5%90%8D%E5%B8%A6%E6%9C%89%E7%A9%BA%E6%A0%BC%E7%9A%84%E6%96%87%E4%BB%B6/</id>
+    <published>2021-09-16T06:45:37.000Z</published>
+    <updated>2021-09-16T06:45:37.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;1.使用单引号将文件名括起来进行操作；&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;rm &amp;#39;2018-08-07</summary>
+        
+      
+    
+    
+    
+    <category term="Linux" scheme="http://markchyl.cn/categories/Linux/"/>
+    
+    
+    <category term="Error" scheme="http://markchyl.cn/tags/Error/"/>
+    
+  </entry>
+  
+</feed>
