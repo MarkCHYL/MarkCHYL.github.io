@@ -287,9 +287,17 @@
 <blockquote>
 <p>Duplicate class com.google.common.util.concurrent.ListenableFuture found in modules jetified-guava-20.0 (com.google.guava:guava:20.0) and jetified-listenablefuture-1.0 (com.google.guava:listenablefuture:1.0)</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 解决方法：</span><br><span class="line"></span><br><span class="line">    1. Navigation -&gt; Search Everywhere，勾选Include non-project items进行全局搜索</span><br><span class="line">    2. 比如搜索com.google.guava就可以搜索出所有的有关的依赖库</span><br><span class="line">    3. .&#x2F;gradlew app:dependencies查看找出依赖库之间的关系(在gradle中执行)</span><br><span class="line">    4. 找到有关的依赖库xxx:xx:x</span><br><span class="line">    &#96;&#96;&#96;gradle</span><br><span class="line">        implementation(&quot;xxx:xx:x&quot;) &#123;</span><br><span class="line">            exclude group: &#39;com.google.guava&#39;</span><br><span class="line">        &#125;</span><br><span class="line">        或者android配置区域配置全部库排查如下：</span><br><span class="line">        configurations.all &#123;</span><br><span class="line">            exclude group: &#39;com.google.guava&#39;, module:&#39;listenablefuture&#39;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 解决方法：</span><br><span class="line"></span><br><span class="line">    1. Navigation -&gt; Search Everywhere，勾选Include non-project items进行全局搜索</span><br><span class="line">    2. 比如搜索com.google.guava就可以搜索出所有的有关的依赖库</span><br><span class="line">    3. .&#x2F;gradlew app:dependencies查看找出依赖库之间的关系(在gradle中执行)</span><br><span class="line">    4. 找到有关的依赖库xxx:xx:x</span><br></pre></td></tr></table></figure>
+<pre><code>    implementation(&quot;xxx:xx:x&quot;) &#123;
+        exclude group: &#39;com.google.guava&#39;
+    &#125;
+    或者android配置区域配置全部库排查如下：
+    configurations.all &#123;
+        exclude group: &#39;com.google.guava&#39;, module:&#39;listenablefuture&#39;
+    &#125;
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### zsh: permission denied: .&#x2F;gradlew</span><br></pre></td></tr></table></figure></code></pre>
+<p>运行: chmod +x gradlew<br>```</p>
 
-<h3 id="zsh-permission-denied-gradlew"><a href="#zsh-permission-denied-gradlew" class="headerlink" title="zsh: permission denied: ./gradlew"></a>zsh: permission denied: ./gradlew</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">运行: chmod +x gradlew</span><br></pre></td></tr></table></figure>
       
     </div>
 
