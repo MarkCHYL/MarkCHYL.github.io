@@ -114,9 +114,9 @@
     <category term="网络" scheme="http://markchyl.cn/categories/%E7%BD%91%E7%BB%9C/"/>
     
     
-    <category term="Linux" scheme="http://markchyl.cn/tags/Linux/"/>
-    
     <category term="命令" scheme="http://markchyl.cn/tags/%E5%91%BD%E4%BB%A4/"/>
+    
+    <category term="Linux" scheme="http://markchyl.cn/tags/Linux/"/>
     
   </entry>
   
