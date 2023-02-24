@@ -164,7 +164,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">117</span>
+          <span class="site-state-item-count">119</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -226,6 +226,191 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://markchyl.cn/2023/02/24/Glide%E4%B8%ADBug%EF%BC%9A%E5%AE%BD%E5%BA%A6%E9%93%BA%E6%BB%A1%E9%AB%98%E5%BA%A6%E8%87%AA%E9%80%82%E5%BA%94-GIF%E5%8A%A0%E8%BD%BD%E4%B9%8B%E5%9D%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/img/mark_avatar.jpeg">
+      <meta itemprop="name" content="Mark先生">
+      <meta itemprop="description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mark的私人博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/02/24/Glide%E4%B8%ADBug%EF%BC%9A%E5%AE%BD%E5%BA%A6%E9%93%BA%E6%BB%A1%E9%AB%98%E5%BA%A6%E8%87%AA%E9%80%82%E5%BA%94-GIF%E5%8A%A0%E8%BD%BD%E4%B9%8B%E5%9D%91/" class="post-title-link" itemprop="url">Glide中Bug：宽度铺满高度自适应 & GIF加载之坑</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-02-24 10:50:53" itemprop="dateCreated datePublished" datetime="2023-02-24T10:50:53+08:00">2023-02-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="一、前言："><a href="#一、前言：" class="headerlink" title="一、前言："></a>一、前言：</h2><p>Glide圆角和centerCrop都是有问题的</p>
+<ol>
+<li>imageview自带的centerCrop是不管图片小于还是大于imageview的大小，都会等比例拉伸填充满，然后裁剪；</li>
+<li>而Glide的centerCrop对于大图是裁剪，如果图片小于imageview，则是等比例全部显示在imageview里而不是填满裁剪;</li>
+<li>而且如果imageview自己设置了centeCrop，这时候Glide再设置圆角，如果图片原图小于imageview，圆角是无效的</li>
+</ol>
+<p><strong>Glide 的基本使用</strong>可以查看下面这些文章：</p>
+<p><a target="_blank" rel="noopener" href="http://ocnyang.com/2016/08/09/GlideAbout/">图片加载库Glide介绍</a></p>
+<p><a target="_blank" rel="noopener" href="http://ocnyang.com/2016/08/17/GlideUse/">Glide图片加载库的使用</a></p>
+<hr>
+<h2 id="二、Glide-实现-ImageView-宽度填满，高度自适应的效果"><a href="#二、Glide-实现-ImageView-宽度填满，高度自适应的效果" class="headerlink" title="二、Glide 实现 ImageView 宽度填满，高度自适应的效果"></a>二、Glide 实现 ImageView 宽度填满，高度自适应的效果</h2><p>先说一下大家在平时用到 ImageView 实现宽度填满，高度自适应的方法。</p>
+<blockquote>
+<p>ImageView 宽度填满，高度自适应常用在：</p>
+<ol>
+<li>ListView 列表布局的条目中（RecycleView 同理），比如实现 item 中的图片充满屏幕，高度根据具体图片比例自适应，商品详情中常常用到。</li>
+<li>GridView 网格布局的条目中，假如 item 有两列，想让每一列的 item 中的图片占用屏幕的一半。</li>
+<li>其他使用单独图片也想达到这种效果的场景。</li>
+</ol>
+</blockquote>
+<p>这里提供两种实现方法:</p>
+<h3 id="1、重写-onMeasure-方法"><a href="#1、重写-onMeasure-方法" class="headerlink" title="1、重写 onMeasure 方法"></a>1、重写 onMeasure 方法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SuppressLint(&quot;AppCompatCustomView&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ResizableImageView</span> <span class="keyword">extends</span> <span class="title">ImageView</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> value=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ResizableImageView</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ResizableImageView</span><span class="params">(Context context, AttributeSet attrs)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context, attrs);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onMeasure</span><span class="params">(<span class="keyword">int</span> widthMeasureSpec, <span class="keyword">int</span> heightMeasureSpec)</span></span>&#123;</span><br><span class="line">        Drawable d = getDrawable();</span><br><span class="line">        <span class="keyword">if</span>(d!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">int</span> width = MeasureSpec.getSize(widthMeasureSpec);</span><br><span class="line">            <span class="keyword">int</span> height = width;</span><br><span class="line">            <span class="comment">//高度根据使得图片的宽度充满屏幕计算而得（这个是默认计算）</span></span><br><span class="line">            <span class="comment">//  int height = (int) Math.ceil((float) width * (float) d.getIntrinsicHeight() / (float) d.getIntrinsicWidth());</span></span><br><span class="line">            <span class="keyword">if</span> (value==<span class="number">1</span>)&#123;</span><br><span class="line">                 height = (<span class="keyword">int</span>) Math.ceil((<span class="keyword">float</span>) (width*<span class="number">4</span>/<span class="number">3</span>));</span><br><span class="line">            &#125;</span><br><span class="line">            setMeasuredDimension(width, height);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">super</span>.onMeasure(widthMeasureSpec, heightMeasureSpec);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//根据传过来的值，1是宽度3：4，其它值是1：1</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span>  <span class="title">setMeasure</span><span class="params">(<span class="keyword">int</span> value)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.value= value;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2、设置-ImageView-的属性"><a href="#2、设置-ImageView-的属性" class="headerlink" title="2、设置 ImageView 的属性"></a>2、设置 ImageView 的属性</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;ImageView</span><br><span class="line">        android:id=<span class="string">&quot;@+id/iv_ocnyang&quot;</span></span><br><span class="line">        android:layout_width=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">        android:layout_height=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">        android:adjustViewBounds=<span class="string">&quot;true&quot;</span></span><br><span class="line">        android:scaleType=<span class="string">&quot;fitXY&quot;</span></span><br><span class="line">        /&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>fitXY</code> 这种图片的显示方式的效果是：根据 <code>ImageView</code> 设置的大小拉伸图片以填充满空间，（单独设置此属性时）图片会变形。</p>
+<p><code>adjustViewBounds</code> 是限制图片在显示时保持原图比例。（和 <code>fitXY</code> 显示方式合用能到达自适应的效果）</p>
+</blockquote>
+<hr>
+<p><strong>通过这上面两种方式显示图片一般都能够宽度充满高度自适应的效果，可是当你用 Glide 请求显示网络图片的时候，你会很失望的发现上面的设置失效了同时图片也变形了。</strong></p>
+<hr>
+<p>那么这时候是哪里出了问题了呢？（下面只做一个笼统的分析，具体可以看这个链接： <a target="_blank" rel="noopener" href="https://github.com/clarkehe/Android/wiki/Coding(7):-Glide%E4%BD%BF%E7%94%A8%E5%8F%8A%E6%B3%A8%E6%84%8F%E7%9A%84%E5%9C%B0%E6%96%B9">Glide使用及注意的地方</a>）</p>
+<p>其实如果你熟知 Glide 的话，可能你还记得，Glide 在加载图片的时候，加载的大小会和 ImageView 的大小保持一致。也就是 ImageView 的大小决定了 Glide 加载图片的尺寸。而这里我们的 ImageView 设置的高度是 wrap_content，Glide 就无法准确的加载图片的大小了。</p>
+<p>那这个时候怎么才能保证按原图的比例来自适应高度显示呢？<br>这里有两种方式：</p>
+<ol>
+<li><p>你已经知道图片（或其他方式提前知道）图片的比例，然后在用 Glide 请求图片时限制图片的加载大小，即设置 override(int width, int height) 。这时候加载到的图片是原图比例，显示的时候虽然有拉伸/压缩但都会保存原比例的。这种方式适用于你加载的图片大小都比较规范固定的时候。</p>
+</li>
+<li><p>当然，你请求的图片源并不一定大小都一致。那这时候就可以使用下面这种方式了。这种方式的原理是，先使用 Glide 把图片的原图请求加载过来，然后再按原图来显示图片。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">    Glide.with(mContext)</span><br><span class="line">    .load(url)</span><br><span class="line">    .asBitmap()</span><br><span class="line">    .into(<span class="keyword">new</span> SimpleTarget&lt;Bitmap&gt;() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResourceReady</span><span class="params">(Bitmap resource, GlideAnimation&lt;? <span class="keyword">super</span> Bitmap&gt; glideAnimation)</span> </span>&#123;</span><br><span class="line">    ivOcnyang.setImageBitmap(resource);</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">````</span><br><span class="line">&gt;这两种方法中，其实更加提倡的是第一种方式，因为这种方式不会造成任何负面的影响。但第二种方式，由于Glide加载图片时是以全分辨率加载的，当加载图片过大且图片很多时，可能造成 OOM。同时第二种方式使用在列表上复用时会造成条目错乱错位。</span><br><span class="line">***</span><br><span class="line"></span><br><span class="line">## 三、Glide 加载 Gif 图片的那些坑</span><br><span class="line">![](https:<span class="comment">//upload-images.jianshu.io/upload_images/2625875-9a044086b7de0a45.gif)</span></span><br><span class="line"></span><br><span class="line">###  1、加载 Gif 图片慢或者显示不出来</span><br><span class="line"></span><br><span class="line">这是一个公认的问题了，在 Glide 的 issue 上有人提出过，并且作者也给出了解决方案。</span><br><span class="line">加载 GIF 时需要调用 asGif() 方法，同时设置特别的缓存策略，调用 diskCacheStrategy() 将缓存策略设置为 SOURCE（缓存原图） 或者 NONE（不做缓存）。</span><br><span class="line"></span><br><span class="line">&gt;Glide 在加载 GIF 时不调用 asGif() 方法也是能正常显示动画的。但建议调用 asGif()。</span><br><span class="line"></span><br><span class="line">```java</span><br><span class="line"><span class="keyword">if</span> (imgUrl.toUpperCase().endsWith(<span class="string">&quot;.GIF&quot;</span>)) &#123;</span><br><span class="line">            Glide.with(mContext)</span><br><span class="line">                    .load(imgUrl)</span><br><span class="line">                    .asGif()</span><br><span class="line">                    .override(width, height)</span><br><span class="line">                    .placeholder(placeholderImg)</span><br><span class="line">                    .error(errorImg)</span><br><span class="line">                    .dontAnimate() <span class="comment">//去掉显示动画</span></span><br><span class="line">                    .centerCrop()</span><br><span class="line">                    .diskCacheStrategy(DiskCacheStrategy.SOURCE) <span class="comment">//DiskCacheStrategy.NONE</span></span><br><span class="line">                    .into(ivOcnyang);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            Glide.with(mContext)</span><br><span class="line">                    .load(imgUrl)</span><br><span class="line">                    .override(width, height)</span><br><span class="line">                    .placeholder(placeholderImg)</span><br><span class="line">                    .error(errorImg)</span><br><span class="line">                    .crossFade()</span><br><span class="line">                    .centerCrop()</span><br><span class="line">                    .into(ivOcnyang);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="http://events.jianshu.io/p/f05798900e3e">原文查看更多</a></p>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://markchyl.cn/2023/02/21/MacOS13-python3-%E6%8A%A5%E9%94%99-mach-o-file-but-is-an-incompatible-architecture-have-%E2%80%98arm64%E2%80%98-need-%E2%80%98x86-64%E2%80%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/img/mark_avatar.jpeg">
+      <meta itemprop="name" content="Mark先生">
+      <meta itemprop="description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mark的私人博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/02/21/MacOS13-python3-%E6%8A%A5%E9%94%99-mach-o-file-but-is-an-incompatible-architecture-have-%E2%80%98arm64%E2%80%98-need-%E2%80%98x86-64%E2%80%98/" class="post-title-link" itemprop="url">MacOS13 python3 报错 mach-o file, but is an incompatible architecture (have ‘arm64‘, need ‘x86_64‘)</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-02-21 14:19:29" itemprop="dateCreated datePublished" datetime="2023-02-21T14:19:29+08:00">2023-02-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>解决方案：<br>前面加上​​​arch -x86_64​​​ 例如：<br>​​arch -x86_64 pip3 install Pillow​​​​arch -x86_64 pip3 install numpy​​</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -935,187 +1120,6 @@
             </div>
           <!--/noindex-->
         
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://markchyl.cn/2022/09/16/implementation%E3%80%81api%E3%80%81compileOnly%E5%8C%BA%E5%88%AB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/img/mark_avatar.jpeg">
-      <meta itemprop="name" content="Mark先生">
-      <meta itemprop="description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Mark的私人博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/09/16/implementation%E3%80%81api%E3%80%81compileOnly%E5%8C%BA%E5%88%AB/" class="post-title-link" itemprop="url">implementation、api、compileOnly区别</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-09-16 22:51:03" itemprop="dateCreated datePublished" datetime="2022-09-16T22:51:03+08:00">2022-09-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="2-x和3-x版本依赖方式比较"><a href="#2-x和3-x版本依赖方式比较" class="headerlink" title="2.x和3.x版本依赖方式比较"></a>2.x和3.x版本依赖方式比较</h3><table>
-<thead>
-<tr>
-<th>2.x</th>
-<th>3.x</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>compile</td>
-<td>implementation、api</td>
-</tr>
-<tr>
-<td>provided</td>
-<td>compile only</td>
-</tr>
-<tr>
-<td>apk</td>
-<td>runtime only</td>
-</tr>
-<tr>
-<td>api</td>
-<td>api</td>
-</tr>
-</tbody></table>
-<h3 id="替代关系："><a href="#替代关系：" class="headerlink" title="替代关系："></a>替代关系：</h3><ul>
-<li>compile依赖关系已被弃⽤，被implementation和api替代;</li>
-<li>provided被compile only替代;</li>
-<li>apk被runtime only替代;</li>
-<li>api：跟2.x版本的 compile完全相同。</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/09/16/implementation%E3%80%81api%E3%80%81compileOnly%E5%8C%BA%E5%88%AB/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://markchyl.cn/2022/09/16/Android-studio%E5%BC%80%E5%90%AF%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4%E8%B5%84%E6%BA%90%E4%BB%93%E5%BA%93%E4%BB%A3%E7%90%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/img/mark_avatar.jpeg">
-      <meta itemprop="name" content="Mark先生">
-      <meta itemprop="description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Mark的私人博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/09/16/Android-studio%E5%BC%80%E5%90%AF%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4%E8%B5%84%E6%BA%90%E4%BB%93%E5%BA%93%E4%BB%A3%E7%90%86/" class="post-title-link" itemprop="url">Android studio开启阿里巴巴资源仓库代理</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-09-16 22:49:30" itemprop="dateCreated datePublished" datetime="2022-09-16T22:49:30+08:00">2022-09-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">repositories &#123;</span><br><span class="line">    maven &#123;</span><br><span class="line">        <span class="comment">//解决 gradle.build 仓库更换为阿里云仓库后报错</span></span><br><span class="line">        allowInsecureProtocol = <span class="keyword">true</span></span><br><span class="line">        <span class="comment">//阿里云仓库</span></span><br><span class="line">        url <span class="string">&#x27;http://maven.aliyun.com/nexus/content/groups/public/&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">   。。。。。。</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
