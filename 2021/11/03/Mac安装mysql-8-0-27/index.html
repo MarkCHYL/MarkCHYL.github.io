@@ -19,20 +19,20 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"markchyl.cn","root":"/","images":"/images","scheme":"Pisces","version":"8.7.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null,"activeClass":"utterances"},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="我的环境： MacOs Big Sur 版本11.6 mysql-8.0.27-macos11-x86_64.dmg  下载安装版本一定要下对，我踩过坑，如图所示来查找对应系统安装版本，官网下载地址是 配置环境变量打开终端输入：cd &#x2F;usr&#x2F;local&#x2F;mysql，回车执行然后输入：sudo vim .bash_profile，回车执行 123#mysql环境变量export MYSQL_HOM">
+<meta name="description" content="我的环境： MacOs Big Sur 版本11.6 mysql-8.0.27-macos11-x86_64.dmg  下载安装版本一定要下对，我踩过坑，  如图所示来查找对应系统安装版本，官网下载地址是 配置环境变量打开终端输入：cd &#x2F;usr&#x2F;local&#x2F;mysql，回车执行然后输入：sudo vim .bash_profile，回车执行 123#mysql环境变量export MYSQL_H">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mac安装mysql-8.0.27">
 <meta property="og:url" content="http://markchyl.cn/2021/11/03/Mac%E5%AE%89%E8%A3%85mysql-8-0-27/index.html">
 <meta property="og:site_name" content="Mark的私人博客">
-<meta property="og:description" content="我的环境： MacOs Big Sur 版本11.6 mysql-8.0.27-macos11-x86_64.dmg  下载安装版本一定要下对，我踩过坑，如图所示来查找对应系统安装版本，官网下载地址是 配置环境变量打开终端输入：cd &#x2F;usr&#x2F;local&#x2F;mysql，回车执行然后输入：sudo vim .bash_profile，回车执行 123#mysql环境变量export MYSQL_HOM">
+<meta property="og:description" content="我的环境： MacOs Big Sur 版本11.6 mysql-8.0.27-macos11-x86_64.dmg  下载安装版本一定要下对，我踩过坑，  如图所示来查找对应系统安装版本，官网下载地址是 配置环境变量打开终端输入：cd &#x2F;usr&#x2F;local&#x2F;mysql，回车执行然后输入：sudo vim .bash_profile，回车执行 123#mysql环境变量export MYSQL_H">
 <meta property="og:locale">
-<meta property="og:image" content="https://img-blog.csdn.net/20180123204406478?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGFuY2VnZW50cnk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="https://markchyl.cn/img/20180123204406478.png">
 <meta property="article:published_time" content="2021-11-03T02:33:36.000Z">
 <meta property="article:modified_time" content="2021-11-03T02:33:36.000Z">
 <meta property="article:author" content="Mark先生">
 <meta property="article:tag" content="mysql">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdn.net/20180123204406478?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGFuY2VnZW50cnk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta name="twitter:image" content="https://markchyl.cn/img/20180123204406478.png">
 
 
 <link rel="canonical" href="http://markchyl.cn/2021/11/03/Mac%E5%AE%89%E8%A3%85mysql-8-0-27/">
@@ -298,7 +298,9 @@
 <li>MacOs Big Sur 版本11.6</li>
 <li>mysql-8.0.27-macos11-x86_64.dmg</li>
 </ul>
-<h3 id="下载安装"><a href="#下载安装" class="headerlink" title="下载安装"></a>下载安装</h3><p>版本一定要下对，我踩过坑，<br><img src="https://img-blog.csdn.net/20180123204406478?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGFuY2VnZW50cnk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast"><br>如图所示来查找对应系统安装版本，<br><a target="_blank" rel="noopener" href="https://dev.mysql.com/downloads/mysql/">官网下载地址是</a></p>
+<h3 id="下载安装"><a href="#下载安装" class="headerlink" title="下载安装"></a>下载安装</h3><p>版本一定要下对，我踩过坑，</p>
+<p><img src="https://markchyl.cn/img/20180123204406478.png"></p>
+<p>如图所示来查找对应系统安装版本，<br><a target="_blank" rel="noopener" href="https://dev.mysql.com/downloads/mysql/">官网下载地址是</a></p>
 <h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><p>打开终端<br>输入：cd /usr/local/mysql，回车执行<br>然后输入：sudo vim .bash_profile，回车执行</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#mysql环境变量</span><br><span class="line">export MYSQL_HOME&#x3D;&#x2F;usr&#x2F;local&#x2F;mysql</span><br><span class="line">export PATH&#x3D;$&#123;MYSQL_HOME&#125;&#x2F;bin:$PATH</span><br></pre></td></tr></table></figure>
 <p>记得<code>source ~/.bash_profile</code>让环境变量生效。</p>
