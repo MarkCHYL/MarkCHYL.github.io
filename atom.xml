@@ -6,7 +6,7 @@
   <link href="http://markchyl.cn/atom.xml" rel="self"/>
   
   <link href="http://markchyl.cn/"/>
-  <updated>2023-04-03T03:12:54.000Z</updated>
+  <updated>2023-04-14T06:21:27.000Z</updated>
   <id>http://markchyl.cn/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>mac上已损坏，无法打开。 您应该将它移到废纸篓。解决方案</title>
+    <link href="http://markchyl.cn/2023/04/14/mac%E4%B8%8A%E5%B7%B2%E6%8D%9F%E5%9D%8F%EF%BC%8C%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80%E3%80%82-%E6%82%A8%E5%BA%94%E8%AF%A5%E5%B0%86%E5%AE%83%E7%A7%BB%E5%88%B0%E5%BA%9F%E7%BA%B8%E7%AF%93%E3%80%82%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    <id>http://markchyl.cn/2023/04/14/mac%E4%B8%8A%E5%B7%B2%E6%8D%9F%E5%9D%8F%EF%BC%8C%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80%E3%80%82-%E6%82%A8%E5%BA%94%E8%AF%A5%E5%B0%86%E5%AE%83%E7%A7%BB%E5%88%B0%E5%BA%9F%E7%BA%B8%E7%AF%93%E3%80%82%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</id>
+    <published>2023-04-14T06:21:27.000Z</published>
+    <updated>2023-04-14T06:21:27.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;ul&gt;
+&lt;li&gt;1.首先先看你电脑的安全设置&lt;br&gt;​&lt;br&gt;如果没有设置任何来源，那把小锁打开，添加一下任何来源。在尝试安装&lt;/li&gt;
+&lt;li&gt;2.如果还不行，在终端粘贴复制输入命令：“sudo xattr -r -d com.apple.quarantine</summary>
+        
+      
+    
+    
+    
+    <category term="工具" scheme="http://markchyl.cn/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+    <category term="Error" scheme="http://markchyl.cn/tags/Error/"/>
+    
+  </entry>
   
   <entry>
     <title>mac下VMware安装Ubuntu设置允许在虚拟机与主机之间复制文字与文件</title>
@@ -531,28 +558,6 @@
     
     
     <category term="mysql" scheme="http://markchyl.cn/tags/mysql/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Mac安装和配置Tomcat的教程</title>
-    <link href="http://markchyl.cn/2021/11/02/Mac%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AETomcat%E7%9A%84%E6%95%99%E7%A8%8B/"/>
-    <id>http://markchyl.cn/2021/11/02/Mac%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AETomcat%E7%9A%84%E6%95%99%E7%A8%8B/</id>
-    <published>2021-11-02T05:11:06.000Z</published>
-    <updated>2021-11-02T05:11:06.000Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/dongzhensong/article/details/87807378&quot;&gt;原文&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;我的配置&quot;&gt;&lt;a href=&quot;#我的配置&quot; class=&quot;headerlink&quot; title=&quot;我的配置&quot;&gt;&lt;/a&gt;我的配置&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;MacBook Pro&lt;/li&gt;
-&lt;li&gt;jdk1.8&lt;h3 id=&quot;1-下载&quot;&gt;&lt;a href=&quot;#1-下载&quot; class=&quot;headerlink&quot; title=&quot;1.下载&quot;&gt;&lt;/a&gt;1.下载&lt;/h3&gt;前往&lt;a href=&quot;https://tomcat.apache.org/download-80.cgi&quot;&gt;ApacheTomcat&lt;/a&gt;官网下载Tomcat：&lt;br&gt;&lt;img src=&quot;https://img-blog.csdnimg.cn/20190220165426253.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Rvbmd6aGVuc29uZw==,size_16,color_FFFFFF,t_70&quot;&gt;&lt;br&gt;首先选择相应的版本（以Tomcat 8为例）：&lt;br&gt;下载右边Core下的第一个资源zip。&lt;br&gt;下载后解压下来重名名为ApacheTomcat，并放到磁盘的/usr/local下&lt;br&gt;&lt;img src=&quot;https://img-blog.csdnimg.cn/20190220165752464.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Rvbmd6aGVuc29uZw==,size_16,color_FFFFFF,t_70&quot;&gt;</summary>
-    
-    
-    
-    <category term="JavaWeb" scheme="http://markchyl.cn/categories/JavaWeb/"/>
-    
-    
-    <category term="Tomcat" scheme="http://markchyl.cn/tags/Tomcat/"/>
     
   </entry>
   
