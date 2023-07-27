@@ -6,7 +6,7 @@
   <link href="http://markchyl.cn/atom.xml" rel="self"/>
   
   <link href="http://markchyl.cn/"/>
-  <updated>2023-06-29T02:35:54.000Z</updated>
+  <updated>2023-07-27T03:01:15.000Z</updated>
   <id>http://markchyl.cn/</id>
   
   <author>
@@ -15,6 +15,83 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>macbook上安装nginx和配置步骤</title>
+    <link href="http://markchyl.cn/2023/07/27/macbook%E4%B8%8A%E5%AE%89%E8%A3%85nginx%E5%92%8C%E9%85%8D%E7%BD%AE%E6%AD%A5%E9%AA%A4/"/>
+    <id>http://markchyl.cn/2023/07/27/macbook%E4%B8%8A%E5%AE%89%E8%A3%85nginx%E5%92%8C%E9%85%8D%E7%BD%AE%E6%AD%A5%E9%AA%A4/</id>
+    <published>2023-07-27T03:01:15.000Z</published>
+    <updated>2023-07-27T03:01:15.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;Nginx-笔记&quot;&gt;&lt;a href=&quot;#Nginx-笔记&quot; class=&quot;headerlink&quot; title=&quot;Nginx 笔记&quot;&gt;&lt;/a&gt;Nginx 笔记&lt;/h2&gt;&lt;h3 id=&quot;1-安装-Homebrew&quot;&gt;&lt;a href=&quot;#1-安装-Homebrew&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="服务器" scheme="http://markchyl.cn/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+    
+    <category term="Nginx" scheme="http://markchyl.cn/tags/Nginx/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>go的简介</title>
+    <link href="http://markchyl.cn/2023/07/03/go%E7%9A%84%E7%AE%80%E4%BB%8B/"/>
+    <id>http://markchyl.cn/2023/07/03/go%E7%9A%84%E7%AE%80%E4%BB%8B/</id>
+    <published>2023-07-03T03:17:59.000Z</published>
+    <updated>2023-07-03T03:17:59.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;go的简介&quot;&gt;&lt;a href=&quot;#go的简介&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Go" scheme="http://markchyl.cn/categories/Go/"/>
+    
+    
+    <category term="基础知识" scheme="http://markchyl.cn/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ubuntu中安装的GoLAnd如何配置开发环境</title>
+    <link href="http://markchyl.cn/2023/06/29/ubuntu%E4%B8%AD%E5%AE%89%E8%A3%85%E7%9A%84GoLAnd%E5%A6%82%E4%BD%95%E9%85%8D%E7%BD%AE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/"/>
+    <id>http://markchyl.cn/2023/06/29/ubuntu%E4%B8%AD%E5%AE%89%E8%A3%85%E7%9A%84GoLAnd%E5%A6%82%E4%BD%95%E9%85%8D%E7%BD%AE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</id>
+    <published>2023-06-29T05:07:44.000Z</published>
+    <updated>2023-06-29T05:07:44.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;安装 GoLand IDE 并配置开发环境的步骤如下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;下载和安装 GoLand：前往 JetBrains 官方网站（&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="Linux" scheme="http://markchyl.cn/categories/Linux/"/>
+    
+    
+    <category term="环境配置" scheme="http://markchyl.cn/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
+    
+  </entry>
   
   <entry>
     <title>安装Go语言的集成开发环境（IDE）</title>
@@ -467,108 +544,6 @@
     <category term="Android" scheme="http://markchyl.cn/tags/Android/"/>
     
     <category term="APT" scheme="http://markchyl.cn/tags/APT/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>实战：基于ARouter实现登陆拦截&amp;全局降级策略</title>
-    <link href="http://markchyl.cn/2022/09/16/%E5%AE%9E%E6%88%98%EF%BC%9A%E5%9F%BA%E4%BA%8EARouter%E5%AE%9E%E7%8E%B0%E7%99%BB%E9%99%86%E6%8B%A6%E6%88%AA-%E5%85%A8%E5%B1%80%E9%99%8D%E7%BA%A7%E7%AD%96%E7%95%A5/"/>
-    <id>http://markchyl.cn/2022/09/16/%E5%AE%9E%E6%88%98%EF%BC%9A%E5%9F%BA%E4%BA%8EARouter%E5%AE%9E%E7%8E%B0%E7%99%BB%E9%99%86%E6%8B%A6%E6%88%AA-%E5%85%A8%E5%B1%80%E9%99%8D%E7%BA%A7%E7%AD%96%E7%95%A5/</id>
-    <published>2022-09-16T14:58:36.000Z</published>
-    <updated>2022-09-16T14:58:36.000Z</updated>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;实战：基于ARouter实现登陆拦截-amp-全局降级策略&quot;&gt;&lt;a href=&quot;#实战：基于ARouter实现登陆拦截-amp-全局降级策略&quot; class=&quot;headerlink&quot; title=&quot;实战：基于ARouter实现登陆拦截&amp;amp;全局降级策略&quot;&gt;&lt;/a&gt;实战：基于ARouter实现登陆拦截&amp;amp;全局降级策略&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;需求分析&lt;/li&gt;
-&lt;li&gt;成果展示&lt;/li&gt;
-&lt;li&gt;疑难点分析&lt;/li&gt;
-&lt;li&gt;Coding实现&lt;h3 id=&quot;需求分析&quot;&gt;&lt;a href=&quot;#需求分析&quot; class=&quot;headerlink&quot; title=&quot;需求分析&quot;&gt;&lt;/a&gt;需求分析&lt;/h3&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;ul&gt;
-&lt;li&gt;利用ARouter拦截页面跳转，实现全局页面降级</summary>
-    
-    
-    
-    <category term="Android" scheme="http://markchyl.cn/categories/Android/"/>
-    
-    
-    <category term="Android" scheme="http://markchyl.cn/tags/Android/"/>
-    
-    <category term="实战" scheme="http://markchyl.cn/tags/%E5%AE%9E%E6%88%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>implementation、api、compileOnly区别</title>
-    <link href="http://markchyl.cn/2022/09/16/implementation%E3%80%81api%E3%80%81compileOnly%E5%8C%BA%E5%88%AB/"/>
-    <id>http://markchyl.cn/2022/09/16/implementation%E3%80%81api%E3%80%81compileOnly%E5%8C%BA%E5%88%AB/</id>
-    <published>2022-09-16T14:51:03.000Z</published>
-    <updated>2022-09-16T14:51:03.000Z</updated>
-    
-    
-    <summary type="html">&lt;h3 id=&quot;2-x和3-x版本依赖方式比较&quot;&gt;&lt;a href=&quot;#2-x和3-x版本依赖方式比较&quot; class=&quot;headerlink&quot; title=&quot;2.x和3.x版本依赖方式比较&quot;&gt;&lt;/a&gt;2.x和3.x版本依赖方式比较&lt;/h3&gt;&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;2.x&lt;/th&gt;
-&lt;th&gt;3.x&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;&lt;tr&gt;
-&lt;td&gt;compile&lt;/td&gt;
-&lt;td&gt;implementation、api&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;provided&lt;/td&gt;
-&lt;td&gt;compile only&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;apk&lt;/td&gt;
-&lt;td&gt;runtime only&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;api&lt;/td&gt;
-&lt;td&gt;api&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;&lt;/table&gt;
-&lt;h3 id=&quot;替代关系：&quot;&gt;&lt;a href=&quot;#替代关系：&quot; class=&quot;headerlink&quot; title=&quot;替代关系：&quot;&gt;&lt;/a&gt;替代关系：&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;compile依赖关系已被弃⽤，被implementation和api替代;&lt;/li&gt;
-&lt;li&gt;provided被compile only替代;&lt;/li&gt;
-&lt;li&gt;apk被runtime only替代;&lt;/li&gt;
-&lt;li&gt;api：跟2.x版本的 compile完全相同。&lt;/li&gt;
-&lt;/ul&gt;</summary>
-    
-    
-    
-    <category term="Android" scheme="http://markchyl.cn/categories/Android/"/>
-    
-    
-    <category term="Android" scheme="http://markchyl.cn/tags/Android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android studio开启阿里巴巴资源仓库代理</title>
-    <link href="http://markchyl.cn/2022/09/16/Android-studio%E5%BC%80%E5%90%AF%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4%E8%B5%84%E6%BA%90%E4%BB%93%E5%BA%93%E4%BB%A3%E7%90%86/"/>
-    <id>http://markchyl.cn/2022/09/16/Android-studio%E5%BC%80%E5%90%AF%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4%E8%B5%84%E6%BA%90%E4%BB%93%E5%BA%93%E4%BB%A3%E7%90%86/</id>
-    <published>2022-09-16T14:49:30.000Z</published>
-    <updated>2022-09-16T14:49:30.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span</summary>
-        
-      
-    
-    
-    
-    <category term="Android" scheme="http://markchyl.cn/categories/Android/"/>
-    
-    
-    <category term="Android" scheme="http://markchyl.cn/tags/Android/"/>
     
   </entry>
   
