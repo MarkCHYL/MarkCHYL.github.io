@@ -283,34 +283,14 @@
     <div class="post-body" itemprop="articleBody">
           <h2 id="Nginx-笔记"><a href="#Nginx-笔记" class="headerlink" title="Nginx 笔记"></a>Nginx 笔记</h2><h3 id="1-安装-Homebrew"><a href="#1-安装-Homebrew" class="headerlink" title="1. 安装 Homebrew"></a>1. 安装 Homebrew</h3><p>在 Mac 上使用以下命令安装 Homebrew：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/bin/bash -c <span class="string">&quot;<span class="subst">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)</span>&quot;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="2-安装-Nginx"><a href="#2-安装-Nginx" class="headerlink" title="2. 安装 Nginx"></a>2. 安装 Nginx</h3><p>在终端中运行以下命令来使用 Homebrew 安装 Nginx：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install nginx</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-查找-Nginx-配置文件路径"><a href="#3-查找-Nginx-配置文件路径" class="headerlink" title="3. 查找 Nginx 配置文件路径"></a>3. 查找 Nginx 配置文件路径</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo find / -name <span class="string">&quot;nginx.conf&quot;</span> 2&gt;/dev/null</span><br></pre></td></tr></table></figure>
-
-<p>根据您的输出显示，Nginx 配置文件位于 <code>/opt/homebrew/etc/nginx/nginx.conf</code>。</p>
-<h3 id="4-查看-Nginx-配置文件"><a href="#4-查看-Nginx-配置文件" class="headerlink" title="4. 查看 Nginx 配置文件"></a>4. 查看 Nginx 配置文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cat /opt/homebrew/etc/nginx/nginx.conf</span><br></pre></td></tr></table></figure>
-
-<p>使用上述命令可以查看 Nginx 配置文件的内容，您可以在此文件中进行配置更改。</p>
-<h3 id="5-启动、停止和查看-Nginx-状态"><a href="#5-启动、停止和查看-Nginx-状态" class="headerlink" title="5. 启动、停止和查看 Nginx 状态"></a>5. 启动、停止和查看 Nginx 状态</h3><p>启动 Nginx 服务器：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nginx</span><br></pre></td></tr></table></figure>
-
-<p>停止 Nginx 服务器：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nginx -s stop</span><br></pre></td></tr></table></figure>
-
-<p>查看 Nginx 配置是否正确：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nginx -t</span><br></pre></td></tr></table></figure>
-
-<p>查看 Nginx 运行状态：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nginx -s status</span><br></pre></td></tr></table></figure>
-
-<h3 id="6-自动启动-Nginx"><a href="#6-自动启动-Nginx" class="headerlink" title="6. 自动启动 Nginx"></a>6. 自动启动 Nginx</h3><p>如果希望 Nginx 在系统启动时自动运行，可以使用以下命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo brew services start nginx</span><br></pre></td></tr></table></figure>
-
-<h3 id="7-高级配置"><a href="#7-高级配置" class="headerlink" title="7. 高级配置"></a>7. 高级配置</h3><p>Nginx 具有丰富的功能和选项，您可以根据需求进行高级配置。配置文件路径：<code>/opt/homebrew/etc/nginx/nginx.conf</code></p>
-<p>以上是更新后的 Nginx 笔记，现在已经包含了 Homebrew 的安装记录。如果您有其他问题或需要进一步协助，请随时向我询问。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/07/27/macbook%E4%B8%8A%E5%AE%89%E8%A3%85nginx%E5%92%8C%E9%85%8D%E7%BD%AE%E6%AD%A5%E9%AA%A4/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 

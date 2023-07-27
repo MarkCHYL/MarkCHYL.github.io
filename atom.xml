@@ -24,13 +24,8 @@
     <updated>2023-07-27T03:01:15.000Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;Nginx-笔记&quot;&gt;&lt;a href=&quot;#Nginx-笔记&quot; class=&quot;headerlink&quot; title=&quot;Nginx 笔记&quot;&gt;&lt;/a&gt;Nginx 笔记&lt;/h2&gt;&lt;h3 id=&quot;1-安装-Homebrew&quot;&gt;&lt;a href=&quot;#1-安装-Homebrew&quot;</summary>
-        
-      
+    <summary type="html">&lt;h2 id=&quot;Nginx-笔记&quot;&gt;&lt;a href=&quot;#Nginx-笔记&quot; class=&quot;headerlink&quot; title=&quot;Nginx 笔记&quot;&gt;&lt;/a&gt;Nginx 笔记&lt;/h2&gt;&lt;h3 id=&quot;1-安装-Homebrew&quot;&gt;&lt;a href=&quot;#1-安装-Homebrew&quot; class=&quot;headerlink&quot; title=&quot;1. 安装 Homebrew&quot;&gt;&lt;/a&gt;1. 安装 Homebrew&lt;/h3&gt;&lt;p&gt;在 Mac 上使用以下命令安装 Homebrew：&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;/bin/bash -c &lt;span class=&quot;string&quot;&gt;&amp;quot;&lt;span class=&quot;subst&quot;&gt;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)&lt;/span&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
     
     
     
