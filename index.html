@@ -164,18 +164,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">130</span>
+          <span class="site-state-item-count">134</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-count">25</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">64</span>
+        <span class="site-state-item-count">67</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -226,6 +226,522 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://markchyl.cn/2023/08/11/Redis%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4%E7%9A%84%E4%BD%BF%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/img/mark_avatar.jpeg">
+      <meta itemprop="name" content="Mark先生">
+      <meta itemprop="description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mark的私人博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/08/11/Redis%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4%E7%9A%84%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">Redis操作命令的使用</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-08-11 14:22:24" itemprop="dateCreated datePublished" datetime="2023-08-11T14:22:24+08:00">2023-08-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">中间件</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>Redis操作命令的使用笔记，涵盖基本数据类型的常见操作。以下是这份笔记：</p>
+<hr>
+<h2 id="Redis-操作命令使用指南"><a href="#Redis-操作命令使用指南" class="headerlink" title="Redis 操作命令使用指南"></a>Redis 操作命令使用指南</h2><h3 id="1-字符串（String）"><a href="#1-字符串（String）" class="headerlink" title="1. 字符串（String）"></a>1. 字符串（String）</h3><ul>
+<li>设置指定key的值: <code>SET key value</code></li>
+<li>获取指定key的值: <code>GET key</code></li>
+<li>设置指定key的值，并将 key 的过期时间设为 seconds 秒：<code>SETEX key seconds value</code></li>
+<li>只有在 key 不存在时设置 key 的值: <code>SETNX key value</code></li>
+<li>追加字符串：<code>APPEND key value</code></li>
+<li>获取字符串长度：<code>STRLEN key</code></li>
+<li>自增：<code>INCR key</code></li>
+<li>自增指定值：<code>INCRBY key increment</code></li>
+<li>自增浮点数：<code>INCRBYFLOAT key increment</code></li>
+<li>设置并获取旧值：<code>GETSET key value</code></li>
+<li>设置多个键值对：<code>MSET key1 value1 [key2 value2 ...]</code></li>
+<li>获取多个键值：<code>MGET key1 [key2 ...]</code></li>
+<li>设置键的过期时间：<code>EXPIRE key seconds</code></li>
+<li>设置键的过期时间（毫秒）：<code>PEXPIRE key milliseconds</code></li>
+<li>获取键的剩余生存时间：<code>TTL key</code></li>
+<li>获取键的剩余生存时间（毫秒）：<code>PTTL key</code></li>
+<li>移除键的过期时间：<code>PERSIST key</code>    </li>
+</ul>
+<h3 id="2-哈希（Hash）"><a href="#2-哈希（Hash）" class="headerlink" title="2. 哈希（Hash）"></a>2. 哈希（Hash）</h3><ul>
+<li>设置哈希字段值：<code>HSET key field value</code></li>
+<li>获取哈希字段值：<code>HGET key field</code></li>
+<li>获取整个哈希表：<code>HGETALL key</code></li>
+<li>获取哈希表所有字段：<code>HKEYS key</code></li>
+<li>获取哈希表所有值：<code>HVALS key</code></li>
+<li>删除存储在哈希表中的指定字段: <code>HDEL key field    </code></li>
+</ul>
+<h3 id="3-列表（List）"><a href="#3-列表（List）" class="headerlink" title="3. 列表（List）"></a>3. 列表（List）</h3><ul>
+<li>在列表头部插入元素：<code>LPUSH key value</code></li>
+<li>在列表尾部插入元素：<code>RPUSH key value</code></li>
+<li>弹出并返回列表头部元素：<code>LPOP key</code></li>
+<li>弹出并返回列表尾部元素：<code>RPOP key</code></li>
+<li>获取列表范围内的元素：<code>LRANGE key start stop</code></li>
+</ul>
+<h3 id="4-集合（Set）"><a href="#4-集合（Set）" class="headerlink" title="4. 集合（Set）"></a>4. 集合（Set）</h3><ul>
+<li>向集合添加一个或多个成员：     <code>SADD key member1 [member2]</code></li>
+<li>删除集合中一个或多个成员:     <code>SREM key member1 [member2]</code></li>
+<li>获取集合所有成员：           <code>SMEMBERS key</code></li>
+<li>判断元素是否在集合中：        <code>SISMEMBER key member</code></li>
+<li>获取集合的成员数:            <code>SCARD key</code></li>
+<li>返回给定所有集合的交集:       <code>SINTER key1 [key2]</code></li>
+<li>返回所有给定集合的并集:       <code>SUNION key1 [key2]     </code> </li>
+</ul>
+<h3 id="5-有序集合（Sorted-Set）"><a href="#5-有序集合（Sorted-Set）" class="headerlink" title="5. 有序集合（Sorted Set）"></a>5. 有序集合（Sorted Set）</h3><ul>
+<li>获取有序集合成员的分数：<code>ZSCORE key member</code></li>
+<li>获取有序集合的排名：<code>ZRANK key member</code></li>
+<li>向有序集合添加一个或多个成员: <code>ZADD key score1 member1 [score2 member2]</code></li>
+<li>通过索引区间返回有序集合中指定区间内的成员: <code>ZRANGE key start stop [WITHSCORES]</code></li>
+<li>获取有序集合范围内的元素：<code>ZRANGEBYSCORE key min max</code>        </li>
+<li>有序集合中对指定成员的分数加上增量increment: <code>ZINCRBY key increment member</code>             </li>
+<li>移除有序集合中的一个或多个成员:   <code>ZREM key member [member ...] </code>            </li>
+</ul>
+<h3 id="Redis的通用命令是不分数据类型的，都可以使用的命令"><a href="#Redis的通用命令是不分数据类型的，都可以使用的命令" class="headerlink" title="Redis的通用命令是不分数据类型的，都可以使用的命令"></a>Redis的通用命令是不分数据类型的，都可以使用的命令</h3><ul>
+<li>查找所有符合给定模式( pattern)的 key:  <code>KEYS pattern</code>        </li>
+<li>检查给定 key 是否存在: <code>EXISTS key</code>    </li>
+<li>返回 key 所储存的值的类型: <code>TYPE key</code></li>
+<li>该命令用于在 key 存在是删除 key: <code>DEL key</code></li>
+</ul>
+<h3 id="其他操作"><a href="#其他操作" class="headerlink" title="其他操作"></a>其他操作</h3><ul>
+<li>发布消息：<code>PUBLISH channel message</code></li>
+<li>订阅消息：<code>SUBSCRIBE channel</code></li>
+<li>事务操作：<code>MULTI</code>、<code>EXEC</code>、<code>WATCH</code></li>
+<li>执行 Lua 脚本：<code>EVAL</code>、<code>EVALSHA</code></li>
+</ul>
+<hr>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://markchyl.cn/2023/08/11/ubuntu20-04%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85redis-3-2-8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/img/mark_avatar.jpeg">
+      <meta itemprop="name" content="Mark先生">
+      <meta itemprop="description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mark的私人博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/08/11/ubuntu20-04%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85redis-3-2-8/" class="post-title-link" itemprop="url">ubuntu20.04虚拟机安装redis-3.2.8</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-08-11 10:30:33" itemprop="dateCreated datePublished" datetime="2023-08-11T10:30:33+08:00">2023-08-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">中间件</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>安装 Redis-3.2.8 在 Ubuntu 20.04 虚拟机上可以按照以下步骤进行：</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ol>
+<li><p>在终端中安装 <code>build-essential</code> 和 <code>tcl</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sqlCopy code</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install build-essential tcl</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>下载 Redis-3.2.8 并解压缩：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bashCopy code</span><br><span class="line">wget http:&#x2F;&#x2F;download.redis.io&#x2F;releases&#x2F;redis-3.2.8.tar.gz</span><br><span class="line">tar xzf redis-3.2.8.tar.gz</span><br><span class="line">cd redis-3.2.8</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编译 Redis：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">goCopy code</span><br><span class="line">make</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运行 Redis 测试：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bashCopy code</span><br><span class="line">make test</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装 Redis：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">goCopy code</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建 Redis 配置文件目录和配置文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bashCopy code</span><br><span class="line">sudo mkdir &#x2F;etc&#x2F;redis</span><br><span class="line">sudo cp redis.conf &#x2F;etc&#x2F;redis</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改 Redis 配置文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bashCopy code</span><br><span class="line">sudo nano &#x2F;etc&#x2F;redis&#x2F;redis.conf</span><br></pre></td></tr></table></figure>
+
+<p>找到 <code>bind</code> 行并将其注释掉，以允许远程访问 Redis：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">shellCopy code</span><br><span class="line"># bind 127.0.0.1</span><br></pre></td></tr></table></figure>
+
+<p>找到 <code>protected-mode</code> 行并将其改为 <code>no</code>，以允许远程访问 Redis：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">arduinoCopy code</span><br><span class="line">protected-mode no</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动 Redis 服务器：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bashCopy code</span><br><span class="line">redis-server &#x2F;etc&#x2F;redis&#x2F;redis.conf</span><br></pre></td></tr></table></figure>
+
+<p>如果出现错误，请查看 Redis 日志文件 <code>/var/log/redis.log</code>。</p>
+</li>
+</ol>
+<p>现在你应该已经成功安装和启动了 Redis-3.2.8 服务器。你可以通过运行 <code>redis-cli</code> 命令来测试 Redis 是否可以正常工作。</p>
+<h2 id="补充配置"><a href="#补充配置" class="headerlink" title="补充配置"></a>补充配置</h2><ul>
+<li><p>绑定ip：如果需要远程访问，可将此⾏注释，或绑定⼀个真实ip</p>
+<blockquote>
+<p>bind 127.0.0.1</p>
+</blockquote>
+</li>
+<li><p>端⼝，默认为6379</p>
+<blockquote>
+<p>port 6379</p>
+</blockquote>
+</li>
+<li><p>是否以守护进程运⾏</p>
+<ul>
+<li>如果以守护进程运⾏，则不会在命令⾏阻塞，类似于服务</li>
+<li>如果以⾮守护进程运⾏，则当前终端被阻塞</li>
+<li>设置为yes表示守护进程，设置为no表示⾮守护进程</li>
+<li>推荐设置为yes</li>
+</ul>
+<blockquote>
+<p>daemonize yes</p>
+</blockquote>
+</li>
+<li><p>数据⽂件</p>
+<blockquote>
+<p>dbfilename dump.rdb</p>
+</blockquote>
+</li>
+<li><p>数据⽂件存储路径</p>
+<blockquote>
+<p>dir /var/lib/redis</p>
+</blockquote>
+</li>
+<li><p>⽇志⽂件</p>
+<blockquote>
+<p>logfile /var/log/redis/redis-server.log</p>
+</blockquote>
+</li>
+<li><p>数据库，默认有16个</p>
+<blockquote>
+<p>database 16</p>
+</blockquote>
+</li>
+<li><p>主从复制，类似于双机备份。</p>
+<blockquote>
+<p>slaveof</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="加载配置启动时报错"><a href="#加载配置启动时报错" class="headerlink" title="加载配置启动时报错"></a>加载配置启动时报错</h2><blockquote>
+<p>‘logfile /var/log/redis/redis-server.log’ Can’t open the log file: Permission denied</p>
+</blockquote>
+<p>这个错误提示表明 Redis 没有权限在 <code>/var/log/redis/</code> 目录中创建日志文件。</p>
+<p>你可以按照以下步骤来解决这个问题：</p>
+<ol>
+<li><p>确认 <code>/var/log/redis/</code> 目录是否存在，如果不存在，你可以通过以下命令创建它：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bashCopy code</span><br><span class="line">sudo mkdir &#x2F;var&#x2F;log&#x2F;redis&#x2F;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>确认 Redis 进程的运行用户是否有权限在该目录中创建文件。默认情况下，Redis 进程会使用 <code>redis</code> 用户来运行，而该用户通常没有权限在 <code>/var/log/redis/</code> 目录中创建文件。</p>
+<p>如果你想让 <code>redis</code> 用户有权限在该目录中创建文件，可以通过以下命令更改该目录的所有者和组：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bashCopy code</span><br><span class="line">sudo chown redis:redis &#x2F;var&#x2F;log&#x2F;redis&#x2F;</span><br></pre></td></tr></table></figure>
+
+<p>这将把 <code>/var/log/redis/</code> 目录的所有者和组都更改为 <code>redis</code>。</p>
+<p>如果你不希望更改该目录的所有者和组，你可以考虑在 Redis 配置文件中指定其他的日志文件路径，例如 <code>/tmp/redis-server.log</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bashCopy code</span><br><span class="line">logfile &#x2F;tmp&#x2F;redis-server.log</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果你更改了 Redis 配置文件，记得重新启动 Redis 服务，以使更改生效：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Copy code</span><br><span class="line">sudo systemctl restart redis-server</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>如果你遇到了其他问题或错误，请查看 Redis 的日志文件和系统日志文件以获取更多信息。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://markchyl.cn/2023/08/11/Mac%E5%AE%89%E8%A3%85Redis/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/img/mark_avatar.jpeg">
+      <meta itemprop="name" content="Mark先生">
+      <meta itemprop="description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mark的私人博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/08/11/Mac%E5%AE%89%E8%A3%85Redis/" class="post-title-link" itemprop="url">Mac安装Redis</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-08-11 10:29:03" itemprop="dateCreated datePublished" datetime="2023-08-11T10:29:03+08:00">2023-08-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">中间件</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>要在Mac上安装<code>Redis</code>，请按照以下步骤进行操作：</p>
+<ol>
+<li><p>打开终端应用程序</p>
+</li>
+<li><p>安装<code>Homebrew，Homebrew</code>是一个Mac上的包管理器。在终端中运行以下命令：</p>
+<p><code>/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot;</code></p>
+</li>
+<li><p>安装<code>Redis</code>，运行以下命令：</p>
+<p><code>brew install redis</code></p>
+</li>
+<li><p>启动<code>Redis</code>，运行以下命令：</p>
+<p><code>redis-server</code></p>
+</li>
+<li><p>（可选）如果您想在后台运行<code>Redis</code>，请使用以下命令：</p>
+<p><code>redis-server --daemonize yes</code></p>
+</li>
+<li><p>（可选）如果您想在每次启动Mac时自动启动<code>Redis</code>，请使用以下命令：</p>
+<p><code>brew services start redis</code></p>
+<p><code>brew services stop redis </code></p>
+</li>
+</ol>
+<p>现在您已经成功地安装和启动了<code>Redis</code>。您可以在终端中使用<code>redis-cli</code>命令来连接到<code>Redis</code>服务器并进行交互式操作。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://markchyl.cn/2023/08/01/%E5%AE%9E%E7%8E%B0%E5%85%AC%E5%85%B1%E5%AD%97%E6%AE%B5%E7%9A%84%E8%87%AA%E5%8A%A8%E5%A1%AB%E5%85%85%E9%80%BB%E8%BE%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/img/mark_avatar.jpeg">
+      <meta itemprop="name" content="Mark先生">
+      <meta itemprop="description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mark的私人博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/08/01/%E5%AE%9E%E7%8E%B0%E5%85%AC%E5%85%B1%E5%AD%97%E6%AE%B5%E7%9A%84%E8%87%AA%E5%8A%A8%E5%A1%AB%E5%85%85%E9%80%BB%E8%BE%91/" class="post-title-link" itemprop="url">实现公共字段的自动填充逻辑</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-08-01 09:48:12" itemprop="dateCreated datePublished" datetime="2023-08-01T09:48:12+08:00">2023-08-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="需要实现的效果"><a href="#需要实现的效果" class="headerlink" title="需要实现的效果"></a>需要实现的效果</h3><p>公共字段自动填充</p>
+<ul>
+<li>问题分析</li>
+<li>实现思路</li>
+<li>代码开发</li>
+<li>功能测试</li>
+</ul>
+<h3 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h3><p>多张业务表中的公共字段：</p>
+<p><strong>问题：代码冗余、不便于后期维护</strong></p>
+<h3 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h3><ul>
+<li>自定义注解 AutoFill，用于标识需要进行公共字段自动填充的方法</li>
+<li>自定义切面类 AutoFillAspect，统一拦截加入了 AutoFill 注解的方法，通过反射为公共字段赋值</li>
+<li>在 Mapper 的方法上加入 AutoFill 注解</li>
+</ul>
+<p>技术点：<strong>枚举、注解、AOP、反射</strong></p>
+<h3 id="代码开发"><a href="#代码开发" class="headerlink" title="代码开发"></a>代码开发</h3><ul>
+<li><p>自定义注解 AutoFill</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 自定义注解，用于标识需要进行公共字段的自动填充</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Target(ElementType.METHOD)</span></span><br><span class="line"><span class="meta">@Retention(RetentionPolicy.RUNTIME)</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> AutoFill &#123;</span><br><span class="line">    <span class="comment">// 数据操作类型 UPDATE、INSERT</span></span><br><span class="line">    <span class="function">OperationType <span class="title">value</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>自定义切面 AutoFillAspect</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 自定义切面，实现公共字段的自动填充逻辑</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Aspect</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AutoFillAspect</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 切入点</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Pointcut(&quot;execution(* com.sky.mapper.*.*(..))&amp;&amp; @annotation(com.sky.annotation.AutoFill)&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">autoFillPointCut</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 前置通知，在通知中进行公共字段的赋值</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Before(&quot;autoFillPointCut()&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">autoFill</span><span class="params">(JoinPoint joinPoint)</span> </span>&#123;</span><br><span class="line">        log.info(<span class="string">&quot;开始进行公共字段的自动填充。。。。。。&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>完善自定义切面 AutoFillAspect 的 autoFill 方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">log.info(<span class="string">&quot;开始进行公共字段的自动填充。。。。。。&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取到当前被拦截到的方法上的数据库操作类型</span></span><br><span class="line">        MethodSignature signature = (MethodSignature) joinPoint.getSignature();<span class="comment">//方法对象获取</span></span><br><span class="line">        AutoFill autoFill = signature.getMethod().getAnnotation(AutoFill.class);//获取方法上的注解对象</span><br><span class="line">        OperationType operationType = autoFill.value();<span class="comment">//获得数据库的操作类型</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取到当前被拦截方法的参数---实体对象</span></span><br><span class="line">        Object[] args = joinPoint.getArgs();</span><br><span class="line">        <span class="keyword">if</span> (args == <span class="keyword">null</span> || args.length == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        Object entity = args[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 准备赋值的数据</span></span><br><span class="line">        LocalDateTime now = LocalDateTime.now();</span><br><span class="line">        Long currentId = BaseContext.getCurrentId();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 根据当前不同的操作类型，为对应的属性通过反射来赋值</span></span><br><span class="line">        <span class="keyword">if</span> (operationType == OperationType.INSERT) &#123;</span><br><span class="line">            <span class="comment">//为四个公共字段赋值</span></span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                Method setCreateTime = entity.getClass().getDeclaredMethod(AutoFillConstant.SET_CREATE_TIME, LocalDateTime.class);</span><br><span class="line">                Method setCreateUser = entity.getClass().getDeclaredMethod(AutoFillConstant.SET_CREATE_USER, Long.class);</span><br><span class="line">                Method setUpdateTime = entity.getClass().getDeclaredMethod(AutoFillConstant.SET_UPDATE_TIME, LocalDateTime.class);</span><br><span class="line">                Method setUpdateUser = entity.getClass().getDeclaredMethod(AutoFillConstant.SET_UPDATE_USER, Long.class);</span><br><span class="line"></span><br><span class="line">                <span class="comment">//通过反射为对象属性赋值</span></span><br><span class="line">                setCreateTime.invoke(entity, now);</span><br><span class="line">                setCreateUser.invoke(entity, currentId);</span><br><span class="line">                setUpdateTime.invoke(entity, now);</span><br><span class="line">                setUpdateUser.invoke(entity, currentId);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(e);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (operationType == OperationType.UPDATE) &#123;</span><br><span class="line">            <span class="comment">//为二个公共字段赋值</span></span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                Method setUpdateTime = entity.getClass().getDeclaredMethod(AutoFillConstant.SET_UPDATE_TIME, LocalDateTime.class);</span><br><span class="line">                Method setUpdateUser = entity.getClass().getDeclaredMethod(AutoFillConstant.SET_UPDATE_USER, Long.class);</span><br><span class="line"></span><br><span class="line">                <span class="comment">//通过反射为对象属性赋值</span></span><br><span class="line">                setUpdateTime.invoke(entity, now);</span><br><span class="line">                setUpdateUser.invoke(entity, currentId);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(e);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在Mapper接口的方法上加入 AutoFill 注解</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 插入数据</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> category</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Insert(&quot;insert into category(type, name, sort, status, create_time, update_time, create_user, update_user)&quot; +</span></span><br><span class="line"><span class="meta">            &quot; VALUES&quot; +</span></span><br><span class="line"><span class="meta">            &quot; (#&#123;type&#125;, #&#123;name&#125;, #&#123;sort&#125;, #&#123;status&#125;, #&#123;createTime&#125;, #&#123;updateTime&#125;, #&#123;createUser&#125;, #&#123;updateUser&#125;)&quot;)</span></span><br><span class="line">    <span class="meta">@AutoFill(OperationType.INSERT)</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(Category category)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 根据id修改分类</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> category</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@AutoFill(OperationType.UPDATE)</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(Category category)</span></span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将业务层为公共字段赋值的代码注释掉</p>
+</li>
+</ul>
+<h3 id="功能测试"><a href="#功能测试" class="headerlink" title="功能测试"></a>功能测试</h3><p>通过观察控制台输出的SQL来确定公共字段填充是否完成</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -785,316 +1301,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://markchyl.cn/2023/05/30/Error-CocoaPods-s-specs-repository-is-too-out-of-date-to-satisfy-dependencies/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/img/mark_avatar.jpeg">
-      <meta itemprop="name" content="Mark先生">
-      <meta itemprop="description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Mark的私人博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/05/30/Error-CocoaPods-s-specs-repository-is-too-out-of-date-to-satisfy-dependencies/" class="post-title-link" itemprop="url">Error: CocoaPods's specs repository is too out-of-date to satisfy dependencies</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2023-05-30 13:59:26" itemprop="dateCreated datePublished" datetime="2023-05-30T13:59:26+08:00">2023-05-30</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Flutter/" itemprop="url" rel="index"><span itemprop="name">Flutter</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <ol>
-<li>flutter clean</li>
-<li>delete /ios/Pods</li>
-<li>delete /ios/Podfile.lock</li>
-<li>flutter pub get</li>
-<li>from inside ios folder: pod install</li>
-<li>flutter run</li>
-</ol>
-<p>作者：OwenWong<br>链接：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/bd6dee69c37e">https://www.jianshu.com/p/bd6dee69c37e</a><br>来源：简书<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://markchyl.cn/2023/04/14/mac%E4%B8%8A%E5%B7%B2%E6%8D%9F%E5%9D%8F%EF%BC%8C%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80%E3%80%82-%E6%82%A8%E5%BA%94%E8%AF%A5%E5%B0%86%E5%AE%83%E7%A7%BB%E5%88%B0%E5%BA%9F%E7%BA%B8%E7%AF%93%E3%80%82%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/img/mark_avatar.jpeg">
-      <meta itemprop="name" content="Mark先生">
-      <meta itemprop="description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Mark的私人博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/04/14/mac%E4%B8%8A%E5%B7%B2%E6%8D%9F%E5%9D%8F%EF%BC%8C%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80%E3%80%82-%E6%82%A8%E5%BA%94%E8%AF%A5%E5%B0%86%E5%AE%83%E7%A7%BB%E5%88%B0%E5%BA%9F%E7%BA%B8%E7%AF%93%E3%80%82%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" class="post-title-link" itemprop="url">mac上已损坏，无法打开。 您应该将它移到废纸篓。解决方案</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2023-04-14 14:21:27" itemprop="dateCreated datePublished" datetime="2023-04-14T14:21:27+08:00">2023-04-14</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">工具</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <ul>
-<li>1.首先先看你电脑的安全设置<br>​<br>如果没有设置任何来源，那把小锁打开，添加一下任何来源。在尝试安装</li>
-<li>2.如果还不行，在终端粘贴复制输入命令：“sudo xattr -r -d com.apple.quarantine ”（注意最后有一个空格），先不要按回车</li>
-<li>3.打开 “访达”（Finder）进入 “应用程序” 目录，找到该软件图标，将图标拖到刚才的终端窗口里面，会得到如下组合：“sudo xattr -r -d com.apple.quarantine /Applications/Bartender\ 3.app”，回到终端窗口按回车，输入系统密码回车即可。<br>完成</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://markchyl.cn/2023/04/03/mac%E4%B8%8BVMware%E5%AE%89%E8%A3%85Ubuntu%E8%AE%BE%E7%BD%AE%E5%85%81%E8%AE%B8%E5%9C%A8%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8E%E4%B8%BB%E6%9C%BA%E4%B9%8B%E9%97%B4%E5%A4%8D%E5%88%B6%E6%96%87%E5%AD%97%E4%B8%8E%E6%96%87%E4%BB%B6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/img/mark_avatar.jpeg">
-      <meta itemprop="name" content="Mark先生">
-      <meta itemprop="description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Mark的私人博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/04/03/mac%E4%B8%8BVMware%E5%AE%89%E8%A3%85Ubuntu%E8%AE%BE%E7%BD%AE%E5%85%81%E8%AE%B8%E5%9C%A8%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8E%E4%B8%BB%E6%9C%BA%E4%B9%8B%E9%97%B4%E5%A4%8D%E5%88%B6%E6%96%87%E5%AD%97%E4%B8%8E%E6%96%87%E4%BB%B6/" class="post-title-link" itemprop="url">mac下VMware安装Ubuntu设置允许在虚拟机与主机之间复制文字与文件</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2023-04-03 11:12:54" itemprop="dateCreated datePublished" datetime="2023-04-03T11:12:54+08:00">2023-04-03</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="1、在终端执行如下三行命令"><a href="#1、在终端执行如下三行命令" class="headerlink" title="1、在终端执行如下三行命令"></a>1、在终端执行如下三行命令</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get autoremove open-vm-tools</span><br><span class="line">sudo apt-get install open-vm-tools</span><br><span class="line">sudo apt-get install open-vm-tools-desktop</span><br></pre></td></tr></table></figure>
-<h3 id="2、重启-Ubuntu。"><a href="#2、重启-Ubuntu。" class="headerlink" title="2、重启 Ubuntu。"></a>2、重启 Ubuntu。</h3>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://markchyl.cn/2023/03/06/shell%E8%84%9A%E6%9C%AC%E6%8F%90%E7%A4%BA-ll-command-not-found/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/img/mark_avatar.jpeg">
-      <meta itemprop="name" content="Mark先生">
-      <meta itemprop="description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Mark的私人博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/03/06/shell%E8%84%9A%E6%9C%AC%E6%8F%90%E7%A4%BA-ll-command-not-found/" class="post-title-link" itemprop="url">shell脚本提示 ll:command not found</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2023-03-06 10:26:25" itemprop="dateCreated datePublished" datetime="2023-03-06T10:26:25+08:00">2023-03-06</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>shell脚本test.sh代码：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/sh</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看<span class="built_in">test</span>目录下的文件列表</span></span><br><span class="line">ll /test</span><br></pre></td></tr></table></figure>
-<p>执行报错：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test.sh: line 3: ll: command not found</span><br></pre></td></tr></table></figure>
-<p>解决方法：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/sh</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看<span class="built_in">test</span>目录下的文件列表</span></span><br><span class="line">ls -l /test</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 </div>

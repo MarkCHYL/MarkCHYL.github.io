@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://markchyl.cn/2023/08/11/Redis%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4%E7%9A%84%E4%BD%BF%E7%94%A8/</loc>
+    <lastmod>2023-08-11</lastmod>
+  </url>
+  <url>
+    <loc>http://markchyl.cn/2023/08/11/ubuntu20-04%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85redis-3-2-8/</loc>
+    <lastmod>2023-08-11</lastmod>
+  </url>
+  <url>
+    <loc>http://markchyl.cn/2023/08/11/Mac%E5%AE%89%E8%A3%85Redis/</loc>
+    <lastmod>2023-08-11</lastmod>
+  </url>
+  <url>
+    <loc>http://markchyl.cn/2023/08/01/%E5%AE%9E%E7%8E%B0%E5%85%AC%E5%85%B1%E5%AD%97%E6%AE%B5%E7%9A%84%E8%87%AA%E5%8A%A8%E5%A1%AB%E5%85%85%E9%80%BB%E8%BE%91/</loc>
+    <lastmod>2023-08-01</lastmod>
+  </url>
+  <url>
     <loc>http://markchyl.cn/2023/07/27/macbook%E4%B8%8A%E5%AE%89%E8%A3%85nginx%E5%92%8C%E9%85%8D%E7%BD%AE%E6%AD%A5%E9%AA%A4/</loc>
     <lastmod>2023-07-27</lastmod>
   </url>

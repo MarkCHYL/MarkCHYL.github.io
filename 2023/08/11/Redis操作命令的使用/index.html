@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/mark_avatar.jpeg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/mark_avatar.jpeg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/mark_avatar.jpeg">
+  <link rel="mask-icon" href="/img/mark_avatar.jpeg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"markchyl.cn","root":"/","images":"/images","scheme":"Pisces","version":"8.7.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null,"activeClass":"utterances"},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="Redis操作命令的使用笔记，涵盖基本数据类型的常见操作。以下是这份笔记：  Redis 操作命令使用指南1. 字符串（String） 设置指定key的值: SET key value 获取指定key的值: GET key 设置指定key的值，并将 key 的过期时间设为 seconds 秒：SETEX key seconds value 只有在 key 不存在时设置 key 的值: SETNX">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis操作命令的使用">
+<meta property="og:url" content="http://markchyl.cn/2023/08/11/Redis%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4%E7%9A%84%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:site_name" content="Mark的私人博客">
+<meta property="og:description" content="Redis操作命令的使用笔记，涵盖基本数据类型的常见操作。以下是这份笔记：  Redis 操作命令使用指南1. 字符串（String） 设置指定key的值: SET key value 获取指定key的值: GET key 设置指定key的值，并将 key 的过期时间设为 seconds 秒：SETEX key seconds value 只有在 key 不存在时设置 key 的值: SETNX">
+<meta property="og:locale">
+<meta property="article:published_time" content="2023-08-11T06:22:24.000Z">
+<meta property="article:modified_time" content="2023-08-11T06:22:24.000Z">
+<meta property="article:author" content="Mark先生">
+<meta property="article:tag" content="Redis">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://markchyl.cn/2023/08/11/Redis%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4%E7%9A%84%E4%BD%BF%E7%94%A8/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://markchyl.cn/2023/08/11/Redis%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4%E7%9A%84%E4%BD%BF%E7%94%A8/","path":"2023/08/11/Redis操作命令的使用/","title":"Redis操作命令的使用"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Redis操作命令的使用 | Mark的私人博客</title>
+  
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?237f445eb67ed6b40bde4829280d8152"></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Mark的私人博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Mark的私人博客</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">数风流人物，还看今朝</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+        <li class="menu-item menu-item-resouces"><a href="/AndroidResouce/" rel="section"><i class="fa fa-sitemap fa-fw"></i>resouces</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis-%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97"><span class="nav-number">1.</span> <span class="nav-text">Redis 操作命令使用指南</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%88String%EF%BC%89"><span class="nav-number">1.1.</span> <span class="nav-text">1. 字符串（String）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%93%88%E5%B8%8C%EF%BC%88Hash%EF%BC%89"><span class="nav-number">1.2.</span> <span class="nav-text">2. 哈希（Hash）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%88%97%E8%A1%A8%EF%BC%88List%EF%BC%89"><span class="nav-number">1.3.</span> <span class="nav-text">3. 列表（List）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E9%9B%86%E5%90%88%EF%BC%88Set%EF%BC%89"><span class="nav-number">1.4.</span> <span class="nav-text">4. 集合（Set）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E6%9C%89%E5%BA%8F%E9%9B%86%E5%90%88%EF%BC%88Sorted-Set%EF%BC%89"><span class="nav-number">1.5.</span> <span class="nav-text">5. 有序集合（Sorted Set）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis%E7%9A%84%E9%80%9A%E7%94%A8%E5%91%BD%E4%BB%A4%E6%98%AF%E4%B8%8D%E5%88%86%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%EF%BC%8C%E9%83%BD%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4"><span class="nav-number">1.6.</span> <span class="nav-text">Redis的通用命令是不分数据类型的，都可以使用的命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E6%93%8D%E4%BD%9C"><span class="nav-number">1.7.</span> <span class="nav-text">其他操作</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Mark先生"
+      src="/img/mark_avatar.jpeg">
+  <p class="site-author-name" itemprop="name">Mark先生</p>
+  <div class="site-description" itemprop="description">一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">134</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">67</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/MarkCHYL" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;MarkCHYL" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:2285581945@qq.com" title="E-Mail → mailto:2285581945@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.csdn.net/fuxiaoyuandroid/article/details/90140409" title="https:&#x2F;&#x2F;blog.csdn.net&#x2F;fuxiaoyuandroid&#x2F;article&#x2F;details&#x2F;90140409" rel="noopener" target="_blank">付工(来自济南的朋友)</a>
+        </li>
+    </ul>
+  </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/MarkCHYL" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://markchyl.cn/2023/08/11/Redis%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4%E7%9A%84%E4%BD%BF%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/img/mark_avatar.jpeg">
+      <meta itemprop="name" content="Mark先生">
+      <meta itemprop="description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mark的私人博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Redis操作命令的使用
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-08-11 14:22:24" itemprop="dateCreated datePublished" datetime="2023-08-11T14:22:24+08:00">2023-08-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">中间件</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>Redis操作命令的使用笔记，涵盖基本数据类型的常见操作。以下是这份笔记：</p>
+<hr>
+<h2 id="Redis-操作命令使用指南"><a href="#Redis-操作命令使用指南" class="headerlink" title="Redis 操作命令使用指南"></a>Redis 操作命令使用指南</h2><h3 id="1-字符串（String）"><a href="#1-字符串（String）" class="headerlink" title="1. 字符串（String）"></a>1. 字符串（String）</h3><ul>
+<li>设置指定key的值: <code>SET key value</code></li>
+<li>获取指定key的值: <code>GET key</code></li>
+<li>设置指定key的值，并将 key 的过期时间设为 seconds 秒：<code>SETEX key seconds value</code></li>
+<li>只有在 key 不存在时设置 key 的值: <code>SETNX key value</code></li>
+<li>追加字符串：<code>APPEND key value</code></li>
+<li>获取字符串长度：<code>STRLEN key</code></li>
+<li>自增：<code>INCR key</code></li>
+<li>自增指定值：<code>INCRBY key increment</code></li>
+<li>自增浮点数：<code>INCRBYFLOAT key increment</code></li>
+<li>设置并获取旧值：<code>GETSET key value</code></li>
+<li>设置多个键值对：<code>MSET key1 value1 [key2 value2 ...]</code></li>
+<li>获取多个键值：<code>MGET key1 [key2 ...]</code></li>
+<li>设置键的过期时间：<code>EXPIRE key seconds</code></li>
+<li>设置键的过期时间（毫秒）：<code>PEXPIRE key milliseconds</code></li>
+<li>获取键的剩余生存时间：<code>TTL key</code></li>
+<li>获取键的剩余生存时间（毫秒）：<code>PTTL key</code></li>
+<li>移除键的过期时间：<code>PERSIST key</code>    </li>
+</ul>
+<h3 id="2-哈希（Hash）"><a href="#2-哈希（Hash）" class="headerlink" title="2. 哈希（Hash）"></a>2. 哈希（Hash）</h3><ul>
+<li>设置哈希字段值：<code>HSET key field value</code></li>
+<li>获取哈希字段值：<code>HGET key field</code></li>
+<li>获取整个哈希表：<code>HGETALL key</code></li>
+<li>获取哈希表所有字段：<code>HKEYS key</code></li>
+<li>获取哈希表所有值：<code>HVALS key</code></li>
+<li>删除存储在哈希表中的指定字段: <code>HDEL key field    </code></li>
+</ul>
+<h3 id="3-列表（List）"><a href="#3-列表（List）" class="headerlink" title="3. 列表（List）"></a>3. 列表（List）</h3><ul>
+<li>在列表头部插入元素：<code>LPUSH key value</code></li>
+<li>在列表尾部插入元素：<code>RPUSH key value</code></li>
+<li>弹出并返回列表头部元素：<code>LPOP key</code></li>
+<li>弹出并返回列表尾部元素：<code>RPOP key</code></li>
+<li>获取列表范围内的元素：<code>LRANGE key start stop</code></li>
+</ul>
+<h3 id="4-集合（Set）"><a href="#4-集合（Set）" class="headerlink" title="4. 集合（Set）"></a>4. 集合（Set）</h3><ul>
+<li>向集合添加一个或多个成员：     <code>SADD key member1 [member2]</code></li>
+<li>删除集合中一个或多个成员:     <code>SREM key member1 [member2]</code></li>
+<li>获取集合所有成员：           <code>SMEMBERS key</code></li>
+<li>判断元素是否在集合中：        <code>SISMEMBER key member</code></li>
+<li>获取集合的成员数:            <code>SCARD key</code></li>
+<li>返回给定所有集合的交集:       <code>SINTER key1 [key2]</code></li>
+<li>返回所有给定集合的并集:       <code>SUNION key1 [key2]     </code> </li>
+</ul>
+<h3 id="5-有序集合（Sorted-Set）"><a href="#5-有序集合（Sorted-Set）" class="headerlink" title="5. 有序集合（Sorted Set）"></a>5. 有序集合（Sorted Set）</h3><ul>
+<li>获取有序集合成员的分数：<code>ZSCORE key member</code></li>
+<li>获取有序集合的排名：<code>ZRANK key member</code></li>
+<li>向有序集合添加一个或多个成员: <code>ZADD key score1 member1 [score2 member2]</code></li>
+<li>通过索引区间返回有序集合中指定区间内的成员: <code>ZRANGE key start stop [WITHSCORES]</code></li>
+<li>获取有序集合范围内的元素：<code>ZRANGEBYSCORE key min max</code>        </li>
+<li>有序集合中对指定成员的分数加上增量increment: <code>ZINCRBY key increment member</code>             </li>
+<li>移除有序集合中的一个或多个成员:   <code>ZREM key member [member ...] </code>            </li>
+</ul>
+<h3 id="Redis的通用命令是不分数据类型的，都可以使用的命令"><a href="#Redis的通用命令是不分数据类型的，都可以使用的命令" class="headerlink" title="Redis的通用命令是不分数据类型的，都可以使用的命令"></a>Redis的通用命令是不分数据类型的，都可以使用的命令</h3><ul>
+<li>查找所有符合给定模式( pattern)的 key:  <code>KEYS pattern</code>        </li>
+<li>检查给定 key 是否存在: <code>EXISTS key</code>    </li>
+<li>返回 key 所储存的值的类型: <code>TYPE key</code></li>
+<li>该命令用于在 key 存在是删除 key: <code>DEL key</code></li>
+</ul>
+<h3 id="其他操作"><a href="#其他操作" class="headerlink" title="其他操作"></a>其他操作</h3><ul>
+<li>发布消息：<code>PUBLISH channel message</code></li>
+<li>订阅消息：<code>SUBSCRIBE channel</code></li>
+<li>事务操作：<code>MULTI</code>、<code>EXEC</code>、<code>WATCH</code></li>
+<li>执行 Lua 脚本：<code>EVAL</code>、<code>EVALSHA</code></li>
+</ul>
+<hr>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div></div>
+  <button>
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/img/weixin.png" alt="Mark先生 WeChat Pay">
+        <span>WeChat Pay</span>
+      </div>
+      <div>
+        <img src="/img/alipay.jpg" alt="Mark先生 Alipay">
+        <span>Alipay</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="followme">
+  <span>Welcome to my other publishing channels</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class="fa fa-rss"></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Redis/" rel="tag"># Redis</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/08/11/ubuntu20-04%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85redis-3-2-8/" rel="prev" title="ubuntu20.04虚拟机安装redis-3.2.8">
+                  <i class="fa fa-chevron-left"></i> ubuntu20.04虚拟机安装redis-3.2.8
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mark先生</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdn.jsdelivr.net/npm/pdfobject@2.2.6/pdfobject.min.js","integrity":"sha256-77geM50MfxCD17eqyJR+Dag1svjJOLN+BJ2F/DMqMEY="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":"forest","js":{"url":"https://cdn.jsdelivr.net/npm/mermaid@8.11.2/dist/mermaid.min.js","integrity":"sha256-lBK8/r0PCT3qtPtIvDcaT+20nHioFbzRGg36kOJ+wz4="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"MarkCHYL/MarkCHYL.github.io","issue_term":"title","theme":"github-light"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>
