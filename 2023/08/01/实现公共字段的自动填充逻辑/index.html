@@ -19,12 +19,12 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"markchyl.cn","root":"/","images":"/images","scheme":"Pisces","version":"8.7.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null,"activeClass":"utterances"},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="需要实现的效果公共字段自动填充  问题分析 实现思路 代码开发 功能测试  问题分析多张业务表中的公共字段： 问题：代码冗余、不便于后期维护 实现思路 自定义注解 AutoFill，用于标识需要进行公共字段自动填充的方法 自定义切面类 AutoFillAspect，统一拦截加入了 AutoFill 注解的方法，通过反射为公共字段赋值 在 Mapper 的方法上加入 AutoFill 注解  技术点">
+<meta name="description" content="需要实现的效果公共字段自动填充  问题分析 实现思路 代码开发 功能测试  问题分析多张业务表中的公共字段： 问题：代码冗余、不便于后期维护">
 <meta property="og:type" content="article">
 <meta property="og:title" content="实现公共字段的自动填充逻辑">
 <meta property="og:url" content="http://markchyl.cn/2023/08/01/%E5%AE%9E%E7%8E%B0%E5%85%AC%E5%85%B1%E5%AD%97%E6%AE%B5%E7%9A%84%E8%87%AA%E5%8A%A8%E5%A1%AB%E5%85%85%E9%80%BB%E8%BE%91/index.html">
 <meta property="og:site_name" content="Mark的私人博客">
-<meta property="og:description" content="需要实现的效果公共字段自动填充  问题分析 实现思路 代码开发 功能测试  问题分析多张业务表中的公共字段： 问题：代码冗余、不便于后期维护 实现思路 自定义注解 AutoFill，用于标识需要进行公共字段自动填充的方法 自定义切面类 AutoFillAspect，统一拦截加入了 AutoFill 注解的方法，通过反射为公共字段赋值 在 Mapper 的方法上加入 AutoFill 注解  技术点">
+<meta property="og:description" content="需要实现的效果公共字段自动填充  问题分析 实现思路 代码开发 功能测试  问题分析多张业务表中的公共字段： 问题：代码冗余、不便于后期维护">
 <meta property="og:locale">
 <meta property="article:published_time" content="2023-08-01T01:48:12.000Z">
 <meta property="article:modified_time" content="2023-08-01T01:48:12.000Z">
@@ -301,6 +301,8 @@
 </ul>
 <h3 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h3><p>多张业务表中的公共字段：</p>
 <p><strong>问题：代码冗余、不便于后期维护</strong></p>
+<a id="more"></a>
+
 <h3 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h3><ul>
 <li>自定义注解 AutoFill，用于标识需要进行公共字段自动填充的方法</li>
 <li>自定义切面类 AutoFillAspect，统一拦截加入了 AutoFill 注解的方法，通过反射为公共字段赋值</li>

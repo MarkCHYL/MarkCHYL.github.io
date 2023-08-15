@@ -300,55 +300,15 @@
 <li>设置键的过期时间（毫秒）：<code>PEXPIRE key milliseconds</code></li>
 <li>获取键的剩余生存时间：<code>TTL key</code></li>
 <li>获取键的剩余生存时间（毫秒）：<code>PTTL key</code></li>
-<li>移除键的过期时间：<code>PERSIST key</code>    </li>
-</ul>
-<h3 id="2-哈希（Hash）"><a href="#2-哈希（Hash）" class="headerlink" title="2. 哈希（Hash）"></a>2. 哈希（Hash）</h3><ul>
-<li>设置哈希字段值：<code>HSET key field value</code></li>
-<li>获取哈希字段值：<code>HGET key field</code></li>
-<li>获取整个哈希表：<code>HGETALL key</code></li>
-<li>获取哈希表所有字段：<code>HKEYS key</code></li>
-<li>获取哈希表所有值：<code>HVALS key</code></li>
-<li>删除存储在哈希表中的指定字段: <code>HDEL key field    </code></li>
-</ul>
-<h3 id="3-列表（List）"><a href="#3-列表（List）" class="headerlink" title="3. 列表（List）"></a>3. 列表（List）</h3><ul>
-<li>在列表头部插入元素：<code>LPUSH key value</code></li>
-<li>在列表尾部插入元素：<code>RPUSH key value</code></li>
-<li>弹出并返回列表头部元素：<code>LPOP key</code></li>
-<li>弹出并返回列表尾部元素：<code>RPOP key</code></li>
-<li>获取列表范围内的元素：<code>LRANGE key start stop</code></li>
-</ul>
-<h3 id="4-集合（Set）"><a href="#4-集合（Set）" class="headerlink" title="4. 集合（Set）"></a>4. 集合（Set）</h3><ul>
-<li>向集合添加一个或多个成员：     <code>SADD key member1 [member2]</code></li>
-<li>删除集合中一个或多个成员:     <code>SREM key member1 [member2]</code></li>
-<li>获取集合所有成员：           <code>SMEMBERS key</code></li>
-<li>判断元素是否在集合中：        <code>SISMEMBER key member</code></li>
-<li>获取集合的成员数:            <code>SCARD key</code></li>
-<li>返回给定所有集合的交集:       <code>SINTER key1 [key2]</code></li>
-<li>返回所有给定集合的并集:       <code>SUNION key1 [key2]     </code> </li>
-</ul>
-<h3 id="5-有序集合（Sorted-Set）"><a href="#5-有序集合（Sorted-Set）" class="headerlink" title="5. 有序集合（Sorted Set）"></a>5. 有序集合（Sorted Set）</h3><ul>
-<li>获取有序集合成员的分数：<code>ZSCORE key member</code></li>
-<li>获取有序集合的排名：<code>ZRANK key member</code></li>
-<li>向有序集合添加一个或多个成员: <code>ZADD key score1 member1 [score2 member2]</code></li>
-<li>通过索引区间返回有序集合中指定区间内的成员: <code>ZRANGE key start stop [WITHSCORES]</code></li>
-<li>获取有序集合范围内的元素：<code>ZRANGEBYSCORE key min max</code>        </li>
-<li>有序集合中对指定成员的分数加上增量increment: <code>ZINCRBY key increment member</code>             </li>
-<li>移除有序集合中的一个或多个成员:   <code>ZREM key member [member ...] </code>            </li>
-</ul>
-<h3 id="Redis的通用命令是不分数据类型的，都可以使用的命令"><a href="#Redis的通用命令是不分数据类型的，都可以使用的命令" class="headerlink" title="Redis的通用命令是不分数据类型的，都可以使用的命令"></a>Redis的通用命令是不分数据类型的，都可以使用的命令</h3><ul>
-<li>查找所有符合给定模式( pattern)的 key:  <code>KEYS pattern</code>        </li>
-<li>检查给定 key 是否存在: <code>EXISTS key</code>    </li>
-<li>返回 key 所储存的值的类型: <code>TYPE key</code></li>
-<li>该命令用于在 key 存在是删除 key: <code>DEL key</code></li>
-</ul>
-<h3 id="其他操作"><a href="#其他操作" class="headerlink" title="其他操作"></a>其他操作</h3><ul>
-<li>发布消息：<code>PUBLISH channel message</code></li>
-<li>订阅消息：<code>SUBSCRIBE channel</code></li>
-<li>事务操作：<code>MULTI</code>、<code>EXEC</code>、<code>WATCH</code></li>
-<li>执行 Lua 脚本：<code>EVAL</code>、<code>EVALSHA</code></li>
-</ul>
-<hr>
-
+<li>移除键的过期时间：<code>PERSIST key</code>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/08/11/Redis%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4%E7%9A%84%E4%BD%BF%E7%94%A8/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -424,110 +384,14 @@
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ol>
 <li><p>在终端中安装 <code>build-essential</code> 和 <code>tcl</code>：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sqlCopy code</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install build-essential tcl</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>下载 Redis-3.2.8 并解压缩：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bashCopy code</span><br><span class="line">wget http:&#x2F;&#x2F;download.redis.io&#x2F;releases&#x2F;redis-3.2.8.tar.gz</span><br><span class="line">tar xzf redis-3.2.8.tar.gz</span><br><span class="line">cd redis-3.2.8</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>编译 Redis：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">goCopy code</span><br><span class="line">make</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>运行 Redis 测试：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bashCopy code</span><br><span class="line">make test</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装 Redis：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">goCopy code</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>创建 Redis 配置文件目录和配置文件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bashCopy code</span><br><span class="line">sudo mkdir &#x2F;etc&#x2F;redis</span><br><span class="line">sudo cp redis.conf &#x2F;etc&#x2F;redis</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>修改 Redis 配置文件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bashCopy code</span><br><span class="line">sudo nano &#x2F;etc&#x2F;redis&#x2F;redis.conf</span><br></pre></td></tr></table></figure>
-
-<p>找到 <code>bind</code> 行并将其注释掉，以允许远程访问 Redis：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">shellCopy code</span><br><span class="line"># bind 127.0.0.1</span><br></pre></td></tr></table></figure>
-
-<p>找到 <code>protected-mode</code> 行并将其改为 <code>no</code>，以允许远程访问 Redis：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">arduinoCopy code</span><br><span class="line">protected-mode no</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>启动 Redis 服务器：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bashCopy code</span><br><span class="line">redis-server &#x2F;etc&#x2F;redis&#x2F;redis.conf</span><br></pre></td></tr></table></figure>
-
-<p>如果出现错误，请查看 Redis 日志文件 <code>/var/log/redis.log</code>。</p>
-</li>
-</ol>
-<p>现在你应该已经成功安装和启动了 Redis-3.2.8 服务器。你可以通过运行 <code>redis-cli</code> 命令来测试 Redis 是否可以正常工作。</p>
-<h2 id="补充配置"><a href="#补充配置" class="headerlink" title="补充配置"></a>补充配置</h2><ul>
-<li><p>绑定ip：如果需要远程访问，可将此⾏注释，或绑定⼀个真实ip</p>
-<blockquote>
-<p>bind 127.0.0.1</p>
-</blockquote>
-</li>
-<li><p>端⼝，默认为6379</p>
-<blockquote>
-<p>port 6379</p>
-</blockquote>
-</li>
-<li><p>是否以守护进程运⾏</p>
-<ul>
-<li>如果以守护进程运⾏，则不会在命令⾏阻塞，类似于服务</li>
-<li>如果以⾮守护进程运⾏，则当前终端被阻塞</li>
-<li>设置为yes表示守护进程，设置为no表示⾮守护进程</li>
-<li>推荐设置为yes</li>
-</ul>
-<blockquote>
-<p>daemonize yes</p>
-</blockquote>
-</li>
-<li><p>数据⽂件</p>
-<blockquote>
-<p>dbfilename dump.rdb</p>
-</blockquote>
-</li>
-<li><p>数据⽂件存储路径</p>
-<blockquote>
-<p>dir /var/lib/redis</p>
-</blockquote>
-</li>
-<li><p>⽇志⽂件</p>
-<blockquote>
-<p>logfile /var/log/redis/redis-server.log</p>
-</blockquote>
-</li>
-<li><p>数据库，默认有16个</p>
-<blockquote>
-<p>database 16</p>
-</blockquote>
-</li>
-<li><p>主从复制，类似于双机备份。</p>
-<blockquote>
-<p>slaveof</p>
-</blockquote>
-</li>
-</ul>
-<h2 id="加载配置启动时报错"><a href="#加载配置启动时报错" class="headerlink" title="加载配置启动时报错"></a>加载配置启动时报错</h2><blockquote>
-<p>‘logfile /var/log/redis/redis-server.log’ Can’t open the log file: Permission denied</p>
-</blockquote>
-<p>这个错误提示表明 Redis 没有权限在 <code>/var/log/redis/</code> 目录中创建日志文件。</p>
-<p>你可以按照以下步骤来解决这个问题：</p>
-<ol>
-<li><p>确认 <code>/var/log/redis/</code> 目录是否存在，如果不存在，你可以通过以下命令创建它：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bashCopy code</span><br><span class="line">sudo mkdir &#x2F;var&#x2F;log&#x2F;redis&#x2F;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>确认 Redis 进程的运行用户是否有权限在该目录中创建文件。默认情况下，Redis 进程会使用 <code>redis</code> 用户来运行，而该用户通常没有权限在 <code>/var/log/redis/</code> 目录中创建文件。</p>
-<p>如果你想让 <code>redis</code> 用户有权限在该目录中创建文件，可以通过以下命令更改该目录的所有者和组：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bashCopy code</span><br><span class="line">sudo chown redis:redis &#x2F;var&#x2F;log&#x2F;redis&#x2F;</span><br></pre></td></tr></table></figure>
-
-<p>这将把 <code>/var/log/redis/</code> 目录的所有者和组都更改为 <code>redis</code>。</p>
-<p>如果你不希望更改该目录的所有者和组，你可以考虑在 Redis 配置文件中指定其他的日志文件路径，例如 <code>/tmp/redis-server.log</code>：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bashCopy code</span><br><span class="line">logfile &#x2F;tmp&#x2F;redis-server.log</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>如果你更改了 Redis 配置文件，记得重新启动 Redis 服务，以使更改生效：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Copy code</span><br><span class="line">sudo systemctl restart redis-server</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<p>如果你遇到了其他问题或错误，请查看 Redis 的日志文件和系统日志文件以获取更多信息。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/08/11/ubuntu20-04%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85redis-3-2-8/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -605,23 +469,14 @@
 </li>
 <li><p>安装<code>Homebrew，Homebrew</code>是一个Mac上的包管理器。在终端中运行以下命令：</p>
 <p><code>/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot;</code></p>
-</li>
-<li><p>安装<code>Redis</code>，运行以下命令：</p>
-<p><code>brew install redis</code></p>
-</li>
-<li><p>启动<code>Redis</code>，运行以下命令：</p>
-<p><code>redis-server</code></p>
-</li>
-<li><p>（可选）如果您想在后台运行<code>Redis</code>，请使用以下命令：</p>
-<p><code>redis-server --daemonize yes</code></p>
-</li>
-<li><p>（可选）如果您想在每次启动Mac时自动启动<code>Redis</code>，请使用以下命令：</p>
-<p><code>brew services start redis</code></p>
-<p><code>brew services stop redis </code></p>
-</li>
-</ol>
-<p>现在您已经成功地安装和启动了<code>Redis</code>。您可以在终端中使用<code>redis-cli</code>命令来连接到<code>Redis</code>服务器并进行交互式操作。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/08/11/Mac%E5%AE%89%E8%A3%85Redis/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -702,30 +557,14 @@
 </ul>
 <h3 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h3><p>多张业务表中的公共字段：</p>
 <p><strong>问题：代码冗余、不便于后期维护</strong></p>
-<h3 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h3><ul>
-<li>自定义注解 AutoFill，用于标识需要进行公共字段自动填充的方法</li>
-<li>自定义切面类 AutoFillAspect，统一拦截加入了 AutoFill 注解的方法，通过反射为公共字段赋值</li>
-<li>在 Mapper 的方法上加入 AutoFill 注解</li>
-</ul>
-<p>技术点：<strong>枚举、注解、AOP、反射</strong></p>
-<h3 id="代码开发"><a href="#代码开发" class="headerlink" title="代码开发"></a>代码开发</h3><ul>
-<li><p>自定义注解 AutoFill</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 自定义注解，用于标识需要进行公共字段的自动填充</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Target(ElementType.METHOD)</span></span><br><span class="line"><span class="meta">@Retention(RetentionPolicy.RUNTIME)</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> AutoFill &#123;</span><br><span class="line">    <span class="comment">// 数据操作类型 UPDATE、INSERT</span></span><br><span class="line">    <span class="function">OperationType <span class="title">value</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>自定义切面 AutoFillAspect</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 自定义切面，实现公共字段的自动填充逻辑</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Aspect</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AutoFillAspect</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 切入点</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Pointcut(&quot;execution(* com.sky.mapper.*.*(..))&amp;&amp; @annotation(com.sky.annotation.AutoFill)&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">autoFillPointCut</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 前置通知，在通知中进行公共字段的赋值</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Before(&quot;autoFillPointCut()&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">autoFill</span><span class="params">(JoinPoint joinPoint)</span> </span>&#123;</span><br><span class="line">        log.info(<span class="string">&quot;开始进行公共字段的自动填充。。。。。。&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>完善自定义切面 AutoFillAspect 的 autoFill 方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">log.info(<span class="string">&quot;开始进行公共字段的自动填充。。。。。。&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取到当前被拦截到的方法上的数据库操作类型</span></span><br><span class="line">        MethodSignature signature = (MethodSignature) joinPoint.getSignature();<span class="comment">//方法对象获取</span></span><br><span class="line">        AutoFill autoFill = signature.getMethod().getAnnotation(AutoFill.class);//获取方法上的注解对象</span><br><span class="line">        OperationType operationType = autoFill.value();<span class="comment">//获得数据库的操作类型</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取到当前被拦截方法的参数---实体对象</span></span><br><span class="line">        Object[] args = joinPoint.getArgs();</span><br><span class="line">        <span class="keyword">if</span> (args == <span class="keyword">null</span> || args.length == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        Object entity = args[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 准备赋值的数据</span></span><br><span class="line">        LocalDateTime now = LocalDateTime.now();</span><br><span class="line">        Long currentId = BaseContext.getCurrentId();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 根据当前不同的操作类型，为对应的属性通过反射来赋值</span></span><br><span class="line">        <span class="keyword">if</span> (operationType == OperationType.INSERT) &#123;</span><br><span class="line">            <span class="comment">//为四个公共字段赋值</span></span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                Method setCreateTime = entity.getClass().getDeclaredMethod(AutoFillConstant.SET_CREATE_TIME, LocalDateTime.class);</span><br><span class="line">                Method setCreateUser = entity.getClass().getDeclaredMethod(AutoFillConstant.SET_CREATE_USER, Long.class);</span><br><span class="line">                Method setUpdateTime = entity.getClass().getDeclaredMethod(AutoFillConstant.SET_UPDATE_TIME, LocalDateTime.class);</span><br><span class="line">                Method setUpdateUser = entity.getClass().getDeclaredMethod(AutoFillConstant.SET_UPDATE_USER, Long.class);</span><br><span class="line"></span><br><span class="line">                <span class="comment">//通过反射为对象属性赋值</span></span><br><span class="line">                setCreateTime.invoke(entity, now);</span><br><span class="line">                setCreateUser.invoke(entity, currentId);</span><br><span class="line">                setUpdateTime.invoke(entity, now);</span><br><span class="line">                setUpdateUser.invoke(entity, currentId);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(e);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (operationType == OperationType.UPDATE) &#123;</span><br><span class="line">            <span class="comment">//为二个公共字段赋值</span></span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                Method setUpdateTime = entity.getClass().getDeclaredMethod(AutoFillConstant.SET_UPDATE_TIME, LocalDateTime.class);</span><br><span class="line">                Method setUpdateUser = entity.getClass().getDeclaredMethod(AutoFillConstant.SET_UPDATE_USER, Long.class);</span><br><span class="line"></span><br><span class="line">                <span class="comment">//通过反射为对象属性赋值</span></span><br><span class="line">                setUpdateTime.invoke(entity, now);</span><br><span class="line">                setUpdateUser.invoke(entity, currentId);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(e);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在Mapper接口的方法上加入 AutoFill 注解</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 插入数据</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> category</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Insert(&quot;insert into category(type, name, sort, status, create_time, update_time, create_user, update_user)&quot; +</span></span><br><span class="line"><span class="meta">            &quot; VALUES&quot; +</span></span><br><span class="line"><span class="meta">            &quot; (#&#123;type&#125;, #&#123;name&#125;, #&#123;sort&#125;, #&#123;status&#125;, #&#123;createTime&#125;, #&#123;updateTime&#125;, #&#123;createUser&#125;, #&#123;updateUser&#125;)&quot;)</span></span><br><span class="line">    <span class="meta">@AutoFill(OperationType.INSERT)</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(Category category)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 根据id修改分类</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> category</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@AutoFill(OperationType.UPDATE)</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(Category category)</span></span>;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>将业务层为公共字段赋值的代码注释掉</p>
-</li>
-</ul>
-<h3 id="功能测试"><a href="#功能测试" class="headerlink" title="功能测试"></a>功能测试</h3><p>通过观察控制台输出的SQL来确定公共字段填充是否完成</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/08/01/%E5%AE%9E%E7%8E%B0%E5%85%AC%E5%85%B1%E5%AD%97%E6%AE%B5%E7%9A%84%E8%87%AA%E5%8A%A8%E5%A1%AB%E5%85%85%E9%80%BB%E8%BE%91/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -884,38 +723,14 @@
 <li><p>简洁易学：Go语言采用了简洁的语法和设计，减少了冗余和复杂性，使其易于学习和上手。它拥有清晰的语法结构和直观的语义，使得编写和阅读代码变得简单。</p>
 </li>
 <li><p>并发编程：Go语言内置了轻量级的并发模型，通过goroutine和channel机制实现并发编程变得简单和高效。它使得编写并发代码变得容易，并能充分利用多核处理器的优势。</p>
-</li>
-<li><p>高性能：Go语言通过优化编译器和运行时环境，以及并发原语的支持，提供了出色的性能。它具有低延迟、高吞吐量和高并发处理能力，适用于处理高负载和大规模应用。</p>
-</li>
-<li><p>内存安全：Go语言提供了垃圾回收机制，自动管理内存，减少了程序员的负担和错误。它还具有严格的类型安全性和内存安全性，有效地防止了一些常见的编程错误和安全漏洞。</p>
-</li>
-<li><p>跨平台：Go语言支持多种操作系统和架构，包括Windows、Linux、macOS等。你可以在不同的平台上编写一次代码，并在不需要修改的情况下进行编译和运行。</p>
-</li>
-<li><p>开发效率：Go语言的设计强调开发效率，提供了丰富的标准库和工具，使得开发人员能够快速构建可靠的应用程序。它还支持自动化测试、代码格式化和文档生成等功能，有助于提高团队的协作和代码质量。</p>
-</li>
-<li><p>开源生态系统：Go语言拥有活跃的开源社区和丰富的第三方库，你可以轻松地找到各种用于开发Web应用、数据库操作、网络编程、并发处理等方面的库和框架。</p>
-</li>
-</ol>
-<p>由于上述特点和优势，Go语言在后端开发、云计算、容器技术、网络服务和分布式系统等领域得到了广泛的应用。它适合构建高性能、可扩展的应用程序，并在Google等大型科技公司以及许多初创企业中得到了广泛采用。</p>
-<h3 id="能做什么世面上的岗位"><a href="#能做什么世面上的岗位" class="headerlink" title="能做什么世面上的岗位"></a>能做什么世面上的岗位</h3><p>Go语言在世界上的工作市场上可以涵盖多个岗位和角色。以下是一些使用Go语言的常见岗位：</p>
-<ol>
-<li><p>后端开发工程师：作为后端开发工程师，你可以使用Go语言构建高性能、可扩展的服务器端应用程序。你将负责设计和实现后端逻辑、处理数据存储和数据库操作，并与前端开发人员协作构建完整的应用。</p>
-</li>
-<li><p>分布式系统工程师：Go语言在构建分布式系统和微服务架构方面表现出色。作为分布式系统工程师，你可以使用Go语言开发和维护分布式应用程序、处理服务间通信和负载均衡等问题。</p>
-</li>
-<li><p>DevOps工程师：Go语言具有强大的并发性和性能优势，因此在DevOps领域也有应用。作为DevOps工程师，你可以使用Go语言编写自动化脚本和工具，简化部署、监控和运维任务。</p>
-</li>
-<li><p>区块链开发工程师：Go语言在区块链开发领域也有广泛的应用。作为区块链开发工程师，你可以使用Go语言构建区块链节点、智能合约和分布式应用程序。</p>
-</li>
-<li><p>云原生工程师：Go语言在云原生技术中扮演重要角色。作为云原生工程师，你可以使用Go语言开发和管理容器化应用程序、使用云原生工具和框架，如Docker和Kubernetes。</p>
-</li>
-<li><p>系统工程师：Go语言的高性能和并发性使其成为开发系统级软件的理想选择。作为系统工程师，你可以使用Go语言构建操作系统组件、网络协议栈或高性能服务器。</p>
-</li>
-<li><p>后台服务开发工程师：许多公司和产品需要可靠的后台服务来支持业务逻辑和数据处理。作为后台服务开发工程师，你可以使用Go语言构建高吞吐量、低延迟的后台服务，处理请求和响应。</p>
-</li>
-</ol>
-<p>这只是一些常见的岗位，使用Go语言的应用广泛。实际上，Go语言的简洁性、并发性和性能使其成为处理大规模应用和分布式系统的理想选择，因此在不同行业和领域中都有可能找到适合Go开发技能的岗位。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/07/03/go%E7%9A%84%E7%AE%80%E4%BB%8B/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -993,21 +808,14 @@
 </li>
 <li><p>启动 GoLand：在终端中进入 GoLand 安装目录的 <code>bin</code> 子目录，并运行以下命令启动 GoLand：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;goland.sh</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>配置 Go SDK：在首次启动 GoLand 时，它将提示您配置 Go SDK。选择 “Configure”，然后点击 “Add SDK” 按钮。</p>
-<p>如果您尚未安装 Go SDK，可以选择 “Download” 选项自动下载并安装 Go SDK。或者，如果您已经手动安装了 Go SDK，请选择 “Custom” 选项并指定 Go SDK 的安装路径。</p>
-</li>
-<li><p>创建或导入项目：在 GoLand 中，您可以创建新的 Go 项目或导入现有的 Go 项目。根据您的需求选择适当的选项。</p>
-</li>
-<li><p>配置 GOPATH 和环境变量：在 GoLand 中打开 “Settings”（菜单栏中的 “File” -&gt; “Settings”）。</p>
-<p>在 “Settings” 对话框中，选择 “Go” -&gt; “Go Libraries”。点击右上角的 “+” 按钮，添加您的项目目录作为 Go 项目的根目录。</p>
-<p>接下来，选择 “Go” -&gt; “Go Modules”，确保启用了 Go Modules 支持。如果您的项目使用 Go Modules，则可以手动初始化和下载依赖项。</p>
-</li>
-<li><p>运行和调试代码：在 GoLand 中，您可以使用内置的运行和调试工具来运行和调试您的 Go 代码。您可以使用菜单栏中的 “Run” 和 “Debug” 选项，或使用相应的快捷键来执行这些操作。</p>
-</li>
-</ol>
-<p>这样，您就成功配置了 GoLand 的开发环境。您可以开始编写、运行和调试 Go 代码了。请注意，GoLand 是一款商业软件，您可能需要购买许可证才能使用其完整功能。您可以在 JetBrains 的网站上获取有关购买许可证的详细信息。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/06/29/ubuntu%E4%B8%AD%E5%AE%89%E8%A3%85%E7%9A%84GoLAnd%E5%A6%82%E4%BD%95%E9%85%8D%E7%BD%AE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1083,27 +891,14 @@
 <ol>
 <li><p>安装 Visual Studio Code：打开终端，运行以下命令以添加 Visual Studio Code 的官方存储库，并安装它：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install code</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>打开 Visual Studio Code：在终端中运行以下命令来打开 Visual Studio Code：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">code</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装 Go 插件：在 Visual Studio Code 中，点击左侧的扩展图标（四个方块组成的正方形），在搜索框中输入 “Go” 并找到 “Go” 插件。点击 “安装” 按钮安装该插件。</p>
-</li>
-<li><p>配置 Go 环境：为了在 Visual Studio Code 中正确地进行 Go 语言开发，您需要配置 Go 环境变量。打开终端，运行以下命令来编辑 <code>~/.bashrc</code> 文件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano ~&#x2F;.bashrc</span><br></pre></td></tr></table></figure>
-
-<p>在文件末尾添加以下行，根据您的 Go 安装路径进行调整：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export GOPATH&#x3D;$HOME&#x2F;go</span><br><span class="line">export PATH&#x3D;$PATH:&#x2F;usr&#x2F;local&#x2F;go&#x2F;bin:$GOPATH&#x2F;bin</span><br></pre></td></tr></table></figure>
-
-<p>保存文件并关闭编辑器。然后运行以下命令使更改生效：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~&#x2F;.bashrc</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>验证安装：重新启动 Visual Studio Code。在左侧的侧边栏中，点击扩展图标，找到 “Go” 插件并点击设置图标（齿轮图标）。在 “Go: Gopath” 选项中，选择您的 GOPATH 目录（默认为 <code>$HOME/go</code>）。</p>
-<p>现在，您已经成功安装了 Visual Studio Code 和 Go 插件，并且可以在 Visual Studio Code 中进行 Go 语言开发。</p>
-</li>
-</ol>
-<p>请注意，Visual Studio Code是一个通用的代码编辑器，可以支持多种编程语言和框架。通过安装适当的插件，您可以扩展其功能以支持其他编程语言和工具。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/06/29/%E5%AE%89%E8%A3%85Go%E8%AF%AD%E8%A8%80%E7%9A%84%E9%9B%86%E6%88%90%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%EF%BC%88IDE%EF%BC%89/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1181,18 +976,14 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install gnome-software</span><br></pre></td></tr></table></figure>
 
 <p>安装完成后，您可以在应用程序菜单中搜索并打开GNOME Software。通过GNOME Software，您可以浏览、搜索和安装各种应用程序。</p>
-</li>
-<li><p>Discover：Discover是KDE桌面环境的默认应用商店工具，适用于使用Kubuntu等基于KDE的Ubuntu变体。如果您使用的是KDE桌面环境，Discover可能已经预装在系统中。您可以在应用程序菜单中搜索并打开Discover。</p>
-</li>
-<li><p>Deepin Software Center：Deepin Software Center是深度操作系统的默认应用商店工具，它也可以在其他Ubuntu发行版上使用。打开终端，运行以下命令来安装Deepin Software Center：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install deepin-software-center</span><br></pre></td></tr></table></figure>
-
-<p>安装完成后，您可以在应用程序菜单中搜索并打开Deepin Software Center。</p>
-</li>
-</ol>
-<p>请注意，这些应用商店工具可能适用于特定的桌面环境或Ubuntu变体。根据您的系统和个人喜好，您可以选择安装适合您的应用商店工具。</p>
-<p>另外，您还可以尝试通过命令行来安装应用程序，如之前所述的使用<code>apt</code>命令或Snap来安装软件包。这些方法也可以帮助您获取和安装所需的应用程序。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/06/29/Ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%AD%E5%AE%89%E8%A3%85%E5%BA%94%E7%94%A8%E5%95%86%E5%BA%97/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1270,20 +1061,14 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install openjdk-8-jdk</span><br></pre></td></tr></table></figure>
 
 <p>安装完成后，可以使用<code>java -version</code>命令验证安装的JDK版本。</p>
-</li>
-<li><p>安装JDK 11：<br>打开终端，运行以下命令安装OpenJDK 11：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install openjdk-11-jdk</span><br></pre></td></tr></table></figure>
-
-<p>安装完成后，可以使用<code>java -version</code>命令验证安装的JDK版本。</p>
-</li>
-<li><p>配置默认JDK版本：<br>如果您需要将JDK 1.8或JDK 11设置为默认的Java版本，可以使用<code>update-alternatives</code>命令进行配置。运行以下命令选择默认的Java版本：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo update-alternatives --config java</span><br></pre></td></tr></table></figure>
-
-<p>系统将显示可用的Java版本列表，并要求您选择默认版本。根据提示输入相应的数字，然后按Enter键进行选择。</p>
-</li>
-</ol>
-<p>现在，您的Ubuntu虚拟机已经同时安装了JDK 1.8和JDK 11，并且您可以根据需要选择默认的Java版本。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/06/29/ubuntu%E5%AE%89%E8%A3%85jdk1-8%E5%92%8Cjdk11/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 

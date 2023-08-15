@@ -24,15 +24,26 @@
     <updated>2023-08-11T06:22:24.000Z</updated>
     
     
-      
-      
-        
-        
     <summary type="html">&lt;p&gt;Redis操作命令的使用笔记，涵盖基本数据类型的常见操作。以下是这份笔记：&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id=&quot;Redis-操作命令使用指南&quot;&gt;&lt;a href=&quot;#Redis-操作命令使用指南&quot; class=&quot;headerlink&quot; title=&quot;Redis</summary>
-        
-      
+&lt;h2 id=&quot;Redis-操作命令使用指南&quot;&gt;&lt;a href=&quot;#Redis-操作命令使用指南&quot; class=&quot;headerlink&quot; title=&quot;Redis 操作命令使用指南&quot;&gt;&lt;/a&gt;Redis 操作命令使用指南&lt;/h2&gt;&lt;h3 id=&quot;1-字符串（String）&quot;&gt;&lt;a href=&quot;#1-字符串（String）&quot; class=&quot;headerlink&quot; title=&quot;1. 字符串（String）&quot;&gt;&lt;/a&gt;1. 字符串（String）&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;设置指定key的值: &lt;code&gt;SET key value&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;获取指定key的值: &lt;code&gt;GET key&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;设置指定key的值，并将 key 的过期时间设为 seconds 秒：&lt;code&gt;SETEX key seconds value&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;只有在 key 不存在时设置 key 的值: &lt;code&gt;SETNX key value&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;追加字符串：&lt;code&gt;APPEND key value&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;获取字符串长度：&lt;code&gt;STRLEN key&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;自增：&lt;code&gt;INCR key&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;自增指定值：&lt;code&gt;INCRBY key increment&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;自增浮点数：&lt;code&gt;INCRBYFLOAT key increment&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;设置并获取旧值：&lt;code&gt;GETSET key value&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;设置多个键值对：&lt;code&gt;MSET key1 value1 [key2 value2 ...]&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;获取多个键值：&lt;code&gt;MGET key1 [key2 ...]&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;设置键的过期时间：&lt;code&gt;EXPIRE key seconds&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;设置键的过期时间（毫秒）：&lt;code&gt;PEXPIRE key milliseconds&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;获取键的剩余生存时间：&lt;code&gt;TTL key&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;获取键的剩余生存时间（毫秒）：&lt;code&gt;PTTL key&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;移除键的过期时间：&lt;code&gt;PERSIST key&lt;/code&gt;</summary>
     
     
     
@@ -51,15 +62,10 @@
     <updated>2023-08-11T02:30:33.000Z</updated>
     
     
-      
-      
-        
-        
     <summary type="html">&lt;p&gt;安装 Redis-3.2.8 在 Ubuntu 20.04 虚拟机上可以按照以下步骤进行：&lt;/p&gt;
 &lt;h2 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;在终端中安装</summary>
-        
-      
+&lt;li&gt;&lt;p&gt;在终端中安装 &lt;code&gt;build-essential&lt;/code&gt; 和 &lt;code&gt;tcl&lt;/code&gt;：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sqlCopy code&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo apt-get update&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo apt-get install build-essential tcl&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
     
     
     
@@ -80,17 +86,12 @@
     <updated>2023-08-11T02:29:03.000Z</updated>
     
     
-      
-      
-        
-        
     <summary type="html">&lt;p&gt;要在Mac上安装&lt;code&gt;Redis&lt;/code&gt;，请按照以下步骤进行操作：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;p&gt;打开终端应用程序&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;安装&lt;code&gt;Homebrew，Homebrew&lt;/code&gt;是一个Mac上的包管理器。在终端中运行以下命令</summary>
-        
-      
+&lt;li&gt;&lt;p&gt;安装&lt;code&gt;Homebrew，Homebrew&lt;/code&gt;是一个Mac上的包管理器。在终端中运行以下命令：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;/bin/bash -c &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&amp;quot;&lt;/code&gt;&lt;/p&gt;</summary>
     
     
     
@@ -111,13 +112,15 @@
     <updated>2023-08-01T01:48:12.000Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;h3 id=&quot;需要实现的效果&quot;&gt;&lt;a href=&quot;#需要实现的效果&quot; class=&quot;headerlink&quot;</summary>
-        
-      
+    <summary type="html">&lt;h3 id=&quot;需要实现的效果&quot;&gt;&lt;a href=&quot;#需要实现的效果&quot; class=&quot;headerlink&quot; title=&quot;需要实现的效果&quot;&gt;&lt;/a&gt;需要实现的效果&lt;/h3&gt;&lt;p&gt;公共字段自动填充&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;问题分析&lt;/li&gt;
+&lt;li&gt;实现思路&lt;/li&gt;
+&lt;li&gt;代码开发&lt;/li&gt;
+&lt;li&gt;功能测试&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;问题分析&quot;&gt;&lt;a href=&quot;#问题分析&quot; class=&quot;headerlink&quot; title=&quot;问题分析&quot;&gt;&lt;/a&gt;问题分析&lt;/h3&gt;&lt;p&gt;多张业务表中的公共字段：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;问题：代码冗余、不便于后期维护&lt;/strong&gt;&lt;/p&gt;</summary>
     
     
     
@@ -156,13 +159,12 @@
     <updated>2023-07-03T03:17:59.000Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;h3 id=&quot;go的简介&quot;&gt;&lt;a href=&quot;#go的简介&quot; class=&quot;headerlink&quot;</summary>
-        
-      
+    <summary type="html">&lt;h3 id=&quot;go的简介&quot;&gt;&lt;a href=&quot;#go的简介&quot; class=&quot;headerlink&quot; title=&quot;go的简介&quot;&gt;&lt;/a&gt;go的简介&lt;/h3&gt;&lt;p&gt;Go（也被称为Golang）是一种由Google开发的开源编程语言。Go的设计目标是提供简单、高效、可靠的编程体验，同时具备并发性和可扩展性。&lt;/p&gt;
+&lt;p&gt;以下是Go语言的一些关键特点和优势：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;简洁易学：Go语言采用了简洁的语法和设计，减少了冗余和复杂性，使其易于学习和上手。它拥有清晰的语法结构和直观的语义，使得编写和阅读代码变得简单。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;并发编程：Go语言内置了轻量级的并发模型，通过goroutine和channel机制实现并发编程变得简单和高效。它使得编写并发代码变得容易，并能充分利用多核处理器的优势。&lt;/p&gt;</summary>
     
     
     
@@ -181,15 +183,12 @@
     <updated>2023-06-29T05:07:44.000Z</updated>
     
     
-      
-      
-        
-        
     <summary type="html">&lt;p&gt;安装 GoLand IDE 并配置开发环境的步骤如下：&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;p&gt;下载和安装 GoLand：前往 JetBrains 官方网站（&lt;a</summary>
-        
-      
+&lt;li&gt;&lt;p&gt;下载和安装 GoLand：前往 JetBrains 官方网站（&lt;a href=&quot;https://www.jetbrains.com/go/%EF%BC%89%E4%B8%8B%E8%BD%BD%E9%80%82%E7%94%A8%E4%BA%8E&quot;&gt;https://www.jetbrains.com/go/）下载适用于&lt;/a&gt; Linux 的 GoLand 安装包。解压下载的安装包，并进入解压后的目录。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;启动 GoLand：在终端中进入 GoLand 安装目录的 &lt;code&gt;bin&lt;/code&gt; 子目录，并运行以下命令启动 GoLand：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;.&amp;#x2F;goland.sh&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
     
     
     
@@ -208,15 +207,10 @@
     <updated>2023-06-29T02:35:54.000Z</updated>
     
     
-      
-      
-        
-        
     <summary type="html">&lt;p&gt;要安装Go语言的集成开发环境（IDE），您可以考虑安装Visual Studio Code并使用Go插件来进行Go语言开发。以下是安装和配置步骤：&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;p&gt;安装 Visual Studio Code：打开终端，运行以下命令以添加 Visual</summary>
-        
-      
+&lt;li&gt;&lt;p&gt;安装 Visual Studio Code：打开终端，运行以下命令以添加 Visual Studio Code 的官方存储库，并安装它：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo apt update&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo apt install code&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
     
     
     
@@ -237,15 +231,12 @@
     <updated>2023-06-29T02:20:04.000Z</updated>
     
     
-      
-      
-        
-        
     <summary type="html">&lt;p&gt;如果您的Ubuntu虚拟机中没有应用商店，您可以尝试安装和使用其他的应用商店工具来获取和安装应用程序。以下是一些常见的应用商店工具：&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;p&gt;GNOME Software：GNOME</summary>
-        
-      
+&lt;li&gt;&lt;p&gt;GNOME Software：GNOME Software是一个流行的图形化应用商店工具，适用于使用GNOME桌面环境的Ubuntu。打开终端，运行以下命令来安装GNOME Software：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo apt update&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo apt install gnome-software&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;安装完成后，您可以在应用程序菜单中搜索并打开GNOME Software。通过GNOME Software，您可以浏览、搜索和安装各种应用程序。&lt;/p&gt;</summary>
     
     
     
@@ -264,16 +255,12 @@
     <updated>2023-06-29T02:17:59.000Z</updated>
     
     
-      
-      
-        
-        
     <summary type="html">&lt;p&gt;如果您需要在Ubuntu虚拟机上同时安装JDK 1.8和JDK 11，您可以按照以下步骤进行操作：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;p&gt;安装JDK 1.8：&lt;br&gt;打开终端，运行以下命令安装OpenJDK 8：&lt;/p&gt;
-&lt;figure class=&quot;highlight</summary>
-        
-      
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo apt update&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo apt install openjdk-8-jdk&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;安装完成后，可以使用&lt;code&gt;java -version&lt;/code&gt;命令验证安装的JDK版本。&lt;/p&gt;</summary>
     
     
     
