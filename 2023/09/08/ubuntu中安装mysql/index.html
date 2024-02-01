@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/mark_avatar.jpeg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/mark_avatar.jpeg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/mark_avatar.jpeg">
+  <link rel="mask-icon" href="/img/mark_avatar.jpeg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"markchyl.cn","root":"/","images":"/images","scheme":"Pisces","version":"8.7.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null,"activeClass":"utterances"},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="要在Ubuntu中安装MySQL，可以按照以下步骤进行操作：  打开终端：你可以按下Ctrl+Alt+T组合键来打开终端。  更新包列表：首先，运行以下命令来确保你的系统上的包列表是最新的： 1sudo apt update  安装MySQL服务器：运行以下命令来安装MySQL服务器： 1sudo apt install mysql-server  在安装过程中，系统会要求你设置MySQL roo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ubuntu中安装mysql">
+<meta property="og:url" content="http://markchyl.cn/2023/09/08/ubuntu%E4%B8%AD%E5%AE%89%E8%A3%85mysql/index.html">
+<meta property="og:site_name" content="Mark的私人博客">
+<meta property="og:description" content="要在Ubuntu中安装MySQL，可以按照以下步骤进行操作：  打开终端：你可以按下Ctrl+Alt+T组合键来打开终端。  更新包列表：首先，运行以下命令来确保你的系统上的包列表是最新的： 1sudo apt update  安装MySQL服务器：运行以下命令来安装MySQL服务器： 1sudo apt install mysql-server  在安装过程中，系统会要求你设置MySQL roo">
+<meta property="og:locale">
+<meta property="article:published_time" content="2023-09-08T09:12:03.000Z">
+<meta property="article:modified_time" content="2023-09-08T09:12:03.000Z">
+<meta property="article:author" content="Mark先生">
+<meta property="article:tag" content="mysql">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://markchyl.cn/2023/09/08/ubuntu%E4%B8%AD%E5%AE%89%E8%A3%85mysql/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://markchyl.cn/2023/09/08/ubuntu%E4%B8%AD%E5%AE%89%E8%A3%85mysql/","path":"2023/09/08/ubuntu中安装mysql/","title":"ubuntu中安装mysql"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>ubuntu中安装mysql | Mark的私人博客</title>
+  
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?237f445eb67ed6b40bde4829280d8152"></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Mark的私人博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Mark的私人博客</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">数风流人物，还看今朝</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+        <li class="menu-item menu-item-resouces"><a href="/AndroidResouce/" rel="section"><i class="fa fa-sitemap fa-fw"></i>resouces</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B%E4%B8%AD%E6%B2%A1%E6%9C%89%E8%A6%81%E6%B1%82%E6%88%91%E8%AE%BE%E7%BD%AE%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81%EF%BC%8C%E6%88%91%E7%8E%B0%E5%9C%A8%E9%9C%80%E8%A6%81%E9%87%8D%E6%96%B0%E5%AE%89%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">安装过程中没有要求我设置账号密码，我现在需要重新安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sudo-apt-install-mysql-server%E6%89%A7%E8%A1%8C%E5%90%8E%E6%B2%A1%E6%9C%89%E6%8F%90%E7%A4%BA%E8%AE%BE%E7%BD%AE%E5%AF%86%E7%A0%81%E3%80%82%E9%BB%98%E8%AE%A4%E5%AF%86%E7%A0%81%E6%98%AF%E5%95%A5"><span class="nav-number">2.</span> <span class="nav-text">sudo apt install mysql-server执行后没有提示设置密码。默认密码是啥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ERROR-1819-HY000-Your-password-does-not-satisfy-the-current-policy-requirements"><span class="nav-number">3.</span> <span class="nav-text">ERROR 1819 (HY000): Your password does not satisfy the current policy requirements</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Mark先生"
+      src="/img/mark_avatar.jpeg">
+  <p class="site-author-name" itemprop="name">Mark先生</p>
+  <div class="site-description" itemprop="description">一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">137</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">68</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/MarkCHYL" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;MarkCHYL" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:2285581945@qq.com" title="E-Mail → mailto:2285581945@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.csdn.net/fuxiaoyuandroid/article/details/90140409" title="https:&#x2F;&#x2F;blog.csdn.net&#x2F;fuxiaoyuandroid&#x2F;article&#x2F;details&#x2F;90140409" rel="noopener" target="_blank">付工(来自济南的朋友)</a>
+        </li>
+    </ul>
+  </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/MarkCHYL" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://markchyl.cn/2023/09/08/ubuntu%E4%B8%AD%E5%AE%89%E8%A3%85mysql/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/img/mark_avatar.jpeg">
+      <meta itemprop="name" content="Mark先生">
+      <meta itemprop="description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mark的私人博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ubuntu中安装mysql
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-09-08 17:12:03" itemprop="dateCreated datePublished" datetime="2023-09-08T17:12:03+08:00">2023-09-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/ubuntu/" itemprop="url" rel="index"><span itemprop="name">ubuntu</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>要在Ubuntu中安装MySQL，可以按照以下步骤进行操作：</p>
+<ol>
+<li><p>打开终端：你可以按下<code>Ctrl+Alt+T</code>组合键来打开终端。</p>
+</li>
+<li><p>更新包列表：首先，运行以下命令来确保你的系统上的包列表是最新的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装MySQL服务器：运行以下命令来安装MySQL服务器：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install mysql-server</span><br></pre></td></tr></table></figure>
+
+<p>在安装过程中，系统会要求你设置MySQL root用户的密码。请务必选择一个强密码，并确保记住它。</p>
+</li>
+<li><p>启动MySQL服务：安装完成后，MySQL服务将会自动启动。你可以使用以下命令来检查MySQL服务状态：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl status mysql</span><br></pre></td></tr></table></figure>
+
+<p>如果MySQL没有自动启动，你可以使用以下命令手动启动它：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start mysql</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置MySQL安全性：运行以下命令来配置MySQL的基本安全性：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mysql_secure_installation</span><br></pre></td></tr></table></figure>
+
+<p>在这个过程中，你可以选择进行一些基本的安全设置，如删除匿名用户、禁止远程root登录等。按照提示进行操作即可。</p>
+</li>
+<li><p>连接到MySQL：安装完成后，你可以使用以下命令来连接到MySQL服务器：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
+
+<p>然后输入你之前设置的MySQL root密码。</p>
+</li>
+</ol>
+<p>现在，你已经成功在Ubuntu上安装了MySQL数据库服务器。你可以使用命令行工具或图形界面工具（如phpMyAdmin）来管理MySQL数据库。如果需要更多详细信息或有其他问题，请随时提问。</p>
+<h3 id="安装过程中没有要求我设置账号密码，我现在需要重新安装"><a href="#安装过程中没有要求我设置账号密码，我现在需要重新安装" class="headerlink" title="安装过程中没有要求我设置账号密码，我现在需要重新安装"></a>安装过程中没有要求我设置账号密码，我现在需要重新安装</h3><p>如果在安装MySQL过程中没有要求你设置账号密码，你可以尝试重新安装MySQL并确保按照以下步骤操作：</p>
+<ol>
+<li><p>首先，确保你的系统处于最新状态，以获取最新的软件包信息：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>然后，安装MySQL服务器：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install mysql-server</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装过程中，你应该会看到一个对话框，要求你设置MySQL root用户的密码。如果你没有看到这个对话框，可以尝试卸载MySQL并重新安装：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt remove --purge mysql-server mysql-client mysql-common</span><br><span class="line">sudo apt autoremove</span><br><span class="line">sudo apt autoclean</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>完成卸载后，再次安装MySQL服务器：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install mysql-server</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在重新安装MySQL时，确保注意看控制台上的任何提示，以设置MySQL root 用户的密码。遵循提示进行操作。</p>
+</li>
+<li><p>安装完成后，你可以使用以下命令来检查MySQL服务状态：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl status mysql</span><br></pre></td></tr></table></figure>
+<h3 id="sudo-apt-install-mysql-server执行后没有提示设置密码。默认密码是啥"><a href="#sudo-apt-install-mysql-server执行后没有提示设置密码。默认密码是啥" class="headerlink" title="sudo apt install mysql-server执行后没有提示设置密码。默认密码是啥"></a>sudo apt install mysql-server执行后没有提示设置密码。默认密码是啥</h3></li>
+</ol>
+<p>如果在安装MySQL时没有提示设置密码，并且没有默认密码，那么可能是因为MySQL版本或配置文件的不同。在某些MySQL安装中，默认情况下可能没有设置root密码。</p>
+<p>尝试使用以下步骤来设置root密码：</p>
+<ol>
+<li><p>通过以下方式登录到MySQL服务器：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mysql</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在MySQL中，使用以下命令来更改root用户的密码（将<code>your_new_password</code>替换为你希望设置的新密码）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER USER &#39;root&#39;@&#39;localhost&#39; IDENTIFIED WITH mysql_native_password BY &#39;your_new_password&#39;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>刷新MySQL权限：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>退出MySQL：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EXIT;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>现在，你应该已经成功设置了MySQL root 用户的密码。你可以使用新密码来登录MySQL。</p>
+<h3 id="ERROR-1819-HY000-Your-password-does-not-satisfy-the-current-policy-requirements"><a href="#ERROR-1819-HY000-Your-password-does-not-satisfy-the-current-policy-requirements" class="headerlink" title="ERROR 1819 (HY000): Your password does not satisfy the current policy requirements"></a>ERROR 1819 (HY000): Your password does not satisfy the current policy requirements</h3><p>这个错误是因为MySQL的密码策略要求密码必须符合一定的安全性要求。默认情况下，MySQL要求密码满足以下条件：</p>
+<ol>
+<li>至少包含8个字符。</li>
+<li>包含大写字母。</li>
+<li>包含小写字母。</li>
+<li>包含数字。</li>
+<li>包含特殊字符（例如：!、@、#、$等）。</li>
+</ol>
+<p>如果你的密码不符合这些要求，你可以尝试以下方法来解决这个问题：</p>
+<ol>
+<li><p><strong>使用更强密码</strong>：尝试创建一个更复杂的密码，满足上述要求。</p>
+</li>
+<li><p><strong>修改密码策略</strong>：如果你不想使用这些复杂的密码策略，可以修改MySQL的密码策略。但要注意，这可能会降低数据库的安全性。要修改密码策略，可以按照以下步骤：</p>
+<ul>
+<li><p>编辑MySQL配置文件（通常是<code>/etc/mysql/mysql.conf.d/mysqld.cnf</code>）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano &#x2F;etc&#x2F;mysql&#x2F;mysql.conf.d&#x2F;mysqld.cnf</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在配置文件中找到或添加以下行来禁用密码策略：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">skip-policy</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>保存文件并退出编辑器。</p>
+</li>
+<li><p>重新启动MySQL服务：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart mysql</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong>使用密码生成工具</strong>：你还可以使用密码生成工具来创建一个符合要求的密码，然后将其用作MySQL的密码。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl rand -base64 12</span><br></pre></td></tr></table></figure>
+
+<p>这将生成一个12个字符长的随机密码。</p>
+</li>
+</ol>
+<p>无论你选择哪种方法，都需要确保你的MySQL密码足够安全，以保护数据库的安全性。如果你对密码策略和安全性有疑问，最好咨询数据库管理员或安全专家的建议。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div></div>
+  <button>
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/img/weixin.png" alt="Mark先生 WeChat Pay">
+        <span>WeChat Pay</span>
+      </div>
+      <div>
+        <img src="/img/alipay.jpg" alt="Mark先生 Alipay">
+        <span>Alipay</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="followme">
+  <span>Welcome to my other publishing channels</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class="fa fa-rss"></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/mysql/" rel="tag"># mysql</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/09/08/%E5%9C%A8Ubuntu%E4%B8%8A%E5%AE%89%E8%A3%85%E5%A4%9A%E4%B8%AA%E7%89%88%E6%9C%AC%E7%9A%84Java-JDK/" rel="prev" title="在Ubuntu上安装多个版本的Java JDK">
+                  <i class="fa fa-chevron-left"></i> 在Ubuntu上安装多个版本的Java JDK
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mark先生</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdn.jsdelivr.net/npm/pdfobject@2.2.6/pdfobject.min.js","integrity":"sha256-77geM50MfxCD17eqyJR+Dag1svjJOLN+BJ2F/DMqMEY="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":"forest","js":{"url":"https://cdn.jsdelivr.net/npm/mermaid@8.11.2/dist/mermaid.min.js","integrity":"sha256-lBK8/r0PCT3qtPtIvDcaT+20nHioFbzRGg36kOJ+wz4="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"MarkCHYL/MarkCHYL.github.io","issue_term":"title","theme":"github-light"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>

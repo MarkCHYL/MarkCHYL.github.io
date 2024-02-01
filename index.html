@@ -164,18 +164,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">134</span>
+          <span class="site-state-item-count">137</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-count">25</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">67</span>
+        <span class="site-state-item-count">68</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -226,6 +226,356 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://markchyl.cn/2023/09/08/ubuntu%E4%B8%AD%E5%AE%89%E8%A3%85mysql/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/img/mark_avatar.jpeg">
+      <meta itemprop="name" content="Mark先生">
+      <meta itemprop="description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mark的私人博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/09/08/ubuntu%E4%B8%AD%E5%AE%89%E8%A3%85mysql/" class="post-title-link" itemprop="url">ubuntu中安装mysql</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-09-08 17:12:03" itemprop="dateCreated datePublished" datetime="2023-09-08T17:12:03+08:00">2023-09-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/ubuntu/" itemprop="url" rel="index"><span itemprop="name">ubuntu</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>要在Ubuntu中安装MySQL，可以按照以下步骤进行操作：</p>
+<ol>
+<li><p>打开终端：你可以按下<code>Ctrl+Alt+T</code>组合键来打开终端。</p>
+</li>
+<li><p>更新包列表：首先，运行以下命令来确保你的系统上的包列表是最新的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装MySQL服务器：运行以下命令来安装MySQL服务器：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install mysql-server</span><br></pre></td></tr></table></figure>
+
+<p>在安装过程中，系统会要求你设置MySQL root用户的密码。请务必选择一个强密码，并确保记住它。</p>
+</li>
+<li><p>启动MySQL服务：安装完成后，MySQL服务将会自动启动。你可以使用以下命令来检查MySQL服务状态：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl status mysql</span><br></pre></td></tr></table></figure>
+
+<p>如果MySQL没有自动启动，你可以使用以下命令手动启动它：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start mysql</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置MySQL安全性：运行以下命令来配置MySQL的基本安全性：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mysql_secure_installation</span><br></pre></td></tr></table></figure>
+
+<p>在这个过程中，你可以选择进行一些基本的安全设置，如删除匿名用户、禁止远程root登录等。按照提示进行操作即可。</p>
+</li>
+<li><p>连接到MySQL：安装完成后，你可以使用以下命令来连接到MySQL服务器：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
+
+<p>然后输入你之前设置的MySQL root密码。</p>
+</li>
+</ol>
+<p>现在，你已经成功在Ubuntu上安装了MySQL数据库服务器。你可以使用命令行工具或图形界面工具（如phpMyAdmin）来管理MySQL数据库。如果需要更多详细信息或有其他问题，请随时提问。</p>
+<h3 id="安装过程中没有要求我设置账号密码，我现在需要重新安装"><a href="#安装过程中没有要求我设置账号密码，我现在需要重新安装" class="headerlink" title="安装过程中没有要求我设置账号密码，我现在需要重新安装"></a>安装过程中没有要求我设置账号密码，我现在需要重新安装</h3><p>如果在安装MySQL过程中没有要求你设置账号密码，你可以尝试重新安装MySQL并确保按照以下步骤操作：</p>
+<ol>
+<li><p>首先，确保你的系统处于最新状态，以获取最新的软件包信息：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>然后，安装MySQL服务器：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install mysql-server</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装过程中，你应该会看到一个对话框，要求你设置MySQL root用户的密码。如果你没有看到这个对话框，可以尝试卸载MySQL并重新安装：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt remove --purge mysql-server mysql-client mysql-common</span><br><span class="line">sudo apt autoremove</span><br><span class="line">sudo apt autoclean</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>完成卸载后，再次安装MySQL服务器：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install mysql-server</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在重新安装MySQL时，确保注意看控制台上的任何提示，以设置MySQL root 用户的密码。遵循提示进行操作。</p>
+</li>
+<li><p>安装完成后，你可以使用以下命令来检查MySQL服务状态：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl status mysql</span><br></pre></td></tr></table></figure>
+<h3 id="sudo-apt-install-mysql-server执行后没有提示设置密码。默认密码是啥"><a href="#sudo-apt-install-mysql-server执行后没有提示设置密码。默认密码是啥" class="headerlink" title="sudo apt install mysql-server执行后没有提示设置密码。默认密码是啥"></a>sudo apt install mysql-server执行后没有提示设置密码。默认密码是啥</h3></li>
+</ol>
+<p>如果在安装MySQL时没有提示设置密码，并且没有默认密码，那么可能是因为MySQL版本或配置文件的不同。在某些MySQL安装中，默认情况下可能没有设置root密码。</p>
+<p>尝试使用以下步骤来设置root密码：</p>
+<ol>
+<li><p>通过以下方式登录到MySQL服务器：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mysql</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在MySQL中，使用以下命令来更改root用户的密码（将<code>your_new_password</code>替换为你希望设置的新密码）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER USER &#39;root&#39;@&#39;localhost&#39; IDENTIFIED WITH mysql_native_password BY &#39;your_new_password&#39;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>刷新MySQL权限：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>退出MySQL：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EXIT;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>现在，你应该已经成功设置了MySQL root 用户的密码。你可以使用新密码来登录MySQL。</p>
+<h3 id="ERROR-1819-HY000-Your-password-does-not-satisfy-the-current-policy-requirements"><a href="#ERROR-1819-HY000-Your-password-does-not-satisfy-the-current-policy-requirements" class="headerlink" title="ERROR 1819 (HY000): Your password does not satisfy the current policy requirements"></a>ERROR 1819 (HY000): Your password does not satisfy the current policy requirements</h3><p>这个错误是因为MySQL的密码策略要求密码必须符合一定的安全性要求。默认情况下，MySQL要求密码满足以下条件：</p>
+<ol>
+<li>至少包含8个字符。</li>
+<li>包含大写字母。</li>
+<li>包含小写字母。</li>
+<li>包含数字。</li>
+<li>包含特殊字符（例如：!、@、#、$等）。</li>
+</ol>
+<p>如果你的密码不符合这些要求，你可以尝试以下方法来解决这个问题：</p>
+<ol>
+<li><p><strong>使用更强密码</strong>：尝试创建一个更复杂的密码，满足上述要求。</p>
+</li>
+<li><p><strong>修改密码策略</strong>：如果你不想使用这些复杂的密码策略，可以修改MySQL的密码策略。但要注意，这可能会降低数据库的安全性。要修改密码策略，可以按照以下步骤：</p>
+<ul>
+<li><p>编辑MySQL配置文件（通常是<code>/etc/mysql/mysql.conf.d/mysqld.cnf</code>）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano &#x2F;etc&#x2F;mysql&#x2F;mysql.conf.d&#x2F;mysqld.cnf</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在配置文件中找到或添加以下行来禁用密码策略：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">skip-policy</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>保存文件并退出编辑器。</p>
+</li>
+<li><p>重新启动MySQL服务：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart mysql</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong>使用密码生成工具</strong>：你还可以使用密码生成工具来创建一个符合要求的密码，然后将其用作MySQL的密码。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl rand -base64 12</span><br></pre></td></tr></table></figure>
+
+<p>这将生成一个12个字符长的随机密码。</p>
+</li>
+</ol>
+<p>无论你选择哪种方法，都需要确保你的MySQL密码足够安全，以保护数据库的安全性。如果你对密码策略和安全性有疑问，最好咨询数据库管理员或安全专家的建议。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://markchyl.cn/2023/09/08/%E5%9C%A8Ubuntu%E4%B8%8A%E5%AE%89%E8%A3%85%E5%A4%9A%E4%B8%AA%E7%89%88%E6%9C%AC%E7%9A%84Java-JDK/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/img/mark_avatar.jpeg">
+      <meta itemprop="name" content="Mark先生">
+      <meta itemprop="description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mark的私人博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/09/08/%E5%9C%A8Ubuntu%E4%B8%8A%E5%AE%89%E8%A3%85%E5%A4%9A%E4%B8%AA%E7%89%88%E6%9C%AC%E7%9A%84Java-JDK/" class="post-title-link" itemprop="url">在Ubuntu上安装多个版本的Java JDK</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-09-08 11:28:36" itemprop="dateCreated datePublished" datetime="2023-09-08T11:28:36+08:00">2023-09-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/ubuntu/" itemprop="url" rel="index"><span itemprop="name">ubuntu</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>在Ubuntu上安装多个版本的Java JDK（Java Development Kit）是可行的，并且可以使用<code>update-alternatives</code>来管理不同版本之间的切换。以下是一个示例，演示如何在Ubuntu上安装和管理多个Java JDK版本。</p>
+<ol>
+<li><p><strong>检查系统上已安装的Java版本：</strong></p>
+<p>在终端中运行以下命令，以查看系统上已安装的Java版本：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update-java-alternatives -l</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/09/08/%E5%9C%A8Ubuntu%E4%B8%8A%E5%AE%89%E8%A3%85%E5%A4%9A%E4%B8%AA%E7%89%88%E6%9C%AC%E7%9A%84Java-JDK/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://markchyl.cn/2023/08/17/Spring-Cache%E5%85%A5%E9%97%A8%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/img/mark_avatar.jpeg">
+      <meta itemprop="name" content="Mark先生">
+      <meta itemprop="description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mark的私人博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/08/17/Spring-Cache%E5%85%A5%E9%97%A8%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">Spring Cache入门使用教程</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-08-17 16:38:36" itemprop="dateCreated datePublished" datetime="2023-08-17T16:38:36+08:00">2023-08-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="Spring-Cache入门使用教程"><a href="#Spring-Cache入门使用教程" class="headerlink" title="Spring Cache入门使用教程"></a>Spring Cache入门使用教程</h2><h3 id="什么是Spring-Cache？"><a href="#什么是Spring-Cache？" class="headerlink" title="什么是Spring Cache？"></a>什么是Spring Cache？</h3><p>Spring Cache是Spring框架提供的一个模块，用于在应用程序中实现缓存功能。它允许你将方法的结果缓存起来，以便在后续调用中重复使用，从而提高应用程序的性能。</p>
+<h3 id="步骤-1：添加依赖"><a href="#步骤-1：添加依赖" class="headerlink" title="步骤 1：添加依赖"></a>步骤 1：添加依赖</h3><p>在你的Spring项目中，首先需要添加Spring Cache的依赖。在Maven项目中，你可以在<code>pom.xml</code>文件中添加以下依赖：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-cache<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="步骤-2：配置缓存管理器"><a href="#步骤-2：配置缓存管理器" class="headerlink" title="步骤 2：配置缓存管理器"></a>步骤 2：配置缓存管理器</h3><p>在Spring Boot应用程序中，默认情况下，会自动配置一个适合的缓存管理器。如果你需要自定义缓存管理器，你可以在配置类中添加如下配置：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.springframework.cache.annotation.EnableCaching;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableCaching</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CacheConfig</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 配置其他缓存管理器的Bean，如Redis、Ehcache等</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="步骤-3：在方法上添加缓存注解"><a href="#步骤-3：在方法上添加缓存注解" class="headerlink" title="步骤 3：在方法上添加缓存注解"></a>步骤 3：在方法上添加缓存注解</h3><p>在你想要启用缓存的方法上添加缓存注解，如<code>@Cacheable</code>、<code>@CachePut</code>和<code>@CacheEvict</code>。</p>
+<ul>
+<li><code>@Cacheable</code>：用于标记方法的结果应该被缓存。如果有缓存可用，方法将不会被调用，而是直接从缓存中返回结果。</li>
+<li><code>@CachePut</code>：用于标记方法的结果应该被缓存，并且每次方法被调用时都会执行方法体，并将结果放入缓存。</li>
+<li><code>@CacheEvict</code>：用于标记方法执行后应该清除缓存。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.springframework.cache.annotation.Cacheable;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Service;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Cacheable(&quot;myCache&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getCachedData</span><span class="params">(String key)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 这里是实际方法逻辑</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Cached Data&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="步骤-4：配置缓存参数"><a href="#步骤-4：配置缓存参数" class="headerlink" title="步骤 4：配置缓存参数"></a>步骤 4：配置缓存参数</h3><p>你可以在<code>@Cacheable</code>、<code>@CachePut</code>和<code>@CacheEvict</code>注解中指定缓存的参数，如缓存的名称、键生成器等。例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Cacheable(value = &quot;myCache&quot;, key = &quot;#key&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getCachedData</span><span class="params">(String key)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="步骤-5：运行和测试"><a href="#步骤-5：运行和测试" class="headerlink" title="步骤 5：运行和测试"></a>步骤 5：运行和测试</h3><p>现在，你的Spring应用程序已经配置了缓存。你可以运行并测试你的方法，观察缓存的工作情况。</p>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>通过遵循以上步骤，你就可以在Spring应用程序中开始使用缓存功能。记得根据你的应用程序需求和性能优化要求来选择适合的缓存管理器和注解。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -833,259 +1183,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://markchyl.cn/2023/06/29/%E5%AE%89%E8%A3%85Go%E8%AF%AD%E8%A8%80%E7%9A%84%E9%9B%86%E6%88%90%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%EF%BC%88IDE%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/img/mark_avatar.jpeg">
-      <meta itemprop="name" content="Mark先生">
-      <meta itemprop="description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Mark的私人博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/06/29/%E5%AE%89%E8%A3%85Go%E8%AF%AD%E8%A8%80%E7%9A%84%E9%9B%86%E6%88%90%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%EF%BC%88IDE%EF%BC%89/" class="post-title-link" itemprop="url">安装Go语言的集成开发环境（IDE）</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2023-06-29 10:35:54" itemprop="dateCreated datePublished" datetime="2023-06-29T10:35:54+08:00">2023-06-29</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>要安装Go语言的集成开发环境（IDE），您可以考虑安装Visual Studio Code并使用Go插件来进行Go语言开发。以下是安装和配置步骤：</p>
-<ol>
-<li><p>安装 Visual Studio Code：打开终端，运行以下命令以添加 Visual Studio Code 的官方存储库，并安装它：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install code</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/06/29/%E5%AE%89%E8%A3%85Go%E8%AF%AD%E8%A8%80%E7%9A%84%E9%9B%86%E6%88%90%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%EF%BC%88IDE%EF%BC%89/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://markchyl.cn/2023/06/29/Ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%AD%E5%AE%89%E8%A3%85%E5%BA%94%E7%94%A8%E5%95%86%E5%BA%97/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/img/mark_avatar.jpeg">
-      <meta itemprop="name" content="Mark先生">
-      <meta itemprop="description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Mark的私人博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/06/29/Ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%AD%E5%AE%89%E8%A3%85%E5%BA%94%E7%94%A8%E5%95%86%E5%BA%97/" class="post-title-link" itemprop="url">Ubuntu虚拟机中安装应用商店</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2023-06-29 10:20:04" itemprop="dateCreated datePublished" datetime="2023-06-29T10:20:04+08:00">2023-06-29</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>如果您的Ubuntu虚拟机中没有应用商店，您可以尝试安装和使用其他的应用商店工具来获取和安装应用程序。以下是一些常见的应用商店工具：</p>
-<ol>
-<li><p>GNOME Software：GNOME Software是一个流行的图形化应用商店工具，适用于使用GNOME桌面环境的Ubuntu。打开终端，运行以下命令来安装GNOME Software：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install gnome-software</span><br></pre></td></tr></table></figure>
-
-<p>安装完成后，您可以在应用程序菜单中搜索并打开GNOME Software。通过GNOME Software，您可以浏览、搜索和安装各种应用程序。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/06/29/Ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%AD%E5%AE%89%E8%A3%85%E5%BA%94%E7%94%A8%E5%95%86%E5%BA%97/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://markchyl.cn/2023/06/29/ubuntu%E5%AE%89%E8%A3%85jdk1-8%E5%92%8Cjdk11/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/img/mark_avatar.jpeg">
-      <meta itemprop="name" content="Mark先生">
-      <meta itemprop="description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Mark的私人博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/06/29/ubuntu%E5%AE%89%E8%A3%85jdk1-8%E5%92%8Cjdk11/" class="post-title-link" itemprop="url">ubuntu安装jdk1.8和jdk11</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2023-06-29 10:17:59" itemprop="dateCreated datePublished" datetime="2023-06-29T10:17:59+08:00">2023-06-29</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>如果您需要在Ubuntu虚拟机上同时安装JDK 1.8和JDK 11，您可以按照以下步骤进行操作：</p>
-<ol>
-<li><p>安装JDK 1.8：<br>打开终端，运行以下命令安装OpenJDK 8：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install openjdk-8-jdk</span><br></pre></td></tr></table></figure>
-
-<p>安装完成后，可以使用<code>java -version</code>命令验证安装的JDK版本。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/06/29/ubuntu%E5%AE%89%E8%A3%85jdk1-8%E5%92%8Cjdk11/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
@@ -1099,7 +1196,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2023</span>
+  <span itemprop="copyrightYear">2024</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
