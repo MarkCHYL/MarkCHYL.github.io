@@ -363,6 +363,10 @@
 <li>2、singleTop 栈顶复用模式 （例如：推送点击消息页面）</li>
 <li>3、singleTask 栈内复用模式 （例如： 首页）</li>
 <li>4、singleInstance 单例模式 （单独位于一个任务栈中，例如：拨打电话页面）</li>
+<li><ol start="5">
+<li>singleInstancePerTask android12的时候新加入</li>
+</ol>
+</li>
 </ul>
 <h3 id="二、序列化-Serializable-和-Parcelable"><a href="#二、序列化-Serializable-和-Parcelable" class="headerlink" title="二、序列化 Serializable 和 Parcelable"></a>二、序列化 Serializable 和 Parcelable</h3><ul>
 <li>Serializable： Java 序列化方式，适用于存储和网络传输，serializableUID 用于确定反序列化和类版本是否一致，不一致时反序列化失败</li>
