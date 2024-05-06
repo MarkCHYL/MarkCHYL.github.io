@@ -14,7 +14,9 @@ categories: [数据库]
 ### 下载安装
 
 版本一定要下对，我踩过坑，
-![](https://img-blog.csdn.net/20180123204406478?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGFuY2VnZW50cnk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+
+![](https://markchyl.cn/img/20180123204406478.png)
+
 如图所示来查找对应系统安装版本，
 [官网下载地址是](https://dev.mysql.com/downloads/mysql/)
 
@@ -23,6 +25,7 @@ categories: [数据库]
 输入：cd /usr/local/mysql，回车执行
 然后输入：sudo vim .bash_profile，回车执行
 ```
+<!-- more -->
 #mysql环境变量
 export MYSQL_HOME=/usr/local/mysql
 export PATH=${MYSQL_HOME}/bin:$PATH

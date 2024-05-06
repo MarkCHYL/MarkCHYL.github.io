@@ -12,6 +12,7 @@ categories: [面试]
 * 2、singleTop 栈顶复用模式 （例如：推送点击消息页面）
 * 3、singleTask 栈内复用模式 （例如： 首页）
 * 4、singleInstance 单例模式 （单独位于一个任务栈中，例如：拨打电话页面）
+* 5. singleInstancePerTask android12的时候新加入
 
 ### 二、序列化 Serializable 和 Parcelable
 

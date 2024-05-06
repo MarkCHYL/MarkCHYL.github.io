@@ -14,7 +14,7 @@ categories: [Android]
 
 ### 如何做好技术选型？
 
-![././marksource/images/OPlayer_2022-07-12_18-19-20.jpg](../../marksource/images/OPlayer_2022-07-12_18-19-20.jpg)
+![](https://markchyl.cn/img/OPlayer_2022-07-12_18-19-20.jpg)
 ### 什么是路由？
 * 页面间跳转关系映射，可以通过字符串、别名等方式实现跳转
 ### 为什么介入路由？Intent不好吗？

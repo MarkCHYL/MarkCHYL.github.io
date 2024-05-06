@@ -5,7 +5,7 @@ date: 2018-12-17 10:58:01
 toc: true
 reward: true
 tags: [Python,爬虫]
-categories: [Python,爬虫]
+categories: [Python]
 ---
 ### 前言：
 #### Python3的爬虫基础学习，编写URL管理器、网页下载器、网页分析器、数据输出器、如何连接到MySQL。网上能搜到许多的库，在这我只是开始我的基础学起，瞎猫死猫能运行就可以。
