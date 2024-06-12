@@ -18,7 +18,7 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"markchyl.cn","root":"/","images":"/images","scheme":"Pisces","version":"8.7.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null,"activeClass":"utterances"},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"markchyl.cn","root":"/","images":"/images","scheme":"Gemini","version":"8.7.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null,"activeClass":"utterances"},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 <meta name="description" content="现在业务上出现客户要求如若生产环境出现紧急事件，需要版本回退的情况下，我这边的代码又没做版本分之处理，那么只能更改之前的版本号来实现。不敢夺他人之功，原文在此处 我之前的文章：android反编译apktool—dex2jar—jdgui 一、反编译apk并修改版本号在apk所在目录控制台输入下面指令，即可将文件名为source的apk反编译到outDir目录  开始反编译apk apktool">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MAC使用APKTool反编译apk修改版本号后重新打包">
@@ -93,12 +93,9 @@
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
         <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
         <li class="menu-item menu-item-resouces"><a href="/AndroidResouce/" rel="section"><i class="fa fa-sitemap fa-fw"></i>resouces</a></li>
-        <li class="menu-item menu-item-schedule"><a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>Schedule</a></li>
-        <li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
-        <li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>Commonweal 404</a></li>
+        <li class="menu-item menu-item-guestbook"><a href="/guestbook/" rel="section"><i class="fa fa-user fa-fw"></i>guestbook</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
@@ -364,8 +361,8 @@
 </div>
 
           <div class="post-tags">
-              <a href="/tags/%E5%8F%8D%E7%BC%96%E8%AF%91/" rel="tag"># 反编译</a>
-              <a href="/tags/%E5%B7%A5%E5%85%B7%E6%90%AD%E5%BB%BA/" rel="tag"># 工具搭建</a>
+              <a href="/tags/%E5%8F%8D%E7%BC%96%E8%AF%91/" rel="tag"><i class="fa fa-tag"></i> 反编译</a>
+              <a href="/tags/%E5%B7%A5%E5%85%B7%E6%90%AD%E5%BB%BA/" rel="tag"><i class="fa fa-tag"></i> 工具搭建</a>
           </div>
 
         
@@ -405,7 +402,7 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Mark先生</span>
+  <span class="author" itemprop="copyrightHolder">Mark</span>
 </div>
 <div class="busuanzi-count">
     <span class="post-meta-item" id="busuanzi_container_site_uv">
@@ -425,7 +422,7 @@
       </span>
     </span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
   </div>
 
     </div>
@@ -451,7 +448,7 @@
 
 
 
-<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"MarkCHYL/MarkCHYL.github.io","issue_term":"title","theme":"github-light"}</script>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"MarkCHYL/MarkCHYL.github.io","issue_term":"title","theme":"github-light","cdn":"https://utteranc.es/client.js"}</script>
 <script src="/js/third-party/comments/utterances.js"></script>
 
 </body>
