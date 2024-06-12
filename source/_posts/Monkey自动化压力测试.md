@@ -20,7 +20,7 @@ categories: [Android]
 1、 Monkey
 Monkey 就在手机里，安卓系统再带的
 
-2、 什么事ADB？
+2、 什么是ADB？
 Android Debug Bridge 安卓调试桥
 <!-- more -->
 3、 MonkeyScript

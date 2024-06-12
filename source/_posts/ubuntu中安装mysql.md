@@ -16,7 +16,7 @@ categories: [ubuntu]
    ```
    sudo apt update
    ```
-
+<!-- more -->
 3. 安装MySQL服务器：运行以下命令来安装MySQL服务器：
 
    ```

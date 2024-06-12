@@ -7,6 +7,7 @@ date: 2023-06-29 10:35:54
 tags: [环境配置,go]
 categories: [Linux]
 ---
+
 要安装Go语言的集成开发环境（IDE），您可以考虑安装Visual Studio Code并使用Go插件来进行Go语言开发。以下是安装和配置步骤：
 
 1. 安装 Visual Studio Code：打开终端，运行以下命令以添加 Visual Studio Code 的官方存储库，并安装它：

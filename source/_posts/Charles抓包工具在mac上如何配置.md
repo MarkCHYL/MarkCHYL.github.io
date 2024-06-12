@@ -19,22 +19,22 @@ categories: [工具使用]
 下载后安装
 ### 第二、设置charles代理
 打开charles/proxy/proxy-settings，设置一个端口号，默认的8888就可以。
-![网图盗用下](https://github.com/MarkCHYL/BLOG/blob/master/marksource/images/accxv-s218u.jpg?raw=true)
+![](../img/accxv-s218u.jpg)
 
 ### 第三、手机安装charles证书
 需要安装charles的证书。点击help/SSL proxying
 
-![](https://github.com/MarkCHYL/BLOG/blob/master/marksource/images/aa1g5-ewu90.jpg?raw=true)
+![](../img/aa1g5-ewu90.jpg)
 查询macbook的ip地址，并在手机连接的wifi上手动设置代理，代理主机名为ip地址，代理端口号为8888，会弹出一个框，显示的意思是手机上的wify需要设置代理。
 
 ### 第三、手机设置代理
 
 查询macbook的ip地址，并在手机连接的wifi上手动设置代理，代理主机名为ip地址，代理端口号为8888，这时候用手机访问网页，charles会弹出下列框，说明charles已经开始对手机抓包了，点击允许。
 
-![](https://github.com/MarkCHYL/BLOG/blob/master/marksource/images/a1evd-z9c3a.jpg?raw=true)
+![](../img/a1evd-z9c3a.jpg)
 
 然后在手机浏览器中访问手机http://charlesproxy.com/getssl，安装即可，
-![](https://github.com/MarkCHYL/BLOG/blob/master/marksource/images/a921v-hyhye.jpg?raw=true)
+![](../img/a921v-hyhye.jpg)
 
 
 好了，现在就可以流畅的抓取手机上的各种http/https请求了，想要学习更多charles工具方法.
