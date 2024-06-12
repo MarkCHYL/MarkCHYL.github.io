@@ -167,7 +167,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">137</span>
+          <span class="site-state-item-count">139</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -178,7 +178,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">68</span>
+        <span class="site-state-item-count">70</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -229,6 +229,167 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://markchyl.cn/2023/02/24/Glide%E4%B8%ADBug%EF%BC%9A%E5%AE%BD%E5%BA%A6%E9%93%BA%E6%BB%A1%E9%AB%98%E5%BA%A6%E8%87%AA%E9%80%82%E5%BA%94-GIF%E5%8A%A0%E8%BD%BD%E4%B9%8B%E5%9D%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/img/mark_avatar.jpeg">
+      <meta itemprop="name" content="Mark先生">
+      <meta itemprop="description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mark的私人博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/02/24/Glide%E4%B8%ADBug%EF%BC%9A%E5%AE%BD%E5%BA%A6%E9%93%BA%E6%BB%A1%E9%AB%98%E5%BA%A6%E8%87%AA%E9%80%82%E5%BA%94-GIF%E5%8A%A0%E8%BD%BD%E4%B9%8B%E5%9D%91/" class="post-title-link" itemprop="url">Glide中Bug：宽度铺满高度自适应 & GIF加载之坑</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-02-24 10:50:53" itemprop="dateCreated datePublished" datetime="2023-02-24T10:50:53+08:00">2023-02-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="一、前言："><a href="#一、前言：" class="headerlink" title="一、前言："></a>一、前言：</h2><p>Glide圆角和centerCrop都是有问题的</p>
+<ol>
+<li>imageview自带的centerCrop是不管图片小于还是大于imageview的大小，都会等比例拉伸填充满，然后裁剪；</li>
+<li>而Glide的centerCrop对于大图是裁剪，如果图片小于imageview，则是等比例全部显示在imageview里而不是填满裁剪;</li>
+<li>而且如果imageview自己设置了centeCrop，这时候Glide再设置圆角，如果图片原图小于imageview，圆角是无效的</li>
+</ol>
+<p><strong>Glide 的基本使用</strong>可以查看下面这些文章：</p>
+<p><a target="_blank" rel="noopener" href="http://ocnyang.com/2016/08/09/GlideAbout/">图片加载库Glide介绍</a></p>
+<p><a target="_blank" rel="noopener" href="http://ocnyang.com/2016/08/17/GlideUse/">Glide图片加载库的使用</a></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/02/24/Glide%E4%B8%ADBug%EF%BC%9A%E5%AE%BD%E5%BA%A6%E9%93%BA%E6%BB%A1%E9%AB%98%E5%BA%A6%E8%87%AA%E9%80%82%E5%BA%94-GIF%E5%8A%A0%E8%BD%BD%E4%B9%8B%E5%9D%91/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://markchyl.cn/2023/02/21/MacOS13-python3-%E6%8A%A5%E9%94%99-mach-o-file-but-is-an-incompatible-architecture-have-%E2%80%98arm64%E2%80%98-need-%E2%80%98x86-64%E2%80%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/img/mark_avatar.jpeg">
+      <meta itemprop="name" content="Mark先生">
+      <meta itemprop="description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mark的私人博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/02/21/MacOS13-python3-%E6%8A%A5%E9%94%99-mach-o-file-but-is-an-incompatible-architecture-have-%E2%80%98arm64%E2%80%98-need-%E2%80%98x86-64%E2%80%98/" class="post-title-link" itemprop="url">MacOS13 python3 报错 mach-o file, but is an incompatible architecture (have ‘arm64‘, need ‘x86_64‘)</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-02-21 14:19:29" itemprop="dateCreated datePublished" datetime="2023-02-21T14:19:29+08:00">2023-02-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>解决方案：<br>前面加上​​​arch -x86_64​​​ 例如：<br>​​arch -x86_64 pip3 install Pillow​​​​arch -x86_64 pip3 install numpy​​</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -938,187 +1099,6 @@
             </div>
           <!--/noindex-->
         
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://markchyl.cn/2022/09/16/implementation%E3%80%81api%E3%80%81compileOnly%E5%8C%BA%E5%88%AB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/img/mark_avatar.jpeg">
-      <meta itemprop="name" content="Mark先生">
-      <meta itemprop="description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Mark的私人博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/09/16/implementation%E3%80%81api%E3%80%81compileOnly%E5%8C%BA%E5%88%AB/" class="post-title-link" itemprop="url">implementation、api、compileOnly区别</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-09-16 22:51:03" itemprop="dateCreated datePublished" datetime="2022-09-16T22:51:03+08:00">2022-09-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="2-x和3-x版本依赖方式比较"><a href="#2-x和3-x版本依赖方式比较" class="headerlink" title="2.x和3.x版本依赖方式比较"></a>2.x和3.x版本依赖方式比较</h3><table>
-<thead>
-<tr>
-<th>2.x</th>
-<th>3.x</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>compile</td>
-<td>implementation、api</td>
-</tr>
-<tr>
-<td>provided</td>
-<td>compile only</td>
-</tr>
-<tr>
-<td>apk</td>
-<td>runtime only</td>
-</tr>
-<tr>
-<td>api</td>
-<td>api</td>
-</tr>
-</tbody></table>
-<h3 id="替代关系："><a href="#替代关系：" class="headerlink" title="替代关系："></a>替代关系：</h3><ul>
-<li>compile依赖关系已被弃⽤，被implementation和api替代;</li>
-<li>provided被compile only替代;</li>
-<li>apk被runtime only替代;</li>
-<li>api：跟2.x版本的 compile完全相同。</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/09/16/implementation%E3%80%81api%E3%80%81compileOnly%E5%8C%BA%E5%88%AB/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://markchyl.cn/2022/09/16/Android-studio%E5%BC%80%E5%90%AF%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4%E8%B5%84%E6%BA%90%E4%BB%93%E5%BA%93%E4%BB%A3%E7%90%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/img/mark_avatar.jpeg">
-      <meta itemprop="name" content="Mark先生">
-      <meta itemprop="description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Mark的私人博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/09/16/Android-studio%E5%BC%80%E5%90%AF%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4%E8%B5%84%E6%BA%90%E4%BB%93%E5%BA%93%E4%BB%A3%E7%90%86/" class="post-title-link" itemprop="url">Android studio开启阿里巴巴资源仓库代理</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-09-16 22:49:30" itemprop="dateCreated datePublished" datetime="2022-09-16T22:49:30+08:00">2022-09-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">repositories &#123;</span><br><span class="line">    maven &#123;</span><br><span class="line">        <span class="comment">//解决 gradle.build 仓库更换为阿里云仓库后报错</span></span><br><span class="line">        allowInsecureProtocol = <span class="keyword">true</span></span><br><span class="line">        <span class="comment">//阿里云仓库</span></span><br><span class="line">        url <span class="string">&#x27;http://maven.aliyun.com/nexus/content/groups/public/&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">   。。。。。。</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
