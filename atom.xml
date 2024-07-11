@@ -6,7 +6,7 @@
   <link href="http://markchyl.cn/atom.xml" rel="self"/>
   
   <link href="http://markchyl.cn/"/>
-  <updated>2024-06-04T11:30:55.000Z</updated>
+  <updated>2024-07-11T10:40:36.000Z</updated>
   <id>http://markchyl.cn/</id>
   
   <author>
@@ -15,6 +15,50 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>网络状态自定义组件---自定义控件</title>
+    <link href="http://markchyl.cn/2024/07/11/%E7%BD%91%E7%BB%9C%E7%8A%B6%E6%80%81%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6-%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6/"/>
+    <id>http://markchyl.cn/2024/07/11/%E7%BD%91%E7%BB%9C%E7%8A%B6%E6%80%81%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6-%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6/</id>
+    <published>2024-07-11T10:40:36.000Z</published>
+    <updated>2024-07-11T10:40:36.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;特点：独立性 + 可移植性&lt;br&gt;所有的逻辑都在这个控件中，直接在布局中添加就可以&lt;br&gt;技术点：协程CoroutineScope + 生命感知LifecycleOwner&lt;/p&gt;
+&lt;p&gt;直接贴代码&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Android" scheme="http://markchyl.cn/categories/Android/"/>
+    
+    
+    <category term="自定义View" scheme="http://markchyl.cn/tags/%E8%87%AA%E5%AE%9A%E4%B9%89View/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Node.js 版本管理工具:nvm</title>
+    <link href="http://markchyl.cn/2024/06/13/Node-js-%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7-nvm/"/>
+    <id>http://markchyl.cn/2024/06/13/Node-js-%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7-nvm/</id>
+    <published>2024-06-13T03:17:19.000Z</published>
+    <updated>2024-06-13T03:17:19.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/qq_41581588/article/details/139227504&quot;&gt;参考原文&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;nvm 是一款 Node.js 版本管理工具，允许用户通过命令行快速安装、切换和管理不同的 Node.js 版本。&lt;/p&gt;
+&lt;p&gt;图片&lt;img src=&quot;https://img-blog.csdnimg.cn/img_convert/49f67ddef04c0f95bf84de1a72a19853.png&quot;&gt;&lt;br&gt;（图片来自：github）&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;nvm 只适用于 macOS 和 Linux 用户的项目，如果是 Windows 用户，可以使用 nvm-windows 、nodist 或 nvs 替换。&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="开发工具" scheme="http://markchyl.cn/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
+    
+    
+    <category term="环境" scheme="http://markchyl.cn/tags/%E7%8E%AF%E5%A2%83/"/>
+    
+  </entry>
   
   <entry>
     <title>环境整理（pro、sit、uat、test、pre、dev、fat ）</title>
@@ -474,58 +518,6 @@
     
     
     <category term="工具，虚拟机" scheme="http://markchyl.cn/tags/%E5%B7%A5%E5%85%B7%EF%BC%8C%E8%99%9A%E6%8B%9F%E6%9C%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>shell脚本提示 ll:command not found</title>
-    <link href="http://markchyl.cn/2023/03/06/shell%E8%84%9A%E6%9C%AC%E6%8F%90%E7%A4%BA-ll-command-not-found/"/>
-    <id>http://markchyl.cn/2023/03/06/shell%E8%84%9A%E6%9C%AC%E6%8F%90%E7%A4%BA-ll-command-not-found/</id>
-    <published>2023-03-06T02:26:25.000Z</published>
-    <updated>2023-03-06T02:26:25.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;shell脚本test.sh代码：&lt;/p&gt;
-&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span</summary>
-        
-      
-    
-    
-    
-    <category term="Linux" scheme="http://markchyl.cn/categories/Linux/"/>
-    
-    
-    <category term="Error" scheme="http://markchyl.cn/tags/Error/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ImageView 中的 ScaleType 不起作用</title>
-    <link href="http://markchyl.cn/2023/02/28/ImageView-%E4%B8%AD%E7%9A%84-ScaleType-%E4%B8%8D%E8%B5%B7%E4%BD%9C%E7%94%A8/"/>
-    <id>http://markchyl.cn/2023/02/28/ImageView-%E4%B8%AD%E7%9A%84-ScaleType-%E4%B8%8D%E8%B5%B7%E4%BD%9C%E7%94%A8/</id>
-    <published>2023-02-28T07:03:19.000Z</published>
-    <updated>2023-02-28T07:03:19.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;我正在尝试使用 ViewPager展示Banner图片库。 viewpager 和图像检索一切正常。但是当我将位图放在 ImageView 中时，图像不会被拉伸以填充 ImageView 的大小。&lt;/p&gt;
-&lt;p&gt;就是在设置imageview的scaleType属性的时候</summary>
-        
-      
-    
-    
-    
-    <category term="Android" scheme="http://markchyl.cn/categories/Android/"/>
-    
-    
-    <category term="bug" scheme="http://markchyl.cn/tags/bug/"/>
     
   </entry>
   

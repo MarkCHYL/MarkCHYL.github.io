@@ -164,18 +164,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">139</span>
+          <span class="site-state-item-count">141</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-count">26</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">70</span>
+        <span class="site-state-item-count">72</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -226,6 +226,193 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://markchyl.cn/2022/09/16/Android%E4%B8%ADAPT%E6%8A%80%E6%9C%AF%E4%BB%8B%E7%BB%8D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/img/mark_avatar.jpeg">
+      <meta itemprop="name" content="Mark先生">
+      <meta itemprop="description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mark的私人博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/09/16/Android%E4%B8%ADAPT%E6%8A%80%E6%9C%AF%E4%BB%8B%E7%BB%8D/" class="post-title-link" itemprop="url">Android中APT技术介绍</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-09-16 22:59:58" itemprop="dateCreated datePublished" datetime="2022-09-16T22:59:58+08:00">2022-09-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="Android中APT技术介绍"><a href="#Android中APT技术介绍" class="headerlink" title="Android中APT技术介绍"></a>Android中APT技术介绍</h2><p>[TOC]</p>
+<h3 id="APT是什么"><a href="#APT是什么" class="headerlink" title="APT是什么"></a>APT是什么</h3><p><code>APT</code> 全称 <code>Annotation Processing Tool</code>，即注解处理器，是javac的一种处理注释的工具，它对源代码文件进行检测找出其中的Annotation，并根据注解自动生成代码，帮助开发者减少了很多重复代码的编写。</p>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><p>很多著名的框架用到APT的思想，通过注解编译期间自动生成代码，简化使用</p>
+<ol>
+<li><code>Butterknife</code></li>
+<li><code>Dragger</code></li>
+<li><code>Room</code></li>
+</ol>
+<p>另外，还有是运行时注解，例如</p>
+<ol>
+<li><code>Retrofit</code></li>
+</ol>
+<h3 id="APT有什么用-（好处）"><a href="#APT有什么用-（好处）" class="headerlink" title="APT有什么用 （好处）"></a>APT有什么用 （好处）</h3><p>可以在编译时生成额外的.java文件，在程序运行的时候调用相关方法，可以达到减少重复代码的效果。它的好处：提高开发效率，使得项目更容易维护和扩展，同时几乎不影响性能。</p>
+<h3 id="APT原理-（为什么）"><a href="#APT原理-（为什么）" class="headerlink" title="APT原理 （为什么）"></a>APT原理 （为什么）</h3><p>通过APT（Annotation Processing Tool）技术，即注解处理器，在编译时扫描并处理注解，注解处理器最终生成处理注解逻辑的.java文件。</p>
+<h3 id="APT实践-（怎么做）"><a href="#APT实践-（怎么做）" class="headerlink" title="APT实践 （怎么做）"></a>APT实践 （怎么做）</h3><ol>
+<li>创建自定义注解@interface；</li>
+<li>创建并注册注解处理器AbstractProcesso，生成处理注解逻辑的.java文件；</li>
+<li>封装一个供外部调用的API，用的是反射技术，具体来说就是调用第二步中生成的代码中的方法；</li>
+<li>在业务代码中使用，比如Activity、Fragment、Adapter</li>
+</ol>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><ol>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/b5be6b896a1a">Android编译时注解–入门篇（AbstractProcessor、APT）</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/xx326664162/article/details/68490059">你必须知道的APT、annotationProcessor、android-apt、Provided、自定义注解</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903701283340301">Android 注解系列之APT工具</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/hb707934728/article/details/52213086">Android 利用 APT 技术在编译期生成代码</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/biaozhiyuan/article/details/117045125">Android注解处理器APT技术简介</a></li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://markchyl.cn/2022/09/16/%E5%AE%9E%E6%88%98%EF%BC%9A%E5%9F%BA%E4%BA%8EARouter%E5%AE%9E%E7%8E%B0%E7%99%BB%E9%99%86%E6%8B%A6%E6%88%AA-%E5%85%A8%E5%B1%80%E9%99%8D%E7%BA%A7%E7%AD%96%E7%95%A5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/img/mark_avatar.jpeg">
+      <meta itemprop="name" content="Mark先生">
+      <meta itemprop="description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mark的私人博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/09/16/%E5%AE%9E%E6%88%98%EF%BC%9A%E5%9F%BA%E4%BA%8EARouter%E5%AE%9E%E7%8E%B0%E7%99%BB%E9%99%86%E6%8B%A6%E6%88%AA-%E5%85%A8%E5%B1%80%E9%99%8D%E7%BA%A7%E7%AD%96%E7%95%A5/" class="post-title-link" itemprop="url">实战：基于ARouter实现登陆拦截&全局降级策略</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-09-16 22:58:36" itemprop="dateCreated datePublished" datetime="2022-09-16T22:58:36+08:00">2022-09-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="实战：基于ARouter实现登陆拦截-amp-全局降级策略"><a href="#实战：基于ARouter实现登陆拦截-amp-全局降级策略" class="headerlink" title="实战：基于ARouter实现登陆拦截&amp;全局降级策略"></a>实战：基于ARouter实现登陆拦截&amp;全局降级策略</h2><ul>
+<li>需求分析</li>
+<li>成果展示</li>
+<li>疑难点分析</li>
+<li>Coding实现<h3 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h3></li>
+</ul>
+<hr>
+<ul>
+<li>利用ARouter拦截页面跳转，实现全局页面降级
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/09/16/%E5%AE%9E%E6%88%98%EF%BC%9A%E5%9F%BA%E4%BA%8EARouter%E5%AE%9E%E7%8E%B0%E7%99%BB%E9%99%86%E6%8B%A6%E6%88%AA-%E5%85%A8%E5%B1%80%E9%99%8D%E7%BA%A7%E7%AD%96%E7%95%A5/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -891,172 +1078,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://markchyl.cn/2021/10/09/mac%E4%B8%8A%E4%BD%BF%E7%94%A8svn-subversion/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/img/mark_avatar.jpeg">
-      <meta itemprop="name" content="Mark先生">
-      <meta itemprop="description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Mark的私人博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/09/mac%E4%B8%8A%E4%BD%BF%E7%94%A8svn-subversion/" class="post-title-link" itemprop="url">mac上使用svn(subversion)</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-10-09 10:21:15" itemprop="dateCreated datePublished" datetime="2021-10-09T10:21:15+08:00">2021-10-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" itemprop="url" rel="index"><span itemprop="name">工具使用</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/79116c6f8f72">原文：Wanna_1314</a></p>
-<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>在Windows中，我们常用TortoiseSVN这个软件来进行搭建SVN环境，那么在macOS中，我们应当如何去搭建SVN环境呢？在以前的老版本的macOS中，macOS中Xcode已经为我们提供了SVN的服务端和客户端。但是在如今的新版本当中，已经没有SVN了，我们可以使用Homebrew进行安装SVN。</p>
-<h3 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h3><p>如何安装呢？我们使用Homebrew进行安装，关于Homebrew的安装，可以从参考我往期的文章，下面直接讲述安装之后的安装命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install subversion</span><br></pre></td></tr></table></figure>
-<p>我们使用如下的命令进行检查是否安装了这个软件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew list</span><br></pre></td></tr></table></figure>
-<p>得到如下的结果<br><img src="https://upload-images.jianshu.io/upload_images/24412352-77bcc086d7bbdce9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1170/format/webp"><br>使用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">svn help</span><br></pre></td></tr></table></figure>
-<p>命令查看svn是否可以全局访问，如图所示，则安装成功！<br><img src="https://upload-images.jianshu.io/upload_images/24412352-e47e3ebfa90a4882.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1158/format/webp"></p>
-<h3 id="2-安装之后的配置"><a href="#2-安装之后的配置" class="headerlink" title="2.安装之后的配置"></a>2.安装之后的配置</h3><p>使用如下命令创建一个SVN的代码仓库（目录改成你想要创建的目录）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">svnadmin create &#x2F;Users&#x2F;wanna&#x2F;Desktop&#x2F;Code&#x2F;SVN</span><br></pre></td></tr></table></figure>
-<p><strong>当然我的电脑上自动给我创建了</strong><br><code>/Users/mark/.subversion</code><br>以下不多赘述，结合原文查看。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://markchyl.cn/2021/10/09/mac-%E5%AE%89%E8%A3%85homebrew/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/img/mark_avatar.jpeg">
-      <meta itemprop="name" content="Mark先生">
-      <meta itemprop="description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Mark的私人博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/09/mac-%E5%AE%89%E8%A3%85homebrew/" class="post-title-link" itemprop="url">mac 安装homebrew</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-10-09 09:57:26" itemprop="dateCreated datePublished" datetime="2021-10-09T09:57:26+08:00">2021-10-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" itemprop="url" rel="index"><span itemprop="name">工具使用</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>问题：macOS安装Homebrew时总是报错（Failed to connect to raw.githubusercontent.com port 443: Connection refused）</p>
-<p>原因：由于某些你懂的因素，导致GitHub的raw.githubusercontent.com域名解析被污染了。</p>
-<p>解决办法：通过修改hosts解决此问题。<br>查询真实IP</p>
-<p>在<a target="_blank" rel="noopener" href="https://www.ipaddress.com/%E6%9F%A5%E8%AF%A2raw.githubusercontent.com%E7%9A%84%E7%9C%9F%E5%AE%9EIP%E3%80%82">https://www.ipaddress.com/查询raw.githubusercontent.com的真实IP。</a><br><img src="https://imgconvert.csdnimg.cn/aHR0cDovL29zY2ltZy5vc2NoaW5hLm5ldC9vc2NuZXQvdXAtNzMwZGI4MDg5OGIzYmI5NzU2NDdlOTk1NzViZTEyZWY4N2EucG5n?x-oss-process=image/format,png"><br>修改hosts</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim &#x2F;etc&#x2F;hosts</span><br></pre></td></tr></table></figure>
-<p>添加如下内容：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">199.232.28.133 raw.githubusercontent.com</span><br></pre></td></tr></table></figure>
-<p>可以使用国内源啦</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;bin&#x2F;zsh -c &quot;$(curl -fsSL https:&#x2F;&#x2F;gitee.com&#x2F;cunkai&#x2F;HomebrewCN&#x2F;raw&#x2F;master&#x2F;Homebrew.sh)&quot;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 </div>

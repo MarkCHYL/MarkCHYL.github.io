@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://markchyl.cn/2024/07/11/%E7%BD%91%E7%BB%9C%E7%8A%B6%E6%80%81%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6-%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6/</loc>
+    <lastmod>2024-07-11</lastmod>
+  </url>
+  <url>
+    <loc>http://markchyl.cn/2024/06/13/Node-js-%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7-nvm/</loc>
+    <lastmod>2024-06-13</lastmod>
+  </url>
+  <url>
     <loc>http://markchyl.cn/2024/06/04/%E7%8E%AF%E5%A2%83%E6%95%B4%E7%90%86%EF%BC%88pro%E3%80%81sit%E3%80%81uat%E3%80%81test%E3%80%81pre%E3%80%81dev%E3%80%81fat-%EF%BC%89/</loc>
     <lastmod>2024-06-04</lastmod>
   </url>
