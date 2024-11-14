@@ -313,25 +313,25 @@
 <span id="more"></span>
 <h2 id="一、声明接口"><a href="#一、声明接口" class="headerlink" title="一、声明接口"></a>一、声明接口</h2><p>public interface GitHubService {<br>  @GET(“users/{user}/repos”)<br>  Call&lt;List<Repo>&gt; listRepos(@Path(“user”) String user);<br>}</p>
 <p>///Retrofit turns your HTTP API into a Java interface.</p>
-<p>eg：例子：<br>如果链接是<a target="_blank" rel="noopener" href="http://ip.taobao.com/service/getIpInfo.php?ip=202.202.33.33">http://ip.taobao.com/service/getIpInfo.php?ip=202.202.33.33</a><br> @GET(“<a target="_blank" rel="noopener" href="http://ip.taobao.com/service/getIpInfo.php&quot;">http://ip.taobao.com/service/getIpInfo.php&quot;</a>)<br>    Call getWeather(@Query(“ip”) String ip);</p>
+<p>eg：例子：<br>如果链接是<span class="exturl" data-url="aHR0cDovL2lwLnRhb2Jhby5jb20vc2VydmljZS9nZXRJcEluZm8ucGhwP2lwPTIwMi4yMDIuMzMuMzM=">http://ip.taobao.com/service/getIpInfo.php?ip=202.202.33.33<i class="fa fa-external-link-alt"></i></span><br> @GET(“<span class="exturl" data-url="aHR0cDovL2lwLnRhb2Jhby5jb20vc2VydmljZS9nZXRJcEluZm8ucGhwIg==">http://ip.taobao.com/service/getIpInfo.php&quot;<i class="fa fa-external-link-alt"></i></span>)<br>    Call getWeather(@Query(“ip”) String ip);</p>
 <p>注意：这里强调一点：Call get();必须是这种形式,这是2.0之后的新形式</p>
 <ul>
 <li>如果不需要转换成Json数据,可以用了ResponseBody;</li>
 <li>你也可以使用Call get();这样的话,需要添加Gson转换器</li>
 </ul>
-<h2 id="二、接口调用"><a href="#二、接口调用" class="headerlink" title="二、接口调用"></a>二、接口调用</h2><p>Retrofit retrofit = new Retrofit.Builder()<br> //这里建议：- Base URL: 总是以/结尾；- @Url: 不要以/开头<br>    .baseUrl(“<a target="_blank" rel="noopener" href="https://api.github.com/&quot;">https://api.github.com/&quot;</a>)<br>    .build();</p>
+<h2 id="二、接口调用"><a href="#二、接口调用" class="headerlink" title="二、接口调用"></a>二、接口调用</h2><p>Retrofit retrofit = new Retrofit.Builder()<br> //这里建议：- Base URL: 总是以/结尾；- @Url: 不要以/开头<br>    .baseUrl(“<span class="exturl" data-url="aHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS8i">https://api.github.com/&quot;<i class="fa fa-external-link-alt"></i></span>)<br>    .build();</p>
 <p>GitHubService service = retrofit.create(GitHubService.class);</p>
 <p>Call&lt;List<Repo>&gt; repos = service.listRepos(“octocat”);</p>
 <p>//The Retrofit class generates an implementation of the GitHubService interface.<br>强调一点：如果你的@GET后面的URL地址是全拼的地址，那么baseurl就会设置的没有必要，留意哦！！！</p>
 <h2 id="三、同步调用"><a href="#三、同步调用" class="headerlink" title="三、同步调用"></a>三、同步调用</h2><p>  try {<br>            Response bodyResponse = call.execute();<br>            String body = bodyResponse.body().string();//获取返回体的字符串<br>            Log.i(“wxl”, “body=” + body);<br>        } catch (IOException e) {<br>            e.printStackTrace();<br>注意：同步需要处理android.os.NetworkOnMainThreadException</p>
 <h2 id="四、异步调用"><a href="#四、异步调用" class="headerlink" title="四、异步调用"></a>四、异步调用</h2><p>call.enqueue(new Callback() {<br>            @Override<br>            public void onResponse(Response response) {<br>                try {<br>                    Log.i(“wxl”, “response=” + response.body().string());<br>                } catch (IOException e) {<br>                    e.printStackTrace();<br>            @Override<br>            public void onFailure(Throwable t) {<br>                Log.i(“wxl”, “onFailure=” + t.getMessage());<br>        });</p>
-<p>注意这里看不懂的可以参考我的GitHub代码地址：<a target="_blank" rel="noopener" href="https://github.com/MarkCHYL/MarkRetrofitDemo">https://github.com/MarkCHYL/MarkRetrofitDemo</a><br>项目中添加了简单的使用方法，只做到如何获取网络接口的数据。</p>
+<p>注意这里看不懂的可以参考我的GitHub代码地址：<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL01hcmtDSFlML01hcmtSZXRyb2ZpdERlbW8=">https://github.com/MarkCHYL/MarkRetrofitDemo<i class="fa fa-external-link-alt"></i></span><br>项目中添加了简单的使用方法，只做到如何获取网络接口的数据。</p>
 <h2 id="五、移除请求"><a href="#五、移除请求" class="headerlink" title="五、移除请求"></a>五、移除请求</h2><p>call.cancel();</p>
 <h2 id="六、添加gson依赖"><a href="#六、添加gson依赖" class="headerlink" title="六、添加gson依赖"></a>六、添加gson依赖</h2><p> implementation ‘com.squareup.retrofit2:converter-gson:2.3.0’<br>这里我选择的是与retrofit统一版本的，我怕报错</p>
 <p>后续我会进一步封装！！！</p>
 <h2 id="七、Retrofit2打印-网络请求日志"><a href="#七、Retrofit2打印-网络请求日志" class="headerlink" title="七、Retrofit2打印 网络请求日志"></a>七、Retrofit2打印 网络请求日志</h2><p>添加依赖：<br> implementation ‘com.squareup.okhttp3:logging-interceptor:3.8.1’</p>
-<h2 id="然后就是你初始化拦截器加配置；这个很简单我参考了以下两篇文章"><a href="#然后就是你初始化拦截器加配置；这个很简单我参考了以下两篇文章" class="headerlink" title="然后就是你初始化拦截器加配置；这个很简单我参考了以下两篇文章"></a>然后就是你初始化拦截器加配置；这个很简单我参考了以下两篇文章</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u011511368/article/details/51753315">https://blog.csdn.net/u011511368/article/details/51753315</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/Picasso_L/article/details/53200926">https://blog.csdn.net/Picasso_L/article/details/53200926</a></p>
-<h3 id="最后附上自己的Github的Demo"><a href="#最后附上自己的Github的Demo" class="headerlink" title="最后附上自己的Github的Demo"></a>最后附上自己的<a target="_blank" rel="noopener" href="https://github.com/MarkCHYL/MarkRetrofitDemo">Github的Demo</a></h3>
+<h2 id="然后就是你初始化拦截器加配置；这个很简单我参考了以下两篇文章"><a href="#然后就是你初始化拦截器加配置；这个很简单我参考了以下两篇文章" class="headerlink" title="然后就是你初始化拦截器加配置；这个很简单我参考了以下两篇文章"></a>然后就是你初始化拦截器加配置；这个很简单我参考了以下两篇文章</h2><p><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTE1MTEzNjgvYXJ0aWNsZS9kZXRhaWxzLzUxNzUzMzE1">https://blog.csdn.net/u011511368/article/details/51753315<i class="fa fa-external-link-alt"></i></span><br><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1BpY2Fzc29fTC9hcnRpY2xlL2RldGFpbHMvNTMyMDA5MjY=">https://blog.csdn.net/Picasso_L/article/details/53200926<i class="fa fa-external-link-alt"></i></span></p>
+<h3 id="最后附上自己的Github的Demo"><a href="#最后附上自己的Github的Demo" class="headerlink" title="最后附上自己的Github的Demo"></a>最后附上自己的<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL01hcmtDSFlML01hcmtSZXRyb2ZpdERlbW8=">Github的Demo<i class="fa fa-external-link-alt"></i></span></h3>
     </div>
 
     

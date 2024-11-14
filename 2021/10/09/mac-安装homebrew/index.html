@@ -311,7 +311,7 @@
     <div class="post-body" itemprop="articleBody"><p>问题：macOS安装Homebrew时总是报错（Failed to connect to raw.githubusercontent.com port 443: Connection refused）</p>
 <p>原因：由于某些你懂的因素，导致GitHub的raw.githubusercontent.com域名解析被污染了。</p>
 <p>解决办法：通过修改hosts解决此问题。<br>查询真实IP</p>
-<p>在<a target="_blank" rel="noopener" href="https://www.ipaddress.com/%E6%9F%A5%E8%AF%A2raw.githubusercontent.com%E7%9A%84%E7%9C%9F%E5%AE%9EIP%E3%80%82">https://www.ipaddress.com/查询raw.githubusercontent.com的真实IP。</a><br><img src="https://imgconvert.csdnimg.cn/aHR0cDovL29zY2ltZy5vc2NoaW5hLm5ldC9vc2NuZXQvdXAtNzMwZGI4MDg5OGIzYmI5NzU2NDdlOTk1NzViZTEyZWY4N2EucG5n?x-oss-process=image/format,png"><br>修改hosts</p>
+<p>在<span class="exturl" data-url="aHR0cHM6Ly93d3cuaXBhZGRyZXNzLmNvbS8lRTYlOUYlQTUlRTglQUYlQTJyYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tJUU3JTlBJTg0JUU3JTlDJTlGJUU1JUFFJTlFSVAlRTMlODAlODI=">https://www.ipaddress.com/查询raw.githubusercontent.com的真实IP。<i class="fa fa-external-link-alt"></i></span><br><img data-src="https://imgconvert.csdnimg.cn/aHR0cDovL29zY2ltZy5vc2NoaW5hLm5ldC9vc2NuZXQvdXAtNzMwZGI4MDg5OGIzYmI5NzU2NDdlOTk1NzViZTEyZWY4N2EucG5n?x-oss-process=image/format,png"><br>修改hosts</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim &#x2F;etc&#x2F;hosts</span><br></pre></td></tr></table></figure>
 <p>添加如下内容：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">199.232.28.133 raw.githubusercontent.com</span><br></pre></td></tr></table></figure>

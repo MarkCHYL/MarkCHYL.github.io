@@ -318,11 +318,11 @@
 <li>在业务代码中使用，比如Activity、Fragment、Adapter</li>
 </ol>
 <h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><ol>
-<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/b5be6b896a1a">Android编译时注解–入门篇（AbstractProcessor、APT）</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/xx326664162/article/details/68490059">你必须知道的APT、annotationProcessor、android-apt、Provided、自定义注解</a></li>
-<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903701283340301">Android 注解系列之APT工具</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/hb707934728/article/details/52213086">Android 利用 APT 技术在编译期生成代码</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/biaozhiyuan/article/details/117045125">Android注解处理器APT技术简介</a></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuamlhbnNodS5jb20vcC9iNWJlNmI4OTZhMWE=">Android编译时注解–入门篇（AbstractProcessor、APT）<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3h4MzI2NjY0MTYyL2FydGljbGUvZGV0YWlscy82ODQ5MDA1OQ==">你必须知道的APT、annotationProcessor、android-apt、Provided、自定义注解<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uY24vcG9zdC82ODQ0OTAzNzAxMjgzMzQwMzAx">Android 注解系列之APT工具<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hiNzA3OTM0NzI4L2FydGljbGUvZGV0YWlscy81MjIxMzA4Ng==">Android 利用 APT 技术在编译期生成代码<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2JpYW96aGl5dWFuL2FydGljbGUvZGV0YWlscy8xMTcwNDUxMjU=">Android注解处理器APT技术简介<i class="fa fa-external-link-alt"></i></span></li>
 </ol>
 
       
@@ -716,9 +716,9 @@
           <p>通过终端命令 cd /Users/xxx/Downloads/nexus-3.14.0-04-mac/nexus-3.14.0-04/bin进入bin目录下，执行<br>./nexus start<br>./nexus status</p>
 <p>上传示例：</p>
 <p>apply plugin: ‘maven’</p>
-<p>//打包main目录下代码和资源的task<br>task androidSourcesJar(type: Jar) {<br>    classifier = ‘sources’<br>    from android.sourceSets.main.java.srcDirs<br>}<br>//配置需要上传到maven仓库的文件<br>artifacts {<br>    archives androidSourcesJar<br>}<br>//上传到Maven仓库的task<br>uploadArchives {<br>    repositories {<br>        mavenDeployer {<br>            //指定maven仓库url<br>            repository(url: “<a target="_blank" rel="noopener" href="http://127.0.0.1:8081/nexus/content/repositories/releases/&quot;">http://127.0.0.1:8081/nexus/content/repositories/releases/&quot;</a>) {<br>                //nexus登录默认用户名和密码<br>                authentication(userName: “admin”, password: “admin123”)<br>            }<br>            pom.groupId = “com.example.as.custom”// 唯一标识（通常为模块包名，也可以任意）<br>            pom.artifactId = “CustomWidget” // 项目名称（通常为类库模块名称，也可以任意）<br>            pom.version = “1.1.0” // 版本号<br>        }<br>    }<br>}</p>
+<p>//打包main目录下代码和资源的task<br>task androidSourcesJar(type: Jar) {<br>    classifier = ‘sources’<br>    from android.sourceSets.main.java.srcDirs<br>}<br>//配置需要上传到maven仓库的文件<br>artifacts {<br>    archives androidSourcesJar<br>}<br>//上传到Maven仓库的task<br>uploadArchives {<br>    repositories {<br>        mavenDeployer {<br>            //指定maven仓库url<br>            repository(url: “<span class="exturl" data-url="aHR0cDovLzEyNy4wLjAuMTo4MDgxL25leHVzL2NvbnRlbnQvcmVwb3NpdG9yaWVzL3JlbGVhc2VzLyI=">http://127.0.0.1:8081/nexus/content/repositories/releases/&quot;<i class="fa fa-external-link-alt"></i></span>) {<br>                //nexus登录默认用户名和密码<br>                authentication(userName: “admin”, password: “admin123”)<br>            }<br>            pom.groupId = “com.example.as.custom”// 唯一标识（通常为模块包名，也可以任意）<br>            pom.artifactId = “CustomWidget” // 项目名称（通常为类库模块名称，也可以任意）<br>            pom.version = “1.1.0” // 版本号<br>        }<br>    }<br>}</p>
 <p>3.使用：<br>和使用本地仓库依赖一样，我们告诉gradle依赖包仓库的位置，在项目根目录下build.gradle中添加：</p>
-<p>allprojects {<br>    repositories {<br>        google()<br>        jcenter()<br>        maven { url ‘<a target="_blank" rel="noopener" href="http://127.0.0.1:8081/nexus/content/repositories/releases/&#39;">http://127.0.0.1:8081/nexus/content/repositories/releases/&#39;</a> }<br>    }<br>}</p>
+<p>allprojects {<br>    repositories {<br>        google()<br>        jcenter()<br>        maven { url ‘<span class="exturl" data-url="aHR0cDovLzEyNy4wLjAuMTo4MDgxL25leHVzL2NvbnRlbnQvcmVwb3NpdG9yaWVzL3JlbGVhc2VzLyc=">http://127.0.0.1:8081/nexus/content/repositories/releases/&#39;<i class="fa fa-external-link-alt"></i></span> }<br>    }<br>}</p>
 <p>然后在app模块build.gradle中添加依赖编译运行成功：</p>
 
       
@@ -900,8 +900,8 @@
 <li>mysql-8.0.27-macos11-x86_64.dmg</li>
 </ul>
 <h3 id="下载安装"><a href="#下载安装" class="headerlink" title="下载安装"></a>下载安装</h3><p>版本一定要下对，我踩过坑，</p>
-<p><img src="https://markchyl.cn/img/20180123204406478.png"></p>
-<p>如图所示来查找对应系统安装版本，<br><a target="_blank" rel="noopener" href="https://dev.mysql.com/downloads/mysql/">官网下载地址是</a></p>
+<p><img data-src="https://markchyl.cn/img/20180123204406478.png"></p>
+<p>如图所示来查找对应系统安装版本，<br><span class="exturl" data-url="aHR0cHM6Ly9kZXYubXlzcWwuY29tL2Rvd25sb2Fkcy9teXNxbC8=">官网下载地址是<i class="fa fa-external-link-alt"></i></span></p>
 <h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><p>打开终端<br>输入：cd /usr/local/mysql，回车执行<br>然后输入：sudo vim .bash_profile，回车执行</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- more --&gt;</span><br><span class="line">#mysql环境变量</span><br><span class="line">export MYSQL_HOME&#x3D;&#x2F;usr&#x2F;local&#x2F;mysql</span><br><span class="line">export PATH&#x3D;$&#123;MYSQL_HOME&#125;&#x2F;bin:$PATH</span><br></pre></td></tr></table></figure>
 <p>记得<code>source ~/.bash_profile</code>让环境变量生效。</p>
@@ -990,7 +990,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/lancegentry/article/details/79144131">原文</a></p>
+          <p><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xhbmNlZ2VudHJ5L2FydGljbGUvZGV0YWlscy83OTE0NDEzMQ==">原文<i class="fa fa-external-link-alt"></i></span></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo rm &#x2F;usr&#x2F;local&#x2F;mysql</span><br><span class="line">sudo rm -rf &#x2F;usr&#x2F;local&#x2F;mysql*</span><br><span class="line">sudo rm -rf &#x2F;Library&#x2F;StartupItems&#x2F;MySQLCOM</span><br><span class="line">sudo rm -rf &#x2F;Library&#x2F;PreferencePanes&#x2F;MySQL*</span><br><span class="line">sudo rm -rf ~&#x2F;Library&#x2F;PreferencePanes&#x2F;MySQL*</span><br><span class="line">sudo rm -rf &#x2F;Library&#x2F;Receipts&#x2F;mysql*</span><br><span class="line">sudo rm -rf &#x2F;Library&#x2F;Receipts&#x2F;MySQL*</span><br></pre></td></tr></table></figure>
 <p>最后删除/etc/hostconfig文件中的  MYSQLCOM=-YES-</p>
 <p>这个选项有些用户有，有些没有</p>
@@ -1079,10 +1079,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/dongzhensong/article/details/87807378">原文</a></p>
+          <p><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Rvbmd6aGVuc29uZy9hcnRpY2xlL2RldGFpbHMvODc4MDczNzg=">原文<i class="fa fa-external-link-alt"></i></span></p>
 <h3 id="我的配置"><a href="#我的配置" class="headerlink" title="我的配置"></a>我的配置</h3><ul>
 <li>MacBook Pro</li>
-<li>jdk1.8<h3 id="1-下载"><a href="#1-下载" class="headerlink" title="1.下载"></a>1.下载</h3>前往<a target="_blank" rel="noopener" href="https://tomcat.apache.org/download-80.cgi">ApacheTomcat</a>官网下载Tomcat：<br><img src="https://img-blog.csdnimg.cn/20190220165426253.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Rvbmd6aGVuc29uZw==,size_16,color_FFFFFF,t_70"><br>首先选择相应的版本（以Tomcat 8为例）：<br>下载右边Core下的第一个资源zip。<br>下载后解压下来重名名为ApacheTomcat，并放到磁盘的/usr/local下<br><img src="https://img-blog.csdnimg.cn/20190220165752464.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Rvbmd6aGVuc29uZw==,size_16,color_FFFFFF,t_70">
+<li>jdk1.8<h3 id="1-下载"><a href="#1-下载" class="headerlink" title="1.下载"></a>1.下载</h3>前往<span class="exturl" data-url="aHR0cHM6Ly90b21jYXQuYXBhY2hlLm9yZy9kb3dubG9hZC04MC5jZ2k=">ApacheTomcat<i class="fa fa-external-link-alt"></i></span>官网下载Tomcat：<br><img data-src="https://img-blog.csdnimg.cn/20190220165426253.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Rvbmd6aGVuc29uZw==,size_16,color_FFFFFF,t_70"><br>首先选择相应的版本（以Tomcat 8为例）：<br>下载右边Core下的第一个资源zip。<br>下载后解压下来重名名为ApacheTomcat，并放到磁盘的/usr/local下<br><img data-src="https://img-blog.csdnimg.cn/20190220165752464.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Rvbmd6aGVuc29uZw==,size_16,color_FFFFFF,t_70">
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2021/11/02/Mac%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AETomcat%E7%9A%84%E6%95%99%E7%A8%8B/#more" rel="contents">
@@ -1174,7 +1174,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><a target="_blank" rel="noopener" href="https://blog.51cto.com/59465168/1837538">原文来自</a><br>1.立即关机命令<br>        sudo halt<br>    或者<br>        sudo shutdown -h now </p>
+          <p><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLjUxY3RvLmNvbS81OTQ2NTE2OC8xODM3NTM4">原文来自<i class="fa fa-external-link-alt"></i></span><br>1.立即关机命令<br>        sudo halt<br>    或者<br>        sudo shutdown -h now </p>
 <ol start="2">
 <li><p>10分钟后关机<br>sudo shutdown -h +10 </p>
 </li>

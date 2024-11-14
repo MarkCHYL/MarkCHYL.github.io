@@ -313,12 +313,12 @@
     
     <div class="post-body" itemprop="articleBody"><h1 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h1><p>   我是名安卓程序员。当我第一次接触到架构这个概念时，说实话我一头雾水。我现实了解了MVC模式，当我开始接触MVP模式时，我啊真的彻底被搞懵了！怎么把一个activity拆成了四个或五者，如果分装过后会更多，想象下，一下子猛的看那么复杂的对我来说无益处。这边文章呢我实现只是一个加你简单单的Demo练习，参考代码和资料来源于网上（备注于文底部）。<br>   记录只是让自己加深理解。</p>
 <span id="more"></span>
-<p><img src="https://user-gold-cdn.xitu.io/2018/7/30/164e8dc7b3e27bb6?w=696&h=812&f=png&s=257193" alt="这是我的Demo代码架构" title="这是我的Demo代码架构"></p>
+<p><img data-src="https://user-gold-cdn.xitu.io/2018/7/30/164e8dc7b3e27bb6?w=696&h=812&f=png&s=257193" alt="这是我的Demo代码架构" title="这是我的Demo代码架构"></p>
 <hr>
 <ul>
 <li><h2 id="跟着大佬学习下MVP模式："><a href="#跟着大佬学习下MVP模式：" class="headerlink" title="跟着大佬学习下MVP模式："></a>跟着大佬学习下MVP模式：</h2> MVP是模型（Model）、视图（View）、主持人（Presenter）的缩写，分别代表项目中3个不同的模块。</li>
 </ul>
-<p><img src="https://user-gold-cdn.xitu.io/2018/7/30/164e9021bf594592?w=728&h=618&f=png&s=38130" title="MVP模式示意图"><br>说明：</p>
+<p><img data-src="https://user-gold-cdn.xitu.io/2018/7/30/164e9021bf594592?w=728&h=618&f=png&s=38130" title="MVP模式示意图"><br>说明：</p>
 <ul>
 <li>步骤1：UI实现View方法，引用Presenter</li>
 <li>步骤2：Presenter调用Model，走Model具体逻辑</li>
@@ -344,7 +344,7 @@
 <p>是连接Activity(在这可以理解为就是View层，因为Activity实现了 <strong>IUserView</strong> 接口)和Model的重要桥梁，所有的业务逻辑都在它里面完成：</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class UserPresenter &#123;</span><br><span class="line">    private IUser user;</span><br><span class="line">    private IUserView userView;</span><br><span class="line">    public UserPresenter(IUserView userView) &#123;</span><br><span class="line">        this.userView &#x3D; userView;</span><br><span class="line">        user &#x3D; new User();</span><br><span class="line">    &#125;</span><br><span class="line">    public void saveUser()&#123;</span><br><span class="line">        user.savaUserInfo(userView.getUser());</span><br><span class="line">    &#125;</span><br><span class="line">    public void loadUser()&#123;</span><br><span class="line">        userView.setUser(user.loadUserInfo());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<a target="_blank" rel="noopener" href="https://github.com/MarkCHYL/Mark_MVP_Sample" title="源码地址">源码地址</a></li>
+<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL01hcmtDSFlML01hcmtfTVZQX1NhbXBsZQ==" title="源码地址">源码地址<i class="fa fa-external-link-alt"></i></span></li>
 </ul>
 <p>下一篇我会结合自己封装的retrofit写一个网络请求的demo笔记，加油⛽️</p>
 

@@ -307,7 +307,7 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>版权声明：本文为博主原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接和本声明。<br>本文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/u014449096/article/details/72885947">https://blog.csdn.net/u014449096/article/details/72885947</a></p>
+    <div class="post-body" itemprop="articleBody"><p>版权声明：本文为博主原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接和本声明。<br>本文链接：<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTQ0NDkwOTYvYXJ0aWNsZS9kZXRhaWxzLzcyODg1OTQ3">https://blog.csdn.net/u014449096/article/details/72885947<i class="fa fa-external-link-alt"></i></span></p>
 <p><strong>开发中遇到了这样的一个问题，界面最外层是ScrollView，然后里面有嵌套了一个ListView还有其他可以获取焦点的View，然后每次打开界面都会自动滚动到最底部，经过一番折腾，发现了一个简单的方法,<br>获取ScrollView里面一个上层任意view，然后调用如下方法：</strong><br> <span id="more"></span><br><code>view.setFocusable(true);  view.setFocusableInTouchMode(true);  view.requestFocus();</code></p>
 <p>**或者将scrollview包裹的内容设置上以下两个属性 **<br><code>android:focusable=”true” android:focusableInTouchMode=”true”</code></p>
 <p>例如：</p>

@@ -312,7 +312,7 @@
     
     <div class="post-body" itemprop="articleBody"><h3 id="为什么启动会出现白屏？"><a href="#为什么启动会出现白屏？" class="headerlink" title="为什么启动会出现白屏？"></a>为什么启动会出现白屏？</h3><p>由于Android启动的时候要进行一系列初始化，如检查权限，开启进程，绑定application，startActivity。<br>这些初始化会稍微需要一点点时间，比如一秒钟。白屏持续的时间长短当然也和设备有关，设备越差白屏持续时间越长。</p>
 <span id="more"></span>
-<h3 id="如何解决？"><a href="#如何解决？" class="headerlink" title="如何解决？"></a>如何解决？</h3><p>我这里使用第三方的插件进行解决。<a target="_blank" rel="noopener" href="https://pub.flutter-io.cn/packages/flutter_splash_screen">flutter_splash_screen</a>.</p>
+<h3 id="如何解决？"><a href="#如何解决？" class="headerlink" title="如何解决？"></a>如何解决？</h3><p>我这里使用第三方的插件进行解决。<span class="exturl" data-url="aHR0cHM6Ly9wdWIuZmx1dHRlci1pby5jbi9wYWNrYWdlcy9mbHV0dGVyX3NwbGFzaF9zY3JlZW4=">flutter_splash_screen<i class="fa fa-external-link-alt"></i></span>.</p>
 <p>其使用方法看他的文档。</p>
 <h3 id="记录下配置的时候遇到的问题？"><a href="#记录下配置的时候遇到的问题？" class="headerlink" title="记录下配置的时候遇到的问题？"></a>记录下配置的时候遇到的问题？</h3><p>导包总是报错，先手敲代码，再导包。支持自定义启动布局。<br>安卓的配置步骤多点。<br><strong>下面是我安卓配置：</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import org.devio.flutter.splashscreen.SplashScreen;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class MainActivity extends FlutterActivity &#123;</span><br><span class="line">  @Override</span><br><span class="line">  protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">    SplashScreen.show(this, true);&#x2F;&#x2F; here</span><br><span class="line">    super.onCreate(savedInstanceState);</span><br><span class="line">    GeneratedPluginRegistrant.registerWith(this);</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;&#x2F;注册自己的 Plugin 插件</span><br><span class="line">    resisterSelfPlugin();</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
@@ -321,8 +321,8 @@
 
 <p><strong>下面是我 IOS 配置：</strong></p>
 <ul>
-<li>导入启动图片<br><img src="https://github.com/MarkCHYL/BLOG/blob/master/marksource/images/WechatIMG309.png?raw=true"></li>
-<li>配置启动图片<br><img src="https://github.com/MarkCHYL/BLOG/blob/master/marksource/images/WechatIMG310.png?raw=true"></li>
+<li>导入启动图片<br><img data-src="https://github.com/MarkCHYL/BLOG/blob/master/marksource/images/WechatIMG309.png?raw=true"></li>
+<li>配置启动图片<br><img data-src="https://github.com/MarkCHYL/BLOG/blob/master/marksource/images/WechatIMG310.png?raw=true"></li>
 </ul>
 
     </div>

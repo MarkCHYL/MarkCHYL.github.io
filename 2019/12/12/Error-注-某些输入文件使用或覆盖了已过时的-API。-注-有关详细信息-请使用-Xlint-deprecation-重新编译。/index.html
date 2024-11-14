@@ -306,7 +306,7 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/dong19900415/article/details/52882529?utm_source=blogxgwz3">原文</a></p>
+    <div class="post-body" itemprop="articleBody"><p><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2RvbmcxOTkwMDQxNS9hcnRpY2xlL2RldGFpbHMvNTI4ODI1Mjk/dXRtX3NvdXJjZT1ibG9neGd3ejM=">原文<i class="fa fa-external-link-alt"></i></span></p>
 <p>Error:注: 某些输入文件使用或覆盖了已过时的 API。<br>注: 有关详细信息, 请使用 -Xlint:deprecation 重新编译。<br>注: 某些输入文件使用了未经检查或不安全的操作。<br>注: 有关详细信息, 请使用 -Xlint:unchecked 重新编译。<br>FAILURE: Build failed with an exception.<br>最近项目出现的一些问题可以在build中加入</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">allprojects &#123;</span><br><span class="line">    gradle.projectsEvaluated &#123;</span><br><span class="line">        tasks.withType(JavaCompile) &#123;</span><br><span class="line">            options.compilerArgs &lt;&lt; &quot;-Xlint:unchecked&quot; &lt;&lt; &quot;-Xlint:deprecation&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     </div>

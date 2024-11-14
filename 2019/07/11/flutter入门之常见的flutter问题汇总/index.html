@@ -307,8 +307,8 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/email_jade/article/details/85317859###">csdn上原博文</a></p>
-<p>【原创不易，转载请注明出处：<a target="_blank" rel="noopener" href="https://blog.csdn.net/email_jade/article/details/85317859%E3%80%91">https://blog.csdn.net/email_jade/article/details/85317859】</a></p>
+    <div class="post-body" itemprop="articleBody"><p><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2VtYWlsX2phZGUvYXJ0aWNsZS9kZXRhaWxzLzg1MzE3ODU5IyMj">csdn上原博文<i class="fa fa-external-link-alt"></i></span></p>
+<p>【原创不易，转载请注明出处：<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2VtYWlsX2phZGUvYXJ0aWNsZS9kZXRhaWxzLzg1MzE3ODU5JUUzJTgwJTkx">https://blog.csdn.net/email_jade/article/details/85317859】<i class="fa fa-external-link-alt"></i></span></p>
 <span id="more"></span>
 <ol>
 <li><p>使用AppBar后如何去掉左边的返回箭头。左边的图标对应的是leading，源代码如下（吐槽一下，CSDN暂不支持dart语言）：</p>
@@ -396,7 +396,7 @@
 </ol>
 <p>   以下设置为设置整个项目运行到时候只允许横屏，如果需要其他方向，可以参考设置。</p>
 <p>  SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeRight]).then((_){<br>    runApp(MyApp());<br>  });<br>对于IOS来说，可能我们设置只允许横屏了，但是效果确依旧可以竖屏，记得修改xcode的General–Deployment Info–Device Orientation属性，自己勾选对应的方向，如下。</p>
-<p>设置屏幕显示方向，由于flutter中有bug，在IOS端可能不生效，需要插件支持，见 <a target="_blank" rel="noopener" href="https://github.com/jadennn/flutter_orientation">https://github.com/jadennn/flutter_orientation</a> </p>
+<p>设置屏幕显示方向，由于flutter中有bug，在IOS端可能不生效，需要插件支持，见 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2phZGVubm4vZmx1dHRlcl9vcmllbnRhdGlvbg==">https://github.com/jadennn/flutter_orientation<i class="fa fa-external-link-alt"></i></span> </p>
 <p>21. flutter设置多语言支持的时候发现在IOS端只显示英语的bug，是由于xcode中默认没有添加中文（其他语言类似）的选择，解决办法，在Info–Locallzations中选择需要的语言，如下：</p>
 <ol start="22">
 <li><p>flutter中禁止控件复用，可以使用不同的key，比如说，如果我们有一个stateful的控件，在initstate中进行了一些值的初始计算，在页面中需要展示多个这样的控件，不想多个控件公用同一套参数（换句话说，initstate只会在第一次初始化的时候调用），那么可以设置不同的key。</p>
@@ -411,7 +411,7 @@
 <p>return MaterialApp(<br>      navigatorKey: Global.gNavigatorKey,<br>      routes: &lt;String, WidgetBuilder&gt; {<br>        ‘/login’: (BuildContext context) =&gt; new LoginPage(),<br>      },<br>      //….代码省略<br>    c. 需要的地方使用：</p>
 <p>Global.gNavigatorKey.currentState.pushNamedAndRemoveUntil(‘/login’,(_) =&gt; false);<br>    注意的是这种方法代价比较大，除非特殊情况，否则不建议使用。使用的时候根据不同的场景调用不同的push方法</p>
 <hr>
-<p>作者：Hirabbit_jaden<br>来源：CSDN<br>原文：<a target="_blank" rel="noopener" href="https://blog.csdn.net/email_jade/article/details/85317859">https://blog.csdn.net/email_jade/article/details/85317859</a><br>版权声明：本文为博主原创文章，转载请附上博文链接！</p>
+<p>作者：Hirabbit_jaden<br>来源：CSDN<br>原文：<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2VtYWlsX2phZGUvYXJ0aWNsZS9kZXRhaWxzLzg1MzE3ODU5">https://blog.csdn.net/email_jade/article/details/85317859<i class="fa fa-external-link-alt"></i></span><br>版权声明：本文为博主原创文章，转载请附上博文链接！</p>
 
     </div>
 

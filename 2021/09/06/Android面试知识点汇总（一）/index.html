@@ -392,7 +392,7 @@
 <p>1、Handler 同步屏障机制：通过发送异步消息，在msg.next 中会优先处理异步消息，达到优先级的作用。</p>
 <p>2、Looper.loop 为什么不会卡死：为了app不挂掉，就要保证主线程一直运行存在，使用死循环代码阻塞在msgQueue.next()中的nativePollOnce()方法里 ，主线程就会挂起休眠释放cpu，线程就不会退出。Looper死循环之前，在ActivityThread.main()中就会创建一个 Binder 线程（ApplicationThread），接收系统服务AMS发送来的事件。当系统有消息产生（其实系统每 16ms 会发送一个刷新 UI 消息唤醒）会通过epoll机制 向pipe管道写端写入数据 就会发送消息给 looper 接收到消息后处理事件，保证主线程的一直存活。只有在主线程中处理超时才会让app崩溃 也就是ANR。</p>
 <p>3、Messaage复用：将使用完的Message清除附带的数据后, 添加到复用池中 ,当我们需要使用它时,直接在复用池中取出对象使用,而不需要重新new创建对象。复用池本质还是Message 为node 的单链表结构。所以推荐使用Message.obation获取 对象。</p>
-<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/dyCEnsdUo-AGhqeCzN0E5w">剩余链接</a></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9tcC53ZWl4aW4ucXEuY29tL3MvZHlDRW5zZFVvLUFHaHFlQ3pOMEU1dw==">剩余链接<i class="fa fa-external-link-alt"></i></span></p>
 
     </div>
 

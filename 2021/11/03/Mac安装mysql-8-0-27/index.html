@@ -314,8 +314,8 @@
 <li>mysql-8.0.27-macos11-x86_64.dmg</li>
 </ul>
 <h3 id="下载安装"><a href="#下载安装" class="headerlink" title="下载安装"></a>下载安装</h3><p>版本一定要下对，我踩过坑，</p>
-<p><img src="https://markchyl.cn/img/20180123204406478.png"></p>
-<p>如图所示来查找对应系统安装版本，<br><a target="_blank" rel="noopener" href="https://dev.mysql.com/downloads/mysql/">官网下载地址是</a></p>
+<p><img data-src="https://markchyl.cn/img/20180123204406478.png"></p>
+<p>如图所示来查找对应系统安装版本，<br><span class="exturl" data-url="aHR0cHM6Ly9kZXYubXlzcWwuY29tL2Rvd25sb2Fkcy9teXNxbC8=">官网下载地址是<i class="fa fa-external-link-alt"></i></span></p>
 <h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><p>打开终端<br>输入：cd /usr/local/mysql，回车执行<br>然后输入：sudo vim .bash_profile，回车执行</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- more --&gt;</span><br><span class="line">#mysql环境变量</span><br><span class="line">export MYSQL_HOME&#x3D;&#x2F;usr&#x2F;local&#x2F;mysql</span><br><span class="line">export PATH&#x3D;$&#123;MYSQL_HOME&#125;&#x2F;bin:$PATH</span><br></pre></td></tr></table></figure>
 <p>记得<code>source ~/.bash_profile</code>让环境变量生效。</p>
