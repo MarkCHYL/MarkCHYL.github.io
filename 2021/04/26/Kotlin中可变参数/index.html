@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha256-5eIC48iZUHmSlSUz9XtjRyK2mzQkHScZY1WdMaoz74E=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.21.1","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="原文简书  对比 Java 中的可变参数先看下 Java 的可变参数，用我们最熟悉的 main 函数 12public static void main(String... args) &amp;#123;&amp;#125; 从 Java5 开始引入了可变参数（varargs）对应的 Kotlin 的代码，参数为可变参数： 12fun main(vararg args: String) &amp;#123;&amp;#125;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kotlin中可变参数">
+<meta property="og:url" content="http://example.com/2021/04/26/Kotlin%E4%B8%AD%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0/index.html">
+<meta property="og:site_name" content="Mark的私人博客">
+<meta property="og:description" content="原文简书  对比 Java 中的可变参数先看下 Java 的可变参数，用我们最熟悉的 main 函数 12public static void main(String... args) &amp;#123;&amp;#125; 从 Java5 开始引入了可变参数（varargs）对应的 Kotlin 的代码，参数为可变参数： 12fun main(vararg args: String) &amp;#123;&amp;#125;">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-04-26T01:22:07.000Z">
+<meta property="article:modified_time" content="2021-04-26T01:22:07.000Z">
+<meta property="article:author" content="Mark先生">
+<meta property="article:tag" content="Kotlin基础">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2021/04/26/Kotlin%E4%B8%AD%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2021/04/26/Kotlin%E4%B8%AD%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0/","path":"2021/04/26/Kotlin中可变参数/","title":"Kotlin中可变参数"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Kotlin中可变参数 | Mark的私人博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Mark的私人博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Mark的私人博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">数风流人物，还看今朝</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E6%AF%94-Java-%E4%B8%AD%E7%9A%84%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">对比 Java 中的可变参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0%E7%9A%84%E6%9C%AC%E8%B4%A8"><span class="nav-number">2.</span> <span class="nav-text">可变参数的本质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0%E7%9A%84%E4%BC%A0%E5%8F%82"><span class="nav-number">3.</span> <span class="nav-text">可变参数的传参</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Mark先生</p>
+  <div class="site-description" itemprop="description">一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">141</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">72</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/26/Kotlin%E4%B8%AD%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Mark先生">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mark的私人博客">
+      <meta itemprop="description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Kotlin中可变参数 | Mark的私人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Kotlin中可变参数
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-04-26 09:22:07" itemprop="dateCreated datePublished" datetime="2021-04-26T09:22:07+08:00">2021-04-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Kotlin/" itemprop="url" rel="index"><span itemprop="name">Kotlin</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/174c0e254713">原文简书</a></p>
+<hr>
+<h3 id="对比-Java-中的可变参数"><a href="#对比-Java-中的可变参数" class="headerlink" title="对比 Java 中的可变参数"></a>对比 Java 中的可变参数</h3><p>先看下 Java 的可变参数，用我们最熟悉的 main 函数</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String... args)</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>从 Java5 开始引入了可变参数（varargs）<br>对应的 Kotlin 的代码，参数为可变参数：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">(<span class="keyword">vararg</span> args: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<p>Java代码中参数应该是数组：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对应的 Kotlin 的代码，也是两种方式，参数为数组：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">String</span>&gt;)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="可变参数的本质"><a href="#可变参数的本质" class="headerlink" title="可变参数的本质"></a>可变参数的本质</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    foo(<span class="string">&quot;1&quot;</span>, <span class="string">&quot;2&quot;</span>, <span class="string">&quot;3&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">foo</span><span class="params">(<span class="keyword">vararg</span> args: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">    println(args::<span class="class"><span class="keyword">class</span>)</span></span><br><span class="line">    println(args.contentToString())</span><br><span class="line">    <span class="keyword">for</span> (i <span class="keyword">in</span> args.indices) &#123;</span><br><span class="line">        println(args[i])</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>打印：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">kotlin</span>.<span class="title">Array</span></span></span><br><span class="line"><span class="keyword">val</span> kotlin.reflect.KClass&lt;T&gt;.java: java.lang.Class&lt;T&gt;</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
+<p>我们可以清晰的看到 args 的类型为数组类型，并且可以直接调用数组的方法。</p>
+<blockquote>
+<p>如果你的第一行打印结果是：</p>
+<p>class [Ljava.lang.String; (Kotlin reflection is not available)</p>
+<p>需要在 build.gradle 中添加依赖：</p>
+<p>implementation “org.jetbrains.kotlin:kotlin-reflect:$kotlin_version”</p>
+</blockquote>
+<hr>
+<p><strong><strong>准确的说 args 的类型是 Array<out String> 类型:</strong></strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    foo(<span class="string">&quot;1&quot;</span>, <span class="string">&quot;2&quot;</span>, <span class="string">&quot;3&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">foo</span><span class="params">(<span class="keyword">vararg</span> args: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">    bar(args)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">bar</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">out</span> <span class="type">String</span>&gt;)</span></span> &#123;</span><br><span class="line">    println(args.contentToString())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="可变参数的传参"><a href="#可变参数的传参" class="headerlink" title="可变参数的传参"></a>可变参数的传参</h3><p>我们再来改造一下 bar 函数的参数类型，看下可变参数的传参：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    foo(<span class="string">&quot;1&quot;</span>, <span class="string">&quot;2&quot;</span>, <span class="string">&quot;3&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">foo</span><span class="params">(<span class="keyword">vararg</span> args: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">    bar(args)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">bar</span><span class="params">(<span class="keyword">vararg</span> args: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">    println(args.contentToString())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>编译器提示类型不匹配，需要一个 String 类型的参数，而传入了数组类型。<br>然而在 Java 中可变参数是可以直接传递，并且可以和数组相互转换传递：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    foo(<span class="string">&quot;1&quot;</span>, <span class="string">&quot;2&quot;</span>, <span class="string">&quot;3&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">foo</span><span class="params">(String... args)</span> </span>&#123;</span><br><span class="line">    bar1(args);</span><br><span class="line">    bar2(args);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">bar1</span><span class="params">(String... args)</span> </span>&#123;</span><br><span class="line">    System.out.println(Arrays.toString(args));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">bar2</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    bar1(args);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在 Kotlin 中如果想将数组类型传入到可变参数，就需要使用一个特定的符号 <code>* </code>：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    foo(<span class="string">&quot;1&quot;</span>, <span class="string">&quot;2&quot;</span>, <span class="string">&quot;3&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">foo</span><span class="params">(<span class="keyword">vararg</span> args: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">    bar1(*args)</span><br><span class="line">    bar2(args)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">bar1</span><span class="params">(<span class="keyword">vararg</span> args: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">    println(args.contentToString())</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">bar2</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">out</span> <span class="type">String</span>&gt;)</span></span> &#123;</span><br><span class="line">    bar1(*args)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>我对 Kotlin 中d可变参数的理解是：</p>
+<ol>
+<li>可变参数会在函数体中，自动转变为数组类型</li>
+<li>数组类型不能作为参数，直接传递给可变参数</li>
+<li>在数组类型前面添加 * ，可以传递给可变参数</li>
+</ol>
+<p>最后，我们可以反编译看下 Kotlin 中的 foo 函数，看看 * 到底做了什么：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> static <span class="keyword">final</span> void foo(<span class="meta">@NotNull</span> String... args) &#123;</span><br><span class="line">    bar1((String[]) Arrays.copyOf(args, args.length));</span><br><span class="line">    bar2(args);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>就是一个复制数组的操作，相比 Kotlin 还是 Java 做的更便捷，可以在数组和可变参数之间直接自由转换。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Kotlin%E5%9F%BA%E7%A1%80/" rel="tag"># Kotlin基础</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/04/19/%E5%A6%82%E4%BD%95%E4%BF%AE%E6%94%B9%E8%A1%A8%E7%BB%93%E6%9E%84%EF%BC%9AALERT%E8%AF%AD%E5%8F%A5/" rel="prev" title="如何修改表结构：ALERT语句">
+                  <i class="fa fa-angle-left"></i> 如何修改表结构：ALERT语句
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/05/13/Mac%E8%BF%9E%E6%8E%A5%E4%BA%AC%E7%93%B7%E6%89%93%E5%8D%B0%E6%9C%BAFs-1030MFP-DP/" rel="next" title="Mac连接京瓷打印机Fs-1030MFP/DP">
+                  Mac连接京瓷打印机Fs-1030MFP/DP <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Mark先生</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

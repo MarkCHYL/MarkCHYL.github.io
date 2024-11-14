@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha256-5eIC48iZUHmSlSUz9XtjRyK2mzQkHScZY1WdMaoz74E=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.21.1","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="第一部分 背景1、为什么要开展压力测试？ 提高产品的稳定性 提高产品的留存率2、什么时候开展压力测试？ 首轮功能测试通过后开始 下班后的夜间进行第二部分 场景手工测试场景自动化测试场景1、 MonkeyMonkey 就在手机里，安卓系统再带的  2、 什么是ADB？Android Debug Bridge 安卓调试桥">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Monkey自动化压力测试">
+<meta property="og:url" content="http://example.com/2020/06/22/Monkey%E8%87%AA%E5%8A%A8%E5%8C%96%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/index.html">
+<meta property="og:site_name" content="Mark的私人博客">
+<meta property="og:description" content="第一部分 背景1、为什么要开展压力测试？ 提高产品的稳定性 提高产品的留存率2、什么时候开展压力测试？ 首轮功能测试通过后开始 下班后的夜间进行第二部分 场景手工测试场景自动化测试场景1、 MonkeyMonkey 就在手机里，安卓系统再带的  2、 什么是ADB？Android Debug Bridge 安卓调试桥">
+<meta property="og:locale">
+<meta property="article:published_time" content="2020-06-22T02:53:50.000Z">
+<meta property="article:modified_time" content="2020-06-22T02:53:50.000Z">
+<meta property="article:author" content="Mark先生">
+<meta property="article:tag" content="Android">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2020/06/22/Monkey%E8%87%AA%E5%8A%A8%E5%8C%96%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2020/06/22/Monkey%E8%87%AA%E5%8A%A8%E5%8C%96%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/","path":"2020/06/22/Monkey自动化压力测试/","title":"Monkey自动化压力测试"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Monkey自动化压力测试 | Mark的私人博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Mark的私人博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Mark的私人博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">数风流人物，还看今朝</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86-%E8%83%8C%E6%99%AF"><span class="nav-number">1.</span> <span class="nav-text">第一部分 背景</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%BC%80%E5%B1%95%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95%EF%BC%9F"><span class="nav-number">1.1.</span> <span class="nav-text">1、为什么要开展压力测试？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E5%BC%80%E5%B1%95%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95%EF%BC%9F"><span class="nav-number">1.2.</span> <span class="nav-text">2、什么时候开展压力测试？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86-%E5%9C%BA%E6%99%AF"><span class="nav-number">2.</span> <span class="nav-text">第二部分 场景</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%8B%E5%B7%A5%E6%B5%8B%E8%AF%95%E5%9C%BA%E6%99%AF"><span class="nav-number">2.1.</span> <span class="nav-text">手工测试场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%9C%BA%E6%99%AF"><span class="nav-number">2.2.</span> <span class="nav-text">自动化测试场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95%E7%BB%93%E6%9E%9C"><span class="nav-number">2.3.</span> <span class="nav-text">压力测试结果</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86%EF%BC%9A%E5%AE%9E%E8%B7%B5"><span class="nav-number">3.</span> <span class="nav-text">第三部分：实践</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E9%83%A8%E5%88%86%EF%BC%9AMonkey%E9%AB%98%E7%BA%A7%E5%8F%82%E6%95%B0%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-number">4.</span> <span class="nav-text">第四部分：Monkey高级参数的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81throttle%E5%8F%82%E6%95%B0"><span class="nav-number">4.1.</span> <span class="nav-text">1、throttle参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81seed%E5%8F%82%E6%95%B0%E5%AE%9E%E8%B7%B5"><span class="nav-number">4.2.</span> <span class="nav-text">2、seed参数实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81%E8%A7%A6%E6%91%B8%E4%BA%8B%E4%BB%B6"><span class="nav-number">4.3.</span> <span class="nav-text">3、触摸事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4%E3%80%81%E5%8A%A8%E4%BD%9C%E4%BA%8B%E4%BB%B6"><span class="nav-number">4.4.</span> <span class="nav-text">4、动作事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5%E3%80%81%E8%BD%A8%E8%BF%B9%E7%90%83%E4%BA%8B%E4%BB%B6"><span class="nav-number">4.5.</span> <span class="nav-text">5、轨迹球事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6%E3%80%81%E5%9F%BA%E6%9C%AC%E5%AF%BC%E8%88%AA%E4%BA%8B%E4%BB%B6"><span class="nav-number">4.6.</span> <span class="nav-text">6、基本导航事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7%E3%80%81%E4%B8%BB%E8%A6%81%E5%AF%BC%E8%88%AA%E4%BA%8B%E4%BB%B6"><span class="nav-number">4.7.</span> <span class="nav-text">7、主要导航事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8%E3%80%81%E7%B3%BB%E7%BB%9F%E5%AF%BC%E8%88%AA%E4%BA%8B%E4%BB%B6"><span class="nav-number">4.8.</span> <span class="nav-text">8、系统导航事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9%E3%80%81%E5%90%AF%E5%8A%A8Activity%E4%BA%8B%E4%BB%B6"><span class="nav-number">4.9.</span> <span class="nav-text">9、启动Activity事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10%E3%80%81%E4%B8%8D%E5%B8%B8%E7%94%A8%E4%BA%8B%E4%BB%B6"><span class="nav-number">4.10.</span> <span class="nav-text">10、不常用事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11%E3%80%81%E5%B4%A9%E6%BA%83%E4%BA%8B%E4%BB%B6Crash%E4%BA%8B%E4%BB%B6"><span class="nav-number">4.11.</span> <span class="nav-text">11、崩溃事件Crash事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12%E3%80%81%E8%B6%85%E6%97%B6%E4%BA%8B%E4%BB%B6ANR%E4%BA%8B%E4%BB%B6"><span class="nav-number">4.12.</span> <span class="nav-text">12、超时事件ANR事件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%94%E9%83%A8%E5%88%86%EF%BC%9ACRASH%E7%BB%93%E6%9E%9C%E6%8F%90%E5%8F%96"><span class="nav-number">5.</span> <span class="nav-text">第五部分：CRASH结果提取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%85%AD%E9%83%A8%E5%88%86%EF%BC%9AANR%E6%9F%A5%E7%9C%8B"><span class="nav-number">6.</span> <span class="nav-text">第六部分：ANR查看</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Monkey-Script%E5%AD%A6%E4%B9%A0%E4%BD%BF%E7%94%A8"><span class="nav-number">7.</span> <span class="nav-text">Monkey Script学习使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Monkey-Runner%E5%AD%A6%E4%B9%A0%E4%BD%BF%E7%94%A8"><span class="nav-number">8.</span> <span class="nav-text">Monkey Runner学习使用</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Mark先生</p>
+  <div class="site-description" itemprop="description">一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">141</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">72</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/06/22/Monkey%E8%87%AA%E5%8A%A8%E5%8C%96%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Mark先生">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mark的私人博客">
+      <meta itemprop="description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Monkey自动化压力测试 | Mark的私人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Monkey自动化压力测试
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-06-22 10:53:50" itemprop="dateCreated datePublished" datetime="2020-06-22T10:53:50+08:00">2020-06-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="第一部分-背景"><a href="#第一部分-背景" class="headerlink" title="第一部分 背景"></a>第一部分 背景</h2><h3 id="1、为什么要开展压力测试？"><a href="#1、为什么要开展压力测试？" class="headerlink" title="1、为什么要开展压力测试？"></a>1、为什么要开展压力测试？</h3><ul>
+<li>提高产品的稳定性</li>
+<li>提高产品的留存率<h3 id="2、什么时候开展压力测试？"><a href="#2、什么时候开展压力测试？" class="headerlink" title="2、什么时候开展压力测试？"></a>2、什么时候开展压力测试？</h3></li>
+<li>首轮功能测试通过后开始</li>
+<li>下班后的夜间进行<h2 id="第二部分-场景"><a href="#第二部分-场景" class="headerlink" title="第二部分 场景"></a>第二部分 场景</h2><h3 id="手工测试场景"><a href="#手工测试场景" class="headerlink" title="手工测试场景"></a>手工测试场景</h3><h3 id="自动化测试场景"><a href="#自动化测试场景" class="headerlink" title="自动化测试场景"></a>自动化测试场景</h3>1、 Monkey<br>Monkey 就在手机里，安卓系统再带的</li>
+</ul>
+<p>2、 什么是ADB？<br>Android Debug Bridge 安卓调试桥</p>
+<span id="more"></span>
+<p>3、 MonkeyScript<br>MonkeyScript是一组可被monkey识别的命令集合。<br>MonkeyScript可以完成重复固定的指令</p>
+<p>4、 MonkeyRunner<br>提供一系列的API，可以模拟事件及截图操作。</p>
+<p>5、Monkey和MonkeyRunner的区别？<br>Monkey：在adb shell中，生成用户或系统的伪随机事件。<br>MonkeyRunner：通过API定义特定命令和事件控制设备。</p>
+<p>MonkeyRunner APIs</p>
+<ul>
+<li>MonkeyRunner:用来连接设备或者模拟器</li>
+<li>MonkeyDevice：提供安装、卸载应用，发送模拟事件</li>
+<li>MonkeyImage：完成图像保存，及对比操作。</li>
+</ul>
+<h3 id="压力测试结果"><a href="#压力测试结果" class="headerlink" title="压力测试结果"></a>压力测试结果</h3><p>crash和ANR</p>
+<p>崩溃和应用无响应</p>
+<h2 id="第三部分：实践"><a href="#第三部分：实践" class="headerlink" title="第三部分：实践"></a>第三部分：实践</h2><ul>
+<li>步骤一：打开手机USB调试功能</li>
+<li>步骤二：确认手机和电脑已经连接，执行<code>adb devices</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mark@Markxiansheng blog % adb devices</span><br><span class="line">* daemon not running; starting now at tcp:5037</span><br><span class="line">* daemon started successfully</span><br><span class="line">List of devices attached</span><br><span class="line">HCW0001811005556        device</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li>步骤三：安装测试app，<code>adb install package.apk</code></li>
+<li>步骤四：发送压测指令 <code>adb shell monkey 1000</code>执行1000次随机操作指令</li>
+<li>步骤五：获取app报名：执行<code>adb logcat | grep START</code></li>
+<li>步骤六：给指定的包打压力；执行<code>adb shell monkey -p package 1000</code></li>
+</ul>
+<h2 id="第四部分：Monkey高级参数的应用"><a href="#第四部分：Monkey高级参数的应用" class="headerlink" title="第四部分：Monkey高级参数的应用"></a>第四部分：Monkey高级参数的应用</h2><h3 id="1、throttle参数"><a href="#1、throttle参数" class="headerlink" title="1、throttle参数"></a>1、throttle参数</h3><p>指定事件之间的间隔<br><code>adb shell monkey --throttle &lt;milliseconds&gt;</code></p>
+<h3 id="2、seed参数实践"><a href="#2、seed参数实践" class="headerlink" title="2、seed参数实践"></a>2、seed参数实践</h3><p>指定随机生成数的seed值 <code>adb shell monkey -s &lt;seed&gt; &lt;event-count&gt;</code></p>
+<p>例如：<code>adb shell monkey -p com.android.calculator2 -s 100 50</code><br>每次执行结构都是一样，记住清理缓存记录再测试，复现问题</p>
+<h3 id="3、触摸事件"><a href="#3、触摸事件" class="headerlink" title="3、触摸事件"></a>3、触摸事件</h3><p>设定触摸事件百分比<br><code>adb shell monkey --pct-touch &lt;percent&gt;</code></p>
+<p>例如：<code>adb shell monkey -v -p com.cares.rcs --pct-touch 100 100</code>，加上<code>-v</code>是为了看清具体执行的操作是什么</p>
+<h3 id="4、动作事件"><a href="#4、动作事件" class="headerlink" title="4、动作事件"></a>4、动作事件</h3><p>设定动作事件百分比<code>adb shell monkey --pct-motion &lt;percent&gt;</code><br>例如：<code>adb shell monkey -v -p com.cares.rcs --pct-touch 50 --pct-motion 30 100</code><br>执行touch事件50%，motion事件30%，执行一百次事件</p>
+<h3 id="5、轨迹球事件"><a href="#5、轨迹球事件" class="headerlink" title="5、轨迹球事件"></a>5、轨迹球事件</h3><p>设定轨迹球事件百分比<br><code>adb shell monkey --pct-trackball &lt;percent&gt;</code></p>
+<h3 id="6、基本导航事件"><a href="#6、基本导航事件" class="headerlink" title="6、基本导航事件"></a>6、基本导航事件</h3><p>设定基本导航事件百分比，输入设备上的上、下、左、右<br><code>adb shell monkey --pct-nav &lt;percent&gt;</code></p>
+<h3 id="7、主要导航事件"><a href="#7、主要导航事件" class="headerlink" title="7、主要导航事件"></a>7、主要导航事件</h3><p>设定主要导航事件百分比，兼容中间键、返回键、菜单按键<br><code>adb shell monkey --pct-majornav &lt;percent&gt;</code></p>
+<h3 id="8、系统导航事件"><a href="#8、系统导航事件" class="headerlink" title="8、系统导航事件"></a>8、系统导航事件</h3><p>设定系统导航事件百分比，HOME、BACK、拨号及音量按键<br><code>adb shell monkey --pct-syskeys &lt;percent&gt;</code></p>
+<h3 id="9、启动Activity事件"><a href="#9、启动Activity事件" class="headerlink" title="9、启动Activity事件"></a>9、启动Activity事件</h3><p>设定启动Activity的事件百分比<br><code>adb shell monkey --pct-appswitch &lt;percent&gt;</code></p>
+<h3 id="10、不常用事件"><a href="#10、不常用事件" class="headerlink" title="10、不常用事件"></a>10、不常用事件</h3><p><code>adb shell monkey --pct-anyevent &lt;percent&gt;</code></p>
+<h3 id="11、崩溃事件Crash事件"><a href="#11、崩溃事件Crash事件" class="headerlink" title="11、崩溃事件Crash事件"></a>11、崩溃事件Crash事件</h3><p>忽略崩溃和异常<br><code>adb shell monkey --ignore-crashes &lt;percent&gt;</code></p>
+<h3 id="12、超时事件ANR事件"><a href="#12、超时事件ANR事件" class="headerlink" title="12、超时事件ANR事件"></a>12、超时事件ANR事件</h3><p>忽略超时事件<br><code>adb shell monkey --ignore-timeouts &lt;event-count&gt;</code></p>
+<h2 id="第五部分：CRASH结果提取"><a href="#第五部分：CRASH结果提取" class="headerlink" title="第五部分：CRASH结果提取"></a>第五部分：CRASH结果提取</h2><p> <code>adb shell monkey -p com.cares.rcs 1000</code>不断测试执行随机操作</p>
+<h2 id="第六部分：ANR查看"><a href="#第六部分：ANR查看" class="headerlink" title="第六部分：ANR查看"></a>第六部分：ANR查看</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Markxiansheng:Desktop mark$ adb shell</span><br><span class="line">root@vbox86p:&#x2F; #</span><br><span class="line">root@vbox86p:&#x2F; # cd &#x2F;data&#x2F;anr</span><br><span class="line">root@vbox86p:&#x2F;data&#x2F;anr # ls</span><br><span class="line">traces.txt</span><br></pre></td></tr></table></figure>
+<h2 id="Monkey-Script学习使用"><a href="#Monkey-Script学习使用" class="headerlink" title="Monkey Script学习使用"></a>Monkey Script学习使用</h2><blockquote>
+<p>执行语句：<code>adb shell monkey -f &lt;scriptfile&gt; &lt;event-count&gt;</code></p>
+</blockquote>
+<p>常用命令：</p>
+<p>1、<strong>DispatchTrackball</strong>轨迹球事件</p>
+<p>2、<strong>DispatchPointer</strong>点击事件</p>
+<p>3、<strong>DispatchString</strong>输入字符串事件<br><code>DispatchString(String text)</code></p>
+<p>4、<strong>LaunchActivity</strong>启动应用事件<br><code>LaunchAtivity(package,Activity)</code></p>
+<p>5、<strong>UserWait</strong>命令<br>等待事件：<code>UserWait(millinsons)</code></p>
+<p>6、<strong>DispatchPress</strong>命令<br>按下键值：<code>DispatchPress(int keycode)</code> #keycode 66 回车键》</p>
+<p>模拟输入查询一千次</p>
+<ul>
+<li>1、启动App</li>
+<li>2、点击输入框</li>
+<li>3、输入查询词</li>
+<li>4、点击键盘的回车</li>
+<li>5、点击搜索按钮</li>
+<li>6、等待结果的出现</li>
+<li>7、点击clear按钮<br>Mark.script脚本<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">typ &#x3D; user</span><br><span class="line">count &#x3D; 10</span><br><span class="line">speed &#x3D; 1.0</span><br><span class="line">start data &gt;&gt;</span><br><span class="line"></span><br><span class="line">LaunchActivity(com.android.browser,.BrowserActivity)</span><br><span class="line">UserWait(2000)</span><br><span class="line">DispatchPointer(10,10,0,200,200,1,1,-1,1,1,0,0)</span><br><span class="line">DispatchPointer(10,10,1,200,200,1,1,-1,1,1,0,0)</span><br><span class="line">DispatchString(Mark)</span><br><span class="line">UserWait(1000)</span><br><span class="line">DispatchPress(66)</span><br><span class="line">DispatchPointer(10,10,0,600,300,1,1,-1,1,1,0,0)</span><br><span class="line">DispatchPointer(10,10,1,600,300,1,1,-1,1,1,0,0)</span><br><span class="line">UserWait(3000)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>小黑技术：SDK目录下tools文件中的bin目录下的 uiautomatorviewer.bat,双击启动，用来获取界面控件位置</p>
+<h2 id="Monkey-Runner学习使用"><a href="#Monkey-Runner学习使用" class="headerlink" title="Monkey Runner学习使用"></a>Monkey Runner学习使用</h2><p>主要是利用python编写脚本文件进行测试，暂停学习</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Android/" rel="tag"># Android</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/04/09/Linux%E5%91%BD%E4%BB%A4%E8%BF%9C%E7%A8%8B%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0/" rel="prev" title="Linux命令学习">
+                  <i class="fa fa-angle-left"></i> Linux命令学习
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/07/21/%E8%87%AA%E5%AE%9A%E4%B9%89Toat%E5%8F%8A%E5%85%B6%E5%BC%B9%E5%87%BA%E6%97%B6%E9%97%B4%E6%8E%A7%E5%88%B6/" rel="next" title="自定义Toat及其弹出时间控制">
+                  自定义Toat及其弹出时间控制 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Mark先生</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

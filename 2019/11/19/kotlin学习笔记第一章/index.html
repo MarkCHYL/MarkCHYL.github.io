@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha256-5eIC48iZUHmSlSUz9XtjRyK2mzQkHScZY1WdMaoz74E=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.21.1","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="第一章 搭建 Kotlin 开发环境 一、Kotlin简介：Kotlin是一种基于JVM的新型编程语言，它完全兼容Java语言。慕课网电子书 Kotlin 优先意味着什么？在构建新的 Android 开发工具和内容（例如 Jetpack 库、示例、文档和培训内容）时，google会在设计层面考虑到 Kotlin 用户     Java 语言 Kotlin    平台 SDK 支持 是 是   An">
+<meta property="og:type" content="article">
+<meta property="og:title" content="kotlin学习笔记第一章">
+<meta property="og:url" content="http://example.com/2019/11/19/kotlin%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%AC%AC%E4%B8%80%E7%AB%A0/index.html">
+<meta property="og:site_name" content="Mark的私人博客">
+<meta property="og:description" content="第一章 搭建 Kotlin 开发环境 一、Kotlin简介：Kotlin是一种基于JVM的新型编程语言，它完全兼容Java语言。慕课网电子书 Kotlin 优先意味着什么？在构建新的 Android 开发工具和内容（例如 Jetpack 库、示例、文档和培训内容）时，google会在设计层面考虑到 Kotlin 用户     Java 语言 Kotlin    平台 SDK 支持 是 是   An">
+<meta property="og:locale">
+<meta property="og:image" content="https://songyubao.com/book/primary/kotlin/kotlin-ablility.png">
+<meta property="article:published_time" content="2019-11-19T01:28:16.000Z">
+<meta property="article:modified_time" content="2019-11-19T01:28:16.000Z">
+<meta property="article:author" content="Mark先生">
+<meta property="article:tag" content="Android">
+<meta property="article:tag" content="Kotlin">
+<meta property="article:tag" content="学习笔记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://songyubao.com/book/primary/kotlin/kotlin-ablility.png">
+
+
+<link rel="canonical" href="http://example.com/2019/11/19/kotlin%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%AC%AC%E4%B8%80%E7%AB%A0/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2019/11/19/kotlin%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%AC%AC%E4%B8%80%E7%AB%A0/","path":"2019/11/19/kotlin学习笔记第一章/","title":"kotlin学习笔记第一章"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>kotlin学习笔记第一章 | Mark的私人博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Mark的私人博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Mark的私人博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">数风流人物，还看今朝</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%90%AD%E5%BB%BA-Kotlin-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83"><span class="nav-number">1.</span> <span class="nav-text">第一章 搭建 Kotlin 开发环境</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81Kotlin%E7%AE%80%E4%BB%8B%EF%BC%9A"><span class="nav-number">1.1.</span> <span class="nav-text">一、Kotlin简介：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Kotlin-%E4%BC%98%E5%85%88%E6%84%8F%E5%91%B3%E7%9D%80%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">1.2.</span> <span class="nav-text">Kotlin 优先意味着什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Kotlin%E8%83%BD%E5%81%9A%E4%BB%80%E4%B9%88"><span class="nav-number">1.3.</span> <span class="nav-text">Kotlin能做什么?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Kotlin%E4%B8%8EJava%E7%9A%84%E5%BC%82%E5%90%8C"><span class="nav-number">1.4.</span> <span class="nav-text">Kotlin与Java的异同</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Mark先生</p>
+  <div class="site-description" itemprop="description">一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">141</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">72</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/11/19/kotlin%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%AC%AC%E4%B8%80%E7%AB%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Mark先生">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mark的私人博客">
+      <meta itemprop="description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="kotlin学习笔记第一章 | Mark的私人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          kotlin学习笔记第一章
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2019-11-19 09:28:16" itemprop="dateCreated datePublished" datetime="2019-11-19T09:28:16+08:00">2019-11-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="第一章-搭建-Kotlin-开发环境"><a href="#第一章-搭建-Kotlin-开发环境" class="headerlink" title="第一章 搭建 Kotlin 开发环境"></a>第一章 搭建 Kotlin 开发环境</h2><hr>
+<h3 id="一、Kotlin简介："><a href="#一、Kotlin简介：" class="headerlink" title="一、Kotlin简介："></a>一、Kotlin简介：</h3><p>Kotlin是一种基于JVM的新型编程语言，它完全兼容Java语言。<br><a target="_blank" rel="noopener" href="https://songyubao.com/book/primary/lesson-summary.html">慕课网电子书</a></p>
+<h3 id="Kotlin-优先意味着什么？"><a href="#Kotlin-优先意味着什么？" class="headerlink" title="Kotlin 优先意味着什么？"></a>Kotlin 优先意味着什么？</h3><p>在构建新的 Android 开发工具和内容（例如 Jetpack 库、示例、文档和培训内容）时，google会在设计层面考虑到 Kotlin 用户</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Java 语言</th>
+<th>Kotlin</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>平台 SDK 支持</td>
+<td>是</td>
+<td>是</td>
+</tr>
+<tr>
+<td>Android Studio 支持</td>
+<td>是</td>
+<td>是</td>
+</tr>
+<tr>
+<td>Lint</td>
+<td>是</td>
+<td>是</td>
+</tr>
+<tr>
+<td>==引导式文档支持</td>
+<td>是</td>
+<td>是</td>
+</tr>
+<tr>
+<td>API 文档支持</td>
+<td>是</td>
+<td>是</td>
+</tr>
+<tr>
+<td>AndroidX 支持</td>
+<td>是</td>
+<td>是</td>
+</tr>
+<tr>
+<td>AndroidX Kotlin 特有 API（KTX、协程等）</td>
+<td>无</td>
+<td>是</td>
+</tr>
+<tr>
+<td>在线培训</td>
+<td>尽力而为</td>
+<td>是</td>
+</tr>
+<tr>
+<td>示例</td>
+<td>尽力而为</td>
+<td>是</td>
+</tr>
+<tr>
+<td>多平台项目</td>
+<td>否</td>
+<td>是</td>
+</tr>
+<tr>
+<td>Jetpack Compose</td>
+<td>否</td>
+<td>是</td>
+</tr>
+</tbody></table>
+<span id="more"></span>
+
+<h3 id="Kotlin能做什么"><a href="#Kotlin能做什么" class="headerlink" title="Kotlin能做什么?"></a>Kotlin能做什么?</h3><p>如果对 Kotlin 的能力仅仅停留在 JVM平 台，那是片面的。如今的 Kotlin 已经从当初的更好 Java 目标完成了它华丽的大变身，他们的目标已经瞄准了星辰大海。目前 Kotlin 可以适用于<strong>移动端跨平台、原生 JVM、服务端开发、Web 开发、Android 开发、数据科学</strong>等多个领域。此外近年来 Kotlin 团队已经将重心转移到了语言层面的跨平台，多平台的支持。<br><img src="https://songyubao.com/book/primary/kotlin/kotlin-ablility.png"></p>
+<h3 id="Kotlin与Java的异同"><a href="#Kotlin与Java的异同" class="headerlink" title="Kotlin与Java的异同"></a>Kotlin与Java的异同</h3><p><strong>打印日志</strong></p>
+<blockquote>
+<p>Java </p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">System.out.print(<span class="string">&quot;hello world&quot;</span>); </span><br><span class="line">System.out.println(<span class="string">&quot;hello world&quot;</span>);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Kotlin </p>
+</blockquote>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">&quot;hello world&quot;</span>) println(<span class="string">&quot;hello world&quot;</span>) </span><br></pre></td></tr></table></figure>
+
+<p><strong>定义变量与常量常</strong></p>
+<blockquote>
+<p>Java </p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String name = <span class="string">&quot;hello world&quot;</span>;</span><br><span class="line"><span class="keyword">final</span> String name = <span class="string">&quot;hello world&quot;</span>;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Kotlin </p>
+</blockquote>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">&quot;hello world&quot;</span> </span><br><span class="line"><span class="keyword">val</span> name = <span class="string">&quot;hello world&quot;</span> </span><br></pre></td></tr></table></figure>
+<p><strong>null声明</strong></p>
+<blockquote>
+<p>Java </p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String otherName; </span><br><span class="line">otherName = <span class="keyword">null</span>;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Kotlin<br> <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> otherName : String? </span><br><span class="line">otherName = <span class="literal">null</span> </span><br></pre></td></tr></table></figure><br><strong>空判断</strong><br>Java<br> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (text != <span class="keyword">null</span>) &#123; </span><br><span class="line">    <span class="keyword">int</span> length = text.length();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>Kotlin<br> <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">text?.let &#123; </span><br><span class="line">    <span class="keyword">val</span> length = text.length</span><br><span class="line">&#125; <span class="comment">// </span></span><br><span class="line">or </span><br><span class="line">simply <span class="keyword">val</span> length = text?.length </span><br></pre></td></tr></table></figure><br><strong>字符串拼接</strong><br>Java<br> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String firstName = <span class="string">&quot;Android&quot;</span>; </span><br><span class="line">String lastName = <span class="string">&quot;Architect&quot;</span>; </span><br><span class="line">String message = <span class="string">&quot;My name is: &quot;</span> + firstName + <span class="string">&quot; &quot;</span> + lastName; </span><br></pre></td></tr></table></figure><br>Kotlin<br> <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> firstName = <span class="string">&quot;Android&quot;</span> </span><br><span class="line"><span class="keyword">val</span> lastName = <span class="string">&quot;Architect&quot;</span> </span><br><span class="line"><span class="keyword">val</span> message = <span class="string">&quot;My name is: <span class="variable">$firstName</span> <span class="variable">$lastName</span>&quot;</span> </span><br></pre></td></tr></table></figure><br><strong>换行</strong><br>Java </p>
+</blockquote>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String text = <span class="string">&quot;First Line\n&quot;</span> + <span class="string">&quot;Second Line\n&quot;</span> + <span class="string">&quot;Third Line&quot;</span>;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Kotlin </p>
+</blockquote>
+ <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> text = <span class="string">&quot;&quot;&quot; |First Line |Second Line |Third Line &quot;&quot;&quot;</span>.trimMargin() </span><br></pre></td></tr></table></figure>
+<p><strong>三元表达式</strong></p>
+<blockquote>
+<p>Java </p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String text = x &gt; <span class="number">5</span> ? <span class="string">&quot;x &gt; 5&quot;</span> : <span class="string">&quot;x &lt;= 5&quot;</span>;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Kotlin </p>
+</blockquote>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> text = <span class="keyword">if</span> (x &gt; <span class="number">5</span>) <span class="string">&quot;x &gt; 5&quot;</span> <span class="keyword">else</span> <span class="string">&quot;x &lt;= 5&quot;</span> </span><br></pre></td></tr></table></figure>
+<p><strong>操作符</strong></p>
+<blockquote>
+<p>java </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">final int andResult &#x3D; a &amp; b; </span><br><span class="line">final int orResult &#x3D; a | b; </span><br><span class="line">final int xorResult &#x3D; a ^ b; </span><br><span class="line">final int rightShift &#x3D; a &gt;&gt; 2;</span><br><span class="line">final int leftShift &#x3D; a &lt;&lt; 2; </span><br><span class="line">final int unsignedRightShift &#x3D; a &gt;&gt;&gt; 2;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p> Kotlin </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">val andResult &#x3D; a and b </span><br><span class="line">val orResult &#x3D; a or b </span><br><span class="line">val xorResult &#x3D; a xor b </span><br><span class="line">val rightShift &#x3D; a shr 2 </span><br><span class="line">val leftShift &#x3D; a shl 2 </span><br><span class="line">val unsignedRightShift &#x3D; a ushr 2 </span><br></pre></td></tr></table></figure>
+<p><strong>类型判断和转换 (声明式)</strong></p>
+<blockquote>
+<p>Java </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Car car &#x3D; (Car) object;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Kotlin </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var car &#x3D; object as Car </span><br></pre></td></tr></table></figure>
+<p><strong>类型判断和转换 (隐式)</strong> </p>
+<blockquote>
+<p>Java </p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (object <span class="keyword">instanceof</span> Car) &#123;</span><br><span class="line">    Car car = (Car) object; </span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Kotlin</p>
+</blockquote>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="keyword">object</span> <span class="keyword">is</span> Car) &#123;</span><br><span class="line">    <span class="keyword">var</span> car = <span class="keyword">object</span> <span class="comment">// 自动识别 </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>多重条件</strong> </p>
+<blockquote>
+<p>Java </p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (score &gt;= <span class="number">0</span> &amp;&amp; score &lt;= <span class="number">300</span>) &#123; &#125; </span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Kotlin </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if (score in 0..300) &#123; &#125; </span><br></pre></td></tr></table></figure>
+<p><strong>更灵活的case语句</strong></p>
+<blockquote>
+<p>Java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> score = <span class="comment">// some score;String grade; </span></span><br><span class="line"><span class="keyword">switch</span> (score) &#123; </span><br><span class="line">    <span class="keyword">case</span> <span class="number">10</span>: </span><br><span class="line">    <span class="keyword">case</span> <span class="number">9</span>: </span><br><span class="line">    grade = <span class="string">&quot;Excellent&quot;</span>; </span><br><span class="line">    <span class="keyword">break</span>; </span><br><span class="line">    <span class="keyword">case</span> <span class="number">8</span>: </span><br><span class="line">    <span class="keyword">case</span> <span class="number">7</span>: </span><br><span class="line">    <span class="keyword">case</span> <span class="number">6</span>: </span><br><span class="line">    grade = <span class="string">&quot;Good&quot;</span>; </span><br><span class="line">    <span class="keyword">break</span>; </span><br><span class="line">    <span class="keyword">case</span> <span class="number">5</span>: </span><br><span class="line">    <span class="keyword">case</span> <span class="number">4</span>: </span><br><span class="line">    grade = <span class="string">&quot;OK&quot;</span>;</span><br><span class="line">    <span class="keyword">break</span>; </span><br><span class="line">    <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">    <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">    grade = <span class="string">&quot;Fail&quot;</span>;</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">    grade = <span class="string">&quot;Fail&quot;</span>;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Kotlin</p>
+</blockquote>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> score = <span class="comment">// some score </span></span><br><span class="line"><span class="keyword">var</span> grade = <span class="keyword">when</span> (score) &#123; </span><br><span class="line">    <span class="number">9</span>, <span class="number">10</span> -&gt; <span class="string">&quot;Excellent&quot;</span></span><br><span class="line">    <span class="keyword">in</span> <span class="number">6</span>..<span class="number">8</span> -&gt; <span class="string">&quot;Good&quot;</span> </span><br><span class="line">    <span class="number">4</span>, <span class="number">5</span> -&gt; <span class="string">&quot;OK&quot;</span> </span><br><span class="line">    <span class="keyword">in</span> <span class="number">1</span>..<span class="number">3</span> -&gt; <span class="string">&quot;Fail&quot;</span></span><br><span class="line">    <span class="keyword">else</span> -&gt; <span class="string">&quot;Fail&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>for循环</strong></p>
+<blockquote>
+<p>Java<br> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">10</span> ; i++) &#123; &#125; </span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; <span class="number">10</span> ; i++) &#123; &#125; </span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">10</span>; i &gt;= <span class="number">0</span> ; i--) &#123; &#125; </span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">10</span> ; i+=<span class="number">2</span>) &#123; &#125; </span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">10</span>; i &gt;= <span class="number">0</span> ; i-=<span class="number">2</span>) &#123; &#125; </span><br><span class="line"><span class="keyword">for</span> (String item : collection) &#123; &#125;</span><br><span class="line"><span class="keyword">for</span> (Map.Entry entry: map.entrySet()) &#123; &#125; </span><br></pre></td></tr></table></figure><br>Kotlin<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">for (i in 1..10) &#123; &#125;</span><br><span class="line">for (i in 1 until 10) &#123; &#125;</span><br><span class="line">for (i in 10 downTo 0) &#123; &#125;</span><br><span class="line">for (i in 1..10 step 2) &#123; &#125;</span><br><span class="line">for (i in 10 downTo 0 step 2) &#123; &#125;</span><br><span class="line">for (item in collection) &#123; &#125;</span><br><span class="line">for ((key, value) in map) &#123; &#125;</span><br></pre></td></tr></table></figure><br><strong>更方便的集合操作</strong><br>Java<br> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> List listOfNumber = Arrays.asList(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>); </span><br><span class="line"><span class="keyword">final</span> Map keyValue = <span class="keyword">new</span> HashMap();</span><br><span class="line">map.put(<span class="number">1</span>, <span class="string">&quot;Android&quot;</span>); </span><br><span class="line">map.put(<span class="number">2</span>, <span class="string">&quot;Ali&quot;</span>);</span><br><span class="line">map.put(<span class="number">3</span>, <span class="string">&quot;Mindorks&quot;</span>); <span class="comment">// Java 9 </span></span><br><span class="line"><span class="keyword">final</span> List listOfNumber = List.of(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>);</span><br><span class="line"><span class="keyword">final</span> Map keyValue = Map.of(<span class="number">1</span>, <span class="string">&quot;Android&quot;</span>, <span class="number">2</span>, <span class="string">&quot;Ali&quot;</span>, <span class="number">3</span>, <span class="string">&quot;Mindorks&quot;</span>);</span><br></pre></td></tr></table></figure><br>Kotlin<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">val listOfNumber &#x3D; listOf(1, 2, 3, 4)</span><br><span class="line">val keyValue &#x3D; mapOf(1 to &quot;Android&quot;, 2 to &quot;Ali&quot;, 3 to &quot;Mindorks&quot;)</span><br></pre></td></tr></table></figure><br><strong>遍历</strong><br>Java<br> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Java 7 and below </span></span><br><span class="line"><span class="keyword">for</span> (Car car : cars) &#123; </span><br><span class="line">    System.out.println(car.speed); </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Java 8+ </span></span><br><span class="line">cars.forEach(car -&gt; System.out.println(car.speed)); </span><br><span class="line"><span class="comment">// Java 7 and below </span></span><br><span class="line"><span class="keyword">for</span> (Car car : cars) &#123;</span><br><span class="line">    <span class="keyword">if</span> (car.speed &gt; <span class="number">100</span>) &#123;</span><br><span class="line">        System.out.println(car.speed);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Java 8+ </span></span><br><span class="line">cars.stream()</span><br><span class="line">    .filter(car -&gt; car.speed &gt; <span class="number">100</span>)</span><br><span class="line">    .forEach(car -&gt; System.out.println(car.speed)); </span><br></pre></td></tr></table></figure><br>Kotlin<br> <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cars.forEach &#123; println(it.speed) &#125; </span><br><span class="line">cars.filter &#123; it.speed &gt; <span class="number">100</span> &#125; </span><br><span class="line">    .forEach &#123; println(it.speed)&#125; </span><br></pre></td></tr></table></figure><br><strong>方法定义</strong><br>Java<br> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">doSomething</span><span class="params">()</span> </span>&#123; </span><br><span class="line">   <span class="comment">// logic here</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">doSomething</span><span class="params">(<span class="keyword">int</span>... numbers)</span> </span>&#123; </span><br><span class="line">   <span class="comment">// logic here </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>Kotlin</p>
+</blockquote>
+ <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">doSomething</span><span class="params">()</span></span> &#123; </span><br><span class="line">    <span class="comment">// logic here </span></span><br><span class="line">&#125; </span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">doSomething</span><span class="params">(<span class="keyword">vararg</span> numbers: <span class="type">Int</span>)</span></span> &#123;</span><br><span class="line">    <span class="comment">// logic here </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>带返回值的方法</strong></p>
+<blockquote>
+<p>Java<br> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getScore</span><span class="params">()</span> </span>&#123; </span><br><span class="line">   <span class="comment">// logic here </span></span><br><span class="line">   <span class="keyword">return</span> score; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>Kotlin<br> <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">getScore</span><span class="params">()</span></span>: <span class="built_in">Int</span> &#123;</span><br><span class="line">   <span class="comment">// logic here </span></span><br><span class="line">   <span class="keyword">return</span> score </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// as a single-expression function </span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">getScore</span><span class="params">()</span></span>: <span class="built_in">Int</span> = score</span><br></pre></td></tr></table></figure><br><strong>无结束符号</strong><br>Java<br> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getScore</span><span class="params">(<span class="keyword">int</span> value)</span> </span>&#123; </span><br><span class="line">   <span class="comment">// logic here </span></span><br><span class="line">   <span class="keyword">return</span> <span class="number">2</span> * value; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>Kotlin<br> <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">getScore</span><span class="params">(value: <span class="type">Int</span>)</span></span>: <span class="built_in">Int</span> &#123;</span><br><span class="line">   <span class="comment">// logic here </span></span><br><span class="line">   <span class="keyword">return</span> <span class="number">2</span> * value </span><br><span class="line">&#125; </span><br><span class="line"><span class="comment">// as a single-expression function </span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">getScore</span><span class="params">(value: <span class="type">Int</span>)</span></span>: <span class="built_in">Int</span> = <span class="number">2</span> * value </span><br></pre></td></tr></table></figure><br><strong>constructor 构造器</strong><br>Java<br> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Utils</span> </span>&#123; </span><br><span class="line">   <span class="function"><span class="keyword">private</span> <span class="title">Utils</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// This utility class is not publicly instantiable </span></span><br><span class="line">   &#125; </span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getScore</span><span class="params">(<span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">return</span> <span class="number">2</span> * value; </span><br><span class="line">   &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>Kotlin<br> <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Utils</span> <span class="keyword">private</span> <span class="keyword">constructor</span></span>() &#123;</span><br><span class="line">   <span class="keyword">companion</span> <span class="keyword">object</span> &#123;</span><br><span class="line">       <span class="function"><span class="keyword">fun</span> <span class="title">getScore</span><span class="params">(value: <span class="type">Int</span>)</span></span>: <span class="built_in">Int</span> &#123;</span><br><span class="line">           <span class="keyword">return</span> <span class="number">2</span> * value</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125; </span><br><span class="line"><span class="comment">// another way </span></span><br><span class="line"><span class="keyword">object</span> Utils &#123;</span><br><span class="line">   <span class="function"><span class="keyword">fun</span> <span class="title">getScore</span><span class="params">(value: <span class="type">Int</span>)</span></span>: <span class="built_in">Int</span> &#123;</span><br><span class="line">       <span class="keyword">return</span> <span class="number">2</span> * value</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br> <strong>Get Set 构造器</strong><br>Java<br>  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Developer</span> </span>&#123;</span><br><span class="line">   <span class="keyword">private</span> String name;</span><br><span class="line">   <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="title">Developer</span><span class="params">(String name, <span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">this</span>.name = name; <span class="keyword">this</span>.age = age;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       <span class="keyword">return</span> name;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">this</span>.name = name;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       <span class="keyword">return</span> age;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(<span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">this</span>.age = age;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>Kotlin<br> <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">data</span> <span class="class"><span class="keyword">class</span> <span class="title">Developer</span></span>(<span class="keyword">val</span> name: String, <span class="keyword">val</span> age: <span class="built_in">Int</span>)</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Android/" rel="tag"># Android</a>
+              <a href="/tags/Kotlin/" rel="tag"># Kotlin</a>
+              <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag"># 学习笔记</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2019/11/14/Oracle%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA/" rel="prev" title="Oracle数据库基础理论">
+                  <i class="fa fa-angle-left"></i> Oracle数据库基础理论
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2019/12/03/Kotlin%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="next" title="Kotlin基础入门学习笔记">
+                  Kotlin基础入门学习笔记 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Mark先生</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

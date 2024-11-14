@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha256-5eIC48iZUHmSlSUz9XtjRyK2mzQkHScZY1WdMaoz74E=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.21.1","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="csdn上原博文 【原创不易，转载请注明出处：https:&#x2F;&#x2F;blog.csdn.net&#x2F;email_jade&#x2F;article&#x2F;details&#x2F;85317859】">
+<meta property="og:type" content="article">
+<meta property="og:title" content="flutter入门之常见的flutter问题汇总">
+<meta property="og:url" content="http://example.com/2019/07/11/flutter%E5%85%A5%E9%97%A8%E4%B9%8B%E5%B8%B8%E8%A7%81%E7%9A%84flutter%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/index.html">
+<meta property="og:site_name" content="Mark的私人博客">
+<meta property="og:description" content="csdn上原博文 【原创不易，转载请注明出处：https:&#x2F;&#x2F;blog.csdn.net&#x2F;email_jade&#x2F;article&#x2F;details&#x2F;85317859】">
+<meta property="og:locale">
+<meta property="article:published_time" content="2019-07-11T07:25:43.000Z">
+<meta property="article:modified_time" content="2019-07-11T07:25:43.000Z">
+<meta property="article:author" content="Mark先生">
+<meta property="article:tag" content="Flutter">
+<meta property="article:tag" content="Flutter问题">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2019/07/11/flutter%E5%85%A5%E9%97%A8%E4%B9%8B%E5%B8%B8%E8%A7%81%E7%9A%84flutter%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2019/07/11/flutter%E5%85%A5%E9%97%A8%E4%B9%8B%E5%B8%B8%E8%A7%81%E7%9A%84flutter%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/","path":"2019/07/11/flutter入门之常见的flutter问题汇总/","title":"flutter入门之常见的flutter问题汇总"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>flutter入门之常见的flutter问题汇总 | Mark的私人博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Mark的私人博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Mark的私人博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">数风流人物，还看今朝</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Mark先生</p>
+  <div class="site-description" itemprop="description">一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">141</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">72</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/07/11/flutter%E5%85%A5%E9%97%A8%E4%B9%8B%E5%B8%B8%E8%A7%81%E7%9A%84flutter%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Mark先生">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mark的私人博客">
+      <meta itemprop="description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="flutter入门之常见的flutter问题汇总 | Mark的私人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          flutter入门之常见的flutter问题汇总
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2019-07-11 15:25:43" itemprop="dateCreated datePublished" datetime="2019-07-11T15:25:43+08:00">2019-07-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Flutter/" itemprop="url" rel="index"><span itemprop="name">Flutter</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/email_jade/article/details/85317859###">csdn上原博文</a></p>
+<p>【原创不易，转载请注明出处：<a target="_blank" rel="noopener" href="https://blog.csdn.net/email_jade/article/details/85317859%E3%80%91">https://blog.csdn.net/email_jade/article/details/85317859】</a></p>
+<span id="more"></span>
+<ol>
+<li><p>使用AppBar后如何去掉左边的返回箭头。左边的图标对应的是leading，源代码如下（吐槽一下，CSDN暂不支持dart语言）：</p>
+<p> Widget leading = widget.leading;<br> if (leading == null &amp;&amp; widget.automaticallyImplyLeading) {<br>   if (hasDrawer) {</p>
+<pre><code> leading = IconButton(
+   icon: const Icon(Icons.menu),
+   onPressed: _handleDrawerButton,
+   tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+ );</code></pre>
+<p>   } else {</p>
+<pre><code> if (canPop)
+   leading = useCloseButton ? const CloseButton() : const BackButton();</code></pre>
+<p>   }<br> }<br> if (leading != null) {<br>   leading = ConstrainedBox(</p>
+<pre><code> constraints: const BoxConstraints.tightFor(width: _kLeadingWidth),
+ child: leading,</code></pre>
+<p>   );<br> }<br>修改方式为， leading为null，automaticallyImplyLeading为false：</p>
+</li>
+</ol>
+<p>appBar: AppBar(<br>        leading: null,<br>        automaticallyImplyLeading: false,)<br>2. 使用flutter的canvas做文字绘制的时候用到的api为TextPainter</p>
+<ol start="3">
+<li>使用flutter绘制控件的时候想做到控件超出屏幕范围后自动换行，那么请参考Wrap，可以轻松实现如下的布局：</li>
+</ol>
+<ol start="4">
+<li><p>要实现类似安卓原生ViewPager的UI，请使用PageView，注意定义自己的PageController，然后可以利用PageController的jumpToPage（int）实现自定义的Page页的跳转</p>
+</li>
+<li><p>要实现类似顶部和底部导航栏，请参考TabBar，适当的时候可以和AppBar结合使用</p>
+</li>
+</ol>
+<p>6. flutter is a SingleTickerProviderStateMixin but multiple tickers were created. 报错，原因是多个地方调用setState请求重绘，但是state使用的是SingleTickerProviderStateMixin ，将其改成TickerProviderStateMixin即可。</p>
+<ol start="7">
+<li>解决类冲突的问题，比如，我自定义一个Banner.dart类，这个类跟系统的Banner冲突，那么我们可以这样解决。</li>
+</ol>
+<p>import ‘package:flutter/material.dart’;<br>import ‘package:myproject/Banner.dart’ as myproject;</p>
+<p>//这样使用我们自己的Banner<br>myproject.Banner _myBanner;<br>//系统的Banner<br>Banner _banner;<br>8. 解决Android手机布局浸入到状态栏的问题，用一个SafeArea进行包装即可，如下：</p>
+<p>SafeArea(top: true,<br>      child: MaterialApp(<br>        home: ,<br>      ),);<br>9. 在切换tabbar或者pageview的时候要保存上一个tab widget的状态，参考AutomaticKeepAliveClientMixin既可，如下：</p>
+<p>//假如PageView有四个子页面</p>
+<p> @override<br>  Widget build(BuildContext context) {<br>    return Scaffold(<br>        body: PageView(<br>          controller: pageController,<br>          children: <Widget>[<br>            ArticlesPage(),<br>            ProjectPage(),<br>            NavigationPage(),<br>            CollectionArticlesPage(),<br>          ],<br>          onPageChanged: changePage,<br>        ),<br>        bottomNavigationBar: Navigations(_page, changePage));<br>  }</p>
+<p>//然后在子Page的State分别实现with AutomaticKeepAliveClientMixin，wantkeepAlive返回true</p>
+<p>class ArticlesPageState extends State<ArticlesPage> with AutomaticKeepAliveClientMixin{<br>  @override<br>  bool get wantKeepAlive =&gt; true;<br>}</p>
+<p>class ProjectPageState extends State<ProjectPage> with AutomaticKeepAliveClientMixin{<br>  @override<br>  bool get wantKeepAlive =&gt; true;<br>}</p>
+<p>class NavigationPageState extends State<NavigationPage> with AutomaticKeepAliveClientMixin{<br>  @override<br>  bool get wantKeepAlive =&gt; true;<br>}</p>
+<p>class CollectionArticlesPageState extends State<CollectionArticlesPage> with AutomaticKeepAliveClientMixin{<br>  @override<br>  bool get wantKeepAlive =&gt; true;<br>}<br>10. Android手机启动时候白屏的问题解决，android/app/src/main/res/drawable/launch_background.xml中定义了自定义splash的方法：</p>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Modify this file to customize your launch splash screen -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@android:color/white" />
+
+<pre><code>&lt;!-- You can insert your own image assets here --&gt;
+&lt;!-- &lt;item&gt;
+    &lt;bitmap
+        android:gravity=&quot;center&quot;
+        android:src=&quot;@mipmap/launch_image&quot; /&gt;
+&lt;/item&gt; --&gt;</code></pre>
+</layer-list>
+将<item>注释去掉，替换为自己的launcher_image即可 。
+
+<p>11.  界面存在输入框的时候，点击后软键盘将页面顶起来导致页面重绘的问题（Android fitsystem），可以通过将Scaffold的resizeToAvoidBottomPadding属性设置为false来关闭重绘，如下：</p>
+<p>return Scaffold(<br>      resizeToAvoidBottomPadding: false,<br>);<br>12. 修改TextFiled的边界宽度，可以通过decoration的contentPadding属性进行修改，如下：</p>
+<p>return TextField(<br>        decoration: InputDecoration(<br>          contentPadding: EdgeInsets.all(8),<br>        ),<br>);<br>13. 如果想实现一个布局，在某些条件下显示，可以采用Offstage布局，动态控制其offstage属性值即可</p>
+<ol start="14">
+<li><p>如果出现弹出输入法的时候导致Overflow错误，可以将布局镶嵌到SingleChildScrollView中，比如：</p>
+<p>return Scaffold(<br>  body: SingleChildScrollView(</p>
+<pre><code>child: Container(
+  constraints: BoxConstraints(
+    maxHeight: MediaQuery.of(context).size.height,
+    maxWidth: MediaQuery.of(context).size.width,
+  ),
+),</code></pre>
+<p>),<br>);</p>
+</li>
+<li><p>GridView的item宽高默认是1:1，可以通过修改childAspectRatio的值来进行宽高的修改，该值代表宽：高</p>
+</li>
+<li><p>flutter中绘制虚线，使用path_drawing</p>
+</li>
+<li><p>flutter 中禁用GridView的滚动，可以使用physics属性，取值为NeverScrollableScrollPhysics()，如下：</p>
+</li>
+</ol>
+<p>GridView.count(<br>      physics: NeverScrollableScrollPhysics(),<br>);<br>18. flutter隐藏状态栏，使用：</p>
+<p>SystemChrome.setEnabledSystemUIOverlays([]);<br>19. 监听某个widget是否已经渲染完成，使用WidgetsBinding，方法是在initstate或者build中注册回调，如下：</p>
+<pre><code>WidgetsBinding.instance.addPostFrameCallback((callback)&#123;
+  print(&quot;complete&quot;);
+&#125;);</code></pre>
+<ol start="20">
+<li>flutter设置屏幕支持的方向：</li>
+</ol>
+<p>   以下设置为设置整个项目运行到时候只允许横屏，如果需要其他方向，可以参考设置。</p>
+<p>  SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeRight]).then((_){<br>    runApp(MyApp());<br>  });<br>对于IOS来说，可能我们设置只允许横屏了，但是效果确依旧可以竖屏，记得修改xcode的General–Deployment Info–Device Orientation属性，自己勾选对应的方向，如下。</p>
+<p>设置屏幕显示方向，由于flutter中有bug，在IOS端可能不生效，需要插件支持，见 <a target="_blank" rel="noopener" href="https://github.com/jadennn/flutter_orientation">https://github.com/jadennn/flutter_orientation</a> </p>
+<p>21. flutter设置多语言支持的时候发现在IOS端只显示英语的bug，是由于xcode中默认没有添加中文（其他语言类似）的选择，解决办法，在Info–Locallzations中选择需要的语言，如下：</p>
+<ol start="22">
+<li><p>flutter中禁止控件复用，可以使用不同的key，比如说，如果我们有一个stateful的控件，在initstate中进行了一些值的初始计算，在页面中需要展示多个这样的控件，不想多个控件公用同一套参数（换句话说，initstate只会在第一次初始化的时候调用），那么可以设置不同的key。</p>
+</li>
+<li><p>裁剪图片的方法：</p>
+</li>
+</ol>
+<p>import ‘dart:ui’ as DartUi;</p>
+<p>///根据src和dst裁剪图片<br>  static DartUi.Image getCroppedImage(DartUi.Image image, Rect src, Rect dst) {<br>    var pictureRecorder = new DartUi.PictureRecorder();<br>    Canvas canvas = new Canvas(pictureRecorder);<br>    canvas.drawImageRect(image, src, dst, Paint());<br>    return pictureRecorder<br>        .endRecording()<br>        .toImage(dst.width.floor(), dst.height.floor());<br>  }<br>24. 在不使用BuildContext的情况下进行页面跳转：</p>
+<p>    a. 创建一个global的key</p>
+<p>static GlobalKey<NavigatorState> gNavigatorKey = new GlobalKey<NavigatorState>();<br>    b. 在MaterialApp初始化的时候使用</p>
+<p>return MaterialApp(<br>      navigatorKey: Global.gNavigatorKey,<br>      routes: &lt;String, WidgetBuilder&gt; {<br>        ‘/login’: (BuildContext context) =&gt; new LoginPage(),<br>      },<br>      //….代码省略<br>    c. 需要的地方使用：</p>
+<p>Global.gNavigatorKey.currentState.pushNamedAndRemoveUntil(‘/login’,(_) =&gt; false);<br>    注意的是这种方法代价比较大，除非特殊情况，否则不建议使用。使用的时候根据不同的场景调用不同的push方法</p>
+<hr>
+<p>作者：Hirabbit_jaden<br>来源：CSDN<br>原文：<a target="_blank" rel="noopener" href="https://blog.csdn.net/email_jade/article/details/85317859">https://blog.csdn.net/email_jade/article/details/85317859</a><br>版权声明：本文为博主原创文章，转载请附上博文链接！</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Flutter/" rel="tag"># Flutter</a>
+              <a href="/tags/Flutter%E9%97%AE%E9%A2%98/" rel="tag"># Flutter问题</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2019/07/10/%E9%98%B2%E6%AD%A2%E9%A1%B5%E9%9D%A2%E9%87%8D%E7%BB%98%E5%88%B6%EF%BC%8C%E5%AE%9E%E7%8E%B0AutomaticKeepAliveClientMixin/" rel="prev" title="防止页面重绘制，实现AutomaticKeepAliveClientMixin">
+                  <i class="fa fa-angle-left"></i> 防止页面重绘制，实现AutomaticKeepAliveClientMixin
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2019/07/21/Hexo-yilia-%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0-widgetpack-%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/" rel="next" title="Hexo yilia 主题添加 widgetpack 评论系统">
+                  Hexo yilia 主题添加 widgetpack 评论系统 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Mark先生</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

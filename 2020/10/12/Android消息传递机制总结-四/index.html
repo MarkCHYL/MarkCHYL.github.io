@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha256-5eIC48iZUHmSlSUz9XtjRyK2mzQkHScZY1WdMaoz74E=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.21.1","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="进程间通信 ——— Content Provider ，Broadcast ，AIDL等。 4.进程间通信Content ProviderAndroid应用程序可以使用文件或SqlLite数据库来存储数据。Content Provider提供了一种在多个应用程序之间数据共享的方式（跨进程共享数据）。应用程序可以利用Content Provider完成下面的工作  查询数据 修改数据 添加数据 删除">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android消息传递机制总结(四)">
+<meta property="og:url" content="http://example.com/2020/10/12/Android%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6%E6%80%BB%E7%BB%93-%E5%9B%9B/index.html">
+<meta property="og:site_name" content="Mark的私人博客">
+<meta property="og:description" content="进程间通信 ——— Content Provider ，Broadcast ，AIDL等。 4.进程间通信Content ProviderAndroid应用程序可以使用文件或SqlLite数据库来存储数据。Content Provider提供了一种在多个应用程序之间数据共享的方式（跨进程共享数据）。应用程序可以利用Content Provider完成下面的工作  查询数据 修改数据 添加数据 删除">
+<meta property="og:locale">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2099385-d68440c5786c6047.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/659/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2099385-585fbc5fb15906e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/314/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2099385-0bc46eaf6923f712.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/564/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2099385-575c252bdc2790f1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/615/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2099385-63e992963f1bd552.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/246/format/webp">
+<meta property="article:published_time" content="2020-10-12T01:04:25.000Z">
+<meta property="article:modified_time" content="2020-10-12T01:04:25.000Z">
+<meta property="article:author" content="Mark先生">
+<meta property="article:tag" content="消息通信">
+<meta property="article:tag" content="AIDL">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/2099385-d68440c5786c6047.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/659/format/webp">
+
+
+<link rel="canonical" href="http://example.com/2020/10/12/Android%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6%E6%80%BB%E7%BB%93-%E5%9B%9B/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2020/10/12/Android%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6%E6%80%BB%E7%BB%93-%E5%9B%9B/","path":"2020/10/12/Android消息传递机制总结-四/","title":"Android消息传递机制总结(四)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Android消息传递机制总结(四) | Mark的私人博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Mark的私人博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Mark的私人博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">数风流人物，还看今朝</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1"><span class="nav-number">1.</span> <span class="nav-text">4.进程间通信</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Content-Provider"><span class="nav-number">1.1.</span> <span class="nav-text">Content Provider</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B9%BF%E6%92%AD%EF%BC%88Broadcast%EF%BC%89"><span class="nav-number">1.2.</span> <span class="nav-text">广播（Broadcast）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AIDL-Service"><span class="nav-number">1.3.</span> <span class="nav-text">AIDL Service</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFAIDL%EF%BC%9F"><span class="nav-number">2.</span> <span class="nav-text">什么是AIDL？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AIDL%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">AIDL的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E5%9E%8B"><span class="nav-number">4.</span> <span class="nav-text">自定义类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8B%E4%B8%80%E7%AB%A0%E9%95%BF%E9%93%BE%E6%8E%A5%E6%8E%A8%E9%80%81"><span class="nav-number">5.</span> <span class="nav-text">下一章长链接推送</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Mark先生</p>
+  <div class="site-description" itemprop="description">一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">141</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">72</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/10/12/Android%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6%E6%80%BB%E7%BB%93-%E5%9B%9B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Mark先生">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mark的私人博客">
+      <meta itemprop="description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Android消息传递机制总结(四) | Mark的私人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Android消息传递机制总结(四)
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-10-12 09:04:25" itemprop="dateCreated datePublished" datetime="2020-10-12T09:04:25+08:00">2020-10-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>进程间通信 ——— Content Provider ，Broadcast ，AIDL等。</p>
+<h3 id="4-进程间通信"><a href="#4-进程间通信" class="headerlink" title="4.进程间通信"></a>4.进程间通信</h3><h4 id="Content-Provider"><a href="#Content-Provider" class="headerlink" title="Content Provider"></a>Content Provider</h4><p>Android应用程序可以使用文件或SqlLite数据库来存储数据。Content Provider提供了一种在多个应用程序之间数据共享的方式（跨进程共享数据）。应用程序可以利用Content Provider完成下面的工作</p>
+<ol>
+<li>查询数据</li>
+<li>修改数据</li>
+<li>添加数据</li>
+<li>删除数据<span id="more"></span>
+虽然Content Provider也可以在同一个应用程序中被访问，但这么做并没有什么意义。Content Provider存在的目的向其他应用程序共享数据和允许其他应用程序对数据进行增、删、改操作。<br>Android系统本身提供了很多Content Provider，例如，音频、视频、联系人信息等等。我们可以通过这些Content Provider获得相关信息的列表。这些列表数据将以Cursor对象返回。因此，从Content Provider返回的数据是二维表的形式。<h4 id="广播（Broadcast）"><a href="#广播（Broadcast）" class="headerlink" title="广播（Broadcast）"></a>广播（Broadcast）</h4>广播是一种被动跨进程通讯的方式。当某个程序向系统发送广播时，其他的应用程序只能被动地接收广播数据。这就象电台进行广播一样，听众只能被动地收听，而不能主动与电台进行沟通。<br>在应用程序中发送广播比较简单。只需要调用sendBroadcast方法即可。该方法需要一个Intent对象。通过Intent对象可以发送需要广播的数据。<h4 id="AIDL-Service"><a href="#AIDL-Service" class="headerlink" title="AIDL Service"></a>AIDL Service</h4>这是我个人比较推崇的方式，因为它相比Broadcast而言，虽然实现上稍微麻烦了一点，但是它的优势就是不会像广播那样在手机中的广播较多时会有明显的时延，甚至有广播发送不成功的情况出现。<br>注意普通的Service并不能实现跨进程操作，实际上普通的Service和它所在的应用处于同一个进程中，而且它也不会专门开一条新的线程，因此如果在普通的Service中实现在耗时的任务，需要新开线程。<br>要实现跨进程通信，需要借助AIDL(Android Interface Definition Language)。Android中的跨进程服务其实是采用C/S的架构，因而AIDL的目的就是实现通信接口。<br><a target="_blank" rel="noopener" href="http://www.jianshu.com/p/d1fac6ccee98">AIDL具体使用可参考</a></li>
+</ol>
+<h3 id="什么是AIDL？"><a href="#什么是AIDL？" class="headerlink" title="什么是AIDL？"></a>什么是AIDL？</h3><p>AIDL:Android Interface Definition Language,即Android接口定义语言。</p>
+<p>Android系统中的进程之间不能共享内存，因此，需要提供一些机制在不同进程之间进行数据通信。为了使其他的应用程序也可以访问本应用程序提供的服务，Android系统采用了远程过程调用（Remote Procedure Call，RPC）方式来实现。与很多其他的基于RPC的解决方案一样，Android使用一种接口定义语言（Interface Definition Language，IDL）来公开服务的接口。我们知道4个Android应用程序组件中的3个（Activity、BroadcastReceiver和ContentProvider）都可以进行跨进程访问，另外一个Android应用程序组件Service同样可以。因此，可以将这种可以跨进程访问的服务称为AIDL（Android Interface Definition Language）服务。</p>
+<h3 id="AIDL的使用"><a href="#AIDL的使用" class="headerlink" title="AIDL的使用"></a>AIDL的使用</h3><p>因为是两个APP交互么，所以当然要两个APP啦，我们在第一个工程目录右键<br><img src="https://upload-images.jianshu.io/upload_images/2099385-d68440c5786c6047.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/659/format/webp"><br>输入名称后，sutido就帮我们创建了一个AIDL文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; IMyAidlInterface.aidl</span><br><span class="line">package cc.abto.demo;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Declare any non-default types here with import statements</span><br><span class="line"></span><br><span class="line">interface IMyAidlInterface &#123;</span><br><span class="line">    &#x2F;**</span><br><span class="line">     * Demonstrates some basic types that you can use as parameters</span><br><span class="line">     * and return values in AIDL.</span><br><span class="line">     *&#x2F;</span><br><span class="line">    void basicTypes(int anInt, long aLong, boolean aBoolean, float aFloat,</span><br><span class="line">            double aDouble, String aString);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面就是studio帮我生成的aidl文件。basicTypes这个方法可以无视，看注解知道这个方法只是告诉你在AIDL中你可以使用的基本类型（int, long, boolean, float, double, String），因为这里是要跨进程通讯的，所以不是随便你自己定义的一个类型就可以在AIDL使用的，这些后面会说。我们在AIDL文件中定义一个我们要提供给第二个APP使用的接口。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">interface IMyAidlInterface &#123;</span><br><span class="line">   String getName();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>定义好之后，就可以sycn project一下，然后新建一个service。在service里面创建一个内部类，继承你刚才创建的AIDL的名称里的Stub类,并实现接口方法,在onBind返回内部类的实例。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">public class MyService extends Service</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    public MyService()</span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public IBinder onBind(Intent intent)</span><br><span class="line">    &#123;</span><br><span class="line">        return new MyBinder();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    class MyBinder extends IMyAidlInterface.Stub</span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        public String getName() throws RemoteException</span><br><span class="line">        &#123;</span><br><span class="line">            return &quot;test&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>接下来，将我们的AIDL文件拷贝到第二个项目，然后sycn project一下工程。<br><img src="https://upload-images.jianshu.io/upload_images/2099385-585fbc5fb15906e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/314/format/webp"><br><strong>这边的包名要跟第一个项目的一样哦，这之后在Activity中绑定服务。</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public class MainActivity extends AppCompatActivity &#123;</span><br><span class="line"></span><br><span class="line">    private IMyAidlInterface iMyAidlInterface;</span><br><span class="line">    ServiceConnection conn;</span><br><span class="line">    private static final String TAG &#x3D; &quot;MainActivity&quot;;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        Intent intent &#x3D; new Intent();</span><br><span class="line">        intent.setAction(&quot;com.mark.aidldemo1&quot;);</span><br><span class="line">        intent.setPackage(&quot;com.mark.aidldemo1&quot;);</span><br><span class="line"></span><br><span class="line">        conn &#x3D; new ServiceConnection() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onServiceConnected(ComponentName name, IBinder service) &#123;</span><br><span class="line">                iMyAidlInterface &#x3D; IMyAidlInterface.Stub.asInterface(service);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public void onServiceDisconnected(ComponentName name) &#123;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        bindService(intent, conn, BIND_AUTO_CREATE);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onStop() &#123;</span><br><span class="line">        unbindService(conn);</span><br><span class="line">        super.onStop();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void doTest(View view) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            if (iMyAidlInterface!&#x3D;null) &#123;</span><br><span class="line">                Toast.makeText(this, iMyAidlInterface.getName(), Toast.LENGTH_SHORT).show();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; catch (RemoteException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这边我们通过隐式意图来绑定service，在onServiceConnected方法中通过IMyAidlInterface.Stub.asInterface(service)获取iMyAidlInterface对象，然后在onClick中调用iMyAidlInterface.getName()。<br><img src="https://upload-images.jianshu.io/upload_images/2099385-0bc46eaf6923f712.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/564/format/webp"></p>
+<h3 id="自定义类型"><a href="#自定义类型" class="headerlink" title="自定义类型"></a>自定义类型</h3><p>如果我要在AIDL中使用自定义的类型，要怎么做呢。首先我们的自定义类型要实现Parcelable接口，下面的代码中创建了一个User类并实现Parcelable接口。这边就不对Parcelable进行介绍了，不熟悉的童鞋自行查找资料，总之我们这边可以借助studio的Show Intention Action（也就是Eclipse中的Quick Fix，默认是alt+enter键）帮我们快速实现Parcelable接口。<br><img src="https://upload-images.jianshu.io/upload_images/2099385-575c252bdc2790f1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/615/format/webp"></p>
+<p>接下新建一个aidl文件，名称为我们自定义类型的名称，这边是User.aidl。在User.aidl申明我们的自定义类型和它的完整包名，注意这边parcelable是小写的，不是Parcelable接口，一个自定类型需要一个这样同名的AIDL文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">package com.mark.aidldemo1;</span><br><span class="line">parcelable User;</span><br></pre></td></tr></table></figure>
+<p>然后再在我们的AIDL接口中导入我们的AIDL类型。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import com.mark.aidldemo1.User;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Declare any non-default types here with import statements</span><br><span class="line"></span><br><span class="line">interface IMyAidlInterface &#123;</span><br><span class="line">   String getName();</span><br><span class="line">   User getUserName();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后定义接口方法，sycn project后就可以在service中做具体实现了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class MyBinder extends IMyAidlInterface.Stub</span><br><span class="line">  &#123;</span><br><span class="line"></span><br><span class="line">     ........</span><br><span class="line"></span><br><span class="line">      @Override</span><br><span class="line">      public User getUserName() throws RemoteException &#123;</span><br><span class="line">          return new User(&quot;Mark&quot;);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>最后将我们的AIDL文件和自定义类型的java一并拷贝到第二个项目，注意包名都要一样哦</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2099385-63e992963f1bd552.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/246/format/webp"><br>然后就可以在Activity中使用该自定义类型的AIDL接口了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public class MainActivity extends AppCompatActivity</span><br><span class="line">&#123;</span><br><span class="line">    &#x2F;&#x2F;...</span><br><span class="line">    public void onClick(View view)</span><br><span class="line">    &#123;</span><br><span class="line">        try</span><br><span class="line">        &#123;</span><br><span class="line">            Toast.makeText(MainActivity.this, iMyAidlInterface.getUserName().getName(), Toast.LENGTH_SHORT).show();</span><br><span class="line">        &#125;</span><br><span class="line">        catch (RemoteException e)</span><br><span class="line">        &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>AIDL只是Android中众多进程间通讯方式中的一种方式,<a target="_blank" rel="noopener" href="https://gitee.com/markshow/msg-ipc">我的代码</a></p>
+<h3 id="下一章长链接推送"><a href="#下一章长链接推送" class="headerlink" title="下一章长链接推送"></a><a target="_blank" rel="noopener" href="http://markchyl.cn/2020/10/19/Android%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6%E6%80%BB%E7%BB%93-%E4%BA%94/">下一章长链接推送</a></h3>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%B6%88%E6%81%AF%E9%80%9A%E4%BF%A1/" rel="tag"># 消息通信</a>
+              <a href="/tags/AIDL/" rel="tag"># AIDL</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/10/10/Android%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6%E6%80%BB%E7%BB%93%E4%B8%89/" rel="prev" title="Android消息传递机制总结(三)">
+                  <i class="fa fa-angle-left"></i> Android消息传递机制总结(三)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/10/19/Android%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6%E6%80%BB%E7%BB%93-%E4%BA%94/" rel="next" title="Android消息传递机制总结(五)">
+                  Android消息传递机制总结(五) <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Mark先生</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

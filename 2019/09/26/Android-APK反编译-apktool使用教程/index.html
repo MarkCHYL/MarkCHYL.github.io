@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha256-5eIC48iZUHmSlSUz9XtjRyK2mzQkHScZY1WdMaoz74E=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.21.1","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="前言：时间久了之前在熟悉的东西也会渐疏，好记性不如乱笔头。 工具介绍 apktool    ​     作用：主要查看res文件下xml文件、AndroidManifest.xml和图片。（注意：如果直接解压.apk文件，xml文件打开全部是乱码）  dex2jar  ​     作用：将apk反编译成Java源码（classes.dex转化成jar文件）  jd-gui  ​     作用：查看">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android APK反编译 apktool使用教程">
+<meta property="og:url" content="http://example.com/2019/09/26/Android-APK%E5%8F%8D%E7%BC%96%E8%AF%91-apktool%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/index.html">
+<meta property="og:site_name" content="Mark的私人博客">
+<meta property="og:description" content="前言：时间久了之前在熟悉的东西也会渐疏，好记性不如乱笔头。 工具介绍 apktool    ​     作用：主要查看res文件下xml文件、AndroidManifest.xml和图片。（注意：如果直接解压.apk文件，xml文件打开全部是乱码）  dex2jar  ​     作用：将apk反编译成Java源码（classes.dex转化成jar文件）  jd-gui  ​     作用：查看">
+<meta property="og:locale">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200326094455532.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2RpcmtzbWFsbGVy,size_16,color_FFFFFF,t_70">
+<meta property="article:published_time" content="2019-09-26T01:48:57.000Z">
+<meta property="article:modified_time" content="2019-09-26T01:48:57.000Z">
+<meta property="article:author" content="Mark先生">
+<meta property="article:tag" content="工具使用">
+<meta property="article:tag" content="反编译">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200326094455532.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2RpcmtzbWFsbGVy,size_16,color_FFFFFF,t_70">
+
+
+<link rel="canonical" href="http://example.com/2019/09/26/Android-APK%E5%8F%8D%E7%BC%96%E8%AF%91-apktool%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2019/09/26/Android-APK%E5%8F%8D%E7%BC%96%E8%AF%91-apktool%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/","path":"2019/09/26/Android-APK反编译-apktool使用教程/","title":"Android APK反编译 apktool使用教程"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Android APK反编译 apktool使用教程 | Mark的私人博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Mark的私人博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Mark的私人博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">数风流人物，还看今朝</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">前言：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A5%E5%85%B7%E4%BB%8B%E7%BB%8D"><span class="nav-number">2.</span> <span class="nav-text">工具介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B0%E7%89%88%E6%9C%ACapktool%E7%94%A8%E6%B3%95%EF%BC%9A"><span class="nav-number">3.</span> <span class="nav-text">新版本apktool用法：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%9A%82%E8%9A%81%E8%99%BD%E5%B0%8F%E4%B9%9F%E6%98%AF%E8%82%89%EF%BC%8C%E7%BB%86%E5%BF%83%E7%A7%AF%E7%B4%AF%EF%BC%8C%E6%85%A2%E6%85%A2%E6%8F%90%E9%AB%98%E8%87%AA%E5%B7%B1%EF%BC%8C%E5%8A%A0%E6%B2%B9%EF%BC%81"><span class="nav-number">4.</span> <span class="nav-text">蚂蚁虽小也是肉，细心积累，慢慢提高自己，加油！</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Mark先生</p>
+  <div class="site-description" itemprop="description">一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">141</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">72</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/09/26/Android-APK%E5%8F%8D%E7%BC%96%E8%AF%91-apktool%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Mark先生">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mark的私人博客">
+      <meta itemprop="description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Android APK反编译 apktool使用教程 | Mark的私人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Android APK反编译 apktool使用教程
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2019-09-26 09:48:57" itemprop="dateCreated datePublished" datetime="2019-09-26T09:48:57+08:00">2019-09-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><p>时间久了之前在熟悉的东西也会渐疏，好记性不如乱笔头。</p>
+<h2 id="工具介绍"><a href="#工具介绍" class="headerlink" title="工具介绍"></a>工具介绍</h2><ul>
+<li>apktool  </li>
+</ul>
+<p>​     作用：主要查看res文件下xml文件、AndroidManifest.xml和图片。（注意：如果直接解压.apk文件，xml文件打开全部是乱码）</p>
+<ul>
+<li>dex2jar</li>
+</ul>
+<p>​     作用：将apk反编译成<a target="_blank" rel="noopener" href="http://lib.csdn.net/base/javaee">Java</a>源码（classes.dex转化成jar文件）</p>
+<ul>
+<li>jd-gui</li>
+</ul>
+<p>​     作用：查看APK中classes.dex转化成出的jar文件，即源码文件</p>
+<span id="more"></span>
+
+<h2 id="新版本apktool用法："><a href="#新版本apktool用法：" class="headerlink" title="新版本apktool用法："></a>新版本apktool用法：</h2><p>1、下载和安装方法：</p>
+<p><a target="_blank" rel="noopener" href="https://ibotpeaches.github.io/Apktool/install/">https://ibotpeaches.github.io/Apktool/install/</a></p>
+<p><img src="https://img-blog.csdnimg.cn/20200326094455532.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2RpcmtzbWFsbGVy,size_16,color_FFFFFF,t_70"></p>
+<p><strong>需要注意的是</strong><br>步骤一种的脚步，另存为apktool后，一定要把下载的apktool_xxxx.jar重命名为apktool.jar ，并且要和apktool脚本放在同一级目录下。</p>
+<p>2、使用方法</p>
+<p><a target="_blank" rel="noopener" href="https://ibotpeaches.github.io/Apktool/documentation/">https://ibotpeaches.github.io/Apktool/documentation/</a></p>
+<p><code>apktool d -f xxxx.apk</code></p>
+<p>3、反编译开始</p>
+<p>反编译：</p>
+<p><code>apktool d test.apk -o test</code></p>
+<p>回编译</p>
+<p><code>apktool b test -o new_test.apk</code></p>
+<h2 id="蚂蚁虽小也是肉，细心积累，慢慢提高自己，加油！"><a href="#蚂蚁虽小也是肉，细心积累，慢慢提高自己，加油！" class="headerlink" title="蚂蚁虽小也是肉，细心积累，慢慢提高自己，加油！"></a>蚂蚁虽小也是肉，细心积累，慢慢提高自己，加油！</h2>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="tag"># 工具使用</a>
+              <a href="/tags/%E5%8F%8D%E7%BC%96%E8%AF%91/" rel="tag"># 反编译</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2019/09/25/Android-%E6%90%9C%E7%B4%A2-%E6%8A%8A%E8%BD%AF%E9%94%AE%E7%9B%98%E4%B8%8A%E7%9A%84%E5%9B%9E%E8%BD%A6%E9%94%AE%E6%94%B9%E4%B8%BA%E6%90%9C%E7%B4%A2/" rel="prev" title="Android 搜索 把软键盘上的回车键改为搜索">
+                  <i class="fa fa-angle-left"></i> Android 搜索 把软键盘上的回车键改为搜索
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2019/10/14/%E5%B0%86%E9%A1%B9%E7%9B%AE%E8%BF%81%E7%A7%BB%E8%87%B3androidx/" rel="next" title="将项目迁移至androidx">
+                  将项目迁移至androidx <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Mark先生</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha256-5eIC48iZUHmSlSUz9XtjRyK2mzQkHScZY1WdMaoz74E=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.21.1","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Android中APT技术介绍[TOC] APT是什么APT 全称 Annotation Processing Tool，即注解处理器，是javac的一种处理注释的工具，它对源代码文件进行检测找出其中的Annotation，并根据注解自动生成代码，帮助开发者减少了很多重复代码的编写。 例子很多著名的框架用到APT的思想，通过注解编译期间自动生成代码，简化使用  Butterknife Dragge">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android中APT技术介绍">
+<meta property="og:url" content="http://example.com/2022/09/16/Android%E4%B8%ADAPT%E6%8A%80%E6%9C%AF%E4%BB%8B%E7%BB%8D/index.html">
+<meta property="og:site_name" content="Mark的私人博客">
+<meta property="og:description" content="Android中APT技术介绍[TOC] APT是什么APT 全称 Annotation Processing Tool，即注解处理器，是javac的一种处理注释的工具，它对源代码文件进行检测找出其中的Annotation，并根据注解自动生成代码，帮助开发者减少了很多重复代码的编写。 例子很多著名的框架用到APT的思想，通过注解编译期间自动生成代码，简化使用  Butterknife Dragge">
+<meta property="og:locale">
+<meta property="article:published_time" content="2022-09-16T14:59:58.000Z">
+<meta property="article:modified_time" content="2022-09-16T14:59:58.000Z">
+<meta property="article:author" content="Mark先生">
+<meta property="article:tag" content="Android">
+<meta property="article:tag" content="APT">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2022/09/16/Android%E4%B8%ADAPT%E6%8A%80%E6%9C%AF%E4%BB%8B%E7%BB%8D/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2022/09/16/Android%E4%B8%ADAPT%E6%8A%80%E6%9C%AF%E4%BB%8B%E7%BB%8D/","path":"2022/09/16/Android中APT技术介绍/","title":"Android中APT技术介绍"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Android中APT技术介绍 | Mark的私人博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Mark的私人博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Mark的私人博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">数风流人物，还看今朝</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Android%E4%B8%ADAPT%E6%8A%80%E6%9C%AF%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">Android中APT技术介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#APT%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">1.1.</span> <span class="nav-text">APT是什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90"><span class="nav-number">1.2.</span> <span class="nav-text">例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#APT%E6%9C%89%E4%BB%80%E4%B9%88%E7%94%A8-%EF%BC%88%E5%A5%BD%E5%A4%84%EF%BC%89"><span class="nav-number">1.3.</span> <span class="nav-text">APT有什么用 （好处）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#APT%E5%8E%9F%E7%90%86-%EF%BC%88%E4%B8%BA%E4%BB%80%E4%B9%88%EF%BC%89"><span class="nav-number">1.4.</span> <span class="nav-text">APT原理 （为什么）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#APT%E5%AE%9E%E8%B7%B5-%EF%BC%88%E6%80%8E%E4%B9%88%E5%81%9A%EF%BC%89"><span class="nav-number">1.5.</span> <span class="nav-text">APT实践 （怎么做）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">1.5.1.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Mark先生</p>
+  <div class="site-description" itemprop="description">一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">141</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">72</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/16/Android%E4%B8%ADAPT%E6%8A%80%E6%9C%AF%E4%BB%8B%E7%BB%8D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Mark先生">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mark的私人博客">
+      <meta itemprop="description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Android中APT技术介绍 | Mark的私人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Android中APT技术介绍
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-09-16 22:59:58" itemprop="dateCreated datePublished" datetime="2022-09-16T22:59:58+08:00">2022-09-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="Android中APT技术介绍"><a href="#Android中APT技术介绍" class="headerlink" title="Android中APT技术介绍"></a>Android中APT技术介绍</h2><p>[TOC]</p>
+<h3 id="APT是什么"><a href="#APT是什么" class="headerlink" title="APT是什么"></a>APT是什么</h3><p><code>APT</code> 全称 <code>Annotation Processing Tool</code>，即注解处理器，是javac的一种处理注释的工具，它对源代码文件进行检测找出其中的Annotation，并根据注解自动生成代码，帮助开发者减少了很多重复代码的编写。</p>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><p>很多著名的框架用到APT的思想，通过注解编译期间自动生成代码，简化使用</p>
+<ol>
+<li><code>Butterknife</code></li>
+<li><code>Dragger</code></li>
+<li><code>Room</code></li>
+</ol>
+<p>另外，还有是运行时注解，例如</p>
+<ol>
+<li><code>Retrofit</code></li>
+</ol>
+<h3 id="APT有什么用-（好处）"><a href="#APT有什么用-（好处）" class="headerlink" title="APT有什么用 （好处）"></a>APT有什么用 （好处）</h3><p>可以在编译时生成额外的.java文件，在程序运行的时候调用相关方法，可以达到减少重复代码的效果。它的好处：提高开发效率，使得项目更容易维护和扩展，同时几乎不影响性能。</p>
+<h3 id="APT原理-（为什么）"><a href="#APT原理-（为什么）" class="headerlink" title="APT原理 （为什么）"></a>APT原理 （为什么）</h3><p>通过APT（Annotation Processing Tool）技术，即注解处理器，在编译时扫描并处理注解，注解处理器最终生成处理注解逻辑的.java文件。</p>
+<h3 id="APT实践-（怎么做）"><a href="#APT实践-（怎么做）" class="headerlink" title="APT实践 （怎么做）"></a>APT实践 （怎么做）</h3><ol>
+<li>创建自定义注解@interface；</li>
+<li>创建并注册注解处理器AbstractProcesso，生成处理注解逻辑的.java文件；</li>
+<li>封装一个供外部调用的API，用的是反射技术，具体来说就是调用第二步中生成的代码中的方法；</li>
+<li>在业务代码中使用，比如Activity、Fragment、Adapter</li>
+</ol>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><ol>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/b5be6b896a1a">Android编译时注解–入门篇（AbstractProcessor、APT）</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/xx326664162/article/details/68490059">你必须知道的APT、annotationProcessor、android-apt、Provided、自定义注解</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903701283340301">Android 注解系列之APT工具</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/hb707934728/article/details/52213086">Android 利用 APT 技术在编译期生成代码</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/biaozhiyuan/article/details/117045125">Android注解处理器APT技术简介</a></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Android/" rel="tag"># Android</a>
+              <a href="/tags/APT/" rel="tag"># APT</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/09/16/%E5%AE%9E%E6%88%98%EF%BC%9A%E5%9F%BA%E4%BA%8EARouter%E5%AE%9E%E7%8E%B0%E7%99%BB%E9%99%86%E6%8B%A6%E6%88%AA-%E5%85%A8%E5%B1%80%E9%99%8D%E7%BA%A7%E7%AD%96%E7%95%A5/" rel="prev" title="实战：基于ARouter实现登陆拦截&全局降级策略">
+                  <i class="fa fa-angle-left"></i> 实战：基于ARouter实现登陆拦截&全局降级策略
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/09/16/Android%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8C%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B%EF%BC%88%E6%A1%88%E5%88%97%EF%BC%9ANavigation%E7%BB%84%E4%BB%B6%E5%92%8CARouter%E4%B8%BA%E4%BE%8B%EF%BC%89/" rel="next" title="Android如何进行技术选型（案列：Navigation组件和ARouter为例）">
+                  Android如何进行技术选型（案列：Navigation组件和ARouter为例） <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Mark先生</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

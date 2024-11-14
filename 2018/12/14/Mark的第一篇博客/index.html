@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha256-5eIC48iZUHmSlSUz9XtjRyK2mzQkHScZY1WdMaoz74E=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.21.1","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="标题: Mark的个人博客搭建 一、前言 大家好，我是Mark，一个Android程序员，目前从事软件应用开发，其实我很早就像想很多的大佬们一样拥有自己的博客，在下在网上搜了一波，发现可以通过 GitHub + Hexo 搭建自己个人的博客，这次我就想彻底好好的把这个弄好，主要是可以方便自己把自己的笔记记录在上面，方便自己的以后的只是复习。我的脑子不太好使，记东西过了不久就会忘记，好记性不容">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mark的个人博客搭建">
+<meta property="og:url" content="http://example.com/2018/12/14/Mark%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/index.html">
+<meta property="og:site_name" content="Mark的私人博客">
+<meta property="og:description" content="标题: Mark的个人博客搭建 一、前言 大家好，我是Mark，一个Android程序员，目前从事软件应用开发，其实我很早就像想很多的大佬们一样拥有自己的博客，在下在网上搜了一波，发现可以通过 GitHub + Hexo 搭建自己个人的博客，这次我就想彻底好好的把这个弄好，主要是可以方便自己把自己的笔记记录在上面，方便自己的以后的只是复习。我的脑子不太好使，记东西过了不久就会忘记，好记性不容">
+<meta property="og:locale">
+<meta property="og:image" content="https://images2017.cnblogs.com/blog/1250458/201710/1250458-20171017153636849-294935886.png">
+<meta property="og:image" content="https://images2017.cnblogs.com/blog/1250458/201710/1250458-20171017153642521-647884655.png">
+<meta property="og:image" content="https://images2017.cnblogs.com/blog/1250458/201710/1250458-20171017153648631-441574444.png">
+<meta property="article:published_time" content="2018-12-14T12:30:47.000Z">
+<meta property="article:modified_time" content="2018-12-14T12:30:47.000Z">
+<meta property="article:author" content="Mark先生">
+<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="工具搭建">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images2017.cnblogs.com/blog/1250458/201710/1250458-20171017153636849-294935886.png">
+
+
+<link rel="canonical" href="http://example.com/2018/12/14/Mark%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2018/12/14/Mark%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/","path":"2018/12/14/Mark的第一篇博客/","title":"Mark的个人博客搭建"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Mark的个人博客搭建 | Mark的私人博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Mark的私人博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Mark的私人博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">数风流人物，还看今朝</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%87%E9%A2%98-Mark%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA"><span class="nav-number">1.</span> <span class="nav-text">标题: Mark的个人博客搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%89%8D%E8%A8%80"><span class="nav-number">1.0.1.</span> <span class="nav-text">一、前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E8%AE%B0%E5%BD%95%E4%B8%8B%E6%88%91%E6%90%AD%E5%BB%BA%E6%AD%A4%E5%8D%9A%E5%AE%A2%E6%96%B9%E6%B3%95"><span class="nav-number">1.0.2.</span> <span class="nav-text">二、记录下我搭建此博客方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A6%96%E5%85%88%EF%BC%9A%E6%88%91%E4%BB%AC%E7%9A%84%E6%90%AD%E5%BB%BA%E7%8E%AF%E5%A2%83%E6%98%AF-MacBook-Pro%EF%BC%8C%E5%87%86%E5%A4%87%E7%9A%84%E7%BC%96%E5%86%99%E5%8D%9A%E5%AE%A2%E7%9A%84%E7%BC%96%E8%BE%91%E5%99%A8-Visual-Studio-Code-GitHub%EF%BC%8C%E4%BB%A5%E5%8F%8A%E9%87%8D%E8%A6%81%E7%9A%84%E5%AE%89%E8%A3%85%E5%A5%BD-git%EF%BC%8C%E5%86%8D%E5%B0%B1%E6%98%AF%E5%BE%88%E9%87%8D%E8%A6%81%E7%9A%84%E6%98%AF%E8%80%90%E5%BF%83%E5%92%8C%E7%99%BE%E6%8A%98%E4%B8%8D%E6%8C%A0%E7%9A%84%E4%BF%A1%E6%81%AF%E3%80%82Start%EF%BC%81%EF%BC%81%EF%BC%81"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">首先：我们的搭建环境是 MacBook Pro，准备的编写博客的编辑器 Visual Studio Code,GitHub，以及重要的安装好 git，再就是很重要的是耐心和百折不挠的信息。Start！！！</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%88%9B%E5%BB%BA%E4%BB%93%E5%BA%93%EF%BC%88https-markchyl-github-io-%EF%BC%89"><span class="nav-number">1.0.3.</span> <span class="nav-text">1. 创建仓库（https:&#x2F;&#x2F;markchyl.github.io&#x2F;）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Hexo%E7%9A%84%E5%AE%89%E8%A3%85"><span class="nav-number">1.0.4.</span> <span class="nav-text">2. Hexo的安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%B7%BB%E5%8A%A0%E4%B8%BB%E9%A2%98"><span class="nav-number">1.0.5.</span> <span class="nav-text">3.添加主题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E9%83%A8%E7%BD%B2%E5%88%B0Github"><span class="nav-number">1.0.6.</span> <span class="nav-text">4. 部署到Github</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0SSH-Key"><span class="nav-number">1.0.6.1.</span> <span class="nav-text">添加SSH Key</span></a></li></ol></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Mark先生</p>
+  <div class="site-description" itemprop="description">一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">141</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">72</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2018/12/14/Mark%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Mark先生">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mark的私人博客">
+      <meta itemprop="description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Mark的个人博客搭建 | Mark的私人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Mark的个人博客搭建
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2018-12-14 20:30:47" itemprop="dateCreated datePublished" datetime="2018-12-14T20:30:47+08:00">2018-12-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" itemprop="url" rel="index"><span itemprop="name">工具使用</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><hr>
+<h1 id="标题-Mark的个人博客搭建"><a href="#标题-Mark的个人博客搭建" class="headerlink" title="标题: Mark的个人博客搭建"></a><strong>标题: Mark的个人博客搭建</strong></h1><hr>
+<h3 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a><strong>一、前言</strong></h3><blockquote>
+<p>大家好，我是Mark，一个Android程序员，目前从事软件应用开发，其实我很早就像想很多的大佬们一样拥有自己的博客，在下在网上搜了一波，发现可以通过 GitHub + Hexo 搭建自己个人的博客，这次我就想彻底好好的把这个弄好，主要是可以方便自己把自己的笔记记录在上面，方便自己的以后的只是复习。我的脑子不太好使，记东西过了不久就会忘记，好记性不容烂笔头，对于一个程序员如果还在用笔记本自己手写笔记确实让我自己感到惭愧，程序的代码量和知识点很多，若是每个自己的笔记都去用手写，那样我的工作效率就会很低。在此我想大家推荐，</p>
+</blockquote>
+<span id="more"></span>
+<h3 id="二、记录下我搭建此博客方法"><a href="#二、记录下我搭建此博客方法" class="headerlink" title="二、记录下我搭建此博客方法"></a><strong>二、记录下我搭建此博客方法</strong></h3><p>利用GitHub + Hexo 搭建个人的博客，网上有很多的大佬的文章，这里我想大家推荐一个博客文章<a target="_blank" rel="noopener" href="https://www.cnblogs.com/jackyroc/p/7681938.html">JackyRoc的文章链接</a>，至于怎么利用Hexo在下推荐先看看此文章<a target="_blank" rel="noopener" href="https://www.cnblogs.com/liuxianan/p/build-blog-website-by-hexo-github.html">小茗同学的博客园</a>.</p>
+<p>好了！现在开始记录我自己的搭建步骤：</p>
+<h4 id="首先：我们的搭建环境是-MacBook-Pro，准备的编写博客的编辑器-Visual-Studio-Code-GitHub，以及重要的安装好-git，再就是很重要的是耐心和百折不挠的信息。Start！！！"><a href="#首先：我们的搭建环境是-MacBook-Pro，准备的编写博客的编辑器-Visual-Studio-Code-GitHub，以及重要的安装好-git，再就是很重要的是耐心和百折不挠的信息。Start！！！" class="headerlink" title="首先：我们的搭建环境是 MacBook Pro，准备的编写博客的编辑器 Visual Studio Code,GitHub，以及重要的安装好 git，再就是很重要的是耐心和百折不挠的信息。Start！！！"></a>首先：我们的搭建环境是 MacBook Pro，准备的编写博客的编辑器 <strong><a target="_blank" rel="noopener" href="https://code.visualstudio.com/?wt.mc_id=DX_841432">Visual Studio Code</a></strong>,<strong>GitHub</strong>，以及重要的安装好 <strong>git</strong>，再就是很重要的是耐心和百折不挠的信息。Start！！！</h4><h3 id="1-创建仓库（https-markchyl-github-io-）"><a href="#1-创建仓库（https-markchyl-github-io-）" class="headerlink" title="1. 创建仓库（https://markchyl.github.io/）"></a>1. 创建仓库（<a target="_blank" rel="noopener" href="https://markchyl.github.io/%EF%BC%89">https://markchyl.github.io/）</a></h3><p>   仓库的名字是这个格式 XXXXX.github.io，XXXXX 就是你的自己可以定义的，后面的 .github.io 一定要这样，当然如果你有自己的个人域名地址也是可以在后面的步骤中绑定的。创建仓库的步骤我就不啰嗦了！简单。</p>
+<h3 id="2-Hexo的安装"><a href="#2-Hexo的安装" class="headerlink" title="2. Hexo的安装"></a>2. Hexo的安装</h3><p>   要使用Hexo,需要安装Nodejs以及Git，<br>   <a target="_blank" rel="noopener" href="http://www.runoob.com/nodejs/nodejs-install-setup.html">参考:安装Node.js</a></p>
+<p>   在你需要安装Hexo的目录下(新建一个文件夹)右键选择 Git Bash</p>
+<p>npm install hexo-cli -g<br>hexo init #初始化网站<br>npm install<br>hexo g #生成或 hexo generate<br>hexo s #启动本地服务器 或者 hexo server,这一步之后就可以通过<a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000</a>  查看了<br>详细命令请参考Hexo文档</p>
+<p>这里介绍一下怎么创建一篇文章</p>
+<p>hexo new “文章名” #新建文章<br>hexo new page “页面名” #新建页面<br>常用简写</p>
+<p>hexo n == hexo new<br>hexo g == hexo generate<br>hexo s == hexo server<br>hexo d == hexo deploy<br>新建一篇文章后就可以预览了,在hexo new之后执行一次生成hexo g再执行hexo s启动本地服务器,如果之前还在hexo s 按Ctrl + C 结束.</p>
+<h3 id="3-添加主题"><a href="#3-添加主题" class="headerlink" title="3.添加主题"></a>3.添加主题</h3><p>安装主题(yilia主题):<br>hexo clean<br>git clone <a target="_blank" rel="noopener" href="https://github.com/litten/hexo-theme-yilia.git">https://github.com/litten/hexo-theme-yilia.git</a> themes/yilia<br>启动主题<br>找到目录下的_config.yml 文件,打开找到 theme：属性并设置为yilia</p>
+<p>更新主题<br>cd themes/yilia<br>git pull<br>hexo g<br>hexo s<br>此时刷新<a target="_blank" rel="noopener" href="http://localhost:4000/%E9%A1%B5%E9%9D%A2%E5%B0%B1%E8%83%BD%E7%9C%8B%E5%88%B0%E6%96%B0%E7%9A%84%E4%B8%BB%E9%A2%98%E4%BA%86">http://localhost:4000/页面就能看到新的主题了</a>.</p>
+<h3 id="4-部署到Github"><a href="#4-部署到Github" class="headerlink" title="4. 部署到Github"></a>4. 部署到Github</h3><p>1.检查SSH keys的设置</p>
+<p>以下命令均是在Git bash里输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ~&#x2F;.ssh</span><br><span class="line">ls</span><br></pre></td></tr></table></figure>
+<p>#此时会显示一些文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir key_backup</span><br><span class="line">cp id_rsa* key_backup</span><br><span class="line">rm id_rsa* </span><br></pre></td></tr></table></figure>
+
+<p>#以上三步为备份和移除原来的SSH key设置</p>
+<blockquote>
+<p>ssh-keygen -t rsa -C “邮件地址@youremail.com” #生成新的key文件,</p>
+</blockquote>
+<p><strong>邮箱地址填你的Github地址</strong></p>
+<hr>
+<p>#Enter file in which to save the key (/Users/your_user_directory/.ssh/id_rsa):&lt;回车就好&gt;<br>#接下来会让你输入密码<br>之后就可以看到成功的界面。</p>
+<hr>
+<p>2.添加SSH Key到Github<br>进入github首页在设置洁面<br><img src="https://images2017.cnblogs.com/blog/1250458/201710/1250458-20171017153636849-294935886.png"></p>
+<hr>
+<h4 id="添加SSH-Key"><a href="#添加SSH-Key" class="headerlink" title="添加SSH Key"></a>添加SSH Key</h4><p><img src="https://images2017.cnblogs.com/blog/1250458/201710/1250458-20171017153642521-647884655.png"><br>找到系统当前用户目录下(开启查看隐藏文件) C:\Users\用户名\ .ssh id_rsa.pub文件以文本方式打开。打开之后全部复制到key中<br><img src="https://images2017.cnblogs.com/blog/1250458/201710/1250458-20171017153648631-441574444.png"><br>到了这就可以测试一下是否成功了:</p>
+<p>ssh -T <a href="mailto:&#x67;&#x69;&#116;&#64;&#103;&#105;&#x74;&#x68;&#117;&#x62;&#x2e;&#99;&#x6f;&#x6d;">&#x67;&#x69;&#116;&#64;&#103;&#105;&#x74;&#x68;&#117;&#x62;&#x2e;&#99;&#x6f;&#x6d;</a><br>#之后会要你输入yes/no,输入yes就好了。<br>设置你的账号信息:</p>
+<p>git config –global user.name “你的名字”     #真实名字不是github用户名<br>git config –global user.email “邮箱@邮箱.com”    #github邮箱<br>3.部署到github<br>hexo d<br>这时再刷新 username.github.io 就可以看到你的博客了。</p>
+<p>到了这你以为就结束了吗？没有，还有坑没有给你们填好。</p>
+<p>如果你的SSH配置的时候哪找的.ssh文件的化，可以参照<a target="_blank" rel="noopener" href="https://www.cnblogs.com/ailiailan/p/8577411.html">mac 上传本地代码到 Github 教程</a>,我就是参照上面的步骤配置的。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+              <a href="/tags/%E5%B7%A5%E5%85%B7%E6%90%AD%E5%BB%BA/" rel="tag"># 工具搭建</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018/12/16/%E5%AE%89%E5%8D%93%E7%9A%84%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3/" rel="next" title="安卓的启动模式详解">
+                  安卓的启动模式详解 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Mark先生</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

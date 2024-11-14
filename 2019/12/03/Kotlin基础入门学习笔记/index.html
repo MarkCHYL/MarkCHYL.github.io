@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha256-5eIC48iZUHmSlSUz9XtjRyK2mzQkHScZY1WdMaoz74E=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.21.1","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="若不留下点啥笔记，感觉对不住自己一个星期半的学习加复习。 一、如何实现单列模式？使用关键字 object 修饰的类,替换掉class关键字，便会在整套程序中生成一个且是唯一的对象实例。譬如如下代码： 12345object BigHeadSon:IWash &amp;#123;    override fun wash() &amp;#123;        println(&quot;大头儿子洗完收费1元钱&amp;q">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kotlin基础入门学习笔记">
+<meta property="og:url" content="http://example.com/2019/12/03/Kotlin%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="Mark的私人博客">
+<meta property="og:description" content="若不留下点啥笔记，感觉对不住自己一个星期半的学习加复习。 一、如何实现单列模式？使用关键字 object 修饰的类,替换掉class关键字，便会在整套程序中生成一个且是唯一的对象实例。譬如如下代码： 12345object BigHeadSon:IWash &amp;#123;    override fun wash() &amp;#123;        println(&quot;大头儿子洗完收费1元钱&amp;q">
+<meta property="og:locale">
+<meta property="article:published_time" content="2019-12-03T01:51:56.000Z">
+<meta property="article:modified_time" content="2019-12-03T01:51:56.000Z">
+<meta property="article:author" content="Mark先生">
+<meta property="article:tag" content="kotlin">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2019/12/03/Kotlin%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2019/12/03/Kotlin%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/","path":"2019/12/03/Kotlin基础入门学习笔记/","title":"Kotlin基础入门学习笔记"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Kotlin基础入门学习笔记 | Mark的私人博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Mark的私人博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Mark的私人博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">数风流人物，还看今朝</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%8D%95%E5%88%97%E6%A8%A1%E5%BC%8F%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">一、如何实现单列模式？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E6%9E%9A%E4%B8%BE%EF%BC%9F"><span class="nav-number">2.</span> <span class="nav-text">二、如何实现枚举？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%8D%B0%E7%AB%A0%E7%B1%BB%EF%BC%9F"><span class="nav-number">3.</span> <span class="nav-text">三、如何实现印章类？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%A6%82%E6%98%AF%E5%AE%9E%E7%8E%B0%E5%A7%94%E6%89%98%E5%92%8C%E4%BB%A3%E7%90%86%EF%BC%9F"><span class="nav-number">4.</span> <span class="nav-text">四、如是实现委托和代理？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%A4%9A%E6%80%81%E5%92%8C%E7%BB%A7%E6%89%BF%EF%BC%9F"><span class="nav-number">5.</span> <span class="nav-text">五、如何实现多态和继承？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AD%E3%80%81when%E7%9A%84%E8%A1%A8%E8%BE%BE%E5%BC%8F%EF%BC%9A"><span class="nav-number">6.</span> <span class="nav-text">六、when的表达式：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E7%A9%BA%E5%80%BC%E5%88%A4%E6%96%AD%EF%BC%9A"><span class="nav-number">7.</span> <span class="nav-text">七、空值判断：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AB%E3%80%81%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">8.</span> <span class="nav-text">八、函数表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B9%9D%E3%80%81%E9%80%92%E5%BD%92%E6%BC%94%E7%A4%BA%EF%BC%9A"><span class="nav-number">9.</span> <span class="nav-text">九、递归演示：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%81%E3%80%81List%E5%92%8CMap"><span class="nav-number">10.</span> <span class="nav-text">十、List和Map</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%81%E4%B8%80%E3%80%81%E4%BA%BA%E6%9C%BA%E4%BA%A4%E4%BA%92"><span class="nav-number">11.</span> <span class="nav-text">十一、人机交互</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Mark先生</p>
+  <div class="site-description" itemprop="description">一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">141</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">72</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/12/03/Kotlin%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Mark先生">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mark的私人博客">
+      <meta itemprop="description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Kotlin基础入门学习笔记 | Mark的私人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Kotlin基础入门学习笔记
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2019-12-03 09:51:56" itemprop="dateCreated datePublished" datetime="2019-12-03T09:51:56+08:00">2019-12-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>若不留下点啥笔记，感觉对不住自己一个星期半的学习加复习。</p>
+<h3 id="一、如何实现单列模式？"><a href="#一、如何实现单列模式？" class="headerlink" title="一、如何实现单列模式？"></a>一、如何实现单列模式？</h3><p>使用关键字 <strong>object</strong> 修饰的类,替换掉class关键字，便会在整套程序中生成一个且是唯一的对象实例。<br>譬如如下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">object BigHeadSon:IWash &#123;</span><br><span class="line">    override fun wash() &#123;</span><br><span class="line">        println(&quot;大头儿子洗完收费1元钱&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>那样之后该类的实例变量整个项目中有且只有一个。</p>
+<span id="more"></span>
+<hr>
+<h3 id="二、如何实现枚举？"><a href="#二、如何实现枚举？" class="headerlink" title="二、如何实现枚举？"></a>二、如何实现枚举？</h3><p>实现枚举的代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">enum class Week &#123;</span><br><span class="line">    星期一, 星期二, 星期三, 星期四, 星期五, 星期六, 星期日</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun main(args: Array&lt;String&gt;) &#123;</span><br><span class="line">    println(Week.星期一.ordinal)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用关键字 enum 修饰类</p>
+<hr>
+<h3 id="三、如何实现印章类？"><a href="#三、如何实现印章类？" class="headerlink" title="三、如何实现印章类？"></a>三、如何实现印章类？</h3><p>举个例子一匹母驴、一屁公马和一匹公驴一碗酒后乱性，过了几天母驴怀孕了，不只是公马的还是公驴的。那么问题来了马和驴的后代是骡子，母驴和公驴的后代当然还是驴。<br>就像盖了章一样，使用<strong>sealed</strong>关键字修饰类,可以指定子类和个数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 印章sealed类</span><br><span class="line">&#x2F;&#x2F;指定子类种类和个数</span><br><span class="line"></span><br><span class="line">sealed class Son &#123;</span><br><span class="line">    fun sayHello()&#123;</span><br><span class="line">        println(&quot;大家好！！！&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">    class smallBlackMule():Son()</span><br><span class="line"></span><br><span class="line">    class smallDonkey():Son()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun main(args: Array&lt;String&gt;) &#123;</span><br><span class="line">    var s1: Son &#x3D; Son.smallBlackMule()</span><br><span class="line"></span><br><span class="line">    var s2: Son &#x3D; Son.smallBlackMule()</span><br><span class="line"></span><br><span class="line">    var s3 &#x3D; Son.smallDonkey()</span><br><span class="line"></span><br><span class="line">    var list &#x3D; listOf&lt;Son&gt;( s1, s2, s3 )</span><br><span class="line"></span><br><span class="line">    for ( h in list)&#123;</span><br><span class="line">        if(h is Son.smallDonkey) &#123;</span><br><span class="line">            h.sayHello()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="四、如是实现委托和代理？"><a href="#四、如是实现委托和代理？" class="headerlink" title="四、如是实现委托和代理？"></a>四、如是实现委托和代理？</h3><p>利用关键字 <strong>by</strong> 实现，示例代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class SmallHeadFather : IWash by BigHeadSon() &#123;</span><br><span class="line">    override fun wash() &#123;</span><br><span class="line">        println(&quot;小头爸爸洗完收费10块钱！！！&quot;)</span><br><span class="line">        BigHeadSon().wash()</span><br><span class="line">        println(&quot;小头爸爸看见儿子把碗洗好了&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="五、如何实现多态和继承？"><a href="#五、如何实现多态和继承？" class="headerlink" title="五、如何实现多态和继承？"></a>五、如何实现多态和继承？</h3><p>kotlin是面向对象的语言，子类可以继承父类的方法和属性。<br><strong>抽象类</strong>：如父类，同一类具有同样基本属性和方法的类事物的描述，事物的本质描述。<br><strong>接口</strong>：指具有同样基本属性和方法的能力，事物的能力描述。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;抽象类</span><br><span class="line">abstract class Human(var name:String) &#123;</span><br><span class="line">    abstract fun eat()</span><br><span class="line"></span><br><span class="line">    abstract fun pee()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;男人</span><br><span class="line">class Man(name: String) : Human(name) &#123;</span><br><span class="line">    override fun eat() &#123;</span><br><span class="line">        println(&quot;$&#123;name&#125;大口的吃饭,暴力&quot;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    override fun pee() &#123;</span><br><span class="line">        println(&quot;$&#123;name&#125;站着尿尿---&quot;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;女人</span><br><span class="line">class Woman(name: String) :Human(name) &#123;</span><br><span class="line">    override fun pee() &#123;</span><br><span class="line">        println(&quot;$&#123;name&#125;蹲着尿尿---&quot;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    override fun eat() &#123;</span><br><span class="line">        println(&quot;$&#123;name&#125;小口慢慢的吃饭，文雅&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;测试</span><br><span class="line">fun main(args: Array&lt;String&gt;) &#123;</span><br><span class="line">    var person1 &#x3D; Man(&quot;金三胖&quot;)</span><br><span class="line">    var person2 &#x3D; Woman(&quot;波多野结衣&quot;)</span><br><span class="line">    var person3 &#x3D; Woman(&quot;貂蝉&quot;)</span><br><span class="line">    var person4 &#x3D; Man(&quot;吕布&quot;)</span><br><span class="line"></span><br><span class="line">    var humanList &#x3D; listOf&lt;Human&gt;(person1,person2,person3,person4)</span><br><span class="line"></span><br><span class="line">    for (h in humanList)&#123;</span><br><span class="line">        h.name</span><br><span class="line">&#x2F;&#x2F;        h.eat()</span><br><span class="line">        h.pee()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="六、when的表达式："><a href="#六、when的表达式：" class="headerlink" title="六、when的表达式："></a>六、when的表达式：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;考试成绩评级10分 9分A 8分B 7分C</span><br><span class="line"></span><br><span class="line">fun scoreMatch(score:Int):String&#123;</span><br><span class="line">	when(score)&#123;</span><br><span class="line">		10 -&gt; return &quot;恭喜你拿了满分S&quot;</span><br><span class="line">		9 -&gt; return &quot;恭喜你拿了A&quot;</span><br><span class="line">		8 -&gt; return &quot;恭喜你拿了B&quot;</span><br><span class="line">		7 -&gt; return &quot;你拿了C，还需更加努力&quot;</span><br><span class="line">		else -&gt; return &quot;对不起你被OUT啦！&quot;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun main(agrs:Array&lt;String&gt;)&#123;</span><br><span class="line">	println(scoreMatch(10))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="七、空值判断："><a href="#七、空值判断：" class="headerlink" title="七、空值判断："></a>七、空值判断：</h3><p>加上问好代表参数可以为空</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;接收一个参数，参数为非空的String类型   </span><br><span class="line">fun heat(str:String?):String&#123;</span><br><span class="line">	return &quot;热$&#123;str&#125;&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun main(agrs:Array&lt;String&gt;)&#123;</span><br><span class="line">	var result1 &#x3D; &quot;油&quot;</span><br><span class="line">	println(heat(result1))</span><br><span class="line">	</span><br><span class="line">	var result2 &#x3D; null</span><br><span class="line">	println(heat(result2))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="八、函数表达式"><a href="#八、函数表达式" class="headerlink" title="八、函数表达式"></a>八、函数表达式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">fun main(args:Array&lt;String&gt;)&#123;</span><br><span class="line">	&#x2F;&#x2F;函数</span><br><span class="line">	var result &#x3D; add(3,4)</span><br><span class="line">	println(result)</span><br><span class="line">	</span><br><span class="line">	&#x2F;&#x2F;函数表达式</span><br><span class="line">	var i &#x3D; &#123;x:Int,y:Int -&gt; x+y&#125;</span><br><span class="line">	var result2 &#x3D; i(3,4)</span><br><span class="line">	var temp &#x3D; result2&#x3D;&#x3D;(7)</span><br><span class="line">	println(&quot;$&#123;temp&#125;&quot;)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun add(a:Int,b:Int):Int &#x3D; a+b</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="九、递归演示："><a href="#九、递归演示：" class="headerlink" title="九、递归演示："></a>九、递归演示：</h3><p><strong>BigInteger</strong>函数是Java数值运算大值时使用的属性，特殊的超级<strong>Int</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;演示一</span><br><span class="line">import java.math.BigInteger</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 递归演示</span><br><span class="line">&#x2F;&#x2F; 阶乘  5的阶乘：5*4*3*2*1</span><br><span class="line">fun main(args:Array&lt;String&gt;)&#123;</span><br><span class="line">	&#x2F;&#x2F;&#x2F;BigInteger是一个不可描述超大的数字</span><br><span class="line">	println(&quot;请输入数字：&quot;)</span><br><span class="line">	var a &#x3D; readLine()</span><br><span class="line">    try&#123;</span><br><span class="line">		var b:BigInteger &#x3D; a!!.toBigInteger()</span><br><span class="line">		&#x2F;&#x2F;阶乘</span><br><span class="line">		println(fact(b))</span><br><span class="line">	&#125;catch(e:Exception)&#123;</span><br><span class="line">		println(&quot;输入数字有误！！&quot;)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun fact(a:BigInteger):BigInteger&#123;</span><br><span class="line">	if(a&#x3D;&#x3D;BigInteger.ONE)</span><br><span class="line">	    return BigInteger.ONE</span><br><span class="line">	else</span><br><span class="line">		return a*fact(a-BigInteger.ONE)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>尾递归 <strong>tailrec</strong>修饰方法,譬如超过电脑运算周期范围的计算</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">fun main(args:Array&lt;String&gt;)&#123;</span><br><span class="line">	var a &#x3D; readLine()!!.toInt()</span><br><span class="line">	var num:Int &#x3D; 0</span><br><span class="line">	var result:Int &#x3D; 0</span><br><span class="line">	println(add(a,num,result))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;尾递归 tailrec修饰方法</span><br><span class="line">tailrec fun add(nuk:Int,nn:Int,result:Int):Int&#123;</span><br><span class="line">	var nns &#x3D; nn+1</span><br><span class="line">	var results &#x3D; result + nuk</span><br><span class="line">	println(&quot;计算机第$&#123;nns&#125;次运算,结果为：$&#123;results&#125;&quot;)</span><br><span class="line">	if(nuk&#x3D;&#x3D;1)</span><br><span class="line">		return results</span><br><span class="line">	else</span><br><span class="line">		</span><br><span class="line">		return add(nuk-1,nns,results)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="十、List和Map"><a href="#十、List和Map" class="headerlink" title="十、List和Map"></a>十、List和Map</h3><p>List演示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> fun main(args:Array&lt;String&gt;)&#123;</span><br><span class="line">	 var lists &#x3D; listOf(&quot;买鸡蛋&quot;,&quot;买可乐&quot;,&quot;买猪肉&quot;,&quot;买大米&quot;)</span><br><span class="line">	 </span><br><span class="line">	 for(a in lists)&#123;</span><br><span class="line">		 println(a)</span><br><span class="line">		&#125;</span><br><span class="line">	 </span><br><span class="line">	 for((i,e) in lists.withIndex())</span><br><span class="line">		 println(&quot;$i,$e&quot;)</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Map演示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">import java.util.TreeMap</span><br><span class="line"></span><br><span class="line">fun main(args:Array&lt;String&gt;)&#123;</span><br><span class="line">	&#x2F;&#x2F;TreeMap 同一key的value不能重复存在</span><br><span class="line">	var map &#x3D; TreeMap&lt;String,String&gt;()</span><br><span class="line">	var list &#x3D; listOf(&quot;好&quot;,&quot;好&quot;,&quot;学习&quot;,&quot;天&quot;,&quot;天&quot;,&quot;向上&quot;)</span><br><span class="line">	</span><br><span class="line">	map[&quot;好&quot;] &#x3D; &quot;Good&quot;</span><br><span class="line">	map[&quot;学习&quot;] &#x3D; &quot;Study&quot;</span><br><span class="line">	map[&quot;天&quot;]  &#x3D; &quot;Day&quot;</span><br><span class="line">	map[&quot;向上&quot;]  &#x3D; &quot;Up&quot;</span><br><span class="line">	</span><br><span class="line">	for(a in list)&#123;</span><br><span class="line">		print(&quot;$&#123;map[a]&#125;  &quot;)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="十一、人机交互"><a href="#十一、人机交互" class="headerlink" title="十一、人机交互"></a>十一、人机交互</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">fun main(args:Array&lt;String&gt;)&#123;</span><br><span class="line">	println(&quot;请输入第一个数字：&quot;)</span><br><span class="line">	var c &#x3D; readLine()</span><br><span class="line">	println(&quot;请输入第二个数字：&quot;)</span><br><span class="line">	var d &#x3D; readLine()</span><br><span class="line">	</span><br><span class="line">	try&#123;</span><br><span class="line">		var a &#x3D; c!!.toInt()</span><br><span class="line">	    var b &#x3D; d!!.toInt()</span><br><span class="line">		println(&quot;$&#123;a&#125; + $&#123;b&#125; &#x3D; $&#123;a + b&#125;&quot;)</span><br><span class="line">	&#125;catch(e:Exception)&#123;</span><br><span class="line">		println(&quot;输入数据有误！，请重新输入&quot;)</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>**!!.**确保不为空<br>**?.**可为空</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/kotlin/" rel="tag"># kotlin</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2019/11/19/kotlin%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%AC%AC%E4%B8%80%E7%AB%A0/" rel="prev" title="kotlin学习笔记第一章">
+                  <i class="fa fa-angle-left"></i> kotlin学习笔记第一章
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2019/12/10/%E5%A6%82%E4%BD%95%E6%89%93Jar%E5%B7%A5%E5%85%B7%E5%8C%85/" rel="next" title="如何打Jar工具包">
+                  如何打Jar工具包 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Mark先生</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

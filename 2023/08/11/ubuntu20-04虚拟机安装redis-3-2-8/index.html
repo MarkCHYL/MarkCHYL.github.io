@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha256-5eIC48iZUHmSlSUz9XtjRyK2mzQkHScZY1WdMaoz74E=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.21.1","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="安装 Redis-3.2.8 在 Ubuntu 20.04 虚拟机上可以按照以下步骤进行： 安装 在终端中安装 build-essential 和 tcl： 123sqlCopy codesudo apt-get updatesudo apt-get install build-essential tcl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ubuntu20.04虚拟机安装redis-3.2.8">
+<meta property="og:url" content="http://example.com/2023/08/11/ubuntu20-04%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85redis-3-2-8/index.html">
+<meta property="og:site_name" content="Mark的私人博客">
+<meta property="og:description" content="安装 Redis-3.2.8 在 Ubuntu 20.04 虚拟机上可以按照以下步骤进行： 安装 在终端中安装 build-essential 和 tcl： 123sqlCopy codesudo apt-get updatesudo apt-get install build-essential tcl">
+<meta property="og:locale">
+<meta property="article:published_time" content="2023-08-11T02:30:33.000Z">
+<meta property="article:modified_time" content="2023-08-11T02:30:33.000Z">
+<meta property="article:author" content="Mark先生">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="Redis">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2023/08/11/ubuntu20-04%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85redis-3-2-8/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2023/08/11/ubuntu20-04%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85redis-3-2-8/","path":"2023/08/11/ubuntu20-04虚拟机安装redis-3-2-8/","title":"ubuntu20.04虚拟机安装redis-3.2.8"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>ubuntu20.04虚拟机安装redis-3.2.8 | Mark的私人博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Mark的私人博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Mark的私人博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">数风流人物，还看今朝</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A1%A5%E5%85%85%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">补充配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A0%E8%BD%BD%E9%85%8D%E7%BD%AE%E5%90%AF%E5%8A%A8%E6%97%B6%E6%8A%A5%E9%94%99"><span class="nav-number">3.</span> <span class="nav-text">加载配置启动时报错</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Mark先生</p>
+  <div class="site-description" itemprop="description">一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">141</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">72</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/11/ubuntu20-04%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85redis-3-2-8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Mark先生">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mark的私人博客">
+      <meta itemprop="description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="ubuntu20.04虚拟机安装redis-3.2.8 | Mark的私人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ubuntu20.04虚拟机安装redis-3.2.8
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-08-11 10:30:33" itemprop="dateCreated datePublished" datetime="2023-08-11T10:30:33+08:00">2023-08-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">中间件</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>安装 Redis-3.2.8 在 Ubuntu 20.04 虚拟机上可以按照以下步骤进行：</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ol>
+<li><p>在终端中安装 <code>build-essential</code> 和 <code>tcl</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sqlCopy code</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install build-essential tcl</span><br></pre></td></tr></table></figure>
+<span id="more"></span></li>
+<li><p>下载 Redis-3.2.8 并解压缩：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bashCopy code</span><br><span class="line">wget http:&#x2F;&#x2F;download.redis.io&#x2F;releases&#x2F;redis-3.2.8.tar.gz</span><br><span class="line">tar xzf redis-3.2.8.tar.gz</span><br><span class="line">cd redis-3.2.8</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编译 Redis：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">goCopy code</span><br><span class="line">make</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运行 Redis 测试：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bashCopy code</span><br><span class="line">make test</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装 Redis：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">goCopy code</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建 Redis 配置文件目录和配置文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bashCopy code</span><br><span class="line">sudo mkdir &#x2F;etc&#x2F;redis</span><br><span class="line">sudo cp redis.conf &#x2F;etc&#x2F;redis</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改 Redis 配置文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bashCopy code</span><br><span class="line">sudo nano &#x2F;etc&#x2F;redis&#x2F;redis.conf</span><br></pre></td></tr></table></figure>
+
+<p>找到 <code>bind</code> 行并将其注释掉，以允许远程访问 Redis：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">shellCopy code</span><br><span class="line"># bind 127.0.0.1</span><br></pre></td></tr></table></figure>
+
+<p>找到 <code>protected-mode</code> 行并将其改为 <code>no</code>，以允许远程访问 Redis：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">arduinoCopy code</span><br><span class="line">protected-mode no</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动 Redis 服务器：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bashCopy code</span><br><span class="line">redis-server &#x2F;etc&#x2F;redis&#x2F;redis.conf</span><br></pre></td></tr></table></figure>
+
+<p>如果出现错误，请查看 Redis 日志文件 <code>/var/log/redis.log</code>。</p>
+</li>
+</ol>
+<p>现在你应该已经成功安装和启动了 Redis-3.2.8 服务器。你可以通过运行 <code>redis-cli</code> 命令来测试 Redis 是否可以正常工作。</p>
+<h2 id="补充配置"><a href="#补充配置" class="headerlink" title="补充配置"></a>补充配置</h2><ul>
+<li><p>绑定ip：如果需要远程访问，可将此⾏注释，或绑定⼀个真实ip</p>
+<blockquote>
+<p>bind 127.0.0.1</p>
+</blockquote>
+</li>
+<li><p>端⼝，默认为6379</p>
+<blockquote>
+<p>port 6379</p>
+</blockquote>
+</li>
+<li><p>是否以守护进程运⾏</p>
+<ul>
+<li>如果以守护进程运⾏，则不会在命令⾏阻塞，类似于服务</li>
+<li>如果以⾮守护进程运⾏，则当前终端被阻塞</li>
+<li>设置为yes表示守护进程，设置为no表示⾮守护进程</li>
+<li>推荐设置为yes</li>
+</ul>
+<blockquote>
+<p>daemonize yes</p>
+</blockquote>
+</li>
+<li><p>数据⽂件</p>
+<blockquote>
+<p>dbfilename dump.rdb</p>
+</blockquote>
+</li>
+<li><p>数据⽂件存储路径</p>
+<blockquote>
+<p>dir /var/lib/redis</p>
+</blockquote>
+</li>
+<li><p>⽇志⽂件</p>
+<blockquote>
+<p>logfile /var/log/redis/redis-server.log</p>
+</blockquote>
+</li>
+<li><p>数据库，默认有16个</p>
+<blockquote>
+<p>database 16</p>
+</blockquote>
+</li>
+<li><p>主从复制，类似于双机备份。</p>
+<blockquote>
+<p>slaveof</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="加载配置启动时报错"><a href="#加载配置启动时报错" class="headerlink" title="加载配置启动时报错"></a>加载配置启动时报错</h2><blockquote>
+<p>‘logfile /var/log/redis/redis-server.log’ Can’t open the log file: Permission denied</p>
+</blockquote>
+<p>这个错误提示表明 Redis 没有权限在 <code>/var/log/redis/</code> 目录中创建日志文件。</p>
+<p>你可以按照以下步骤来解决这个问题：</p>
+<ol>
+<li><p>确认 <code>/var/log/redis/</code> 目录是否存在，如果不存在，你可以通过以下命令创建它：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bashCopy code</span><br><span class="line">sudo mkdir &#x2F;var&#x2F;log&#x2F;redis&#x2F;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>确认 Redis 进程的运行用户是否有权限在该目录中创建文件。默认情况下，Redis 进程会使用 <code>redis</code> 用户来运行，而该用户通常没有权限在 <code>/var/log/redis/</code> 目录中创建文件。</p>
+<p>如果你想让 <code>redis</code> 用户有权限在该目录中创建文件，可以通过以下命令更改该目录的所有者和组：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bashCopy code</span><br><span class="line">sudo chown redis:redis &#x2F;var&#x2F;log&#x2F;redis&#x2F;</span><br></pre></td></tr></table></figure>
+
+<p>这将把 <code>/var/log/redis/</code> 目录的所有者和组都更改为 <code>redis</code>。</p>
+<p>如果你不希望更改该目录的所有者和组，你可以考虑在 Redis 配置文件中指定其他的日志文件路径，例如 <code>/tmp/redis-server.log</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bashCopy code</span><br><span class="line">logfile &#x2F;tmp&#x2F;redis-server.log</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果你更改了 Redis 配置文件，记得重新启动 Redis 服务，以使更改生效：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Copy code</span><br><span class="line">sudo systemctl restart redis-server</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>如果你遇到了其他问题或错误，请查看 Redis 的日志文件和系统日志文件以获取更多信息。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+              <a href="/tags/Redis/" rel="tag"># Redis</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/08/11/Mac%E5%AE%89%E8%A3%85Redis/" rel="prev" title="Mac安装Redis">
+                  <i class="fa fa-angle-left"></i> Mac安装Redis
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/08/11/Redis%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4%E7%9A%84%E4%BD%BF%E7%94%A8/" rel="next" title="Redis操作命令的使用">
+                  Redis操作命令的使用 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Mark先生</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

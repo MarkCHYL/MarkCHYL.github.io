@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha256-5eIC48iZUHmSlSUz9XtjRyK2mzQkHScZY1WdMaoz74E=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.21.1","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="关于环信easeUI的集成环信的集成，网上有许多的demo，看的每个人有点眼花缭乱，对于官方的文档的吐槽也有许多，确实在集成第三方的那些玩意时，不管怎样我们必须先得看看她们的官方介绍。前段时我遇到的项目需要集成环信的聊天功能，一个会话列表和聊天界面，网上搜了很多，由于版本不一样后来还是选择结合官方的demo和开发文档写了个demo。我们建议先看一下环信的官方文档，地址：点击打开链接">
+<meta property="og:type" content="article">
+<meta property="og:title" content="环信easeUI的集成">
+<meta property="og:url" content="http://example.com/2018/12/19/%E7%8E%AF%E4%BF%A1easeUI%E7%9A%84%E9%9B%86%E6%88%90/index.html">
+<meta property="og:site_name" content="Mark的私人博客">
+<meta property="og:description" content="关于环信easeUI的集成环信的集成，网上有许多的demo，看的每个人有点眼花缭乱，对于官方的文档的吐槽也有许多，确实在集成第三方的那些玩意时，不管怎样我们必须先得看看她们的官方介绍。前段时我遇到的项目需要集成环信的聊天功能，一个会话列表和聊天界面，网上搜了很多，由于版本不一样后来还是选择结合官方的demo和开发文档写了个demo。我们建议先看一下环信的官方文档，地址：点击打开链接">
+<meta property="og:locale">
+<meta property="article:published_time" content="2018-12-19T08:27:09.000Z">
+<meta property="article:modified_time" content="2018-12-19T08:27:09.000Z">
+<meta property="article:author" content="Mark先生">
+<meta property="article:tag" content="Android">
+<meta property="article:tag" content="第三方集成">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2018/12/19/%E7%8E%AF%E4%BF%A1easeUI%E7%9A%84%E9%9B%86%E6%88%90/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2018/12/19/%E7%8E%AF%E4%BF%A1easeUI%E7%9A%84%E9%9B%86%E6%88%90/","path":"2018/12/19/环信easeUI的集成/","title":"环信easeUI的集成"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>环信easeUI的集成 | Mark的私人博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Mark的私人博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Mark的私人博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">数风流人物，还看今朝</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Mark先生</p>
+  <div class="site-description" itemprop="description">一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">141</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">72</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2018/12/19/%E7%8E%AF%E4%BF%A1easeUI%E7%9A%84%E9%9B%86%E6%88%90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Mark先生">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mark的私人博客">
+      <meta itemprop="description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="环信easeUI的集成 | Mark的私人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          环信easeUI的集成
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2018-12-19 16:27:09" itemprop="dateCreated datePublished" datetime="2018-12-19T16:27:09+08:00">2018-12-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>关于环信easeUI的集成<br>环信的集成，网上有许多的demo，看的每个人有点眼花缭乱，对于官方的文档的吐槽也有许多，确实在集成第三方的那些玩意时，不管怎样我们必须先得看看她们的官方介绍。前段时我遇到的项目需要集成环信的聊天功能，一个会话列表和聊天界面，网上搜了很多，由于版本不一样后来还是选择结合官方的demo和开发文档写了个demo。<br>我们建议先看一下环信的官方文档，地址：<br>点击打开链接</p>
+<span id="more"></span>
+<p>至于基础的集成和导入SDK我在这就不造次啦！环信官方上的文档介绍的很好，看不懂的可以看上面的视频介绍；<br>下面我直接说说我的步骤，后面也会贴上源码的地址，望大家不嫌弃，喜欢就给个 start</p>
+<p>一、首先是初始化环信easeui：</p>
+<p>  /**<br>     * 初始化环信SDK<br>     */<br>    private void initEasemob() {</p>
+<pre><code>    if (EaseUI.getInstance().init(mContext, initOptions())) &#123;
+
+        // 设置开启debug模式
+        EMClient.getInstance().setDebugMode(true);
+
+        // 设置初始化已经完成
+        isInit = true;
+    &#125;
+&#125;</code></pre>
+<p>关于sdk的一些配置初始化，请看demo源码</p>
+<p>二、登陆和注册的：</p>
+<p>登陆：</p>
+<p> /**<br>     * 登录方法<br>     */<br>    private void signIn() {<br>        final String username = mUsernameEdit.getText().toString().trim();<br>        final String password = mPasswordEdit.getText().toString().trim();<br>        if (TextUtils.isEmpty(username) || TextUtils.isEmpty(password)) {<br>            Toast.makeText(LoginRegisterActivity.this, “用户名和密码不能为空”, Toast.LENGTH_LONG).show();<br>            return;<br>        }<br>        EMClient.getInstance().login(username, password, new EMCallBack() {<br>            /**<br>             * 登陆成功的回调<br>             */<br>            @Override<br>            public void onSuccess() {<br>                mDialog.dismiss();<br>                Message msg=new Message();<br>                msg.what=2;<br>                mHandler.sendMessage(msg);<br>                // 加载所有会话到内存<br>                EMClient.getInstance().chatManager().loadAllConversations();<br>                // 登录成功跳转界面<br>                Intent intent = new Intent(LoginRegisterActivity.this, MainActivity.class);<br>                intent.putExtra(“userName”,username);<br>                startActivity(intent);<br>                finish();<br>            }</p>
+<pre><code>        /**
+         * 登陆错误的回调
+         * @param i
+         * @param s
+         */
+        @Override
+        public void onError(final int i, final String s) &#123;
+            runOnUiThread(new Runnable() &#123;
+                @Override
+                public void run() &#123;
+                    mDialog.dismiss();
+                    Log.d(&quot;lzan13&quot;, &quot;登录失败 Error code:&quot; + i + &quot;, message:&quot; + s);
+                    /**
+                     * 关于错误码可以参考官方api详细说明
+                     * http://www.easemob.com/apidoc/android/chat3.0/classcom_1_1hyphenate_1_1_e_m_error.html
+                     */
+                    switch (i) &#123;
+                    // 网络异常 2
+                    case EMError.NETWORK_ERROR:
+                        Toast.makeText(LoginRegisterActivity.this, &quot;网络错误 code: &quot; + i + &quot;, message:&quot; + s, Toast.LENGTH_LONG).show();
+                        break;
+                    // 无效的用户名 101
+                    case EMError.INVALID_USER_NAME:
+                        Toast.makeText(LoginRegisterActivity.this, &quot;无效的用户名 code: &quot; + i + &quot;, message:&quot; + s, Toast.LENGTH_LONG).show();
+                        break;
+                    // 无效的密码 102
+                    case EMError.INVALID_PASSWORD:
+                        Toast.makeText(LoginRegisterActivity.this, &quot;无效的密码 code: &quot; + i + &quot;, message:&quot; + s, Toast.LENGTH_LONG).show();
+                        break;
+                    // 用户认证失败，用户名或密码错误 202
+                    case EMError.USER_AUTHENTICATION_FAILED:
+                        Toast.makeText(LoginRegisterActivity.this, &quot;用户认证失败，用户名或密码错误 code: &quot; + i + &quot;, message:&quot; + s, Toast.LENGTH_LONG).show();
+                        break;
+                    // 用户不存在 204
+                    case EMError.USER_NOT_FOUND:
+                        Toast.makeText(LoginRegisterActivity.this, &quot;用户不存在 code: &quot; + i + &quot;, message:&quot; + s, Toast.LENGTH_LONG).show();
+                        break;
+                    // 无法访问到服务器 300
+                    case EMError.SERVER_NOT_REACHABLE:
+                        Toast.makeText(LoginRegisterActivity.this, &quot;无法访问到服务器 code: &quot; + i + &quot;, message:&quot; + s, Toast.LENGTH_LONG).show();
+                        break;
+                    // 等待服务器响应超时 301
+                    case EMError.SERVER_TIMEOUT:
+                        Toast.makeText(LoginRegisterActivity.this, &quot;等待服务器响应超时 code: &quot; + i + &quot;, message:&quot; + s, Toast.LENGTH_LONG).show();
+                        break;
+                    // 服务器繁忙 302
+                    case EMError.SERVER_BUSY:
+                        Toast.makeText(LoginRegisterActivity.this, &quot;服务器繁忙 code: &quot; + i + &quot;, message:&quot; + s, Toast.LENGTH_LONG).show();
+                        break;
+                    // 未知 Server 异常 303 一般断网会出现这个错误
+                    case EMError.SERVER_UNKNOWN_ERROR:
+                        Toast.makeText(LoginRegisterActivity.this, &quot;未知的服务器异常 code: &quot; + i + &quot;, message:&quot; + s, Toast.LENGTH_LONG).show();
+                        break;
+                    default:
+                        Toast.makeText(LoginRegisterActivity.this, &quot;ml_sign_in_failed code: &quot; + i + &quot;, message:&quot; + s, Toast.LENGTH_LONG).show();
+                        break;
+                    &#125;
+                &#125;
+            &#125;);
+        &#125;
+
+        @Override
+        public void onProgress(int i, String s) &#123;
+            mDialog.show(LoginRegisterActivity.this,&quot;登录&quot;, &quot;正在登录中&quot;);
+        &#125;
+    &#125;);
+&#125;</code></pre>
+<p>注册：</p>
+<p>private void signUp() {<br>    // 注册是耗时过程，所以要显示一个dialog来提示下用户<br>    mDialog.setMessage(“注册中，请稍后…”);<br>    mDialog.show();<br>    new Thread(new Runnable() {<br>        @Override<br>        public void run() {<br>            try {<br>                String username = mUsernameEdit.getText().toString().trim();<br>                String password = mPasswordEdit.getText().toString().trim();<br>                EMClient.getInstance().createAccount(username, password);<br>                runOnUiThread(new Runnable() {<br>                    @Override<br>                    public void run() {<br>                        if (!LoginRegisterActivity.this.isFinishing()) {<br>                            mDialog.dismiss();<br>                        }<br>                        Toast.makeText(LoginRegisterActivity.this, “注册成功”, Toast.LENGTH_LONG).show();<br>                    }<br>                });<br>            } catch (final HyphenateException e) {<br>                e.printStackTrace();<br>                runOnUiThread(new Runnable() {<br>                    @Override<br>                    public void run() {<br>                        if (!LoginRegisterActivity.this.isFinishing()) {<br>                            mDialog.dismiss();<br>                        }<br>                        /**<br>                         * 关于错误码可以参考官方api详细说明<br>                         * <a target="_blank" rel="noopener" href="http://www.easemob.com/apidoc/android/chat3.0/classcom_1_1hyphenate_1_1_e_m_error.html">http://www.easemob.com/apidoc/android/chat3.0/classcom_1_1hyphenate_1_1_e_m_error.html</a><br>                         */<br>                        int errorCode = e.getErrorCode();<br>                        String message = e.getMessage();<br>                        Log.d(“lzan13”, String.format(“sign up - errorCode:%d, errorMsg:%s”, errorCode, e.getMessage()));<br>                        switch (errorCode) {<br>                        // 网络错误<br>                        case EMError.NETWORK_ERROR:<br>                            Toast.makeText(LoginRegisterActivity.this, “网络错误 code: “ + errorCode + “, message:” + message, Toast.LENGTH_LONG).show();<br>                            break;<br>                        // 用户已存在<br>                        case EMError.USER_ALREADY_EXIST:<br>                            Toast.makeText(LoginRegisterActivity.this, “用户已存在 code: “ + errorCode + “, message:” + message, Toast.LENGTH_LONG).show();<br>                            break;<br>                        // 参数不合法，一般情况是username 使用了uuid导致，不能使用uuid注册<br>                        case EMError.USER_ILLEGAL_ARGUMENT:<br>                            Toast.makeText(LoginRegisterActivity.this, “参数不合法，一般情况是username 使用了uuid导致，不能使用uuid注册 code: “ + errorCode + “, message:” + message, Toast.LENGTH_LONG).show();<br>                            break;<br>                        // 服务器未知错误<br>                        case EMError.SERVER_UNKNOWN_ERROR:<br>                            Toast.makeText(LoginRegisterActivity.this, “服务器未知错误 code: “ + errorCode + “, message:” + message, Toast.LENGTH_LONG).show();<br>                            break;<br>                        case EMError.USER_REG_FAILED:<br>                            Toast.makeText(LoginRegisterActivity.this, “账户注册失败 code: “ + errorCode + “, message:” + message, Toast.LENGTH_LONG).show();<br>                            break;<br>                        default:<br>                            Toast.makeText(LoginRegisterActivity.this, “ml_sign_up_failed code: “ + errorCode + “, message:” + message, Toast.LENGTH_LONG).show();<br>                            break;<br>                        }<br>                    }<br>                });<br>            } catch (Exception e) {<br>                e.printStackTrace();<br>            }<br>        }<br>    }).start();<br>}</p>
+<p>三、ChatActivity聊天界面。 我用的原生</p>
+<p>   // 这里直接使用EaseUI封装好的聊天界面<br>        chatFragment = new ChatFragment();<br>        // 将参数传递给聊天界面<br>        chatFragment.setArguments(getIntent().getExtras());<br>        getSupportFragmentManager().beginTransaction().add(R.id.layout_chat, chatFragment).commit();</p>
+<p>四、会话列表</p>
+<p>   //直接用环信的会话列表<br>        conversationListFragment = new EaseConversationListFragment();<br>        conversationListFragment.setArguments(getIntent().getExtras());<br>        conversationListFragment.setConversationListItemClickListener(<br>                new EaseConversationListFragment.EaseConversationListItemClickListener() {<br>                    @Override<br>                    public void onListItemClicked(EMConversation conversation) {<br>                        startActivity(new Intent(ConversationListActivity.this, ChatActivity.class)<br>                                .putExtra(EaseConstant.EXTRA_USER_ID, conversation.conversationId()));<br>                    }</p>
+<pre><code>            &#125;);
+    getSupportFragmentManager().beginTransaction().add(R.id.ec_layout_list, conversationListFragment).commit();</code></pre>
+<p>第一次写博客 ，还望兄弟们没嫌弃，我在源码中的注释很详细<br>Demo源码链接</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Android/" rel="tag"># Android</a>
+              <a href="/tags/%E7%AC%AC%E4%B8%89%E6%96%B9%E9%9B%86%E6%88%90/" rel="tag"># 第三方集成</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/12/19/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%97%A5%E5%8E%86%E6%8E%A7%E4%BB%B6/" rel="prev" title="自定义日历控件">
+                  <i class="fa fa-angle-left"></i> 自定义日历控件
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018/12/29/Python%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/" rel="next" title="Python基础学习">
+                  Python基础学习 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Mark先生</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

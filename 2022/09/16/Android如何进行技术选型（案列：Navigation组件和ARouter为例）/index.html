@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha256-5eIC48iZUHmSlSUz9XtjRyK2mzQkHScZY1WdMaoz74E=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.21.1","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="案列：Navigation组件和ARouter为例[TOC] 我的Demo：涵盖了两大路由的基础使用 如何做好技术选型？ 什么是路由？ 页面间跳转关系映射，可以通过字符串、别名等方式实现跳转为什么介入路由？Intent不好吗？  Intent  跳转过程无法控制，一旦调用了startActivity(Intent)便交由系统执行，中间过程无法插手 跳转失败无法捕获、降级，出现问题直接抛出异常 显示">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android如何进行技术选型（案列：Navigation组件和ARouter为例）">
+<meta property="og:url" content="http://example.com/2022/09/16/Android%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8C%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B%EF%BC%88%E6%A1%88%E5%88%97%EF%BC%9ANavigation%E7%BB%84%E4%BB%B6%E5%92%8CARouter%E4%B8%BA%E4%BE%8B%EF%BC%89/index.html">
+<meta property="og:site_name" content="Mark的私人博客">
+<meta property="og:description" content="案列：Navigation组件和ARouter为例[TOC] 我的Demo：涵盖了两大路由的基础使用 如何做好技术选型？ 什么是路由？ 页面间跳转关系映射，可以通过字符串、别名等方式实现跳转为什么介入路由？Intent不好吗？  Intent  跳转过程无法控制，一旦调用了startActivity(Intent)便交由系统执行，中间过程无法插手 跳转失败无法捕获、降级，出现问题直接抛出异常 显示">
+<meta property="og:locale">
+<meta property="og:image" content="https://markchyl.cn/img/OPlayer_2022-07-12_18-19-20.jpg">
+<meta property="article:published_time" content="2022-09-16T15:01:01.000Z">
+<meta property="article:modified_time" content="2022-09-16T15:01:01.000Z">
+<meta property="article:author" content="Mark先生">
+<meta property="article:tag" content="Android">
+<meta property="article:tag" content="架构师">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://markchyl.cn/img/OPlayer_2022-07-12_18-19-20.jpg">
+
+
+<link rel="canonical" href="http://example.com/2022/09/16/Android%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8C%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B%EF%BC%88%E6%A1%88%E5%88%97%EF%BC%9ANavigation%E7%BB%84%E4%BB%B6%E5%92%8CARouter%E4%B8%BA%E4%BE%8B%EF%BC%89/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2022/09/16/Android%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8C%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B%EF%BC%88%E6%A1%88%E5%88%97%EF%BC%9ANavigation%E7%BB%84%E4%BB%B6%E5%92%8CARouter%E4%B8%BA%E4%BE%8B%EF%BC%89/","path":"2022/09/16/Android如何进行技术选型（案列：Navigation组件和ARouter为例）/","title":"Android如何进行技术选型（案列：Navigation组件和ARouter为例）"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Android如何进行技术选型（案列：Navigation组件和ARouter为例） | Mark的私人博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Mark的私人博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Mark的私人博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">数风流人物，还看今朝</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A1%88%E5%88%97%EF%BC%9ANavigation%E7%BB%84%E4%BB%B6%E5%92%8CARouter%E4%B8%BA%E4%BE%8B"><span class="nav-number">1.</span> <span class="nav-text">案列：Navigation组件和ARouter为例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%81%9A%E5%A5%BD%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B%EF%BC%9F"><span class="nav-number">1.1.</span> <span class="nav-text">如何做好技术选型？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E8%B7%AF%E7%94%B1%EF%BC%9F"><span class="nav-number">1.2.</span> <span class="nav-text">什么是路由？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BB%8B%E5%85%A5%E8%B7%AF%E7%94%B1%EF%BC%9FIntent%E4%B8%8D%E5%A5%BD%E5%90%97%EF%BC%9F"><span class="nav-number">1.3.</span> <span class="nav-text">为什么介入路由？Intent不好吗？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E6%AF%94%E4%B8%A4%E5%A4%A7%E8%B7%AF%E7%94%B1%E7%BB%84%E4%BB%B6%E7%9A%84%E5%8A%9F%E8%83%BD%E5%AF%B9%E7%85%A7%E8%A1%A8"><span class="nav-number">1.4.</span> <span class="nav-text">对比两大路由组件的功能对照表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">1.5.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Mark先生</p>
+  <div class="site-description" itemprop="description">一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">141</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">72</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/16/Android%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8C%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B%EF%BC%88%E6%A1%88%E5%88%97%EF%BC%9ANavigation%E7%BB%84%E4%BB%B6%E5%92%8CARouter%E4%B8%BA%E4%BE%8B%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Mark先生">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mark的私人博客">
+      <meta itemprop="description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Android如何进行技术选型（案列：Navigation组件和ARouter为例） | Mark的私人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Android如何进行技术选型（案列：Navigation组件和ARouter为例）
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-09-16 23:01:01" itemprop="dateCreated datePublished" datetime="2022-09-16T23:01:01+08:00">2022-09-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="案列：Navigation组件和ARouter为例"><a href="#案列：Navigation组件和ARouter为例" class="headerlink" title="案列：Navigation组件和ARouter为例"></a>案列：Navigation组件和ARouter为例</h2><p>[TOC]</p>
+<p><a target="_blank" rel="noopener" href="https://gitee.com/markshow/hirouter">我的Demo：</a>涵盖了两大路由的基础使用</p>
+<h3 id="如何做好技术选型？"><a href="#如何做好技术选型？" class="headerlink" title="如何做好技术选型？"></a>如何做好技术选型？</h3><p><img src="https://markchyl.cn/img/OPlayer_2022-07-12_18-19-20.jpg"></p>
+<h3 id="什么是路由？"><a href="#什么是路由？" class="headerlink" title="什么是路由？"></a>什么是路由？</h3><ul>
+<li>页面间跳转关系映射，可以通过字符串、别名等方式实现跳转<h3 id="为什么介入路由？Intent不好吗？"><a href="#为什么介入路由？Intent不好吗？" class="headerlink" title="为什么介入路由？Intent不好吗？"></a>为什么介入路由？Intent不好吗？</h3></li>
+</ul>
+<p><strong>Intent</strong></p>
+<ul>
+<li>跳转过程无法控制，一旦调用了startActivity(Intent)便交由系统执行，中间过程无法插手</li>
+<li>跳转失败无法捕获、降级，出现问题直接抛出异常</li>
+<li>显示Intent<br>  显示Intent中因为存在直接的类依赖关系，导致耦合严重</li>
+<li>隐式Intent<br>隐式Intent中会出现规则集中式的管理，导致协作困难，都需要在Manifest中进行配置，导致扩展性比较差<h3 id="对比两大路由组件的功能对照表"><a href="#对比两大路由组件的功能对照表" class="headerlink" title="对比两大路由组件的功能对照表"></a>对比两大路由组件的功能对照表</h3></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Navigation</th>
+<th>ARouter</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>跳转行为</td>
+<td>通过页面的action跳转，支持Activity，Fragment，Dialog</td>
+<td>支持标准URL跳转</td>
+</tr>
+<tr>
+<td>模块间通信</td>
+<td>不支持，需要将所有页面定义在一个资源文件里</td>
+<td>@Route注解配置，根据Path获取对应的接口实现</td>
+</tr>
+<tr>
+<td>路由节点注册</td>
+<td>统一在navigation_mobile.xml中注册</td>
+<td>@Route注解</td>
+</tr>
+<tr>
+<td>路由节点的生成方式</td>
+<td>加载navigation_mobile.xml生成NavGraph导航视图</td>
+<td>按照组划分</td>
+</tr>
+<tr>
+<td>拦截器</td>
+<td>不支持</td>
+<td>支持全部定义拦截器，可以自定义拦截顺序</td>
+</tr>
+<tr>
+<td>转场动画</td>
+<td>支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>降级策略</td>
+<td>不支持</td>
+<td>支持全局降级和局部降级</td>
+</tr>
+<tr>
+<td>参数自动注入</td>
+<td>不支持</td>
+<td>@Autowired注解实现</td>
+</tr>
+<tr>
+<td>外部跳转控制（h5打开app页面）</td>
+<td>deeplink页面直达</td>
+<td>需要配置入口Activity，支持的uri需要在Manifest中配置</td>
+</tr>
+</tbody></table>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><strong>ARouter主要是用于Activity路由的框架，采用的是APT技术，可用于组件化改造。而Navigation主要是用于Fragment路由导航的框架。</strong></p>
+<blockquote>
+<p>可以说，这两个虽然都是用于路由导航，但是用途是不一样。如果你的应用主要以Acticity为主的话，建议使用ARouter；如果你的页面主要以Fragment为主，Activity只是作为容器的话，那么建议你使用Navigation。当然，你也可以两个都用，这完全取决于你的项目实际情况，不冲突的。</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://app.yinxiang.com/shard/s50/nl/22109192/56fe3693-8eb4-4574-a55b-a42851e4e89c/">Android中APT技术介绍</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Android/" rel="tag"># Android</a>
+              <a href="/tags/%E6%9E%B6%E6%9E%84%E5%B8%88/" rel="tag"># 架构师</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/09/16/Android%E4%B8%ADAPT%E6%8A%80%E6%9C%AF%E4%BB%8B%E7%BB%8D/" rel="prev" title="Android中APT技术介绍">
+                  <i class="fa fa-angle-left"></i> Android中APT技术介绍
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/09/16/%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%BC%80%E5%8F%91%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/" rel="next" title="线程与线程池开发核心技术">
+                  线程与线程池开发核心技术 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Mark先生</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

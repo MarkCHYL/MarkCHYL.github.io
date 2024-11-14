@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha256-5eIC48iZUHmSlSUz9XtjRyK2mzQkHScZY1WdMaoz74E=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.21.1","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="GreenDao很早就想看看了，最近由于业务需求的变化，我就开始学习下简单的增、删、改、查。  资料参考： 首先这是官网地址：https:&#x2F;&#x2F;github.com&#x2F;greenrobot&#x2F;greendao 参考博客为：https:&#x2F;&#x2F;www.cnblogs.com&#x2F;wjtaigwh&#x2F;p&#x2F;6394288.html 慕课网上的视频教程（有点老了，个人觉得）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GreenDao数据库框架的基础学习">
+<meta property="og:url" content="http://example.com/2018/12/17/GreenDao%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A1%86%E6%9E%B6%E7%9A%84%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/index.html">
+<meta property="og:site_name" content="Mark的私人博客">
+<meta property="og:description" content="GreenDao很早就想看看了，最近由于业务需求的变化，我就开始学习下简单的增、删、改、查。  资料参考： 首先这是官网地址：https:&#x2F;&#x2F;github.com&#x2F;greenrobot&#x2F;greendao 参考博客为：https:&#x2F;&#x2F;www.cnblogs.com&#x2F;wjtaigwh&#x2F;p&#x2F;6394288.html 慕课网上的视频教程（有点老了，个人觉得）">
+<meta property="og:locale">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/8/9/1651c88d14c0e067?w=1036&h=1598&f=png&s=492342">
+<meta property="article:published_time" content="2018-12-17T06:40:28.000Z">
+<meta property="article:modified_time" content="2018-12-17T06:40:28.000Z">
+<meta property="article:author" content="Mark先生">
+<meta property="article:tag" content="Android">
+<meta property="article:tag" content="数据库">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2018/8/9/1651c88d14c0e067?w=1036&h=1598&f=png&s=492342">
+
+
+<link rel="canonical" href="http://example.com/2018/12/17/GreenDao%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A1%86%E6%9E%B6%E7%9A%84%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2018/12/17/GreenDao%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A1%86%E6%9E%B6%E7%9A%84%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/","path":"2018/12/17/GreenDao数据库框架的基础学习/","title":"GreenDao数据库框架的基础学习"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>GreenDao数据库框架的基础学习 | Mark的私人博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Mark的私人博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Mark的私人博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">数风流人物，还看今朝</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B5%84%E6%96%99%E5%8F%82%E8%80%83%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">资料参考：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%92%B1%E4%BB%AC%E5%85%88%E6%9D%A5%E5%AD%A6%E4%B9%A0%E4%B8%8BGreenDao%E7%9A%84Api%E5%B1%9E%E6%80%A7%EF%BC%9A"><span class="nav-number">1.1.</span> <span class="nav-text">一、咱们先来学习下GreenDao的Api属性：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BB%A3%E7%A0%81%E7%9A%84%E6%8E%A5%E5%85%A5%E9%85%8D%E7%BD%AE"><span class="nav-number">1.2.</span> <span class="nav-text">二、代码的接入配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%84%E8%A7%88%E6%95%88%E6%9E%9C%EF%BC%9A"><span class="nav-number">1.2.1.</span> <span class="nav-text">预览效果：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bean-%E5%AF%B9%E8%B1%A1%E6%B3%A8%E9%87%8A%E7%9A%84%E8%A7%A3%E9%87%8A"><span class="nav-number">1.3.</span> <span class="nav-text">Bean 对象注释的解释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8Application%E4%B8%AD%E5%88%9D%E5%A7%8B%E5%8C%96%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">1.4.</span> <span class="nav-text">在Application中初始化自己的数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8%E4%BD%BF%E7%94%A8%E5%89%8D%E6%88%91%E4%BB%AC%E6%B5%B7%E7%9A%84%E5%B0%81%E8%A3%85%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%93%8D%E4%BD%9C%E7%B1%BB%EF%BC%8C%E6%8F%90%E4%BE%9B%E7%AE%80%E5%8D%95%E7%9A%84Shop%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%A2%9E%E5%88%A0%E8%AF%A5%E6%9F%A5%E7%9A%84%E7%AE%80%E5%8D%95%E6%96%B9%E6%B3%95"><span class="nav-number">1.5.</span> <span class="nav-text">在使用前我们海的封装一个数据库的操作类，提供简单的Shop对象的增删该查的简单方法</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Mark先生</p>
+  <div class="site-description" itemprop="description">一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">141</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">72</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2018/12/17/GreenDao%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A1%86%E6%9E%B6%E7%9A%84%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Mark先生">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mark的私人博客">
+      <meta itemprop="description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="GreenDao数据库框架的基础学习 | Mark的私人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          GreenDao数据库框架的基础学习
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2018-12-17 14:40:28" itemprop="dateCreated datePublished" datetime="2018-12-17T14:40:28+08:00">2018-12-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>GreenDao很早就想看看了，最近由于业务需求的变化，我就开始学习下简单的增、删、改、查。</p>
+<hr>
+<h2 id="资料参考："><a href="#资料参考：" class="headerlink" title="资料参考："></a>资料参考：</h2><ul>
+<li>首先这是官网地址：<a target="_blank" rel="noopener" href="https://github.com/greenrobot/greendao">https://github.com/greenrobot/greendao</a></li>
+<li>参考博客为：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/wjtaigwh/p/6394288.html">https://www.cnblogs.com/wjtaigwh/p/6394288.html</a></li>
+<li>慕课网上的视频教程（有点老了，个人觉得）</li>
+</ul>
+<hr>
+<span id="more"></span>
+<h3 id="一、咱们先来学习下GreenDao的Api属性："><a href="#一、咱们先来学习下GreenDao的Api属性：" class="headerlink" title="一、咱们先来学习下GreenDao的Api属性："></a>一、咱们先来学习下GreenDao的Api属性：</h3><blockquote>
+<p><strong>GreenDao是使用ORM（Object RelationShop Mapping）对象关系映射，就是通过GreenDao将数据库和Bean关联起来有以下优点：</strong></p>
+</blockquote>
+<ul>
+<li>存取速度快</li>
+<li>支持数据库加密</li>
+<li>轻量级</li>
+<li>激活实体</li>
+<li>支持缓存</li>
+<li>代码自动生成<h3 id="二、代码的接入配置"><a href="#二、代码的接入配置" class="headerlink" title="二、代码的接入配置"></a>二、代码的接入配置</h3><ul>
+<li>app项目目录下build文件中添加<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: &#39;org.greenrobot.greendao&#39;</span><br><span class="line">Android&#123;</span><br><span class="line">   &#x2F;&#x2F;greendao配置</span><br><span class="line">    greendao&#123;</span><br><span class="line">       &#x2F;&#x2F;版本号，升级时可配置</span><br><span class="line">       schemaVersion 1</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">    implementation &#39;org.greenrobot:greendao:3.2.2&#39; &#x2F;&#x2F; add library</span><br><span class="line">    implementation &#39;org.greenrobot:greendao-generator:3.2.2&#39;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>在更目录中build文件中需要添加<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">   classpath &#39;org.greenrobot:greendao-gradle-plugin:3.2.2&#39;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="预览效果："><a href="#预览效果：" class="headerlink" title="预览效果："></a>预览效果：</h4></li>
+</ul>
+<p><img src="https://user-gold-cdn.xitu.io/2018/8/9/1651c88d14c0e067?w=1036&h=1598&f=png&s=492342" title="是不是很丑"></p>
+<ul>
+<li><h3 id="Bean-对象注释的解释"><a href="#Bean-对象注释的解释" class="headerlink" title="Bean 对象注释的解释"></a>Bean 对象注释的解释</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@Entity：告诉GreenDao该对象为实体，只有被@Entity注释的Bean类才能被dao类操作</span><br><span class="line">@Id：对象的Id，使用Long类型作为EntityId，否则会报错。(autoincrement &#x3D; true)表示主键会自增，如果false就会使用旧值</span><br><span class="line">@Property：可以自定义字段名，注意外键不能使用该属性</span><br><span class="line">@NotNull：属性不能为空</span><br><span class="line">@Transient：使用该注释的属性不会被存入数据库的字段中</span><br><span class="line">@Unique：该属性值必须在数据库中是唯一值</span><br><span class="line">@Generated：编译后自动生成的构造函数、方法等的注释，提示构造函数、方法等不能被修改</span><br></pre></td></tr></table></figure></li>
+<li><h3 id="在Application中初始化自己的数据库"><a href="#在Application中初始化自己的数据库" class="headerlink" title="在Application中初始化自己的数据库"></a>在Application中初始化自己的数据库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * 配置数据库</span><br><span class="line"> *&#x2F;</span><br><span class="line">private void setupDatabase() &#123;</span><br><span class="line">    &#x2F;&#x2F;创建数据库shop.db</span><br><span class="line">    DaoMaster.DevOpenHelper helper &#x3D; new DaoMaster.DevOpenHelper(this,&quot;shop.db&quot;,null);</span><br><span class="line">    &#x2F;&#x2F;获取可写数据库</span><br><span class="line">    SQLiteDatabase db &#x3D; helper.getWritableDatabase();</span><br><span class="line">    &#x2F;&#x2F;获取数据库对象</span><br><span class="line">    DaoMaster daoMaster &#x3D; new DaoMaster(db);</span><br><span class="line">    &#x2F;&#x2F;获取dao对象管理者</span><br><span class="line">    daoSession &#x3D; daoMaster.newSession();</span><br><span class="line">&#125;</span><br><span class="line">public static DaoSession getDaoInstant()&#123;</span><br><span class="line">    return daoSession;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><h3 id="在使用前我们海的封装一个数据库的操作类，提供简单的Shop对象的增删该查的简单方法"><a href="#在使用前我们海的封装一个数据库的操作类，提供简单的Shop对象的增删该查的简单方法" class="headerlink" title="在使用前我们海的封装一个数据库的操作类，提供简单的Shop对象的增删该查的简单方法"></a>在使用前我们海的封装一个数据库的操作类，提供简单的Shop对象的增删该查的简单方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">* 使用GreenDao 实现简单的增删改查，下面是基本方法</span><br><span class="line">  * 增加单个数据</span><br><span class="line">* getShopDao().insert(shop);</span><br><span class="line">* getShopDao().insertOrReplace(shop);</span><br><span class="line">* 增加多个数据</span><br><span class="line">* getShopDao().insertInTx(shopList);</span><br><span class="line">* getShopDao().insertOrReplaceInTx(shopList);</span><br><span class="line">* 查询全部</span><br><span class="line">* List&lt; Shop&gt; list &#x3D; getShopDao().loadAll();</span><br><span class="line">* List&lt; Shop&gt; list &#x3D; getShopDao().queryBuilder().list();</span><br><span class="line">* 查询附加单个条件</span><br><span class="line">* .where()</span><br><span class="line">* .whereOr()</span><br><span class="line">* 查询附加多个条件</span><br><span class="line">* .where(, , ,)</span><br><span class="line">* .whereOr(, , ,)</span><br><span class="line">* 查询附加排序</span><br><span class="line">* .orderDesc()</span><br><span class="line">* .orderAsc()</span><br><span class="line">* 查询限制当页个数</span><br><span class="line">* .limit()</span><br><span class="line">* 查询总个数</span><br><span class="line">* .count()</span><br><span class="line">* 修改单个数据</span><br><span class="line">* getShopDao().update(shop);</span><br><span class="line">* 修改多个数据</span><br><span class="line">* getShopDao().updateInTx(shopList);</span><br><span class="line">* 删除单个数据</span><br><span class="line">* getTABUserDao().delete(user);</span><br><span class="line">* 删除多个数据</span><br><span class="line">* getUserDao().deleteInTx(userList);</span><br><span class="line">* 删除数据ByKey</span><br><span class="line">* getTABUserDao().deleteByKey();</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><strong><strong><em>我的代码和网上大佬的一样，其实就是自己平时封装的工具类！累。。。。。<br>那么那么久</em></strong></strong></p>
+<p>最后附上自己的练习代码：<a target="_blank" rel="noopener" href="https://coding.net/u/Mark_Chen/p/MarkGreenDaoDemo/git">Coding</a><br>在大佬的基础上学习就是快！！！</p>
+<p>大佬的博客为：<a target="_blank" rel="noopener" href="http://www.cnblogs.com/wjtaigwh/">http://www.cnblogs.com/wjtaigwh/</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Android/" rel="tag"># Android</a>
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag"># 数据库</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/12/17/Dart%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%AD%A6%E4%B9%A0/" rel="prev" title="Dart的基础知识学习">
+                  <i class="fa fa-angle-left"></i> Dart的基础知识学习
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018/12/17/Mark%E7%9A%84%E6%9E%B6%E6%9E%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Android-MVP/" rel="next" title="Mark的架构学习笔记---Android_MVP">
+                  Mark的架构学习笔记---Android_MVP <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Mark先生</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

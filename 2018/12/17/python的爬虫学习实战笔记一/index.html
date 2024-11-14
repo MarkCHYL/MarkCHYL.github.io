@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha256-5eIC48iZUHmSlSUz9XtjRyK2mzQkHScZY1WdMaoz74E=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.21.1","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="前言：Python3的爬虫基础学习，编写URL管理器、网页下载器、网页分析器、数据输出器、如何连接到MySQL。网上能搜到许多的库，在这我只是开始我的基础学起，瞎猫死猫能运行就可以。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python的爬虫学习实战笔记一">
+<meta property="og:url" content="http://example.com/2018/12/17/python%E7%9A%84%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98%E7%AC%94%E8%AE%B0%E4%B8%80/index.html">
+<meta property="og:site_name" content="Mark的私人博客">
+<meta property="og:description" content="前言：Python3的爬虫基础学习，编写URL管理器、网页下载器、网页分析器、数据输出器、如何连接到MySQL。网上能搜到许多的库，在这我只是开始我的基础学起，瞎猫死猫能运行就可以。">
+<meta property="og:locale">
+<meta property="article:published_time" content="2018-12-17T02:58:01.000Z">
+<meta property="article:modified_time" content="2018-12-17T02:58:01.000Z">
+<meta property="article:author" content="Mark先生">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="爬虫">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2018/12/17/python%E7%9A%84%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98%E7%AC%94%E8%AE%B0%E4%B8%80/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2018/12/17/python%E7%9A%84%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98%E7%AC%94%E8%AE%B0%E4%B8%80/","path":"2018/12/17/python的爬虫学习实战笔记一/","title":"python的爬虫学习实战笔记一"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>python的爬虫学习实战笔记一 | Mark的私人博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Mark的私人博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Mark的私人博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">数风流人物，还看今朝</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E8%A8%80%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">前言：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Python3%E7%9A%84%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%8C%E7%BC%96%E5%86%99URL%E7%AE%A1%E7%90%86%E5%99%A8%E3%80%81%E7%BD%91%E9%A1%B5%E4%B8%8B%E8%BD%BD%E5%99%A8%E3%80%81%E7%BD%91%E9%A1%B5%E5%88%86%E6%9E%90%E5%99%A8%E3%80%81%E6%95%B0%E6%8D%AE%E8%BE%93%E5%87%BA%E5%99%A8%E3%80%81%E5%A6%82%E4%BD%95%E8%BF%9E%E6%8E%A5%E5%88%B0MySQL%E3%80%82%E7%BD%91%E4%B8%8A%E8%83%BD%E6%90%9C%E5%88%B0%E8%AE%B8%E5%A4%9A%E7%9A%84%E5%BA%93%EF%BC%8C%E5%9C%A8%E8%BF%99%E6%88%91%E5%8F%AA%E6%98%AF%E5%BC%80%E5%A7%8B%E6%88%91%E7%9A%84%E5%9F%BA%E7%A1%80%E5%AD%A6%E8%B5%B7%EF%BC%8C%E7%9E%8E%E7%8C%AB%E6%AD%BB%E7%8C%AB%E8%83%BD%E8%BF%90%E8%A1%8C%E5%B0%B1%E5%8F%AF%E4%BB%A5%E3%80%82"><span class="nav-number">1.1.</span> <span class="nav-text">Python3的爬虫基础学习，编写URL管理器、网页下载器、网页分析器、数据输出器、如何连接到MySQL。网上能搜到许多的库，在这我只是开始我的基础学起，瞎猫死猫能运行就可以。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BC%96%E5%86%99%E7%9A%84%E7%8E%AF%E5%A2%83%EF%BC%9A"><span class="nav-number">1.2.</span> <span class="nav-text">编写的环境：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%EF%BC%9A"><span class="nav-number">2.</span> <span class="nav-text">定义：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B%EF%BC%9A"><span class="nav-number">3.</span> <span class="nav-text">简介：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%88%AC%E8%99%AB%E6%B5%81%E7%A8%8B%EF%BC%9A"><span class="nav-number">4.</span> <span class="nav-text">爬虫流程：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8A%E4%BB%A3%E7%A0%81"><span class="nav-number"></span> <span class="nav-text">上代码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%91%E9%A1%B5%E4%B8%8B%E8%BD%BD%E5%99%A8-html-downloader"><span class="nav-number">1.</span> <span class="nav-text">网页下载器 html_downloader</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%91%E9%A1%B5%E8%A7%A3%E6%9E%90%E5%99%A8-html-parser"><span class="nav-number">2.</span> <span class="nav-text">网页解析器 html_parser</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E8%B5%B7-html-outputer"><span class="nav-number">3.</span> <span class="nav-text">输出起 html_outputer</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Mark先生</p>
+  <div class="site-description" itemprop="description">一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">141</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">72</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2018/12/17/python%E7%9A%84%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98%E7%AC%94%E8%AE%B0%E4%B8%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Mark先生">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mark的私人博客">
+      <meta itemprop="description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="python的爬虫学习实战笔记一 | Mark的私人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          python的爬虫学习实战笔记一
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2018-12-17 10:58:01" itemprop="dateCreated datePublished" datetime="2018-12-17T10:58:01+08:00">2018-12-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><h4 id="Python3的爬虫基础学习，编写URL管理器、网页下载器、网页分析器、数据输出器、如何连接到MySQL。网上能搜到许多的库，在这我只是开始我的基础学起，瞎猫死猫能运行就可以。"><a href="#Python3的爬虫基础学习，编写URL管理器、网页下载器、网页分析器、数据输出器、如何连接到MySQL。网上能搜到许多的库，在这我只是开始我的基础学起，瞎猫死猫能运行就可以。" class="headerlink" title="Python3的爬虫基础学习，编写URL管理器、网页下载器、网页分析器、数据输出器、如何连接到MySQL。网上能搜到许多的库，在这我只是开始我的基础学起，瞎猫死猫能运行就可以。"></a>Python3的爬虫基础学习，编写URL管理器、网页下载器、网页分析器、数据输出器、如何连接到MySQL。网上能搜到许多的库，在这我只是开始我的基础学起，瞎猫死猫能运行就可以。</h4><hr>
+<span id="more"></span>
+<h4 id="编写的环境："><a href="#编写的环境：" class="headerlink" title="编写的环境："></a>编写的环境：</h4><p>Mac电脑、MySQL数据库、pymysql库、urllib库、bs4库、Python3、PyCharm编辑器</p>
+<p><a target="_blank" rel="noopener" href="http://www.runoob.com/python3/python3-dictionary.html">学习网址</a></p>
+<h3 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h3><p>网络爬虫（Web Spider），又被称为网页蜘蛛，是一种按照一定的规则，自动地抓取网站信息的程序或者脚本。</p>
+<h3 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h3><p>网络蜘蛛是一个很形象的名字。如果把互联网比喻成一个蜘蛛网，那么Spider就是在网上爬来爬去的蜘蛛。网络蜘蛛是通过网页的链接地址来寻找网页，从 网站某一个页面开始，读取网页的内容，找到在网页中的其它链接地址，然后通过这些链接地址寻找下一个网页，这样一直循环下去，直到把这个网站所有的网页都抓取完为止</p>
+<h3 id="爬虫流程："><a href="#爬虫流程：" class="headerlink" title="爬虫流程："></a>爬虫流程：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">①先由urllib的request打开Url得到网页html文档</span><br><span class="line">——②浏览器打开网页源代码分析元素节点</span><br><span class="line">——③通过BeautifulSoup或则正则表达式提取想要的数据</span><br><span class="line">——④存储数据到本地磁盘或数据库（抓取，分析，存储）</span><br></pre></td></tr></table></figure>
+<h2 id="上代码"><a href="#上代码" class="headerlink" title="上代码"></a>上代码</h2><p>爬虫程序入口：Spider_Main<br>爬虫目标URL：<a target="_blank" rel="noopener" href="http://www.hbooker.com/book/10007188">http://www.hbooker.com/book/10007188</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">from hbooker_spider import html_downloader</span><br><span class="line">from hbooker_spider import html_outputer</span><br><span class="line">from hbooker_spider import html_parser</span><br><span class="line">from hbooker_spider import url_manager</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class SpiderMain(object):</span><br><span class="line">    def __init__(self):</span><br><span class="line">        # 初始化 URL 管理器</span><br><span class="line">        self.urls &#x3D; url_manager.UrlManager()</span><br><span class="line">        # 初始化 html 下载器</span><br><span class="line">        self.downloader &#x3D; html_downloader.HtmlDownLoader()</span><br><span class="line">        # 初始化 html 解析器</span><br><span class="line">        self.parser &#x3D; html_parser.HtmlParser()</span><br><span class="line">        # 初始化 数据 输出管理器</span><br><span class="line">        self.outputer &#x3D; html_outputer.HtmlOutputer()</span><br><span class="line"></span><br><span class="line">    def craw(self, root_url):</span><br><span class="line">        count &#x3D; 1</span><br><span class="line">        self.urls.add_new_url(root_url)</span><br><span class="line">        while self.urls.has_new_url():</span><br><span class="line">            try:</span><br><span class="line">                new_url &#x3D; self.urls.get_new_url()</span><br><span class="line">                html_cont &#x3D; self.downloader.downloader(new_url)</span><br><span class="line">                new_urls, new_datas &#x3D; self.parser.parse(new_url, html_cont)</span><br><span class="line">                self.urls.add_new_urls(new_urls)</span><br><span class="line">                print(&#39;craw %d : %s&#39; % (count, new_datas))</span><br><span class="line">                self.outputer.collect_data(new_datas)</span><br><span class="line"></span><br><span class="line">                if count &#x3D;&#x3D; 100:</span><br><span class="line">                    break</span><br><span class="line">                count +&#x3D; 1</span><br><span class="line">            except:</span><br><span class="line">                print(&#39;craw failed&#39;)</span><br><span class="line">        self.outputer.output_html()</span><br><span class="line">        self.outputer.output_mysql()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    root_url &#x3D; &#39;http:&#x2F;&#x2F;www.hbooker.com&#x2F;book&#x2F;100071888&#39;</span><br><span class="line">    obj_spider &#x3D; SpiderMain()</span><br><span class="line">    obj_spider.craw(root_url)</span><br></pre></td></tr></table></figure>
+
+<h3 id="网页下载器-html-downloader"><a href="#网页下载器-html-downloader" class="headerlink" title="网页下载器 html_downloader"></a>网页下载器 html_downloader</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># URL下载器</span><br><span class="line">from urllib import request</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class HtmlDownLoader(object):</span><br><span class="line">    def downloader(self, new_url):</span><br><span class="line">        if new_url is None:</span><br><span class="line">            return</span><br><span class="line"></span><br><span class="line">        response &#x3D; request.urlopen(new_url)</span><br><span class="line">        if response.getcode() !&#x3D; 200:</span><br><span class="line">            return None</span><br><span class="line">        return response.read()</span><br></pre></td></tr></table></figure>
+<h3 id="网页解析器-html-parser"><a href="#网页解析器-html-parser" class="headerlink" title="网页解析器 html_parser"></a>网页解析器 html_parser</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"># html 解析器</span><br><span class="line">import re</span><br><span class="line">from bs4 import BeautifulSoup</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class HtmlParser(object):</span><br><span class="line">    def _get_new_datas(self, url, soup):</span><br><span class="line">        res_data &#x3D; &#123;&#125;</span><br><span class="line">        res_data[&#39;url&#39;] &#x3D; url</span><br><span class="line">        # &lt;div class&#x3D;&quot;book-title&quot;&gt;&lt;h1&gt;假紫剑圣与B套奶妈&lt;&#x2F;h1&gt;</span><br><span class="line">        title_nodes &#x3D; soup.find(&#39;div&#39;, class_&#x3D;&#39;book-title&#39;).find(&#39;h1&#39;)</span><br><span class="line">        res_data[&#39;title&#39;] &#x3D; title_nodes.get_text()</span><br><span class="line">        return res_data</span><br><span class="line"></span><br><span class="line">    def _get_new_urls(self, url, soup):</span><br><span class="line">        new_urls &#x3D; set()</span><br><span class="line">        # &lt;a class&#x3D;&quot;img&quot; href&#x3D;&quot;http:&#x2F;&#x2F;www.hbooker.com&#x2F;book&#x2F;100075809&quot; target&#x3D;&quot;_blank&quot;&gt;</span><br><span class="line">        links &#x3D; soup.find_all(&#39;a&#39;, class_&#x3D;&#39;img&#39;)</span><br><span class="line">        for link in links:</span><br><span class="line">            new_d_url &#x3D; link[&#39;href&#39;]</span><br><span class="line">            new_urls.add(new_d_url)</span><br><span class="line">        return new_urls</span><br><span class="line"></span><br><span class="line">    def parse(self, url, html_cont):</span><br><span class="line">        if url is None or html_cont is None:</span><br><span class="line">            return</span><br><span class="line"></span><br><span class="line">        soup &#x3D; BeautifulSoup(html_cont, &#39;html.parser&#39;, from_encoding&#x3D;&#39;utf-8&#39;)</span><br><span class="line">        new_urls &#x3D; self._get_new_urls(url, soup)</span><br><span class="line">        new_html_cont &#x3D; self._get_new_datas(url, soup)</span><br><span class="line">        return new_urls, new_html_cont</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="输出起-html-outputer"><a href="#输出起-html-outputer" class="headerlink" title="输出起 html_outputer"></a>输出起 html_outputer</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"># 数据输出</span><br><span class="line">import pymysql</span><br><span class="line"></span><br><span class="line">#格式化字符串把字典</span><br><span class="line">def dic2sql(sql, data):</span><br><span class="line">    sql2 &#x3D; sql % (str(data[&#39;url&#39;]), str(data[&#39;title&#39;]))</span><br><span class="line">    return sql2</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class HtmlOutputer(object):</span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.datas &#x3D; []</span><br><span class="line"></span><br><span class="line">    def collect_data(self, new_datas):</span><br><span class="line">        if new_datas is None:</span><br><span class="line">            return</span><br><span class="line">        self.datas.append(new_datas)</span><br><span class="line"></span><br><span class="line">    def output_html(self):</span><br><span class="line">        fout &#x3D; open(&#39;output.html&#39;, &#39;w&#39;)</span><br><span class="line">        fout.write(&#39;&lt;html&gt;&#39;)</span><br><span class="line">        fout.write(&#39;&lt;meta http-equiv&#x3D;&quot;Content-Type&quot; content&#x3D;&quot;text&#x2F;html; charset&#x3D;utf-8&quot; &#x2F;&gt;&#39;)</span><br><span class="line">        fout.write(&#39;&lt;body&gt;&#39;)</span><br><span class="line">        fout.write(&#39;&lt;table&gt;&#39;)</span><br><span class="line"></span><br><span class="line">        for data in self.datas:</span><br><span class="line">            fout.write(&#39;&lt;tr&gt;&#39;)</span><br><span class="line">            fout.write(&#39;&lt;td&gt;%s&lt;&#x2F;td&gt;&#39; % data[&#39;url&#39;])</span><br><span class="line">            fout.write(&#39;&lt;td&gt;%s&lt;&#x2F;td&gt;&#39; % data[&#39;title&#39;])</span><br><span class="line">            fout.write(&#39;&lt;&#x2F;tr&gt;&#39;)</span><br><span class="line"></span><br><span class="line">        fout.write(&#39;&lt;&#x2F;table&gt;&#39;)</span><br><span class="line">        fout.write(&#39;&lt;&#x2F;body&gt;&#39;)</span><br><span class="line">        fout.write(&#39;&lt;&#x2F;html&gt;&#39;)</span><br><span class="line">        fout.close()</span><br><span class="line"></span><br><span class="line">    def output_mysql(self):</span><br><span class="line"></span><br><span class="line">        # 打开数据库连接</span><br><span class="line">        db &#x3D; pymysql.connect(&quot;localhost&quot;, &quot;root&quot;, &quot;MarkCHYL&quot;, &quot;TESTDB&quot;)</span><br><span class="line"></span><br><span class="line">        # 使用 cursor() 方法创建一个游标对象 cursor</span><br><span class="line">        cursor &#x3D; db.cursor()</span><br><span class="line"></span><br><span class="line">        # 使用 execute() 方法执行 SQL，如果表存在则删除</span><br><span class="line">        cursor.execute(&quot;DROP TABLE IF EXISTS HBOOKER&quot;)</span><br><span class="line"></span><br><span class="line">        # # 使用预处理语句创建表</span><br><span class="line">        sql &#x3D; &quot;&quot;&quot;CREATE TABLE HBOOKER (</span><br><span class="line">         TITLE  VARCHAR (200) NOT NULL,</span><br><span class="line">         URL  VARCHAR (200))&quot;&quot;&quot;</span><br><span class="line">        print(sql)</span><br><span class="line"></span><br><span class="line">        cursor.execute(sql)</span><br><span class="line">        #</span><br><span class="line">        for data in self.datas:</span><br><span class="line">            # SQL 插入语句</span><br><span class="line">            # sql &#x3D; &quot;INSERT INTO HBOOKER(TITLE, URL) VALUES (\&#39;&quot; + str(data[&#39;title&#39;]) + &quot;&#39;,&#39;&quot; + str(data[&#39;url&#39;]) + &quot;&#39;)&quot;</span><br><span class="line">            sql &#x3D; &quot;INSERT INTO HBOOKER(URL,TITLE) VALUES (&#39;%s&#39;,&#39;%s&#39;)&quot;</span><br><span class="line">            sql1 &#x3D; dic2sql(sql, data)</span><br><span class="line">            print(sql1)</span><br><span class="line">            try:</span><br><span class="line">                # 执行sql语句</span><br><span class="line">                cursor.execute(sql1)</span><br><span class="line">                # 提交到数据库执行</span><br><span class="line">                db.commit()</span><br><span class="line">            except:</span><br><span class="line">                # 如果发生错误则回滚</span><br><span class="line">                db.rollback()</span><br><span class="line"></span><br><span class="line">        # 关闭数据库连接</span><br><span class="line">        db.close()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>后记：代码可能比较多  我只是为了更好的了解整个爬虫的过程</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Python/" rel="tag"># Python</a>
+              <a href="/tags/%E7%88%AC%E8%99%AB/" rel="tag"># 爬虫</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/12/17/Android7-0%E8%87%B3Android8-0%E9%80%82%E9%85%8D%E8%AE%B0%E5%BD%95/" rel="prev" title="Android7.0至Android8.0适配记录">
+                  <i class="fa fa-angle-left"></i> Android7.0至Android8.0适配记录
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018/12/17/MAC%E6%90%AD%E5%BB%BA%E5%9F%BA%E4%BA%8ERTMP%E7%9A%84%E6%9C%AC%E5%9C%B0Nginx%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="next" title="MAC搭建基于RTMP的本地Nginx服务器">
+                  MAC搭建基于RTMP的本地Nginx服务器 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Mark先生</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

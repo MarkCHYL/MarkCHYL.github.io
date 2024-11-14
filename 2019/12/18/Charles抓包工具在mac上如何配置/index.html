@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha256-5eIC48iZUHmSlSUz9XtjRyK2mzQkHScZY1WdMaoz74E=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.21.1","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="配置： 电脑：MacBook Pro (13-inch, 2017, Two Thunderbolt 3 ports) 手机：安卓手机4.4版本（是定制的） Charles版本：v4.5.5 手机与macbook需要连接同一网段的网络，macbook可以是有线，手机连wifi，也可以两者连接同一个wifi。   第一、电脑上安装Charles官网下载安装：官网地址下载后安装 第二、设置charle">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Charles抓包工具在mac上如何配置">
+<meta property="og:url" content="http://example.com/2019/12/18/Charles%E6%8A%93%E5%8C%85%E5%B7%A5%E5%85%B7%E5%9C%A8mac%E4%B8%8A%E5%A6%82%E4%BD%95%E9%85%8D%E7%BD%AE/index.html">
+<meta property="og:site_name" content="Mark的私人博客">
+<meta property="og:description" content="配置： 电脑：MacBook Pro (13-inch, 2017, Two Thunderbolt 3 ports) 手机：安卓手机4.4版本（是定制的） Charles版本：v4.5.5 手机与macbook需要连接同一网段的网络，macbook可以是有线，手机连wifi，也可以两者连接同一个wifi。   第一、电脑上安装Charles官网下载安装：官网地址下载后安装 第二、设置charle">
+<meta property="og:locale">
+<meta property="og:image" content="http://example.com/2019/12/18/img/accxv-s218u.jpg">
+<meta property="og:image" content="http://example.com/2019/12/18/img/aa1g5-ewu90.jpg">
+<meta property="og:image" content="http://example.com/2019/12/18/img/a1evd-z9c3a.jpg">
+<meta property="og:image" content="http://example.com/2019/12/18/img/a921v-hyhye.jpg">
+<meta property="article:published_time" content="2019-12-18T05:25:37.000Z">
+<meta property="article:modified_time" content="2019-12-18T05:25:37.000Z">
+<meta property="article:author" content="Mark先生">
+<meta property="article:tag" content="工具使用">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2019/12/18/img/accxv-s218u.jpg">
+
+
+<link rel="canonical" href="http://example.com/2019/12/18/Charles%E6%8A%93%E5%8C%85%E5%B7%A5%E5%85%B7%E5%9C%A8mac%E4%B8%8A%E5%A6%82%E4%BD%95%E9%85%8D%E7%BD%AE/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2019/12/18/Charles%E6%8A%93%E5%8C%85%E5%B7%A5%E5%85%B7%E5%9C%A8mac%E4%B8%8A%E5%A6%82%E4%BD%95%E9%85%8D%E7%BD%AE/","path":"2019/12/18/Charles抓包工具在mac上如何配置/","title":"Charles抓包工具在mac上如何配置"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Charles抓包工具在mac上如何配置 | Mark的私人博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Mark的私人博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Mark的私人博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">数风流人物，还看今朝</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">配置：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E3%80%81%E7%94%B5%E8%84%91%E4%B8%8A%E5%AE%89%E8%A3%85Charles"><span class="nav-number"></span> <span class="nav-text">第一、电脑上安装Charles</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E3%80%81%E8%AE%BE%E7%BD%AEcharles%E4%BB%A3%E7%90%86"><span class="nav-number"></span> <span class="nav-text">第二、设置charles代理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E3%80%81%E6%89%8B%E6%9C%BA%E5%AE%89%E8%A3%85charles%E8%AF%81%E4%B9%A6"><span class="nav-number"></span> <span class="nav-text">第三、手机安装charles证书</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E3%80%81%E6%89%8B%E6%9C%BA%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86"><span class="nav-number"></span> <span class="nav-text">第三、手机设置代理</span></a></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Mark先生</p>
+  <div class="site-description" itemprop="description">一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">141</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">72</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/12/18/Charles%E6%8A%93%E5%8C%85%E5%B7%A5%E5%85%B7%E5%9C%A8mac%E4%B8%8A%E5%A6%82%E4%BD%95%E9%85%8D%E7%BD%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Mark先生">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mark的私人博客">
+      <meta itemprop="description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Charles抓包工具在mac上如何配置 | Mark的私人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Charles抓包工具在mac上如何配置
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2019-12-18 13:25:37" itemprop="dateCreated datePublished" datetime="2019-12-18T13:25:37+08:00">2019-12-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" itemprop="url" rel="index"><span itemprop="name">工具使用</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h4 id="配置："><a href="#配置：" class="headerlink" title="配置："></a>配置：</h4><ul>
+<li>电脑：MacBook Pro (13-inch, 2017, Two Thunderbolt 3 ports)</li>
+<li>手机：安卓手机4.4版本（是定制的）</li>
+<li>Charles版本：v4.5.5</li>
+<li>手机与macbook需要连接同一网段的网络，macbook可以是有线，手机连wifi，也可以两者连接同一个wifi。</li>
+</ul>
+<hr>
+<h3 id="第一、电脑上安装Charles"><a href="#第一、电脑上安装Charles" class="headerlink" title="第一、电脑上安装Charles"></a>第一、电脑上安装Charles</h3><p>官网下载安装：<a target="_blank" rel="noopener" href="https://www.charlesproxy.com/download/">官网地址</a><br>下载后安装</p>
+<h3 id="第二、设置charles代理"><a href="#第二、设置charles代理" class="headerlink" title="第二、设置charles代理"></a>第二、设置charles代理</h3><p>打开charles/proxy/proxy-settings，设置一个端口号，默认的8888就可以。<br><img src="../img/accxv-s218u.jpg"></p>
+<h3 id="第三、手机安装charles证书"><a href="#第三、手机安装charles证书" class="headerlink" title="第三、手机安装charles证书"></a>第三、手机安装charles证书</h3><p>需要安装charles的证书。点击help/SSL proxying</p>
+<p><img src="../img/aa1g5-ewu90.jpg"><br>查询macbook的ip地址，并在手机连接的wifi上手动设置代理，代理主机名为ip地址，代理端口号为8888，会弹出一个框，显示的意思是手机上的wify需要设置代理。</p>
+<h3 id="第三、手机设置代理"><a href="#第三、手机设置代理" class="headerlink" title="第三、手机设置代理"></a>第三、手机设置代理</h3><p>查询macbook的ip地址，并在手机连接的wifi上手动设置代理，代理主机名为ip地址，代理端口号为8888，这时候用手机访问网页，charles会弹出下列框，说明charles已经开始对手机抓包了，点击允许。</p>
+<p><img src="../img/a1evd-z9c3a.jpg"></p>
+<p>然后在手机浏览器中访问手机<a target="_blank" rel="noopener" href="http://charlesproxy.com/getssl%EF%BC%8C%E5%AE%89%E8%A3%85%E5%8D%B3%E5%8F%AF%EF%BC%8C">http://charlesproxy.com/getssl，安装即可，</a><br><img src="../img/a921v-hyhye.jpg"></p>
+<p>好了，现在就可以流畅的抓取手机上的各种http/https请求了，想要学习更多charles工具方法.</p>
+<p>本人不做推广，只是供自己即好友参考做的笔记<br>感谢开发员：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/50f844c9beaf">小小的开发人员</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="tag"># 工具使用</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2019/12/12/Error-%E6%B3%A8-%E6%9F%90%E4%BA%9B%E8%BE%93%E5%85%A5%E6%96%87%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%88%96%E8%A6%86%E7%9B%96%E4%BA%86%E5%B7%B2%E8%BF%87%E6%97%B6%E7%9A%84-API%E3%80%82-%E6%B3%A8-%E6%9C%89%E5%85%B3%E8%AF%A6%E7%BB%86%E4%BF%A1%E6%81%AF-%E8%AF%B7%E4%BD%BF%E7%94%A8-Xlint-deprecation-%E9%87%8D%E6%96%B0%E7%BC%96%E8%AF%91%E3%80%82/" rel="prev" title="Error:注: 某些输入文件使用或覆盖了已过时的 API。 注: 有关详细信息, 请使用 -Xlint:deprecation 重新编译。">
+                  <i class="fa fa-angle-left"></i> Error:注: 某些输入文件使用或覆盖了已过时的 API。 注: 有关详细信息, 请使用 -Xlint:deprecation 重新编译。
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2019/12/25/error-item-inner-element-must-either-be-a-resource-reference-or-empty/" rel="next" title="error: <item> inner element must either be a resource reference or empty.">
+                  error: <item> inner element must either be a resource reference or empty. <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Mark先生</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

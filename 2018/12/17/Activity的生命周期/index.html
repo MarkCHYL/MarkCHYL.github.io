@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha256-5eIC48iZUHmSlSUz9XtjRyK2mzQkHScZY1WdMaoz74E=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.21.1","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="1.启动Activity：系统会先调用onCreate方法，这是生命周期第一个方法，然后调用onStart方法，最后调用onResume，Activity进入运行状态。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Activity的生命周期">
+<meta property="og:url" content="http://example.com/2018/12/17/Activity%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/index.html">
+<meta property="og:site_name" content="Mark的私人博客">
+<meta property="og:description" content="1.启动Activity：系统会先调用onCreate方法，这是生命周期第一个方法，然后调用onStart方法，最后调用onResume，Activity进入运行状态。">
+<meta property="og:locale">
+<meta property="og:image" content="http://hi.csdn.net/attachment/201109/1/0_1314838777He6C.gif">
+<meta property="article:published_time" content="2018-12-17T01:31:39.000Z">
+<meta property="article:modified_time" content="2018-12-17T01:31:39.000Z">
+<meta property="article:author" content="Mark先生">
+<meta property="article:tag" content="基础理论">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://hi.csdn.net/attachment/201109/1/0_1314838777He6C.gif">
+
+
+<link rel="canonical" href="http://example.com/2018/12/17/Activity%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2018/12/17/Activity%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/","path":"2018/12/17/Activity的生命周期/","title":"Activity的生命周期"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Activity的生命周期 | Mark的私人博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Mark的私人博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Mark的私人博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">数风流人物，还看今朝</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%90%AF%E5%8A%A8Activity%EF%BC%9A%E7%B3%BB%E7%BB%9F%E4%BC%9A%E5%85%88%E8%B0%83%E7%94%A8onCreate%E6%96%B9%E6%B3%95%EF%BC%8C%E8%BF%99%E6%98%AF%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E7%AC%AC%E4%B8%80%E4%B8%AA%E6%96%B9%E6%B3%95%EF%BC%8C%E7%84%B6%E5%90%8E%E8%B0%83%E7%94%A8onStart%E6%96%B9%E6%B3%95%EF%BC%8C%E6%9C%80%E5%90%8E%E8%B0%83%E7%94%A8onResume%EF%BC%8CActivity%E8%BF%9B%E5%85%A5%E8%BF%90%E8%A1%8C%E7%8A%B6%E6%80%81%E3%80%82"><span class="nav-number">1.</span> <span class="nav-text">1.启动Activity：系统会先调用onCreate方法，这是生命周期第一个方法，然后调用onStart方法，最后调用onResume，Activity进入运行状态。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%BD%93%E5%89%8DActivity%E8%A2%AB%E5%85%B6%E4%BB%96Activity%E8%A6%86%E7%9B%96%E5%85%B6%E4%B8%8A%E6%88%96%E8%A2%AB%E9%94%81%E5%B1%8F%EF%BC%9A"><span class="nav-number">2.</span> <span class="nav-text">2.当前Activity被其他Activity覆盖其上或被锁屏：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%BD%93%E5%89%8DActivity%E7%94%B1%E8%A2%AB%E8%A6%86%E7%9B%96%E7%8A%B6%E6%80%81%E5%9B%9E%E5%88%B0%E5%89%8D%E5%8F%B0%E6%88%96%E8%A7%A3%E9%94%81%E5%B1%8F%EF%BC%9A"><span class="nav-number">3.</span> <span class="nav-text">3.当前Activity由被覆盖状态回到前台或解锁屏：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E5%BD%93%E5%89%8DActivity%E8%BD%AC%E5%88%B0%E6%96%B0%E7%9A%84Activity%E7%95%8C%E9%9D%A2%E6%88%96%E6%8C%89Home%E9%94%AE%E5%9B%9E%E5%88%B0%E4%B8%BB%E5%B1%8F%EF%BC%8C%E8%87%AA%E8%BA%AB%E9%80%80%E5%B1%85%E5%90%8E%E5%8F%B0%EF%BC%9A"><span class="nav-number">4.</span> <span class="nav-text">4.当前Activity转到新的Activity界面或按Home键回到主屏，自身退居后台：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-%E7%94%A8%E6%88%B7%E5%90%8E%E9%80%80%E5%9B%9E%E5%88%B0%E6%AD%A4Activity%EF%BC%9A"><span class="nav-number">5.</span> <span class="nav-text">5.用户后退回到此Activity：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-%E7%94%A8%E6%88%B7%E9%80%80%E5%87%BA%E5%BD%93%E5%89%8DActivity%EF%BC%9A%E7%B3%BB%E7%BB%9F%E5%85%88%E8%B0%83%E7%94%A8onPause%E6%96%B9%E6%B3%95%EF%BC%8C%E7%84%B6%E5%90%8E%E8%B0%83%E7%94%A8onStop%E6%96%B9%E6%B3%95%EF%BC%8C%E6%9C%80%E5%90%8E%E8%B0%83%E7%94%A8onDestory%E6%96%B9%E6%B3%95%EF%BC%8C%E7%BB%93%E6%9D%9F%E5%BD%93%E5%89%8DActivity%E3%80%82"><span class="nav-number">6.</span> <span class="nav-text">6.用户退出当前Activity：系统先调用onPause方法，然后调用onStop方法，最后调用onDestory方法，结束当前Activity。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Activity%E8%BF%90%E8%A1%8C%E6%97%B6%E6%8C%89%E4%B8%8BHOME%E9%94%AE-%E8%B7%9F%E8%A2%AB%E5%AE%8C%E5%85%A8%E8%A6%86%E7%9B%96%E6%98%AF%E4%B8%80%E6%A0%B7%E7%9A%84-%EF%BC%9A"><span class="nav-number">7.</span> <span class="nav-text">Activity运行时按下HOME键(跟被完全覆盖是一样的)：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%80%93-gt-onPause%E2%80%93-gt-onPauseonSaveInstanceState%E2%80%93-gt-onStop-%E2%80%93-gt-onRestart%E2%80%93-gt-onStart%E2%80%94-gt-onResume"><span class="nav-number"></span> <span class="nav-text">–&gt; onPause–&gt; onPauseonSaveInstanceState–&gt; onStop  –&gt; onRestart–&gt;onStart—&gt;onResume</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Activity%E6%9C%AA%E8%A2%AB%E5%AE%8C%E5%85%A8%E8%A6%86%E7%9B%96%E5%8F%AA%E6%98%AF%E5%A4%B1%E5%8E%BB%E7%84%A6%E7%82%B9%EF%BC%9AonPause%E2%80%94-gt-onResume%EF%BC%88%E6%88%91%E6%B2%A1%E5%A4%8D%E7%8E%B0%E8%BF%87%E8%BF%99%E4%B8%AA%EF%BC%8C%E5%BE%85%E8%80%83%E8%AF%81%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">Activity未被完全覆盖只是失去焦点：onPause—&gt;onResume（我没复现过这个，待考证）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#A%E8%B7%B3%E8%BD%AC%E5%88%B0B%EF%BC%8C%E7%84%B6%E5%90%8E%E6%8C%89-back%E5%9B%9E%E9%80%80%E5%88%B0A%EF%BC%8CA%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%EF%BC%9A"><span class="nav-number">2.</span> <span class="nav-text">A跳转到B，然后按 back回退到A，A的生命周期：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%80%93-gt-onCreate-%E2%80%93-gt-onStart-%E2%80%93-gt-onResume-%E2%80%93-gt-onPause-%E2%80%93-gt-onSaveInstanceState-%E2%80%93-gt-onStop-%E7%84%B6%E5%90%8E%E5%9B%9E%E9%80%80%E2%80%93-gt-onRestart-%E2%80%93-gt-onStart-%E2%80%93-gt-onResume"><span class="nav-number"></span> <span class="nav-text">–&gt;onCreate –&gt;onStart –&gt;onResume –&gt;onPause –&gt;onSaveInstanceState –&gt;onStop 然后回退–&gt;onRestart –&gt;onStart –&gt;onResume </span></a></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Mark先生</p>
+  <div class="site-description" itemprop="description">一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">141</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">72</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2018/12/17/Activity%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Mark先生">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mark的私人博客">
+      <meta itemprop="description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Activity的生命周期 | Mark的私人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Activity的生命周期
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2018-12-17 09:31:39" itemprop="dateCreated datePublished" datetime="2018-12-17T09:31:39+08:00">2018-12-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><img src="http://hi.csdn.net/attachment/201109/1/0_1314838777He6C.gif" alt="image"></p>
+<h4 id="1-启动Activity：系统会先调用onCreate方法，这是生命周期第一个方法，然后调用onStart方法，最后调用onResume，Activity进入运行状态。"><a href="#1-启动Activity：系统会先调用onCreate方法，这是生命周期第一个方法，然后调用onStart方法，最后调用onResume，Activity进入运行状态。" class="headerlink" title="1.启动Activity：系统会先调用onCreate方法，这是生命周期第一个方法，然后调用onStart方法，最后调用onResume，Activity进入运行状态。"></a>1.启动Activity：系统会先调用onCreate方法，这是生命周期第一个方法，然后调用onStart方法，最后调用onResume，Activity进入运行状态。</h4><span id="more"></span>
+<p>onCreate方法：一般做一些初始化工作，比如setContentView去加载布局资源，初始化Activity所需的数据。</p>
+<p>onStart方法：表示Activity正在启动，已经可见，但是无法和用户交互。<br>/Users/mark/Downloads/Activity的生命周期.md<br>onResume方法：Activity已经可见并且开始活动，已经出现在前台。</p>
+<h4 id="2-当前Activity被其他Activity覆盖其上或被锁屏："><a href="#2-当前Activity被其他Activity覆盖其上或被锁屏：" class="headerlink" title="2.当前Activity被其他Activity覆盖其上或被锁屏："></a>2.当前Activity被其他Activity覆盖其上或被锁屏：</h4><p>（可以理解为没有完全遮挡界面的）</p>
+<p>系统会调用onPause方法，暂停当前Activity的执行。</p>
+<h4 id="3-当前Activity由被覆盖状态回到前台或解锁屏："><a href="#3-当前Activity由被覆盖状态回到前台或解锁屏：" class="headerlink" title="3.当前Activity由被覆盖状态回到前台或解锁屏："></a>3.当前Activity由被覆盖状态回到前台或解锁屏：</h4><p>系统会调用onResume方法，再次进入运行状态。</p>
+<h4 id="4-当前Activity转到新的Activity界面或按Home键回到主屏，自身退居后台："><a href="#4-当前Activity转到新的Activity界面或按Home键回到主屏，自身退居后台：" class="headerlink" title="4.当前Activity转到新的Activity界面或按Home键回到主屏，自身退居后台："></a>4.当前Activity转到新的Activity界面或按Home键回到主屏，自身退居后台：</h4><p>系统会先调用onPause方法，然后调用onStop方法，进入停滞状态。</p>
+<h4 id="5-用户后退回到此Activity："><a href="#5-用户后退回到此Activity：" class="headerlink" title="5.用户后退回到此Activity："></a>5.用户后退回到此Activity：</h4><p>系统会先调用onRestart方法，</p>
+<p>然后调用onStart方法，</p>
+<p>最后调用onResume方法，</p>
+<p>再次进入运行状态。</p>
+<h4 id="6-用户退出当前Activity：系统先调用onPause方法，然后调用onStop方法，最后调用onDestory方法，结束当前Activity。"><a href="#6-用户退出当前Activity：系统先调用onPause方法，然后调用onStop方法，最后调用onDestory方法，结束当前Activity。" class="headerlink" title="6.用户退出当前Activity：系统先调用onPause方法，然后调用onStop方法，最后调用onDestory方法，结束当前Activity。"></a>6.用户退出当前Activity：系统先调用onPause方法，然后调用onStop方法，最后调用onDestory方法，结束当前Activity。</h4><p>但是知道这些还不够，我们必须亲自试验一下才能深刻体会，融会贯通。</p>
+<hr>
+<p>Activity四种启动模式的区别：standard    singleTop  singleTask   singleInstance</p>
+<p>standard：每次激活Activity时(startActivity)，都创建Activity实例，并放入任务栈； </p>
+<p>singleTop：如果某个Activity自己激活自己并且Activity处于栈顶，则不需要创 建，其余情况都要创建Activity实例；</p>
+<p>singleTask：如果要激活的那个Activity在任务栈中存在该实例，则不需要创建，只需要把 此Activity放入栈顶，即把该Activity以上的Activity实例都pop，并调用其onNewIntent；</p>
+<p>singleInstance：应用1的任务栈中创建了MainActivity实例，如果应用2也要激活 MainActivity，则不需要创建，两应用共享该Activity实例。</p>
+<hr>
+<p>onSaveInstanceState的调用遵循一个重要原则，即当系统“未经你许可”时销毁了你的 activity，则onSaveInstanceState会被系统调用，这是系统的责任，因为它必须要提供一 个机会让你保存的数据。<br>至于onRestoreInstanceState方法，需要注意的是， onSaveInstanceState方法和onRestoreInstanceState方法“不一定”是成对的被调用 的。 </p>
+<p>onRestoreInstanceState被调用的前提是，activity A“确实”被系统销毁了，而如果仅仅 是停留在有这种可能性的情况下，则该方法不会被调用，例如，当正在显示activity A的时 候，用户按下HOME键回到主界面，然后用户紧接着又返回到activity A，这种情况下 activity A一般不会因为内存的原因被系统销毁<br>故activity A的onRestoreInstanceState方 法不会被执行。</p>
+<p> 另外，onRestoreInstanceState的bundle参数也会传递到onCreate方法中，你也可以选择 在onCreate方法中做数据还原。</p>
+<p>切换横竖屏的生命周期：</p>
+<p>1、不设置Activity的android:configChanges时，切屏会重新调用各个生命周期，<br>切横屏时会执行一次，切竖屏时会执行两次</p>
+<p>2、设置Activity的android:configChanges=”orientation”时，切屏还是会重新调<br>用各个生命周期，切横、竖屏时只会执行一次</p>
+<p>3、设置Activity的android:configChanges=”orientation|keyboardHidden”时，<br>切屏不会重新调用各个生命周期，只会执行onConfigurationChanged方法</p>
+<h4 id="Activity运行时按下HOME键-跟被完全覆盖是一样的-："><a href="#Activity运行时按下HOME键-跟被完全覆盖是一样的-：" class="headerlink" title="Activity运行时按下HOME键(跟被完全覆盖是一样的)："></a>Activity运行时按下HOME键(跟被完全覆盖是一样的)：</h4><hr>
+<h2 id="–-gt-onPause–-gt-onPauseonSaveInstanceState–-gt-onStop-–-gt-onRestart–-gt-onStart—-gt-onResume"><a href="#–-gt-onPause–-gt-onPauseonSaveInstanceState–-gt-onStop-–-gt-onRestart–-gt-onStart—-gt-onResume" class="headerlink" title="–&gt; onPause–&gt; onPauseonSaveInstanceState–&gt; onStop  –&gt; onRestart–&gt;onStart—&gt;onResume"></a>–&gt; onPause–&gt; onPauseonSaveInstanceState–&gt; onStop  –&gt; onRestart–&gt;onStart—&gt;onResume</h2><h4 id="Activity未被完全覆盖只是失去焦点：onPause—-gt-onResume（我没复现过这个，待考证）"><a href="#Activity未被完全覆盖只是失去焦点：onPause—-gt-onResume（我没复现过这个，待考证）" class="headerlink" title="Activity未被完全覆盖只是失去焦点：onPause—&gt;onResume（我没复现过这个，待考证）"></a>Activity未被完全覆盖只是失去焦点：onPause—&gt;onResume（我没复现过这个，待考证）</h4><h4 id="A跳转到B，然后按-back回退到A，A的生命周期："><a href="#A跳转到B，然后按-back回退到A，A的生命周期：" class="headerlink" title="A跳转到B，然后按 back回退到A，A的生命周期："></a>A跳转到B，然后按 back回退到A，A的生命周期：</h4><hr>
+<h2 id="–-gt-onCreate-–-gt-onStart-–-gt-onResume-–-gt-onPause-–-gt-onSaveInstanceState-–-gt-onStop-然后回退–-gt-onRestart-–-gt-onStart-–-gt-onResume"><a href="#–-gt-onCreate-–-gt-onStart-–-gt-onResume-–-gt-onPause-–-gt-onSaveInstanceState-–-gt-onStop-然后回退–-gt-onRestart-–-gt-onStart-–-gt-onResume" class="headerlink" title="–&gt;onCreate –&gt;onStart –&gt;onResume –&gt;onPause –&gt;onSaveInstanceState –&gt;onStop 然后回退–&gt;onRestart –&gt;onStart –&gt;onResume "></a>–&gt;onCreate –&gt;onStart –&gt;onResume –&gt;onPause –&gt;onSaveInstanceState –&gt;onStop 然后回退–&gt;onRestart –&gt;onStart –&gt;onResume </h2>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA/" rel="tag"># 基础理论</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/12/16/%E5%AE%89%E5%8D%93%E7%9A%84%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3/" rel="prev" title="安卓的启动模式详解">
+                  <i class="fa fa-angle-left"></i> 安卓的启动模式详解
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018/12/17/Mark%E7%9A%84Retrofit%E5%AD%A6%E4%B9%A0%E7%AC%AC%E4%B8%80%E7%AF%87/" rel="next" title="Mark的Retrofit学习第一篇">
+                  Mark的Retrofit学习第一篇 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Mark先生</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

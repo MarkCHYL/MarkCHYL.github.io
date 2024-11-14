@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha256-5eIC48iZUHmSlSUz9XtjRyK2mzQkHScZY1WdMaoz74E=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.21.1","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="作为安卓原生开发多年的我，也是第一次接触这种方式配置打包信息。原谅我的无知。 一、在项目根目录下新建 key.properties 文件配置签名的基本信息">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flutter如何打包安卓apk包">
+<meta property="og:url" content="http://example.com/2019/11/14/Flutter%E5%A6%82%E4%BD%95%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93apk%E5%8C%85/index.html">
+<meta property="og:site_name" content="Mark的私人博客">
+<meta property="og:description" content="作为安卓原生开发多年的我，也是第一次接触这种方式配置打包信息。原谅我的无知。 一、在项目根目录下新建 key.properties 文件配置签名的基本信息">
+<meta property="og:locale">
+<meta property="article:published_time" content="2019-11-14T01:05:43.000Z">
+<meta property="article:modified_time" content="2019-11-14T01:05:43.000Z">
+<meta property="article:author" content="Mark先生">
+<meta property="article:tag" content="Flutter">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2019/11/14/Flutter%E5%A6%82%E4%BD%95%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93apk%E5%8C%85/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2019/11/14/Flutter%E5%A6%82%E4%BD%95%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93apk%E5%8C%85/","path":"2019/11/14/Flutter如何打包安卓apk包/","title":"Flutter如何打包安卓apk包"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Flutter如何打包安卓apk包 | Mark的私人博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Mark的私人博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Mark的私人博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">数风流人物，还看今朝</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9C%A8%E9%A1%B9%E7%9B%AE%E6%A0%B9%E7%9B%AE%E5%BD%95%E4%B8%8B%E6%96%B0%E5%BB%BA-key-properties-%E6%96%87%E4%BB%B6"><span class="nav-number">1.</span> <span class="nav-text">一、在项目根目录下新建 key.properties 文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%85%8D%E7%BD%AE%E5%88%B0app%E7%9B%AE%E5%BD%95%E4%B8%8B%E7%9A%84-build-gradle-%E6%96%87%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">二、配置到app目录下的 build.gradle 文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%88%87%E6%8D%A2%E5%88%B0Terminal%E4%B8%AD"><span class="nav-number">3.</span> <span class="nav-text">三、切换到Terminal中</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Mark先生</p>
+  <div class="site-description" itemprop="description">一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">141</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">72</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/11/14/Flutter%E5%A6%82%E4%BD%95%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93apk%E5%8C%85/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Mark先生">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mark的私人博客">
+      <meta itemprop="description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Flutter如何打包安卓apk包 | Mark的私人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Flutter如何打包安卓apk包
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2019-11-14 09:05:43" itemprop="dateCreated datePublished" datetime="2019-11-14T09:05:43+08:00">2019-11-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Flutter/" itemprop="url" rel="index"><span itemprop="name">Flutter</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>作为安卓原生开发多年的我，也是第一次接触这种方式配置打包信息。原谅我的无知。</p>
+<h3 id="一、在项目根目录下新建-key-properties-文件"><a href="#一、在项目根目录下新建-key-properties-文件" class="headerlink" title="一、在项目根目录下新建 key.properties 文件"></a>一、在项目根目录下新建 key.properties 文件</h3><p>配置签名的基本信息</p>
+<span id="more"></span>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">storePassword&#x3D;chenyunlin</span><br><span class="line">keyPassword&#x3D;chenyunlin</span><br><span class="line">keyAlias&#x3D;Mark</span><br><span class="line">storeFile&#x3D;&#x2F;Users&#x2F;mark&#x2F;Desktop&#x2F;Document&#x2F;keyStore&#x2F;MarkKey.jks</span><br></pre></td></tr></table></figure>
+<h3 id="二、配置到app目录下的-build-gradle-文件"><a href="#二、配置到app目录下的-build-gradle-文件" class="headerlink" title="二、配置到app目录下的 build.gradle 文件"></a>二、配置到app目录下的 build.gradle 文件</h3><p>在安卓目录下添加如下配置：导入配置 key.properties 的路径</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def keystorePropertiesFile &#x3D; rootProject.file(&quot;key.properties&quot;)</span><br><span class="line">def keystoreProperties &#x3D; new Properties()</span><br><span class="line">keystoreProperties.load(new FileInputStream(keystorePropertiesFile))</span><br><span class="line">android&#123;</span><br><span class="line">    ······</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>配置签名的信息：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">android &#123;</span><br><span class="line">    ····</span><br><span class="line">      signingConfigs &#123;</span><br><span class="line">        release &#123;</span><br><span class="line">            keyAlias keystoreProperties[&#39;keyAlias&#39;]</span><br><span class="line">            keyPassword keystoreProperties[&#39;keyPassword&#39;]</span><br><span class="line">            storeFile file(keystoreProperties[&#39;storeFile&#39;])</span><br><span class="line">            storePassword keystoreProperties[&#39;storePassword&#39;]</span><br><span class="line">        &#125;</span><br><span class="line">        debug &#123;</span><br><span class="line">            keyAlias keystoreProperties[&#39;keyAlias&#39;]</span><br><span class="line">            keyPassword keystoreProperties[&#39;keyPassword&#39;]</span><br><span class="line">            storeFile file(keystoreProperties[&#39;storeFile&#39;])</span><br><span class="line">            storePassword keystoreProperties[&#39;storePassword&#39;]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    ····</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样下来安卓的配置信息配置完成。<br>下面修改buildType是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">buildTypes &#123;</span><br><span class="line">       release &#123;</span><br><span class="line">           &#x2F;&#x2F; Signing with the debug keys for now, so &#96;flutter run --release&#96; works.</span><br><span class="line">           signingConfig signingConfigs.release</span><br><span class="line">       &#125;</span><br><span class="line">       debug &#123;</span><br><span class="line">           &#x2F;&#x2F; Signing with the debug keys for now, so &#96;flutter run --release&#96; works.</span><br><span class="line">           signingConfig signingConfigs.debug</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="三、切换到Terminal中"><a href="#三、切换到Terminal中" class="headerlink" title="三、切换到Terminal中"></a>三、切换到Terminal中</h3><p>输入 <code>Flutter build apk</code>,请静待程序运行完成。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Flutter/" rel="tag"># Flutter</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2019/10/30/ping%E7%AB%AF%E5%8F%A3%E6%98%AF%E5%90%A6%E5%BC%80%E6%94%BE-macos/" rel="prev" title="ping端口是否开放(macos)">
+                  <i class="fa fa-angle-left"></i> ping端口是否开放(macos)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2019/11/14/Flutter%E8%A7%A3%E5%86%B3%E5%90%AF%E5%8A%A8%E7%99%BD%E5%B1%8F/" rel="next" title="Flutter解决启动白屏">
+                  Flutter解决启动白屏 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Mark先生</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

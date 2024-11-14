@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha256-5eIC48iZUHmSlSUz9XtjRyK2mzQkHScZY1WdMaoz74E=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.21.1","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="1、本地安装git环境下载安装包安装即可，在这里不加记录。  2、初始化git项目，生成 .git 配置目录进入项目根目录,右键 git bash here打开控制台 ，输入git init即可完成。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="上传本地代码到指定的Git仓库">
+<meta property="og:url" content="http://example.com/2019/05/29/%E4%B8%8A%E4%BC%A0%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81%E5%88%B0%E6%8C%87%E5%AE%9A%E7%9A%84Git%E4%BB%93%E5%BA%93/index.html">
+<meta property="og:site_name" content="Mark的私人博客">
+<meta property="og:description" content="1、本地安装git环境下载安装包安装即可，在这里不加记录。  2、初始化git项目，生成 .git 配置目录进入项目根目录,右键 git bash here打开控制台 ，输入git init即可完成。">
+<meta property="og:locale">
+<meta property="article:published_time" content="2019-05-29T03:05:46.000Z">
+<meta property="article:modified_time" content="2019-05-29T03:05:46.000Z">
+<meta property="article:author" content="Mark先生">
+<meta property="article:tag" content="工具使用">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2019/05/29/%E4%B8%8A%E4%BC%A0%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81%E5%88%B0%E6%8C%87%E5%AE%9A%E7%9A%84Git%E4%BB%93%E5%BA%93/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2019/05/29/%E4%B8%8A%E4%BC%A0%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81%E5%88%B0%E6%8C%87%E5%AE%9A%E7%9A%84Git%E4%BB%93%E5%BA%93/","path":"2019/05/29/上传本地代码到指定的Git仓库/","title":"上传本地代码到指定的Git仓库"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>上传本地代码到指定的Git仓库 | Mark的私人博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Mark的私人博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Mark的私人博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">数风流人物，还看今朝</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E6%9C%AC%E5%9C%B0%E5%AE%89%E8%A3%85git%E7%8E%AF%E5%A2%83"><span class="nav-number">1.</span> <span class="nav-text">1、本地安装git环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E5%88%9D%E5%A7%8B%E5%8C%96git%E9%A1%B9%E7%9B%AE%EF%BC%8C%E7%94%9F%E6%88%90-git-%E9%85%8D%E7%BD%AE%E7%9B%AE%E5%BD%95"><span class="nav-number">2.</span> <span class="nav-text">2、初始化git项目，生成 .git 配置目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81%E5%B0%86%E9%A1%B9%E7%9B%AE%E5%8A%A0%E5%85%A5%E6%9C%AC%E5%9C%B0git%E4%BB%93%E5%BA%93"><span class="nav-number">3.</span> <span class="nav-text">3、将项目加入本地git仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4%E3%80%81%E5%9C%A8git%E3%80%81%E7%A0%81%E4%BA%91%E5%BB%BA%E5%A5%BD%E4%BA%91%E7%AB%AF%E9%A1%B9%E7%9B%AE%EF%BC%8C%E7%94%9F%E6%88%90git-url"><span class="nav-number">4.</span> <span class="nav-text">4、在git、码云建好云端项目，生成git url</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5%E3%80%81%E8%BF%9E%E6%8E%A5%E4%BA%91%E7%AB%AF%E4%BB%93%E5%BA%93-%E5%B0%86%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93%E4%BB%A3%E7%A0%81%E6%8F%90%E4%BA%A4%E5%88%B0%E4%BA%91%E7%AB%AF%E4%BB%93%E5%BA%93"><span class="nav-number">5.</span> <span class="nav-text">5、连接云端仓库,将本地仓库代码提交到云端仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6%E3%80%81git-%E5%88%A0%E9%99%A4-%E9%A1%B9%E7%9B%AEremote"><span class="nav-number">6.</span> <span class="nav-text">6、git 删除 项目remote</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Mark先生</p>
+  <div class="site-description" itemprop="description">一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">141</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">72</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/05/29/%E4%B8%8A%E4%BC%A0%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81%E5%88%B0%E6%8C%87%E5%AE%9A%E7%9A%84Git%E4%BB%93%E5%BA%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Mark先生">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mark的私人博客">
+      <meta itemprop="description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="上传本地代码到指定的Git仓库 | Mark的私人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          上传本地代码到指定的Git仓库
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2019-05-29 11:05:46" itemprop="dateCreated datePublished" datetime="2019-05-29T11:05:46+08:00">2019-05-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h3 id="1、本地安装git环境"><a href="#1、本地安装git环境" class="headerlink" title="1、本地安装git环境"></a>1、本地安装git环境</h3><p>下载安装包安装即可，在这里不加记录。</p>
+<hr>
+<h3 id="2、初始化git项目，生成-git-配置目录"><a href="#2、初始化git项目，生成-git-配置目录" class="headerlink" title="2、初始化git项目，生成 .git 配置目录"></a>2、初始化git项目，生成 .git 配置目录</h3><p>进入项目根目录,右键 git bash here打开控制台 ，输入git init即可完成。<br> <span id="more"></span></p>
+<hr>
+<h3 id="3、将项目加入本地git仓库"><a href="#3、将项目加入本地git仓库" class="headerlink" title="3、将项目加入本地git仓库"></a>3、将项目加入本地git仓库</h3><p>git add . （此处add后面有空格 和点号）<br>git status<br>touch README.md （可不要<br>git add README.md （可不要<br>git commit -m “first commit”</p>
+<hr>
+<h3 id="4、在git、码云建好云端项目，生成git-url"><a href="#4、在git、码云建好云端项目，生成git-url" class="headerlink" title="4、在git、码云建好云端项目，生成git url"></a>4、在git、码云建好云端项目，生成git url</h3><p>建好项目，在项目的克隆下载处复制url即可</p>
+<hr>
+<h3 id="5、连接云端仓库-将本地仓库代码提交到云端仓库"><a href="#5、连接云端仓库-将本地仓库代码提交到云端仓库" class="headerlink" title="5、连接云端仓库,将本地仓库代码提交到云端仓库"></a>5、连接云端仓库,将本地仓库代码提交到云端仓库</h3><p>连接云端仓库<br>*git remote add origin <a target="_blank" rel="noopener" href="https://gitee.com/xxx/xxx.git">https://gitee.com/xxx/xxx.git</a><br><em>git push origin master<br>为解决本地与云端版本冲突，加上-f参数，push文件<br>git push –set-upstream origin master -f<br>之后会提示输入云端仓库的用户名，密码，验证成功开始上传并完成，实测码云可通过。</em></p>
+<hr>
+<p>不加f会提示错误：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">! [rejected] master -&gt; master (non-fast-forward)</span><br><span class="line">error: failed to push some refs to &#39;https:&#x2F;&#x2F;gitee.com&#x2F;xxx&#x2F;xxx.git&#39;</span><br><span class="line">hint: Updates were rejected because the tip of your current branch is behind</span><br><span class="line">hint: its remote counterpart. Integrate the remote changes (e.g.</span><br><span class="line">hint: &#39;git pull ...&#39;) before pushing again.</span><br><span class="line">hint: See the &#39;Note about fast-forwards&#39; in &#39;git push --help&#39; for details.</span><br></pre></td></tr></table></figure>
+
+
+<p>到此就完成了目的。<br>以后每次提交是先提交到本地仓库，需重新运行 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push --set-upstream origin master -f</span><br></pre></td></tr></table></figure>
+<p>更新到云端<br>或是<code>commit </code>后 <code>push</code><br>git 修改用户名，邮箱：<br>当前 project：<br>直接修改 .git目录下 config文件的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[user]</span><br><span class="line">name &#x3D;xxx</span><br><span class="line">email &#x3D; xxx</span><br></pre></td></tr></table></figure>
+<p>或</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config user.name 用户名;</span><br><span class="line">git config user.email 邮箱;</span><br></pre></td></tr></table></figure>
+<p>全局：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config  --global user.name 用户名；</span><br><span class="line">git config  --global user.email 邮箱名;</span><br></pre></td></tr></table></figure>
+<h3 id="6、git-删除-项目remote"><a href="#6、git-删除-项目remote" class="headerlink" title="6、git 删除 项目remote"></a>6、<code>git</code> 删除 项目<code>remote</code></h3><p>终端执行<code>git remote remove origin</code>,origin为项目<code>remote</code>的名字</p>
+<p>添加远程仓库(远程仓库引用)命令：</p>
+<blockquote>
+<p>使用命令：<strong>git remove add 远程仓库到本地的名称  远程仓库的路径</strong><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44703358/article/details/100514085">更多指令学习参考</a></p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="tag"># 工具使用</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2019/04/10/Flutter%E4%B8%AD%E4%BD%BF%E7%94%A8Banner-%E5%9B%BE/" rel="prev" title="Flutter中使用Banner 图">
+                  <i class="fa fa-angle-left"></i> Flutter中使用Banner 图
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2019/05/30/Mac%E4%B8%8A%E5%AE%9E%E7%8E%B0SVN%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86/" rel="next" title="Mac上实现SVN代码管理">
+                  Mac上实现SVN代码管理 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Mark先生</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

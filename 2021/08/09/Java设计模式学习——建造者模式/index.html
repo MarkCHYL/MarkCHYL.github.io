@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha256-5eIC48iZUHmSlSUz9XtjRyK2mzQkHScZY1WdMaoz74E=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.21.1","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="建造者模式 建造者模式（Builder Pattern）使用多个简单的对象构建一个复杂的对象，这种类型的设计模式就属于创建型模式，它提供了一种创建对象的最佳方式。一个建造者（Builder）类会一步一步构造最终的对象，该 Builder 类是独立于其他的对象的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java设计模式学习——建造者模式">
+<meta property="og:url" content="http://example.com/2021/08/09/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F/index.html">
+<meta property="og:site_name" content="Mark的私人博客">
+<meta property="og:description" content="建造者模式 建造者模式（Builder Pattern）使用多个简单的对象构建一个复杂的对象，这种类型的设计模式就属于创建型模式，它提供了一种创建对象的最佳方式。一个建造者（Builder）类会一步一步构造最终的对象，该 Builder 类是独立于其他的对象的">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-08-09T06:25:17.000Z">
+<meta property="article:modified_time" content="2021-08-09T06:25:17.000Z">
+<meta property="article:author" content="Mark先生">
+<meta property="article:tag" content="设计模式">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2021/08/09/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2021/08/09/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F/","path":"2021/08/09/Java设计模式学习——建造者模式/","title":"Java设计模式学习——建造者模式"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Java设计模式学习——建造者模式 | Mark的私人博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Mark的私人博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Mark的私人博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">数风流人物，还看今朝</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">建造者模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">1.2.</span> <span class="nav-text">注意事项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.3.</span> <span class="nav-text">实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4%E4%B8%80"><span class="nav-number">1.3.1.</span> <span class="nav-text">步骤一</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4%E4%BA%8C"><span class="nav-number">1.3.2.</span> <span class="nav-text">步骤二</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4%E4%B8%89"><span class="nav-number">1.3.3.</span> <span class="nav-text">步骤三</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4%E5%9B%9B"><span class="nav-number">1.3.4.</span> <span class="nav-text">步骤四</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4%E4%BA%94"><span class="nav-number">1.3.5.</span> <span class="nav-text">步骤五</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4%E5%85%AD"><span class="nav-number">1.3.6.</span> <span class="nav-text">步骤六</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4%E4%B8%83"><span class="nav-number">1.3.7.</span> <span class="nav-text">步骤七</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4%E5%85%AB"><span class="nav-number">1.3.8.</span> <span class="nav-text">步骤八</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Mark先生</p>
+  <div class="site-description" itemprop="description">一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">141</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">72</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/08/09/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Mark先生">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mark的私人博客">
+      <meta itemprop="description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Java设计模式学习——建造者模式 | Mark的私人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java设计模式学习——建造者模式
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-08-09 14:25:17" itemprop="dateCreated datePublished" datetime="2021-08-09T14:25:17+08:00">2021-08-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="建造者模式"><a href="#建造者模式" class="headerlink" title="建造者模式"></a>建造者模式</h2><blockquote>
+<p>建造者模式（Builder Pattern）使用多个简单的对象构建一个复杂的对象，这种类型的设计模式就属于创建型模式，它提供了一种创建对象的最佳方式。<br>一个建造者（Builder）类会一步一步构造最终的对象，该 Builder 类是独立于其他的对象的</p>
+</blockquote>
+<span id="more"></span>
+<hr>
+<h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><ul>
+<li><strong>优点</strong><ul>
+<li>建造者独立，易扩展</li>
+<li>便于控制细节风险</li>
+</ul>
+</li>
+<li><strong>缺点</strong><ul>
+<li>产品有其共同点，范围有限制</li>
+<li>如内部变化复杂，会有很多的建造者</li>
+</ul>
+</li>
+<li><strong>使用场景</strong><ul>
+<li>需要生产的对象具有复杂的内部结构，</li>
+<li>需要生成的对象内部属性本身相互依赖</li>
+</ul>
+</li>
+<li><h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul>
+<li>与工厂模式的区别L建造者模式更加关注与零件装配的顺序</li>
+</ul>
+<hr>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3>我们以肯德基套餐为例<br>我们假设一个快餐店的商业案例，其中，一个典型的套餐可以是一个汉堡（Burger）和一杯冷饮（Cold drink）。汉堡（Burger）可以是素食汉堡（Veg Burger）或鸡肉汉堡（Chicken Burger），它们是包在纸盒中。冷饮（Cold drink）可以是可口可乐（coke）或百事可乐（pepsi），它们是装在瓶子中。</li>
+</ul>
+<h4 id="步骤一"><a href="#步骤一" class="headerlink" title="步骤一"></a><strong>步骤一</strong></h4><p>  创建一个表示食物条目和食物包装的接口</p>
+<ul>
+<li>食物条目接口<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * 一个表示食物条目</span><br><span class="line"> *&#x2F;</span><br><span class="line">public interface Item &#123;</span><br><span class="line">  public String name();</span><br><span class="line">  public Packing packing();</span><br><span class="line">  public float price();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>食物包装接口<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * 食物包装的接口</span><br><span class="line"> *&#x2F;</span><br><span class="line">public interface Packing &#123;</span><br><span class="line">  public String pack();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="步骤二"><a href="#步骤二" class="headerlink" title="步骤二"></a><strong>步骤二</strong></h4>创建实现 <strong>Packing</strong> 接口实体类</li>
+<li>Wrapper（包装纸） <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public class Wrapper implements Packing &#123;</span><br><span class="line"></span><br><span class="line">  @Override</span><br><span class="line">  public String pack() &#123;</span><br><span class="line">      return &quot;Wrapper&quot;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Bottle（瓶子）<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public class Bottle implements Packing &#123;</span><br><span class="line">  @Override</span><br><span class="line">  public String pack() &#123;</span><br><span class="line">      return &quot;Bottle&quot;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="步骤三"><a href="#步骤三" class="headerlink" title="步骤三"></a><strong>步骤三</strong></h4>创建实现<strong>Item</strong>接口的抽象类，该类提供默认的功能</li>
+<li>Burger (汉堡）<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public abstract class Burger implements Item &#123;</span><br><span class="line"></span><br><span class="line">   @Override</span><br><span class="line">    public Packing packing() &#123;</span><br><span class="line">     return new Wrapper();</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   public abstract float price() ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>ColdDrink （冷饮）<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public abstract class ColdDrink implements Item &#123;</span><br><span class="line"></span><br><span class="line">  @Override</span><br><span class="line">  public Packing packing() &#123;</span><br><span class="line">      return new Bottle();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  public abstract float price();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h4 id="步骤四"><a href="#步骤四" class="headerlink" title="步骤四"></a>步骤四</h4><p>创建扩展了 Burger 和 ColdDrink 的实体类</p>
+<ul>
+<li>VegBurger （蔬菜汉堡）<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class VegBurger extends Burger&#123;</span><br><span class="line">  @Override</span><br><span class="line">  public String name() &#123;</span><br><span class="line">      return &quot;Veg Burger&quot;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  @Override</span><br><span class="line">  public float price() &#123;</span><br><span class="line">      return 25.0f;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>ChickenBurger (鸡肉汉堡)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class ChickenBurger extends Burger&#123;</span><br><span class="line">  @Override</span><br><span class="line">  public String name() &#123;</span><br><span class="line">      return &quot;Chicken Burger&quot;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  @Override</span><br><span class="line">  public float price() &#123;</span><br><span class="line">      return 50.5f;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Coke ( 可口可乐)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class Coke extends ColdDrink&#123;</span><br><span class="line">  @Override</span><br><span class="line">  public String name() &#123;</span><br><span class="line">      return &quot;Coke&quot;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  @Override</span><br><span class="line">  public float price() &#123;</span><br><span class="line">      return 30.0f;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Pepsi (百事可乐)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class Pepsi extends ColdDrink&#123;</span><br><span class="line">  @Override</span><br><span class="line">  public String name() &#123;</span><br><span class="line">      return &quot;Pepsi&quot;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  @Override</span><br><span class="line">  public float price() &#123;</span><br><span class="line">      return 35.0f;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="步骤五"><a href="#步骤五" class="headerlink" title="步骤五"></a>步骤五</h4><p>创建一个套餐<strong>meal</strong>类，带有上面定义的<strong>Item</strong>对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">public class Meal &#123;</span><br><span class="line">    private List&lt;Item&gt; items &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    public void addItem(Item item) &#123;</span><br><span class="line">        items.add(item);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public float getCost() &#123;</span><br><span class="line">        float cost &#x3D; 0.0f;</span><br><span class="line">        for (Item item : items) &#123;</span><br><span class="line">            cost +&#x3D; item.price();</span><br><span class="line">        &#125;</span><br><span class="line">        return cost;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void showItems() &#123;</span><br><span class="line">        for (Item item : items) &#123;</span><br><span class="line">            System.out.println(&quot;Item : &quot; + item.name() + &quot;, Packing : &quot; + item.packing().pack() + &quot;, Price : &quot; + item.price());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="步骤六"><a href="#步骤六" class="headerlink" title="步骤六"></a>步骤六</h4><p>创建一个构造者<strong>MealBuilder</strong>类，实例化<code>builde</code>类负责创建的<strong>Meal</strong>套餐对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public class MealBuilder &#123;</span><br><span class="line">    public Meal prepareVegMeal()&#123;</span><br><span class="line">        Meal meal &#x3D; new Meal();</span><br><span class="line">        meal.addItem(new VegBurger());</span><br><span class="line">        meal.addItem(new Coke());</span><br><span class="line">        return meal;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Meal prepareNonVegMeal()&#123;</span><br><span class="line">        Meal meal &#x3D; new Meal();</span><br><span class="line">        meal.addItem(new ChickenBurger());</span><br><span class="line">        meal.addItem(new Pepsi());</span><br><span class="line">        return meal;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="步骤七"><a href="#步骤七" class="headerlink" title="步骤七"></a>步骤七</h4><p>使用<strong>MealBuilder</strong>演示构建者模式（Builder Pattern）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public class Test &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        MealBuilder mealBuilder &#x3D; new MealBuilder();</span><br><span class="line"></span><br><span class="line">        Meal vegMeal &#x3D; mealBuilder.prepareVegMeal();</span><br><span class="line">        System.out.println(&quot;Veg Meal&quot;);</span><br><span class="line">        vegMeal.showItems();</span><br><span class="line">        System.out.println(&quot;Toast Cost:&quot;+vegMeal.getCost());</span><br><span class="line"></span><br><span class="line">        Meal nonVegMeal &#x3D; mealBuilder.prepareNonVegMeal();</span><br><span class="line">        System.out.println(&quot;Non-veg Meal&quot;);</span><br><span class="line">        nonVegMeal.showItems();</span><br><span class="line">        System.out.println(&quot;Toast Cost: &quot;+nonVegMeal.getCost());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="步骤八"><a href="#步骤八" class="headerlink" title="步骤八"></a>步骤八</h4><p>执行程序输出结果</p>
+<blockquote>
+<p>Veg Meal<br>Item : Veg Burger, Packing : Wrapper, Price : 25.0<br>Item : Coke, Packing : Bottle, Price : 30.0<br>Toast Cost:55.0<br>Non-veg Meal<br>Item : Chicken Burger, Packing : Wrapper, Price : 50.5<br>Item : Pepsi, Packing : Bottle, Price : 35.0<br>Toast Cost: 85.5</p>
+</blockquote>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag"># 设计模式</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/06/04/%E5%AE%89%E5%8D%93%E9%A1%B5%E9%9D%A2%E8%B7%B3%E8%BD%AC%EF%BC%8C%E5%A4%9A%E6%AC%A1%E7%82%B9%E5%87%BB%E4%BC%9A%E9%87%8D%E5%A4%8D%E9%A1%B5%E9%9D%A2/" rel="prev" title="安卓页面跳转，多次点击会重复页面">
+                  <i class="fa fa-angle-left"></i> 安卓页面跳转，多次点击会重复页面
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/08/18/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/" rel="next" title="Java设计模式学习——观察者模式">
+                  Java设计模式学习——观察者模式 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Mark先生</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

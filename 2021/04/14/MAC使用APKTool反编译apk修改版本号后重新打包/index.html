@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha256-5eIC48iZUHmSlSUz9XtjRyK2mzQkHScZY1WdMaoz74E=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.21.1","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="现在业务上出现客户要求如若生产环境出现紧急事件，需要版本回退的情况下，我这边的代码又没做版本分之处理，那么只能更改之前的版本号来实现。不敢夺他人之功，原文在此处 我之前的文章：android反编译apktool—dex2jar—jdgui 一、反编译apk并修改版本号在apk所在目录控制台输入下面指令，即可将文件名为source的apk反编译到outDir目录  开始反编译apk apktool">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MAC使用APKTool反编译apk修改版本号后重新打包">
+<meta property="og:url" content="http://example.com/2021/04/14/MAC%E4%BD%BF%E7%94%A8APKTool%E5%8F%8D%E7%BC%96%E8%AF%91apk%E4%BF%AE%E6%94%B9%E7%89%88%E6%9C%AC%E5%8F%B7%E5%90%8E%E9%87%8D%E6%96%B0%E6%89%93%E5%8C%85/index.html">
+<meta property="og:site_name" content="Mark的私人博客">
+<meta property="og:description" content="现在业务上出现客户要求如若生产环境出现紧急事件，需要版本回退的情况下，我这边的代码又没做版本分之处理，那么只能更改之前的版本号来实现。不敢夺他人之功，原文在此处 我之前的文章：android反编译apktool—dex2jar—jdgui 一、反编译apk并修改版本号在apk所在目录控制台输入下面指令，即可将文件名为source的apk反编译到outDir目录  开始反编译apk apktool">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-04-14T08:49:22.000Z">
+<meta property="article:modified_time" content="2021-04-14T08:49:22.000Z">
+<meta property="article:author" content="Mark先生">
+<meta property="article:tag" content="反编译">
+<meta property="article:tag" content="工具搭建">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2021/04/14/MAC%E4%BD%BF%E7%94%A8APKTool%E5%8F%8D%E7%BC%96%E8%AF%91apk%E4%BF%AE%E6%94%B9%E7%89%88%E6%9C%AC%E5%8F%B7%E5%90%8E%E9%87%8D%E6%96%B0%E6%89%93%E5%8C%85/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://example.com/2021/04/14/MAC%E4%BD%BF%E7%94%A8APKTool%E5%8F%8D%E7%BC%96%E8%AF%91apk%E4%BF%AE%E6%94%B9%E7%89%88%E6%9C%AC%E5%8F%B7%E5%90%8E%E9%87%8D%E6%96%B0%E6%89%93%E5%8C%85/","path":"2021/04/14/MAC使用APKTool反编译apk修改版本号后重新打包/","title":"MAC使用APKTool反编译apk修改版本号后重新打包"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>MAC使用APKTool反编译apk修改版本号后重新打包 | Mark的私人博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Mark的私人博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Mark的私人博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">数风流人物，还看今朝</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%8F%8D%E7%BC%96%E8%AF%91apk%E5%B9%B6%E4%BF%AE%E6%94%B9%E7%89%88%E6%9C%AC%E5%8F%B7"><span class="nav-number">1.</span> <span class="nav-text">一、反编译apk并修改版本号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BF%AE%E6%94%B9%E7%89%88%E6%9C%AC%E5%8F%B7"><span class="nav-number">2.</span> <span class="nav-text">二、修改版本号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E9%87%8D%E6%96%B0%E6%89%93%E5%8C%85"><span class="nav-number">3.</span> <span class="nav-text">三、重新打包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E9%87%8D%E6%96%B0%E7%AD%BE%E5%90%8D"><span class="nav-number">4.</span> <span class="nav-text">四、重新签名</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Mark先生</p>
+  <div class="site-description" itemprop="description">一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">141</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">72</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/14/MAC%E4%BD%BF%E7%94%A8APKTool%E5%8F%8D%E7%BC%96%E8%AF%91apk%E4%BF%AE%E6%94%B9%E7%89%88%E6%9C%AC%E5%8F%B7%E5%90%8E%E9%87%8D%E6%96%B0%E6%89%93%E5%8C%85/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Mark先生">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mark的私人博客">
+      <meta itemprop="description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="MAC使用APKTool反编译apk修改版本号后重新打包 | Mark的私人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          MAC使用APKTool反编译apk修改版本号后重新打包
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-04-14 16:49:22" itemprop="dateCreated datePublished" datetime="2021-04-14T16:49:22+08:00">2021-04-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>现在业务上出现客户要求如若生产环境出现紧急事件，需要版本回退的情况下，我这边的代码又没做版本分之处理，那么只能更改之前的版本号来实现。<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_40998254/article/details/110474885">不敢夺他人之功，原文在此处</a></p>
+<p><a target="_blank" rel="noopener" href="https://markchyl.cn/2020/12/14/android%E5%8F%8D%E7%BC%96%E8%AF%91apktool-dex2jar-jdgui/">我之前的文章：android反编译apktool—dex2jar—jdgui</a></p>
+<h3 id="一、反编译apk并修改版本号"><a href="#一、反编译apk并修改版本号" class="headerlink" title="一、反编译apk并修改版本号"></a>一、反编译apk并修改版本号</h3><p>在apk所在目录控制台输入下面指令，即可将文件名为source的apk反编译到outDir目录</p>
+<ul>
+<li><p>开始反编译apk</p>
+<p><code>apktool d -o outDir source.apk</code><br>或者<br><code>apktool d source.apk -o outDir</code></p>
+</li>
+</ul>
+<h3 id="二、修改版本号"><a href="#二、修改版本号" class="headerlink" title="二、修改版本号"></a>二、修改版本号</h3><p>打开输入目录outDir找到apktool.yml文件，编辑修改versionCode</p>
+<h3 id="三、重新打包"><a href="#三、重新打包" class="headerlink" title="三、重新打包"></a>三、重新打包</h3><p>通过以下命令就可以将目录outDir中的文件重新打包为no_sign_result.apk</p>
+<ul>
+<li><code>apktool b -o no_sign_result.apk outDir</code></li>
+</ul>
+<p>或者</p>
+<ul>
+<li><code>apktool b outDir -o  no_sign_result.apk </code></li>
+</ul>
+<h3 id="四、重新签名"><a href="#四、重新签名" class="headerlink" title="四、重新签名"></a>四、重新签名</h3><p>使用如下命令进行签名<br><code>jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore demostore.jks -signedjar result-signed.apk no_sign_result.apk yourkey</code><br>注：</p>
+<ul>
+<li>demostore.jks为签名文件</li>
+<li>no_sign_result.apk为要签名的源文件</li>
+<li>result-signed.apk为签名后的目标文件</li>
+<li>yourkey为签名的key</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%8F%8D%E7%BC%96%E8%AF%91/" rel="tag"># 反编译</a>
+              <a href="/tags/%E5%B7%A5%E5%85%B7%E6%90%AD%E5%BB%BA/" rel="tag"># 工具搭建</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/04/07/Log%E6%97%A5%E5%BF%97%E5%B7%A5%E5%85%B7%E7%B1%BB-%E4%B8%80/" rel="prev" title="Log日志工具类(一)">
+                  <i class="fa fa-angle-left"></i> Log日志工具类(一)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/04/19/%E5%A6%82%E4%BD%95%E4%BF%AE%E6%94%B9%E8%A1%A8%E7%BB%93%E6%9E%84%EF%BC%9AALERT%E8%AF%AD%E5%8F%A5/" rel="next" title="如何修改表结构：ALERT语句">
+                  如何修改表结构：ALERT语句 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Mark先生</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
