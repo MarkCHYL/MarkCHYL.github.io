@@ -20,12 +20,12 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-material.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.21.1","exturl":true,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":null},"fold":{"enable":true,"height":500},"bookmark":{"enable":true,"color":"#999","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null,"activeClass":"utterances"},"stickytabs":true,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":true,"preload":false}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"markchyl.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.21.1","exturl":true,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":null},"fold":{"enable":true,"height":500},"bookmark":{"enable":true,"color":"#999","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null,"activeClass":"utterances"},"stickytabs":true,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":true,"preload":false}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="[toc] ConnectionFactory的作用 利用工厂模式提升代码的额重要性 封装注册数据库的驱动和获得数据库的连接 利用配置文件减少硬编码，便于维护  ConnectionFactory的开发 配置文件 jdbcinfo.properties 1234oracle.driver&#x3D;oracle.jdbc.driver.OracleDriver  &#x2F;&#x2F;数据库驱动oracle.url&#x3D;jdbc">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JDBC学习--ConnectinnFactory">
-<meta property="og:url" content="http://example.com/2021/05/13/JDBC%E5%AD%A6%E4%B9%A0-ConnectinnFactory/index.html">
+<meta property="og:url" content="https://markchyl.github.io/2021/05/13/JDBC%E5%AD%A6%E4%B9%A0-ConnectinnFactory/index.html">
 <meta property="og:site_name" content="Mark的私人博客">
 <meta property="og:description" content="[toc] ConnectionFactory的作用 利用工厂模式提升代码的额重要性 封装注册数据库的驱动和获得数据库的连接 利用配置文件减少硬编码，便于维护  ConnectionFactory的开发 配置文件 jdbcinfo.properties 1234oracle.driver&#x3D;oracle.jdbc.driver.OracleDriver  &#x2F;&#x2F;数据库驱动oracle.url&#x3D;jdbc">
 <meta property="og:locale" content="zh_CN">
@@ -36,10 +36,10 @@
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/2021/05/13/JDBC%E5%AD%A6%E4%B9%A0-ConnectinnFactory/">
+<link rel="canonical" href="https://markchyl.github.io/2021/05/13/JDBC%E5%AD%A6%E4%B9%A0-ConnectinnFactory/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2021/05/13/JDBC%E5%AD%A6%E4%B9%A0-ConnectinnFactory/","path":"2021/05/13/JDBC学习-ConnectinnFactory/","title":"JDBC学习--ConnectinnFactory"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://markchyl.github.io/2021/05/13/JDBC%E5%AD%A6%E4%B9%A0-ConnectinnFactory/","path":"2021/05/13/JDBC学习-ConnectinnFactory/","title":"JDBC学习--ConnectinnFactory"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>JDBC学习--ConnectinnFactory | Mark的私人博客</title>
@@ -242,7 +242,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/13/JDBC%E5%AD%A6%E4%B9%A0-ConnectinnFactory/">
+    <link itemprop="mainEntityOfPage" href="https://markchyl.github.io/2021/05/13/JDBC%E5%AD%A6%E4%B9%A0-ConnectinnFactory/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/img/head.jpg">
@@ -370,7 +370,7 @@ Connection conn = null;
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="http://example.com/2021/05/13/JDBC%E5%AD%A6%E4%B9%A0-ConnectinnFactory/" title="JDBC学习--ConnectinnFactory">http://example.com/2021/05/13/JDBC学习-ConnectinnFactory/</a>
+      <a href="https://markchyl.github.io/2021/05/13/JDBC%E5%AD%A6%E4%B9%A0-ConnectinnFactory/" title="JDBC学习--ConnectinnFactory">https://markchyl.github.io/2021/05/13/JDBC学习-ConnectinnFactory/</a>
   </li>
   <li class="post-copyright-license">
       <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
@@ -502,7 +502,7 @@ Connection conn = null;
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
-  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"http://example.com/2021/05/13/JDBC%E5%AD%A6%E4%B9%A0-ConnectinnFactory/"}</script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://markchyl.github.io/2021/05/13/JDBC%E5%AD%A6%E4%B9%A0-ConnectinnFactory/"}</script>
   <script src="/js/third-party/quicklink.js"></script>
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"MarkCHYL/MarkCHYL.github.io","issue_term":"pathname","theme":"github-dark"}</script>
 <script src="/js/third-party/comments/utterances.js"></script>

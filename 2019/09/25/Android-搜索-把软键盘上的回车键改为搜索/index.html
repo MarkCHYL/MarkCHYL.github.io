@@ -20,12 +20,12 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-material.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.21.1","exturl":true,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":null},"fold":{"enable":true,"height":500},"bookmark":{"enable":true,"color":"#999","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null,"activeClass":"utterances"},"stickytabs":true,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":true,"preload":false}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"markchyl.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.21.1","exturl":true,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":null},"fold":{"enable":true,"height":500},"bookmark":{"enable":true,"color":"#999","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null,"activeClass":"utterances"},"stickytabs":true,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":true,"preload":false}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="前言： 项目中需要自定义一个搜做的功能，但是我通过更具UI的显示，完全没法使用V7包下的SearchView控件，于是我使用EditView自己写的。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android 搜索 把软键盘上的回车键改为搜索">
-<meta property="og:url" content="http://example.com/2019/09/25/Android-%E6%90%9C%E7%B4%A2-%E6%8A%8A%E8%BD%AF%E9%94%AE%E7%9B%98%E4%B8%8A%E7%9A%84%E5%9B%9E%E8%BD%A6%E9%94%AE%E6%94%B9%E4%B8%BA%E6%90%9C%E7%B4%A2/index.html">
+<meta property="og:url" content="https://markchyl.github.io/2019/09/25/Android-%E6%90%9C%E7%B4%A2-%E6%8A%8A%E8%BD%AF%E9%94%AE%E7%9B%98%E4%B8%8A%E7%9A%84%E5%9B%9E%E8%BD%A6%E9%94%AE%E6%94%B9%E4%B8%BA%E6%90%9C%E7%B4%A2/index.html">
 <meta property="og:site_name" content="Mark的私人博客">
 <meta property="og:description" content="前言： 项目中需要自定义一个搜做的功能，但是我通过更具UI的显示，完全没法使用V7包下的SearchView控件，于是我使用EditView自己写的。">
 <meta property="og:locale" content="zh_CN">
@@ -38,10 +38,10 @@
 <meta name="twitter:image" content="https://thumbnail0.baidupcs.com/thumbnail/cede3f055d8aeb66477c40eb3af2066a?fid=3761439320-250528-957214977420267&time=1569398400&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-T/jYZusknxVB1gKzQcIJFFErJ/M=&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=443423899171394619&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video">
 
 
-<link rel="canonical" href="http://example.com/2019/09/25/Android-%E6%90%9C%E7%B4%A2-%E6%8A%8A%E8%BD%AF%E9%94%AE%E7%9B%98%E4%B8%8A%E7%9A%84%E5%9B%9E%E8%BD%A6%E9%94%AE%E6%94%B9%E4%B8%BA%E6%90%9C%E7%B4%A2/">
+<link rel="canonical" href="https://markchyl.github.io/2019/09/25/Android-%E6%90%9C%E7%B4%A2-%E6%8A%8A%E8%BD%AF%E9%94%AE%E7%9B%98%E4%B8%8A%E7%9A%84%E5%9B%9E%E8%BD%A6%E9%94%AE%E6%94%B9%E4%B8%BA%E6%90%9C%E7%B4%A2/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2019/09/25/Android-%E6%90%9C%E7%B4%A2-%E6%8A%8A%E8%BD%AF%E9%94%AE%E7%9B%98%E4%B8%8A%E7%9A%84%E5%9B%9E%E8%BD%A6%E9%94%AE%E6%94%B9%E4%B8%BA%E6%90%9C%E7%B4%A2/","path":"2019/09/25/Android-搜索-把软键盘上的回车键改为搜索/","title":"Android 搜索 把软键盘上的回车键改为搜索"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://markchyl.github.io/2019/09/25/Android-%E6%90%9C%E7%B4%A2-%E6%8A%8A%E8%BD%AF%E9%94%AE%E7%9B%98%E4%B8%8A%E7%9A%84%E5%9B%9E%E8%BD%A6%E9%94%AE%E6%94%B9%E4%B8%BA%E6%90%9C%E7%B4%A2/","path":"2019/09/25/Android-搜索-把软键盘上的回车键改为搜索/","title":"Android 搜索 把软键盘上的回车键改为搜索"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>Android 搜索 把软键盘上的回车键改为搜索 | Mark的私人博客</title>
@@ -244,7 +244,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2019/09/25/Android-%E6%90%9C%E7%B4%A2-%E6%8A%8A%E8%BD%AF%E9%94%AE%E7%9B%98%E4%B8%8A%E7%9A%84%E5%9B%9E%E8%BD%A6%E9%94%AE%E6%94%B9%E4%B8%BA%E6%90%9C%E7%B4%A2/">
+    <link itemprop="mainEntityOfPage" href="https://markchyl.github.io/2019/09/25/Android-%E6%90%9C%E7%B4%A2-%E6%8A%8A%E8%BD%AF%E9%94%AE%E7%9B%98%E4%B8%8A%E7%9A%84%E5%9B%9E%E8%BD%A6%E9%94%AE%E6%94%B9%E4%B8%BA%E6%90%9C%E7%B4%A2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/img/head.jpg">
@@ -351,7 +351,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="http://example.com/2019/09/25/Android-%E6%90%9C%E7%B4%A2-%E6%8A%8A%E8%BD%AF%E9%94%AE%E7%9B%98%E4%B8%8A%E7%9A%84%E5%9B%9E%E8%BD%A6%E9%94%AE%E6%94%B9%E4%B8%BA%E6%90%9C%E7%B4%A2/" title="Android 搜索 把软键盘上的回车键改为搜索">http://example.com/2019/09/25/Android-搜索-把软键盘上的回车键改为搜索/</a>
+      <a href="https://markchyl.github.io/2019/09/25/Android-%E6%90%9C%E7%B4%A2-%E6%8A%8A%E8%BD%AF%E9%94%AE%E7%9B%98%E4%B8%8A%E7%9A%84%E5%9B%9E%E8%BD%A6%E9%94%AE%E6%94%B9%E4%B8%BA%E6%90%9C%E7%B4%A2/" title="Android 搜索 把软键盘上的回车键改为搜索">https://markchyl.github.io/2019/09/25/Android-搜索-把软键盘上的回车键改为搜索/</a>
   </li>
   <li class="post-copyright-license">
       <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
@@ -483,7 +483,7 @@
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
-  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"http://example.com/2019/09/25/Android-%E6%90%9C%E7%B4%A2-%E6%8A%8A%E8%BD%AF%E9%94%AE%E7%9B%98%E4%B8%8A%E7%9A%84%E5%9B%9E%E8%BD%A6%E9%94%AE%E6%94%B9%E4%B8%BA%E6%90%9C%E7%B4%A2/"}</script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://markchyl.github.io/2019/09/25/Android-%E6%90%9C%E7%B4%A2-%E6%8A%8A%E8%BD%AF%E9%94%AE%E7%9B%98%E4%B8%8A%E7%9A%84%E5%9B%9E%E8%BD%A6%E9%94%AE%E6%94%B9%E4%B8%BA%E6%90%9C%E7%B4%A2/"}</script>
   <script src="/js/third-party/quicklink.js"></script>
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"MarkCHYL/MarkCHYL.github.io","issue_term":"pathname","theme":"github-dark"}</script>
 <script src="/js/third-party/comments/utterances.js"></script>
