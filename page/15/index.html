@@ -157,7 +157,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">142</span>
+          <span class="site-state-item-count">141</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -229,91 +229,6 @@
     </div>
 
     <div class="main-inner index posts-expand">
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://markchyl.github.io/2018/12/16/%E5%AE%89%E5%8D%93%E7%9A%84%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/img/head.jpg">
-      <meta itemprop="name" content="Mark先生">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Mark的私人博客">
-      <meta itemprop="description" content="一名Android开发程序员，目前在上海一家公司任职一名软件工程师，负责移动端的开发。努力奋斗的码农。">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Mark的私人博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2018/12/16/%E5%AE%89%E5%8D%93%E7%9A%84%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3/" class="post-title-link" itemprop="url">安卓的启动模式详解</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2018-12-16 00:08:13" itemprop="dateCreated datePublished" datetime="2018-12-16T00:08:13+08:00">2018-12-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h4 id="安卓开发者基本都知道Activity的四大启动模式，但是一到被问到之间区别的时候，再问深一点的时候，往往都会回答的不是很让面试官满意，鄙人就是，嘴皮子笨不懂得如何表达清楚。"><a href="#安卓开发者基本都知道Activity的四大启动模式，但是一到被问到之间区别的时候，再问深一点的时候，往往都会回答的不是很让面试官满意，鄙人就是，嘴皮子笨不懂得如何表达清楚。" class="headerlink" title="安卓开发者基本都知道Activity的四大启动模式，但是一到被问到之间区别的时候，再问深一点的时候，往往都会回答的不是很让面试官满意，鄙人就是，嘴皮子笨不懂得如何表达清楚。"></a>安卓开发者基本都知道Activity的四大启动模式，但是一到被问到之间区别的时候，再问深一点的时候，往往都会回答的不是很让面试官满意，鄙人就是，嘴皮子笨不懂得如何表达清楚。</h4><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a><strong>简介</strong></h2><h4 id="我们在创建一个Activity后，都知道要在清单文件中去注册，在程序员创建该Activity实例时，系统会按照先进先出的原则，创建一个任务栈将其实例放入其中，然后按back键时或finish时，系统就会将栈顶的Activity移除栈，我们可以在清单文件中指明该Activity的启动模式，系统默认的Activity的启动模式是standard模式。"><a href="#我们在创建一个Activity后，都知道要在清单文件中去注册，在程序员创建该Activity实例时，系统会按照先进先出的原则，创建一个任务栈将其实例放入其中，然后按back键时或finish时，系统就会将栈顶的Activity移除栈，我们可以在清单文件中指明该Activity的启动模式，系统默认的Activity的启动模式是standard模式。" class="headerlink" title="我们在创建一个Activity后，都知道要在清单文件中去注册，在程序员创建该Activity实例时，系统会按照先进先出的原则，创建一个任务栈将其实例放入其中，然后按back键时或finish时，系统就会将栈顶的Activity移除栈，我们可以在清单文件中指明该Activity的启动模式，系统默认的Activity的启动模式是standard模式。"></a>我们在创建一个Activity后，都知道要在清单文件中去注册，在程序员创建该Activity实例时，系统会按照先进先出的原则，创建一个任务栈将其实例放入其中，然后按back键时或finish时，系统就会将栈顶的Activity移除栈，我们可以在清单文件中指明该Activity的启动模式，系统默认的Activity的启动模式是standard模式。</h4><hr>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2018/12/16/%E5%AE%89%E5%8D%93%E7%9A%84%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
 
     
 
