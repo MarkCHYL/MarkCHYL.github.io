@@ -6,7 +6,7 @@
   <link href="https://markchyl.github.io/atom.xml" rel="self"/>
   
   <link href="https://markchyl.github.io/"/>
-  <updated>2024-12-31T05:32:07.000Z</updated>
+  <updated>2025-01-02T01:11:40.000Z</updated>
   <id>https://markchyl.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>如何在macOS上安装使用scrcpy投屏软件？</title>
+    <link href="https://markchyl.github.io/2025/01/02/%E5%A6%82%E4%BD%95%E5%9C%A8macOS%E4%B8%8A%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8scrcpy%E6%8A%95%E5%B1%8F%E8%BD%AF%E4%BB%B6%EF%BC%9F/"/>
+    <id>https://markchyl.github.io/2025/01/02/%E5%A6%82%E4%BD%95%E5%9C%A8macOS%E4%B8%8A%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8scrcpy%E6%8A%95%E5%B1%8F%E8%BD%AF%E4%BB%B6%EF%BC%9F/</id>
+    <published>2025-01-02T01:11:40.000Z</published>
+    <updated>2025-01-02T01:11:40.000Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;如何在macOS上安装使用scrcpy投屏软件？&quot;&gt;&lt;a href=&quot;#如何在macOS上安装使用scrcpy投屏软件？&quot; class=&quot;headerlink&quot; title=&quot;如何在macOS上安装使用scrcpy投屏软件？&quot;&gt;&lt;/a&gt;如何在macOS上安装使用scrcpy投屏软件？&lt;/h2&gt;&lt;p&gt;以下是在macOS上安装使用scrcpy投屏软件的步骤：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;安装前的准备&lt;/strong&gt;：确保你的macOS系统已经安装了Homebrew。Homebrew是macOS上的包管理器，很多软件都可以通过它来安装。如果你还没有安装Homebrew，可以访问&lt;span class=&quot;exturl&quot; data-url=&quot;aHR0cHM6Ly9icmV3LnNoLw==&quot;&gt;Homebrew官方网站&lt;i class=&quot;fa fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt;，按照其提供的安装教程进行安装。</summary>
+    
+    
+    
+    <category term="Android" scheme="https://markchyl.github.io/categories/Android/"/>
+    
+    
+    <category term="工具" scheme="https://markchyl.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
   
   <entry>
     <title>FFmpeg 命令使用的自学文档</title>
@@ -485,33 +506,6 @@
     
     
     <category term="Flutter" scheme="https://markchyl.github.io/categories/Flutter/"/>
-    
-    
-    <category term="Error" scheme="https://markchyl.github.io/tags/Error/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>mac上已损坏，无法打开。 您应该将它移到废纸篓。解决方案</title>
-    <link href="https://markchyl.github.io/2023/04/14/mac%E4%B8%8A%E5%B7%B2%E6%8D%9F%E5%9D%8F%EF%BC%8C%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80%E3%80%82-%E6%82%A8%E5%BA%94%E8%AF%A5%E5%B0%86%E5%AE%83%E7%A7%BB%E5%88%B0%E5%BA%9F%E7%BA%B8%E7%AF%93%E3%80%82%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
-    <id>https://markchyl.github.io/2023/04/14/mac%E4%B8%8A%E5%B7%B2%E6%8D%9F%E5%9D%8F%EF%BC%8C%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80%E3%80%82-%E6%82%A8%E5%BA%94%E8%AF%A5%E5%B0%86%E5%AE%83%E7%A7%BB%E5%88%B0%E5%BA%9F%E7%BA%B8%E7%AF%93%E3%80%82%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</id>
-    <published>2023-04-14T06:21:27.000Z</published>
-    <updated>2023-04-14T06:21:27.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;ul&gt;
-&lt;li&gt;1.首先先看你电脑的安全设置&lt;br&gt;​&lt;br&gt;如果没有设置任何来源，那把小锁打开，添加一下任何来源。在尝试安装&lt;/li&gt;
-&lt;li&gt;2.如果还不行，在终端粘贴复制输入命令：“sudo xattr -r -d com.apple.quarantine</summary>
-        
-      
-    
-    
-    
-    <category term="工具" scheme="https://markchyl.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
     
     
     <category term="Error" scheme="https://markchyl.github.io/tags/Error/"/>
