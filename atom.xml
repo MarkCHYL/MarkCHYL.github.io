@@ -6,7 +6,7 @@
   <link href="https://markchyl.github.io/atom.xml" rel="self"/>
   
   <link href="https://markchyl.github.io/"/>
-  <updated>2025-01-02T01:11:40.000Z</updated>
+  <updated>2025-01-14T11:09:06.000Z</updated>
   <id>https://markchyl.github.io/</id>
   
   <author>
@@ -15,6 +15,92 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Mac上配置安装多个版本的python</title>
+    <link href="https://markchyl.github.io/2025/01/14/Mac%E4%B8%8A%E9%85%8D%E7%BD%AE%E5%AE%89%E8%A3%85%E5%A4%9A%E4%B8%AA%E7%89%88%E6%9C%AC%E7%9A%84python/"/>
+    <id>https://markchyl.github.io/2025/01/14/Mac%E4%B8%8A%E9%85%8D%E7%BD%AE%E5%AE%89%E8%A3%85%E5%A4%9A%E4%B8%AA%E7%89%88%E6%9C%AC%E7%9A%84python/</id>
+    <published>2025-01-14T11:09:06.000Z</published>
+    <updated>2025-01-14T11:09:06.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;在M2 MacBook Pro上配置安装多个版本的Python有以下几种方法：&lt;/p&gt;
+&lt;h3 id=&quot;使用pyenv&quot;&gt;&lt;a href=&quot;#使用pyenv&quot; class=&quot;headerlink&quot; title=&quot;使用pyenv&quot;&gt;&lt;/a&gt;使用pyenv&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;安装Homebrew&lt;/strong&gt;：如果尚未安装，在终端中运行以下命令：&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;#x2F;bin&amp;#x2F;bash -c &amp;quot;$(curl -fsSL https:&amp;#x2F;&amp;#x2F;raw.githubusercontent.com&amp;#x2F;Homebrew&amp;#x2F;install&amp;#x2F;HEAD&amp;#x2F;install.sh)&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="Python" scheme="https://markchyl.github.io/categories/Python/"/>
+    
+    
+    <category term="环境" scheme="https://markchyl.github.io/tags/%E7%8E%AF%E5%A2%83/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>M2 Macbook Pro 上安装 Anaconda</title>
+    <link href="https://markchyl.github.io/2025/01/14/M2-Macbook-Pro-%E4%B8%8A%E5%AE%89%E8%A3%85-Anaconda/"/>
+    <id>https://markchyl.github.io/2025/01/14/M2-Macbook-Pro-%E4%B8%8A%E5%AE%89%E8%A3%85-Anaconda/</id>
+    <published>2025-01-14T08:08:21.000Z</published>
+    <updated>2025-01-14T08:08:21.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;以下是在M2 Macbook Pro上安装Anaconda的详细步骤：&lt;/p&gt;
+&lt;h3 id=&quot;下载安装包&quot;&gt;&lt;a href=&quot;#下载安装包&quot; class=&quot;headerlink&quot; title=&quot;下载安装包&quot;&gt;&lt;/a&gt;下载安装包&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;访问&lt;span class=&quot;exturl&quot; data-url=&quot;aHR0cHM6Ly93d3cuYW5hY29uZGEuY29tL3Byb2R1Y3RzL2Rpc3RyaWJ1dGlvbiNkb3dubG9hZC1zZWN0aW9u&quot;&gt;Anaconda官方网站&lt;i class=&quot;fa fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt;。&lt;/li&gt;
+&lt;li&gt;在页面中找到适用于macOS且支持Apple Silicon（M2）的Anaconda安装包，通常为64位图形安装程序或命令行安装程序，文件扩展名为.pkg或.sh，如&lt;code&gt;Anaconda3-2023.03-macosx-arm64.pkg&lt;/code&gt;或&lt;code&gt;Miniforge3-MacOSX-arm64.sh&lt;/code&gt;。</summary>
+    
+    
+    
+    <category term="Python" scheme="https://markchyl.github.io/categories/Python/"/>
+    
+    
+    <category term="工具" scheme="https://markchyl.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Flutter 与原生交互之路由跳转封装文档</title>
+    <link href="https://markchyl.github.io/2025/01/08/Flutter-%E4%B8%8E%E5%8E%9F%E7%94%9F%E4%BA%A4%E4%BA%92%E4%B9%8B%E8%B7%AF%E7%94%B1%E8%B7%B3%E8%BD%AC%E5%B0%81%E8%A3%85%E6%96%87%E6%A1%A3/"/>
+    <id>https://markchyl.github.io/2025/01/08/Flutter-%E4%B8%8E%E5%8E%9F%E7%94%9F%E4%BA%A4%E4%BA%92%E4%B9%8B%E8%B7%AF%E7%94%B1%E8%B7%B3%E8%BD%AC%E5%B0%81%E8%A3%85%E6%96%87%E6%A1%A3/</id>
+    <published>2025-01-08T02:51:52.000Z</published>
+    <updated>2025-01-08T02:51:52.000Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;Flutter-与原生交互之路由跳转封装文档&quot;&gt;&lt;a href=&quot;#Flutter-与原生交互之路由跳转封装文档&quot; class=&quot;headerlink&quot; title=&quot;Flutter 与原生交互之路由跳转封装文档&quot;&gt;&lt;/a&gt;Flutter 与原生交互之路由跳转封装文档&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;在&lt;code&gt;Flutter&lt;/code&gt;项目中，当需要与原生（安卓和&lt;code&gt;iOS&lt;/code&gt;）进行交互，通过点击按钮向原生传递路由信息及数据，让原生进行对应路由跳转时，为了提高代码的复用性和可维护性，对相关功能进行封装是很有必要的。以下是在&lt;code&gt;Flutter&lt;/code&gt;端进行封装的详细步骤及示例代码。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;一、创建MethodChannel与封装类&quot;&gt;&lt;a href=&quot;#一、创建MethodChannel与封装类&quot; class=&quot;headerlink&quot; title=&quot;一、创建MethodChannel与封装类&quot;&gt;&lt;/a&gt;一、创建&lt;code&gt;MethodChannel&lt;/code&gt;与封装类&lt;/h3&gt;</summary>
+    
+    
+    
+    <category term="Flutter" scheme="https://markchyl.github.io/categories/Flutter/"/>
+    
+    
+    <category term="Flutter" scheme="https://markchyl.github.io/tags/Flutter/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Flutter 自定义命名路由跳转步骤</title>
+    <link href="https://markchyl.github.io/2025/01/08/Flutter-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%91%BD%E5%90%8D%E8%B7%AF%E7%94%B1%E8%B7%B3%E8%BD%AC%E6%AD%A5%E9%AA%A4/"/>
+    <id>https://markchyl.github.io/2025/01/08/Flutter-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%91%BD%E5%90%8D%E8%B7%AF%E7%94%B1%E8%B7%B3%E8%BD%AC%E6%AD%A5%E9%AA%A4/</id>
+    <published>2025-01-08T01:45:10.000Z</published>
+    <updated>2025-01-08T01:45:10.000Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;Flutter-自定义命名路由跳转步骤&quot;&gt;&lt;a href=&quot;#Flutter-自定义命名路由跳转步骤&quot; class=&quot;headerlink&quot; title=&quot;Flutter 自定义命名路由跳转步骤&quot;&gt;&lt;/a&gt;&lt;code&gt;Flutter&lt;/code&gt; 自定义命名路由跳转步骤&lt;/h1&gt;&lt;p&gt;在 &lt;code&gt;Flutter&lt;/code&gt; 项目开发中，实现自定义命名路由跳转能让页面导航更灵活、易于管理。以下是详细的实现步骤，以及可能遇到的报错信息及处理方法。重点是我又不想使用第三方的路由插件，所以自己采用自带的路由 &lt;code&gt;Navigator&lt;/code&gt; 实现，手写一个。&lt;/p&gt;
+&lt;h2 id=&quot;一、创建路由配置数据结构&quot;&gt;&lt;a href=&quot;#一、创建路由配置数据结构&quot; class=&quot;headerlink&quot; title=&quot;一、创建路由配置数据结构&quot;&gt;&lt;/a&gt;一、创建路由配置数据结构&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;定义RouteConfig类：</summary>
+    
+    
+    
+    <category term="Flutter" scheme="https://markchyl.github.io/categories/Flutter/"/>
+    
+    
+    <category term="Flutter" scheme="https://markchyl.github.io/tags/Flutter/"/>
+    
+  </entry>
   
   <entry>
     <title>如何在macOS上安装使用scrcpy投屏软件？</title>
@@ -407,108 +493,6 @@
     
     
     <category term="环境配置" scheme="https://markchyl.github.io/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>安装Go语言的集成开发环境（IDE）</title>
-    <link href="https://markchyl.github.io/2023/06/29/%E5%AE%89%E8%A3%85Go%E8%AF%AD%E8%A8%80%E7%9A%84%E9%9B%86%E6%88%90%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%EF%BC%88IDE%EF%BC%89/"/>
-    <id>https://markchyl.github.io/2023/06/29/%E5%AE%89%E8%A3%85Go%E8%AF%AD%E8%A8%80%E7%9A%84%E9%9B%86%E6%88%90%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%EF%BC%88IDE%EF%BC%89/</id>
-    <published>2023-06-29T02:35:54.000Z</published>
-    <updated>2023-06-29T02:35:54.000Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;要安装Go语言的集成开发环境（IDE），您可以考虑安装Visual Studio Code并使用Go插件来进行Go语言开发。以下是安装和配置步骤：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;安装 Visual Studio Code：打开终端，运行以下命令以添加 Visual Studio Code 的官方存储库，并安装它：&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo apt update&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo apt install code&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
-    
-    
-    
-    <category term="Linux" scheme="https://markchyl.github.io/categories/Linux/"/>
-    
-    
-    <category term="环境配置" scheme="https://markchyl.github.io/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
-    
-    <category term="go" scheme="https://markchyl.github.io/tags/go/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Ubuntu虚拟机中安装应用商店</title>
-    <link href="https://markchyl.github.io/2023/06/29/Ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%AD%E5%AE%89%E8%A3%85%E5%BA%94%E7%94%A8%E5%95%86%E5%BA%97/"/>
-    <id>https://markchyl.github.io/2023/06/29/Ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%AD%E5%AE%89%E8%A3%85%E5%BA%94%E7%94%A8%E5%95%86%E5%BA%97/</id>
-    <published>2023-06-29T02:20:04.000Z</published>
-    <updated>2023-06-29T02:20:04.000Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;如果您的Ubuntu虚拟机中没有应用商店，您可以尝试安装和使用其他的应用商店工具来获取和安装应用程序。以下是一些常见的应用商店工具：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;GNOME Software：GNOME Software是一个流行的图形化应用商店工具，适用于使用GNOME桌面环境的Ubuntu。打开终端，运行以下命令来安装GNOME Software：&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo apt update&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo apt install gnome-software&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-&lt;p&gt;安装完成后，您可以在应用程序菜单中搜索并打开GNOME Software。通过GNOME Software，您可以浏览、搜索和安装各种应用程序。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Linux" scheme="https://markchyl.github.io/categories/Linux/"/>
-    
-    
-    <category term="环境配置" scheme="https://markchyl.github.io/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ubuntu安装jdk1.8和jdk11</title>
-    <link href="https://markchyl.github.io/2023/06/29/ubuntu%E5%AE%89%E8%A3%85jdk1-8%E5%92%8Cjdk11/"/>
-    <id>https://markchyl.github.io/2023/06/29/ubuntu%E5%AE%89%E8%A3%85jdk1-8%E5%92%8Cjdk11/</id>
-    <published>2023-06-29T02:17:59.000Z</published>
-    <updated>2023-06-29T02:17:59.000Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;如果您需要在Ubuntu虚拟机上同时安装JDK 1.8和JDK 11，您可以按照以下步骤进行操作：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;安装JDK 1.8：&lt;br&gt;打开终端，运行以下命令安装OpenJDK 8：&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo apt update&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo apt install openjdk-8-jdk&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-&lt;p&gt;安装完成后，可以使用&lt;code&gt;java -version&lt;/code&gt;命令验证安装的JDK版本。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Linux" scheme="https://markchyl.github.io/categories/Linux/"/>
-    
-    
-    <category term="环境配置" scheme="https://markchyl.github.io/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Error: CocoaPods&#39;s specs repository is too out-of-date to satisfy dependencies</title>
-    <link href="https://markchyl.github.io/2023/05/30/Error-CocoaPods-s-specs-repository-is-too-out-of-date-to-satisfy-dependencies/"/>
-    <id>https://markchyl.github.io/2023/05/30/Error-CocoaPods-s-specs-repository-is-too-out-of-date-to-satisfy-dependencies/</id>
-    <published>2023-05-30T05:59:26.000Z</published>
-    <updated>2023-05-30T05:59:26.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;ol&gt;
-&lt;li&gt;flutter clean&lt;/li&gt;
-&lt;li&gt;delete /ios/Pods&lt;/li&gt;
-&lt;li&gt;delete /ios/Podfile.lock&lt;/li&gt;
-&lt;li&gt;flutter pub get&lt;/li&gt;
-&lt;li&gt;from inside ios</summary>
-        
-      
-    
-    
-    
-    <category term="Flutter" scheme="https://markchyl.github.io/categories/Flutter/"/>
-    
-    
-    <category term="Error" scheme="https://markchyl.github.io/tags/Error/"/>
     
   </entry>
   
