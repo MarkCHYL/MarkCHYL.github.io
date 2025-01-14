@@ -25,8 +25,10 @@
     
     
     <summary type="html">&lt;p&gt;在M2 MacBook Pro上配置安装多个版本的Python有以下几种方法：&lt;/p&gt;
-&lt;h3 id=&quot;使用pyenv&quot;&gt;&lt;a href=&quot;#使用pyenv&quot; class=&quot;headerlink&quot; title=&quot;使用pyenv&quot;&gt;&lt;/a&gt;使用pyenv&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;安装Homebrew&lt;/strong&gt;：如果尚未安装，在终端中运行以下命令：&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;#x2F;bin&amp;#x2F;bash -c &amp;quot;$(curl -fsSL https:&amp;#x2F;&amp;#x2F;raw.githubusercontent.com&amp;#x2F;Homebrew&amp;#x2F;install&amp;#x2F;HEAD&amp;#x2F;install.sh)&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+&lt;p&gt;使用pyenv管理Python版本是个很好的选择。以下是更详细的步骤和相关说明：&lt;/p&gt;
+&lt;h3 id=&quot;1-安装依赖&quot;&gt;&lt;a href=&quot;#1-安装依赖&quot; class=&quot;headerlink&quot; title=&quot;1. 安装依赖&quot;&gt;&lt;/a&gt;1. 安装依赖&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;确保你的M2 Macbook Pro已经安装了必要的开发工具。如果没有安装，可以在终端中运行以下命令安装Xcode命令行工具：&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;xcode - select - - install&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+这将弹出一个安装对话框，按照提示完成安装即可。</summary>
     
     
     
